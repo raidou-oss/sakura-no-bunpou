@@ -1,0 +1,400 @@
+800|sourire
+801|courant électrique
+802|questions (débat), interpellation
+803|se transformer en, devenir
+804|secours, salut, délivrance
+805|mèche, mine (crayon), cœur, trognon
+806|arrondir, enrouler, embobiner
+807|conscience de soi, prise de conscience
+808|s'efforcer, s'appliquer
+809|honneur, prestige
+810|porter sur l'épaule, faire marcher (tromper)
+811|contact, toucher
+812|genre, sorte, égal
+813|Blanc (personne)
+814|couleurs, teinte
+815|point de départ, origine
+816|liquide
+817|se figer, se passionner pour, être raide (épaules)
+818|devenir limpide, s'éclaircir
+819|carburant, combustible
+820|baver, s'étaler, se brouiller, suinter
+821|rancune, ressentiment
+822|reculer, se retirer, céder
+823|création
+824|réponse, solution
+825|leçon, morale
+826|s'asseoir
+827|émoussé, lent, obtus, sourd (son)
+828|corde
+829|style, forme, modèle
+830|division, catégorie, segmentation
+831|source, origine, fondement
+832|sans risque, passable, acceptable
+833|justice, équité, impartialité
+834|unique, original
+835|savon
+836|supporter, endurer, retenir
+837|territoire national
+838|cloche
+839|imiter, suivre l'exemple de
+840|sentiment, émotion, compassion
+841|informer, rapporter
+842|proposer, déclarer, faire une demande
+843|être humide, être morose
+844|relief, topographie
+845|fondement, racine
+846|vain, vide, futile
+847|de justesse, à peine
+848|révéler, divulguer, passer (la nuit)
+849|fatigue, épuisement
+850|brevet, licence
+851|dette, passif
+852|vibration, oscillation
+853|retard
+854|manipuler, manœuvrer, maîtriser (une langue)
+855|savoir, comprendre, considérer comme
+856|robuste, vigoureux, tenace
+857|s'approcher
+858|queue (animal)
+859|grand public, masses
+860|harmonie, paix, Japon, somme
+861|minorité, petit nombre
+862|imprégner, pénétrer, piquer (plaie)
+863|interpréter, jouer (un rôle)
+864|lâcher, relâcher, libérer
+865|couverture (livre)
+866|peuple
+867|être animé, être très fréquenté, prospérer
+868|échanger un regard, reporter, suspendre
+869|vêtements
+870|discussion, débat
+871|samouraï
+872|fossé, rigole, écart
+873|infidélité, aventure, inconstance
+874|ancêtre
+875|préjugé
+876|nettement, catégoriquement
+877|salle à tatamis
+878|saisie, entrée (données)
+879|département, secteur, catégorie
+880|de petite taille, menu
+881|coquille, carapace, écorce
+882|compétence technique, savoir-faire
+883|jugement, décision, verdict
+884|molécule, numérateur, élément
+885|violent, intense, acharné
+886|ce (notre établissement)
+887|finition, touche finale
+888|plant, jeune pousse
+889|inconnu
+890|bol, pot, pot de fleurs
+891|engrais
+892|exactement, parfaitement, proprement
+893|coup, choc, dégâts, frappe (sport)
+894|personnalité, caractère
+895|chacun
+896|déchirant, poignant, douloureux
+897|tripoter, bricoler
+898|vrai nom
+899|stupide, sot
+900|séparer, isoler
+901|insouciant, détendu, à l'aise
+902|critique, reproche, blâme
+903|jus, soupe, bouillon
+904|clavier
+905|cèdre du Japon
+906|aspect, apparence
+907|promulgation, établissement
+908|position
+909|prix, frais, génération
+910|nom de famille
+911|s'approvisionner, acheter (stock)
+912|compris, d'accord, reçu
+913|déduire, soustraire
+914|s'affaiblir, être embêté
+915|plage, rivage
+916|jalousie
+917|abaisser, réduire, retirer
+918|moine
+919|insecte
+920|bonne qualité
+921|sincère, honnête, fidèle
+922|inquiétant, sinistre, étrange
+923|titre
+924|pencher, être partial, être déséquilibré
+925|soulagé, soupir de soulagement
+926|brutal, rude, agité
+927|photographe, caméraman
+928|escarpé, abrupt, sévère
+929|demander, prier
+930|tambour
+931|tribunal (salle)
+932|volonté, aspiration, intention
+933|pied (d'une montagne)
+934|feuille
+935|clarifier, tendre l'oreille, prendre un air détaché
+936|quantité, montant
+937|clôture, palissade
+938|corps humain
+939|jazz
+940|soldat
+941|abasourdi, stupéfait
+942|s'interrompre
+943|fusuma (cloison coulissante)
+944|col (montagne), moment critique
+945|remboursement
+946|excédent, bénéfice
+947|réforme, transformation
+948|tremper, immerger
+949|illusion, méprise
+950|sexe opposé
+951|disperser, éparpiller
+952|prospérer, s'épanouir
+953|courbe
+954|vertical, perpendiculaire
+955|intérêts (bancaires)
+956|cimetière
+957|contrôle, surveillance
+958|premier (A), carapace
+959|périr, être détruit, disparaître
+960|recevoir, entendre (humble)
+961|sans détour, franchement
+962|foule, groupe
+963|être doté de, être équipé de
+964|insensé, sans signification
+965|densité relative, importance relative
+966|invalide, nul, sans effet
+967|substance, réel, essentiel
+968|ancêtre
+969|posture, garde, structure
+970|absence
+971|nuance
+972|jeter dehors, abandonner, laisser tomber
+973|approcher, arriver à
+974|réponse
+975|groupe, troupeau, essaim
+976|colonie
+977|exemple concret
+978|courir, galoper
+979|stratégie, mesure
+980|désespoir
+981|course (commission), messager
+982|tort, faute
+983|précipité, agité, mouvementé
+984|intellectuel
+985|salive, crachat
+986|dojo (salle d'entraînement)
+987|pousser dru, être touffu
+988|empathie, sympathie
+989|marche, progression
+990|fixé, prescrit
+991|faire trembler
+992|répandre, diffuser, élargir
+993|intérêts (prêt)
+994|beaux-arts
+995|le meilleur possible
+996|faire face à, gérer
+997|coquillage
+998|karma, acte
+999|délimiter, séparer, ponctuer
+1000|figure, forme
+1001|coucher (un enfant), laisser reposer
+1002|zen
+1003|rangement
+1004|déclaration, proclamation
+1005|score, points marqués
+1006|instinct
+1007|cloisonner, diriger, prendre en main
+1008|allègement, réduction
+1009|défunt
+1010|un peu, dans une certaine mesure
+1011|arc, archet
+1012|déranger, mettre en désordre
+1013|cristal, fruit (du travail)
+1014|division, découpage
+1015|temple, sanctuaire
+1016|tentation, séduction
+1017|reconstruction
+1018|fusil
+1019|crépuscule
+1020|prisonnier de guerre
+1021|salle de bain
+1022|être clair, être vif, être lucide
+1023|centre des impôts
+1024|jeter dans
+1025|distribution
+1026|refléter, projeter
+1027|année scolaire, niveau
+1028|secouer, ébranler
+1029|colle, amidon
+1030|gravité
+1031|coutume
+1032|éclat, brillant, charme
+1033|gentleman
+1034|garde d'enfants, puériculture
+1035|vieillir
+1036|densité
+1037|miel
+1038|chef-d'œuvre, (familier) bourde amusante
+1039|localisation, endroit où l'on se trouve
+1040|parti au pouvoir
+1041|exceptionnel, particulier
+1042|pauvreté, manque
+1043|laisser échapper, rater, relâcher
+1044|force armée
+1045|se croiser, fréquenter
+1046|quatre saisons
+1047|retrouvailles
+1048|taux d'humidité
+1049|évolution, vicissitudes
+1050|armes
+1051|aligner, inscrire (sur une liste)
+1052|grain, goutte, (compteur pour petits objets ronds)
+1053|officiel, régulier, légal
+1054|délinquance
+1055|remarquable, spectaculaire
+1056|différence (montant), écart
+1057|affrontement, duel
+1058|reconstruction, renaissance
+1059|à partir de, depuis, après
+1060|(avec négation) pas correctement, à peine
+1061|bien culturel, patrimoine
+1062|forme, formulaire
+1063|carré, rectangulaire
+1064|fossile
+1065|climat, milieu naturel
+1066|panneau, signalisation, balise
+1067|circuit
+1068|fragment, éclat
+1069|repousser, rejeter
+1070|se troubler, devenir trouble
+1071|fin, clôture
+1072|enterrer, ensevelir, étouffer (une affaire)
+1073|empêcher, entraver
+1074|chérir, adorer, se languir de
+1075|reprocher, blâmer
+1076|mélancolie, déprime
+1077|précieux, noble, sacré
+1078|carrure, physique
+1079|ordre public, sécurité
+1080|immature, inexpérimenté, vert (fruit)
+1081|se fondre dans, s'intégrer
+1082|invasion, intrusion
+1083|défense
+1084|lustre, brillance
+1085|grelot, clochette
+1086|faire rouler, revendre vite
+1087|décoration, ornement
+1088|se disputer, avoir un différend
+1089|lire à voix haute
+1090|partie, portion
+1091|demande, faveur, confiance
+1092|amélioration, augmentation
+1093|être populaire (auprès de l'autre sexe)
+1094|pétrole brut
+1095|miel, nectar
+1096|hydrogène
+1097|continuité, maintien
+1098|historique, parcours, CV
+1099|ici et là, par endroits
+1100|se dresser, s'élever
+1101|nappe phréatique
+1102|long, depuis longtemps
+1103|être plein d'entrain, se démener
+1104|caractères d'imprimerie, texte imprimé
+1105|statue de Bouddha
+1106|sujet (grammaire)
+1107|camarade, compagnon de lutte
+1108|sans fil, radio
+1109|prophétie, prédiction
+1110|élégant, chic, raffiné
+1111|se changer, vêtements de rechange
+1112|extrême, excessif
+1113|être prudent, s'abstenir, modérer
+1114|objection, avis contraire
+1115|accélérateur
+1116|tous les jours, jour après jour
+1117|tranche d'âge
+1118|roue
+1119|s'interrompre, cesser
+1120|montée, train vers Tokyo
+1121|grossier, rugueux
+1122|sûrement, sans doute
+1123|séparation, isolation
+1124|même avis, accord
+1125|exemple, comparaison, métaphore
+1126|compromis
+1127|cuisinière, micro-ondes, gamme
+1128|horizontal, niveau
+1129|système, lignée, filiation
+1130|contrôler, réprimer
+1131|sylviculture
+1132|construction neuve
+1133|pari, mise
+1134|affaire, objet (d'une visite)
+1135|fortune, biens
+1136|profit, bénéfice
+1137|goût (sens)
+1138|vie et mort
+1139|(avec négation) convenable, digne de ce nom
+1140|circulation, cycle
+1141|prier (mains jointes), vénérer
+1142|effort, main-d'œuvre
+1143|surtout, en particulier
+1144|matière (scolaire)
+1145|tronc, torse
+1146|tarif (transport), frais de port
+1147|contraste, comparaison
+1148|correction, rectification
+1149|liquide
+1150|être chargé de, avoir la responsabilité de
+1151|hausse et baisse, variation
+1152|cycle, période
+1153|pays natal
+1154|formation
+1155|avoir honte
+1156|le temps, les jours, les années
+1157|quartiers populaires (de Tokyo)
+1158|mutation (personnel)
+1159|total cumulé
+1160|katakana
+1161|émeute, tumulte, agitation
+1162|pieds nus
+1163|se fondre dans, être distrait de
+1164|véranda, galerie extérieure
+1165|supériorité, avantage
+1166|révision (règle, prix)
+1167|auteur (d'un livre), œuvre
+1168|original, primitif, brut
+1169|inclinaison, pente
+1170|arabe
+1171|pénible, agaçant, lourd (temps)
+1172|vaciller, chanceler
+1173|point de départ
+1174|diluer
+1175|de mauvais augure, sinistre
+1176|gaz
+1177|coupure, interstice, interruption
+1178|tisser
+1179|courageux, héroïque
+1180|mode d'emploi, usage
+1181|proposer, présenter une demande
+1182|s'affaiblir, diminuer
+1183|ferry
+1184|corde, câble
+1185|avenue, rue principale
+1186|réussite sociale, promotion
+1187|calendrier grégorien, après J.-C.
+1188|punition, sanction
+1189|s'attrouper, grouiller
+1190|période, mandat, session
+1191|se transformer en, se déguiser
+1192|précéder, prendre l'avance
+1193|aliment de base
+1194|répartition, partage
+1195|plage, bord de mer
+1196|librement, à volonté
+1197|bien ou mal, avantages et inconvénients
+1198|fouilles, découverte
+1199|rayure

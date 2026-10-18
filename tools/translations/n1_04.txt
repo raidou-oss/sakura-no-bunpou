@@ -1,0 +1,400 @@
+1600|pénible, agaçant, compliqué
+1601|être acculé, être aux abois
+1602|groupe, équipe, section
+1603|transport, acheminement
+1604|vote, bulletin, ticket
+1605|à portée de main, familier
+1606|exil, bannissement, expulsion
+1607|département, faculté, famille (biologie)
+1608|édition, version, impression
+1609|client (d'un avocat, détective)
+1610|double revenu (les deux conjoints travaillent)
+1611|mercure
+1612|bonheur, fortune
+1613|méticuleux, ponctuel
+1614|étiquette
+1615|dépendance
+1616|super-, ultra-, trop
+1617|collier (animal)
+1618|faisan
+1619|abréviation, sigle
+1620|aîné, ancienneté
+1621|devises étrangères
+1622|ding (sonnerie), réchauffer au micro-ondes
+1623|graduation, échelle
+1624|révision (texte)
+1625|utiliser selon les cas
+1626|onctueux, détendu
+1627|intelligent, malin, sage
+1628|épuisé, ramolli
+1629|mécanisation
+1630|en chuchotant
+1631|frais réels, prix coûtant
+1632|point vital, point clé
+1633|estampe, gravure
+1634|ville portuaire
+1635|météorite
+1636|côte, littoral
+1637|déborder
+1638|premier amour
+1639|accueil de la clientèle
+1640|en bonne santé, habile
+1641|manzai (duo comique)
+1642|tenir bon, résister
+1643|dévastation, ruine
+1644|horaires, tableau des horaires
+1645|alerte, alarme
+1646|dégât, endommagement
+1647|nomination
+1648|transfert (équipe), changement de registre
+1649|expansion, dilatation
+1650|logique, fil (du raisonnement)
+1651|union, cohésion, solidarité
+1652|retraite, retraité
+1653|marié
+1654|crasse, saleté, compte (en ligne)
+1655|intérieur des terres
+1656|doubleur (voix)
+1657|boucle
+1658|dégueu, répugnant
+1659|souvent, de temps en temps
+1660|sommet, apogée
+1661|ginkgo
+1662|repos (au calme)
+1663|salle de séjour (japonaise)
+1664|habitude, expérience
+1665|parcelle, compartiment
+1666|entrave, contrainte
+1667|grossissement, taux de sélection
+1668|s'écailler, déteindre
+1669|spectateurs, public
+1670|origami, certificat d'authenticité
+1671|tourner, changer, détourner
+1672|poissons
+1673|enfance, parcours de vie
+1674|exécution
+1675|marasme, stagnation
+1676|aptitude
+1677|dans la rue
+1678|gros, gras
+1679|respecter, accorder de l'importance
+1680|famille illustre, établissement prestigieux
+1681|mépris
+1682|tumulte, agitation
+1683|coup de soleil, bronzage, jaunissement
+1684|poursuite, traque, suivi
+1685|ressort, printemps
+1686|proie, victime
+1687|manque de sommeil
+1688|attaque rapide, immédiatement
+1689|toucher, texture
+1690|entreprendre, commencer
+1691|long (roman, film)
+1692|décalage horaire
+1693|dur, sévère, cruel
+1694|réception (signal, e-mail)
+1695|tempérament, mentalité
+1696|usage, coutume
+1697|fuite, évasion
+1698|au cœur de (la tourmente)
+1699|projet de loi, point à l'ordre du jour
+1700|minutieux, scrupuleux
+1701|avancer (travail), progresser
+1702|fierté, confiance en soi
+1703|aide, assistant
+1704|numéro de compte
+1705|tolérance, indulgence
+1706|dégoût de soi
+1707|instructions, ordres
+1708|paradis (bouddhiste)
+1709|entrain, ardeur
+1710|toute la journée
+1711|concurrence, conflit
+1712|clou du spectacle, chef-d'œuvre
+1713|sauveur, messie
+1714|doucement, légèrement
+1715|soutien, protecteur
+1716|diffusion, propagation
+1717|slogan, devise
+1718|espace-temps
+1719|ermitage
+1720|écriture (manuscrite)
+1721|intoxication, addiction
+1722|infrarouge
+1723|armement
+1724|paroles en l'air, bout du museau
+1725|voiture de sport
+1726|cohérence
+1727|démarrage, début
+1728|perceuse, exercices (cahier)
+1729|encouragement
+1730|rencontre (fortuite), être confronté à
+1731|dieu de la mort, la Mort
+1732|terrain sablonneux
+1733|simple, simplifié
+1734|première année (d'une ère)
+1735|homme d'affaires
+1736|salle d'attente, loge
+1737|dossier de candidature
+1738|quartiers urbains, ville
+1739|doublon, chevauchement
+1740|accent (régional), déformation
+1741|trésor national
+1742|Jupiter (planète)
+1743|guerre civile, insurrection
+1744|situation, rapport de force
+1745|relais, retransmission
+1746|se rétablir, reprendre
+1747|gaucher, amateur d'alcool
+1748|soi-même, en soi
+1749|antigène
+1750|se parer, s'endimancher
+1751|nudité, corps nu
+1752|temps pluvieux
+1753|marchand d'alcool
+1754|frais, coût
+1755|bœuf (zodiaque)
+1756|corps d'armée, troupe
+1757|frotter, s'user, perdre son innocence
+1758|une défaite
+1759|travail d'équipe
+1760|portée (tir)
+1761|houe
+1762|couramment, sans accroc
+1763|salon de beauté
+1764|discussion debout
+1765|transmettre, servir d'intermédiaire
+1766|chasseur
+1767|petites classes du primaire
+1768|peau nue, teint
+1769|avoir sommeil
+1770|cérémonie d'ouverture
+1771|tomber en désuétude
+1772|frais, frisquet
+1773|premier numéro (journal)
+1774|tonneau, fût
+1775|à volonté (buffet)
+1776|masqué, non affiché
+1777|relais
+1778|altitude au-dessus du niveau de la mer
+1779|quel… ! (indignation)
+1780|méduse
+1781|douce chaleur, à coups répétés
+1782|offrir, vénérer
+1783|simple épaisseur, paupière simple
+1784|bâtiment principal
+1785|refus, rejet
+1786|négligent, lâche (ceinture)
+1787|pointillés
+1788|se relâcher, se détendre
+1789|lien logique, cohérence
+1790|disqualification
+1791|60e anniversaire
+1792|grade, classe, rang
+1793|phrase d'exemple
+1794|salle de cérémonie
+1795|relâchement
+1796|concession, compromis
+1797|remise, réduction
+1798|sans difficulté
+1799|indéterminé, à fixer
+1800|une dose, une pause cigarette
+1801|nostalgie
+1802|crevaison, saturation, punk
+1803|sens, sensualité
+1804|vue, panorama
+1805|badge
+1806|guérilla, soudain
+1807|orphelin
+1808|rappel (bis)
+1809|souffler, faire une pause
+1810|tenir les rênes, dominer
+1811|balle, ballon
+1812|passage piéton
+1813|arrière-pensée, manigance
+1814|capsule
+1815|névrose, dépression nerveuse
+1816|déclenchement d'une maladie
+1817|détendu, libre
+1818|culture (agriculture)
+1819|dispute, querelle
+1820|aperçu général
+1821|s'assoupir, piquer du nez
+1822|banlieue
+1823|garde, escorte
+1824|en glissant, aisément
+1825|mot d'origine chinoise
+1826|habituer, apprivoiser
+1827|sous-titres
+1828|plan, dessein
+1829|faire un tapage
+1830|campagne, champs
+1831|descendant
+1832|chute, déchéance
+1833|incertain, flou
+1834|qui sent le poisson, louche
+1835|chute (tissu), bout coupé
+1836|anniversaire, jour commémoratif
+1837|comédie
+1838|à corps perdu, frénétique
+1839|travailleur, assidu
+1840|très long, grand
+1841|chasser, cueillir
+1842|seiza (assise à genoux)
+1843|progrès, amélioration
+1844|être vexé, enrager
+1845|panache de fumée (volcan)
+1846|critique littéraire
+1847|tas, pile
+1848|fin de trimestre
+1849|fumer, être brumeux
+1850|arrière-pensée
+1851|réduction (chimie), restitution
+1852|minuteur
+1853|être éloigné
+1854|prévente, réservation
+1855|concours
+1856|vice, corruption
+1857|source de lumière
+1858|le long de la ligne de train
+1859|exagération
+1860|dénigrer
+1861|règles, menstruation
+1862|parasite
+1863|discrimination raciale
+1864|catastrophe, rupture (couple)
+1865|première édition
+1866|trempé
+1867|de l'histoire, historique
+1868|exhiber, frimer
+1869|à contrecœur, non !
+1870|rejet, mort, sans
+1871|combativité, courage !
+1872|mobilisation
+1873|portrait
+1874|vassal, sujet
+1875|date de sortie
+1876|jour et nuit
+1877|rangée de maisons, partout
+1878|tour de magie
+1879|retrait, démolition
+1880|solide, 3D, parking à étages
+1881|plage aménagée
+1882|mine terrestre, sujet sensible
+1883|division du travail
+1884|cintre
+1885|point de départ, émission (chèque)
+1886|bénir, faire l'aumône
+1887|esprit vengeur
+1888|passe-temps, débauche
+1889|idée, invention
+1890|franc, plaisanterie
+1891|tâtonnement, recherche
+1892|gazouiller
+1893|catastrophe naturelle
+1894|go (jeu)
+1895|calomnie, diffamation
+1896|grue
+1897|défense nationale
+1898|détour
+1899|soudain, agilement
+1900|ingénierie
+1901|envier, jalouser
+1902|suppression, effacement
+1903|acclamations, applaudissements
+1904|toucher, contact (sur la peau)
+1905|rendre la pareille, remerciement
+1906|nombre impair
+1907|poisson tropical
+1908|frissons, excitation
+1909|transfert, renvoi (appel, e-mail)
+1910|rôle de méchant
+1911|vampire
+1912|timidité envers les inconnus
+1913|sac à dos
+1914|raccommoder, sauver les apparences
+1915|juré (citoyen)
+1916|déchéance, ruine
+1917|nature diabolique, envoûtant
+1918|armement, armé
+1919|emballage, faire ses bagages
+1920|familier, accessible, sans façon
+1921|pourrir, tomber dans l'oubli
+1922|si c'est le cas
+1923|cabossé, se faire tabasser
+1924|quantité de chaleur, calorie
+1925|début des travaux
+1926|déjeuner (familier)
+1927|être encombrant
+1928|vétérinaire
+1929|retrait de points
+1930|croquis, esquisse
+1931|marécage
+1932|éblouissant, somptueux
+1933|percée, franchissement
+1934|rideau, tenture
+1935|abandon scolaire, renvoi
+1936|équitation, cavalier
+1937|fuite, évasion
+1938|joue (familier)
+1939|tourbillon, spirale
+1940|débat, plaidoirie
+1941|case vide
+1942|chaîne (TV)
+1943|synonyme
+1944|absurdité
+1945|prise de sang
+1946|sirène (créature)
+1947|somnoler
+1948|sabre court (wakizashi)
+1949|ingérence, faire des avances
+1950|bâtiment, (compteur de bâtiments)
+1951|panneau indicateur, repère
+1952|arracher, plumer
+1953|élevage
+1954|Chambre des représentants
+1955|service à table, serveur
+1956|prise, poignée, nigiri
+1957|sous-entendu, nuance
+1958|forcer, se crisper, fanfaronner
+1959|deux dimensions
+1960|liste à puces
+1961|non-fiction
+1962|extincteur
+1963|innocent, candide
+1964|oiseau migrateur
+1965|dragueur, draguer
+1966|emprunteur, locataire
+1967|collier
+1968|soutien, coup de pouce
+1969|entendre pour la première fois
+1970|vie sociale, mondanités
+1971|éveil, réveil
+1972|charme, fascination
+1973|banal, mensuel
+1974|renfort, aide
+1975|être enthousiaste, être déterminé
+1976|déborder
+1977|dynamique
+1978|travail, labeur
+1979|langage approximatif, baragouin
+1980|route maritime
+1981|objet, sujet (e-mail)
+1982|zut !, mince !
+1983|tachibana (agrume)
+1984|sévère, impitoyable
+1985|sensation d'y être, réalisme
+1986|entremetteur (mariage)
+1987|isolement
+1988|chef d'État, souverain
+1989|confiance
+1990|capture
+1991|frais de chauffage et d'électricité
+1992|même famille, même tribu
+1993|vil, misérable, honteux
+1994|printemps et automne, années
+1995|pêche à la ligne
+1996|examen, contrôle
+1997|brancard
+1998|baron
+1999|nouvel élève, étudiant de première année

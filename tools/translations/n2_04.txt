@@ -1,0 +1,398 @@
+1600|substitution, remplacement
+1601|siège, banc, emploi provisoire
+1602|retrait, démission (d'une organisation)
+1603|style occidental
+1604|sceau, cachet, format (papier)
+1605|impoli, grossier
+1606|excuses
+1607|quantité infime
+1608|accélération
+1609|grandes lignes, résumé
+1610|soleil couchant
+1611|nom d'ère, millésime
+1612|relations diplomatiques
+1613|accident, naufrage, être perdu (montagne)
+1614|mélange
+1615|anéantissement, destruction totale
+1616|défense, plaidoirie
+1617|style, manière, école
+1618|ellipse
+1619|latitude
+1620|courant marin
+1621|cuillère
+1622|chatouilleux, gênant
+1623|initiation, manuel d'introduction
+1624|à tour de rôle, alternativement
+1625|trempé jusqu'aux os
+1626|numéro de rue, adresse
+1627|tenace, coriace, obstiné
+1628|trop familier
+1629|force de l'âge
+1630|pilotage, conduite, manœuvre
+1631|faction, école, clan, (adepte de)
+1632|curiosité, goûts bizarres
+1633|arrondi (au plus proche)
+1634|divertissement, attraction
+1635|empêchement, inconvénient
+1636|hygiène, santé
+1637|gros travailleur
+1638|négatif (photo)
+1639|folklore, coutumes populaires
+1640|retard de paiement
+1641|terrain vague, champ
+1642|mot composé, expression idiomatique
+1643|descente, baisse
+1644|gardien, agent de sécurité
+1645|tour, circonférence, (compteur de tours)
+1646|fils
+1647|pas encore, non- (préfixe)
+1648|direction, initiative
+1649|se compliquer, s'aggraver
+1650|cap, direction
+1651|tenue, durabilité, possession
+1652|jeunes mariés
+1653|ligue, fédération
+1654|addition
+1655|exactement, pile
+1656|installer, monter
+1657|reliquat, solde restant
+1658|conjonction
+1659|révélation, divulgation
+1660|vitesse
+1661|effrayant, qui fait peur
+1662|sciences sociales
+1663|noble, raffiné, élevé
+1664|louange, glorification
+1665|(pas) du tout
+1666|droit, pouvoir, autorité
+1667|masque, cagoule, anonyme
+1668|manque, pénurie
+1669|mise en bouteille, en bocal
+1670|OK
+1671|démission
+1672|poser une question (examen)
+1673|flatter, inciter
+1674|porcelaine
+1675|ouvrier d'usine
+1676|sonnerie, alarme
+1677|évaporation, disparition (de quelqu'un)
+1678|angle mort, point aveugle
+1679|collecte, récolte (spécimens)
+1680|ponctuation
+1681|examen minutieux
+1682|texte original
+1683|transport, fret
+1684|transports
+1685|non civilisé, sauvage, inexploré
+1686|extraction minière
+1687|attraper, capter, prise
+1688|pertes et profits, avantages et inconvénients
+1689|verser, payer
+1690|géologie
+1691|émergent, nouveau
+1692|système, régime
+1693|index
+1694|nombre pair
+1695|inné, congénital
+1696|proportion
+1697|colérique, impatient
+1698|voir, regarder (humble)
+1699|accueil, hébergement, internement
+1700|chanson populaire
+1701|riz (servi à l'occidentale)
+1702|origine (produit), habitat
+1703|plateau de go
+1704|solde, déduction
+1705|carnet de tickets
+1706|n-ième (ordinal)
+1707|droit (études)
+1708|modeste, insignifiant
+1709|motel, love hotel
+1710|antiquité, objet ancien
+1711|négligent, grossier, bâclé
+1712|travailleur, soutien de famille
+1713|recommandé (courrier)
+1714|indemnité journalière
+1715|flottabilité, poussée d'Archimède
+1716|équateur
+1717|craintif, nerveux, avoir peur
+1718|se croiser sans se voir, malentendu
+1719|police de caractère, graphie
+1720|marteau, nageur qui coule comme une pierre
+1721|empêcher, bloquer
+1722|gonfler
+1723|abstrait
+1724|eau douce
+1725|achat, coopérative
+1726|peine, dérangement
+1727|vêtements, habillement
+1728|juste devant
+1729|lumière, lampe
+1730|affirmation catégorique
+1731|épuisé (livre)
+1732|liaison directe
+1733|rougir
+1734|un peu moins de, faiblesse
+1735|caractère, nature
+1736|cage à oiseaux
+1737|literie
+1738|répugnant, sale
+1739|transport maritime
+1740|ateji (kanji utilisé pour le son)
+1741|division en parts égales
+1742|même rang, apposition
+1743|petits arbres divers
+1744|statique
+1745|usage personnel, affaire privée
+1746|parallèle, en ligne
+1747|en deux parts égales
+1748|jointure, couture
+1749|deux pôles
+1750|travaux manuels, artisanat
+1751|sénilité, vieillesse
+1752|se tordre
+1753|soins, protection
+1754|vérification, comparaison
+1755|interphone
+1756|culte, adoration, vénération
+1757|faste, tape-à-l'œil
+1758|origine, primitif
+1759|recherche préalable, préparation
+1760|percée, sortie de crise
+1761|se rendre (à la police)
+1762|net (poids)
+1763|mission religieuse, prédication
+1764|visite (exposition), spectacle
+1765|battre (un adversaire)
+1766|analogie, raisonnement par analogie
+1767|camarade, entre (personnes du même type)
+1768|sincérité, vérité
+1769|pureté, innocence
+1770|économie, frugalité
+1771|spécialité locale
+1772|de toutes ses forces, à fond
+1773|neutre, androgyne
+1774|communisme
+1775|informer, rapporter
+1776|courbure, cambrure
+1777|affamé, obséquieux
+1778|mauvaise réputation, impopularité
+1779|supériorité
+1780|despotisme
+1781|zone tempérée
+1782|courant continu
+1783|arrière-pensée, malveillance
+1784|diagonale
+1785|changement radical
+1786|interruption (trafic, liaison)
+1787|majorité (âge)
+1788|ministre des Finances
+1789|activité secondaire
+1790|courrier par bateau
+1791|gai, clair, transparent
+1792|même classe, même niveau
+1793|objet perdu
+1794|infiltration
+1795|fin (d'un cursus), achèvement
+1796|jaillissement, éruption
+1797|trempé, détrempé
+1798|volumineux, la majeure partie
+1799|alignement, se mettre en rang
+1800|lettre de l'alphabet latin
+1801|s'amuser, se divertir
+1802|facile, tendance à
+1803|indignation
+1804|colère
+1805|paire, couple
+1806|parfois, de temps en temps
+1807|concertation, délibération
+1808|irrégularité, dérèglement (météo)
+1809|étude en autonomie
+1810|avoir peur, sursauter
+1811|langue écrite, style littéraire classique
+1812|régression, dégénérescence
+1813|le long de
+1814|groupe, troupe
+1815|grande hauteur, tour (immeuble)
+1816|coffre au trésor
+1817|net (cassure), tout juste
+1818|abattu, amaigri
+1819|accord, règlement
+1820|réfrigération
+1821|match en nocturne
+1822|blocus, gel (de fonds)
+1823|plongée
+1824|timidement, craintivement
+1825|branche, faction
+1826|propriété privée
+1827|piété filiale
+1828|bagatelle, broutille
+1829|originalité
+1830|précipitations
+1831|circulaire, faire circuler
+1832|offrir (un cadeau)
+1833|polyvalent, double usage
+1834|nombre (grammaire)
+1835|verbe transitif
+1836|filature
+1837|coupure d'eau
+1838|texte japonais
+1839|clé gauche (d'un kanji)
+1840|emprunter (humble)
+1841|autonomie, indépendance
+1842|ébullition
+1843|amitié, bonne entente
+1844|égarer, troubler, séduire
+1845|ornement, modification (grammaire)
+1846|véritable, sérieux, authentique
+1847|bien fait pour toi !
+1848|mixité (école)
+1849|propriété de l'État
+1850|abonnement
+1851|réfléchir (la lumière)
+1852|compatissant, généreux
+1853|Madame (Mrs)
+1854|s'accoupler, former une paire
+1855|études
+1856|verbe intransitif
+1857|message, commission
+1858|pessimisme
+1859|milli-, millimètre
+1860|début du mois (10 premiers jours)
+1861|intelligence, vivacité
+1862|unanime, toute l'assistance
+1863|d'un air ahuri
+1864|occupé (téléphone)
+1865|ralentir, rouler au pas
+1866|syllabaire japonais (gojūon)
+1867|flirter, se câliner
+1868|course à pied
+1869|départ, en provenance de, envoyé par
+1870|progression
+1871|dédommagement, indemnisation
+1872|clé (radical d'un kanji)
+1873|tenue d'apparat
+1874|impression (imprimerie)
+1875|déséquilibre, trouble
+1876|retarder
+1877|dame, prêt
+1878|national, officiel
+1879|porte-parole, parler au nom de
+1880|adieu, pot de départ
+1881|féodal
+1882|sphère, zone, cercle
+1883|-ième (rang)
+1884|destiné à, à l'intention de
+1885|au plus tard
+1886|carré (mètre carré)
+1887|soupir, lamentation
+1888|annuaire, almanach
+1889|douzaine
+1890|spécialisation
+1891|recommencer, repartir de zéro
+1892|gisement, trésor enfoui
+1893|artificiel, synthétique
+1894|gargarisme
+1895|reçu, réception
+1896|de quelle manière
+1897|cousine
+1898|regardez, vous voyez (ce que je disais)
+1899|être, exister (très poli)
+1900|peut-être, par hasard
+1901|ménager, prendre soin de, consoler
+1902|par là, environ, n'importe où
+1903|servir du saké
+1904|il y a bien longtemps
+1905|d'un coup, d'une traite
+1906|approximatif, grossier
+1907|tous sans exception
+1908|combinaison chimique
+1909|égaler, rivaliser avec
+1910|séparation
+1911|côté opposé
+1912|zut !, oups !
+1913|traits du visage, expression
+1914|complètement, tout à fait
+1915|transaction, affaires
+1916|état grave, critique
+1917|limiter, circonscrire
+1918|moyen, ordinaire, rangée
+1919|imprimer
+1920|opinion publique
+1921|regarder ailleurs
+1922|à, dans (écrit)
+1923|cyclomoteur
+1924|poireau japonais
+1925|échanger, remplacer
+1926|anodin, nonchalant
+1927|anglais-japonais
+1928|griller, torréfier
+1929|inattendu
+1930|vendre en gros, râper, découper (poisson)
+1931|se faire humble
+1932|rapprocher
+1933|abordable, pratique, raisonnable
+1934|envahir, violer (un territoire)
+1935|coutume, usage
+1936|être lié, aboutir à
+1937|accompagnateur, compagnie
+1938|tournevis
+1939|tel quel, la vérité, franchement
+1940|inconsidérément, à tort et à travers
+1941|combien, à quel point
+1942|être blessé, s'abîmer
+1943|criard, véreux
+1944|visite au temple
+1945|reconnaissant, bienvenu
+1946|merci pour vos efforts
+1947|sanctuaire shinto
+1948|jean
+1949|jour néfaste
+1950|regard
+1951|penser, savoir (humble)
+1952|insérer, planter, arranger (fleurs)
+1953|lien, relation
+1954|lécher, prendre à la légère, mépriser
+1955|trancher, tuer au sabre
+1956|se débattre, se démener
+1957|adresser (à)
+1958|éducation, bonnes manières
+1959|adopter, cueillir, prendre
+1960|immédiatement, sur-le-champ
+1961|idée soudaine, lubie
+1962|former, accomplir, constituer
+1963|parfaitement rond
+1964|accouchement
+1965|se calmer, s'apaiser
+1966|avantageux, bonne affaire
+1967|manifestation, signe
+1968|être timide, rougir
+1969|apparaître, se manifester
+1970|attention, disposition d'esprit
+1971|plume, aile, pale
+1972|traîner, faire traîner
+1973|chambre libre, logement vacant
+1974|si jamais
+1975|question (compteur)
+1976|confort, détente
+1977|autant que possible, avec application
+1978|tenir dans la bouche
+1979|se tarir, s'assécher
+1980|suivant, lendemain
+1981|pour le mieux
+1982|de manière générale, sans distinction
+1983|traces, vestiges, regret du départ
+1984|pour l'instant, d'abord
+1985|effet, efficacité
+1986|piquer, picorer, asticoter
+1987|depuis longtemps, auparavant
+1988|prétentieux, affecté
+1989|déclaration, notification
+1990|augmenter, accroître
+1991|silhouette, physique
+1992|serviette (tenugui)
+1993|preuve, témoignage
+1994|malgré les apparences
+1995|cadeau, bonus, réduction
+1996|maladie, syndrome
+1997|soudain, par hasard

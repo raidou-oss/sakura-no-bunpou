@@ -1,0 +1,980 @@
+﻿ordre,lecon,niveau,titre,furigana,sens,slug,id
+1,1,JLPT5,だ,だ,Être,だ,1
+2,1,JLPT5,です,です,Être,です,2
+3,1,JLPT5,は,は,Quant à... (Met le sujet en avant),は,3
+4,1,JLPT5,も,も,"Aussi, Même, Non plus",も,4
+5,1,JLPT5,これ,これ,"Ceci, Celui-ci (Proche du locuteur)",これ,5
+6,1,JLPT5,それ,それ,"Cela, Celui-là (Proche de l'interlocuteur)",それ,11
+7,1,JLPT5,あれ,あれ,"Cela, Celui-là (Loin du locuteur et de l'interlocuteur)",あれ,19
+8,1,JLPT5,の,の,Indique l'appartenance,の,6
+9,1,JLPT5,いい,良（い）い,Adjectif en -い signifiant « bien » ou « bon »,いい,7
+10,1,JLPT5,Adjectifs en -い,い-Adjective,Adjectifs se terminant par い,い-adjectives,24
+11,1,JLPT5,Adjectifs en -な,な-Adjective,Adjectifs qui sont également des noms,な-adjectives,28
+12,1,JLPT5,か,か,Particule interrogative,か,8
+13,2,JLPT5,が,が,"Particule de marquage du sujet, particule d'identification",が,10
+14,2,JLPT5,よ,よ,"Emphase, accentuation (Particule finale)",よ,78
+15,2,JLPT5,ね,ね,N'est-ce pas ? (Particule finale),ね,71
+16,2,JLPT5,Verbes en -る (Dictionnaire),る-Verb (Dictionary),る + ます (Verbes ichidan),る-Verbs,12
+17,2,JLPT5,Verbes en -う (Dictionnaire),う-Verb (Dictionary),う + ます (Verbes godan),う-Verbs,26
+18,2,JLPT5,を,を,Particule marquant l'objet,を,21
+19,2,JLPT5,ます,ます,Terminaison de verbes polis,polite-verb-endings,1082
+20,2,JLPT5,Verbes en -る (Négatif),る-Verb (Negative),Négation au présent et au futur,るverb-ない,51
+21,2,JLPT5,Verbes en -う (Négatif),う-Verb (Negative),Négation au présent et au futur,うverb--ない,888
+22,2,JLPT5,と,と,Et,と-and,15
+23,2,JLPT5,ここ,ここ,Ici (Proche du locuteur),ここ,14
+24,2,JLPT5,そこ,そこ,Là (Proche de l'interlocuteur),そこ,20
+25,2,JLPT5,あそこ,あそこ,Là-bas (Loin du locuteur et de l'interlocuteur),あそこ,29
+26,3,JLPT5,で,で,"À, dans",で,25
+27,3,JLPT5,に,に,"À, dans, sur, pour",に,32
+28,3,JLPT5,か,か,Ou,か-or,33
+29,3,JLPT5,と,と,Avec,と-with,955
+30,3,JLPT5,でしょう,でしょう,N'est-ce pas ?,でしょう,9
+31,3,JLPT5,だろう,だろう,Pas vrai ?,だろう,18
+32,3,JLPT5,がある,が有（あ）る,"Il y a, Exister (objets inanimés)",がある,13
+33,3,JLPT5,がいる,が居（い）る,"Il y a, Exister (êtres vivants, objets animés)",がいる,23
+34,3,JLPT5,この,この,Ce (Proche du locuteur),この,30
+35,3,JLPT5,その,その,Ce (Proche de l'interlocuteur),その,37
+36,3,JLPT5,あの,あの,Ce (Loin du locuteur et de l'interlocuteur),あの,47
+37,3,JLPT5,～んです・のです,んです・のです,"Le fait est que ~ (Explication, insistance)",-んです-のです,17
+38,3,JLPT5,の (Questions),の (Questions),Questions contextuelles et explicatives,の-questions,1104
+39,3,JLPT5,Adjectifs en -い (Passé),い-Adjective (Past),Était... (Adjectif au passé),past-tense-い-adjectives,874
+40,4,JLPT5,の,のは・のが,"Nominalisateur, Celui qui",のは,16
+41,4,JLPT5,Adjectifs en -い + Nom,い-Adjective + (Noun),Qualifiant un nom,い-adjective-noun,953
+42,4,JLPT5,Adjectifs en -な + Nom,な-Adjective + (Noun),Qualifiant un nom,な-adjective-noun,954
+43,4,JLPT5,へいく,へ行（い）く,Aller à,へいく,31
+44,4,JLPT5,する,する,Faire,する,22
+45,4,JLPT5,くる,来（く）る,Venir,くる,39
+46,4,JLPT5,Verbes en -る (Passé),る-Verb (Past),Verbes en -る : Conjugaison au passé,る-verb-past,895
+47,4,JLPT5,Verbes en -う (Passé),う-Verb (Past),Verbes en -う : Conjugaison au passé,う-verb-past,41
+48,4,JLPT5,好き,好（す）き,"Aimer, Apprécier",すき,716
+49,4,JLPT5,きらい,嫌（きら）い,"Ne pas aimer, Détester",きらい,717
+50,4,JLPT5,のがすき,のが好（す）き,"Aimer faire, Aimer + verbe",のがすき,34
+51,4,JLPT5,がある + Nom,がある + (Noun),"Nom (B) qui a nom (A), Nom (B) avec nom (A)",がある-noun,355
+52,4,JLPT5,Adjectifs en -い + くない,くない,Pas + adjectif (négation),negative-い-adjectives,873
+53,5,JLPT5,で,で,"Avec, En",で-by,36
+54,5,JLPT5,ので,ので,"Parce que, Puisque, Donc",ので,62
+55,5,JLPT5,から,から,"Parce que, Puisque",から-because,45
+56,5,JLPT5,から,から,"À partir de, Depuis, De",から,52
+57,5,JLPT5,けど・だけど,けど,"Mais, Cependant",けど-だけど,361
+58,5,JLPT5,が,が,"Mais, Cependant",が-but,44
+59,5,JLPT5,Verbes en -る (Négatif Passé),る-Verb (Negative-Past),Négation des verbes en -る au passé,る-verb-neg-past,896
+60,5,JLPT5,Verbes en -う(Négatif Passé),う-Verb (Negative-Past),Négation des verbes en -う au passé,う-verb-neg-past,897
+61,5,JLPT5,Verbe + て,～て (Conjunction),"Et, Puis (Connecter des évènements)",verb-て,416
+62,5,JLPT5,ている ①,～ている ①,En train de ~,ている1,27
+63,5,JLPT5,へ,へ,"Vers, À",へ,38
+64,5,JLPT5,Verbe + にいく,～に行（い）く,"Aller faire, Aller + verbe",verb-にいく,48
+65,6,JLPT5,誰,誰（だれ）,Qui,だれ,714
+66,6,JLPT5,なぜ,なぜ,Pourquoi (Formel),なぜ,1094
+67,6,JLPT5,どうして,どうして,Pourquoi (Neutre),どうして,1095
+68,6,JLPT5,なんで,なんで,Pourquoi (Informel),なんで,1096
+69,6,JLPT5,Adjectifs en -い (Prédicat),い-Adjective + です (Predicate),Adjectifs en -い (Prédicat),い-adjective-predicate,951
+70,6,JLPT5,Adjectifs en -な (Prédicat),な-Adjective + だ (Predicate),Adjectifs en -な (Prédicat),な-adjective-predicate,952
+71,6,JLPT5,だった・でした,だった・でした,Était ~ (Noms et Adjectifs en -な),だった-でした,40
+72,6,JLPT5,じゃない,じゃない,N'est pas ~ (Noms et Adjectifs et -な),じゃない,49
+73,6,JLPT5,じゃなかった,じゃなかった,N'était pas ~ (Noms et Adjectifs en -な),じゃなかった,50
+74,6,JLPT5,Adjectifs en -い + くなかった,くなかった ,N'était pas ~ (Adjectifs en -い),い-Adjective-くなかった,876
+75,6,JLPT5,と,と,"Référence, Citation",と,356
+76,6,JLPT5,って,って,"Référence, Citation (Informel)",って,358
+77,6,JLPT5,Verbes (Non passé),Verb (Non-Past),Verbes (Présent et Futur),verb-non-past,950
+78,6,JLPT5,Verbe［た・ている］+ Nom,～た + (Noun),Propositions relatives,verb-た-noun,357
+79,6,JLPT5,が・の (Sujet),が・の (Subject),Échange de particules,の-subject,1103
+80,6,JLPT5,の,の,Appartenance (Omission de nom),の-noun-ommission,720
+81,6,JLPT5,な,な (Prohibitive),"Ne fais pas, Ne ~ pas (Interdiction)",な,66
+82,7,JLPT5,だけ,だけ,"Juste, Seulement",だけ,43
+83,7,JLPT5,どれ,どれ,Lequel (parmi trois choses ou plus),どれ,712
+84,7,JLPT5,どこ,どこ,Où,どこ,56
+85,7,JLPT5,どの,どの,"Lequel (parmi trois choses ou plus), Quel (genre)",どの,713
+86,7,JLPT5,ている ②,～ている ②,"État d'être, Passé composé",ている2,764
+87,7,JLPT5,てから,～てから,"Une fois que, Après avoir fait",てから,64
+88,7,JLPT5,Verbe + て+ B,～て (Sequence),"Et, Puis (Suite d'actions)",verb-て-b,770
+89,7,JLPT5,もう,もう,"Déjà, Plus",もう,42
+90,7,JLPT5,まだ,まだ,Encore,まだ,72
+91,7,JLPT5,まだ～ていません,まだ～ていません,Pas encore fait (quelque chose),まだ-ていません,83
+92,7,JLPT5,てもいい,～てもいい,Puis-je ~ ? Est-ce que je peux ~ ?,てもいい,46
+93,7,JLPT5,たい,たい,Vouloir faire,たい,59
+94,7,JLPT5,たり～たりする,たり～たりする,Faire des choses comme ~ et ~,たり-たりする,79
+95,8,JLPT5,けっこう,結構（けっこう）,"Assez, Beaucoup",けっこう,359
+96,8,JLPT5,たくさん,沢山（たくさん）,"Beaucoup, De nombreux",たくさん,715
+97,8,JLPT5,まえに,前（まえ）に,"Avant, Devant",まえに,53
+98,8,JLPT5,くらい ①,くらい ①,"Environ, Approximativement",くらい1,61
+99,8,JLPT5,Nom + まで,Noun + まで,Jusqu'à,noun-まで,58
+100,8,JLPT5,Verbe + まで,Verb + まで,Jusqu'à ce que,v-まで,360
+101,8,JLPT5,すぎる,過（す）ぎる,Trop,すぎる,76
+102,8,JLPT5,にする,にする,"Décider, Choisir, Rendre, Partir sur",にする,84
+103,8,JLPT5,～になる・～くなる,になる・くなる,Devenir (Adjectif),になる-くなる,57
+104,8,JLPT5,のなかで～がいちばん～,の中（なか）で～が一番（いちばん）,Le plus ~ parmi,のなかで-がいちばん,55
+105,8,JLPT5,より～のほうが,より～の方（ほう）が,Être plus/moins ~ que ~,より-のほうが,73
+106,8,JLPT5,なにか・なにも,何（なに） + か,"Quelque chose, Quelconque, N'importe quoi, Rien",なにか-なにも,718
+107,8,JLPT5,誰か・どこか・誰も・どこも,誰（だれ）か・どこか・誰（だれ）も・どこも,"Quelqu'un, Quelque part, Personne, Nulle part",誰か-どこか-誰も-どこも,721
+108,9,JLPT5,ましょう,ましょう,"Faisons ~, Allons ~ (Volitif poli)",ましょう,70
+109,9,JLPT5,～ましょうか,ましょうか,"Faisons ~, Allons ~",ましょうか,75
+110,9,JLPT5,ませんか,ませんか,"Et si nous faisions ~, Ne veux-tu pas ~",ませんか,82
+111,9,JLPT5,Verbe + てもいい,～てもいい (Verb),Puis-je ~ ? Est-ce que je peux ~ ?,verb-てもいい,35
+112,9,JLPT5,てください,～て下（くだ）さい,Faites ~ s'il vous plaît (Demande polie),てください,60
+113,9,JLPT5,ないでください,～ないで下（くだ）さい,Ne faites pas ~ s'il vous plaît (Demande polie),ないでください,65
+114,9,JLPT5,てはいけない,～てはいけない,Ne doit pas (être fait),てはいけない,67
+115,9,JLPT5,なくてはいけない,なくてはいけない,"Devoir, Doit (être fait)",なくてはいけない,86
+116,9,JLPT5,なくてはならない,なくてはならない,"Devoir, Doit (être fait)",なくてはならない,87
+117,9,JLPT5,たほうがいい,～た方（ほう）がいい,"Devrais ~, Ferait mieux de ~",たほうがいい,68
+118,9,JLPT5,ないほうがいい,ない方（ほう）がいい,Ferait mieux de ne pas ~,ないほうがいい,69
+119,9,JLPT5,なくちゃ・なきゃ,なくちゃ・なきゃ,"Devoir, Doit (être fait)",なくちゃ-なきゃ,74
+120,9,JLPT5,や,や,(Des choses) telles que ~ et ~,や,81
+121,10,JLPT5,たことがある,～たことがある,Avoir déjà fait,たことがある,63
+122,10,JLPT5,ている ③,～ている ③,Faire (Habitude),ている3,765
+123,10,JLPT5,Adjectif + て・Nom + で,～て (Adjectives and Nouns),Et (Conjonction),adjective-て-noun-で,769
+124,10,JLPT5,Adjectif + て + B,～て (Qualities and States),"Et, À la fois ~ et ~ (Conjonction)",adjective-て-b,771
+125,10,JLPT5,のがへた,のが下手（へた）,Être mauvais à/en,のがへた,85
+126,10,JLPT5,のがじょうず,のが上手（じょうず）,Être bon à/en,のがじょうず,77
+127,10,JLPT5,Adjectif + の(は),(Adjective) + のは,Celui « qui » est (Nominalisation),adjective-の-は,719
+128,10,JLPT5,あげる,あげる,Donner,あげる,722
+129,10,JLPT5,くれる,くれる,"Se voir offrir, Donner (au locuteur)",くれる,723
+130,10,JLPT5,もらう,貰（もら）う,Recevoir,もらう,724
+131,10,JLPT5,けれども,けれども,"Mais, Cependant",けれども,54
+132,10,JLPT5,つもりだ,つもりだ,"Prévoir de, Avoir l'intention de",つもりだ,80
+133,11,JLPT4,でも,でも,"Ou autre chose, N'importe ~, Peu importe ~",でも,88
+134,11,JLPT4,やすい,～易（やす）い,"Facile à, Susceptible de",やすい,90
+135,11,JLPT4,にくい,にくい,"Difficile à, Dur à",にくい,100
+136,11,JLPT4,づらい,づらい,"Difficile de, Avoir du mal à, Pénible de",づらい,1098
+137,11,JLPT4,だんだん,段々（だんだん）,"Graduellement, Petit à petit, Pas à pas",だんだん,672
+138,11,JLPT4,どんどん,どんどん,"Progressivement, Augmentation rapide, De plus en plus",どんどん,362
+139,11,JLPT4,～ら,等（ら）,"Nous, Eux, Ceux-ci, Ceux-là",ら,385
+140,11,JLPT4,ていく,～ていく,"Faire ~ et aller, Aller faire, Continuer, Commencer",ていく,137
+141,11,JLPT4,てくる ,～てくる ,"Faire ~ et revenir, Venir faire, Devenir, Continuer, Se mettre à",てくる,128
+142,11,JLPT4,かた,方（かた）,"Façon de ~, Manière de ~",かた,729
+143,11,JLPT4,だけで,だけで,"Juste en, Juste avec, Le simple fait de ~",だけで,109
+144,11,JLPT4,だが・ですが,だが,"Mais, Pourtant, Cependant, Néanmoins",だが・ですが,370
+145,11,JLPT4,なくて,なくて (Sequence),"Ne pas ~ et ~, Pas ~ et ~ (Conjonctif)",なくて-conjunction,774
+146,11,JLPT4,なくて,なくて (Reasons and Causes),"Pas ~ et, Pas si, Parce que pas (Exemples)",なくて,775
+147,11,JLPT4,ないで,ないで,"Sans faire, Ne pas ~ et ~",ないで,96
+148,11,JLPT4,Verbe［れる・られる］,れる・られる (Passive),"Être fait, Se faire ~, Subir malgré soi",Verb[passive],145
+149,11,JLPT4,他動詞・自動詞,他動詞（たどうし）・自動詞（じどうし）,Fait par une action / Se produisant de soi-même,transitive-intransitive-verbs,176
+150,11,JLPT4,なおす,直（なお）す,"Re-, Refaire, Recommencer",なおす,393
+151,11,JLPT4,ということ,と言（い）う事（こと）,"Le fait que ~, Cela veut dire que ~ (Nominalisation)",ということ,185
+152,12,JLPT4,とき,時（とき）,"Quand, Au moment de",とき,93
+153,12,JLPT4,まず,まず,"Pour commencer, Tout d'abord",まず,363
+154,12,JLPT4,まで,まで,"Même ~, Jusqu'à ~, À tel point que ~",まで,372
+155,12,JLPT4,までに,までに,"D'ici ~, Avant que ~, Avant ~",までに,104
+156,12,JLPT4,また,また,"Aussi, Également, De plus, Encore, Par ailleurs",また,364
+157,12,JLPT4,はじめる,始（はじ）める,Commencer à,はじめる,115
+158,12,JLPT4,おわる,終（お）わる,"Finir de, Terminer de",おわる,126
+159,12,JLPT4,ごろ,頃（ころ）,"Vers, Environ",ごろ,125
+160,12,JLPT4,あとで,後（あと）で,"Après, Plus tard",あとで,116
+161,12,JLPT4,ていた ,～ていた ,"Faisait ~, Était ~",ていた,136
+162,12,JLPT4,に (Fréquence),に (Frequency),"Fois par ~, Chaque ~, Tous les ~",に-frequency,142
+163,12,JLPT4,とうとう,到頭（とうとう）,Enfin,とうとう,368
+164,12,JLPT4,より,より,Plus que,より,108
+165,12,JLPT4,ごとに,毎（ごと）に,"Chaque, Tous les",ごとに,388
+166,12,JLPT4,なるべく,なるべく,"Autant que possible, Dans la mesure du possible",なるべく,384
+167,12,JLPT4,るところだ,～る所（ところ）だ,Sur le point de,るところだ,135
+168,12,JLPT4,のに ,のに ,"Malgré, Bien que, Même si",のに-despite,130
+169,13,JLPT4,とおもう,と思（おも）う,"Je pense, À mon avis",とおもう,94
+170,13,JLPT4,など,等（など）,"Tel que, Des choses comme, Etc., Et ainsi de suite",など,89
+171,13,JLPT4,みたい,みたい,"Comme, Semblable à, Ressemblant à",みたい,97
+172,13,JLPT4,こと,こと,Convertir un verbe en nom,こと,98
+173,13,JLPT4,そう ,そう ,"Sembler, Paraître, Avoir l'impression que",そう,105
+174,13,JLPT4,さ,さ,Conversion des adjectifs en noms,さ,111
+175,13,JLPT4,とか～とか,とか,"Entre autres, Par exemple, Tel que",とか-とか,131
+176,13,JLPT4,そういう,そういう,"Comme ça, De ce genre",そういう,365
+177,13,JLPT4,Verbe[よう],う・よう (Volitional),"Allons ~, Je vais ~ (Volitif informel)",よう-おう,121
+178,13,JLPT4,ようだ,様（よう）だ,"Il semble que, On dirait que",ようだ,149
+179,13,JLPT4,ぜんぜん,全然（ぜんぜん）,(Pas) du tout,ぜんぜん,375
+180,13,JLPT4,かな,かな,Je me demande,かな,120
+181,13,JLPT4,あまり～ない,余（あま）り～ない,"Pas très, Pas beaucoup, Pas vraiment, À peine",あまり-ない,374
+182,13,JLPT4,ば,ば,Si… alors (Conditionnel),ば,154
+183,13,JLPT4,なら,なら,"Si, Quant à (Conditionnel)",なら,123
+184,13,JLPT4,がる,がる,"Ressentir, Penser, Agir comme si, Sembler vouloir",がる,112
+185,13,JLPT4,がする,がする,"Émettre, Odeur, Son, Goût, Sensation",がする,117
+186,13,JLPT4,する (Avoir/Porter),する (Have/Wear),"Avoir (une caractéristique), Porter (un accessoire), Faire (une tête)",する-wear,1112
+187,13,JLPT4,たがる,たがる,Vouloir (troisième personne),たがる,124
+188,14,JLPT4,かもしれない,かもしれない,"Peut-être, Probablement",かもしれない,113
+189,14,JLPT4,みたいに・みたいな,みたいに,"Comme, Semblable à, Ressemblant à",みたいに-みたいな,107
+190,14,JLPT4,そうに・そうな ,そうに,"Sembler, Avoir l'air, Paraître",そうに-そうな,118
+191,14,JLPT4,のように・のような ,の様（よう）に,"Comme (nom), Similaire à (nom)",のように-のような,373
+192,14,JLPT4,〜ようと思う・〜おうと思う,う・よう + と思（おも）う,"Je pense que je vais, Je vais (Volitif + と思う)",ようと思う-おうと思う,122
+193,14,JLPT4,く・に,く・に,"~ment (Qualifier des verbes), Adverbes",describing-verbs,1083
+194,14,JLPT4,～にする・～くする,にする・くする,"Adjectif + する, Faire en sorte que quelque chose/quelqu'un soit (plus)",にする-くする,728
+195,14,JLPT4,くは,くは,Accentuation et contraste,くは,1110
+196,14,JLPT4,といい,といい,"J'espère, Ce serait bien",といい,129
+197,14,JLPT4,ようになる,様（よう）になる,"En arriver au point où, Devenir",ようになる,168
+198,14,JLPT4,まい～のように,毎（まい）～の様（よう）に,"Presque chaque ~, Pratiquement chaque ~, Sur une base ~",まい-のように,626
+199,14,JLPT4,じゃないか,じゃないか,"N'est-ce pas ?, Pas vrai ?, Non ?",じゃないか,173
+200,14,JLPT4,らしい ①,らしい ①,"Il semble que, Apparemment, J'ai entendu dire",らしい1,155
+201,14,JLPT4,ておく,～ておく,Faire quelque chose à l'avance,ておく,162
+202,14,JLPT4,がほしい,が欲（ほ）しい,Vouloir quelque chose,がほしい,91
+203,14,JLPT4,てほしい,～て欲（ほ）しい,"Je veux que tu, J'aimerais que tu",てほしい,101
+204,14,JLPT4,ときいた,と聞（き）いた,J'ai entendu dire que,ときいた,157
+205,14,JLPT4,聞こえる,聞（き）こえる,"Être audible, Sonner (comme), (Pouvoir) entendre, Être entendu",聞こえる,767
+206,14,JLPT4,見える,見（み）える,"Être visible, (Pouvoir) voir, Sembler",見える,768
+207,14,JLPT4,だす,出（だ）す,"Commencer soudainement, Se mettre à faire",だす,178
+208,15,JLPT4,～代,代（だい）,"la ~aine (vingtaine, quarantaine), les années (80, 90)",代,668
+209,15,JLPT4,かかる (Temps/Prix),かかる (Time/Price),"Coûte (de l'argent), Prends (du temps)",かかる-time-cost,1111
+210,15,JLPT4,する (Coût),する (Cost),"Coûter, Valoir, Faire (un certain prix), Aller chercher dans les",する-cost,1113
+211,15,JLPT4,Nombre + も,Number + も,"Autant que, Jusqu'à, Pas même (accentuation)",number-も,119
+212,15,JLPT4,ほとんど,殆（ほとん）ど,"Presque tout, La plupart, Presque aucun, Peu (Nom adverbial)",ほとんど,367
+213,15,JLPT4,そんな・こんな・あんな・どんな,そんな,"Un tel・Genre de, Quelque chose comme ~",そんな-こんな-あんな-どんな,369
+214,15,JLPT4,各,各（かく）,"Chaque, Respectif",各,652
+215,15,JLPT4,の次に,の次（つぎ）に,"Après, Juste après, Suivi de",の次に,1106
+216,15,JLPT4,以上 ①,以上（いじょう） ①,"Plus que, Au-dessus de, Supérieur à",以上1,382
+217,15,JLPT4,いか,以下（いか）,"Moins que, En dessous de, Ne dépassant pas, Inférieur à",いか,383
+218,15,JLPT4,いがい,以外（いがい）,"Sauf, Autre que, À l'exception de, En dehors de",いがい,390
+219,15,JLPT4,ずっと ①,ずっと ①,"Continuellement, Tout du long, Tout le temps",ずっと1,667
+220,15,JLPT4,だいたい,大体（だいたい）,"Principalement, Généralement, Pour la plupart, En gros, Approximativement",だいたい,673
+221,15,JLPT4,のなかで,の中（なか）で,"Dans, Parmi",のなかで,183
+222,15,JLPT4,ように・ような,様（よう） + に・な,"Comme, Avoir l'air de",ように-ような,138
+223,15,JLPT4,Nombre/Quantité + は,(Amount) + は,"Au moins, À peu près, Environ",number-amount-は,634
+224,15,JLPT4,なん + compteur + か,何（なん） + (Counter) + か,"Quelques, Plusieurs",なん-counter-か,621
+225,15,JLPT4,真(っ),真（ま）っ,"Complètement, Tout, Vraiment",真(っ),394
+226,15,JLPT4,Nombre + しか〜ない,(Number) + しか〜ない,"Seulement, Pas plus de, Ne dépassant pas",number-しか-ない,725
+227,15,JLPT4,～は～の一つだ,は～の一（ひと）つだ,〜 est un parmi (plusieurs) 〜,は-の一つだ,391
+228,15,JLPT4,～ない～はない,ない～はない,Il n'y a pas de ~ qui ne soit pas,ない-はない,378
+229,15,JLPT4,すこしも～ない,少（すこ）しも～ない,"Pas même un peu, Pas du tout, Pas le moindre, Jamais",すこしも-ない,381
+230,15,JLPT4,すくなくない,少（すく）なくない,"Pas mal de, Beaucoup",すくなくない,650
+231,16,JLPT4,ばあいは,場合（ばあい）は,"En cas de, Dans le cas de",ばあいは,133
+232,16,JLPT4,Verbe[て],～て (Casual Request),"S'il te plaît, fais (Demande informelle)",verbて-request,777
+233,16,JLPT4,てよかった,～てよかった,Je suis content de,てよかった,140
+234,16,JLPT4,Verbe［せる・させる］,せる・させる (Causative),"Faire faire quelque chose à quelqu'un, Laisser quelqu'un faire quelque chose",causative,153
+235,16,JLPT4,といってもいい,と言（い）ってもいい,On pourrait dire (que),といってもいい,147
+236,16,JLPT4,ても,～ても・でも,"Même si, Bien que",ても,174
+237,16,JLPT4,てしまう・ちゃう,～てしまう,"Faire par accident, Terminer complètement, Malheureusement",てしまう-ちゃう,172
+238,16,JLPT4,Verbe[て] + B,～て (Reasons and Causes),"Parce que, Puisque, En raison de, À cause de",verbて-b2,772
+239,16,JLPT4,Causative-Passive,させられる (Causative-Passive),Être forcé de faire quelque chose,causative-passive,164
+240,16,JLPT4,Verbe[て]・Nom[で] + B,～て (Means and Manner),"Avec, En, Par le biais de",verb-て-noun-で-b,773
+241,16,JLPT4,てある ,～てある,"Quelque chose est fait, A été fait, Laissé dans un état",てある,159
+242,16,JLPT4,ように～てほしい,様（よう）に～て欲（ほ）しい,"Vouloir que ~ fasse ~ comme ~, Vouloir que ~ puisse ~",ように-てほしい,379
+243,16,JLPT4,ているあいだに,～ている間（あいだ）に,Pendant que,ているあいだに,160
+244,16,JLPT4,なくてもいい,なくてもいい,"Ne pas être obligé de, Ne pas avoir à",なくてもいい,171
+245,16,JLPT4,てみる,～てみる,Essayer de,てみる,99
+246,16,JLPT4,てすみません,～てすみません,Je suis désolé de,てすみません,106
+247,17,JLPT4,てあげる,～てあげる,Faire quelque chose pour quelqu'un,てあげる,92
+248,17,JLPT4,てくれる,～てくれる,"Faire quelque chose pour nous, pour notre groupe",てくれる,103
+249,17,JLPT4,てもらう,～てもらう,"Faire faire quelque chose par quelqu'un, Demander à quelqu'un de faire",てもらう,114
+250,17,JLPT4,なさい,なさい,Ordonner de faire quelque chose,なさい,95
+251,17,JLPT4,Verbe[て] + B,～て (Non-Sequence),"Et, Tandis que, Mais, Action/état parallèle",verbて-b,776
+252,17,JLPT4,Verbe[ないで],ないで (Casual Request),"(S'il te plaît) ne ~ pas, Demande informelle",verb-ないで,778
+253,17,JLPT4,てくれてありがとう,～てくれてありがとう,Merci d'avoir ~ (pour moi),てくれてありがとう,371
+254,17,JLPT4,てくれない・てもらえない,～て + くれない,"Ne veux-tu pas ?, Pourriez-vous ?, Voudriez-vous ?",てくれない-てもらえない,707
+255,17,JLPT4,～のだろうか,のだろうか,Je me demande si...,のだろうか,366
+256,17,JLPT4,お～になる ,お～になる,Faire (Honorifique),お-になる,190
+257,17,JLPT4,なさる,なさる,Faire (Honorifique),なさる,193
+258,17,JLPT4,お～ください ,お～ください,Veuillez faire (Honorifique),お-ください,189
+259,17,JLPT4,いらっしゃる,いらっしゃる,"Être, Venir, Aller (Honorifique)",いらっしゃる,191
+260,17,JLPT4,ございます,御座（ござ）います,"Être, Exister (Poli)",ございます,187
+261,17,JLPT4,でございます,で御座（ござ）います,"Être, Copule polie",でございます,188
+262,17,JLPT4,お〜する,お〜する,"Faire humblement, Discours humble",お-する,726
+263,17,JLPT4,いたす,致（いた）す,Faire humblement,いたす,192
+264,17,JLPT4,ていただけませんか,～ていただけませんか,"Ne voudriez-vous pas, Pourriez-vous (Demande humble)",ていただけませんか,134
+265,18,JLPT4,たら,たら,"Quand, Dès que, Si",たら,102
+266,18,JLPT4,ほかに(も)・ほか(に)は,他（ほか）に,"Autre, En plus, À part, En outre",ほかにも-ほかには,395
+267,18,JLPT4,がひつよう,が必要（ひつよう）,"Besoin, Nécessaire",がひつよう,127
+268,18,JLPT4,そんなに,そんなに,"Tellement, Autant, Comme ça",そんなに,144
+269,18,JLPT4,ひつようがある,必要（ひつよう）がある,Il est nécessaire de,ひつようがある,139
+270,18,JLPT4,たとえば,例（たと）えば,Par exemple,たとえば,376
+271,18,JLPT4,れる・られる (Potentiel),れる・られる (Potential),"Être capable de, Pouvoir",Verb[potential],132
+272,18,JLPT4,んだけど・んですが,んだけど,"Mais..., Et...",んだけど-んですが,631
+273,18,JLPT4,はずだ,筈（はず）だ,"Être censé, Devrait",はずだ,151
+274,18,JLPT4,かどうか,かどうか,"Si oui ou non, Si ... ou non",かどうか,156
+275,18,JLPT4,と,と,"Si, Quand, Et (Conditionnel)",と-conditional,143
+276,18,JLPT4,ないと,ないと,"Doit, Il faut",ないと,766
+277,18,JLPT4,はずがない,筈（はず）がない,"Peu probable, Improbable, Guère possible",はずがない,161
+278,18,JLPT4,しか～ない ,しか～ない,"Il n'y a que, Rien d'autre que",しか-ない,182
+279,18,JLPT4,だけでなく,だけでなく,Non seulement… mais aussi,だけでなく,380
+280,18,JLPT4,ことができる,ことが出来（でき）る,"Pouvoir, Être capable de",ことができる,110
+281,18,JLPT4,かい,かい,Marqueur de question,かい,175
+282,18,JLPT4,もし,もし,Si (Insistance),もし,377
+283,19,JLPT4,し～し ,し (Reasons),"Et, Donner des raisons",し-し,141
+284,19,JLPT4,でできる・からできる,でできる,"Fait de, Fait à partir de, Provient de",でできる-からできる,618
+285,19,JLPT4,ながら,ながら,"En ~ant, Pendant, Tout en",ながら,148
+286,19,JLPT4,たところだ,～た所（ところ）だ,"Vient de finir de faire, Était en train de faire",たところだ,146
+287,19,JLPT4,ているところだ,～ている所（ところ）だ,Être en train de faire ~ maintenant,ているところだ,150
+288,19,JLPT4,と～と、どちらが ,と～と、どちらが ,Entre ~ et ~ lequel...,と-と-どちらが,152
+289,19,JLPT4,ようにする,様（よう）にする,Essayer de,ようにする,158
+290,19,JLPT4,なければいけない,なければいけない,"Doit, Il faut",なければいけない,169
+291,19,JLPT4,なければならない,なければならない,"Doit, Il faut",なければならない,170
+292,19,JLPT4,つづける,続（つづ）ける,Continuer à,つづける,180
+293,19,JLPT4,ようにいう,様（よう）に言（い）う,"Dire de, Demander de, Ordonner de",ようにいう,386
+294,19,JLPT4,よていだ,予定（よてい）だ,"Prévoir de, Avoir l'intention de",よていだ,181
+295,19,JLPT4,ようにいのる,様（よう）に祈（いの）る,"Prier pour/que, Espérer que, Croiser les doigts pour/que",ようにいのる,638
+296,19,JLPT4,たばかり,～たばかり,"Vient juste de faire, Vient juste de se produire",たばかり,165
+297,19,JLPT4,化する,化（か）する,"-ification, -isation, Transformation, Changement",化する,635
+298,19,JLPT4,命令形,命令形（めいれいけい）,Fais ~ ! (Impératif),命令形,1032
+299,20,JLPT4,ように,様（よう）に,"Afin que, Pour que, De manière à ce que",ように,628
+300,20,JLPT4,かしら,かしら,Je me demande,かしら,194
+301,20,JLPT4,らしい ②,らしい ②,"Typique de, Ressemblant à, Qui convient à",らしい2,637
+302,20,JLPT4,って感じ,って感（かん）じ,"Un air de, Un petit côté, Avoir comme, Genre",って感じ,1105
+303,20,JLPT4,にみえる,にみえる,"Avoir l'air, Sembler, Ressembler, Paraître",にみえる,166
+304,20,JLPT4,とみえる,と見（み）える,"Il semble que, On peut déduire que, On peut conclure que",とみえる,179
+305,20,JLPT4,風,風（ふう）,"Style, Manière, Mode",風,653
+306,20,JLPT4,がみられる,が見（み）られる,"Peut voir, Peut être vu, Peut observer, Peut être observé, Être évident",がみられる,622
+307,20,JLPT4,にきがつく,に気（き）が付（つ）く,"Remarquer (que), Réaliser (que), Se rendre compte (que)",にきがつく,167
+308,20,JLPT4,〜でも 〜でも,でも〜でも,"Que ce soit ~ ou ~, Même si ~ ou ~",でも-でも,387
+309,20,JLPT4,それに,それに,"Et, En plus, De plus, En outre",それに,389
+310,20,JLPT4,それで,それで,"En conséquence, Donc, De ce fait, Alors ?, Et ensuite ?, Avec cela ?",それで,632
+311,20,JLPT4,Phrase interro. + か,(Question-Phrase) + か,Inclure des questions dans les phrases,question-phrase-か,727
+312,20,JLPT4,それでも,それでも,"Mais, Et pourtant, Néanmoins",それでも,186
+313,20,JLPT4,たらどう,たらどう,"Pourquoi ne pas... ?, Et si tu faisais... ?",たらどう,177
+314,20,JLPT4,とかんがえられている,と考（かんが）えられている,"Être considéré comme, Être pensé",とかんがえられている,392
+315,20,JLPT4,とされている,とされている,"Être considéré, Être admis, Être accepté comme",とされている,659
+316,20,JLPT4,といわれている,と言（い）われている,On dit que,といわれている,184
+317,20,JLPT4,ばよかった,ば良（よ）かった,"Aurait dû, Il aurait été mieux de",ばよかった,163
+318,21,JLPT3,ばいい,ばいい,"Devrait, Ce serait bien si",ばいい,195
+319,21,JLPT3,たらいい・といい,たらいい・といい,"Ce serait bien si, Devrait, J'espère que",たらいい-といい,212
+320,21,JLPT3,中,中（ちゅう）,"Pendant, Dans, Tout au long de, En train de",中,197
+321,21,JLPT3,の間に,の間（あいだ）に,"Pendant, Entre",の間に,210
+322,21,JLPT3,うちに,内（うち）に,"Pendant que, Tant que",うちに,211
+323,21,JLPT3,ないうちに,ない内（うち）に,"Avant que, Sans que",ないうちに,451
+324,21,JLPT3,べき,べき,"Devoir, Se devoir de",べき,196
+325,21,JLPT3,べきではない,べきではない,"Ne doit pas, Ne devrait pas",べきではない,209
+326,21,JLPT3,って,って,"Quant à, À propos de, は informel (marqueur de sujet)",って-slang,435
+327,21,JLPT3,なかなか,中々（なかなか）,"Très, Plutôt, Considérablement",なかなか,437
+328,21,JLPT3,あまり,余（あま）り,Tellement ... que,あまり,218
+329,21,JLPT3,なかなか～ない,中々（なかなか）～ない,"Pas vraiment, Difficilement, Pas du tout",なかなか-ない,444
+330,21,JLPT3,によると・によれば,によると,"Selon, D'après",によると-によれば,204
+331,21,JLPT3,によって・による,による,"Selon, En fonction de, Dépend de",によって-による,214
+332,21,JLPT3,全く～ない,全（まった）く～ない,Pas ~ du tout,全く-ない,439
+333,21,JLPT3,ことだ,事（こと）だ,"Devrait, Il faut",ことだ,199
+334,21,JLPT3,そうだ,そうだ ,"J'ai entendu dire que, Il est dit que",そうだ,200
+335,21,JLPT3,すると,すると,"Dès que, Après cela, Soudain, Ainsi",すると,438
+336,21,JLPT3,そうすると,そうすると,"Dès que, Après cela, Soudain, Ainsi",そうすると,445
+337,21,JLPT3,のはXの方だ,のは～の方（ほう）だ,Celui qui ～ c'est ～,のはxの方だ,633
+338,21,JLPT3,Nom＋型,(Noun) + 型（がた）,"En forme de, Type, Genre, Taille",noun-型,625
+339,21,JLPT3,てごらん,てご覧（らん）,"(Veuillez) essayer de, (Veuillez) regarder",てごらん,314
+340,21,JLPT3,させてもらう,させてもらう,"Avoir l'honneur de, Se permettre de, Faire (poli, formel)",させてもらう,1102
+341,22,JLPT3,Particule + の,(Particle) + の,Particules combinées,particle-の,620
+342,22,JLPT3,である,である,"だ formel ou littéraire, Copule",である,436
+343,22,JLPT3,ところが,ところが,"Cependant, Pourtant",ところが,206
+344,22,JLPT3,ところで,ところで,"Au fait, À propos, D'ailleurs",ところで,217
+345,22,JLPT3,ほど,程（ほど）,"Au point de, Tellement que, Environ",ほど,201
+346,22,JLPT3,ば〜ほど,ば～程（ほど）,Plus … plus,ば-ほど,207
+347,22,JLPT3,ほど～ない,程（ほど）～ない,"Pas aussi… que, Pas au point de…",ほど～ない,221
+348,22,JLPT3,では・それでは・じゃあ,それでは,"Dans ce cas, Alors, Eh bien",では-それでは-じゃあ,450
+349,22,JLPT3,のに,のに,Afin de,のに,440
+350,22,JLPT3,ため(に),為（ため）に,"Pour, Pour le bien de, Afin de",ため-に,205
+351,22,JLPT3,ために,為（ため）に,"En raison de, À cause de, À la suite de",ために,215
+352,22,JLPT3,という,と言（い）う,"Appelé, Nommé, Connu sous le nom de",という-called,202
+353,22,JLPT3,ということだ,と言（い）う事（こと）だ,"Il paraît que, On dit que, Cela signifie que",ということだ,216
+354,22,JLPT3,というのは,と言（い）うのは,"Le ~ connu sous le nom de ~, Le ~ appelé ~, La raison est",というのは,228
+355,22,JLPT3,的,的（てき）,"~ment, ~ique, ~el, ~if, Typique de",的,443
+356,22,JLPT3,もの・もん,もの・もん,"Parce que, Après tout",もの-もん,213
+357,22,JLPT3,ものだ,ものだ,"Censé être, Devrait, Quelque chose de ~",ものだ,223
+358,22,JLPT3,最中に,最中（さいちゅう）に,En plein milieu de,最中に,226
+359,22,JLPT3,上で,上（うえ）で,Après avoir,上で,198
+360,22,JLPT3,おかげで,お陰（かげ）で,Grâce à,おかげで,238
+361,22,JLPT3,にもとづいて,に基（もと）づいて,"Basé sur, En s'appuyant sur",にもとづいて,495
+362,22,JLPT3,点,点（てん）,"Point, Aspect, Égard, En termes de",点,644
+363,23,JLPT3,なぜなら〜から,なぜなら + から,"Parce que, La raison est que",なぜなら-から,203
+364,23,JLPT3,こそ,こそ,"Précisément, Pour sûr, Texte souligné ou en gras",こそ,258
+365,23,JLPT3,からこそ,からこそ,Précisément parce que,からこそ,446
+366,23,JLPT3,ばかり,ばかり,"Juste, Rien que",ばかり,219
+367,23,JLPT3,ばかりだ,ばかりだ,"Ne cesse de, De plus en plus",ばかりだ,231
+368,23,JLPT3,ばかりに,ばかりに,"Juste parce que, Rien qu'en",ばかりに,242
+369,23,JLPT3,ことがある,事（こと）がある,"Il arrive que, Il y a des moments où, Parfois",ことがある,222
+370,23,JLPT3,ことにする,事（こと）にする,Décider de,ことにする,294
+371,23,JLPT3,ことなの,事（こと）なの,(A) est (description de A),ことなの,630
+372,23,JLPT3,ことになる,事（こと）になる,"Va finir par, Va devenir, Il a été décidé que",ことになる,283
+373,23,JLPT3,～は～で有名,は～で有名（ゆうめい）,Est célèbre pour,は-で有名,441
+374,23,JLPT3,ことはない,事（こと）はない,"Il n’y a pas besoin de, Ne se produit jamais",ことはない,233
+375,23,JLPT3,～と言っても,と言（い）っても,Bien que je dise que,と言っても,442
+376,23,JLPT3,といえば,といえば,"En parlant de, Quand on pense à, Pour ce qui est de",といえば,240
+377,23,JLPT3,合う,合（あ）う,"Faire l'un pour l'autre, Mutuellement, Avec",合う,627
+378,23,JLPT3,に合わせて・に合った,に合（あ）わせて,"Adapté à, Qui va avec, En fonction de",に合わせて-に合った,457
+379,23,JLPT3,について,について,"Concernant, À propos de, En ce qui concerne",について,225
+380,23,JLPT3,～(の)姿,の姿（すがた）,"Ayant l'air de, Vêtu de, Apparence, Forme, Silhouette",の姿,669
+381,23,JLPT3,と言える,と言（い）える,"On peut dire que..., Il est juste de dire que...",と言える,629
+382,23,JLPT3,ちゃんと・きちんと,ちゃんと,"Correctement, Proprement, Soigneusement",ちゃんと-きちんと,678
+383,23,JLPT3,そのため(に),その為（ため）に,Pour cette raison,そのため-に,447
+384,23,JLPT3,その結果,その結果（けっか）,"Par conséquent, En conséquence",その結果,288
+385,24,JLPT3,に比べて,に比（くら）べて,"Comparé à, Par rapport à",に比べて,224
+386,24,JLPT3,どんなに〜ても,どんなに～ても,Peu importe à quel point,どんなに-ても,220
+387,24,JLPT3,いくら〜でも,いくら～でも,Peu importe combien,いくら-でも,232
+388,24,JLPT3,〜かは〜によって違う,かは〜によって違（ちが）う,Dépend de,かは-によって違う,619
+389,24,JLPT3,かなり,かなり,"Assez, Considérablement, Plutôt",かなり,675
+390,24,JLPT3,あまりに,余（あま）りに,"Tellement ... que, Trop",あまりに,230
+391,24,JLPT3,わけだ,訳（わけ）だ,"C'est pour ça, Pas étonnant, Donc",わけだ,229
+392,24,JLPT3,わけではない,訳（わけ）ではない,"Pas nécessairement, Pas tellement, Ce n'est pas que",わけではない,241
+393,24,JLPT3,と同時に,と同時（どうじ）に,"Au moment où, En même temps que, Ainsi que",と同時に,453
+394,24,JLPT3,ところだった ①,ところだった ①,"Sur le point de, À deux doigts de, Failli",ところだった1,448
+395,24,JLPT3,だって,だって,"J'ai entendu dire que, Parce que, En même temps...",だって,452
+396,24,JLPT3,んだって,んだって,"J’ai entendu dire que, Il/elle a dit que",んだって,246
+397,24,JLPT3,関係がある,関係（かんけい）がある,"Concernant, Impliqué dans, En lien avec",関係がある,642
+398,24,JLPT3,に関する・に関して,に関（かん）して,"Lié à, Concernant, À propos de",に関する-に関して,236
+399,24,JLPT3,に対して,に対（たい）して,"Envers, Tandis que, Concernant, Vis-à-vis de",に対して,237
+400,24,JLPT3,くらい ②,くらい ②,"À tel point que, À peu près au point de",くらい2,234
+401,24,JLPT3,は～くらいです,は～くらいです,À peu près le seul,は-くらいです,469
+402,24,JLPT3,さ - Interjection,さ (Interjection),"Bon, Eh bien, Allons-y, Tu sais, Qui sait",さ-interjection,761
+403,24,JLPT3,さ - Tic de langage,さ (Filler),"Genre, Tu sais, Alors, Euh",さ-filler,665
+404,24,JLPT3,さ - よ informel,さ (Casual よ),よ Informel,さ-casualよ,760
+405,24,JLPT3,それぞれ,それぞれ,"Chacun, Respectivement",それぞれ,449
+406,25,JLPT3,まま(に),ままに (As Is),"Tel quel, En restant, Laissé dans un état",まま,235
+407,25,JLPT3,そこで,そこで,"Donc, Alors, Par conséquent, À cette fin",そこで,454
+408,25,JLPT3,しかない,しかない,Pas d’autre choix que de,しかない,249
+409,25,JLPT3,てもかまわない,～ても構（かま）わない,"Peu importe si, Ça m'est égal que",てもかまわない,239
+410,25,JLPT3,～ても～なくても,～ても～なくても,Que ~ ou non,ても-なくても,456
+411,25,JLPT3,んじゃない,んじゃない,"Ne ... pas (ordre), Ne devrait pas",んじゃない,1081
+412,25,JLPT3,わけがない,訳（わけ）がない,"Il n’y a pas moyen que, Il est impossible que",わけがない,253
+413,25,JLPT3,としたら・とすれば・とすると,とすると,"Si..., En supposant que...",としたら-とすれば-とすると,251
+414,25,JLPT3,として,として,"En tant que, Comme",として,265
+415,25,JLPT3,にしては,にしては,"Étant donné que, Pour",にしては,273
+416,25,JLPT3,にしても,にしても,"Même si, Peu importe...",にしても,262
+417,25,JLPT3,～というのは事実だ,と言（い）うのは事実（じじつ）だ,"C’est un fait que, Il est vrai que",というのは事実だ,455
+418,25,JLPT3,から言うと,から言（い）うと,D'après,から言うと,244
+419,25,JLPT3,に取って,にとって,"Pour (moi/toi), À mes/tes yeux",に取って,247
+420,25,JLPT3,ことから,事（こと）から,"Du fait que, Au vu de, Comme",ことから,259
+421,25,JLPT3,というより,と言（い）うより,"Plutôt que de dire que..., Plus comme ... que ...",というより,250
+422,25,JLPT3,はもちろん,はもちろん,Non seulement ... mais aussi ...,はもちろん,463
+423,25,JLPT3,をはじめ,を始（はじ）め,À commencer par,をはじめ,263
+424,25,JLPT3,て初めて,～て初（はじ）めて,Ce n'est qu'après avoir fait ... que ...,て初めて,277
+425,25,JLPT3,さえ,さえ,Même,さえ,248
+426,25,JLPT3,さえ〜ば,さえ～ば,"Si seulement, Tant que, Pourvu que",さえ-ば,264
+427,25,JLPT3,たものだ,～たものだ,Habitude passée,たものだ,487
+428,26,JLPT3,さて,さて,"Bon, Alors, Bien",さて,458
+429,26,JLPT3,むしろ,むしろ,"Au contraire, Plutôt",むしろ,459
+430,26,JLPT3,つまり,つまり,"En bref, Pour résumer, En d'autres termes",つまり,252
+431,26,JLPT3,即ち,即（すなわ）ち,"En d'autres termes, C'est-à-dire, À savoir",即ち,490
+432,26,JLPT3,却って,却（かえ）って,Au contraire,却って,464
+433,26,JLPT3,まるで…ようだ,まるで～様（よう）だ,C’est comme si,まるで-ようだ,260
+434,26,JLPT3,ような気がする,様（よう）な気（き）がする,"Avoir le sentiment que, Avoir comme l’impression que",ような気がする,254
+435,26,JLPT3,とても～ない,とても～ない,"Ne peut pas du tout, Impossible de",とても-ない,460
+436,26,JLPT3,別に〜ない,別（べつ）に～ない,"Pas vraiment, Ce n'est pas comme si...",別に-ない,256
+437,26,JLPT3,ばかりでなく,ばかりでなく,"Non seulement... mais aussi, Ainsi que",ばかりでなく,255
+438,26,JLPT3,ではなくて・じゃなくて,ではなくて,"Pas A mais B, Conjonctif",ではなくて-じゃなくて,474
+439,26,JLPT3,だけでなく(て)～も,だけでなくて～も,Non seulement... mais aussi,だけでなく-て-も,481
+440,26,JLPT3,だけしか,だけしか～ない,"Rien que, Le seul",だけしか,489
+441,26,JLPT3,は言うまでもない ①,は言（い）うまでもない ①,Il va sans dire que,は言うまでもない1,647
+442,26,JLPT3,決して〜ない,決（けっ）して〜ない,"Jamais, En aucun cas",決して-ない,268
+443,26,JLPT3,わけにはいかない,訳（わけ）には行（い）かない,"Ne pas pouvoir se permettre de, Hors de question que",わけにはいかない,266
+444,26,JLPT3,〜ようとしない,う・よう + としない,"Ne pas vouloir, Ne pas faire d'effort pour, Volitif + としない",-ようとしない,279
+445,26,JLPT3,もしかしたら,もしかしたら,"Peut-être, Possiblement, Éventuellement",もしかしたら,284
+446,26,JLPT3,たとえ〜ても,たとえ〜ても,"Même si, En supposant que",たとえ-ても,276
+447,26,JLPT3,ことに,ことに,"Particulièrement, À mon grand..., (Mal)heureusement",ことに,270
+448,26,JLPT3,ことか,事（こと）か,"Je ne sais combien..., Dieu seul sait...",ことか,245
+449,26,JLPT3,～かというと ①,かと言（い）うと ①,"La raison pour laquelle, Si vous me demandez pourquoi",かというと1,649
+450,26,JLPT3,～かというと ②,かと言（い）うと ②,Si je devais dire ...,かというと2,755
+451,26,JLPT3,で言うと,で言（い）うと,"Si on considère, En un mot, En termes de",で言うと,651
+452,27,JLPT3,～ずつ,ずつ,"À la fois, Par, Chaque, Petit à petit",ずつ,654
+453,27,JLPT3,ずっと ②,ずっと ②,"De loin, Bien plus",ずっと2,759
+454,27,JLPT3,だらけ,だらけ,"Couvert de, Plein de",だらけ,243
+455,27,JLPT3,もっとも,尤（もっと）も,"Cependant, Bien que",もっとも,466
+456,27,JLPT3,再び,再（ふたた）び,"Encore, À nouveau, Une deuxième fois",再び,465
+457,27,JLPT3,み,味（み）,"~eur, Met en avant une qualité ou un état",み,462
+458,27,JLPT3,と同じくらい,と同（おな）じくらい,"À peu près le même que, À peu près autant que",と同じくらい,624
+459,27,JLPT3,と同じで・と違って,とおなじで・とちがって,"Comme, Contrairement à",と同じで-と違って,494
+460,27,JLPT3,と並んで,と並（なら）んで,"Comparable à, Au même niveau que",と並んで,658
+461,27,JLPT3,に違いない,に違（ちが）いない,Il n'y a aucun doute que,に違いない,286
+462,27,JLPT3,当たり,当（あ）たり,"Par ~, Chaque ~, ~ pièce",当たり,461
+463,27,JLPT3,に当たる,に当（あ）たる,"Correspond à, Équivaut à, Représente",に当たる,640
+464,27,JLPT3,に限る,に限（かぎ）る,"Rien de mieux que, Rien ne vaut, Être réservé à",に限る,472
+465,27,JLPT3,とは限らない,とは限（かぎ）らない,"Pas nécessairement, Il n'y a pas de garantie que",とは限らない,278
+466,27,JLPT3,めったに〜ない,滅多（めった）に〜ない,"Presque jamais, Rarement, À peine",めったに-ない,271
+467,27,JLPT3,割に,割（わり）に,"Bien que, Comparativement",わりに,302
+468,27,JLPT3,Verbe[volitif]とする,う・よう + とする,"Essayer de, Tenter de, Être sur le point de",verb-volitionalとする,267
+469,27,JLPT3,Verbe[volitif] + としたが,う・よう + としたが,"Était sur le point de ~ quand ~, A essayé de ~ quand ~",verb-volitional-としたが,482
+470,27,JLPT3,言うまでもない ②,言（い）うまでもない ②,"Il va sans dire que, Cela va de soi que",言うまでもない2,758
+471,27,JLPT3,そうもない,そうもない,"Très peu probable que, Ne semble pas que",そうもない,275
+472,27,JLPT3,ないことはない,ない事（こと）はない,"Ce n'est pas que ~ mais ~, Il n'est pas impossible de ~ mais ~",ないことはない,310
+473,28,JLPT3,なんか・なんて,なんて,"Quelque chose comme, Accentuation",なんか-なんて,296
+474,28,JLPT3,又〜も,又（また）〜も,"De plus, Par ailleurs",又-も,623
+475,28,JLPT3,ついでに,序（つい）でに,"Tant que vous y êtes, En profiter pour, Pendant que",ついでに,290
+476,28,JLPT3,と共に,と共（とも）に,"À mesure que, En même temps, Avec, Ainsi que",と共に,291
+477,28,JLPT3,につれて,に連（つ）れて,Au fur et à mesure que…,につれて,298
+478,28,JLPT3,直ちに,直（ただ）ちに,"Immédiatement, Dès que",直ちに,473
+479,28,JLPT3,たとたんに,た途端（とたん）に,"Juste au moment où, À l'instant où",たとたんに,313
+480,28,JLPT3,おきに,置（お）きに,"À intervalles de ~, Tous les ~, Sur deux",おきに,478
+481,28,JLPT3,たびに,度（たび）に,"À chaque fois que, Tous les ~",たびに,301
+482,28,JLPT3,あるいは,或（あ）るいは,"Ou, Ou peut-être, Ou éventuellement",あるいは,477
+483,28,JLPT3,ながらも,ながらも,"Bien que, Même si",ながらも,285
+484,28,JLPT3,において・における,に於（お）いて,"À, Dans, Sur, Concernant, Dans le cadre de",において-における,287
+485,28,JLPT3,第一,第一（だいいち）,"D'abord, Numéro un, Le plus important, Pour commencer",第一,660
+486,28,JLPT3,ますます,益々（ますます）,"De plus en plus, De moins en moins, Continuer à",ますます,480
+487,28,JLPT3,一方だ,一方（いっぽう）だ,"Ne cesse de, Continuer à",一方だ,280
+488,28,JLPT3,一方で,一方（いっぽう）で,"Tandis que, D’un autre côté",一方で,292
+489,28,JLPT3,遂に,遂（つい）に,Enfin,遂に,485
+490,28,JLPT3,すでに,既（すで）に,"Déjà, Trop tard",すでに,484
+491,28,JLPT3,ずに,ずに,Sans faire,ずに,303
+492,28,JLPT3,ずにはいられない,ずには居（い）られない,Ne pas pouvoir s'empêcher de faire,ずにはいられない,315
+493,28,JLPT3,なし,無（な）し,Sans,なし,663
+494,28,JLPT3,あり,あり,"Avec, Possible",あり,1077
+495,28,JLPT3,考えられない,考（かんが）えられない,"Impensable, Inconcevable, Inimaginable",考えられない,661
+496,29,JLPT3,必ずしも,必（かなら）ずしも,"Pas toujours, Pas nécessairement",必ずしも,486
+497,29,JLPT3,連用形,連用形（れんようけい）,"Conjonctif formel, Forme connective formelle",連用形,470
+498,29,JLPT3,向き,向（む）き,"Adapté à, Orienté vers",向き,261
+499,29,JLPT3,向け,向（む）け,"Destiné à, Conçu pour",向け,272
+500,29,JLPT3,上がる・上げる,上（あ）がる,"Terminer quelque chose, Faire complètement, Arriver à sa fin",上がる-上げる,479
+501,29,JLPT3,切る,切（き）る,"Faire jusqu'au bout, Finir de",切る,282
+502,29,JLPT3,切れない,切（き）れない,Être incapable de terminer ou de compléter,切れない,293
+503,29,JLPT3,きり,きり,"Seulement, Juste, Depuis",きり,309
+504,29,JLPT3,かけ,掛（か）け,"À moitié, Pas encore terminé, Sur le point de",かけ,307
+505,29,JLPT3,にかけて,に掛（か）けて,"Pendant (une période), De ~ à ~, Jusque",にかけて,311
+506,29,JLPT3,たて,立（た）て,"Fraîchement ~, Vient juste de ~",たて,483
+507,29,JLPT3,込む ①,込（こ）む ①,"Entrer dans, Mettre dans",込む1,664
+508,29,JLPT3,込む ②,込（こ）む ②,"Rester, Faire à fond, Faire en profondeur, Faire intensément",込む2,762
+509,29,JLPT3,ふりをする,振（ふ）りをする,"Faire semblant, Agir comme si, Se donner des airs de",ふりをする,269
+510,29,JLPT3,できれば・できたら,できれば,Si possible,できれば-できたら,471
+511,29,JLPT3,でよければ,で良（よ）ければ,"Si cela vous convient, Si cela ne vous dérange pas, Si vous voulez",でよければ,476
+512,29,JLPT3,次第,次第（しだい）,Dès que,次第,300
+513,29,JLPT3,とおり,通（とお）り,"Tout à fait, Comme, Exactement, Précisément",とおり,289
+514,29,JLPT3,でもある,でもある,Être aussi,でもある,666
+515,29,JLPT3,どうしても,どうしても,"Peu importe, Quoi qu'il arrive",どうしても,491
+516,29,JLPT3,もしも～なら・もしも～でも,もしも～なら,"Si jamais, En supposant que",もしも～なら・もしも～でも,493
+517,29,JLPT3,同士,同士（どうし）,"Entre ~, Mutuellement",同士,656
+518,30,JLPT3,がたい,がたい,"Difficile à, Dur à",がたい,257
+519,30,JLPT3,まさか,まさか,"Ce n'est pas possible, Pas moyen, Ne me dis pas que",まさか,467
+520,30,JLPT3,前者は・後者は,前者（ぜんしゃ）は～後者（こうしゃ）は,"Le premier ~ le second, Le premier ~ le dernier",前者は-後者は,468
+521,30,JLPT3,つい,つい,"Par accident, Inconsciemment, Sans faire exprès",つい,488
+522,30,JLPT3,せいで,せいで,"À cause de, Parce que, Comme",せいで,274
+523,30,JLPT3,くせに,癖（くせ）に,"Alors que, Et pourtant",くせに,295
+524,30,JLPT3,がち,がち,"Être enclin à faire, Avoir tendance à faire",がち,305
+525,30,JLPT3,ぎみ,気味（ぎみ）,"Avoir l'air, Sembler un peu, Avoir l'impression de",ぎみ,306
+526,30,JLPT3,っぽい,っぽい,"Avoir tendance à, Sembler, -âtre",っぽい,312
+527,30,JLPT3,っぱなし,っぱなし,"Laisser dans un certain état, Laisser tel quel",っぱなし,299
+528,30,JLPT3,わざわざ,わざわざ,"Exprès, Se donner la peine de, Prendre la peine de",わざわざ,492
+529,30,JLPT3,一体,一体（いったい）,"Mais…, Pourquoi diable…, Qui donc..., Bon sang",一体,475
+530,30,JLPT3,折角,折角（せっかく）,"Avec difficulté, Tant attendu, Se donner la peine de",せっかく,646
+531,30,JLPT3,っけ,っけ,(C'était quoi) déjà ?,っけ,308
+532,30,JLPT3,代わりに,代（か）わりに,"Au lieu de, En échange de, À la place de",代わりに,281
+533,30,JLPT3,に代わって,に代（か）わって,"À la place de, Au nom de",に代わって,297
+534,30,JLPT3,どころか,どころか,"Loin de, Tout sauf, Encore moins",どころか,304
+535,30,JLPT3,という理由で,と言（い）う理由（りゆう）で,"Pour cette raison, Étant donné que",という理由で,645
+536,30,JLPT3,～は～となっている,は～となっている,"Se trouve être, A été établi",は-となっている,636
+537,30,JLPT3,左右する,左右（さゆう）する,"Influencer, Impacter, Déterminer",左右する,677
+538,31,JLPT2,得る・得る,得（え）る,"Is able to, Can, Possible",得る-得る,321
+539,31,JLPT2,〜得ない,得（え）ない,"Unable to, Cannot",得ない,336
+540,31,JLPT2,ざるを得ない,ざるを得（え）ない,"Can't help doing, Have no choice but",ざるを得ない,397
+541,31,JLPT2,～ざる,～ざる,"To not ~, Un~",ざる,1079
+542,31,JLPT2,つもりで,つもりで,"With the intention of doing, Instead of..., Act as if or pretend, Believing that..., Thinking that...",つもりで,333
+543,31,JLPT2,どうせ,どうせ,"Anyhow, At any rate, In any case, I have no doubt that, Probably",どうせ,499
+544,31,JLPT2,せめて,せめて,At least,せめて,573
+545,31,JLPT2,どうやら,どうやら,"Apparently, Looks Like, Seems like",どうやら,517
+546,31,JLPT2,なにやら,なにやら,"Something (or other), Some kind of",なにやら,1087
+547,31,JLPT2,よりほかない,より他（ほか）ない,"To have no choice but, No other way than, Have to",よりほかない,515
+548,31,JLPT2,確かに,確（たし）かに,"Surely, Certainly",確かに,351
+549,31,JLPT2,一応 ①,一応（いちおう） ①,"Just in case, Just to be sure",一応1,676
+550,31,JLPT2,一応 ②,一応（いちおう） ②,"more or less, for the time being, tentatively, roughly",一応2,763
+551,31,JLPT2,に相違ない,に相違（そうい）ない,"Without a doubt, Certainly, Surely, Not mistaken",に相違ない,527
+552,31,JLPT2,万が一,万（まん）が一（いち）,"Just in case, In the worst-case scenario, In the unlikely event, By any chance",万が一,513
+553,31,JLPT2,ようがない・ようもない,様（よう）がない,"There's no way to, It's impossible to",ようがない・ようもない,434
+554,31,JLPT2,にほかならない,に他（ほか）ならない,"Nothing but, None other than, Simply",にほかならない,538
+555,31,JLPT2,っこない,っこない,"There is no chance of, There is no way of, Impossible",っこない,598
+556,31,JLPT2,それなら,それなら,"Then, If that's the case",それなら,431
+557,31,JLPT2,ものなら①,ものなら ①,"If, If one could, If something would be possible",ものなら①,521
+558,31,JLPT2,～を～に任せる,に任（まか）せる,"Leave 〜 up to, Entrust 〜 to",を-に任せる,354
+559,31,JLPT2,活かす,活（い）かす,"To make use of (something), To take full advantage of, To capitalize on, To leverage (skills), Bring out (the quality of)",活かす,662
+560,31,JLPT2,おおよそ,おおよそ,"Approximately, Roughly, About, Outline, Gist",おおよそ,1078
+561,31,JLPT2,まい,まい,"Won't, Intend not to, Probably not",まい,343
+562,32,JLPT2,上,上（じょう）,From the standpoint of,上,316
+563,32,JLPT2,上に,上（うえ）に,"As well, Besides, In addition to",上に,337
+564,32,JLPT2,以上 ②,以上（いじょう） ②,"Since, Now that, As long as, If",以上2,317
+565,32,JLPT2,以上に,以上（いじょう）に,"More than, No less than, Even more",以上に,338
+566,32,JLPT2,途中に・途中で,途中（とちゅう）に,"On the way, Partway, In the middle of",途中に・途中で,508
+567,32,JLPT2,中を,中（なか）を,"In, On, Into, Inside of",中を,429
+568,32,JLPT2,を中心に,を中心（ちゅうしん）に,"Focused on, Centered on or around, Mainly, Most notably",を中心に,687
+569,32,JLPT2,その上,その上（うえ）,"Besides, In addition, Furthermore",その上,417
+570,32,JLPT2,上は,上（うえ）は,"Once, Since, Now that, As long as",上は,396
+571,32,JLPT2,の下で,の下（もと）で,"Under, Under the supervision of, On the basis of",の下で,686
+572,32,JLPT2,後(の) Noun,後（あと）の + (Noun),"…left, Rest, Remaining, In, …to, …else",後-のnoun,679
+573,32,JLPT2,手前,手前（てまえ）,"Before, In front of, From one's standpoint or side",手前,410
+574,32,JLPT2,を巡って,を巡（めぐ）って,"Concerning, In regard to, About, (Split) over",を巡って,690
+575,32,JLPT2,にわたって,に渡（わた）って,"Across, Throughout, Extends, Over (a period of time or range)",にわたって,553
+576,32,JLPT2,に沿って,に沿（そ）って,"Along, In accordance with, In line with",に沿って,692
+577,32,JLPT2,た末・の末,～た末（すえ）,"After, As a conclusion of",た末-の末,535
+578,32,JLPT2,にしたがって,に従（したが）って,"As, Following, As then, According to, In accordance with",にしたがって,581
+579,32,JLPT2,に伴って・に伴い,に伴（ともな）って,"As, Due,  Along with, Hand-in-hand with, Resulted in, Be consequent upon",に伴って-に伴い,600
+580,32,JLPT2,につき,に就（つ）き,"Due to, On account of, Each or every",につき,528
+581,32,JLPT2,につけ,に付（つ）け,"Whenever, Every time something happens",につけ,551
+582,32,JLPT2,にかかわる,に関（かか）わる,"To relate to, To have to do with, Concerning, Depends on",にかかわる,523
+583,32,JLPT2,に向かって・に向けて,に向（む）かって,"Towards, To face, To head to",に向かって-に向けて,327
+584,32,JLPT2,が気になる,が気（き）になる,"To be interested in, To be concerned about",が気になる,399
+585,32,JLPT2,に気をつける,に気（き）を付（つ）ける,"Take care, Be careful, Pay attention, Make sure, Watch out",に気をつける,518
+586,33,JLPT2,も構わず,も構（かま）わず,Without worrying about,もかまわず,344
+587,33,JLPT2,かねる,兼（か）ねる,"Cannot, Be unable to, Hard to, Hesitant to",かねる,542
+588,33,JLPT2,かねない,兼（か）ねない,"Might, Could be, Capable of, Possible",かねない,565
+589,33,JLPT2,を除いて,を除（のぞ）いて,"Except, With the exception of, Unless",を除いて,552
+590,33,JLPT2,にかかわらず,に関（かか）わらず,"Regardless of, Whether or, No matter, With or without",にかかわらず,545
+591,33,JLPT2,にもかかわらず,にも拘（かか）わらず,"Despite, In spite of, Regardless, Nevertheless",にもかかわらず,570
+592,33,JLPT2,に限って,に限（かぎ）って,"Particularly when, Those who, Only when",に限って,430
+593,33,JLPT2,に限らず,に限（かぎ）らず,"Not just, Not only… but also",に限らず,504
+594,33,JLPT2,なお①,尚（なお） ①,"Still, Even, Yet",なお1,566
+595,33,JLPT2,なお②,尚（なお） ②,"In addition, Incidentally, Furthermore, Moreover",なお2,567
+596,33,JLPT2,限り,限（かぎ）り,"As long as, While… is the case, Limited to",限り,544
+597,33,JLPT2,次第だ・次第で,次第（しだい）だ,"Depending on, So",次第だ-次第で,349
+598,33,JLPT2,次第に,次第（しだい）に,Gradually,次第に,1090
+599,33,JLPT2,～てこそ,～てこそ,"Only if, Because, By, Unless, Until",-てこそ,352
+600,33,JLPT2,を問わず,を問（と）わず,"Regardless of, Whether or not, No matter, With or without",を問わず,519
+601,33,JLPT2,よりしかたがない,より仕方（しかた）がない,"There is no choice but, Can't be helped, Inevitable",よりしかたがない,580
+602,33,JLPT2,に越したことはない,に越（こ）したことはない,"There is nothing better than, It is the best, Would be the best",に越したことはない,525
+603,33,JLPT2,要するに,要（よう）するに,"To sum up, In summary, In short",要するに,512
+604,33,JLPT2,てからでないと,てからでないと,"(Not) unless ~ cannot, (Not) until ~ cannot",てからでないと,507
+605,33,JLPT2,なくはない,なくはない,"It's not that…, Kind of, might, Slightly, Somewhat, In some respects",なくはない,402
+606,33,JLPT2,ないことには～ない,ない事（こと）には～ない,Unless you do something,ないことには-ない,347
+607,33,JLPT2,ないではいられない,ないではいられない,"Cannot help doing something, Cannot resist doing something",ないではいられない,418
+608,33,JLPT2,ねばならない,ねばなら + ぬ,"Must, Have to, Should",ねばならない,548
+609,33,JLPT2,たまえ,給（たま）え,"(Please) do!, Ask to, Beg to, (Order somebody to do something)",たまえ,608
+610,34,JLPT2,～のうち(で),の内（うち）で,"Of the, Among(st)",-のうち-で,681
+611,34,JLPT2,つつ,つつ,"While, And",つつ,560
+612,34,JLPT2,つつ(も),つつも,"Even while ~ing, Even though ~ing, Despite ~ing, Although ~ing",つつ-も,569
+613,34,JLPT2,に際して,に際（さい）して,"On the occasion of, At the time of",に際して,683
+614,34,JLPT2,際に,際（さい）に,"When, At the time of, In case of, On the occasion of",際に,572
+615,34,JLPT2,にあたり・にあたって,に当（あ）たって,"When, When doing something, On the occasion, At the time",にあたり-にあたって,522
+616,34,JLPT2,を契機に,を契機（けいき）に,"Lead to, As a good opportunity to, As a result of, As a trigger",を契機に,689
+617,34,JLPT2,つつある,つつある,"-ing, Be -ing",つつある,582
+618,34,JLPT2,～ところに・～ところへ,～所（ところ）に,"At the time, When, While, Timing",～ところに・～ところへ,510
+619,34,JLPT2,か〜ないかのうちに,か〜ないかの内（うち）に,"Right after, As soon as, Just when, Barely",か-ないかのうちに,557
+620,34,JLPT2,がけに,掛（が）けに,"On the way to, As you go",がけに,670
+621,34,JLPT2,ていては,ていては,"If one keeps doing something, When, If something is...",ていては,695
+622,34,JLPT2,ところだった ②,ところだった ②,"Was just about to do something, Was in the middle of...",ところだった2,413
+623,34,JLPT2,どころではない,どころではない,"This is not the time for…, Far from, Out of the question",どころではない,422
+624,34,JLPT2,ぶりに,振（ぶ）りに,"For the first time in, Haven't done for some time",ぶりに,318
+625,34,JLPT2,ては,～ては,"If, With, Since, Because",ては,562
+626,34,JLPT2,ては〜ては,～ては〜ては,"Repeating action, If, Since",ては-ては,563
+627,34,JLPT2,も又,も又（また）,"Too, Also (with more emphasis than も alone), Again",も又,671
+628,35,JLPT2,結果・の結果,結果（けっか）,As a result of,結果・の結果,555
+629,35,JLPT2,以来,以来（いらい）,"Since, Henceforth",以来,556
+630,35,JLPT2,に先立ち,に先立（さきだ）ち,"Before, Prior to, In preference over",に先立ち,605
+631,35,JLPT2,はたして,果（は）たして,"Wonder if ~ (really)?, Wonder how ~ (actually)?, Sure enough, As expected",はたして,539
+632,35,JLPT2,甲斐がある,甲斐（かい）がある,"To be (not) worth, To (not) pay off",甲斐がある,540
+633,35,JLPT2,やがて,やがて,"Before long, All too soon, In the end, Eventually",やがて,612
+634,35,JLPT2,したがって,従（したが）って,"Therefore, Thus, As a result",したがって,554
+635,35,JLPT2,あげく,挙句（あげく）,"After, In the end, After all, Eventually",あげく,607
+636,35,JLPT2,きっかけ,切（き）っ掛（か）け,"Lead to, Because of, As a start or trigger of, An opportunity",きっかけ,603
+637,35,JLPT2,にかけては,にかけては,"When it comes to, Regarding, Concerning",にかけては,579
+638,35,JLPT2,とっくに,疾（と）っくに,"Already, A long time ago, Long ago",とっくに,609
+639,35,JLPT2,未だに,未（いま）だに,"Still, Not yet, Even now",未だに,708
+640,35,JLPT2,をもとに,を元（もと）に,"Based on, From, According to",をもとに,550
+641,35,JLPT2,からには,からには,"As long as, Since, Given",からには,401
+642,35,JLPT2,いつの間にか,いつの間（ま）にか,"Suddenly, Unnoticed, Without noticing, Too soon",いつの間にか,613
+643,35,JLPT2,一旦,一旦（いったん）,"Once …, If … for a short time, Temporarily (stop), For now or the time being",一旦,614
+644,35,JLPT2,はもとより,は元（もと）より,"Not only... but also, Let alone, Of course",はもとより,611
+645,35,JLPT2,そうにない,そうにない,"Unlikely to, Showing no signs of",そうにない,534
+646,36,JLPT2,に反して,に反（はん）して,"Go against, Contrary to",に反して,543
+647,36,JLPT2,逆に,逆（ぎゃく）に,On the contrary,逆に,322
+648,36,JLPT2,反面,反面（はんめん）,"While, On the other hand, Although, However, On the flip side",反面,561
+649,36,JLPT2,抜く,抜（ぬ）く,"All~, Completely, See through, Overcome, To the bitter end",抜く,571
+650,36,JLPT2,抜きで,抜（ぬ）きで,"Without, Unless",抜きで,602
+651,36,JLPT2,いよいよ,愈々（いよいよ）,"At last, Finally, More and more",いよいよ,520
+652,36,JLPT2,ずに済む,ずに済（す）む,"Get by without doing something, To get away with",ずに済む,334
+653,36,JLPT2,に応じて,に応（おう）じて,"Depending or based on, According to, In response to, Suitable for or to",に応じて,599
+654,36,JLPT2,を通じて・を通して,を通（つう）じて,"Through, Via, Throughout",を通じて-を通して,514
+655,36,JLPT2,に応えて,に応（こた）えて,"In response to, Meet",に応えて,568
+656,36,JLPT2,それとも,それとも,"Or, Or else, Rather",それとも,506
+657,36,JLPT2,にしたら,にしたら,From the point of view of,にしたら,328
+658,36,JLPT2,にしても～にしても,にしても～にしても,Regardless of whether,にしても-にしても,329
+659,36,JLPT2,としては,としては,"As a, For a, As for",としては,400
+660,36,JLPT2,としても,としても,"Even if (we assume), Assuming,  Also as",としても,341
+661,36,JLPT2,それにしても,それにしても,"Nevertheless, Even so",それにしても,350
+662,36,JLPT2,ぬ,ぬ,"Classical negative, Classical verb [ない]",ぬ,657
+663,36,JLPT2,ことなく,事無（ことな）く,Without ~ing,ことなく,428
+664,36,JLPT2,にて,にて,"In, At, With, Using, By",にて,408
+665,36,JLPT2,には,には,"In order to, In regard to, For",には,348
+666,37,JLPT2,思うように,思（おも）う様（よう）に,"As one hopes, As desired, As one thought",思うように,319
+667,37,JLPT2,かと思ったら・かと思うと,かと思（おも）うと,"Then again, Just when I thought, No sooner than",かと思ったら-かと思うと,426
+668,37,JLPT2,～ばと思います,～ばと思（おも）います,"I would appreciate it if, If you could, I would like to think that",～ばと思います,1097
+669,37,JLPT2,というものでもない,と言（い）うものでもない,"There is no guarantee that…, Not necessarily",というものでもない,509
+670,37,JLPT2,と考えられる,と考（かんが）えられる,"Can be considered as, Is thought to be, One can think that, It is conceivable that",と考えられる,541
+671,37,JLPT2,という点から考えると,と言（い）う点（てん）から考（かんが）えると,"From the standpoint of, From the perspective of, From the viewpoint of, Think in terms of, Viewed from the angle of",という点から考えると,648
+672,37,JLPT2,ということは,と言（い）う事（こと）は,"That means, That is to say",ということは,345
+673,37,JLPT2,ふうに,風（ふう）に,"~ way, In a way that suggests, Like ~",ふうに,423
+674,37,JLPT2,という風に,と言（い）う風（ふう）に,"As if to say, As if to suggest that, In such a way that, Things like",という風に,536
+675,37,JLPT2,ものの,ものの,"Although, But, Even Though",ものの,546
+676,37,JLPT2,というものだ,と言（い）うものだ,"Speaker's impression, Criticism or conclusion",というものだ,420
+677,37,JLPT2,から見ると,から見（み）ると,"From the point of view of, By the look of",から見ると,323
+678,37,JLPT2,ところを見ると,ところを見（み）ると,"Judging from, Seeing that",ところを見ると,425
+679,37,JLPT2,からすると・からすれば,からすると,"Judging from, Considering",からすると-からすれば,340
+680,37,JLPT2,からして,からして,"Even..., Judging from, Based on",からして,424
+681,37,JLPT2,からといって,からといって,Just because,からといって,501
+682,37,JLPT2,そういえば,そういえば,"Speaking of which, By the way, Come to think of it",そういえば,332
+683,37,JLPT2,お～願う,お～願（ねが）う,"Please, Could you please",お-願う,532
+684,37,JLPT2,～て頂戴,～て頂戴（ちょうだい）,Please do,て頂戴,1092
+685,37,JLPT2,とか,とか,"I heard that… something like, They said ... or something ",とか,339
+686,37,JLPT2,〜ようではないか,う・よう + ではないか,"Let's do something, Why don't we",ようではないか,421
+687,37,JLPT2,かのようだ,かの様（よう）だ,"As if, Just like",かのようだ,682
+688,37,JLPT2,のではないだろうか,のではないでしょうか,"I think ... isn't it?, It might be that..., Don't you agree?",のではないだろうか,405
+689,38,JLPT2,て当然だ,～て当然（とうぜん）だ,"Natural, As a matter of course",て当然だ,433
+690,38,JLPT2,のも当然だ,のも当然（とうぜん）だ,"It is only natural that, It is no wonder",のも当然だ,685
+691,38,JLPT2,たった(の),たったの,"Only, Just, No more than",たった-の,710
+692,38,JLPT2,恐れがある,恐（おそ）れがある,"There is a risk or fear that, Be in danger of, Possibility of",恐れがある,688
+693,38,JLPT2,おそらく,恐（おそ）らく,"Probably, Perhaps, (Most) likely, (I) fear that",おそらく,604
+694,38,JLPT2,ものか,ものか,"Definitely not, Absolutely not, Impossible, Do you really think~?",ものか,503
+695,38,JLPT2,おまけに,お負（ま）けに,"In addition, On top of that, What is more, To make matters worse",おまけに,691
+696,38,JLPT2,に決まっている,に決（き）まっている,"Surely, Bound to, Certainly, Be decided",に決まっている,524
+697,38,JLPT2,ことになっている,事（こと）になっている,"To be expected to, To be scheduled to",ことになっている,325
+698,38,JLPT2,気,気（き）,"Feel like ~, Spirit",気,427
+699,38,JLPT2,げ,気（げ）,"Seemingly, Giving appearance of, [Expresses emotions or feelings]",げ,559
+700,38,JLPT2,ことだから,事（こと）だから,It is exactly because,ことだから,342
+701,38,JLPT2,ものだから,ものだから,"Because, The reason is",ものだから,346
+702,38,JLPT2,ものですから・もので,ものですから,"Because, My excuse is, My explanation is",ものですから-もので,415
+703,38,JLPT2,ものがある,ものがある,"Strong judgement, There is something, Feel strongly that",ものがある,406
+704,38,JLPT2,傾向がある,傾向（けいこう）がある,"Tendency, Trend, Inclination",傾向がある,641
+705,38,JLPT2,～に値する,～に値（あたい）する,"Be worthy of, Deserving of, Amounts to",に値する,1093
+706,38,JLPT2,てしょうがない,～てしょうがない,"Extremely, Very, Really, It can't be helped",てしょうがない,432
+707,38,JLPT2,だけましだ,だけましだ,"At least, It's better than..., One should feel grateful for",だけましだ,419
+708,38,JLPT2,幸い・幸いなことに,幸（さいわ）いなことに,"Luckily, Fortunately",幸い-幸いなことに,694
+709,38,JLPT2,ようでは・ようじゃ,様（よう）では,"If, If it is true that",ようでは-ようじゃ,414
+710,38,JLPT2,さすが,流石（さすが）,"as one would expect, only natural, that is just like..., even",さすが,496
+711,38,JLPT2,ことは〜が,ことは〜が,"It is true...but, although, but",ことは-が,502
+712,39,JLPT2,更に,更（さら）に,"Even more or further, Again, More and more",さらに,505
+713,39,JLPT2,精々,精々（せいぜい）,"(At) most , (At) best, No more than, Barely",精々,606
+714,39,JLPT2,僅かに,僅（わず）かに,"Only, Slightly, A little, Barely, Merely",僅かに,696
+715,39,JLPT2,弱,弱（じゃく）,Just less than,弱,1107
+716,39,JLPT2,強,強（きょう）,Just more than,強,1108
+717,39,JLPT2,および,及（およ）び,"And, As well as",および,697
+718,39,JLPT2,たちまち,忽（たちま）ち,"Immediately, Quickly, Suddenly, In a moment or flash",たちまち,698
+719,39,JLPT2,いきなり,いきなり,"For no reason, Suddenly, All of a sudden",いきなり,500
+720,39,JLPT2,といった,といった,"Such as, Like, So much as",といった,412
+721,39,JLPT2,を込めて,を込（こ）めて,"Full of, Filled with, With ～",を込めて,533
+722,39,JLPT2,に加えて,に加（くわ）えて,"Not only...but also, In addition, Not to mention",に加えて,558
+723,39,JLPT2,何から何まで,何（なに）から何（なに）まで,"Everything and anything, From A to Z, From head to toe, Everything",何から何まで,680
+724,39,JLPT2,は別として,は別（べつ）として,"Apart from, (Setting) aside, Whether or, Except for, Save for",は別として,610
+725,39,JLPT2,だけに,だけに,"As might be expected, Because, All the more because, It's only natural",だけに,320
+726,39,JLPT2,だけは,だけは,"To do all that one can, As much or many ~ as one could",だけは,398
+727,39,JLPT2,だけあって,だけあって,"Is only natural, …Being the case, Because, As might be expected",だけあって,335
+728,39,JLPT2,何より,何（なに）より,"Be glad, Be relieved, Most, Best, Above all else, More than anything",何より,709
+729,39,JLPT2,何といっても,何（なん）と言（い）っても,"By any account, All the same, No doubt",何といっても,407
+730,39,JLPT2,か何か,か何（なに）か,"Or something, Or something like that",か何か,597
+731,39,JLPT2,てならない,～てならない,"Very, Extremely, Can't help but do",てならない,353
+732,39,JLPT2,のみ,のみ,Only (formal),のみ,1101
+733,39,JLPT2,のみならず,のみならず,"Not only...but, Not just...but, What is more",のみならず,601
+734,39,JLPT2,それなのに,それなのに,"And yet, Despite this",それなのに,409
+735,39,JLPT2,いわゆる,いわゆる,"What is called, So-called, Generally known",いわゆる,564
+736,39,JLPT2,にすぎない,に過（す）ぎない,"No more than, Just, Merely",にすぎない,330
+737,39,JLPT2,も～ば～も,も～ば～も,"…And…, Both ... and ..., ... And ... as well",も-ば-も,326
+738,40,JLPT2,でしかない,でしかない,"Merely, Nothing but, No more than",でしかない,324
+739,40,JLPT2,てたまらない,～て堪（たま）らない,"Can't help but want to, Very, Extremely",てたまらない,411
+740,40,JLPT2,にせよ・にしろ,にせよ,"Even if, Even though, No matter, Whether… or",にせよ-にしろ,526
+741,40,JLPT2,何しろ,何（なに）しろ,"No wonder, After all, In fact, Because, At any rate",何しろ,574
+742,40,JLPT2,にしろ～にしろ,にしろ〜にしろ,Whether… or,にしろ-にしろ,549
+743,40,JLPT2,はともかく,は兎（と）も角（かく）,"Setting aside, Apart from",はともかく,577
+744,40,JLPT2,ならともかく,ならともかく,"If it's (A), sure, but (B), Putting aside (A), (B)",ならともかく,1080
+745,40,JLPT2,やら～やら,やら〜やら,"Whether or, Things like, And … so on",やら-やら,578
+746,40,JLPT2,しかしながら,しかしながら,"However, Nevertheless, But",しかしながら,674
+747,40,JLPT2,ことにはならない,事（こと）にはならない,Just because… doesn't mean…,ことにはならない,403
+748,40,JLPT2,だけのことはある,だけのことはある,"No wonder, Not surprising that, As expected",だけのことはある,497
+749,40,JLPT2,てはならない,～ては成（な）らない,"Must not, Cannot, Should not",てはならない,516
+750,40,JLPT2,てはいられない,～ては居（い）られない,"Can't afford to, Unable to",てはいられない,498
+751,40,JLPT2,陸に～ない,陸（ろく）に～ない,"Not well or properly, Not much or enough, Barely, Hardly",陸に-ない,693
+752,40,JLPT2,しかも,しかも,"Moreover, Furthermore",しかも,331
+753,40,JLPT2,てでも,～てでも,"Even if I have to, By any or all means, No matter what",てでも,576
+754,40,JLPT2,とも,とも,"Even if, No matter",とも,511
+755,40,JLPT2,ないわけにはいかない,ない訳（わけ）にはいかない,"Can't not, No way to avoid",ないわけにはいかない,404
+756,40,JLPT2,というわけではない,と言（い）う訳（わけ）ではない,"It is not that, It doesn't mean that, It is not always the case",というわけではない,537
+757,40,JLPT2,のももっともだ,のも尤（もっと）もだ,"May well, Have or has good reason for, No wonder, … Is only natural",のももっともだ,684
+758,40,JLPT2,たって,たって,"Even if, Even though, No matter how",たって,575
+759,41,JLPT1,に至るまで,に至（いた）るまで,"(Everything) from...to..., From…up until..., Starting with...ending with...",に至るまで,655
+760,41,JLPT1,たところで,～たところで,"Even if ~ cannot or will not, Even though ~ not",たところで,730
+761,41,JLPT1,如く・如き・如し,如（ごと）く,"Like, Similar to, As if, The same as",如く-如き-如し,732
+762,41,JLPT1,に足る,に足（た）る,"To be worthy of, To be enough, To be sufficient",に足る,735
+763,41,JLPT1,極まりない・極まる,極（きわ）まりない,"Extreme, Extremely",極まりない-極まる,734
+764,41,JLPT1,といえども,といえども,"Even (if), Although, Even though",といえども,736
+765,41,JLPT1,を以て,を以（もっ）て,"By means of, With, By, Via, In view of",を以て,739
+766,41,JLPT1,きらいがある,嫌（きら）いがある,"Have a tendency to, Tend to, Be slightly~",きらいがある,738
+767,41,JLPT1,ならまだしも,ならまだしも,"A is fine...but B is not, If it's ~ then it is ok...but ~ is not, It's different when...but, It's not so bad when...but",ならまだしも,741
+768,41,JLPT1,までもない,までもない,"There is no need to, Do not have to, It is not necessary to, Needless to",までもない,740
+769,41,JLPT1,ともなると・にもなると,となると,"When, If, Once, As",ともなると-にもなると,752
+770,41,JLPT1,をいいことに,を良（い）い事（こと）に,To take advantage of,をいいことに,753
+771,41,JLPT1,如何,如何（いかん）,Depending on,如何,754
+772,41,JLPT1,～るまでだ,～るまでだ,"Just, Merely, Simply, Only",～るまでだ,731
+773,41,JLPT1,にあって,にあって,"At, In the (place or situation), Under ~ conditions or circumstances, During, Suited to",にあって,733
+774,41,JLPT1,を余儀なくされる,を余儀（よぎ）なくされる,To be forced to do something,を余儀なくされる,737
+775,41,JLPT1,とは,とは,"That..., (Surprised) that..., (Never expected) that..., (Shocked) that...",とは,742
+776,42,JLPT1,じゃあるまいし,じゃあるまいし,"You are not ~ so..., it isn't ~ so...",じゃあるまいし,743
+777,42,JLPT1,てからというもの,～てからと言（い）うもの,"After, Since, Ever since then",てからというもの,746
+778,42,JLPT1,かたわら,傍（かたわ）ら,"While, Besides, In addition to",かたわら,747
+779,42,JLPT1,を皮切りに,を皮切（かわき）りに,"Beginning of, Starting with",を皮切りに,748
+780,42,JLPT1,に至っては,に至（いた）っては,"When it comes to, As for, In particular, What is worse or more",に至っては,749
+781,42,JLPT1,なり,なり,"As soon as, The moment, When",なり,751
+782,42,JLPT1,ともなく・ともなしに,とも無（な）く,"Absentmindedly, Mindlessly, Unconsciously, Without paying attention",ともなく-ともなしに,745
+783,42,JLPT1,塗れ,塗（まみ）れ,"Stained, Covered in, Smeared, Dirty with, Soaked in",塗れ,750
+784,42,JLPT1,ようが～まいが,う・よう + が～まいが,"Even if, No matter what, Whether or not, [Emphatic], Volitional + が",-よう--う-まい-が-と,744
+785,42,JLPT1,からする,からする,"About, Or more, Over, Starts at",からする,779
+786,42,JLPT1,にして①,にして ①,"At, Over, In, Only (after, when, or because)",にして1,780
+787,42,JLPT1,ものを,ものを,"But, Although, If only, I wish I had",ものを,781
+788,42,JLPT1,であれ,であれ,"Even if, Even, No matter",であれ,782
+789,42,JLPT1,をおいてほかに〜ない,を措（お）いて他（ほか）に〜ない,"No...but, Nothing else but, None other than",をおいてほかに-ない,783
+790,42,JLPT1,をもって,をもって,"As of, With, Effective from",をもって,784
+791,42,JLPT1,とはいえ,とは言（い）え,"Though, Although (I admit that), Be that as it may, Nonetheless",とはいえ,785
+792,42,JLPT1,ならでは,ならでは,"Unique to, Only, Impossible if not, Expected only of",ならでは,786
+793,42,JLPT1,～たはいいが,～たはいいが,It's all well and good but...,～たはいいが,1109
+794,43,JLPT1,すら,すら,Even,すら,787
+795,43,JLPT1,あっての,あっての,"Exist only because of or due to, Owe everything to",あっての,788
+796,43,JLPT1,～たまでだ,～たまで + だ,"Just, Merely, Simply, Only",たまでだ,789
+797,43,JLPT1,を経て,を経（へ）て,"Via, Through, After (experience at job, university, etc.), Pass through",を経て,790
+798,43,JLPT1,ながらに,ながら + に,"While being, Born (with), Traditional (old-fashioned, as it was long ago), As always, While crying or in tears, (Burned) alive",ながらに,791
+799,43,JLPT1,たなり・なり,～たなり,"While... ~ing, Remaining, Not or ever since, Keep or leave",たなり-なり,792
+800,43,JLPT1,の極み,の極（きわ）み,"Ultimate, Extreme, Utter, Epitome, Peak",の極み,793
+801,43,JLPT1,にしてみれば,にして + 見（み）れば,"For (A), In the case of (A), From (A)'s point of view, In the eyes of (A)",にしてみれば,794
+802,43,JLPT1,だの,だの,"Things like, And so on, Or something, And whatnot",だの,795
+803,43,JLPT1,あくまでも,飽（あ）くまでも,"To the (bitter) end, Stubbornly, Persistently",あくまでも,796
+804,43,JLPT1,べく,べく,"For the purpose of, In order to, To ensure",べく,797
+805,43,JLPT1,ところを,ところを,"When, While, In spite of (the circumstances), Regardless of (the circumstances)",ところを,798
+806,43,JLPT1,からある,からある,"As much as, As many as, At least",からある,799
+807,43,JLPT1,にして②,にして ②,"To be ~ and ~, To be ~ as well as ~, Both ~ and ~",にして2,800
+808,43,JLPT1,つ〜つ,つ (Conjunctive),two contrasting actions,つ-つ,801
+809,43,JLPT1,飽くまで(も),飽（あ）くまで,"Just, Only, Merely, Strictly",飽くまで-も,802
+810,43,JLPT1,であれ〜であれ,であれ〜であれ,"Whether or, Or, No matter which, In either case",であれ-であれ,803
+811,43,JLPT1,を境に,を境（さかい）に,"After (that moment), From (that time)",を境に,1099
+812,44,JLPT1,たら最後,たら最後（さいご）,"Once, Now that, As soon as",たら最後,804
+813,44,JLPT1,いかなる,如何（いか）なる,"What kind of, No matter what kind of, No … (with a negative verb), Any... (with a negative verb)",いかなる,805
+814,44,JLPT1,なりに,なりに,"In one's own way, Of someone's own, Do one's best in one's own way, As much as one can",なりに,806
+815,44,JLPT1,れる・られる + ままに,れる・られる + ままに,"Do as (one is told or ordered…), In accordance with, In compliance with, Just like",verb-passive-ままに,807
+816,44,JLPT1,にまつわる,に纏（まつ）わる,"Surrounding, Related or relating to, Associated with, Connected to",にまつわる,808
+817,44,JLPT1,たる,たるに,"To be (in a position of), As a, For",たる,809
+818,44,JLPT1,なら〜で,なら〜で,"If ~ should, Before ~ should",なら-で,810
+819,44,JLPT1,をものともせず,をものともせず,"Making nothing of, Ignoring, In defiance of, Regardless of, Disregarding",をものともせず,811
+820,44,JLPT1,には当たらない,には当（あ）たらない,"No need to/for, Cannot, Not worth it to, Not suitable",には当たらない,812
+821,44,JLPT1,ものと思う,ものと思（おも）う,"Think that, Believe that, Expect that, Have confidence that, Absolutely",ものと思う,813
+822,44,JLPT1,を踏まえて,を踏（ふ）まえて,"Based on, Considering, Keeping in mind, Taking into account, Therefore",を踏まえて,814
+823,44,JLPT1,ゆえに,故（ゆえ）に,"Because, The reason is, Due to, Therefore, So",ゆえに,815
+824,44,JLPT1,という,と言（い）う,"Every single, Each and every, Emphasis, Everything that could be called",という,816
+825,44,JLPT1,にとどまらず,に止（とど）まらず,"Not limited to, Not only...but also, Not stopping at",にとどまらず,817
+826,44,JLPT1,と思いきや,と思（おも）いきや,"Thought...but, When...thought that...but, Despite having thought...",と思いきや,818
+827,44,JLPT1,どうにも,どうにも,"Cannot, There is no way one can, Nothing one can do, Cannot possibly not by any means, Cannot do no matter how hard one tries, Nothing will come out, It is meaningless to",どうにも,956
+828,44,JLPT1,ことだし,ことだし,"(And) so, Because, Since",ことだし,957
+829,44,JLPT1,がん～,がん～,"Totally, Seriously, Completely, Furiously, Majorly",がん-totally,1084
+830,45,JLPT1,か否か,か否（いな）か,Whether or not,か否か,819
+831,45,JLPT1,たら〜で,たら〜で,"Even if, If",たら-で,820
+832,45,JLPT1,べくして,べくして,"As expected, Meant to, Supposed to, Destined to, Sure to",べくして,821
+833,45,JLPT1,まま(に),ままに (As Desired),"As (one likes, feels or pleases), Spur of the moment, Wherever one fancies, Spontaneously, On a whim",ままに,822
+834,45,JLPT1,かれ〜かれ,かれ〜かれ,"Or, Either or",かれ-かれ,823
+835,45,JLPT1,〜に〜ない,～に〜ない,"Cannot even...if wants, Would like to...but cannot, Wants to...but cannot",-に-ない,824
+836,45,JLPT1,なくして(は),なくしては,"Without, If not for",なくして-は,825
+837,45,JLPT1,のなんのって,のなんのって,"So much that, Extremely, Very",のなんのって,826
+838,45,JLPT1,にかかっている,にかかっている,To depend on,にかかっている,827
+839,45,JLPT1,てやまない,～て止（や）まない,"Never cease to, Always, Sincerely, Greatly, From the bottom of one's heart",てやまない,828
+840,45,JLPT1,ぐらいなら,くらいなら,"Would rather...than, Rather than, Better off",ぐらいなら,829
+841,45,JLPT1,ってば・ったら,ってば,"I said...!, I told you...!, !",ってば-ったら,830
+842,45,JLPT1,ずとも,ずとも,"Even if not, Without, Don't have to",ずとも,831
+843,45,JLPT1,とあって,とあって,"Since...(it is no wonder that), Because...(it is no wonder that), Due to...(it is no wonder that)",とあって,832
+844,45,JLPT1,でもなんでもない,でもなんでもない,"Not at all, By no means, Definitely not, Nothing like that, Not really",でもなんでもない,833
+845,45,JLPT1,ぐるみで,包（ぐる）みで,"Whole, -wide, Across the, Entire, All of, With … altogether",ぐるみで,958
+846,45,JLPT1,そばから,そばから,"As soon as, Right after, Even if … still",そばから,959
+847,45,JLPT1,訳あり(訳あって),訳（わけ）あり(訳（わけ）あって),"～ with reasons, Due to reasons, Defective, Problematic, Unique",訳あり,1091
+848,46,JLPT1,に至って・に至り,に至（いた）って,"When it came to, Only when, Only after, Go as far as",に至って-に至り,834
+849,46,JLPT1,だに + しない,だに + しない,"Not even, Not at all, Never could have",だに-しない,835
+850,46,JLPT1,がてら,がてら,"On the occasion of, While … as well, While …  (one is) at it, During, Along the way",がてら,836
+851,46,JLPT1,んがため(に),んが為（ため）に,"In order to, To, For the purpose of",んがため-に,837
+852,46,JLPT1,いかん〜ず,いかん〜ず,"Regardless of (whatever … is), Irrespective of (whatever … is)",いかん-ず,838
+853,46,JLPT1,にも～ない,う・よう + にも～ない,"Cannot... even if one wants or tries, Would like but cannot, Wants or tries but cannot",にも-ない,839
+854,46,JLPT1,い-Adj[く] + もなんともない,く + もなんともない,"Not... or anything, Not at all, Not, By no means, Definitely not, Nothing like that",い-adj-く-もなんともない,840
+855,46,JLPT1,Verb + だに,(Verb) + だに,"Just, Even just, Even merely",verb-だに,842
+856,46,JLPT1,～なり～なり,～なり～なり,"Or, Either or",-なり-なり,843
+857,46,JLPT1,ないでもない,ないでもない,"Kind of, Might, Slightly, It’s not (impossible) that, Somewhat, In some respects",ないでもない,844
+858,46,JLPT1,もさることながら,もさることながら,"It is a fact that, But, Even more than, It goes without saying, Not only but also,",もさることながら,845
+859,46,JLPT1,ものと思っていた,ものと思（おも）っていた,"Was under the impression that, (Always) the thought used to think",ものと思っていた,846
+860,46,JLPT1,でなくてなんだろう,でなくてなんだろう,If … is not … then what is?,でなくてなんだろう,847
+861,46,JLPT1,はさておき・はさておいて,はさておき,"(Leaving or putting) aside, Apart",はさておき-はさておいて,848
+862,46,JLPT1,折には,折（おり）には,"When, Occasion, Opportunity, Time",折には,849
+863,46,JLPT1,とばかり（に）,とばかりに,"As if (to say), Seeming that",とばかり,962
+864,46,JLPT1,わ〜わ,わ〜わ,"~and ~and, Keep ~ing, One after another, So much, So many, One after the other",わ-わ,960
+865,46,JLPT1,なりとも,なりとも,"Even (a little), At least",なりとも,1089
+866,47,JLPT1,に至っても,に至（いた）っても,Even when,に至っても,841
+867,47,JLPT1,を兼ねて,を兼（か）ねて,"And also, Also (partly) to, Also (partly) for (the purpose of), At the same time, To double as, When … also, While … as well, And as",を兼ねて,850
+868,47,JLPT1,Verb[ない]もの(だろう)か,ないものだろうか,"(Why) can’t, Isn’t there, Wish that, If only",verb-ないもの-だろうか,851
+869,47,JLPT1,Verb[て] + みせる,～て見（み）せる,"I will definitely, I will certainly, Just watch, Whatever it takes, I swear, for sure",verb-て-みせる,852
+870,47,JLPT1,相まって,相（あい）まって,"Combined with, Coupled with, Together with",相まって,853
+871,47,JLPT1,に足りない,に足（た）りない,"To not be worthy, To not be enough, To not be sufficient, To lack",に足りない,854
+872,47,JLPT1,べからず,べからず,"Do not, Must not, Should not, Cannot (べからざる)",べからず,855
+873,47,JLPT1,んばかりに,んばかりに,"As if, As if it were about to, About to",んばかりに,856
+874,47,JLPT1,に則って・に則り,に則（のっと）って,"According to, In accordance with, Based on, In line with",に則って-に則り,857
+875,47,JLPT1,Adj限りだ,(Adjective) + 限（かぎ）りだ,"Extremely, Really, Very, As ... as one can be",adj限りだ,858
+876,47,JLPT1,はおろか,は疎（おろ）か,"Let alone, Much less, Needless to say, Not to mention, Not only but also",はおろか,859
+877,47,JLPT1,めく・めいた,めく,"Like, To show signs of,  To have the appearance of, To come to a (state) similar to, Somewhat, An air of,  Feels almost like",めく-めいた,860
+878,47,JLPT1,といわず,と言（い）わず,"Not only A or B but every-; A, B and every-; Not only A or B but all over;  A, B both, whether A or B",といわず,861
+879,47,JLPT1,にもほどがある,にも程（ほど）がある,"There is a limit to, You are too ..., How …!, How … one can be!",にもほどがある,862
+880,47,JLPT1,にもまして,にもまして,"Even -er than, Even more than, More than anything, More than anybody, More than ever",にもまして,863
+881,47,JLPT1,まくる,捲（まく）る,"Like crazy, Keep doing (without a second thought), Nothing but, On and on, Do … all around, To do a lot of, One after another, All over, Keep, Everything, Constantly, All the time ",まくる,961
+882,47,JLPT1,わ〜わ（で）,わ〜わで,"And...so, And...because, Since",わ-わで,963
+883,47,JLPT1,どうにか,どうにか,Somehow (or other),どうにか,1088
+884,48,JLPT1,や否や,や否（いな）や,"As soon as, No sooner than, The minute",や否や,864
+885,48,JLPT1,次第です,次第（しだい）です,"Because the reason is, Therefore, The present situation is like this, This is how (it is), Those are the circumstances, This is why",次第です,865
+886,48,JLPT1,というところ,と言（い）うところ,"I would say (about), I guess (about), It could be said that, About, At best",というところ,866
+887,48,JLPT1,１～たりとも～ない,１～たりとも～ない,"Not even one, Not a single, No (at all)",１-りとも-ない,867
+888,48,JLPT1,ったらない・といったらない,といっ + たらない,"Cannot tell, describe, say or express how, Words cannot express, Too … for words, Extremely",ったらない・といったらない,868
+889,48,JLPT1,に照らして・に照らすと,に照（て）らして,"In light of, Based on, According to, Referencing, Comparing against, In view of",に照らして・に照らすと,869
+890,48,JLPT1,とあれば,とあれば,"(Emphatic) if, If it is the case that, As (you wish)",とあれば,870
+891,48,JLPT1,さぞ,さぞ,"You must be very, How … you must be, I dare to say, I am sure or certain that you must be very",さぞ,871
+892,48,JLPT1,ときたら,と来（き）たら ①,"When it comes to, That or this … of mine, That or this darn …, That or this blasted …",ときたら1,872
+893,48,JLPT1,びる,びる,"-like, Looking, Feeling, With an air of, To become",びる,877
+894,48,JLPT1,にしたところで,にしたところで,"Even, Even for, Even from the perspective of, Even in the case of",にしたところで,878
+895,48,JLPT1,～ばこそ,ばこそ,"Precisely because, Only because, Because, Due to, Only if",ばこそ,879
+896,48,JLPT1,ても差し支えない,ても差（さ）し支（つか）えない,"May, Is it a bother if, Do you mind if, Is it a problem if",ても差し支えない,880
+897,48,JLPT1,には及ばない①,には及（およ）ばない ①,"There is no need to, It is fine if you don’t, Unnecessary",には及ばない1,881
+898,48,JLPT1,に即して,に即（そく）して,"In line with, Based on, In accordance with",に即して,882
+899,48,JLPT1,ないまでも,ないまでも,"May not … but (at least), Even though not, Even if not",ないまでも,883
+900,48,JLPT1,をよそに,を余所（よそ）に,"Ignoring, Disregarding, Despite",をよそに,884
+901,48,JLPT1,に限ったことではない,に限（かぎ）ったことではない,"Not limited to, Not restricted to, Not only",に限ったことではない,998
+902,48,JLPT1,とは比べものにならない,とは比（くら）べものにならない,"Nothing compared to, Cannot be compared to, Much more, Way better, Above comparison (beyond comparison), Far greater than",とは比べものにならない,999
+903,48,JLPT1,を顧みず,を顧（かえり）みず,"Without regard for, Ignoring, Without concern for",を顧みず,1114
+904,49,JLPT1,まじき,まじき,"Unbecoming of, Unworthy of, Not proper for, Should not, Must not, Cannot",まじき,885
+905,49,JLPT1,の至り,の至（いた）り,"Utmost, Height of, Extreme, Heartiest, Such a, Very, really, Completely, Deeply",の至り,886
+906,49,JLPT1,に恥じない,に恥（は）じない,"Lives up to, Truly to …’s name, Worthy of, Not dishonor, Not putting to shame, Measure to",に恥じない,887
+907,49,JLPT1,ずじまい,ずじまい,"Ended up not, Did not (in the end), Never did",ずじまい,889
+908,49,JLPT1,に言わせれば・に言わせると・に言わせたら,に言（い）わせると,"If you ask, In … opinion, According to",に言わせれば,890
+909,49,JLPT1,ったら・といったら,ったら,"Cannot tell, describe, say, express or find words for how, Words cannot express, Too … for words, Extremely",ったら-といったら,892
+910,49,JLPT1,こととて,こととて,"Due to, Since, On account of, Because",こととて,893
+911,49,JLPT1,ずくめ,ずくめ,"Completely, Entirely, All in, Nothing but, A real streak of, Without exception, Jet",ずくめ,894
+912,49,JLPT1,には及ばない②,には及（およ）ばない ②,"To be no match (for), To not compare (with), To fall short (of), To not reach, Cannot win with, To be out of reach (for), To not be on par (with)",には及ばない②,929
+913,49,JLPT1,とは言うものの,とは言（い）うものの,"Although, But, Although I say, Although it is said, Having said that",とは言うものの,930
+914,49,JLPT1,が早いか,が早（はや）いか,"As soon as, No sooner than, The instant that, No sooner had",が早いか,931
+915,49,JLPT1,に難くない,に難（かた）くない,"Not hard to, Not difficult to, Easy to, Is obvious that",に難くない,932
+916,49,JLPT1,ならいざ知らず,ならいざ知（し）らず,"Don’t know about it, Maybe it would or might be possible for",ならばいざ知らず,933
+917,49,JLPT1,を禁じ得ない,を禁（きん）じ得（え）ない,"Cannot help feeling, Cannot but, Cannot hold back",を禁じ得ない,934
+918,49,JLPT1,にかこつけて,に託（かこつ）けて,"In the name of, Using the excuse of, To use as a pretext of, Under the guise or pretense of",にかこつけて,935
+919,49,JLPT1,ようによっては,様（よう）によっては,"Depending on the way, Depending on how",ようによっては,936
+920,49,JLPT1,べくもない,べくもない,"No (doubt or hope), There is no way, It is impossible, Not a hope in hell",べくもない,937
+921,49,JLPT1,と来たら,と来（き）たら ②,"For …(is the best), When it comes to, Concerning",ときたら2,995
+922,49,JLPT1,ものとして,ものとして,"Assuming, Supposing, (Interpret) as, On the assumption, Regarding, Considering",ものとして,996
+923,49,JLPT1,を前提に,を前提（ぜんてい）に,On the premise of,を前提に,997
+924,50,JLPT1,ずにはすまない,ずにはすまない,"Won't get away without, Won't get off without, Have to, Have no choice but to, Can’t not",ずにはすまない,938
+925,50,JLPT1,に堪えない,に堪（た）えない,"Cannot bear to, Cannot stand to, Too much to, Cannot go on doing, Cannot tolerate",に堪えない,939
+926,50,JLPT1,始末だ,始末（しまつ）だ,"Ends up, Finally, In the end, (Unfortunately) As a result, This is what happened, To come about, To wind up",始末だ,940
+927,50,JLPT1,ものなら②,ものなら ②,"If you were to do, If you try to, If … happens, Should there be",ものなら②,941
+928,50,JLPT1,にひきかえ,に引（ひ）き換（か）え,"In stark contrast, In comparison, On the other hand, While, In sharp contrast",にひきかえ,942
+929,50,JLPT1,それまでだ,それまでだ,"If… then it is all in vain, It's done, It is useless, No point, It is a waste, That's it, It is all gone, ",それまでだ,943
+930,50,JLPT1,といおうか,と言（い）おうか,"How to put it, How shall I put it, How should I put it, Or perhaps, Or maybe, Call it … or",といおうか,944
+931,50,JLPT1,ずにはおかない,ずには措（お）かない,"Will definitely, Will certainly, Bound to, Not fail to",ずにはおかない,945
+932,50,JLPT1,を限りに,を限（かぎ）りに,"As of (the end of), (Starting) from, (No longer) after, By (the), Ending with",を限りに,946
+933,50,JLPT1,てはかなわない,ては叶（かな）わない,"It's unbearable when, It'd be unbearable if, I can't stand it when, I couldn’t stand it if",てはかなわない,947
+934,50,JLPT1,かたがた,旁（かたがた）,"Partly for (the purpose of), In addition to, Along with, By the way, And also to, Incidentally, While",かたがた,948
+935,50,JLPT1,を余儀なくさせる,を余儀（よぎ）なくさせる,"Force to, To compel, Make unavoidable",を余儀なくさせる,949
+936,50,JLPT1,～てやる,～てやる,"Just wait and see, Just you wait, To do a favor, For you, Definitely, For sure",てやる,985
+937,50,JLPT1,ただ〜のみ,ただ〜のみ,"Nothing but, Should, Have to, Only, All that remains,",ただ-のみ,986
+938,50,JLPT1,ものとする,ものとする,"Shall, To assume, To suppose, To consider",ものとする,987
+939,50,JLPT1,との,との,"That, To",との,988
+940,50,JLPT1,以前,以前（いぜん）,"Before, Not even, Before even, Precede, Far from",以前,989
+941,50,JLPT1,ともあろう,ともあろう,"Of all people, Such,",ともあろう,990
+942,50,JLPT1,こそすれ〜ない,こそすれ〜ない,"And certainly not, But certainly not, But, Although, Even though",こそすれ-ない,991
+943,50,JLPT1,並み,並（な）み,"As, On par with, Worthy of",並み,992
+944,50,JLPT1,に先駆けて,に先駆（さきが）けて,"First, Prior to, Pioneer, Ahead of",に先駆けて,993
+945,50,JLPT1,を機に,を機（き）に,"Opportunity, Occasion",を機に,994
+946,51,Non-JLPT,ぞ,ぞ,"Strong emphasis (toward anyone), !",ぞ,1065
+947,51,Non-JLPT,ぜ,ぜ,"Strong emphasis (friendly or familiar), !",ぜ,1066
+948,51,Non-JLPT,わ,わ,"You know?, Oh?, Ever so, Oh how I ever (emphasis)",わ,1067
+949,51,Non-JLPT,い,い,"So?, Well? (friendly or familiar)",い,1068
+950,51,Non-JLPT,ん (Slang),ん (Slang),Slang abbreviation,ん-slang,1069
+951,51,Non-JLPT,つ (Slang),つ (Slang),"Called, Said that (slang abbreviation)",つ-slang,1070
+952,51,Non-JLPT,～やがる,～やがる,"To have the nerve to (A), To have the gall to (A), To freaking (A)",やがる,1071
+953,51,Non-JLPT,がいい,がいい,"You should, It would be good to",がいい,1072
+954,51,Non-JLPT,かろう,かろう,"Probably, Right?",かろう,1073
+955,51,Non-JLPT,やや,やや,"A little bit, Marginally, Slightly",やや,1074
+956,51,Non-JLPT,いずれも,いずれも,"All (positive), None (negative), Both, Whatever, Whatsoever",いずれも,1075
+957,51,Non-JLPT,あわよくば,あわよくば,"If luck is on my side, If the time is right, If possible, all going well",あわよくば,1076
+958,51,Non-JLPT,むず,むず,"Shall, Isn't it?, I wonder",むず,1086
+959,52,関西弁,だ ⇒ や,だ ⇒ や,Être,だ-kansai,964
+960,52,関西弁,よ ⇒ で・わ,よ ⇒ で・わ,"Emphase, Accentuation",よ-kansai,966
+961,52,関西弁,だよね・でしょう ⇒ やん,だよね・でしょう ⇒ やん,"Pas vrai ?, N'est-ce pas ?",でしょう-kansai,984
+962,52,関西弁,じゃないか ⇒ やんか,じゃないか ⇒ やんか,"N'est-ce pas ?, Pas vrai ?, Non ?, Tu sais ?",ちがう-kansai,967
+963,52,関西弁,のだ ⇒ ねん,たんだ ⇒ てん,"Nuance explicative, Constat",のだ-kansai,972
+964,52,関西弁,ね ⇒ な,ね ⇒ な,"N'est-ce pas ?, D'accord ?",ね-kansai,965
+965,52,関西弁,ない ⇒ へん,ない ⇒ へん,Ne pas ~ (Verbes),ない-kansai,971
+966,52,関西弁,じゃない ⇒ ちゃう,じゃない ⇒ ちゃう,N'est pas ~ (Noms et Adjectifs en -な),じゃない-kansai,973
+967,52,関西弁,くない ⇒ ない,くない ⇒ ない,N'est pas ~ (Adjectifs en -い),くない-kansai,968
+968,52,関西弁,ている ⇒ てる,ている ⇒ とる,En train de ~ (Progressif),ている-kansai,970
+969,52,関西弁,ているの ⇒ てん,ているん ⇒ てん,"Explication, État en cours",ているの-kansai,969
+970,52,関西弁,とく・たる・てまう,ておく・てあげる・てしまう,"Faire à l'avance, Faire pour quelqu'un, Faire par accident",ておく-kansai,974
+971,52,関西弁,命令形 ⇒ 連用形 + 長音,命令形（めいれいけい） ⇒ ます形（けい） + 長音（ちょうおん）,Fais ~ ! (Impératif familier),命令形-kansai,975
+972,52,関西弁,ないで ⇒ んといて,ないで ⇒ んといて,Ne fais pas ~ (s'il te plaît),ないでください-kansai,976
+973,52,関西弁,辞書形 + な ⇒ 連用形 + な,辞書形（じしょけい） + な ⇒ ます形（けい） + な,"Ne fais pas, Ne ~ pas ! (Interdiction directe)",な-kansai,977
+974,52,関西弁,ないで・な ⇒ なさんな,ないで・な ⇒ なさんな,Ne fais pas ~ (Interdiction emphatique),ないで-kansai,978
+975,52,関西弁,Verbe よう・う ⇒ Verbe よ・お,う・よう ⇒ お・よ,"Allons ~, Je vais ~",よう-おう-kansai,979
+976,52,関西弁,と思う ⇒ 思う,と思（おも）う ⇒ 思（おも）う,"Je pense, À mon avis (Omission de particule)",とおもう-kansai,980
+977,52,関西弁,させる ⇒ さす,させる ⇒ さす,Faire faire quelque chose à quelqu'un (Causatif),させる-kansai,981
+978,52,関西弁,Adjectifs en -い (く ⇒ う),い-Adjective (く Change),Adverbes (Changement euphonique),いadjectiveく-kansai,982
+979,52,関西弁,ないといけない ⇒ なあかん,ないといけない ⇒ なあかん,"Doit, Il faut",ないといけない-kansai,983

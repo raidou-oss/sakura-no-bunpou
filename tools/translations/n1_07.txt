@@ -1,0 +1,174 @@
+2800|bravo !, c'est bien !
+2801|Israël
+2802|modérément
+2803|boueux, gluant, sordide
+2804|ne pas faire le poids, insupportable
+2805|céleste, divin
+2806|mauvaise voie
+2807|charme, amabilité
+2808|chérir le souvenir de
+2809|coller (collage)
+2810|mort par chute
+2811|sans doute, je suppose (Kansai)
+2812|plan cul (vulgaire)
+2813|mener à bien, accomplir
+2814|échange (paroles, lettres)
+2815|qui vaut la peine
+2816|arriver, venir, avoir fait (jusqu'ici)
+2817|faire semblant de supporter, fausse bravoure
+2818|coiffure tendance (pour séduire)
+2819|homme qui plaît aux femmes
+2820|femme qui plaît aux hommes
+2821|abandon (partie de shogi ou go)
+2822|période où l'on a du succès en amour
+2823|coquille (faute d'impression)
+2824|ce n'est que le début
+2825|bon, j'avoue…
+2826|bruit de tambour, ventre plein
+2827|être fou, avoir une case en moins
+2828|avoir un trou noir, paniquer
+2829|machin truc, quelque chose
+2830|abruti, idiot
+2831|rien de particulier
+2832|équipement spécial, personnalisé
+2833|envoyé spécial
+2834|hum hum, je vois
+2835|fortuit, par hasard, sur un coup de tête
+2836|sec, brusque
+2837|furax, hors de soi
+2838|tu te fous de moi !
+2839|renne
+2840|habituellement, au quotidien
+2841|peut-être, il se peut que
+2842|trempé, détrempé
+2843|imperturbable, inébranlable
+2844|détournement, empocher
+2845|disperser, distribuer à tout-va
+2846|sale, caca (langage enfantin)
+2847|contrefaçon
+2848|microbe, bactérie
+2849|voyeur
+2850|absurde, stupide
+2851|dans, concernant
+2852|nigiri (sushi)
+2853|ce n'est rien du tout, facile à battre
+2854|mais qu'est-ce que tu racontes ! (Kansai)
+2855|homme à tout faire
+2856|quoi qu'on en dise
+2857|trou de mémoire
+2858|quel… ! (insistance familière)
+2859|quel genre
+2860|il paraît que, à ce qu'on dit
+2861|on dirait que, d'une manière ou d'une autre
+2862|peu importe, sans importance
+2863|alors ?, comment ça va ?
+2864|voilà pourquoi, c'est-à-dire que
+2865|ricaner, ridiculiser
+2866|ne pas être
+2867|être (archaïque)
+2868|jouer les victimes
+2869|signe de répétition de kanji
+2870|vocabulaire actif
+2871|poignée (dans les transports)
+2872|ou plutôt, comment dire
+2873|personne qui est…
+2874|instant, éphémère
+2875|tout à l'heure, il y a peu
+2876|salut !, yo !
+2877|pelle à poussière
+2878|insuffisant, incomplet
+2879|frivole, tape-à-l'œil
+2880|ne pas pouvoir reposer en paix
+2881|enseignement du bushido
+2882|couvert de, plein de
+2883|bubble tea
+2884|finir par atteindre, parvenir à grand-peine
+2885|ce n'est pas parce que, néanmoins
+2886|alors que, bien que
+2887|métamorphisme
+2888|par conséquent
+2889|plutôt que ça, au fait, mais
+2890|exactement, tout à fait
+2891|bijouterie, joaillerie
+2892|mais quand même
+2893|devoir faire
+2894|à deux doigts de, presque
+2895|se croiser sans se rencontrer, malentendu
+2896|rusé, sournois
+2897|en rang, en ligne
+2898|merci de votre fidélité
+2899|à huis clos
+2900|fabrication clandestine
+2901|excréments, eaux usées
+2902|demander la lune
+2903|bon, si tu insistes
+2904|ne te surmène pas
+2905|de force, contre son gré
+2906|au péril de sa vie, désespéré
+2907|souvent
+2908|fixer du regard
+2909|cela va sans dire
+2910|laisser de côté
+2911|se réveiller, revenir à la raison
+2912|parcourir des yeux
+2913|union illicite, collusion
+2914|du moment qu'on a, si seulement
+2915|maître, mon seigneur
+2916|merci pour vos efforts
+2917|humeur, de bonne humeur
+2918|ceux-ci
+2919|à partir de maintenant, dès lors
+2920|décharge
+2921|cette fois-ci, à cette occasion
+2922|marron foncé
+2923|à vos marques, partez !
+2924|de cette façon
+2925|contrôle, poids, arrière-garde
+2926|cupidité, avidité
+2927|viens !
+2928|ordure, raclure
+2929|crève !, va au diable !
+2930|crève, salaud !
+2931|vocabulaire passif
+2932|entrée par piston (école)
+2933|glousser, rire sous cape
+2934|tirage au sort
+2935|redoublant
+2936|avoir de bonnes intentions
+2937|gêné, embarrassé
+2938|ce n'est pas parce que
+2939|tester sa force
+2940|du point de vue de
+2941|histoire d'amour (potin)
+2942|rendaku (sonorisation dans les composés)
+2943|qui sent le moisi, vieillot
+2944|je dirais, quand même
+2945|romance, idéal romantique
+2946|joueur hardcore
+2947|pendant ce temps, d'autre part
+2948|puisqu'on en est là
+2949|bla-bla, et cetera
+2950|couche (bébé)
+2951|venir, aller, être (honorifique)
+2952|formule magique, abracadabra
+2953|habile, doué
+2954|course, commission
+2955|fin, c'est fini
+2956|murmure, marmonnement
+2957|c'est réciproque, on est quittes
+2958|recommandation
+2959|comme vous dites, je suis d'accord
+2960|souple, gracieux
+2961|parti, disparu
+2962|kotatsu (table chauffante)
+2963|scintiller, étinceler
+2964|jarre en terre
+2965|suicide dû au harcèlement
+2966|enfant harcelé
+2967|en tout cas, quoi qu'il arrive
+2968|tant qu'il y en a, tout ce qu'il y a
+2969|crime, loi, souverain
+2970|balançoire, trapèze
+2971|esprit, énergie yin
+2972|de loin, de très loin
+2973|sanglier, se battre

@@ -1,0 +1,400 @@
+0|front (du visage)
+1|petite entreprise
+2|faillite
+3|navigation, traversée en mer
+4|montrer des signes de, avoir l'air de (suffixe)
+5|gagner (de l'argent), travailler
+6|résultat, fruit (du travail)
+7|ce qu'on appelle (définition)
+8|souhait, aspiration, ambition
+9|espoir, perspective, probabilité
+10|humeur, état d'esprit
+11|économie, épargne
+12|comme, tel que
+13|flèche
+14|proie, gibier, butin
+15|côté, camp
+16|conviction, certitude
+17|jeunesse
+18|confier, laisser à quelqu'un
+19|jour de congé
+20|écrire (une lettre), manger (soutenu)
+21|reconnaître, approuver, admettre
+22|point, élément, article
+23|reportage, collecte d'informations
+24|description
+25|étourdi, tête en l'air
+26|livre de référence, manuel
+27|des choses comme, quel… !
+28|introduction, mise en place
+29|je, moi (masculin)
+30|employé, salarié
+31|(particule finale d'émotion, féminine)
+32|publication, contribution, post (internet)
+33|empereur
+34|tactique
+35|rival, adversaire, ennemi
+36|adversaire, menace
+37|négligence, paresse
+38|prisonnier, détenu
+39|prison
+40|pétrir, peaufiner (un plan)
+41|vote à la majorité
+42|être élu, gagner (loterie)
+43|acquérir, maîtriser (une compétence)
+44|négociation
+45|valeur, effet, raison d'être
+46|bienveillance, sympathie
+47|mort
+48|aider autrui, bonne action
+49|infection, contagion
+50|naissance
+51|apparition, survenue, production
+52|souvent, à plusieurs reprises
+53|résultats, réalisations, performance
+54|homme politique
+55|punition (divine), châtiment
+56|ne pas être dans son état normal, être fou
+57|forcer, contraindre
+58|correction, rectification
+59|vérifier, s'assurer
+60|intelligent, sage, malin
+61|cible, objectif
+62|à pied
+63|village de pêcheurs
+64|chacun, à la fois, au fur et à mesure
+65|instruction, indication
+66|habitant, résident
+67|subir, vivre (une épreuve)
+68|regret, remords
+69|arrivée, atteinte
+70|s'il vous plaît, d'une manière ou d'une autre
+71|candidature, participation (concours)
+72|détails
+73|public, officiel
+74|situation, conjoncture
+75|essayer, tester
+76|émigration, immigration
+77|de cette manière, ainsi
+78|partenariat, coopération
+79|présentation, exhibition
+80|garantir, s'assurer, réserver
+81|premier, avant tout
+82|limitation, édition limitée
+83|prospérité économique
+84|sans faire
+85|liberté d'expression, discours
+86|volonté, intention
+87|violence
+88|conflit, différend
+89|fermeture
+90|tsunami
+91|panne, défaillance
+92|atterrissage
+93|refus, rejet, veto
+94|combat, bataille
+95|opposition, résistance, répulsion
+96|se renforcer
+97|retour au pays
+98|virus
+99|compromis, mélange, éclectisme
+100|maison individuelle
+101|responsable, professeur principal
+102|neveu
+103|début de partie, ouverture
+104|après, plus tard, postérité
+105|s'en aller, partir
+106|être à court de, ne plus en avoir
+107|chasse, cueillette
+108|rumeur, ragot
+109|(avec négation) en aucun cas, absolument pas
+110|dès que, en hâte
+111|psychologie
+112|grossesse
+113|dégoûtant, désagréable, malaise
+114|zaibatsu, conglomérat
+115|à côté de, tout en
+116|médecin spécialiste
+117|activité, tâches, affaires
+118|développement, exploitation
+119|éducation des enfants
+120|lutte acharnée, effort intense
+121|subvenir, couvrir (les frais), nourrir
+122|admiration, bravo
+123|tirer parti de, mettre à profit
+124|boutique, magasin
+125|héros, personnage principal
+126|apparition (sur scène, à l'écran), jouer
+127|province, région
+128|environ, promesse, abréviation
+129|baisser les bras, être dépassé
+130|récession, morosité
+131|diminution, baisse
+132|organisation, préparatifs, avis de recherche
+133|remarquer, s'apercevoir
+134|sujet principal
+135|entrer dans le vif du sujet
+136|injurier, insulter
+137|(particule renforçant une question)
+138|crier, hurler
+139|bar
+140|lit, plancher, lit (rivière)
+141|conseil
+142|être avide, en vouloir trop
+143|couramment (langue), fluide
+144|chercher, demander, exiger
+145|distance
+146|seulement, à peine
+147|conférence de presse, entrevue
+148|prendre (une décision), rendre (un jugement)
+149|palais
+150|assassinat
+151|mauvais, défectueux, voyou
+152|trop tard
+153|être en train de (dialectal)
+154|entraîner, impliquer, enrouler
+155|égoïsme
+156|être de mauvaise humeur
+157|enfant, rat (zodiaque)
+158|prochain mandat, prochaine version
+159|détective
+160|fruit, graine, ingrédients (soupe)
+161|vraiment, extrêmement
+162|participer à, s'occuper de
+163|départ à la retraite, démission
+164|réponse
+165|luciole
+166|travail, service
+167|à sa guise, égoïste, cuisine (lieu)
+168|douloureux, pénible, dur
+169|lancement, fête de fin (projet)
+170|fan
+171|autorité, compétence, droits
+172|progression, avancement
+173|sacrifice, victime
+174|passer (temps)
+175|passer par, traverser, vivre
+176|de plus, et
+177|(suffixe -ité), (fin de phrase masculine)
+178|amour
+179|habile, côté gauche de la scène
+180|vérité
+181|menteur
+182|flatterie, compliment
+183|raconter, faire écouter, persuader
+184|(particule interrogative familière)
+185|vraie intention, fond de sa pensée
+186|achèvement, (temps) accompli
+187|génération
+188|grand détective
+189|solitude, isolement
+190|izakaya, bar
+191|expérience vécue
+192|plus jamais (avec négation)
+193|fugue, quitter la maison
+194|course
+195|nouvelles, contact, où se trouve quelqu'un
+196|massage
+197|qui fait bon marché, de pacotille
+198|souvenir (objet)
+199|demeure, propriété
+200|imprudent, (avec négation) rarement
+201|nouveau produit
+202|approprié, digne de
+203|amabilité, sociabilité
+204|jusqu'au bout, obstinément
+205|pression
+206|possibilité, potentiel
+207|entraînement, discipline
+208|usage exclusif, réservé à
+209|s'accrocher à, s'attaquer à
+210|influent, puissant, probable
+211|avoir les jambes en compote
+212|talent, ressources humaines
+213|charge, fardeau
+214|priorité
+215|habituel, ordinaire, normal
+216|être confus, être très reconnaissant
+217|dérangement, ennui, gêne
+218|inspecteur de police
+219|extermination, élimination
+220|loup
+221|employer, embaucher
+222|tant bien que mal, d'une manière ou d'une autre
+223|doux, modéré, paisible
+224|spécialiste, expert
+225|investissement
+226|millionnaire, grand riche
+227|conducteur, tournevis, pilote (logiciel)
+228|pleine lune
+229|personnel, individuel
+230|conjoint, époux
+231|sérieux, vrai sabre
+232|hasard, par hasard, coïncidence
+233|données
+234|intégrer, incorporer
+235|en ligne
+236|collecte, collection
+237|selon, dès que, circonstances
+238|peine, sanction pénale
+239|origine, source, base
+240|vivre, passer (le temps)
+241|énergie motrice, force
+242|partage, copropriété
+243|se modérer, s'abstenir, attendre, noter
+244|intervention, mobilisation
+245|pitié, compassion
+246|motivation, envie de faire
+247|fierté
+248|pauvre, maigre
+249|légende
+250|usage courant, idiomatique
+251|déesse
+252|maître, grand artiste
+253|négligent, sans parler de
+254|concept, notion
+255|renverser, réfuter
+256|je, moi (masculin familier)
+257|gagne-pain, moyens d'existence
+258|poumon
+259|victoire
+260|poursuite, mise en cause
+261|tuberculose
+262|vaccination
+263|connaissance, prise de conscience
+264|satisfaction, suffisant
+265|parc à thème
+266|arrière-plan, contexte, décor
+267|concret, précis
+268|de plus, encore plus
+269|se fonder sur, tenir compte de
+270|international
+271|progrès, évolution
+272|défier, se lancer à l'assaut
+273|ignorance
+274|richesse, fortune
+275|(formule de politesse) je vous en prie
+276|égoïste, à sa guise
+277|faute, erreur
+278|choc
+279|grandir, être élevé
+280|simultanément, tous ensemble
+281|librement, sans hésiter
+282|système
+283|grand âge
+284|apparence extérieure
+285|inondation
+286|montagnes
+287|splendide, admirable
+288|apparence
+289|replier, rappeler (téléphone)
+290|bouger, mouvement
+291|faire face à, être confronté à
+292|mais
+293|somnolence
+294|regretter, être économe de, chérir
+295|se rendre à, se diriger vers
+296|gêne, scrupule, peur de déranger
+297|avoir une irritation (peau), être influencé
+298|curiosité
+299|Mars (planète)
+300|cerveau
+301|si, quant à
+302|inutile, gaspillage
+303|transistor
+304|recevoir un prix
+305|réalisation, accomplissement
+306|ingénieur
+307|patronne (d'auberge)
+308|stratégie, opération
+309|c'est-à-dire
+310|autonome, proactif
+311|être bon (à), aller bien
+312|être attentionné, compatir
+313|acquisition, obtention
+314|brillant, glorieux
+315|éternité
+316|aide, secours
+317|plutôt, autant
+318|hum, je vois
+319|(fin de phrase affirmative ou interrogative)
+320|geste, attitude, comportement
+321|aquarium
+322|harcèlement
+323|génie, prodige
+324|paire, duo
+325|soutien, assistance
+326|rater, laisser passer, fermer les yeux sur
+327|acculer, rabattre
+328|cours d'eau, rivières
+329|surmenage
+330|porter plainte, faire appel à, se plaindre
+331|décision
+332|extrêmement, très
+333|début, commencement
+334|aller à l'école
+335|obstination, entêtement
+336|tout, (avec négation) pas du tout
+337|manger (familier), vivre de
+338|exaucer, réaliser
+339|produire, naître, résulter
+340|envoi, transmission
+341|parcours, carrière
+342|louer, faire l'éloge
+343|bombe
+344|être ouvert, mener à, communiquer, être compris
+345|alliance
+346|la personne concernée
+347|trait (d'un kanji)
+348|mystère
+349|inverse, contraire
+350|certainement (à tort), j'étais sûr que
+351|miracle
+352|paradis
+353|préoccuper, tracasser, intéresser
+354|défi, tentative
+355|montée, hausse
+356|contribution
+357|crime grave, péché capital
+358|messieurs, mesdames, vous tous
+359|chevalerie
+360|tirage au sort
+361|ciel nocturne
+362|réverbère
+363|(fin de phrase masculine, insistance)
+364|noble, aristocrate
+365|flamme
+366|se balancer, flâner
+367|grande quantité, masse
+368|vie privée
+369|jusqu'ici, traditionnel, habituel
+370|chiant, saoulant
+371|produits dérivés, goodies
+372|très intéressant
+373|détacher, enlever, quitter, rater
+374|en un clin d'œil
+375|aller au bureau
+376|bonne réputation, succès
+377|témoin
+378|maquillage
+379|avec plaisir
+380|devoir, obligation morale, belle-famille
+381|râler, ronchonner
+382|flotter, dériver, régner (ambiance)
+383|au premier coup d'œil, client de passage
+384|amélioration
+385|défaut, point faible
+386|surveillance
+387|veiller sur, observer attentivement
+388|bonheur
+389|plénitude, richesse, amélioration
+390|passer (du temps)
+391|obéir, suivre, se conformer à
+392|gêner, poser problème
+393|coutume, usage
+394|lutte, conflit
+395|sur place, local
+396|avaler, comprendre, assimiler
+397|conseil, avertissement
+398|thème, sujet
+399|offre, fourniture, parrainage

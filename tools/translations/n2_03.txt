@@ -1,0 +1,400 @@
+1200|produit national, local
+1201|regretter, déplorer, pleurer (un mort)
+1202|formation, constitution
+1203|mots, expressions
+1204|terminus
+1205|se retirer, rentrer, s'enfoncer
+1206|bar, débit de boissons
+1207|employé, domestique
+1208|inévitable, nécessité
+1209|cour d'école
+1210|aspirer à, viser, se destiner à
+1211|fiable, prometteur
+1212|qui manque, regretté, cher
+1213|théière, cafetière, thermos
+1214|déduction (fiscale)
+1215|contraste
+1216|souveraineté
+1217|scission, division
+1218|abondant, à profusion
+1219|Chambre des conseillers
+1220|exemption, dispense
+1221|solo
+1222|raccourcissement, réduction
+1223|rafraîchissant, vivifiant
+1224|ressemblance, similaire
+1225|jours fériés consécutifs
+1226|en bonne santé, toujours actif
+1227|sauter, bondir, éclabousser
+1228|être transparent
+1229|droits de douane
+1230|attaque, offensive
+1231|sain, vigoureux
+1232|tabou, chose à éviter
+1233|chic
+1234|commode (meuble)
+1235|entrejambe, cuisse, fourche
+1236|coller, persévérer, tenir bon
+1237|exclusion, élimination
+1238|tempérament, caractère
+1239|déclaration, communiqué
+1240|menace, intimidation
+1241|loisirs, temps libre
+1242|recettes et dépenses
+1243|trop court, décevant (trop vite fini)
+1244|vide, creux, absent (regard)
+1245|se calmer, s'apaiser
+1246|aimant, boussole
+1247|pédiatrie
+1248|court (récit, film)
+1249|pion (shogi)
+1250|usage, utilité
+1251|croissance, développement
+1252|sensation, impression, confort
+1253|coupe transversale
+1254|goutte d'eau
+1255|biographie
+1256|reflet, répercussion
+1257|double suicide (amoureux)
+1258|juste en dessous
+1259|aiguiser, laver (le riz)
+1260|volume
+1261|remuer, mettre sens dessus dessous
+1262|conclusion, nœud, lien
+1263|apparence, présentation, forme
+1264|difficulté, danger, défaut
+1265|interpeller, appeler (pour arrêter)
+1266|juste au-dessus
+1267|sel de table
+1268|contrainte, restriction, détention
+1269|abus, usage excessif
+1270|fixation, fixe
+1271|humanité, bonté, sentiments humains
+1272|célibataire, non marié
+1273|rassurant, encourageant
+1274|acide, aigre
+1275|monotonie
+1276|oral
+1277|valeur, prix
+1278|inutile, superflu, interdit (entrée)
+1279|sélection
+1280|international
+1281|plateau (relief)
+1282|évier
+1283|grincer
+1284|régulier, titulaire
+1285|oppression, répression
+1286|point fort, mérite
+1287|moquette, tapis
+1288|phase terminale, derniers jours
+1289|digestion, assimilation, écoulement (stock)
+1290|mutuellement, ensemble
+1291|patience, endurance
+1292|tromper, duper
+1293|go (jeu)
+1294|compatibilité, concilier
+1295|retourner, mettre à l'envers
+1296|réglage, ajustement
+1297|synthèse, global, intégré
+1298|aluminium
+1299|moyens de transport
+1300|éducation, croissance
+1301|horizon (mer)
+1302|chair et os, être de chair
+1303|article de qualité
+1304|pouls, veine, espoir
+1305|pronom, synonyme, exemple type
+1306|ampoule
+1307|emploi, travail
+1308|accueil, réception
+1309|porte de derrière
+1310|chœur, chant choral
+1311|carré
+1312|héberger, loger
+1313|décomposition, corruption
+1314|particule, (avec négation) pas le moins du monde
+1315|perle
+1316|ton
+1317|commodité, facilité
+1318|adjectif
+1319|baisse, à terre, en panne, malade
+1320|s'émousser, perdre la main
+1321|plat, simple
+1322|solidarité, collectif
+1323|bonté, vertu
+1324|ravitaillement, approvisionnement
+1325|bruit parasite, commérages
+1326|chèque
+1327|liens du sang, proche parent
+1328|pompe
+1329|précédent
+1330|brûler (cuisine), roussir
+1331|bruyant, agité
+1332|costaud, solidement, économe
+1333|insolent, effronté, prétentieux
+1334|style japonais
+1335|un peu, (en tout cas) veuillez
+1336|très occupé
+1337|date de naissance
+1338|viscosité, ténacité
+1339|sanction
+1340|émotion, atmosphère, charme
+1341|prendre fin, mourir, être complètement
+1342|soupçon, accusation
+1343|forêt de montagne
+1344|reproduction, prolifération
+1345|danger, préjudice
+1346|sommet, crête
+1347|pur, limpide
+1348|mine (minerai)
+1349|à l'envers, inversé
+1350|défrichage, développement, pionnier
+1351|élégant
+1352|vote
+1353|sans autorisation, sans prévenir
+1354|beau temps, ciel dégagé
+1355|à redire, défaut
+1356|colline
+1357|léger, agile, entraînant
+1358|bon sens
+1359|supériorité, avantage
+1360|pression, oppression
+1361|tokonoma (alcôve décorative)
+1362|renforcement
+1363|dispersion, répartition
+1364|allusion, suggestion
+1365|lieu d'origine, authentique
+1366|grossiste
+1367|débarquement, toucher terre
+1368|radioactivité
+1369|petite monnaie
+1370|rang inférieur, subordonné
+1371|spécimen, échantillon
+1372|acidité, acide
+1373|goût, préférence
+1374|regret amer, dépit
+1375|synthèse, composé, synthétique
+1376|résumé, intrigue
+1377|guidage, incitation, induction
+1378|district, canton
+1379|procédé de fabrication, recette
+1380|nier, démentir, couvrir (un bruit)
+1381|source (d'un fleuve)
+1382|grâce, élégance
+1383|fiction
+1384|honneur, réputation, face
+1385|carillon, sonnerie
+1386|fredonner
+1387|prédécesseur, génération précédente
+1388|sceau, enveloppe scellée
+1389|Madame, Monsieur (formule de lettre)
+1390|avenir, perspectives
+1391|éventail (rond)
+1392|terre arable
+1393|menottes
+1394|gonfler, enfler, bouder
+1395|princesse
+1396|briller (soleil)
+1397|rentabilité
+1398|stagner, prendre du retard
+1399|équiper, installer
+1400|malchance
+1401|en entier, tout rond
+1402|morosité, sombre
+1403|vapeur d'eau
+1404|monopole, accaparer
+1405|nombreux
+1406|amour à sens unique
+1407|répartition (des tâches)
+1408|croissance (physique)
+1409|se ressembler
+1410|-uple, couche
+1411|lâche, déloyal
+1412|phare
+1413|bois de construction
+1414|placard, armoire
+1415|foule, multitude, les gens
+1416|blessure
+1417|irrégularité, bosses et creux
+1418|frénétique, acharné
+1419|solide (état)
+1420|robinet
+1421|articles divers, bric-à-brac
+1422|tel ou tel, quoi ?
+1423|bientôt, prochainement
+1424|détourner, s'emparer de, pirater
+1425|salle, temple
+1426|sciences naturelles
+1427|brillant, spectaculaire
+1428|insensibilité, manque de finesse
+1429|drainage, évacuation
+1430|plateau-repas, (compteur pour bols de riz)
+1431|peinture à l'huile
+1432|renforcement, augmentation
+1433|être à la hauteur (d'un poste)
+1434|bouchon
+1435|avalanche
+1436|logement de fonction
+1437|mécontentement, objection
+1438|divers, plusieurs
+1439|plein air, extérieur
+1440|ventilation, aération
+1441|scie
+1442|prix, lot (récompense)
+1443|en général, la plupart, probablement
+1444|bruyant, tapageur
+1445|coexistence
+1446|envoyer valser d'un coup de pied, rejeter
+1447|agriculture
+1448|zori (sandales)
+1449|obstruction, gêne, interférence
+1450|paille
+1451|ancienne école, alma mater
+1452|tempête de neige, blizzard
+1453|ciel, firmament
+1454|sale, malpropre
+1455|lieu de travail
+1456|responsable, chef de service
+1457|avoir l'habitude, éduquer, dresser
+1458|vieillir
+1459|collecte de fonds
+1460|gendre, marié
+1461|occupation, accaparement
+1462|forme originale
+1463|pur, clair, noble
+1464|en route, en cours
+1465|épices
+1466|artisanat, travail fin, ruse
+1467|urine, pipi
+1468|cruel, impitoyable
+1469|badge, étiquette nominative
+1470|arpentage, mesure
+1471|complément, supplément
+1472|avancer (la nuit), se faire tard
+1473|abréviation
+1474|orientation, intention
+1475|éditorial
+1476|indirect
+1477|bâclé, grossier, divers
+1478|lavage des mains, toilettes
+1479|minable, miteux
+1480|prometteur
+1481|du début à la fin, constamment
+1482|alignement d'arbres
+1483|étayer, se raidir, s'entêter
+1484|œuvres complètes
+1485|fondation, création
+1486|du même âge
+1487|maturité
+1488|coordonnées
+1489|rencontre, face à face
+1490|produits de première nécessité
+1491|appel public, recrutement ouvert
+1492|moulin à vent, moulinet (jouet)
+1493|brutal, rude
+1494|prestance, dignité
+1495|démocratie, démocratique
+1496|enquêter, interroger
+1497|gourde
+1498|poutre, chiffre (rang décimal)
+1499|pillage, rapt
+1500|établir, fonder
+1501|vol (larcin)
+1502|sincérité, dévouement
+1503|cadre dirigeant
+1504|marche, défilé
+1505|union, solidarité
+1506|représentation (spectacle)
+1507|libération, émission
+1508|minéral
+1509|taquiner, se moquer de, faire du lèche-vitrine
+1510|dix mille, tout, absolument
+1511|presser, bousculer
+1512|pension, maison d'hôtes
+1513|pression atmosphérique
+1514|détroit
+1515|beauté, soins esthétiques
+1516|élaboré, minutieux
+1517|rincer, laver (un affront)
+1518|serviette de table, serviette hygiénique
+1519|solution (liquide)
+1520|maintenance, conservateur
+1521|solennel, majestueux
+1522|concours à prix, récompense
+1523|triangle
+1524|famine
+1525|restaurant familial (chaîne)
+1526|exploration, expédition
+1527|assemblage, face à face
+1528|paralysie, engourdissement
+1529|relance, réclamation
+1530|confusion, amalgame
+1531|préparatifs, plan
+1532|dénominateur
+1533|récolte abondante
+1534|auxiliaire (verbe)
+1535|réapprovisionnement, complément
+1536|Palais impérial
+1537|compas, boussole
+1538|gaspillage
+1539|pile (sèche)
+1540|pyjama, chemise de nuit
+1541|pitié, compassion, affection
+1542|adoption, sélection
+1543|signe, symbole, code
+1544|université courte (2 ans)
+1545|froideur, indifférence
+1546|changement
+1547|être coincé entre
+1548|envoi d'argent, virement
+1549|oxydation
+1550|imitation, copie
+1551|opportun, au bon moment
+1552|match nul
+1553|germination
+1554|opposition, rivalité
+1555|bourbier, marécage
+1556|trop sérieux, consciencieux
+1557|flanc de montagne
+1558|insulte, affront
+1559|musique
+1560|contraste, comparaison
+1561|flash, stroboscope
+1562|courrier des lecteurs
+1563|essai (littéraire)
+1564|pont de fer, pont ferroviaire
+1565|craindre, douter
+1566|à mi-chemin, en cours
+1567|proposition de mariage
+1568|combustion
+1569|contrefaçon, falsification
+1570|carré
+1571|taches, moucheture
+1572|blouson
+1573|réparation, raccommodage
+1574|croissance
+1575|sec, pince-sans-rire
+1576|intellectuel
+1577|rencontre arrangée (mariage)
+1578|imprudent, irréfléchi
+1579|incompétence
+1580|préambule, introduction
+1581|absurde, n'importe quoi, terriblement
+1582|tard dans la nuit
+1583|emprunt, dette
+1584|trompeur, prêtant à confusion
+1585|ouverture (route, ligne)
+1586|passager, voyageur
+1587|catalogue, inventaire
+1588|stockage, conservation
+1589|excellent, doux
+1590|cursus, programme
+1591|Australie
+1592|récompense
+1593|grêle
+1594|spectacle, attraction
+1595|héritier, successeur
+1596|passeport
+1597|joue
+1598|pas de course, à la hâte
+1599|continuité, persistance

@@ -1,0 +1,400 @@
+2000|dragon (zodiaque)
+2001|métissage, métis
+2002|menu du jour, formule
+2003|bon, alors, eh bien (Kansai)
+2004|magnétisme
+2005|brigand, bandit
+2006|eaux territoriales
+2007|plein de, débordant de
+2008|croisement, accouplement
+2009|cérémonie
+2010|accouplement (animaux)
+2011|pot de départ
+2012|chaos, confusion
+2013|très à la mode, épidémie
+2014|solide, robuste
+2015|préparer le terrain, consultations préalables
+2016|dirigeant, sommet (chefs d'État)
+2017|doute, scepticisme
+2018|dégâts de guerre
+2019|police anti-émeute
+2020|nom complet
+2021|vieil ami, vieille connaissance
+2022|maintien au chaud
+2023|proclamation, édit
+2024|pincer
+2025|moisson du riz
+2026|week-ends et jours fériés
+2027|rapidement, croustillant
+2028|lancer (de balle)
+2029|cessez-le-feu
+2030|dernière volonté
+2031|papier à dessin
+2032|jardin botanique
+2033|gras, huileux
+2034|revêtement routier, pavage
+2035|vache, génisse
+2036|prototype, essai
+2037|tour
+2038|correspondant, concerné
+2039|cerne (d'arbre)
+2040|repaire, planque
+2041|pique-assiette, hébergé gratuitement
+2042|limite inférieure
+2043|cerisier Somei-Yoshino
+2044|entraide
+2045|nombre de traits
+2046|regrettable, inattendu, vexant
+2047|salon de thé, café
+2048|signature (traité)
+2049|échouer, rater
+2050|dictature
+2051|mouchoir en papier
+2052|conversion (monnaie, unités)
+2053|malchance, mauvais présage
+2054|pièce de monnaie
+2055|venue (sur place), présence
+2056|enseignement (profession)
+2057|confiscation
+2058|grand nombre de personnes
+2059|visiteur précédent
+2060|sous un soleil de plomb
+2061|clan
+2062|jeune
+2063|faiblesse, mou
+2064|claquer des dents, raide, rigide
+2065|dernier
+2066|trou de serrure
+2067|veuillez agréer (formule de fin de lettre)
+2068|texte original
+2069|bang, plein à craquer
+2070|(compteur pour vêtements), arrivée à
+2071|réfraction, flexion, tortueux
+2072|industrie laitière
+2073|reconnaissance officielle, agrément
+2074|guidance, conduite
+2075|industrie minière
+2076|fauve, bête sauvage
+2077|myopie
+2078|en bloc, en une fois
+2079|exclusion
+2080|forte odeur, être furieux
+2081|premier départ (train), départ de la ligne
+2082|paiement, livraison
+2083|en filet, gambader
+2084|qui se prend pour qui ?, quelqu'un d'important
+2085|possession, port
+2086|pot de fleurs
+2087|pantalon
+2088|stéthoscope
+2089|particule (grammaire)
+2090|résonance, sympathie
+2091|idole, statue
+2092|fulminer, s'emporter
+2093|discussion informelle
+2094|détour, passer en chemin
+2095|encouragement, promotion
+2096|12 signes du zodiaque chinois
+2097|probabilité
+2098|ruelle
+2099|divinité protectrice
+2100|fossette
+2101|fécondation
+2102|frais de cours mensuels
+2103|incohérent, décousu
+2104|somnolent, fondant, sirupeux
+2105|perte (d'un objet)
+2106|puéricultrice
+2107|tir à la corde
+2108|complexe de persécution
+2109|décliner, se désister
+2110|troublant, séduisant, épineux
+2111|plein d'entrain
+2112|façon de compter
+2113|mauvaise récolte
+2114|tricycle
+2115|visqueux, gluant
+2116|courant atmosphérique
+2117|culpabilité, remords
+2118|vif, poignant
+2119|ravitaillement en carburant
+2120|héréditaire, importé, transmis
+2121|compréhension orale
+2122|vêtements de pluie
+2123|livre ancien, livre d'occasion
+2124|date fixée
+2125|joint (à une lettre)
+2126|grand prêtre (bouddhiste)
+2127|livraison
+2128|fin de phrase
+2129|nonne
+2130|échangeur (autoroute)
+2131|carrefour
+2132|petit
+2133|exercer, se consacrer à (métier)
+2134|développement (photo)
+2135|commandement, commandant
+2136|rayonnement, émission
+2137|estrade, tribune
+2138|picotement, piquant, tendu
+2139|fonction hépatique
+2140|brutal, sauvage
+2141|froussard, mauviette
+2142|déclin, en perte de vitesse
+2143|être planté
+2144|réélection
+2145|le plus rapide
+2146|convocation
+2147|cause et effet, karma
+2148|formation de combat
+2149|les deux personnes
+2150|goutte à goutte, sans cesse
+2151|inspection, contrôle
+2152|annulation, destruction, rupture (traité)
+2153|doux (goût), flatterie
+2154|keirin (course cycliste)
+2155|champ de fleurs
+2156|fête de bienvenue
+2157|changer d'école
+2158|tremblotant, élastique
+2159|victoire facile
+2160|les vivants
+2161|cave, trou
+2162|prendre place
+2163|tempête, vent violent
+2164|jumbo, géant
+2165|espiègle, garnement
+2166|ligne principale
+2167|être primé
+2168|sursauter, avoir un choc
+2169|poids
+2170|incision
+2171|clairvoyance
+2172|galaxie
+2173|éclair
+2174|hibernation
+2175|champignons (biologie)
+2176|cataclysme, catastrophe naturelle
+2177|déménagement
+2178|demoiselle, Mademoiselle
+2179|controverse, polémique
+2180|plumage, influence
+2181|accord secret
+2182|traversée
+2183|pêche à la baleine
+2184|dissonance, discorde
+2185|anomalie
+2186|crever, claquer (mourir), être épuisé
+2187|génie civil, travaux publics
+2188|camion-benne
+2189|formation, leçons (conduite)
+2190|gaffe, maladresse
+2191|rugueux, granuleux
+2192|bouton, furoncle, tumeur
+2193|apogée
+2194|merci
+2195|démontage, amovible
+2196|démonstration
+2197|compteur, jauge
+2198|ardeur, excès de zèle
+2199|prendre un nouveau poste ailleurs
+2200|fermer à clé
+2201|être épuisé, être à plat
+2202|corps et âme, avec acharnement
+2203|propre initiative
+2204|pauvreté, dénuement
+2205|bateau à vapeur
+2206|chien (zodiaque)
+2207|funambulisme, numéro d'équilibriste
+2208|nom d'ère
+2209|médiation, servir de pont
+2210|effleurer, exploiter
+2211|situation difficile
+2212|serpent (zodiaque)
+2213|réfugiés, évacués
+2214|abstention, forfait
+2215|bulle de savon
+2216|affaires générales
+2217|se flétrir, se ratatiner
+2218|avantages et inconvénients
+2219|strictement, sévèrement
+2220|habits de fête
+2221|décoration
+2222|invitation
+2223|examen minutieux
+2224|sidérurgie
+2225|soldes, lancement
+2226|croquant, dynamique
+2227|à une époque, il fut un temps
+2228|douleur aiguë, grincement, serrer fort
+2229|boissons à volonté
+2230|homicide
+2231|prévention des incendies
+2232|compréhension écrite
+2233|naufrage, s'écrouler (ivre)
+2234|égratignure, éraflure
+2235|toxique
+2236|sanglier (zodiaque)
+2237|coloration
+2238|ouverture (parc, jardin)
+2239|production
+2240|mal, méchant
+2241|pratique, utile, précieux
+2242|pèlerin
+2243|watt
+2244|sujet de toutes les conversations
+2245|couper avec les dents
+2246|frissonner (d'horreur)
+2247|subalterne, sous-fifre
+2248|alcalin
+2249|excréments, selles
+2250|Madame (femme respectée)
+2251|composite, combiné
+2252|kudzu (plante)
+2253|Calpis (boisson lactée)
+2254|autant que possible
+2255|réjouir, faire plaisir
+2256|se renfrogner, perdre courage
+2257|rotation (sur soi-même)
+2258|contemplation (fleurs, poissons)
+2259|trêve, armistice
+2260|repos, convalescence
+2261|parrain, marraine
+2262|emprunt
+2263|paiement anticipé
+2264|accueil, aller chercher
+2265|shabu-shabu
+2266|chaleur torride
+2267|noter, prendre en dictée
+2268|s'inquiéter, réfléchir à
+2269|édition pirate
+2270|pardon, indulgence
+2271|point d'interrogation
+2272|suivre, se conformer à
+2273|caractère alphanumérique
+2274|avant-garde
+2275|bœuf wagyu
+2276|exposition, étalage
+2277|ambitieux
+2278|amas, lieu de rassemblement
+2279|croissant
+2280|propriété privée (terrain)
+2281|réminiscence
+2282|orientation (séance d'accueil)
+2283|mener à bien, exécuter (malgré tout)
+2284|art de la conversation
+2285|prospérité (commerce)
+2286|œufs brouillés
+2287|lecture on (sino-japonaise)
+2288|don
+2289|peut-être, par hasard
+2290|coup de foudre
+2291|mauvais perdant
+2292|poirier (acrobatie)
+2293|tigre (zodiaque)
+2294|ping-pong, exact !
+2295|spécialité locale
+2296|révolutionnaire, marquant
+2297|lot
+2298|à l'envers, contraire
+2299|immobilité
+2300|bonne nouvelle
+2301|adaptation (scénario)
+2302|cheval (zodiaque)
+2303|euphémique, détourné
+2304|shiatsu
+2305|même crime, même culpabilité
+2306|congé maternité
+2307|alignement, conformisme, syntonisation
+2308|préparatifs
+2309|maison individuelle, maison isolée
+2310|navet (œuvre ratée)
+2311|ému aux larmes
+2312|premier lever de soleil de l'année
+2313|restaurant routier
+2314|belle voix
+2315|mélanger
+2316|lièvre (zodiaque)
+2317|bernard-l'ermite, locataire
+2318|inspection, inspecteur
+2319|serré, tassé
+2320|dépeuplement
+2321|heureux hasard
+2322|entretien secret
+2323|universel
+2324|pièce, chambre
+2325|compréhension tacite, télépathie
+2326|comtesse
+2327|se découdre, s'épanouir, sourire largement
+2328|optimisme
+2329|testicules
+2330|démon, génie
+2331|redoublement
+2332|nuit tropicale
+2333|rejet (vote)
+2334|reprise (achat)
+2335|éclat, splendeur
+2336|coq (zodiaque)
+2337|déclaration orale
+2338|impression, sentiment
+2339|passage en force
+2340|pile, couche
+2341|participe passé
+2342|urgence, premiers secours
+2343|élève favori
+2344|commander (sur mesure)
+2345|rotation, virage
+2346|explosion, rupture
+2347|barre de fer, gourdin
+2348|jouir de, bénéficier de
+2349|retour à Tokyo
+2350|de troisième ordre
+2351|attention, porter son attention sur
+2352|lecture kun (japonaise)
+2353|objectivité
+2354|double revenu (couple)
+2355|expert, professionnel
+2356|éclipse solaire
+2357|bavardage inutile
+2358|rire bêtement, à la légère
+2359|ruée, afflux
+2360|quoi ?!, n'importe qui
+2361|concordance, accord
+2362|face à face, en tête-à-tête
+2363|empoisonnement
+2364|commandement, leadership
+2365|voix passive
+2366|bravade, bluff
+2367|explosion, dynamitage
+2368|gifle
+2369|premier coup, début
+2370|voix nasillarde
+2371|ensemble, assortiment
+2372|licence (diplôme), diplômé
+2373|capitale d'État, chef-lieu
+2374|myopie
+2375|télex
+2376|scélérat, vaurien
+2377|débauché, lubrique
+2378|autopsie, enquête sur un décès
+2379|épi (cheveux), mauvaise habitude de sommeil
+2380|mauvaise habitude
+2381|obligatoire (matière)
+2382|réexpédition, haut-le-pied (train)
+2383|calcul mental
+2384|surpeuplement, surcharge
+2385|célébration, félicitations
+2386|mourir de faim
+2387|trop large, flottant
+2388|divertissement, spectacle
+2389|service officiel
+2390|mâchouiller, froissé
+2391|mener à terme
+2392|mollement, sans force
+2393|arme secrète
+2394|boycott
+2395|serrer fort, câlin
+2396|terminer la course
+2397|nomadisme
+2398|expression idiomatique en quatre kanji
+2399|tenue de travail

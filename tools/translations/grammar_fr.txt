@@ -1,0 +1,422 @@
+# Traductions françaises des sens de grammaire restés en anglais — id|sens
+321|Pouvoir, Être capable de, Possible
+336|Ne pas pouvoir, Impossible de
+397|Ne pas pouvoir s'empêcher de, Ne pas avoir d'autre choix que
+333|Dans l'intention de, Au lieu de, Faire comme si, En croyant que, En pensant que
+499|De toute façon, Quoi qu'il en soit, Sans aucun doute, Probablement
+573|Au moins
+517|Apparemment, On dirait que, Il semble que
+1087|Quelque chose (de vague), Une sorte de
+515|Ne pas avoir d'autre choix que, Pas d'autre moyen que, Devoir
+351|Sûrement, Certainement
+676|Au cas où, Pour être sûr
+763|Plus ou moins, Pour le moment, Provisoirement, À peu près
+527|Sans aucun doute, Certainement, Sûrement
+513|Au cas où, Dans le pire des cas, Si jamais, Par hasard
+434|Aucun moyen de, Impossible de
+538|Rien d'autre que, Ni plus ni moins que, Tout simplement
+598|Aucune chance de, Impossible de
+431|Alors, Dans ce cas
+521|Si, Si on pouvait, Si c'était possible
+354|Laisser ~ à, Confier ~ à
+1078|Approximativement, À peu près, Environ, Grandes lignes, Essentiel
+343|Ne pas vouloir, Avoir l'intention de ne pas, Probablement pas
+316|Du point de vue de
+337|En plus de, Outre, De surcroît
+317|Puisque, Maintenant que, Tant que, Si
+338|Plus que, Pas moins que, Encore plus
+417|De plus, En outre, Par ailleurs
+396|Une fois que, Puisque, Maintenant que, Tant que
+679|Reste, Restant, Dans (temps restant), Encore
+410|Devant, Avant, Vis-à-vis de, Par égard pour sa position
+690|Concernant, Au sujet de, Autour de (une dispute)
+553|Sur toute la durée de, Tout au long de, S'étendant sur
+692|Le long de, Conformément à, En accord avec
+535|Après, À l'issue de, Au terme de
+581|À mesure que, Suivant, Selon, Conformément à
+600|À mesure que, Avec, En même temps que, Entraîner, S'accompagner de
+551|Chaque fois que, À chaque occasion
+327|Vers, En direction de, Face à, En vue de
+399|S'inquiéter de, Être préoccupé par, S'intéresser à
+518|Faire attention à, Prendre garde à, Veiller à
+344|Sans se soucier de, Sans tenir compte de
+542|Ne pas pouvoir, Avoir du mal à, Hésiter à
+565|Risquer de, Pourrait bien, Être capable de
+552|Sauf, À l'exception de, Excepté
+545|Indépendamment de, Que ce soit ou non, Quel que soit
+570|Malgré, En dépit de, Néanmoins
+430|Justement quand, Précisément, Seulement quand
+504|Pas seulement, Non seulement… mais aussi
+566|Encore, Toujours, Davantage
+567|De plus, À noter que, Par ailleurs
+544|Tant que, Dans la mesure où, Limité à
+1090|Graduellement, Peu à peu
+352|C'est seulement en ~ que, Parce que, Grâce à
+519|Indépendamment de, Que ce soit ou non, Sans distinction de
+580|Ne pas avoir d'autre choix que, C'est inévitable
+525|Rien de mieux que, Ce serait l'idéal
+512|En résumé, Bref, En somme
+507|Pas avant d'avoir ~, Tant que ~ pas, impossible
+402|Ce n'est pas que…, Un peu, Plutôt, Dans une certaine mesure
+347|Tant qu'on ne fait pas ~, rien ne
+418|Ne pas pouvoir s'empêcher de, Ne pas résister à
+548|Devoir, Il faut (soutenu)
+608|Fais donc !, Ordre adressé à un inférieur
+681|Parmi, Sur l'ensemble de
+560|Tout en, Et
+569|Tout en ~ant, Bien que, Malgré le fait que
+689|À l'occasion de, Profitant de, Suite à, Déclencheur
+582|Être en train de, En cours de
+510|Au moment où, Alors que, Juste quand
+557|À peine… que, Dès que, Juste au moment où
+695|Si on continue à ~, À force de
+413|Avoir failli, Être sur le point de (passé)
+422|Ce n'est pas le moment de, Loin de, Hors de question
+318|Pour la première fois depuis, Après une longue période
+562|Si, Chaque fois que, Puisque
+563|Action répétée, Faire ~ puis ~ encore et encore
+671|Aussi, Également (insistant), De nouveau
+555|En conséquence de, À la suite de
+605|Avant, Préalablement à
+539|Vraiment ?, Je me demande si, Comme prévu, Effectivement
+540|Valoir la peine, (Ne pas) en valoir la peine
+612|Bientôt, Avant longtemps, Finalement
+554|Par conséquent, Donc, Ainsi
+607|Après, Au bout du compte, Finalement (souvent négatif)
+603|Occasion, Déclencheur, Point de départ, À cause de
+579|Quand il s'agit de, En matière de
+609|Depuis longtemps, Déjà
+708|Encore, Toujours pas, Même maintenant
+401|Puisque, Du moment que, Étant donné que
+613|Sans s'en rendre compte, À un moment donné, Sans qu'on remarque
+614|Une fois que, Momentanément, Pour le moment
+611|Non seulement… mais aussi, Sans parler de, Bien entendu
+534|Peu probable, Ne montrer aucun signe de
+543|Contrairement à, À l'encontre de
+571|Jusqu'au bout, Complètement, Surmonter, Percer à jour
+602|Sans, En se passant de
+520|Enfin, Finalement, De plus en plus
+334|S'en tirer sans, Éviter d'avoir à
+514|À travers, Par l'intermédiaire de, Tout au long de
+568|En réponse à, Répondre à
+506|Ou bien, Ou alors
+328|Du point de vue de, Pour (quelqu'un)
+329|Que ce soit ~ ou ~
+400|En tant que, Pour, Quant à
+341|Même si (on suppose), En admettant que, Même en tant que
+350|Malgré tout, Quand même, Tout de même
+657|Négation classique, Forme classique de ない
+428|Sans ~er
+408|À, Dans, Avec, Par (soutenu)
+348|Pour (afin de), En ce qui concerne
+319|Comme on le souhaite, Comme prévu, Comme on le pensait
+426|Alors que je pensais que, À peine… que
+1097|Je vous serais reconnaissant si, Si vous pouviez
+509|Ce n'est pas forcément, Rien ne garantit que
+541|On peut considérer que, On pense que, Il est concevable que
+648|Du point de vue de, Si l'on considère sous l'angle de
+345|Cela veut dire que, Autrement dit
+423|De cette façon, À la manière de, Comme
+536|De telle manière que, Comme pour dire, Des choses comme
+546|Bien que, Mais, Même si
+420|C'est (ce qu'on appelle), Jugement ou conclusion du locuteur
+323|Vu de, Du point de vue de, À en juger par
+425|À en juger par, Vu que
+340|À en juger par, Compte tenu de
+501|Ce n'est pas parce que
+332|À propos, Au fait, Maintenant que j'y pense
+532|Veuillez, Pourriez-vous (humble)
+1092|Fais-moi ~, S'il te plaît (familier)
+339|Il paraît que… ou quelque chose comme ça
+421|Faisons ~ !, Pourquoi ne pas ~ ensemble
+682|Comme si, Exactement comme
+405|N'est-ce pas que…, Il se pourrait que…
+433|Naturel, Il va de soi que
+685|Il est normal que, Pas étonnant que
+710|Seulement, Juste, Pas plus de
+688|Risquer de, Il est à craindre que
+604|Probablement, Peut-être, Sans doute
+503|Certainement pas, Jamais de la vie, Comme si…
+524|Forcément, Il est certain que
+325|Être censé, Être prévu que
+427|Avoir envie de, Esprit, Humeur
+559|Avoir l'air, Sembler (émotion)
+342|Justement parce que (connaissant la personne)
+346|Parce que, C'est que
+415|Parce que, Mon excuse est que
+406|Il y a quelque chose de, On ressent fortement
+641|Avoir tendance à, Tendance
+1093|Mériter, Être digne de
+432|Terriblement, Extrêmement, On n'y peut rien
+419|C'est déjà ça, C'est mieux que rien
+694|Heureusement, Par chance
+414|Si (cela continue ainsi), Si c'est vrai que
+496|Comme on pouvait s'y attendre, C'est bien de
+502|C'est vrai que… mais, Certes… mais
+505|De plus, Davantage, Encore plus
+606|Tout au plus, Au mieux, À peine
+696|Seulement, Légèrement, À peine
+1107|Un peu moins de
+1108|Un peu plus de
+697|Et, Ainsi que
+698|Immédiatement, En un instant, Soudain
+500|Soudainement, Tout à coup, Sans prévenir
+412|Tel que, Comme
+533|Rempli de, Avec (sentiment)
+558|En plus de, Sans parler de
+680|Tout, De A à Z, Absolument tout
+610|À part, Mis à part, Excepté
+320|Justement parce que, D'autant plus que
+398|Faire au moins, Tout ce qu'on peut
+335|Comme on peut s'y attendre, C'est bien normal
+709|Avant tout, Plus que tout, Le mieux
+407|Quoi qu'on en dise, Sans aucun doute
+597|Ou quelque chose comme ça
+353|Terriblement, Ne pas pouvoir s'empêcher de
+1101|Seulement (soutenu)
+601|Non seulement… mais, Qui plus est
+409|Et pourtant, Malgré cela
+564|Ce qu'on appelle, Soi-disant
+330|Ne… que, Juste, Simplement
+326|Et… et, À la fois… et
+324|Ne… que, Rien d'autre que
+411|Avoir terriblement envie de, Extrêmement
+526|Même si, Que ce soit… ou
+574|De toute façon, Après tout, En effet
+549|Que ce soit… ou
+577|Mis à part, Indépendamment de
+1080|Passe encore pour A, mais B
+674|Cependant, Néanmoins
+403|Ce n'est pas parce que… que
+497|Pas étonnant, Comme on pouvait s'y attendre
+516|Ne pas devoir, Il ne faut pas
+498|Ne pas pouvoir se permettre de
+693|Pas correctement, Pas assez, À peine
+331|De plus, En outre
+576|Même s'il le faut, Coûte que coûte
+511|Même si, Peu importe
+404|Ne pas pouvoir ne pas, Ne pas pouvoir éviter de
+537|Ce n'est pas que, Cela ne veut pas dire que
+684|Il est bien normal que, Pas étonnant que
+575|Même si, Peu importe combien
+655|De… jusqu'à…, Jusque dans les moindres détails
+730|Même si (inutile), Avoir beau
+732|Comme, Semblable à, Tel que
+735|Être digne de, Suffisant pour
+734|Extrêmement, Au plus haut point
+736|Même si, Bien que
+739|Au moyen de, Avec, Par
+738|Avoir une fâcheuse tendance à
+741|Passe encore pour A, mais B non
+740|Il n'est pas nécessaire de, Inutile de
+752|Quand on en arrive à, Une fois que, Dès lors que
+753|Profiter de (abusivement)
+731|Il suffit de, Je n'ai qu'à, Simplement
+733|Dans (situation), En temps de, Dans ces conditions
+737|Être contraint de
+742|Que… (surprise), Dire que…
+743|Ce n'est pas comme si, Tu n'es pas ~ quand même
+746|Depuis que, Depuis lors
+747|Tout en, Parallèlement à, En plus de
+748|En commençant par, À partir de
+749|Quant à, Pour ce qui est de, Pire encore
+751|Dès que, À peine… que
+745|Machinalement, Sans y penser, Distraitement
+750|Couvert de, Maculé de, Trempé de
+744|Que l'on fasse ou non, Peu importe
+779|Pas moins de, Au moins (valeur)
+780|À (âge, moment), Seulement à, Bien que
+781|Alors que, Si seulement, J'aurais dû
+782|Même si, Quel que soit
+783|Personne d'autre que, Rien d'autre que
+784|Avec, Par, À compter de
+785|Bien que, Certes, Néanmoins
+786|Propre à, Typique de, Qu'on ne trouve que
+1109|C'est bien beau, mais…
+787|Même
+788|N'exister que grâce à, Tout devoir à
+789|J'ai simplement, Je n'ai fait que
+790|Via, Par, Après être passé par
+791|Tout en restant, Depuis la naissance, Comme autrefois, En larmes
+792|Dès que… et depuis, Rester tel quel
+793|Le comble de, L'apogée de
+794|Pour (A), Du point de vue de (A)
+796|Jusqu'au bout, Obstinément
+797|Afin de, Pour
+798|Alors que, Malgré les circonstances
+799|Pas moins de, Au moins
+800|À la fois ~ et ~
+801|Deux actions alternées, Tantôt… tantôt
+802|Seulement, Strictement, Juste
+803|Que ce soit ~ ou ~
+1099|À partir de (ce moment), Depuis
+804|Une fois que, Dès que… c'est fini
+805|Quel que soit, Aucun… (avec négation)
+806|À sa manière, Selon ses moyens
+807|Faire comme on vous dit, Docilement
+808|Lié à, Qui entoure, Associé à
+809|En tant que, Digne de son rang
+810|Si… alors, De son côté
+811|Sans se laisser arrêter par, Défiant
+812|Il n'y a pas lieu de, Inutile de
+813|Penser que, Être convaincu que
+815|Parce que, En raison de, Donc
+816|Tous les… sans exception
+817|Ne pas se limiter à, Non seulement… mais aussi
+818|Je pensais que… mais
+956|Impossible de, On n'y peut rien
+957|Puisque, Comme
+1084|Totalement, Vraiment (familier)
+819|Si… ou non
+820|Même si, Si jamais
+821|Comme prévu, Inévitablement, Destiné à
+823|Que ce soit… ou
+824|Vouloir… mais ne pas pouvoir
+825|Sans, S'il n'y avait pas
+826|Tellement que, Extrêmement
+828|Ne jamais cesser de, Du fond du cœur
+829|Plutôt que de, Mieux vaut
+830|Je t'ai dit… !, Enfin !
+831|Même sans, Sans avoir besoin de
+832|Comme (pas étonnant que), En raison de
+833|Pas du tout, Nullement
+958|Tout entier, À l'échelle de
+959|À peine… que déjà, Aussitôt
+1091|Pour une raison, Défectueux, Particulier
+834|Quand on en arrive à, Seulement après
+835|Pas même, Jamais imaginé
+837|Afin de, Dans le but de
+838|Quel que soit, Indépendamment de
+839|Ne pas pouvoir même si on veut
+840|Pas du tout, Nullement
+842|Rien que de, Juste en
+843|Ou, Soit… soit
+844|Ce n'est pas impossible que, Un peu, Plutôt
+845|Non seulement… mais encore plus, Sans parler de
+846|Je croyais que
+847|Si ce n'est pas…, qu'est-ce que c'est ?
+848|Mis à part, Laissons de côté
+849|Lors de, À l'occasion de
+962|Comme pour dire
+960|Et… et encore, Les uns après les autres
+1089|Même un peu, Au moins
+841|Même quand on en arrive à
+850|Tout en servant aussi à, En profitant pour
+851|N'y a-t-il pas moyen de, Si seulement
+852|Je vais te montrer que, Tu vas voir
+853|Combiné à, Conjugué à
+854|Ne pas valoir la peine, Insignifiant
+855|Il ne faut pas, Interdit de
+856|Comme si, Sur le point de
+858|Extrêmement, On ne peut plus
+859|Sans parler de, Encore moins
+860|Avoir des airs de, Prendre l'allure de
+861|Pas seulement A ou B mais partout
+862|Il y a des limites, Trop c'est trop
+863|Encore plus que, Plus que jamais
+963|Et… donc, Puisque
+1088|D'une façon ou d'une autre, Tant bien que mal
+864|Dès que, À peine… que
+865|C'est pourquoi, Voilà la situation
+866|Environ, Je dirais, Tout au plus
+867|Pas un seul, Pas même un
+868|Indescriptible, Extrêmement
+869|À la lumière de, Au regard de
+870|S'il le faut, Si c'est pour
+871|Sûrement, Vous devez être très
+872|Quand il s'agit de (critique)
+877|Avoir l'air de, Prendre des airs de
+878|Même pour, Même du point de vue de
+879|Justement parce que
+880|Il n'y a pas d'inconvénient à, Vous pouvez
+881|Inutile de, Pas besoin de
+882|Conformément à, Selon
+883|À défaut de, Même si pas
+884|Sans se soucier de, En ignorant
+998|Pas limité à, Pas seulement
+999|Sans comparaison avec, Bien plus
+1114|Sans égard pour, En ignorant
+885|Indigne de, Inadmissible pour
+886|Le comble de, Profondément
+887|Digne de, À la hauteur de
+889|Finir par ne pas, Ne jamais avoir fait
+890|Selon, De l'avis de
+892|Indescriptible, Extrêmement
+893|Puisque, Parce que (soutenu)
+894|Entièrement, Rien que
+929|Ne pas valoir, Ne pas égaler
+930|Bien que, Cela dit
+931|Dès que, À peine… que
+932|Il n'est pas difficile de, On imagine aisément
+933|Passe encore pour ~, mais
+934|Ne pas pouvoir s'empêcher de ressentir
+935|Sous prétexte de
+936|Selon la façon de voir
+937|Aucun espoir de, Impossible
+995|Quand il s'agit de
+996|En considérant que, Comme si
+997|En partant du principe que
+938|Ne pas pouvoir éviter de, Devoir
+939|Insupportable, Ne pas pouvoir s'empêcher
+940|Finir par (négatif), En arriver à
+941|Si jamais on ose, Si on essaie
+942|Contrairement à, À l'opposé de
+943|C'est fini, Ça ne sert plus à rien
+944|Comment dire, Ou plutôt
+945|Ne manquer pas de, Forcément
+946|À partir de, À compter de
+947|C'est insupportable quand
+948|Tout en profitant pour, Par la même occasion
+949|Contraindre à, Forcer à
+985|Tu vas voir, Faire (pour quelqu'un, condescendant)
+986|Il ne reste qu'à, Seulement
+987|Être considéré comme, Il est entendu que
+988|Que, Selon lequel
+989|Avant même, Loin de
+990|Même (quelqu'un comme), De la part de
+991|Au contraire, Mais certainement pas
+992|Comparable à, Au niveau de
+993|En avance sur, Avant
+994|À l'occasion de, Profitant de
+1065|Insistance forte (familier)
+1066|Insistance amicale (familier)
+1067|Tu sais, Oh (emphase)
+1068|Alors ?, Hein ? (familier)
+1069|Abréviation familière
+1070|Dit que (abréviation familière)
+1071|Oser (péjoratif)
+1072|Tu ferais bien de
+1073|Probablement, N'est-ce pas ?
+1074|Un peu, Légèrement
+1075|Tous, Aucun, Les deux
+1086|Devoir, N'est-ce pas ? (classique)
+662|Tirer parti de, Mettre à profit, Faire ressortir
+508|En chemin, À mi-parcours, Au milieu de
+429|Dans, Par (malgré les conditions)
+686|Sous, Sous la supervision de, Sur la base de
+528|En raison de, Par (unité), Pour chaque
+523|Concerner, Avoir trait à, Dépendre de
+683|À l'occasion de, Lors de
+572|Lors de, Au moment de, En cas de
+522|Lors de, À l'occasion de, Au moment de
+670|En allant à, En passant
+550|Sur la base de, À partir de, D'après
+322|Au contraire, À l'inverse
+561|D'un autre côté, En revanche, Bien que
+599|En fonction de, Selon, En réponse à
+424|Rien que, À en juger par, À commencer par
+691|De plus, En plus, Pour couronner le tout
+795|Des choses comme, Et cetera, Et ainsi de suite
+822|Au gré de, Comme on le veut, Spontanément
+836|Tout en, En profitant de, En chemin
+857|Conformément à, Selon, Sur la base de
+961|Sans arrêt, À tout-va, Faire à fond
+1076|Si tout va bien, Si possible, Avec un peu de chance
+1079|Ne pas ~, Non- (négation classique)
+687|Centré sur, Autour de, Principalement
+349|Selon, Dès que, C'est pourquoi
+578|Entre autres, Et… et
+754|Selon, En fonction de
+827|Dépendre de
+556|Depuis, Désormais
+814|En se fondant sur, En tenant compte de

@@ -1,0 +1,400 @@
+0|labourer, cultiver
+1|repiquage du riz
+2|possible, probable
+3|catastrophe, désastre, calamité
+4|force, puissance, capacité
+5|réponse, prise en charge, gestion, correspondance
+6|sanctuaire (shinto)
+7|impossible, improbable
+8|je, moi
+9|charmant, fascinant, attirant
+10|se refléter, apparaître (photo, écran), s'harmoniser avec
+11|persuasion
+12|contrefaçon, faux, imitation
+13|élection
+14|suspect, douteux, louche
+15|microscope
+16|région d'origine, ville natale, local
+17|avoir une idée, penser à, venir à l'esprit
+18|aller au travail, présence au bureau
+19|supérieur, chef
+20|maison, bâtiment
+21|vitesse
+22|menu, programme
+23|grand arbre
+24|stocker, mettre de côté, laisser pousser (barbe)
+25|parier, miser, risquer
+26|idée
+27|reproduction, reconstitution, retour
+28|environs, alentours, voisinage
+29|argent de poche
+30|suppression, effacement
+31|financement, prêt
+32|hacher, émincer, graver, sculpter
+33|mal, méchanceté
+34|émotion profonde, être très touché
+35|sécheresse, déshydratation
+36|s'impatienter, être pressé, paniquer
+37|être plein, être bouché, être serré (emploi du temps)
+38|repos, détente
+39|être désemparé, être perdu, s'embrouiller
+40|demande, souhait, requête
+41|être fier de, se vanter de
+42|geta (sabots japonais)
+43|préfecture (bureaux)
+44|empreintes de pas, traces
+45|se déchaîner, se débattre, faire du grabuge
+46|anesthésie
+47|volet coulissant (contre les tempêtes)
+48|prévision, pronostic, attente
+49|se disputer, rivaliser, se quereller
+50|détester, ne pas vouloir
+51|récipient, contenant, boîte
+52|vraiment, extrêmement, (avec négation) pas du tout
+53|justification, excuse, explication
+54|dépasser, doubler, surpasser
+55|surprise, étonnement
+56|probabilité, chances
+57|réaction, réponse
+58|numéro, édition, modèle
+59|qualité (d'un produit)
+60|vie humaine
+61|goûts, préférences, être difficile (nourriture)
+62|aptitudes, prédisposition, talent
+63|défaut, point faible, inconvénient
+64|détruire, anéantir, ruiner
+65|plainte, jérémiade, râlerie
+66|couvercle, bouchon
+67|porte, (compteur pour les foyers)
+68|passage à niveau
+69|passerelle, pont routier, viaduc
+70|démontage, décomposition, analyse
+71|jour férié
+72|gymnastique, exercices physiques
+73|s'approcher, se rapprocher, faire connaissance
+74|arbuste de jardin, plante en pot
+75|entretien, soin, taille
+76|prédire l'avenir, dire la bonne aventure
+77|se perdre, hésiter, être indécis
+78|peinture, couleurs (matériel)
+79|protection, sauvegarde, tutelle
+80|encyclopédie
+81|avantage, point fort
+82|machine, appareil, mécanisme
+83|invité
+84|à l'avance, au préalable
+85|file d'attente, défilé, procession, matrice
+86|tension artérielle
+87|déclaration, remarque, prise de parole
+88|laisser fuir, révéler, divulguer
+89|discipline, ordre, règlement
+90|rêverie, imagination, fantaisie
+91|vague, ambigu, flou
+92|brave, vaillant, courageux
+93|compter sur, dépendre de, s'appuyer sur
+94|horticulture, jardinage
+95|se calmer, se poser, s'installer
+96|se charger de, accepter, assumer
+97|objet réel, original
+98|calligraphie (exercice)
+99|officier, grade militaire
+100|aube, point du jour
+101|création, œuvre
+102|avant, plus tôt, en avance, devant
+103|canal
+104|irresponsable, bâclé, approximatif, assez
+105|banquet, fête
+106|tricot
+107|en plein air, extérieur
+108|pâle, blême
+109|lèvres
+110|sombre, obscur, faiblement éclairé
+111|tragique, misérable, pitoyable
+112|être persuadé que, s'imaginer que, s'obstiner
+113|assurément, sans aucun doute
+114|rébellion, révolte, insurrection
+115|évasion, fuite
+116|(compteur pour les roues et les fleurs)
+117|destruction, démolition
+118|technique, art, savoir-faire
+119|monologue, parler tout seul
+120|prochain (à venir)
+121|atteindre, s'étendre à, égaler
+122|vide, creux
+123|dispute, conflit, rivalité
+124|promotion, avancement
+125|chauffage, chauffer
+126|marmite en fer
+127|tenue (d'un événement), organisation
+128|clôture (d'une séance, d'un événement)
+129|longer, suivre (un plan), se conformer à
+130|évacuation, se réfugier
+131|scénario, livret
+132|emploi du temps
+133|récession, crise économique
+134|Chambre des représentants
+135|régénération, renaissance, lecture (vidéo, audio)
+136|facile, simple
+137|attraction, gravité, attrait
+138|commandement, direction (orchestre)
+139|rénovation, réparation
+140|accompagner, entraîner, aller de pair avec
+141|niveau avancé, supérieur
+142|patrimoine, actifs, fortune
+143|crise, danger
+144|renaissance, retour, résurrection
+145|sauvage, à l'état sauvage
+146|récolte, culture
+147|soldes, vente spéciale
+148|vers (moment), époque
+149|situation réelle, état des choses
+150|tous les jours, quotidien, jours
+151|justice, pouvoir judiciaire
+152|apparence, allure, état
+153|traitement médical, soins
+154|ventilateur
+155|dépasser, excéder
+156|conserve, être enfermé (pour travailler)
+157|humidité
+158|point faible, faiblesse
+159|puissance, force, influence
+160|aveu, confession, déclaration d'amour
+161|enfoncer, frapper, se consacrer à
+162|rouille
+163|laisser tel quel, abandonner, négliger
+164|salé
+165|accord, consentement, approbation
+166|avoir du mal à, cumuler (deux fonctions)
+167|bon, bien, agréable
+168|note, points, score
+169|finances publiques
+170|déficit, être dans le rouge
+171|rembourser
+172|absurde, déraisonnable, excessif
+173|garde, conservation, stockage
+174|fédération, union
+175|rectangle
+176|une partie, certains, un exemplaire
+177|affaires personnelles
+178|classe (scolaire)
+179|accepter, accueillir
+180|efficacité, rendement
+181|conquête, maîtrise
+182|grand et petit, tailles diverses
+183|vide (physique)
+184|chute
+185|seul, en solo, indépendant
+186|héros, héroïne
+187|image, statue, portrait
+188|avoir soif, avoir envie de
+189|intervalle, espacement
+190|malentendu, méprise
+191|jour de fermeture hebdomadaire
+192|entrée, affluence, contenu
+193|brossage des dents, dentifrice
+194|parler vite, débit rapide
+195|passage (de piétons), fréquentation
+196|empiler, charger, accumuler
+197|décoration
+198|ikebana, art floral
+199|texte en anglais
+200|chiquenauder, repousser, calculer (boulier)
+201|vapeur
+202|locomotive
+203|énigme, mystère
+204|sortie de l'hôpital
+205|s'éteindre, cesser, disparaître
+206|fourrure
+207|chacun, chaque individu
+208|résultat final, achèvement, être prêt
+209|se concerter, fixer (une réunion)
+210|document, écrit
+211|accord, compréhension, prise en compte
+212|porter (sur le dos), assumer, être blessé, devoir
+213|enseignement, leçon, doctrine
+214|fondation, bases
+215|aller-retour dans la journée
+216|charme, attrait
+217|excursion, sortie scolaire
+218|être transmis, se propager
+219|suivre (un chemin), retracer
+220|demander, interroger, mettre en cause
+221|rôle, fonction, utilité
+222|mauvaise forme, échec, dérèglement
+223|coudre, se faufiler
+224|administration
+225|franchir, passer (le temps), dépasser
+226|réussir (un examen)
+227|niveau scolaire, connaissances
+228|places (spectateurs), public
+229|efficacité, rendement
+230|engrenage, rouage
+231|master (diplôme)
+232|erreur
+233|assembler, construire
+234|avoir une idée, savoir quelque chose
+235|preuve
+236|tabi (chaussettes japonaises)
+237|rageant, frustrant, vexant
+238|urgent, urgence
+239|aggravation, détérioration
+240|fin du mois
+241|public (le grand public)
+242|garder, maintenir, conserver
+243|en avoir marre, lassant
+244|paniquer, s'affoler, se précipiter
+245|tout le monde
+246|distribution, rationnement
+247|tache, salissure
+248|viser, cibler
+249|simple, seulement, juste
+250|soigner (un malade), veiller sur
+251|cours annulé
+252|entraînement, pratique (arts)
+253|apprendre (de quelqu'un)
+254|prix catalogue, prix fixe
+255|annuler, retirer, revenir sur
+256|politique, mesures politiques
+257|calme, sang-froid, stabilité
+258|récupérer, reprendre, retrouver
+259|extension, agrandissement
+260|amélioration, progrès
+261|regrettable, dommage, précieux
+262|se superposer, s'accumuler, se répéter
+263|stock, inventaire
+264|allonger, étendre, laisser pousser
+265|perte
+266|se faner, dépérir, mûrir (personnalité)
+267|tomber sur, croiser par hasard
+268|brûler, roussir
+269|monter dans un train ou un bus
+270|victoire ou défaite, issue
+271|brouillon
+272|passer (chez quelqu'un), faire un saut
+273|âpre, amer, sobre (élégant)
+274|dangereux, précaire, risqué
+275|rétrécir, se contracter
+276|manquer, rater, laisser échapper
+277|baignade en mer
+278|balancement, geste, allure
+279|goûter, savourer, éprouver
+280|temps radieux, ciel sans nuages
+281|se comporter, régaler (quelqu'un), servir
+282|endurance, forme physique
+283|compression
+284|faire l'important, se donner des airs
+285|crier, hurler
+286|menacer, intimider
+287|réforme
+288|soutien, appui
+289|classification, tri
+290|indispensable, essentiel
+291|offrir, consacrer, dédier
+292|s'attaquer à, s'efforcer de
+293|suspect (personne)
+294|néon, tube fluorescent
+295|affirmation, approbation
+296|re-, de nouveau
+297|délivrance, remise (de documents)
+298|lettre, caractère, écriture
+299|chagrin d'amour
+300|débordement, inondation, surabondance
+301|déraillement, digression
+302|dépenser, consacrer, gaspiller
+303|surpasser, être supérieur
+304|se planter, s'enfoncer
+305|papillon
+306|arithmétique
+307|être rangé, être réglé, être terminé
+308|malgré, bien que, néanmoins
+309|commentaire
+310|cependant, néanmoins
+311|achat
+312|raisonnement, déduction, roman policier
+313|être affamé, avoir soif de
+314|amour, relation amoureuse
+315|subjectivité, avis personnel
+316|en vouloir à, garder rancune
+317|considération, attention, égard
+318|préalable, à l'avance
+319|plus que tout, le mieux
+320|utile, bénéfique
+321|compenser, compléter
+322|aller à l'encontre de, contredire, enfreindre
+323|effondrement, écroulement
+324|tous les présents, nous tous
+325|percée, expansion, entrée (sur un marché)
+326|soldat
+327|contexte
+328|phrase, écrit, texte
+329|répartition, distribution
+330|épuisement, consommation, usure
+331|régulièrement, pas à pas
+332|révérence, salut
+333|haïr, détester
+334|communication
+335|être utile, servir
+336|installation, mise en place
+337|épouse (sa propre femme)
+338|maison à louer
+339|faire bouillir, mijoter
+340|matériau, matière première
+341|relativement, comparativement
+342|faire demi-tour, revenir sur ses pas
+343|introduction, aperçu général
+344|temps (chrono), thym, temps mort
+345|accueil, acceptation
+346|dévaster, saccager, troller
+347|haie, clôture, barrière
+348|appartenir à, relever de
+349|opposition, confrontation, conflit
+350|espèce, sorte, variété
+351|s'arrêter, s'immobiliser
+352|détergent, lessive
+353|talent particulier
+354|réception (de visiteurs)
+355|stage pratique, travaux pratiques
+356|durcir, se solidifier, se regrouper
+357|flotter, venir à l'esprit
+358|facilement, simplement, léger (goût)
+359|terriblement, drôlement
+360|cadet, benjamin
+361|guide illustré, encyclopédie illustrée
+362|être posé sur, être publié, paraître
+363|devenir, s'élever à
+364|nature, propriété, tempérament
+365|graisse
+366|cancer
+367|gâter, chouchouter
+368|abandon, renonciation
+369|cuisine (préparation des repas)
+370|eau, humidité, liquide
+371|fente, interstice, écart
+372|sciences humaines
+373|hypothèse, supposition
+374|cruauté
+375|vaisselle
+376|peuple, ethnie, nation
+377|confluent, fusion, jonction
+378|façon de parler, langage
+379|cheminée
+380|être terminé, être achevé
+381|précis, minutieux
+382|bol, donburi (bol de riz garni)
+383|oblique, en diagonale, de travers
+384|détestable, haïssable, (ironique) épatant
+385|routine quotidienne
+386|visite, entrevue
+387|obstination, fierté, amour-propre
+388|ballon (de baudruche)
+389|quantité, dose
+390|contagion, contamination
+391|pierre précieuse, bijou
+392|traîner en longueur, se prolonger
+393|titre
+394|consultation médicale, soins
+395|fuir (liquide)
+396|probablement, sans doute
+397|meurtre
+398|ironie, sarcasme
+399|type, mec (péjoratif)

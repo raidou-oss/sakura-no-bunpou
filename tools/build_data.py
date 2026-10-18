@@ -29,7 +29,9 @@ grammar = []
 for r in read_csv(find('grammar_points.csv')):
     grammar.append({
         'id': int(r['id']), 'o': int(r['ordre']), 'lv': LEVEL.get(r['niveau'], 'extra'),
-        'le': int(r['lecon']), 't': r['titre'].strip(), 'f': r['furigana'].strip(),
+        'le': int(r['lecon']), 't': r['titre'].strip(),
+        # la colonne furigana n'est utile que si elle contient une lecture （…）
+        'f': r['furigana'].strip() if '（' in r['furigana'] else r['titre'].strip(),
         's': r['sens'].strip(),
     })
 grammar.sort(key=lambda g: g['o'])

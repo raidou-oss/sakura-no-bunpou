@@ -1,0 +1,400 @@
+2400|pastèque, Suica (carte de transport)
+2401|parasitisme, parasite
+2402|pleurnicher, sangloter
+2403|entre les rochers
+2404|rinçage, chasse d'eau
+2405|parlement (bâtiment)
+2406|se tromper, commettre une faute
+2407|être agité (mer), être fauché, être morose
+2408|fille chérie
+2409|dispersion, éparpillement
+2410|arts et sciences
+2411|hors de la zone
+2412|rapace
+2413|train semi-express
+2414|peinture (murs, clôtures)
+2415|dactylo
+2416|neutralisation
+2417|tromperie, duperie
+2418|revanche (match)
+2419|scalpel
+2420|trois roues
+2421|changement de poste
+2422|être humide, ramollir
+2423|joindre, réduire (fracture), greffer
+2424|sortie de l'école
+2425|ressentir vivement
+2426|enfumé, intimidant
+2427|allumage
+2428|génie, talent exceptionnel
+2429|inondation
+2430|trop grand, ample
+2431|une semaine sur deux
+2432|coup au but
+2433|mensualité
+2434|boule de neige
+2435|connaisseur, (compteur pour lettres)
+2436|sécher (les cours), tirer au flanc
+2437|vapeur
+2438|dans, à, pour (écrit)
+2439|ondes courtes
+2440|membre
+2441|crédit, ardoise, nouilles en bouillon
+2442|jeu de balles dans le panier (fête sportive)
+2443|quasi-synonyme
+2444|retour (comeback)
+2445|piège
+2446|archipel
+2447|rendre visite (humble)
+2448|rapidement, sans traîner
+2449|saut périlleux, looping
+2450|organique
+2451|cube (puissance), danseur
+2452|coup de tête, impulsion
+2453|être désarmé, ne plus savoir quoi faire
+2454|couettes (coiffure)
+2455|à la hâte, cordialement (fin de lettre)
+2456|tissage
+2457|concorde, harmonie
+2458|agence gouvernementale
+2459|amadouer, gagner à sa cause
+2460|décharge
+2461|facile, du gâteau
+2462|faiblesse, débile
+2463|pur et impur, bien et mal
+2464|bâtiment, logis
+2465|fibre synthétique
+2466|régime végétarien
+2467|éclipse lunaire
+2468|affection respectueuse
+2469|quartz
+2470|nouilles froides (hiyamugi)
+2471|chouchouter, gâter
+2472|concentration, dense
+2473|enquête, audition
+2474|nouveautés, derniers arrivages
+2475|mobilité, manœuvre
+2476|friture, tofu frit
+2477|tout nu
+2478|soigner, s'occuper de
+2479|mépriser, regarder de haut
+2480|actif
+2481|rapace, cupide
+2482|républicain
+2483|guérison complète
+2484|courrier par avion
+2485|flatterie
+2486|sous-famille
+2487|suspension de scolarité
+2488|maîtrise de soi
+2489|regarder en douce, épier
+2490|plein d'assurance
+2491|Neptune (planète)
+2492|état, forme, lettre
+2493|fin, compréhension
+2494|détester sans avoir goûté, préjugé
+2495|heure
+2496|urgence, imminence
+2497|répartition des tâches
+2498|sous-traitance
+2499|réclamation, caprice
+2500|permanence, durée
+2501|moche (insulte)
+2502|prochainement
+2503|bouffonnerie, idiot
+2504|agile, vif
+2505|retouche
+2506|légèrement (brise)
+2507|collusion, complot
+2508|portrait
+2509|avide
+2510|séché
+2511|total, global, général
+2512|trimestriel
+2513|excès
+2514|avancement
+2515|méta
+2516|savon
+2517|servitude
+2518|génie, personne douée
+2519|ferraille
+2520|avis différent, objection
+2521|propos irréfléchis, insanités
+2522|grand écran (cinéma)
+2523|paramétrable
+2524|son agréable, bruit franc (batte)
+2525|ordre des traits
+2526|objet précieux, personne remarquable
+2527|paradis
+2528|cruauté, férocité
+2529|négation
+2530|lecture, explication de texte
+2531|approbation
+2532|âme, esprit
+2533|maillot échancré
+2534|jet, injection, propulsion
+2535|bureau de placement
+2536|répondre (aux attentes), accompagner
+2537|degré de difficulté
+2538|assaisonnement, prise en compte
+2539|par, au moyen de, en raison de
+2540|agent de police (ancien)
+2541|hôtesse de bar
+2542|école, épreuve (imprimerie)
+2543|automatique
+2544|lectures des kanji (on et kun)
+2545|saint bouddhiste, hôte d'honneur
+2546|aimer l'extravagance, m'as-tu-vu
+2547|antonyme
+2548|escorte, convoi
+2549|signature, inscription du nom
+2550|être rebuté, en avoir marre
+2551|saturation
+2552|comparaison, concours
+2553|veiller tard
+2554|aveu
+2555|distillation
+2556|Votre Éminence
+2557|nul, pas doué
+2558|assister à un cours (auditeur libre)
+2559|regarder ailleurs
+2560|tribord
+2561|parascolaire
+2562|divers, disparate
+2563|linge mis à sécher
+2564|placebo
+2565|pâté de maisons, quartier
+2566|agréable, se sentir bien
+2567|regard baissé
+2568|projection
+2569|bâbord
+2570|mal en point, en berne (affaires)
+2571|insuffisant, qui laisse sur sa faim
+2572|autoglorification
+2573|misogynie, misogyne
+2574|très gros plan
+2575|beau passage (littérature)
+2576|demi-tour à droite
+2577|touchons du bois !
+2578|ligne de rivage
+2579|parfait crétin
+2580|entreprise industrielle
+2581|l'autre groupe
+2582|servilement, avec obséquiosité
+2583|truie
+2584|supporter, partisan
+2585|médiation, entremise
+2586|autant qu'on veut
+2587|amoureux, âme sœur
+2588|beau parleur
+2589|sois heureux !, courage !
+2590|attachement, exigence, obsession
+2591|être exigeant sur, tenir à
+2592|personne en quête d'attention
+2593|pas de problème (Kansai)
+2594|étrangler, serrer
+2595|brut, mal dégrossi
+2596|tromper, maquiller, éluder
+2597|chevaucher, s'étendre sur
+2598|(suffixe pour numéro de chambre)
+2599|au total, en même temps
+2600|grandiose, obstiné
+2601|sirop de sucre brun
+2602|humble, modeste
+2603|autant, si peu
+2604|subir des dégâts, se faire avoir
+2605|cicatrice, trace
+2606|un peu
+2607|se rappeler, reconnaître
+2608|apercevoir, croiser
+2609|prendre le parti de
+2610|manger comme un chien
+2611|terriblement, drôlement
+2612|maître sabreur
+2613|moins de … ans
+2614|examen minutieux
+2615|existant, acceptable
+2616|s'écorcher
+2617|grossier, bâclé
+2618|je me rends, je suis battu
+2619|malheureusement
+2620|malheureusement
+2621|jour ouvré
+2622|exécution, punition, fessée
+2623|on n'y peut rien, inévitable
+2624|à contrecœur, faute de mieux
+2625|ventilation comptable, classement
+2626|foule, multitude
+2627|col de l'utérus
+2628|accidentel, fortuit
+2629|trois verres pour les retardataires
+2630|trésor, mécène
+2631|quant à moi
+2632|téléphone à ficelle
+2633|recevoir (humble), accorder
+2634|ne pas faire le poids, trop dur à mâcher
+2635|selon les circonstances
+2636|peut-être, il se peut que
+2637|nonchalant, désinvolte
+2638|populaire, séduisant
+2639|autodestruction
+2640|vanité, suffisance
+2641|tolérance, admission
+2642|en diagonale, de biais
+2643|refus
+2644|seulement, environ
+2645|principal
+2646|faits passés
+2647|échange, remplacement
+2648|pleurer jusqu'à s'endormir, se résigner
+2649|s'occuper de, avoir de l'expérience dans
+2650|donner un coup de main
+2651|guide, introduction
+2652|se retourner contre soi
+2653|allocation, indemnité, soins
+2654|verrat, truie reproductrice
+2655|passivité, voix passive, chute (judo)
+2656|esprit chevaleresque
+2657|novice (religieux)
+2658|norme, modèle
+2659|estimer, révérer
+2660|demeure, repaire, habitat
+2661|âpreté, raffinement sobre
+2662|perdre connaissance
+2663|être attentionné, se soucier de
+2664|relâcher son attention
+2665|à sa guise, capricieux
+2666|caprice, lunatique
+2667|une impression (rien de réel)
+2668|ne t'en fais pas !
+2669|se soucier de, s'inquiéter
+2670|casanier
+2671|changer d'avis
+2672|ultra-rapide
+2673|être satisfait, avoir la conscience tranquille
+2674|quart de finale
+2675|bien s'entendre
+2676|avoir envie de
+2677|avoir de l'intérêt pour, être tenté
+2678|de bonne humeur
+2679|loin de, sans parler de
+2680|quelques, plusieurs
+2681|en plein, complètement
+2682|s'appuyer contre, compter sur
+2683|compteur (classificateur)
+2684|les règles (périodes)
+2685|très étrange, mystérieux
+2686|faire perdre la face
+2687|kokeshi (poupée en bois)
+2688|regard perçant
+2689|vente au détail
+2690|petit à petit
+2691|en détail
+2692|soigner, s'occuper de (malade)
+2693|frivole, superficiel
+2694|bavardage inutile
+2695|indigestion, saturation
+2696|frileux
+2697|garder à l'esprit, s'efforcer de
+2698|n'avoir aucune idée
+2699|inconnu, inattendu
+2700|nouvellement, à nouveau
+2701|attendre avec impatience
+2702|tenue, apparence
+2703|apprendre, acquérir, porter (sur soi)
+2704|être immérité, être trop pour soi
+2705|apparence extérieure
+2706|cannibalisme, mangeur d'hommes
+2707|crevette, homard
+2708|jouer d'un instrument à vent
+2709|flaque d'eau
+2710|détérioration, changement pour le pire
+2711|absolument, à tout prix
+2712|-ième fois
+2713|déchiffrement
+2714|par l'intermédiaire de
+2715|élégance, goût
+2716|maigre, grincement, désespérément
+2717|tiède, mou (attitude)
+2718|de naissance, par nature
+2719|très patient, persévérant
+2720|alignement, défilé
+2721|paroles fleuries
+2722|infrarouge
+2723|chauffé au rouge
+2724|pétale
+2725|déneigement, pelle à neige
+2726|bonhomme de neige
+2727|(compteur général)
+2728|ermite, magicien
+2729|tout d'abord
+2730|l'autre jour, récemment
+2731|clairvoyance
+2732|infini, interminable
+2733|intrus, infiltré
+2734|pour quelle affaire
+2735|à l'avance
+2736|pour le meilleur ou pour le pire
+2737|admirablement !, bravo !
+2738|tous sans exception (péjoratif)
+2739|je vous en prie, s'il vous plaît
+2740|jusqu'au bout, partout
+2741|nulle part
+2742|vaguement, sans savoir pourquoi
+2743|sans incident
+2744|comme si de rien n'était
+2745|quoi que ce soit, (avec négation) rien
+2746|(pas) une seule chose
+2747|de toute façon
+2748|cicatrice
+2749|rien, vide
+2750|n'importe quoi
+2751|si tu veux, si cela te convient
+2752|ce que c'est, de quoi il s'agit
+2753|quel… !, comme c'est…
+2754|rien de grave, facile
+2755|tout est permis
+2756|mon Dieu !, oh là là !
+2757|bon sang !, c'est pas vrai !
+2758|qu'est-ce que c'est que ça ?
+2759|structure, construction, physique
+2760|frappe de la monnaie
+2761|ceci ou cela, pour une raison ou une autre
+2762|c'est quoi ce truc ?
+2763|quoi ? (insistant)
+2764|petit fonctionnaire
+2765|quitter son service
+2766|nul, maladroit
+2767|gouvernail
+2768|envers, par rapport à
+2769|attendre longtemps, attendre avec impatience
+2770|tant attendu
+2771|caleçon, slip
+2772|douillettement, sans souci
+2773|bouscarle (rossignol japonais)
+2774|exagéré
+2775|pas grand-chose, insignifiant
+2776|le long de
+2777|alphanumérique
+2778|à ma connaissance
+2779|pur mensonge
+2780|qui sonne faux
+2781|hélicoptère en bambou (jouet)
+2782|vers le milieu
+2783|lissage des plumes
+2784|proche, en bons termes
+2785|battre des ailes
+2786|choc des épées, coups de hache
+2787|pas à pas
+2788|passer une journée
+2789|de tout cœur
+2790|d'un seul coup
+2791|battre à plate couture
+2792|père impliqué dans l'éducation
+2793|tête de linotte
+2794|rentrer directement chez soi
+2795|sédimentation, précipité
+2796|jubilatoire, exaltant
+2797|voiture décorée de personnages d'anime
+2798|prétentieux, qui se donne des airs
+2799|cloche de temple

@@ -1,0 +1,400 @@
+400|fournitures de bureau, papeterie
+401|calme, indifférent, ça va, sans problème
+402|forte augmentation
+403|lever, sortir du lit
+404|salaire mensuel
+405|éphémère, fugace, fragile
+406|appréciation (art), contemplation
+407|encre de Chine, bâton d'encre
+408|quel… !, comme… !, quoi
+409|dimensions, mesures, plan
+410|douane
+411|voie ferrée, rails
+412|graphique
+413|maître (de maison), mari (familier), patron
+414|prétexte, excuse
+415|omettre, sauter (un passage)
+416|date et heure
+417|nausée
+418|ensoleillement, exposition au soleil
+419|diverger, ne pas concorder, se contredire
+420|pouce
+421|coucher de soleil (rougeoiement)
+422|en gros, les bases, ordinaire
+423|accorder, assembler, combiner
+424|corps, chair
+425|circulation, conduite, roulage
+426|et, ainsi que
+427|conscience (morale)
+428|garantie, assurance
+429|apporter, emporter avec soi
+430|prix, valeur
+431|soudainement, tout à coup, sans prévenir
+432|se composer de, être viable, tenir debout
+433|heurter, arriver au bout (d'une rue), se heurter à (difficultés)
+434|sauter dans, plonger, faire irruption
+435|aspiration, admiration, rêve
+436|majeur (doigt)
+437|annulaire
+438|chauffer
+439|nouveau venu, débutant, recrue
+440|guide
+441|juste, légitime, fondé
+442|reste, incomplet, fraction, à moitié
+443|traitement, manipulation, gestion
+444|faire sécher
+445|ami intime, meilleur ami
+446|foncé, épais, fort (goût), dense
+447|fondation, création (entreprise)
+448|taciturne, peu bavard
+449|fantôme, spectre
+450|escroquerie, arnaque, fraude
+451|auriculaire, petit doigt
+452|carbone
+453|extrêmement
+454|robuste, solide, en bonne santé
+455|élégant, fluide (style)
+456|nourriture, vêtement et logement
+457|veiller tard, se coucher tard
+458|grosse somme d'argent
+459|traitement, manière de traiter
+460|frais de port
+461|courrier express
+462|modestie, humilité
+463|zabuton (coussin de sol)
+464|polyvalent, tout usage, omnipotent
+465|excuse, explication
+466|morceau, bloc, masse
+467|être en désordre, traîner partout
+468|en tout cas, de toute façon
+469|tengu (démon au long nez), vantard
+470|rationalité, rationnel
+471|égout, eaux usées
+472|banal, ordinaire, médiocre
+473|interdire
+474|service public, fonctions officielles
+475|lapin, lièvre
+476|hiragana
+477|médisance, insulte
+478|articles, fournitures
+479|repos, convalescence
+480|potentiel militaire, effectif
+481|efforts, peine, soin
+482|raboter, tailler, réduire
+483|croquis d'après nature
+484|assaisonnement, condiment
+485|normal, habituel
+486|niveau débutant
+487|colère, rage
+488|best-seller
+489|raison, sens, circonstances
+490|censé être, devoir (logiquement)
+491|planifier, tenter, chercher à
+492|vraiment, comme si
+493|exemple, précédent
+494|ah !, oh !, oui
+495|répondre à, accepter, satisfaire
+496|poser sur, prendre à bord, emmener en voiture
+497|croire, avoir confiance
+498|vérité, réalité, sincérité
+499|visage, surface, masque
+500|acte, conduite
+501|cordialement, je compte sur vous, comme il faut
+502|ou, ou bien
+503|saisir, capturer, appréhender
+504|posséder, être doté de
+505|accomplir, réaliser, remplir (un rôle)
+506|morceau de musique, mélodie
+507|apporter, provoquer, entraîner
+508|établir, créer, aménager
+509|visiter, arriver, survenir
+510|minute
+511|même, ledit, idem
+512|marché, foire
+513|donner naissance, produire, engendrer
+514|ranger, terminer, finir par
+515|configuration, création, cadre (d'une œuvre)
+516|rencontrer (par hasard), tomber sur
+517|mesure, disposition
+518|élever, augmenter, renforcer
+519|sortir, extraire
+520|nécessiter, demander, prendre (temps)
+521|mécanisme, structure, fonctionnement
+522|prémisse, condition préalable, hypothèse
+523|monter, augmenter, s'intensifier
+524|murmurer, marmonner, tweeter
+525|remplir, satisfaire, atteindre
+526|membre du personnel, employé
+527|se tromper, être faux
+528|annoncer, dire, informer
+529|quoi, comment, quel
+530|genou, giron
+531|considérable, important, drastique
+532|récit, histoire, légende
+533|situation réelle, réalité
+534|point de vue
+535|facteur principal, cause
+536|fonds, capital
+537|lointain, de loin, bien plus
+538|immédiatement, aussitôt
+539|attaquer, assaillir, frapper
+540|gratter, transpirer, pelleter
+541|peu à peu, progressivement, gradins
+542|astuce, savoir-faire, os
+543|commettre (crime, faute), enfreindre
+544|monde, société, époque
+545|obscurité, ténèbres, marché noir
+546|destin, sort
+547|porte, battant, page de titre
+548|affaire, sujet, question en cours
+549|supporter, endurer, résister
+550|toucher, être en contact avec, être adjacent
+551|varié, diversifié
+552|lecteur
+553|faire flotter, afficher (un sourire), imaginer
+554|feu (défunt)
+555|âme, esprit
+556|proportion, ratio
+557|surtout, en particulier
+558|méthode, moyen, spécification
+559|être terminé, être prêt
+560|individuel, chacun
+561|pupille, yeux
+562|remonter, relever, augmenter, retirer
+563|côté, aspect, profil
+564|construire, bâtir, accumuler
+565|nom, appellation
+566|d'autre part, l'autre côté
+567|sentiment, pensée, attention
+568|piquer, pousser, frapper
+569|essorer, presser, restreindre
+570|expliquer, prêcher, persuader
+571|référence, consultation
+572|regarde !, tiens !
+573|tâtonner, chercher, sonder
+574|faible, vague, léger
+575|épuiser, se dévouer, faire tout son possible
+576|bien sûr, naturellement
+577|souhaitable, préférable
+578|provoquer, causer, relever (quelqu'un)
+579|théorie
+580|vinaigre
+581|donner, appliquer, effectuer
+582|tableau, diagramme
+583|demande, requête, appel
+584|enfoncer, plonger, se mêler de
+585|revenu
+586|approfondir, intensifier
+587|exercer, tenir (un commerce)
+588|médias
+589|faire sauter, faire revenir (cuisine)
+590|échanger (mots, salutations), se croiser
+591|présenter, tendre, soumettre
+592|monter, se préparer, adopter une posture
+593|sujet, élément principal, noyau
+594|réciter, prôner, scander
+595|inscription, enregistrement
+596|fin, bout, après
+597|eh bien, allons
+598|récipient, bol, envergure (d'une personne)
+599|encore plus, à plus forte raison
+600|succéder, hériter, raccommoder
+601|se faire appeler, prétendre
+602|personnalité, individualité
+603|gonfler, enfler, grossir
+604|paume de la main
+605|éclairer, comparer à
+606|s'emboîter, être adapté, être accro
+607|projet de loi
+608|ongle, griffe
+609|uniquement, de tout cœur, résolument
+610|commerçant, fournisseur, prestataire
+611|gestion, administration
+612|très, considérablement, sacrément
+613|échapper à, fuir
+614|jugement, verdict
+615|durcir, consolider, solidifier
+616|faire remarquer, signaler
+617|se salir, être souillé
+618|femelle (animal)
+619|diriger, mener
+620|secret, discret
+621|monter à bord, débarquer chez
+622|jouer, interpréter
+623|désir, convoitise
+624|distribuer
+625|intention, but
+626|regardez, essayez (honorifique)
+627|manipuler, traiter, gérer
+628|ensuite, puis
+629|direction, orientation, convenance
+630|nommer, appeler
+631|en fait, réellement
+632|porter sur le dos, assumer
+633|cri, hurlement
+634|faire sonner, faire retentir
+635|être prêt, être en ordre
+636|fondre, se dissoudre
+637|reportage, informations, presse
+638|venir après, suivre
+639|changer, basculer, remplacer
+640|logique
+641|sérieux, pour de vrai
+642|apparaître (photo), être projeté
+643|tempête, orage
+644|achever, finir, peaufiner
+645|soudain, inattendu
+646|enlever, éliminer
+647|en pleine nuit, au milieu de la nuit
+648|porter, être chargé de, prendre (une teinte)
+649|entourer, encercler
+650|effet, validité, efficacité
+651|tentative, essai
+652|marge, place, latitude
+653|servir (copieusement), entasser
+654|traverser, transpercer, persister
+655|rapide, prompt
+656|démolir, défaire, faire de la monnaie
+657|enfer
+658|manquer de, ébrécher
+659|montrer du doigt
+660|vif, éclatant, brillant
+661|brûler, allumer un feu, faire cuire (riz)
+662|espace
+663|fonctions, devoirs professionnels
+664|dangereux, galère, (familier) génial
+665|foyer, ménage
+666|faire face à, donner sur, assister à
+667|accepter, recevoir (une demande), supporter
+668|sceau, marque, signe
+669|mieux, préférable, en plus
+670|s'enfuir, prendre la fuite
+671|marque, symbole, surveiller
+672|ONU
+673|premier arrivé
+674|attacher, lier
+675|se lasser de, en avoir assez
+676|poste (téléphonique), ligne interne
+677|se réveiller, s'éveiller à
+678|être inférieur à
+679|parfois, de temps en temps
+680|hériter, prendre la suite
+681|Jésus, oui
+682|pratique, mise en pratique
+683|mécanisme, organisme
+684|comprendre, saisir, prendre conscience
+685|fusion, union
+686|formation, éducation, développement
+687|ride, pli
+688|bon, satisfaisant
+689|un par un, chaque fois, en détail
+690|costume, vêtements, tenue
+691|haut et bas, monter et descendre
+692|début, commencement
+693|rapidement, d'un coup
+694|décontracté, sans façon, facilement
+695|théorie, raisonnement, argument
+696|diamètre
+697|marcher, avancer
+698|placer, installer, fixer
+699|rester, être en trop
+700|vivant, plein d'entrain
+701|rémunération, récompense
+702|cascade, chute d'eau
+703|silence
+704|fluctuation, changement
+705|rouler, tomber, se coucher
+706|axe, pivot
+707|contrainte, restriction
+708|pauvre, insuffisant, rare
+709|passion, enthousiasme
+710|brillant, somptueux, éclatant
+711|s'épuiser, prendre fin
+712|immobilier
+713|tofu
+714|France, Bouddha
+715|faire face à, donner sur
+716|divers, variété
+717|cours du marché, prix courant
+718|métier à tisser, occasion
+719|audacieux, hardi
+720|arrêter, fixer, retenir
+721|mise en scène, réalisation
+722|encourager
+723|hausse, mise en ligne, gros plan
+724|couper, rompre, s'abstenir de
+725|jurer, faire le serment de
+726|bonne réponse
+727|proposition, demande, offre
+728|puissant, vigoureux, rassurant
+729|fin, extrémité, aboutissement
+730|filet, réseau
+731|but, espoir, ce sur quoi on compte
+732|gêner, empêcher, entraver
+733|documentation, littérature (références)
+734|adoption, recrutement
+735|moment, occasion, passage (texte)
+736|injuste, abusif, injustifié
+737|rang supérieur, haut du classement
+738|combiné (téléphone)
+739|délibération
+740|par conséquent, à cause de
+741|Moyen Âge
+742|tomber (fleurs, feuilles), se disperser
+743|beauté
+744|servir, être au service de
+745|idée, notion, résignation
+746|pouvoir politique, gouvernement
+747|traitement, mesure
+748|pressentiment
+749|arbres, arbres et arbustes
+750|tige
+751|séparément, chacun de son côté
+752|tatami, (compteur de tatamis)
+753|état, situation, aspect
+754|excitation, agitation
+755|base, fondement, origine
+756|dialogue, conversation
+757|s'intensifier, recruter, collecter
+758|uniforme
+759|honte
+760|gestion, règlement, rangement
+761|détourner (le regard)
+762|raison, bon sens
+763|poignet
+764|envoi, détachement, intérimaire
+765|aide, assistance, subvention
+766|nourrir, élever, cultiver (une qualité)
+767|répartition, distribution
+768|mériter, valoir
+769|pertinent, approprié, raisonnable
+770|d'un coup, fermement, nettement
+771|ressources financières
+772|navire
+773|prière
+774|descendants, postérité
+775|faire fondre, dissoudre
+776|éclairage
+777|pente, plan incliné
+778|origine
+779|variété, espèce, race
+780|mission
+781|ligne (de texte), ascèse
+782|bactérie, microbe
+783|être en désordre, être perturbé
+784|évident, clair
+785|ordre, séquence, procédure
+786|enseignant
+787|interdire
+788|danser, voltiger
+789|déchirer, séparer
+790|se renseigner, demander des informations
+791|concentrer (son attention), soigner (les détails)
+792|meilleur, gilet
+793|œuvre originale
+794|relier, connecter
+795|mécanisme, dispositif, piège
+796|mêler, échanger (paroles, coups)
+797|nom de famille, lignée, M. (monsieur)
+798|échapper à, éviter
+799|rebondir, s'animer

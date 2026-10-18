@@ -1,0 +1,400 @@
+1200|charge, bagage, cargaison, fardeau
+1201|attribut, propriété
+1202|grandiose, somptueux
+1203|pachinko
+1204|traitement, accueil, rémunération
+1205|bête, saleté !, bon sang !
+1206|stèle, monument
+1207|respecter, faire grand cas de
+1208|préfecture d'Iwate
+1209|bateau de pêche
+1210|responsable, préposé
+1211|commander, faire venir
+1212|mutation (professionnelle)
+1213|règlement, statuts, conditions
+1214|résidence
+1215|étroit, à l'étroit, guindé
+1216|pressant, sincère, criant
+1217|esprit, âme
+1218|tanka (poème de 31 mores)
+1219|centre, noyau, pivot
+1220|peinture, revêtement
+1221|coussin
+1222|forteresse, bastion
+1223|mettre en vente, lancer, devenir populaire
+1224|de tout cœur, d'un seul cœur
+1225|surnom affectueux
+1226|résignation
+1227|ne pas voir, laisser échapper
+1228|match, aller bien avec, allumette
+1229|marbre
+1230|date
+1231|retentir, résonner
+1232|cadavre, dépouille
+1233|vue (sens)
+1234|croc, défense
+1235|humiliation
+1236|épaules raides
+1237|faucon
+1238|voir à travers, prévoir
+1239|contre-attaque
+1240|espagnol (langue)
+1241|fragile, cassant, sensible
+1242|sollicitation, démarchage
+1243|longuement
+1244|briller, mettre en valeur
+1245|cher, chéri, adorable
+1246|maquette, modèle réduit
+1247|entretien, dialogue
+1248|las, mou, sans énergie
+1249|libellule
+1250|goutte
+1251|partition (musique)
+1252|parterre de fleurs
+1253|ambition
+1254|mélodie
+1255|pasteur
+1256|corps céleste
+1257|bouton (acné)
+1258|sac en papier
+1259|poste, fonction (de direction)
+1260|cage, cellule
+1261|émotion profonde
+1262|recouvrer (dettes), promouvoir
+1263|cran, volonté, caractère
+1264|excité, impatient (de joie)
+1265|écho, retentissement, réaction
+1266|antipathie, hostilité
+1267|feu de camp, feu de feuilles
+1268|hameau
+1269|gâché, ruiné
+1270|souvenir (cadeau)
+1271|interrompre, mettre fin à
+1272|uniforme, égal pour tous
+1273|forcément, en forçant
+1274|muqueuse
+1275|cycle
+1276|troupe de théâtre
+1277|souvenir, reconnaître (de vue)
+1278|plomb
+1279|conte, vieille histoire
+1280|se cacher, endurer
+1281|(compteur pour maisons)
+1282|épine, écharde
+1283|zone, toute la région
+1284|contrainte, obligation
+1285|paisible, tranquille
+1286|décision, confirmation
+1287|bénédiction
+1288|design, conception
+1289|filtre
+1290|courant, tendance
+1291|ciel et terre, univers
+1292|trace, indice
+1293|mairie
+1294|probablement, la plupart
+1295|rétablissement, réparation
+1296|garde, protection
+1297|territoire, fief
+1298|tremblement de terre (catastrophe)
+1299|traîner, glisser, s'éterniser
+1300|vil, vulgaire, humble
+1301|commerce, quotient
+1302|ronflement
+1303|rôle principal
+1304|deuxième partie, chic
+1305|roche
+1306|dauphin
+1307|navire de guerre
+1308|charge de famille, entretien
+1309|être renouvelé, devenir formel
+1310|expertise, évaluation
+1311|contrôle, réglementation
+1312|calendrier, almanach
+1313|poterie, faïence
+1314|information
+1315|endroit ensoleillé
+1316|célèbre, réputé
+1317|résolution, vote
+1318|étranger, importé, consultations externes
+1319|cuisse
+1320|anémie
+1321|ferme
+1322|réacteur nucléaire
+1323|création, génération
+1324|disposition, tableau (programmation)
+1325|acide
+1326|liste de noms, registre
+1327|posture
+1328|pharmacien
+1329|attention, sollicitude
+1330|passer, s'écouler
+1331|subjectif
+1332|s'entraider
+1333|organe
+1334|geisha
+1335|pirate
+1336|kendo
+1337|approprié, à sa convenance
+1338|rondouillard, entièrement
+1339|cohésion, unité
+1340|captif, esclave (de l'amour)
+1341|casque (de samouraï)
+1342|cocktail
+1343|amour-propre, fierté
+1344|roseau
+1345|à la pointe, dernier cri
+1346|étincelle
+1347|nouvelle chanson
+1348|complètement, parfaitement (emboîté)
+1349|marge d'erreur
+1350|niveau de difficulté
+1351|romantique
+1352|organisme public, logement public
+1353|ordonné, méthodique
+1354|récidive, rechute
+1355|bec
+1356|procureur
+1357|apprendre de ses erreurs, en avoir assez
+1358|saut
+1359|tissu, textile
+1360|désemparé, qui se sent seul
+1361|aigle
+1362|faux, contrefait
+1363|à l'aise, librement
+1364|commerce, échanges
+1365|pluie torrentielle
+1366|voiture de location
+1367|levier, foie
+1368|amateur
+1369|rue, avenue
+1370|connaissances, règles, consignes
+1371|quiz
+1372|renversement, retournement de situation
+1373|émeute
+1374|noble
+1375|législation
+1376|givre
+1377|lancement, fondation
+1378|attachement, obsession
+1379|code secret, chiffrement
+1380|fondre, être charmé
+1381|recevoir, faire bon accueil
+1382|faire pousser, laisser pousser (barbe)
+1383|parfaitement, aller bien
+1384|présentation de soi
+1385|pause, séparation, étape
+1386|plantes, végétation
+1387|perception, collecte (impôts)
+1388|introduction, investissement
+1389|doigts, sbire, pion
+1390|intuition
+1391|carrelage
+1392|annexe, supplément
+1393|chanvre, lin
+1394|logement, habitation
+1395|constellation, signe du zodiaque
+1396|lâcheté, timidité
+1397|canette vide
+1398|broderie
+1399|inspection, visite d'observation
+1400|grand frère, jeune homme
+1401|tournure, expression
+1402|piège, chausse-trape
+1403|après l'accouchement
+1404|modèle, exemple
+1405|écrit à la main
+1406|arracher, dépouiller
+1407|obtention, acquisition
+1408|poignée
+1409|arène (sumo), terrain
+1410|affiche, avis placardé
+1411|acte, conduite
+1412|délicat, frêle, luxueux
+1413|décompte, total
+1414|disque solaire, drapeau japonais
+1415|publicité, spot
+1416|publication
+1417|volume (son)
+1418|hôte
+1419|obéir respectueusement, se tenir droit
+1420|unique, simple
+1421|vertigineux, mouvementé
+1422|chancelant, étourdi, errant
+1423|recul
+1424|appartenance, affiliation
+1425|énergique, spectaculaire
+1426|marais, torrent de montagne
+1427|bouche bée, l'air absent
+1428|bricolage, travaux manuels, manœuvre
+1429|maladroit, gauche, raide
+1430|statut, rang, cas
+1431|indemnisation, réparations
+1432|gelée
+1433|paulownia
+1434|exaspérant, agaçant
+1435|remettre à plus tard
+1436|demeure, résidence
+1437|pêche
+1438|grande carrure, grand motif
+1439|s'attacher (à quelqu'un)
+1440|poudre
+1441|dame de compagnie
+1442|anticorps
+1443|fils, gamin
+1444|système, lignée
+1445|minutieux, précis
+1446|feuilles mortes
+1447|maigre, pauvre
+1448|tube, canon
+1449|manque d'exercice
+1450|frissons, froid
+1451|inattendu, terrible
+1452|clignement, scintillement
+1453|faire doublon, se chevaucher
+1454|fin, limite
+1455|convenable, approprié
+1456|plat préféré
+1457|persuader, draguer
+1458|relief, hauts et bas
+1459|torii (portique shinto)
+1460|titre
+1461|simplicité, sobre
+1462|raccourci
+1463|élasticité, souplesse
+1464|maladroit
+1465|reprocher, réprimander
+1466|méchanceté, sarcasme
+1467|seigneur, daimyo
+1468|graffiti, gribouillis
+1469|mépriser, regarder de haut
+1470|gouvernement, règne
+1471|solde (bancaire)
+1472|sommet
+1473|dissection, autopsie
+1474|paroles, mots
+1475|candidat (examen d'entrée)
+1476|fruit, noix, baie
+1477|sensibilité, réception
+1478|base, fondation, aptitude
+1479|gamin, apprenti
+1480|bulbe
+1481|épi
+1482|câble électrique
+1483|service, bénévolat
+1484|cérémonie du thé
+1485|faire de l'argent
+1486|neutralité
+1487|patience, persévérance
+1488|imbécile, crétin
+1489|attaque, assaut
+1490|bavardage
+1491|gravier
+1492|depuis toujours, ancestral
+1493|cosmos (fleur)
+1494|réflexion, réflexe
+1495|globe oculaire
+1496|gagner, être avantagé
+1497|cime (d'un arbre)
+1498|compilation, volume, arc (histoire)
+1499|habileté, efficacité
+1500|faim
+1501|attribution, quota
+1502|garde du corps, escorte
+1503|Palestine
+1504|(auxiliaire honorifique)
+1505|être humide, profiter de
+1506|coquillage
+1507|dossier médical
+1508|habileté, talent
+1509|usage, pratique courante
+1510|garage
+1511|élégance, distinction
+1512|résiliation (contrat)
+1513|abattu, découragé
+1514|antiquité, autrefois
+1515|persécution
+1516|certification, examen officiel
+1517|harmonie, paisible
+1518|balaou (sanma)
+1519|gland
+1520|prêt, souplesse, adaptabilité
+1521|exercice, manœuvres, séminaire
+1522|monstre (kaiju)
+1523|regret, attachement persistant
+1524|expédition, tournée
+1525|vocabulaire
+1526|shamisen
+1527|pièce close, chambre secrète
+1528|uniforme militaire
+1529|somen (nouilles fines)
+1530|réforme, innovation
+1531|envers, à l'envers, revers
+1532|ovaire
+1533|reprise, réouverture
+1534|cerf-volant
+1535|apparences, vanité
+1536|positif
+1537|secours, renfort
+1538|devenir flou
+1539|auberge
+1540|hausse, recette, fin
+1541|ferme, intransigeant
+1542|réjouissant
+1543|bouillie de riz
+1544|chute, anéantissement
+1545|modèle, exemple
+1546|réclamer, extorquer
+1547|occasion
+1548|soldes
+1549|jetée, embarcadère
+1550|archéologie
+1551|chaîne de montagnes
+1552|bave
+1553|guide (livre)
+1554|par (golf), à l'eau (projet)
+1555|tant attendu
+1556|sentir bon, embaumer
+1557|paisible, harmonieux
+1558|sommité, référence
+1559|comte
+1560|arranger (fleurs), vivant
+1561|esthétique
+1562|en miettes
+1563|attendre avec impatience
+1564|se réduire, se rapprocher
+1565|pompon, ventre, pan-pan
+1566|discrétion, ninja
+1567|ouïe
+1568|très, extrêmement
+1569|duc, prince
+1570|lecture à voix haute
+1571|yokozuna (grand champion de sumo)
+1572|sobriété, frugalité
+1573|agriculture
+1574|règlement (de comptes), liquidation
+1575|lutteur de sumo
+1576|accueil chaleureux
+1577|nourriture, proie
+1578|uniforme
+1579|occasionnel, rare
+1580|volt, boulon
+1581|artère
+1582|s'accumuler, augmenter
+1583|prodige, émerveillement
+1584|ville sous le château
+1585|pièce de théâtre
+1586|biscuit
+1587|équipé de, avec, chance
+1588|lever de rideau
+1589|résumé, grandes lignes
+1590|guindé, formel
+1591|affaires militaires
+1592|fourrage
+1593|torchon
+1594|soif de sang, aura menaçante
+1595|élevage
+1596|interruption
+1597|pèlerinage, pèlerin
+1598|deux chiffres
+1599|ministre des Affaires étrangères

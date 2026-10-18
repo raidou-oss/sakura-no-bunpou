@@ -1,0 +1,400 @@
+400|point de vue
+401|indécent, inconvenant, laid
+402|bande, clique, ces gens-là
+403|drame historique (samouraïs)
+404|brise légère
+405|canicule
+406|réglementation, restriction, contrôle
+407|asphyxie, étouffement
+408|fêter, célébrer, féliciter
+409|Antiquité
+410|difficile
+411|difficile à (suffixe)
+412|chute, crash
+413|visite à un malade, mot de soutien
+414|douter, soupçonner
+415|quoi, quelque chose, (avec négation) rien
+416|débat, discussion
+417|transmission, communication
+418|lent, doux, souple, clément
+419|mise au rebut, abrogation
+420|actif, vif, dynamique
+421|ringard, pas stylé
+422|changer, se tromper, ne pas tenir (promesse)
+423|méchant, vaurien
+424|Père Noël
+425|actions (entreprise)
+426|course
+427|vérité, fin mot de l'histoire
+428|yokai, esprit, fantôme
+429|capitulation, reddition
+430|habitude, manie, tic
+431|hisser, afficher, brandir (objectif)
+432|fixer, établir, déterminer
+433|mention, inscription
+434|chaque
+435|assemblée générale
+436|consultation, lecture, navigation (web)
+437|point de vue, manière de voir
+438|propulsion, promotion, mise en œuvre
+439|intention, volonté
+440|tan (mesure de tissu ou de surface)
+441|abolition, suppression
+442|grève
+443|ordre du jour, sujet de discussion
+444|morale, principes moraux
+445|renforcer, accentuer
+446|(loin de… au contraire)
+447|affaiblir
+448|haine
+449|supposition, conjecture
+450|s'intéresser à
+451|cravate, Thaïlande, égalité
+452|entrer
+453|quel genre de
+454|c'est-à-dire, bref
+455|contenir, inclure, garder en bouche
+456|règlement, disposition
+457|bord, lors de, moment
+458|mouvement, tendance, évolution
+459|par conséquent
+460|enlever, exclure, excepter
+461|à propos, au passage
+462|rôle, fonction
+463|entreprise, activité, projet
+464|exactement, précisément, sur le point de
+465|bientôt, finalement
+466|autrefois, jadis, ancien
+467|(incertitude) entre autres, et cetera
+468|s'étendre, se répandre
+469|point
+470|sujet, problème à résoudre, devoir
+471|général, courant
+472|établissement, installations
+473|soi-même, en personne
+474|principe, règle générale
+475|comment, à quel point, si… que
+476|écrire, noter
+477|même si, quand bien même
+478|regard, ligne de mire
+479|bataille, campagne, corvée
+480|saisir, serrer, façonner (sushi)
+481|essentiel, teneur, principe
+482|crainte, risque
+483|design
+484|encore loin, pas encore
+485|déjà, plus maintenant
+486|ombre, silhouette, reflet
+487|au départ, à l'origine
+488|réunion, assemblée
+489|remarquable, considérable
+490|communes, municipalités
+491|charger, mettre (du cœur), inclure
+492|cul sec !
+493|et cetera, rang, classe
+494|taille
+495|arranger, préparer, ajuster
+496|l'est, Japon de l'Est
+497|ton (de voix), façon de parler
+498|échelle, envergure
+499|inciter, presser, stimuler
+500|de… à, ou
+501|fabricant
+502|arrière, derrière, coulisses
+503|délibérément, oser
+504|en effet, vraiment
+505|intérieur, interne
+506|exprès, spécialement
+507|proche, familier
+508|âme, esprit
+509|porter sur l'épaule, assumer
+510|graduellement, petit à petit
+511|tendance, évolution
+512|règle
+513|rentrer, s'installer, se régler
+514|propre, original, unique
+515|objectif, intention, sens
+516|ainsi que, et
+517|fondement, justification
+518|lien, destin, relation
+519|ce type, ce gars-là
+520|tranchant, aigu, perspicace
+521|problème, ennui
+522|image, vidéo
+523|pur, brut
+524|cru, frais, en direct
+525|langue (organe)
+526|lever les yeux, admirer
+527|maître, propriétaire, chef
+528|accompagner, joindre, garnir
+529|pilier, poteau
+530|domaine, territoire
+531|guider, mener, déduire
+532|un jour, tôt ou tard
+533|attraper, recevoir, accepter
+534|forme, structure
+535|frais, dépenses
+536|toujours, encore
+537|voix forte
+538|cellule
+539|pouvoir, autorité
+540|rapide, agile, vif
+541|bijou, boule, perle
+542|ce type-ci
+543|doute, soupçon
+544|épée, sabre
+545|définition
+546|extrême
+547|médias de masse
+548|combiner, assembler
+549|essayer, tenter
+550|timing
+551|menton, mâchoire
+552|méthode, technique
+553|promotion, accélération
+554|soi-même, moi, toi (péjoratif)
+555|traitement, sanction, élimination
+556|série, suite
+557|essence, nature profonde
+558|maintenant (trop tard), à nouveau
+559|réplique, paroles
+560|Taïwan
+561|déroulement, évolution, écoulement
+562|procédure, étapes
+563|base, basse
+564|protection sociale, bien-être
+565|un peu, quelques
+566|s'emmêler, chercher querelle, être impliqué
+567|fluide, harmonieux
+568|toutes sortes
+569|incliner, pencher, consacrer
+570|choc, impact
+571|fréquent
+572|circonstances, déroulement des faits
+573|femelle
+574|utilisation, gestion, placement
+575|fuir, filtrer, être omis
+576|s'animer, monter, gonfler
+577|bon, bien
+578|méthode, système, formule
+579|perspective, visibilité, prévision
+580|efficace
+581|bon !, d'accord
+582|ajouter
+583|affaire, chose, sujet
+584|parfait, impeccable
+585|faire mal, s'abîmer
+586|directeur, secrétaire d'État
+587|motif, motivation
+588|sourcil
+589|sous la main, à portée
+590|en bons termes, s'entendre bien
+591|formation
+592|ce type-là
+593|(suffixe méprisant) oser faire
+594|accord, consentement
+595|intense, violent
+596|gène
+597|s'enfermer, être chargé (d'émotion)
+598|établissement, mise en place
+599|calmement, à fond, sans se presser
+600|mission, tâche
+601|soins, aide à la personne
+602|accomplir, parvenir à
+603|sain
+604|propriétaire
+605|cadre, limite
+606|matière, sujet de blague, garniture (sushi)
+607|emploi, embauche
+608|arme à feu, fusil
+609|résolution, détermination
+610|protéine
+611|pensée, réflexion
+612|normal
+613|exclusivement, uniquement
+614|relier, attacher, associer
+615|action, effet
+616|silence
+617|poulet, poule
+618|indice
+619|peuple, masses
+620|concertation, négociation
+621|motivation, envie, volonté
+622|salaire
+623|se tromper, induire en erreur
+624|ours
+625|imitation, comportement
+626|ordre, discipline
+627|angle, carré, fou (shogi)
+628|corne
+629|remplir, écrire, poster (message)
+630|champ de vision, perspective
+631|renouvellement, mise à jour
+632|essentiel, crucial
+633|projet, planification
+634|autorité, prestige
+635|temps, peine, effort
+636|examen, évaluation, jury
+637|part (de marché), partage
+638|traité
+639|inconnu, obscur
+640|révolution
+641|depuis longtemps, après longtemps
+642|conversion, changement
+643|commencer, provoquer, piéger
+644|de justesse, à la dernière minute
+645|faire connaissance
+646|occasion, déclencheur
+647|être découvert (secret, mensonge)
+648|maladie, vice
+649|brouillard, brume
+650|reprendre, récupérer, prendre en charge
+651|étroit, intime
+652|pot, jarre, point clé
+653|Corée
+654|pousser, croître
+655|influence, force, pouvoir
+656|une face, toute la surface, un aspect
+657|monter la garde, ouvrir grand les yeux
+658|accord, convention
+659|indicateur
+660|imposant, digne, majestueux
+661|individuel, séparé
+662|premier, nouveau
+663|pas tellement
+664|la prochaine fois
+665|répétition
+666|être riche (en), abonder
+667|chef, aîné
+668|souris, rat, gris foncé
+669|coin, rubrique, rayon
+670|témoignage
+671|ouvrage (d'un auteur)
+672|heure, moment
+673|justice
+674|objet, corps
+675|s'inscrire, demander, proposer
+676|strict, rigoureux
+677|pitoyable, lamentable
+678|noyau, nucléaire
+679|forger, entraîner, endurcir
+680|procès
+681|une bouchée, une gorgée
+682|coller, poster (quelqu'un)
+683|vérité
+684|pas terrible, bof
+685|sensation de décalage, malaise
+686|personnalité
+687|siège, feuille
+688|alimentation électrique, bouton marche
+689|toucher, sensation, impression
+690|dragon
+691|village, hameau, colonie
+692|piste, indice
+693|interrompre, bloquer
+694|symbole
+695|ourlet, bas (d'un vêtement), pied (montagne)
+696|accouchement, naissance
+697|sensible, réceptif
+698|livres
+699|ange
+700|être trouvé
+701|vaisseau sanguin
+702|avoir peur, être effrayé
+703|harcèlement, brimades
+704|habile, adroit
+705|manche
+706|comme si
+707|résolution, décision (vote)
+708|sauce, source
+709|être perplexe, être désorienté
+710|ruines, site archéologique
+711|conviction, croyance
+712|deviner, comprendre, compatir
+713|actuel, en vigueur
+714|fidélité, loyauté
+715|terres agricoles
+716|approche
+717|la deuxième fois
+718|mal de tête
+719|disposition, déploiement
+720|énorme, gros
+721|détail (des dépenses), ventilation
+722|forme
+723|bourgeon, pousse
+724|Bible
+725|souhaitable, sympathique
+726|cadres dirigeants
+727|bleu, déprimé
+728|se faire dorloter, profiter de la gentillesse de
+729|se familiariser avec
+730|volume (livre), rouleau
+731|arrondissement, district
+732|lisse, fluide
+733|différence, écart
+734|éclat, brillance
+735|se teindre, être imprégné
+736|se répandre
+737|se conformer à, être basé sur
+738|cabinet (gouvernement)
+739|bureaucrate
+740|gens ordinaires, peuple
+741|recettes, profits
+742|recherche (informatique)
+743|nuire, abîmer, rater
+744|saveur, charme
+745|phénomène, éléphant
+746|humidité
+747|renard
+748|texte principal, corps (lettre)
+749|harmonie
+750|se lamenter, déplorer
+751|tenir compte de, à la lumière de
+752|aiguille, ligne directrice
+753|simplicité, naïveté
+754|quantité
+755|exactement, ponctuellement
+756|frotter, gratter (allumette)
+757|étrange, bizarre
+758|lever les yeux, respecter, solliciter
+759|personne noire
+760|s'éclipser, s'échapper, sortir de
+761|leçon, cours
+762|bouclier
+763|nouilles
+764|revêtir, porter
+765|annulation
+766|bon goût, sens (du style)
+767|mémoire, souvenir, expérience
+768|contrôle
+769|bâtiment, salle
+770|manoir, demeure
+771|panier, cage
+772|desserrer, ralentir
+773|corps principal, unité centrale
+774|lance
+775|giron, sein, portefeuille
+776|déclaration (fiscale)
+777|pendre, s'affaisser
+778|organiser, ressentir (une envie)
+779|embrasser du regard
+780|recevoir, (familier) donne-moi
+781|mise en application, exécution
+782|passer sous, plonger
+783|souple, flexible
+784|ennuyeux, embêtant
+785|évolution
+786|d'autant plus
+787|réduction, coupe
+788|urgent, immédiat
+789|préfecture de Saitama
+790|constamment, souvent
+791|tranchant (lame)
+792|lame, épée
+793|marée, courant, occasion
+794|salle (concert), salle de restaurant
+795|fierté, vantardise
+796|ouvert, ouverture
+797|indépendance, autonomie
+798|se vêtir, feindre
+799|secrétaire
