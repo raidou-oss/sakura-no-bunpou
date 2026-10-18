@@ -1,0 +1,100 @@
+195 || 分（わ）からなければ、|先生（せんせい）に|聞（き）け[ばいい]。 || Si tu ne comprends pas, tu n'as qu'à demander au professeur. || てもいい;たらどう;ことだ
+197 || ただいま|会議（かいぎ）[中（ちゅう）]です。 || La réunion est en cours. || 間;内;際
+210 || 夏休（なつやす）み[の間（あいだ）に]、|運転免許（うんてんめんきょ）を|取（と）りたい。 || Je veux passer mon permis pendant les vacances d'été. || の前で;の上で;のために
+211 || 若（わか）い[うちに]、|いろいろな|国（くに）へ|行（い）ったほうがいい。 || Tant que tu es jeune, tu devrais voyager dans plein de pays. || ばかりに;ところに;おかげで
+451 || 暗（くら）くなら[ないうちに]、|帰（かえ）りましょう。 || Rentrons avant qu'il fasse nuit. || ないように;ないかぎり;ないまま
+196 || 学生（がくせい）は|勉強（べんきょう）す[べき]だ。 || Les étudiants devraient étudier. || はず;よう;まい
+209 || 人（ひと）の|悪口（わるぐち）を|言（い）う[べきではない]。 || On ne devrait pas dire du mal des autres. || はずがない;ことはない;ものではある
+437 || この|問題（もんだい）は|[なかなか]|難（むずか）しい。 || Ce problème est assez coriace. || けっして;めったに;すこしも
+444 || バスが|[なかなか]|来（こ）ない。 || Le bus n'arrive vraiment pas. || けっして;だんだん;どんどん
+204 || 天気予報（てんきよほう）[によると]、|明日（あした）は|雪（ゆき）らしい。 || D'après la météo, il neigera demain. || について;に対して;にとって
+214 || 地域（ちいき）[によって]、|言葉（ことば）が|違（ちが）う。 || La langue diffère selon les régions. || について;にとって;に対して
+439 || 彼（かれ）の|話（はなし）は|[全（まった）く]|分（わ）からない。 || Je ne comprends absolument rien à ce qu'il dit. || かなり;けっこう;ずいぶん
+199 || 上手（じょうず）になりたければ、|毎日（まいにち）|練習（れんしゅう）する[ことだ]。 || Si tu veux progresser, il faut t'entraîner tous les jours. || ものか;わけか;ところだ
+200 || ニュースによると、|台風（たいふう）が|来（く）る[そうだ]。 || D'après les infos, un typhon arrive. || ようだ;らしくない;べきだ
+438 || ボタンを|押（お）した。|[すると]、|ドアが|開（あ）いた。 || J'ai appuyé sur le bouton. Alors, la porte s'est ouverte. || ところで;それとも;ところが
+314 || ちょっと|これを|食（た）べて[ごらん]。 || Goûte un peu ça, pour voir. || しまう;おく;ある
+1102 || 今日（きょう）は|早（はや）く|帰（かえ）ら[せてもらい]ます。 || Permettez-moi de rentrer tôt aujourd'hui. || れてもらい;せてあげ;せてくれ
+436 || 日本（にほん）は|島国（しまぐに）[である]。 || Le Japon est un pays insulaire. || がある;にある;をある
+206 || 晴（は）れると|思（おも）っていた。|[ところが]、|雨（あめ）が|降（ふ）ってきた。 || Je pensais qu'il ferait beau. Or, il s'est mis à pleuvoir. || ところで;それで;すると
+217 || [ところで]、|あの|話（はなし）は|どうなった？ || Au fait, qu'est devenue cette histoire ? || ところが;それで;すると
+201 || 死（し）ぬ[ほど]|疲（つか）れた。 || Je suis crevé à en mourir. || ばかり;だけ;しか
+207 || 練習（れんしゅう）すれば|する[ほど]、|上手（じょうず）になる。 || Plus on s'entraîne, plus on progresse. || だけ;ばかり;まで
+221 || 今年（ことし）の|夏（なつ）は|去年（きょねん）[ほど]|暑（あつ）くない。 || Cet été n'est pas aussi chaud que l'an dernier. || より;まで;だけ
+205 || 健康（けんこう）の[ために]、|毎朝（まいあさ）|走（はし）っている。 || Je cours tous les matins pour ma santé. || せいで;おかげで;くせに
+205 || 雪（ゆき）の[ため]、|電車（でんしゃ）が|止（と）まった。 || À cause de la neige, les trains se sont arrêtés. || くせ;わけ;はず
+202 || 「さくら」[という]|店（みせ）を|知（し）っていますか。 || Tu connais un magasin qui s'appelle « Sakura » ? || とする;となる;とある
+216 || 明日（あした）は|休校（きゅうこう）だ[ということだ]。 || Il paraît que l'école sera fermée demain. || というものだ;ということか;というわけか
+228 || 「デジカメ」[というのは]、|デジタルカメラのことだ。 || « Dejikame », ça veut dire appareil photo numérique. || というより;といえば;といっても
+443 || 彼（かれ）の|考（かんが）え方（かた）は|とても|現実（げんじつ）[的（てき）]だ。 || Sa façon de penser est très réaliste. || 性;化;式
+223 || 子（こ）どもの頃（ころ）は|よく|この|川（かわ）で|遊（あそ）んだ[ものだ]。 || Quand j'étais petit, je jouais souvent dans cette rivière. || ことだ;わけだ;はずだ
+226 || 食事（しょくじ）の[最中（さいちゅう）に]|電話（でんわ）が|鳴（な）った。 || Le téléphone a sonné en plein repas. || 最後に;最初に;最近に
+238 || 先生（せんせい）の[おかげで]、|合格（ごうかく）できました。 || Grâce au professeur, j'ai pu réussir. || せいで;くせに;ばかりに
+203 || [なぜなら]、|彼（かれ）は|嘘（うそ）をついたからだ。 || Parce qu'il a menti. || それで;すると;したがって
+258 || 今度（こんど）[こそ]|合格（ごうかく）してみせる。 || Cette fois, c'est la bonne : je réussirai. || さえ;まで;ほど
+219 || 弟（おとうと）は|ゲーム[ばかり]|している。 || Mon petit frère ne fait que jouer aux jeux vidéo. || ほど;くらい;ごろ
+231 || 物価（ぶっか）は|上（あ）がる[ばかりだ]。 || Les prix ne font qu'augmenter. || ところだ;つもりだ;はずだ
+294 || 今日（きょう）から|お酒（さけ）を|やめる[ことにした]。 || J'ai décidé d'arrêter l'alcool à partir d'aujourd'hui. || ことになった;ことがある;ことはない
+283 || 来月（らいげつ）、|大阪（おおさか）に|転勤（てんきん）する[ことになった]。 || Il a été décidé que je serais muté à Osaka le mois prochain. || ことにした;ことがある;ことはない
+233 || 心配（しんぱい）する[ことはない]よ。 || Il n'y a pas de quoi t'inquiéter. || ことになる;ことにする;ことができる
+225 || 日本（にほん）の|文化（ぶんか）[について]|調（しら）べている。 || Je fais des recherches sur la culture japonaise. || によって;にとって;に対して
+224 || 去年（きょねん）[に比（くら）べて]、|今年（ことし）は|雨（あめ）が|多（おお）い。 || Comparé à l'an dernier, il pleut beaucoup cette année. || に対して;について;によって
+220 || [どんなに]|忙（いそが）しくても、|朝（あさ）ご飯（はん）は|食（た）べる。 || Aussi occupé que je sois, je prends un petit-déjeuner. || なぜ;どうして;いつ
+229 || 道（みち）が|混（こ）んでいる。|遅（おく）れる[わけだ]。 || La route est bouchée. Pas étonnant qu'on soit en retard. || ことだ;ものだ;はずがない
+241 || 肉（にく）が|嫌（きら）いな[わけではない]。 || Ce n'est pas que je déteste la viande. || わけがない;はずだ;ことだ
+236 || 環境（かんきょう）[に関（かん）する]|本（ほん）を|読（よ）んだ。 || J'ai lu un livre sur l'environnement. || に対する;によって;に比べる
+237 || 子（こ）どもは|親（おや）[に対（たい）して]|反抗（はんこう）することがある。 || Les enfants se rebellent parfois contre leurs parents. || について;によって;にとって
+235 || 窓（まど）を|開（あ）けた[まま]|寝（ね）てしまった。 || Je me suis endormi en laissant la fenêtre ouverte. || ばかり;ところ;うち
+249 || 電車（でんしゃ）が|ないから、|歩（ある）いて|帰（かえ）る[しかない]。 || Il n'y a plus de train, je n'ai qu'à rentrer à pied. || はずがない;わけではない;ことはない
+239 || 鉛筆（えんぴつ）で|書（か）いて[もかまわない]。 || Ça ne pose pas de problème d'écrire au crayon. || はいけない;ほしい;しまう
+253 || あんなに|練習（れんしゅう）したんだから、|負（ま）ける[わけがない]。 || Après tout cet entraînement, impossible qu'on perde. || わけだ;ことだ;べきだ
+265 || 彼（かれ）は|通訳（つうやく）[として]|働（はたら）いている。 || Il travaille en tant qu'interprète. || にして;にとって;について
+273 || 初（はじ）めて[にしては]、|上手（じょうず）だね。 || Pour une première fois, c'est bien fait ! || として;について;によって
+247 || 私（わたし）[にとって]、|家族（かぞく）が|一番（いちばん）|大切（たいせつ）だ。 || Pour moi, la famille est ce qu'il y a de plus important. || によって;について;に対して
+250 || 今日（きょう）は|暖（あたた）かい[というより]|暑（あつ）い。 || Aujourd'hui, il fait plutôt chaud que doux. || というのは;といえば;ということ
+463 || 彼（かれ）は|英語（えいご）[はもちろん]、|フランス語（ご）も|話（はな）せる。 || Il parle anglais, bien sûr, mais aussi français. || をはじめて;にかぎって;によって
+248 || 忙（いそが）しくて、|寝（ね）る|時間（じかん）[さえ]|ない。 || Je suis si occupé que je n'ai même pas le temps de dormir. || ばかり;こそ;だけ
+264 || 時間（じかん）[さえ]|あれば、|もっと|旅行（りょこう）したい。 || Si seulement j'avais le temps, je voyagerais plus. || こそ;まで;ほど
+252 || 母（はは）の|姉（あね）、|[つまり]|私（わたし）の|おばです。 || La sœur de ma mère, c'est-à-dire ma tante. || ところが;それとも;すると
+260 || [まるで]|夢（ゆめ）を|見（み）ているようだ。 || C'est comme si je rêvais. || けっして;めったに;なかなか
+254 || 彼（かれ）とは|前（まえ）に|会（あ）った[ような気（き）がする]。 || J'ai l'impression d'avoir déjà rencontré cette personne. || ような気にする;ような気がある;ような気でいる
+256 || [別（べつ）に]|怒（おこ）っていないよ。 || Je ne suis pas spécialement fâché. || まるで;まさか;つい
+268 || この|ことは|[決（けっ）して]|忘（わす）れない。 || Je n'oublierai jamais cela. || たまに;ときどき;たしか
+266 || 大事（だいじ）な|会議（かいぎ）だから、|休（やす）む[わけにはいかない]。 || C'est une réunion importante, je ne peux pas me permettre de la rater. || わけがある;ことにする;ことがある
+276 || [たとえ]|反対（はんたい）されても、|やるつもりだ。 || Même si on s'y oppose, j'ai l'intention de le faire. || まさか;けっして;めったに
+243 || 部屋（へや）が|ほこり[だらけ]だ。 || La pièce est couverte de poussière. || ばかり;ぎみ;っぽい
+286 || 電気（でんき）がついている。|家（いえ）に|いる[に違（ちが）いない]。 || La lumière est allumée. Il est forcément chez lui. || に限らない;とは限らない;わけがある
+278 || 高（たか）い|ものが|いい|もの[とは限（かぎ）らない]。 || Ce qui est cher n'est pas forcément de bonne qualité. || に違いない;に限る;にすぎない
+271 || 彼（かれ）は|[めったに]|怒（おこ）らない。 || Il se fâche rarement. || よく;いつも;たびたび
+302 || この|店（みせ）は|値段（ねだん）の[割（わり）に]|おいしい。 || Ce resto est bon par rapport à son prix. || ために;せいで;くせに
+291 || 年（とし）を|とる[と共（とも）に]、|体力（たいりょく）が|落（お）ちる。 || Avec l'âge, la forme physique diminue. || に対して;に関して;について
+298 || 時間（じかん）が|たつ[につれて]、|悲（かな）しみも|薄（うす）れた。 || À mesure que le temps passait, la tristesse s'est estompée. || に対して;にとって;について
+313 || 家（いえ）を|出（で）た[とたんに]、|雨（あめ）が|降（ふ）りだした。 || À peine étais-je sorti de chez moi qu'il s'est mis à pleuvoir. || ところで;ばかりに;うちに
+301 || この|写真（しゃしん）を|見（み）る[たびに]、|昔（むかし）を|思（おも）い出（だ）す。 || Chaque fois que je vois cette photo, je repense au passé. || ほどに;ばかりに;ままに
+285 || 狭（せま）い[ながらも]、|快適（かいてき）な|部屋（へや）だ。 || Bien qu'étroite, c'est une pièce confortable. || ばかりに;おかげで;ために
+287 || 会議（かいぎ）は|東京（とうきょう）[において]|行（おこな）われる。 || La conférence se tiendra à Tokyo. || にとって;について;に対して
+280 || 外国人（がいこくじん）|観光客（かんこうきゃく）は|増（ふ）える[一方（いっぽう）だ]。 || Le nombre de touristes étrangers ne cesse d'augmenter. || ばかりか;ところだ;はずだ
+303 || 朝（あさ）ご飯（はん）を|食（た）べ[ずに]|出（で）かけた。 || Je suis parti sans prendre de petit-déjeuner. || ないに;ずで;なくに
+315 || あの|映画（えいが）を|見（み）ると、|泣（な）か[ずにはいられない]。 || Quand je vois ce film, je ne peux pas m'empêcher de pleurer. || ないではいけない;なくてもいい;ずにすむ
+486 || お金持（かねも）ちが|[必（かなら）ずしも]|幸（しあわ）せだとは|限（かぎ）らない。 || Les riches ne sont pas forcément heureux. || 決して;絶対に;必ず
+282 || マラソンを|走（はし）り[切（き）った]。 || J'ai couru le marathon jusqu'au bout. || 出した;始めた;かけた
+293 || 料理（りょうり）が|多（おお）すぎて、|食（た）べ[きれない]。 || Il y a trop de plats, je n'arrive pas à tout manger. || かけない;だせない;つくさない
+307 || 机（つくえ）の上（うえ）に|読（よ）み[かけ]の|本（ほん）がある。 || Il y a un livre à moitié lu sur le bureau. || きり;たて;だらけ
+483 || 焼（や）き[たて]の|パンは|おいしい。 || Le pain tout juste sorti du four est délicieux. || かけ;きり;っぽい
+269 || 彼（かれ）は|知（し）らない[ふりをした]。 || Il a fait semblant de ne pas savoir. || ふりにした;ふりがした;ふりになった
+289 || 説明書（せつめいしょ）の[とおりに]|組（く）み立（た）ててください。 || Assemblez-le en suivant le mode d'emploi. || ばかりに;くせに;せいで
+491 || [どうしても]|この|仕事（しごと）を|やりたい。 || Je veux absolument faire ce travail. || まさか;めったに;べつに
+257 || 彼（かれ）の|行動（こうどう）は|理解（りかい）し[がたい]。 || Son comportement est difficile à comprendre. || やすい;っぽい;がち
+467 || [まさか]|彼（かれ）が|犯人（はんにん）だとは|思（おも）わなかった。 || Je n'aurais jamais imaginé qu'il soit le coupable. || たしか;きっと;もちろん
+488 || ダイエット中（ちゅう）なのに、|[つい]|食（た）べてしまった。 || Je suis au régime, mais j'ai craqué et j'ai mangé. || わざわざ;せっかく;ついに
+274 || 雨（あめ）の[せいで]、|試合（しあい）が|中止（ちゅうし）になった。 || À cause de la pluie, le match a été annulé. || おかげで;ために;くせに
+295 || 知（し）っている[くせに]、|教（おし）えてくれない。 || Il le sait, mais il refuse de me le dire. || おかげで;ために;ように
+305 || 最近（さいきん）、|寝不足（ねぶそく）になり[がち]だ。 || Ces temps-ci, j'ai tendance à manquer de sommeil. || たて;かけ;きり
+306 || ちょっと|風邪（かぜ）[ぎみ]です。 || J'ai un léger rhume. || だらけ;がち;っぱなし
+312 || この|服（ふく）は|子（こ）ども[っぽい]。 || Ce vêtement fait un peu enfantin. || がち;ぎみ;だらけ
+299 || 水（みず）を|出（だ）し[っぱなし]にしないで。 || Ne laisse pas l'eau couler. || っぽい;ぎみ;だらけ
+492 || [わざわざ]|来（き）てくれて、|ありがとう。 || Merci d'avoir pris la peine de venir. || つい;まさか;めったに
+646 || [せっかく]|作（つく）ったのに、|だれも|食（た）べてくれない。 || Je me suis donné la peine de cuisiner, et personne ne mange. || つい;まさか;めったに
+308 || 会議（かいぎ）は|何時（なんじ）から|だった[っけ]？ || La réunion, c'était à quelle heure déjà ? || って;っぽい;けど
+281 || 母（はは）の[代（か）わりに]、|私（わたし）が|行（い）きます。 || J'irai à la place de ma mère. || おかげで;せいで;くせに
+304 || 貯金（ちょきん）[どころか]、|借金（しゃっきん）だらけだ。 || Loin d'avoir des économies, je croule sous les dettes. || ばかりか;さえ;こそ

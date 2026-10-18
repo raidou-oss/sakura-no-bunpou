@@ -1,0 +1,162 @@
+88 || コーヒー[でも]|飲（の）みませんか。 || Et si on buvait un café ou quelque chose ? || しか;まで;へ
+90 || この|ペンは|書（か）き[やすい]。 || Ce stylo est facile à utiliser. || にくい;たい;すぎ
+100 || この|漢字（かんじ）は|覚（おぼ）え[にくい]。 || Ce kanji est difficile à retenir. || やすい;たい;ながら
+1098 || この|靴（くつ）は|歩（ある）き[づらい]。 || Il est pénible de marcher avec ces chaussures. || やすい;たい;ながら
+672 || [だんだん]|暖（あたた）かく|なってきました。 || Il fait de plus en plus doux, petit à petit. || ぜんぜん;まだ;けっして
+362 || 新（あたら）しい|ビルが|[どんどん]|建（た）っています。 || De nouveaux immeubles se construisent à toute vitesse. || ぜんぜん;まだ;なかなか
+137 || これから|寒（さむ）くなって[いき]ます。 || À partir de maintenant, il va faire de plus en plus froid. || あり;み;お
+128 || ちょっと|飲（の）み物（もの）を|買（か）って[き]ます。 || Je vais acheter une boisson et je reviens. || あり;み;お
+729 || この|漢字（かんじ）の|読（よ）み[かた]を|教（おし）えてください。 || Apprenez-moi comment se lit ce kanji. || もの;こと;ところ
+109 || 声（こえ）を|聞（き）く[だけで]|うれしい。 || Rien qu'entendre ta voix me rend heureux. || までに;ばかりか;ほどで
+370 || 行（い）きたい。|[だが]、|時間（じかん）が|ない。 || J'ai envie d'y aller. Mais je n'ai pas le temps. || だから;それで;すると
+774 || 宿題（しゅくだい）が|終（お）わら[なくて]、|困（こま）っています。 || Je n'arrive pas à finir mes devoirs, je suis embêté. || ないで;なければ;なかったら
+96 || 傘（かさ）を|持（も）た[ないで]|出（で）かけた。 || Je suis sorti sans prendre de parapluie. || なくて;なければ;ないと
+145 || 先生（せんせい）に|[ほめられ]ました。 || J'ai été félicité par le professeur. || ほめさせ;ほめて;ほめたい
+145 || 電車（でんしゃ）で|足（あし）を|[踏（ふ）まれ]ました。 || Quelqu'un m'a marché sur le pied dans le train. || 踏ませ;踏んで;踏み
+176 || ドアが|[開（あ）き]ました。 || La porte s'est ouverte. || 開け;開か;開いて
+393 || もう一度（いちど）|書（か）き[なおし]てください。 || Réécrivez-le encore une fois, s'il vous plaît. || はじめ;おわっ;つづけ
+185 || 来（こ）ないという[こと]は、|忙（いそが）しいんだね。 || S'il ne vient pas, c'est qu'il est occupé. || もの;ところ;ため
+93 || 子（こ）どもの[とき]、|よく|川（かわ）で|遊（あそ）んだ。 || Quand j'étais enfant, je jouais souvent dans la rivière. || あいだに;までに;ばかり
+363 || [まず]、|手（て）を|洗（あら）いましょう。 || D'abord, lavons-nous les mains. || また;それに;とうとう
+104 || 金曜日（きんようび）[までに]|レポートを|出（だ）してください。 || Rendez le rapport d'ici vendredi. || まで;から;ごろ
+364 || [また]|来（き）てくださいね。 || Revenez encore, d'accord ? || とうとう;ぜんぜん;あまり
+115 || 雨（あめ）が|降（ふ）り[はじめ]ました。 || Il a commencé à pleuvoir. || おわり;なおし;すぎ
+126 || やっと|本（ほん）を|読（よ）み[おわり]ました。 || J'ai enfin fini de lire le livre. || はじめ;だし;つづけ
+125 || 三時（さんじ）[ごろ]|行（い）きます。 || J'irai vers trois heures. || より;まで;だけ
+116 || 宿題（しゅくだい）を|した[あとで]、|遊（あそ）びます。 || Je jouerai après avoir fait mes devoirs. || まえに;ながら;あいだ
+136 || 電話（でんわ）が|鳴（な）った時（とき）、|お風呂（ふろ）に|入（はい）って[いた]。 || Quand le téléphone a sonné, j'étais dans le bain. || いる;おく;ある
+142 || 一週間（いっしゅうかん）[に]|二回（にかい）|プールへ|行（い）きます。 || Je vais à la piscine deux fois par semaine. || を;で;が
+368 || [とうとう]|試験（しけん）に|合格（ごうかく）した。 || J'ai finalement réussi l'examen. || まず;なるべく;だんだん
+108 || 東京（とうきょう）は|大阪（おおさか）[より]|大（おお）きい。 || Tokyo est plus grand qu'Osaka. || まで;だけ;から
+388 || 一時間（いちじかん）[ごとに]|バスが|来（き）ます。 || Le bus passe toutes les heures. || までに;ばかり;ながら
+384 || [なるべく]|早（はや）く|来（き）てください。 || Venez le plus tôt possible. || とうとう;ぜんぜん;あまり
+135 || 今（いま）から|出（で）かける[ところだ]。 || Je suis sur le point de sortir. || ことだ;ものだ;はずだ
+130 || 薬（くすり）を|飲（の）んだ[のに]、|まだ|熱（ねつ）が|ある。 || J'ai pris un médicament, et pourtant j'ai encore de la fièvre. || ので;から;ために
+94 || 明日（あした）は|雨（あめ）が|降（ふ）る[と思（おも）う]。 || Je pense qu'il va pleuvoir demain. || を思う;に思う;で思う
+89 || 机（つくえ）の上（うえ）に|ペンや|ノート[など]が|あります。 || Sur le bureau, il y a des stylos, des cahiers, etc. || まで;だけ;から
+97 || 彼（かれ）は|子（こ）ども[みたい]だ。 || Il est comme un enfant. || ことだ;そう;ため
+98 || 私（わたし）の|趣味（しゅみ）は|絵（え）を|かく[こと]です。 || Mon passe-temps, c'est dessiner. || はず;ところ;わけ
+105 || この|ケーキは|おいし[そう]ですね。 || Ce gâteau a l'air délicieux ! || らしい;みたい;よう
+111 || この|川（かわ）の|深（ふか）[さ]は|どのくらいですか。 || Quelle est la profondeur de cette rivière ? || み;く;げ
+131 || 休（やす）みの日（ひ）は|映画（えいが）[とか]|買（か）い物（もの）とかに|行（い）きます。 || Les jours de repos, je vais au cinéma, faire du shopping, ce genre de choses. || まで;から;だけ
+365 || [そういう]|話（はなし）は|聞（き）いたことがない。 || Je n'ai jamais entendu une histoire pareille. || そこ;それで;そう
+121 || 疲（つか）れたから、|もう|寝（ね）[よう]。 || Je suis fatigué, je vais me coucher. || ろ;ない;たい
+149 || だれも|いない[ようだ]。 || On dirait qu'il n'y a personne. || ことだ;ものだ;つもりだ
+375 || 日本語（にほんご）が|[ぜんぜん]|わかりません。 || Je ne comprends pas du tout le japonais. || とても;たくさん;もっと
+120 || 明日（あした）は|晴（は）れる[かな]。 || Je me demande s'il fera beau demain. || ので;から;のに
+374 || この|映画（えいが）は|[あまり]|おもしろくない。 || Ce film n'est pas très intéressant. || とても;たくさん;もっと
+154 || 安（やす）けれ[ば]|買（か）います。 || Si c'est bon marché, je l'achète. || たら;なら;と
+154 || 急（いそ）げ[ば]|間（ま）に合（あ）います。 || Si tu te dépêches, tu seras à l'heure. || たら;なら;て
+123 || 京都（きょうと）へ|行（い）く[なら]、|秋（あき）がいいですよ。 || Si tu vas à Kyoto, l'automne c'est bien. || ので;けど;まで
+112 || 子（こ）どもが|注射（ちゅうしゃ）を|怖（こわ）[がって]います。 || L'enfant a peur de la piqûre. || たくて;そうで;らしくて
+117 || 台所（だいどころ）から|いい|においが|[する]。 || Ça sent bon depuis la cuisine. || いる;なる;くる
+1112 || 彼女（かのじょ）は|長（なが）い|髪（かみ）を|[して]いる。 || Elle a les cheveux longs. || なって;あって;いって
+124 || 弟（おとうと）は|新（あたら）しい|ゲームを|買（か）い[たがって]いる。 || Mon petit frère veut acheter le nouveau jeu. || たくて;たい;たくない
+113 || 午後（ごご）は|雨（あめ）が|降（ふ）る[かもしれない]。 || Il va peut-être pleuvoir cet après-midi. || ことがある;ところだ;つもりだ
+107 || 夢（ゆめ）[みたいな]|話（はなし）だ。 || C'est une histoire comme dans un rêve. || らしく;そうな;ような
+118 || 彼（かれ）は|うれし[そうに]|笑（わら）った。 || Il a souri, l'air heureux. || らしく;みたいに;ように
+373 || 雪（ゆき）[のような]|白（しろ）い|肌（はだ）。 || Une peau blanche comme la neige. || みたいの;ように;そうな
+122 || 来年（らいねん）、|留学（りゅうがく）し[ようと思（おも）う]。 || Je pense partir étudier à l'étranger l'année prochaine. || たいと思う;ないと思う;ろと思う
+1083 || もっと|ゆっくり|話（はな）してください。|字（じ）も|きれい[に]|書（か）いて。 || Parle plus lentement. Et écris proprement. || く;な;で
+1083 || 毎朝（まいあさ）|早（はや）[く]|起（お）きます。 || Je me lève tôt tous les matins. || に;な;で
+728 || 音（おと）を|小（ちい）さ[く]|してください。 || Baissez le son, s'il vous plaît. || に;な;で
+129 || 明日（あした）、|晴（は）れる[といい]ね。 || Ce serait bien qu'il fasse beau demain. || ばいい;てもいい;たいい
+168 || 日本語（にほんご）が|話（はな）せる[ようになった]。 || Je suis devenu capable de parler japonais. || ことになった;そうになった;ようにした
+173 || ほら、|言（い）った[じゃないか]。 || Tu vois, je te l'avais dit, non ? || かしら;かな;ので
+155 || 田中（たなか）さんは|会社（かいしゃ）を|やめた[らしい]。 || Il paraît que Tanaka a quitté sa boîte. || こそ;たい;ほしい
+162 || 旅行（りょこう）の前（まえ）に|ホテルを|予約（よやく）して[おき]ます。 || Je réserve l'hôtel à l'avance avant le voyage. || あり;しまい;み
+91 || 新（あたら）しい|車（くるま）が|[ほしい]。 || Je veux une nouvelle voiture. || たい;たがる;ほしがる
+101 || 母（はは）に|元気（げんき）でいて[ほしい]。 || Je veux que ma mère reste en bonne santé. || たい;たがる;あげる
+157 || 来月（らいげつ）、|店（みせ）が|閉（し）まる[と聞（き）いた]。 || J'ai entendu dire que le magasin fermerait le mois prochain. || を聞いた;に聞いた;で聞いた
+767 || 鳥（とり）の|声（こえ）が|[聞（き）こえ]ます。 || On entend le chant des oiseaux. || 聞き;聞か;聞け
+768 || 窓（まど）から|海（うみ）が|[見（み）え]ます。 || On voit la mer depuis la fenêtre. || 見;見せ;見られ
+178 || 急（きゅう）に|雨（あめ）が|降（ふ）り[だし]た。 || Il s'est soudain mis à pleuvoir. || おわっ;なおし;すぎ
+668 || 父（ちち）は|五十[代（だい）]です。 || Mon père a la cinquantaine. || 番;年;回
+1111 || 駅（えき）まで|三十分（さんじゅっぷん）|[かかり]ます。 || Il faut trente minutes jusqu'à la gare. || なり;あり;し
+1113 || この|かばんは|一万円（いちまんえん）|[し]ました。 || Ce sac a coûté dix mille yens. || なり;かかれ;あり
+119 || 三時間（さんじかん）[も]|待（ま）った。 || J'ai attendu trois heures entières ! || へ;か;の
+367 || 宿題（しゅくだい）は|[ほとんど]|終（お）わった。 || J'ai presque fini mes devoirs. || ぜんぜん;まだ;なかなか
+369 || [そんな]|こと、|言（い）わないで。 || Ne dis pas des choses pareilles. || それ;そこ;そう
+652 || [各]|部屋（へや）に|エアコンが|あります。 || Il y a la clim dans chaque chambre. || 毎;何;次
+1106 || 東京（とうきょう）[の次（つぎ）に]|大（おお）きい|町（まち）は|どこですか。 || Quelle est la plus grande ville après Tokyo ? || の前に;の中で;のために
+382 || 二十歳（はたち）[以上（いじょう）]の|人（ひと）は|お酒（さけ）が|飲（の）めます。 || Les personnes de vingt ans et plus peuvent boire de l'alcool. || 以外;以来;以前
+383 || 六歳（ろくさい）[以下（いか）]の|子（こ）どもは|無料（むりょう）です。 || C'est gratuit pour les enfants de six ans et moins. || 以外;以前;以上の
+390 || 日曜日（にちようび）[以外（いがい）]は|毎日（まいにち）|働（はたら）いています。 || Je travaille tous les jours sauf le dimanche. || 以上;以下;以前
+667 || 昨日（きのう）は|[ずっと]|家（いえ）に|いた。 || Hier, je suis resté à la maison tout du long. || まず;また;もう
+673 || 話（はなし）は|[だいたい]|わかりました。 || J'ai à peu près compris ce que vous dites. || ぜんぜん;なかなか;けっして
+183 || クラス[のなかで]|だれが|いちばん|背（せ）が|高（たか）いですか。 || Dans la classe, qui est le plus grand ? || のために;のように;のあとで
+138 || 先生（せんせい）が|言（い）った[ように]、|やってみてください。 || Faites comme le professeur l'a dit. || ために;ばかり;まで
+621 || 何（なん）[回]か|日本（にほん）へ|行（い）ったことがある。 || Je suis allé au Japon plusieurs fois. || 目;番;度目
+394 || 顔（かお）が|[真（ま）っ]赤（か）になった。 || Mon visage est devenu tout rouge. || 全;超;大
+725 || 財布（さいふ）に|百円（ひゃくえん）[しか]|ない。 || Je n'ai que cent yens dans mon porte-monnaie. || だけ;まで;ほど
+391 || 東京（とうきょう）は|世界（せかい）で|大（おお）きい|都市（とし）の[一（ひと）つ]だ。 || Tokyo est l'une des plus grandes villes du monde. || 一番;一人;一回
+381 || [すこしも]|疲（つか）れていない。 || Je ne suis pas fatigué le moins du monde. || とても;たくさん;もっと
+133 || 火事（かじ）の[ばあいは]、|エレベーターを|使（つか）わないでください。 || En cas d'incendie, n'utilisez pas l'ascenseur. || ためには;あとで;ころは
+777 || ちょっと|待（ま）っ[て]。 || Attends un peu. || た;ちゃ;たら
+140 || 日本（にほん）に|来（き）[てよかった]。 || Je suis content d'être venu au Japon. || てしまった;てほしい;てあげた
+153 || 母（はは）は|弟（おとうと）に|部屋（へや）を|掃除（そうじ）[させ]ました。 || Ma mère a fait nettoyer la chambre à mon petit frère. || され;でき;しまい
+174 || 雨（あめ）が|降（ふ）って[も]、|行（い）きます。 || Même s'il pleut, j'y vais. || のに;ので;まで
+172 || 財布（さいふ）を|なくして[しまった]。 || J'ai perdu mon porte-monnaie (zut). || おいた;あった;みた
+172 || ケーキを|全部（ぜんぶ）|食（た）べ[ちゃった]。 || J'ai mangé tout le gâteau. || ておいた;てあった;てみた
+772 || 風邪（かぜ）を|ひい[て]、|学校（がっこう）を|休（やす）んだ。 || J'ai attrapé un rhume et j'ai manqué l'école. || ば;る;ない
+164 || 子（こ）どもの時（とき）、|野菜（やさい）を|食（た）べ[させられた]。 || Enfant, on m'obligeait à manger des légumes. || られさせた;させた;られた
+159 || 壁（かべ）に|絵（え）が|かけて[あり]ます。 || Un tableau est accroché au mur. || い;おき;しまい
+160 || 寝（ね）ている[あいだに]、|地震（じしん）が|あった。 || Il y a eu un séisme pendant que je dormais. || までに;あとで;まえに
+171 || 明日（あした）は|来（こ）[なくてもいい]ですよ。 || Tu n'es pas obligé de venir demain. || なくてはいけない;てはいけない;てもいい
+99 || この|服（ふく）を|着（き）て[みて]もいいですか。 || Puis-je essayer ce vêtement ? || おいて;しまって;あって
+106 || 遅（おそ）くなっ[てすみません]。 || Désolé d'être en retard. || たらすみません;てもすみません;からすみません
+92 || 弟（おとうと）に|宿題（しゅくだい）を|教（おし）えて[あげ]ました。 || J'ai aidé mon petit frère pour ses devoirs. || くれ;くださり;なさい
+103 || 友（とも）だちが|私（わたし）を|駅（えき）まで|送（おく）って[くれ]ました。 || Un ami m'a raccompagné jusqu'à la gare. || あげ;もらい;やり
+114 || 先輩（せんぱい）に|手伝（てつだ）って[もらい]ました。 || Mon aîné m'a aidé (je lui ai demandé). || くれ;あげ;やり
+95 || 早（はや）く|寝（ね）[なさい]。 || Va te coucher tôt ! || ましょう;たい;すぎ
+148 || 音楽（おんがく）を|聞（き）き[ながら]|勉強（べんきょう）します。 || J'étudie en écoutant de la musique. || ばかり;すぎて;たまま
+371 || 手伝（てつだ）って[くれてありがとう]。 || Merci de m'avoir aidé. || あげてありがとう;もらってありがとう;おいてありがとう
+707 || ちょっと|手伝（てつだ）って[くれない]？ || Tu peux m'aider un peu ? || あげない;しまわない;おかない
+190 || 先生（せんせい）は|もう|お帰（かえ）り[になり]ました。 || Le professeur est déjà rentré (honorifique). || にし;をし;がし
+189 || こちらで|少々（しょうしょう）|お待（ま）ち[ください]。 || Veuillez patienter un instant ici. || します;いたします;なさい
+191 || 社長（しゃちょう）は|今（いま）、|会議室（かいぎしつ）に|[いらっしゃい]ます。 || Le directeur est en ce moment dans la salle de réunion. || まいり;おり;いたし
+187 || トイレは|二階（にかい）に|[ございます]。 || Les toilettes se trouvent au premier étage. || いらっしゃいます;なさいます;いたします
+188 || こちらが|会議室（かいぎしつ）[でございます]。 || Voici la salle de réunion. || にございます;がございます;をございます
+726 || 荷物（にもつ）を|お持（も）ち[し]ます。 || Je vais porter vos bagages (humble). || なり;なさい;くださり
+192 || 私（わたし）が|ご案内（あんない）[いたし]ます。 || C'est moi qui vais vous guider (humble). || なさい;いらっしゃい;くださり
+134 || もう一度（いちど）|説明（せつめい）して[いただけませんか]。 || Pourriez-vous m'expliquer encore une fois ? || あげませんか;しまいませんか;おきませんか
+102 || 駅（えき）に|着（つ）い[たら]、|電話（でんわ）してください。 || Quand tu arrives à la gare, appelle-moi. || のに;ながら;たり
+127 || 旅行（りょこう）には|パスポートが|[必要（ひつよう）]です。 || Un passeport est nécessaire pour le voyage. || 大切に;必ず;上手
+144 || [そんなに]|急（いそ）がなくてもいいよ。 || Pas besoin de te dépêcher autant. || それに;それで;そこで
+376 || 果物（くだもの）、|[たとえば]|りんごや|みかんが|好（す）きです。 || J'aime les fruits, par exemple les pommes et les mandarines. || とうとう;だいたい;なるべく
+132 || 私（わたし）は|漢字（かんじ）が|少（すこ）し|[読（よ）める]。 || Je sais lire un peu de kanji. || 読まれる;読ませる;読もう
+132 || 刺身（さしみ）が|[食（た）べられ]ますか。 || Pouvez-vous manger du sashimi ? || 食べさせ;食べ;食べよう
+631 || すみません、|道（みち）に|迷（まよ）った[んですが]……。 || Excusez-moi, je me suis perdu… || のですから;ものですが;ところですが
+151 || 彼（かれ）は|もう|着（つ）いている[はずだ]。 || Il devrait déjà être arrivé. || つもりだ;ところだ;ことだ
+156 || 明日（あした）|来（こ）られる[かどうか]|教（おし）えてください。 || Dis-moi si tu peux venir demain ou non. || かなにか;からこそ;かもしれ
+143 || このボタンを|押（お）す[と]、|水（みず）が|出（で）ます。 || Si on appuie sur ce bouton, de l'eau sort. || ながら;たり;て
+766 || もう|行（い）か[ないと]。 || Il faut que j'y aille. || ないで;なくて;なかった
+161 || あんなに|勉強（べんきょう）したんだから、|落（お）ちる[はずがない]。 || Avec tout ce qu'il a étudié, il ne peut pas échouer. || ことがない;ところだ;つもりはない
+182 || 冷蔵庫（れいぞうこ）には|卵（たまご）[しか]|ない。 || Il n'y a que des œufs dans le frigo. || だけ;ばかり;まで
+380 || 彼（かれ）は|英語（えいご）[だけでなく]、|中国語（ちゅうごくご）も|話（はな）せる。 || Il parle non seulement anglais, mais aussi chinois. || しかなく;までなく;ほどなく
+110 || 私（わたし）は|ピアノを|ひく[ことができる]。 || Je sais jouer du piano. || ものができる;ところができる;わけができる
+377 || [もし]|宝（たから）くじが|当（あ）たったら、|何（なに）を|買（か）う？ || Si tu gagnais au loto, tu achèterais quoi ? || たとえば;とうとう;まず
+141 || この|店（みせ）は|安（やす）い[し]、|おいしいし、|よく|来（く）る。 || Ce resto est pas cher, il est bon, alors j'y viens souvent. || まで;を;へ
+618 || 豆腐（とうふ）は|大豆（だいず）[から]|できている。 || Le tofu est fait à partir de soja. || まで;へ;より
+146 || 今（いま）、|家（いえ）に|帰（かえ）った[ところだ]。 || Je viens tout juste de rentrer à la maison. || ことだ;はずだ;つもりだ
+150 || 今（いま）、|ご飯（はん）を|作（つく）っている[ところだ]。 || Je suis justement en train de préparer le repas. || ことだ;はずだ;つもりだ
+152 || 犬（いぬ）と|猫（ねこ）と、|[どちらが]|好（す）きですか。 || Entre les chiens et les chats, lequel préfères-tu ? || どれが;だれが;どこが
+158 || 毎日（まいにち）|野菜（やさい）を|食（た）べる[ようにして]います。 || Je m'efforce de manger des légumes tous les jours. || ようになって;ことになって;ところにして
+169 || 今日（きょう）中（じゅう）に|これを|終（お）わらせ[なければいけない]。 || Je dois finir ça avant la fin de la journée. || てはいけない;なくてもいい;てもいい
+180 || 三時間（さんじかん）も|歩（ある）き[つづけ]た。 || J'ai continué à marcher pendant trois heures. || はじめ;だし;なおし
+386 || 先生（せんせい）に|静（しず）かにする[ように言（い）われた]。 || Le professeur m'a dit de rester calme. || ことに言われた;ために言われた;ところに言われた
+181 || 会議（かいぎ）は|三時（さんじ）に|始（はじ）まる[予定（よてい）だ]。 || La réunion est prévue pour commencer à trois heures. || はずがない;ところだった;ことがある
+165 || 日本（にほん）に|来（き）た[ばかり]です。 || Je viens à peine d'arriver au Japon. || ほど;ずつ;ごろ
+1032 || 早（はや）く|[しろ]！ || Dépêche-toi (fais-le vite) ! || しろう;せろ;しれ
+628 || 忘（わす）れない[ように]、|メモしておきます。 || Je prends des notes pour ne pas oublier. || ために;ばかりに;まで
+194 || 彼（かれ）、|来（く）る[かしら]。 || Je me demande s'il va venir. || のに;ので;けど
+637 || 今日（きょう）は|春（はる）[らしい]|天気（てんき）ですね。 || C'est un vrai temps de printemps aujourd'hui. || そうな;みたい;ように
+166 || 彼女（かのじょ）は|年（とし）より|若（わか）く[みえる]。 || Elle paraît plus jeune que son âge. || する;ある;いる
+167 || 財布（さいふ）が|ないこと[に気（き）がついた]。 || Je me suis rendu compte que je n'avais plus mon porte-monnaie. || を気がついた;で気がついた;が気がついた
+389 || この|部屋（へや）は|広（ひろ）い。|[それに]、|駅（えき）にも|近（ちか）い。 || Cette pièce est spacieuse. En plus, elle est près de la gare. || それでも;だが;ところが
+632 || 寝坊（ねぼう）した。|[それで]、|遅刻（ちこく）した。 || J'ai trop dormi. Du coup, je suis arrivé en retard. || それでも;しかし;ところで
+727 || 彼（かれ）が|どこに|住（す）んでいる[か]|知（し）っていますか。 || Sais-tu où il habite ? || を;が;へ
+186 || 失敗（しっぱい）した。|[それでも]、|あきらめない。 || J'ai échoué. Et pourtant, je n'abandonne pas. || それに;それで;だから
+177 || 医者（いしゃ）に|行（い）っ[たらどう]？ || Et si tu allais chez le médecin ? || てもどう;てからどう;たりどう
+184 || この|神社（じんじゃ）は|千年（せんねん）前（まえ）に|建（た）てられた[と言（い）われている]。 || On dit que ce sanctuaire a été construit il y a mille ans. || と言っている;と言ってある;と言っておく
+163 || もっと|早（はや）く|出発（しゅっぱつ）すれ[ばよかった]。 || J'aurais dû partir plus tôt. || ばいく;てよかった;たらいい

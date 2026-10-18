@@ -1,0 +1,86 @@
+// Petits outils partagés : DOM, furigana, hasard, stockage.
+
+export const $ = (sel, root = document) => root.querySelector(sel);
+export const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+/** Crée un élément : h('div.card#id', {onclick, ...attrs}, ...enfants) */
+export function h(tag, attrs, ...kids) {
+  const m = tag.match(/^([a-z0-9-]+)?((?:[.#][\w-]+)*)$/i);
+  const el = document.createElement(m[1] || 'div');
+  (m[2].match(/[.#][\w-]+/g) || []).forEach(t => t[0] === '.' ? el.classList.add(t.slice(1)) : (el.id = t.slice(1)));
+  if (attrs != null && (typeof attrs !== 'object' || attrs instanceof Node || Array.isArray(attrs))) { kids.unshift(attrs); attrs = null; }
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (k === 'html') el.innerHTML = v;
+    else if (k === 'style' && typeof v === 'object') for (const [p, val] of Object.entries(v)) p.startsWith('--') ? el.style.setProperty(p, val) : (el.style[p] = val);
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const kid of kids.flat(Infinity)) {
+    if (kid == null || kid === false) continue;
+    el.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+  }
+  return el;
+}
+
+const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
+
+/** 学生（がくせい）→ <ruby>学生<rt>がくせい</rt></ruby> ; sans furigana : supprime la lecture */
+export function ruby(text, show = true) {
+  const safe = esc(text);
+  return show ? safe.replace(KANJI_READING, '<ruby>$1<rt>$2</rt></ruby>') : safe.replace(KANJI_READING, '$1');
+}
+
+/** Texte brut sans lecture ni balises de phrase */
+export const plain = text => text.replace(KANJI_READING, '$1').replace(/[[\]|]/g, '');
+
+/** Lecture en kana d'un mot (額（ひたい） → ひたい ; 耕（たがや）す → たがやす) */
+export const kana = text => text.replace(KANJI_READING, '$2');
+
+export function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+export const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+export const sample = (arr, n) => shuffle(arr).slice(0, n);
+
+export const DAY = 86400000;
+export const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); };
+export const dayKey = (t = Date.now()) => new Date(t).toISOString().slice(0, 10);
+
+// Stockage local robuste (navigation privée, stockage bloqué…)
+export const store = {
+  get(key, fallback) {
+    try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; }
+  },
+};
+
+let toastTimer;
+export function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+export const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** Fleur de sakura en SVG ; `open` de 0 à 1 ouvre les pétales un par un */
+export function blossom(open = 1, size = 64, label = '') {
+  const petals = [];
+  for (let i = 0; i < 5; i++) {
+    const fill = Math.max(0, Math.min(1, open * 5 - i));
+    petals.push(`<path class="petal" style="--fill:${fill.toFixed(2)}" transform="rotate(${i * 72} 50 50)"
+      d="M50 50 C36 36 36 18 44 9 L50 15 L56 9 C64 18 64 36 50 50Z"/>`);
+  }
+  return `<svg class="blossom" viewBox="0 0 100 100" width="${size}" height="${size}" role="img" aria-label="${esc(label)}">
+    ${petals.join('')}<circle cx="50" cy="50" r="7" class="pistil"/></svg>`;
+}
+
+/** Texte vertical robuste : un caractère par ligne (évite les soucis de writing-mode) */
+export const stack = text => [...text].map(c => `<span>${esc(c)}</span>`).join('');

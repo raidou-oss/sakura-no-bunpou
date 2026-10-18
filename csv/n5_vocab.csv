@@ -1,0 +1,1101 @@
+﻿unit,ordre,mot,furigana,sens,niveau
+65,0,私,私（わたし）,"je, moi, affaires privées, affaires personnelles, confidentialité, égoïsme",N5
+65,1,本,本（ほん）,"livre, volume, script",N5
+65,2,猫,猫（ねこ）,chat,N5
+65,3,学生,学生（がくせい）,étudiant (surtout un étudiant universitaire),N5
+65,4,綺麗,綺麗（きれい）,"joli, ravissant, beau, belle, clair, propre",N5
+65,5,海,海（うみ）,mer,N5
+65,6,映画,映画（えいが）,film,N5
+65,7,好き,好（す）き,"appréciation, affection, amour, goût, penchant",N5
+65,8,家,家（いえ）,"maison, domicile, famille, foyer",N5
+65,9,家,家（うち）,maison,N5
+65,10,水,水（みず）,eau (surtout fraîche ou potable),N5
+65,11,同じ,同（おな）じ,"même, identique, égal, uniforme, équivalent, similaire, commun, inchangé, semblable",N5
+65,12,大変,大変（たいへん）,"très, énormément, immense, énorme, grand, sérieux, grave, épouvantable, terrible, difficile, dur, incident majeur, catastrophe, exigeant, problème, épreuve, terriblement, affreusement",N5
+65,13,質問,質問（しつもん）,"question, demande, interrogation",N5
+65,14,あなた,あなた,"tu, toi, cher, chéri",N5
+65,15,ペン,ペン,stylo,N5
+65,16,友達,友達（ともだち）,"ami, compagnon",N5
+65,17,暑い,暑（あつ）い,"chaud (temps, etc.), chaud",N5
+65,18,大丈夫,大丈夫（だいじょうぶ）,"en sécurité, bien, d'accord, OK, sûr, certainement, sûrement, sans aucun doute, ça va?",N5
+65,19,危険,危険（きけん）,danger,N5
+65,20,大好き,大好（だいす）き,"adorer, aimer beaucoup",N5
+65,21,風邪,風邪（かぜ）,rhume,N5
+65,22,お母さん,お母（かあ）さん,maman,N5
+65,23,犬,犬（いぬ）,chien,N5
+65,24,レストラン,レストラン,restaurant (surtout de style occidental),N5
+65,25,金曜日,金曜日（きんようび）,vendredi,N5
+65,26,日本人,日本人（にほんじん）,"personne japonaise, Japonais, Japonaises",N5
+65,27,先生,先生（せんせい）,"enseignant, maître, médecin, utilisé comme titre honorifique avec les noms des enseignants, existence précédente",N5
+65,28,カレンダー,カレンダー,calendrier,N5
+65,29,必要,必要（ひつよう）,"nécessaire, requis, essentiel, indispensable",N5
+65,30,忙しい,忙（いそが）しい,"occupé, chargé, pris",N5
+65,31,玄関,玄関（げんかん）,entrée,N5
+65,32,暗い,暗（くら）い,"sombre, obscur, foncé, lugubre, morne",N5
+65,33,明日,明日（あした）,demain,N5
+65,34,月曜日,月曜日（げつようび）,lundi,N5
+65,35,汚い,汚（きたな）い,"sale, malpropre, crasseux, souillé",N5
+65,36,公園,公園（こうえん）,parc,N5
+65,37,広い,広（ひろ）い,"vaste, spacieux, large",N5
+65,38,彼,彼（かれ）,"il, lui, son, petit ami, cette chose",N5
+65,39,さん,さん,"Monsieur, Madame, Mademoiselle, suffixe de politesse",N5
+65,40,有名,有名（ゆうめい）,célèbre,N5
+65,41,彼女,彼女（かのじょ）,"elle, petite amie",N5
+65,42,可愛い,可愛（かわい）い,mignon,N5
+65,43,元気,元気（げんき）,"vivant, plein d'esprit, énergique, vigoureux, vital, en forme, en bonne santé, plein d'énergie",N5
+65,44,ノート,ノート,cahier,N5
+65,45,服,服（ふく）,vêtements (en particulier les vêtements occidentaux),N5
+65,46,古い,古（ふる）い,"ancien, vieux, âgé, antique, désuet, périmé, obsolète, rassis, défraîchi, passé de mode",N5
+65,47,火曜日,火曜日（かようび）,mardi,N5
+65,48,雨,雨（あめ）,pluie,N5
+65,49,晩,晩（ばん）,"soir, nombre de nuits, nuit",N5
+66,1000,パン,パン,"pain, viennoiseries (ex. croissants)",N5
+66,1001,これ,これ,"ceci, celui-ci, ce, celle-ci",N5
+66,1002,寿司,寿司（すし）,"sushi, tout ce qui est fait avec du riz vinaigré (peut également contenir des légumes, des épices, du poisson ou d'autres délicatesses)",N5
+66,1003,何,何（なん）,quoi,N5
+66,1004,何,何（なに）,"quoi, que, quel, quelle, combien, comment",N5
+66,1005,丸い,丸（まる）い,"rond, circulaire, sphérique, harmonieux, calme, cercle",N5
+66,1006,便利,便利（べんり）,"pratique, utile, commode",N5
+66,1007,お風呂,お風呂（ふろ）,bain,N5
+66,1008,それ,それ,cela,N5
+66,1009,エアコン,エアコン,climatiseur,N5
+66,1010,お皿,お皿（さら）,"assiette, plat, vaisselle",N5
+66,1011,ケーキ,ケーキ,gâteau,N5
+66,1012,牛乳,牛乳（ぎゅうにゅう）,lait (de vache),N5
+66,1013,カメラ,カメラ,appareil photo,N5
+66,1014,帽子,帽子（ぼうし）,chapeau,N5
+66,1015,コンビニ,コンビニ,supérette,N5
+66,1016,ホテル,ホテル,hôtel,N5
+66,1017,電車,電車（でんしゃ）,"train, train électrique",N5
+66,1018,兄,兄（あに）,frère aîné,N5
+66,1019,手紙,手紙（てがみ）,lettre,N5
+66,1020,車,車（くるま）,"voiture, automobile, véhicule",N5
+66,1021,朝,朝（あさ）,matin,N5
+66,1022,お金,お金（かね）,argent,N5
+66,1023,新しい,新（あたら）しい,"nouveau, neuf, frais, récent, dernier, à la mode, moderne",N5
+66,1024,椅子,椅子（いす）,chaise;tabouret;siège,N5
+66,1025,傘,傘（かさ）,"parapluie, parasol",N5
+66,1026,名前,名前（なまえ）,nom,N5
+66,1027,生徒,生徒（せいと）,élève,N5
+66,1028,お父さん,お父（とう）さん,"père, papa",N5
+66,1029,時計,時計（とけい）,"montre, horloge, pendule",N5
+66,1030,今日,今日（きょう）,aujourd'hui,N5
+66,1031,夜,夜（よる）,"soir, nuit",N5
+66,1032,部屋,部屋（へや）,"chambre, appartement, pièce",N5
+66,1033,駅,駅（えき）,gare,N5
+66,1034,ホーム,ホーム,"quai, plate-forme",N5
+66,1035,いい,いい,"bon, excellent, agréable, gentil, bien, plaisant, suffisant, assez, prêt, préparé, d'accord, ça va, pas de problème",N5
+66,1036,人,人（じん）,"-ien/-ienne (ex: Italien/Italienne), -ïte (ex: tokyoïte), -ais/-aise, -ois/-oise",N5
+66,1037,人,人（ひと）,"homme, personne, autres, être humain, humanité, gens, humain, espèce humaine, caractère, personnalité, personne de talent, véritable homme, autre personne, autres personnes, adulte, compteur de personnes, compteur pour les gens, nationalité",N5
+66,1038,人,人（にん）,"personne, gens, compteur pour les personnes, nationalité, homme",N5
+66,1039,昨日,昨日（きのう）,hier,N5
+66,1040,テスト,テスト,"test, essai, examen, épreuve",N5
+66,1041,楽しい,楽（たの）しい,"amusant, agréable, fun",N5
+66,1042,寒い,寒（さむ）い,froid (comme le temps),N5
+66,1043,高い,高（たか）い,"élevé, grand, cher",N5
+66,1044,女の子,女（おんな）の子（こ）,"fille, jeune fille, jeune femme",N5
+66,1045,面白い,面白（おもしろ）い,"intéressant, fascinant, intrigant, captivant, amusant",N5
+66,1046,ゲーム,ゲーム,jeu,N5
+66,1047,近い,近（ちか）い,"près, proche, à courte distance",N5
+66,1048,大きい,大（おお）きい,"grand, gros, important, fort",N5
+66,1049,姉,姉（あね）,sœur aînée,N5
+67,2000,美味しい,美味（おい）しい,délicieux,N5
+67,2001,その,その,"ce, cet, cette, ces, là, cela, ceci, le, la, les",N5
+67,2002,アパート,アパート,immeuble d'appartements,N5
+67,2003,今週,今週（こんしゅう）,cette semaine,N5
+67,2004,仕事,仕事（しごと）,"travail, emploi, métier, profession, tâche, job, occupation",N5
+67,2005,多い,多（おお）い,"beaucoup, nombreux",N5
+67,2006,この,この,"ce, cette, ces",N5
+67,2007,冷たい,冷（つめ）たい,"froid (au toucher), glaçant, glacé, frigorifié",N5
+67,2008,安い,安（やす）い,"bon marché, peu coûteux, calme, paisible, tranquille",N5
+67,2009,サッカー,サッカー,football,N5
+67,2010,長い,長（なが）い,"long, longue (distance), long (temps)",N5
+67,2011,暖かい,暖（あたた）かい,"chaud, doux, agréable",N5
+67,2012,怖い,怖（こわ）い,"effrayant, terrifiant, sinistre, redoutable, craintif, apeuré",N5
+67,2013,遠い,遠（とお）い,"lointain, éloigné, distant",N5
+67,2014,難しい,難（むずか）しい,"difficile, dur, épineux, complexe, grave",N5
+67,2015,とても,とても,"très, extrêmement, vraiment, absolument, du tout",N5
+67,2016,鞄,鞄（かばん）,"sac, cartable, mallette, panier",N5
+67,2017,絵,絵（え）,"image, dessin, peinture, croquis",N5
+67,2018,女の人,女（おんな）の人（ひと）,"femme, dame",N5
+67,2019,暇,暇（ひま）,"temps libre, loisirs, inactif, congé, quitter, divorcer",N5
+67,2020,静か,静（しず）か,"silencieux, tranquille, calme",N5
+67,2021,大切,大切（たいせつ）,"important, nécessaire, indispensable, bien-aimé, précieux, cher, chéri, de valeur, soigneux",N5
+67,2022,今,今（いま）,"maintenant, à présent, tout de suite, bientôt, immédiatement, encore (un)",N5
+67,2023,授業,授業（じゅぎょう）,"cours, leçon, travail en classe, enseignement, instruction",N5
+67,2024,お茶,お茶（ちゃ）,"thé, thé vert",N5
+67,2025,カレー,カレー,curry,N5
+67,2026,辛い,辛（から）い,"épicé, piquant, salé, sévère, rigoureux, douloureux, amer, difficile",N5
+67,2027,木,木（き）,"arbre, arbuste, buisson, bois, bois de construction",N5
+67,2028,川,川（かわ）,rivière,N5
+67,2029,細い,細（ほそ）い,"mince, fin, étroit, malchanceux",N5
+67,2030,欲しい,欲（ほ）しい,"voulu, souhaité, désiré, nécessaire",N5
+67,2031,赤,赤（あか）,rouge,N5
+67,2032,早い,早（はや）い,"rapide, vite, précoce, hâtif, tôt, prématurément",N5
+67,2033,背が高い,背（せ）が高（たか）い,"grand, grand de taille, élancé",N5
+67,2034,野球,野球（やきゅう）,baseball,N5
+67,2035,熱い,熱（あつ）い,"chaud (objet), passionné",N5
+67,2036,バス,バス,bus,N5
+67,2037,練習,練習（れんしゅう）,"pratique, entraînement, exercice, répétition, drill",N5
+67,2038,土曜日,土曜日（どようび）,samedi,N5
+67,2039,そうです,そうです,"c'est ça, c'est juste, on dit que, il paraît, ah bon, je vois",N5
+67,2040,水曜日,水曜日（すいようび）,mercredi,N5
+67,2041,自転車,自転車（じてんしゃ）,vélo,N5
+67,2042,見る,見（み）る,"voir, regarder, observer, examiner, visualiser",N5
+67,2043,寝る,寝（ね）る,"se coucher, dormir, aller se coucher, être couché, se reposer",N5
+67,2044,覚える,覚（おぼ）える,"apprendre, mémoriser, se souvenir, graver dans la mémoire, retenir, se rappeler, acquérir, ressentir, penser, considérer",N5
+67,2045,食べる,食（た）べる,manger,N5
+67,2046,浴びる,浴（あ）びる,"s'arroser (e.g. d'eau), prendre (e.g. une douche), s'exposer à (e.g. au soleil), se baigner dans, être inondé de (e.g. de lumière), être couvert de, souffrir, attirer (e.g. l'attention), être accablé de, être envahi par, être couvert de, se faire doucher, prendre une douche, se laver",N5
+67,2047,借りる,借（か）りる,"emprunter, louer, engager",N5
+67,2048,起きる,起（お）きる,"se lever, se réveiller, se produire, surgir",N5
+67,2049,閉める,閉（し）める,fermer,N5
+68,3000,出かける,出（で）かける,"sortir, partir, se déplacer, quitter, aller faire une excursion, aller en voyage, se mettre en route",N5
+68,3001,教える,教（おし）える,"enseigner, informer, instruire",N5
+68,3002,始める,始（はじ）める,"commencer, débuter, initier, lancer, entamer, amorcer, établir, ouvrir, se mettre à",N5
+68,3003,聞く,聞（き）く,"écouter, entendre, demander, s'enquérir, entendre parler de, suivre, sentir",N5
+68,3004,座る,座（すわ）る,"s'asseoir, s'accroupir, s'immobiliser",N5
+68,3005,飲む,飲（の）む,"boire, avaler, ingurgiter, prendre (un médicament)",N5
+68,3006,会う,会（あ）う,"rencontrer, faire la connaissance de, voir, avoir un accident, vivre une mauvaise expérience",N5
+68,3007,飛ぶ,飛（と）ぶ,"voler, s'envoler, sauter, bondir",N5
+68,3008,行く,行（い）く,"aller, se déplacer (dans une direction ou vers un endroit spécifique), se diriger (vers), être transporté (vers), atteindre, passer, se produire, prendre place, marcher, décéder, faire, couler, continuer, avoir un orgasme, atteindre un point culminant, avoir des hallucinations induites par la drogue",N5
+68,3009,泳ぐ,泳（およ）ぐ,nager,N5
+68,3010,話す,話（はな）す,"parler, discuter, converser, bavarder",N5
+68,3011,歩く,歩（ある）く,marcher,N5
+68,3012,死ぬ,死（し）ぬ,"mourir, décéder",N5
+68,3013,帰る,帰（かえ）る,"rentrer, retourner, revenir à la maison",N5
+68,3014,漢字,漢字（かんじ）,"kanji, sinogramme, caractère chinois",N5
+68,3015,スポーツ,スポーツ,sport,N5
+68,3016,テレビ,テレビ,télévision,N5
+68,3017,ドア,ドア,porte (à l'occidentale),N5
+68,3018,鶏肉,鶏肉（とりにく）,viande de poulet,N5
+68,3019,ニュース,ニュース,"nouvelles, actualité",N5
+68,3020,出る,出（で）る,"sortir, partir, s'en aller, quitter, se manifester, apparaître, émerger, être découvert, être publié, être annoncé, être émis, assister, participer, prendre part, entrer, jouer, performer, être exprimé, se vendre, dépasser, se détacher, éclater, survenir, débuter, être produit, être donné, se voir proposer, recevoir, être offert, être présenté, être remis, être payé, répondre, assumer, agir, se comporter, obtenir, couler, circuler, saigner, être diplômé",N5
+68,3021,ホラー,ホラー,horreur,N5
+68,3022,早く,早（はや）く,"tôt, bientôt, rapidement, vite",N5
+68,3023,忘れる,忘（わす）れる,oublier,N5
+68,3024,肉,肉（にく）,"viande, chair, corps physique, épaisseur, tampon encreur",N5
+68,3025,持つ,持（も）つ,"tenir (dans sa main), prendre, porter, posséder, avoir, détenir, maintenir, conserver, durer, être résistant, survivre, prendre en charge, être responsable de",N5
+68,3026,休む,休（やす）む,"être absent, prendre un jour de congé, se reposer",N5
+68,3027,知る,知（し）る,"être au courant de, savoir, connaître, être conscient de, prendre connaissance de",N5
+68,3028,魚,魚（さかな）,poisson,N5
+68,3029,大学生,大学生（だいがくせい）,"étudiant universitaire, étudiant à l'université, étudiant en université",N5
+68,3030,映画館,映画館（えいがかん）,cinéma,N5
+68,3031,コーヒー,コーヒー,café,N5
+68,3032,ここ,ここ,"ici, cet endroit",N5
+68,3033,台所,台所（だいどころ）,cuisine,N5
+68,3034,外,外（そと）,"extérieur, dehors, air libre, autre endroit",N5
+68,3035,店,店（みせ）,"magasin, boutique, établissement, restaurant",N5
+68,3036,食べ物,食（た）べ物（もの）,nourriture,N5
+68,3037,そこ,そこ,"là (endroit relativement proche de l'auditeur), là, cet endroit, ensuite, cela, toi, là-bas",N5
+68,3038,パソコン,パソコン,ordinateur personnel,N5
+68,3039,明るい,明（あか）るい,"clair, lumineux, joyeux, familier, instruit, équitable, propre",N5
+68,3040,トイレ,トイレ,toilettes,N5
+68,3041,強い,強（つよ）い,"fort, puissant, vigoureux, robuste, résistant, endurant, solide",N5
+68,3042,教室,教室（きょうしつ）,salle de classe,N5
+68,3043,あそこ,あそこ,"là-bas (endroit physiquement éloigné à la fois du locuteur et de l'interlocuteur), là-bas, cet endroit, là, là-bas, cet endroit, cet endroit loin, là, à cet endroit, là-bas, yonder, cet endroit, cet endroit éloigné, cet endroit éloigné, cet endroit, cet endroit",N5
+68,3044,文法,文法（ぶんぽう）,grammaire,N5
+68,3045,習う,習（なら）う,"prendre des leçons, apprendre (d'un enseignant), étudier (sous la direction d'un enseignant), se former à",N5
+68,3046,ご飯,ご飯（はん）,"riz cuit, nourriture",N5
+68,3047,図書館,図書館（としょかん）,bibliothèque,N5
+68,3048,日本語,日本語（にほんご）,langue japonaise,N5
+68,3049,学校,学校（がっこう）,école,N5
+69,4000,新聞,新聞（しんぶん）,journal,N5
+69,4001,読む,読（よ）む,"lire, compter, deviner, prédire, lire les pensées, deviner",N5
+69,4002,曲がる,曲（ま）がる,"se plier, se courber, se déformer, serpenter, se tordre, tourner, être de travers, être de guingois",N5
+69,4003,置く,置（お）く,"mettre, placer, déposer, laisser, établir, installer, nommer, embaucher, supporter, fournir un logement, séparer spatialement ou temporellement, faire quelque chose à l'avance, laisser quelque chose dans un certain état",N5
+69,4004,机,机（つくえ）,"bureau, table",N5
+69,4005,病院,病院（びょういん）,hôpital,N5
+69,4006,返す,返（かえ）す,"rendre, retourner (quelque chose), restaurer, remettre",N5
+69,4007,青,青（あお）,"bleu, vert, feu vert, pelage noir du cheval, immature, non mûr, jeune",N5
+69,4008,書く,書（か）く,"écrire, composer, rédiger, peindre, dessiner",N5
+69,4009,遊ぶ,遊（あそ）ぶ,"s'amuser, se divertir, jouer, flâner, être inactif, être inutilisé, rendre visite, prendre du bon temps, s'occuper, profiter",N5
+69,4010,旅行,旅行（りょこう）,voyage,N5
+69,4011,夏休み,夏休（なつやす）み,vacances d'été,N5
+69,4012,僕,僕（ぼく）,"Je, moi, garçon",N5
+69,4013,走る,走（はし）る,"courir, se précipiter, s'élancer",N5
+69,4014,すみません,すみません,"excusez-moi, pardon, je suis désolé",N5
+69,4015,妹,妹（いもうと）,petite sœur,N5
+69,4016,ジュース,ジュース,jus,N5
+69,4017,初めて,初（はじ）めて,pour la première fois,N5
+69,4018,お弁当,お弁当（べんとう）,bento (boîte-repas japonaise),N5
+69,4019,右,右（みぎ）,droite,N5
+69,4020,半分,半分（はんぶん）,moitié,N5
+69,4021,医者,医者（いしゃ）,médecin,N5
+69,4022,有る,有（あ）る,"être, exister, vivre, avoir, se trouver, être équipé de, arriver, se produire",N5
+69,4023,時間,時間（じかん）,"temps, heures",N5
+69,4024,紙,紙（かみ）,papier,N5
+69,4025,喫茶店,喫茶店（きっさてん）,café,N5
+69,4026,砂糖,砂糖（さとう）,sucre,N5
+69,4027,誕生日,誕生日（たんじょうび）,anniversaire,N5
+69,4028,留学生,留学生（りゅうがくせい）,étudiant étranger,N5
+69,4029,外国人,外国人（がいこくじん）,"étranger, citoyen étranger, national étranger, alien, non-japonais",N5
+69,4030,写真,写真（しゃしん）,"photographie, photo, image, cliché, instantané",N5
+69,4031,動物,動物（どうぶつ）,animal,N5
+69,4032,飲み物,飲（の）み物（もの）,boisson,N5
+69,4033,橋,橋（はし）,pont,N5
+69,4034,番号,番号（ばんごう）,"numéro, suite de chiffres",N5
+69,4035,弟,弟（おとうと）,frère cadet,N5
+69,4036,買う,買（か）う,"acheter, acquérir, provoquer, susciter, estimer, avoir une haute opinion de",N5
+69,4037,果物,果物（くだもの）,fruit,N5
+69,4038,あの,あの,"ce, cette, ces, le, la, les, euh, hum",N5
+69,4039,着る,着（き）る,"porter (en japonais moderne, à partir des épaules), mettre, revêtir, se vêtir",N5
+69,4040,薬を飲む,薬（くすり）を飲（の）む,prendre des médicaments,N5
+69,4041,町,町（まち）,"ville, quartier, pâté de maisons, rue, 109,09 m, 0,99 hectares",N5
+69,4042,窓,窓（まど）,fenêtre,N5
+69,4043,開く,開（ひら）く,"ouvrir, défaire, décacheter, déballer",N5
+69,4044,開く,開（あ）く,"ouvrir (ex. portes), être ouvert (pour les affaires), s'ouvrir, ouvert, être vide, être vacant, être disponible, être libre, être ouvert, avoir été ouvert, se terminer, avoir un trou, former un écart, avoir un intervalle",N5
+69,4045,悪い,悪（わる）い,mauvais,N5
+69,4046,遅い,遅（おそ）い,"lent, en retard, stupide",N5
+69,4047,鼻,鼻（はな）,nez,N5
+69,4048,動物園,動物園（どうぶつえん）,zoo,N5
+69,4049,優しい,優（やさ）しい,"doux, gentil, aimable, tendre, gracieux, affectueux, amène",N5
+70,5000,勉強,勉強（べんきょう）,"étude, application, études",N5
+70,5001,灰皿,灰皿（はいざら）,cendrier,N5
+70,5002,使う,使（つか）う,"utiliser, se servir de, employer, faire usage de, mettre à profit",N5
+70,5003,誰,誰（だれ）,qui,N5
+70,5004,プール,プール,piscine,N5
+70,5005,する,する,"faire, effectuer, coûter, choisir",N5
+70,5006,先輩,先輩（せんぱい）,"aîné, supérieur, ancien élève, prédécesseur, vétéran",N5
+70,5007,ピザ,ピザ,pizza,N5
+70,5008,小さい,小（ちい）さい,"petit, minuscule",N5
+70,5009,親切,親切（しんせつ）,"gentil, aimable, attentionné, généreux, amical, sympathique",N5
+70,5010,簡単,簡単（かんたん）,"simple, facile, rapide",N5
+70,5011,夏,夏（なつ）,été,N5
+70,5012,楽しむ,楽（たの）しむ,s'amuser,N5
+70,5013,色,色（いろ）,"couleur, teint, apparence, amour, passion, sensualité, amant, genre, type",N5
+70,5014,言葉,言葉（ことば）,"langage, dialecte, mot, phrase, expression, remarque, manière de parler",N5
+70,5015,道,道（みち）,"route, chemin, rue, itinéraire, voie, enseignements",N5
+70,5016,山,山（やま）,"montagne, colline, amas",N5
+70,5017,会社,会社（かいしゃ）,entreprise,N5
+70,5018,掃除,掃除（そうじ）,"nettoyage, ménage",N5
+70,5019,パーティー,パーティー,fête,N5
+70,5020,話をする,話（はなし）をする,"avoir une conversation, raconter une histoire, discuter, parler, bavarder, faire la conversation",N5
+70,5021,日本,日本（にほん）,Japon,N5
+70,5022,電気,電気（でんき）,"électricité, ampoule électrique, lumière électrique",N5
+70,5023,疲れる,疲（つか）れる,"se fatiguer, être fatigué, devenir fatigué, s'épuiser",N5
+70,5024,子供,子供（こども）,enfant,N5
+70,5025,私たち,私（わたし）たち,"nous, nous-même",N5
+70,5026,大学,大学（だいがく）,"établissement d'enseignement supérieur, incl. université, collège, etc.",N5
+70,5027,カフェ,カフェ,café,N5
+70,5028,脱ぐ,脱（ぬ）ぐ,"enlever (des vêtements, des chaussures, etc.), se déshabiller",N5
+70,5029,うん,うん,oui,N5
+70,5030,はい,はい,oui,N5
+70,5031,緑,緑（みどり）,"vert, verdure",N5
+70,5032,大嫌い,大嫌（だいきら）い,"détester, abhorrer, exécrer",N5
+70,5033,嫌い,嫌（きら）い,détester,N5
+70,5034,作る,作（つく）る,"faire, produire, fabriquer, construire, ériger, préparer, brasser, élever, cultiver, former, entraîner, rédiger, composer, créer, inventer, organiser, établir, fonder, avoir, constituer, falsifier, façonner, engager",N5
+70,5035,乗る,乗（の）る,"monter dans (train, avion, bus, bateau, etc.), embarquer, prendre (train, avion, bus, etc.), grimper à bord, monter à bord",N5
+70,5036,ベッド,ベッド,lit,N5
+70,5037,休み,休（やす）み,"repos, récréation, pause, vacances, congé, absence, suspension, dormance, jour de congé, interruption, ne pas avoir l'air bien",N5
+70,5038,冷蔵庫,冷蔵庫（れいぞうこ）,réfrigérateur,N5
+70,5039,花,花（はな）,fleur,N5
+70,5040,コンピューター,コンピューター,ordinateur,N5
+70,5041,鉛筆,鉛筆（えんぴつ）,crayon,N5
+70,5042,甘い,甘（あま）い,"sucré, doux, sucré au goût, sucrée",N5
+70,5043,タクシー,タクシー,taxi,N5
+70,5044,分かる,分（わ）かる,"comprendre, saisir, voir, obtenir, suivre, devenir clair, être connu, être découvert, être réalisé",N5
+70,5045,新幹線,新幹線（しんかんせん）,TGV japonais,N5
+70,5046,飛行機,飛行機（ひこうき）,avion,N5
+70,5047,行き,行（い）き,"trajet aller, voyage aller, sens aller, trajet, aller simple, billet aller, départ pour, direction du train",N5
+70,5048,一月,一月（いちがつ）,janvier,N5
+70,5049,太い,太（ふと）い,"gros, épais, voix grave, audacieux, effronté, insolent, chanceux",N5
+71,6000,撮る,撮（と）る,"prendre (une photo), enregistrer (une vidéo), faire un film",N5
+71,6001,昼,昼（ひる）,midi,N5
+71,6002,点ける,点（つ）ける,"allumer, mettre en marche",N5
+71,6003,冬,冬（ふゆ）,hiver,N5
+71,6004,歌う,歌（うた）う,chanter,N5
+71,6005,カラオケ,カラオケ,karaoké,N5
+71,6006,お菓子,お菓子（かし）,"confiseries, douceurs, bonbons, friandises, sucreries",N5
+71,6007,アメリカ,アメリカ,Amérique,N5
+71,6008,靴,靴（くつ）,chaussures,N5
+71,6009,始まる,始（はじ）まる,"commencer, débuter, se mettre en route",N5
+71,6010,買い物,買（か）い物（もの）,"faire des courses, achats",N5
+71,6011,西,西（にし）,ouest,N5
+71,6012,風,風（かぜ）,"vent, brise, courant d'air, froid",N5
+71,6013,シャワーを浴びる,シャワーを浴（あ）びる,prendre une douche,N5
+71,6014,豚肉,豚肉（ぶたにく）,porc,N5
+71,6015,秋,秋（あき）,automne,N5
+71,6016,野菜,野菜（やさい）,légume,N5
+71,6017,意味,意味（いみ）,"sens, signification",N5
+71,6018,危ない,危（あぶ）ない,"dangereux, risqué, périlleux, précaire, incertain, en danger, en péril, à risque, critique, grave, instable, peu fiable, incertain, douteux, proche, étroit, attention!, fais attention!",N5
+71,6019,日曜日,日曜日（にちようび）,Dimanche,N5
+71,6020,バス停,バス停（てい）,arrêt de bus,N5
+71,6021,降りる,降（お）りる,"descendre (d'une montagne, d'un véhicule, d'un cheval...), dégringoler",N5
+71,6022,警察,警察（けいさつ）,police,N5
+71,6023,呼ぶ,呼（よ）ぶ,"appeler, interpeller, invoquer, crier",N5
+71,6024,洗う,洗（あら）う,"laver, enquêter",N5
+71,6025,待つ,待（ま）つ,"attendre, espérer, anticiper, dépendre de, nécessiter",N5
+71,6026,男の人,男（おとこ）の人（ひと）,homme,N5
+71,6027,遊び,遊（あそ）び,"jeu, divertissement",N5
+71,6028,音楽,音楽（おんがく）,"musique, mouvement musical",N5
+71,6029,切手,切手（きって）,"timbre (poste), bon d'achat",N5
+71,6030,スーパー,スーパー,supermarché,N5
+71,6031,賑やか,賑（にぎ）やか,"animé, vivant, occupé, agité, plein de vie",N5
+71,6032,先週,先週（せんしゅう）,la semaine dernière,N5
+71,6033,電話,電話（でんわ）,"appel téléphonique, téléphone",N5
+71,6034,牛肉,牛肉（ぎゅうにく）,bœuf,N5
+71,6035,午前,午前（ごぜん）,"matin, matinée, avant midi",N5
+71,6036,牛,牛（うし）,"vache, bœuf, taureau, veau",N5
+71,6037,宿題,宿題（しゅくだい）,devoirs,N5
+71,6038,漫画,漫画（まんが）,bande dessinée,N5
+71,6039,言う,言（い）う,"dire, prononcer, déclarer, nommer, appeler, faire un bruit",N5
+71,6040,南,南（みなみ）,sud,N5
+71,6041,おはよう,おはよう,bonjour,N5
+71,6042,降る,降（ふ）る,"tomber (ex. pluie), précipiter",N5
+71,6043,捨てる,捨（す）てる,"jeter, se débarrasser de, mettre au rebut, abandonner, écarter",N5
+71,6044,乾杯,乾杯（かんぱい）,"Santé, à votre santé, tchin-tchin",N5
+71,6045,毎週,毎週（まいしゅう）,chaque semaine,N5
+71,6046,鳥,鳥（とり）,oiseau,N5
+71,6047,来週,来週（らいしゅう）,la semaine prochaine,N5
+71,6048,結婚,結婚（けっこん）,mariage,N5
+71,6049,時々,時々（ときどき）,"parfois, de temps en temps",N5
+72,7000,住む,住（す）む,"vivre, résider, habiter, demeurer, résider, abiter",N5
+72,7001,売る,売（う）る,vendre,N5
+72,7002,東,東（ひがし）,est,N5
+72,7003,前,前（まえ）,"avant, devant, précédemment, il y a (temps)",N5
+72,7004,娘,娘（むすめ）,fille,N5
+72,7005,泣く,泣（な）く,"pleurer, sangloter, se lamenter",N5
+72,7006,渡る,渡（わた）る,"traverser, franchir, passer",N5
+72,7007,入る,入（はい）る,"entrer, pénétrer, s'introduire, s'insérer, rejoindre, s'inscrire, contenir, accueillir, avoir, obtenir, recevoir, marquer",N5
+72,7008,だけ,だけ,"seulement, juste, simplement, uniquement, rien que",N5
+72,7009,どれ,どれ,lequel (de trois ou plus),N5
+72,7010,どこ,どこ,"où, quel endroit",N5
+72,7011,どの,どの,"quel, quelle, lequel, laquelle",N5
+72,7012,国,国（くに）,pays,N5
+72,7013,料理,料理（りょうり）,"cuisine, cuisine de préparation, art culinaire",N5
+72,7014,もう,もう,"maintenant, bientôt, déjà, pas encore, encore, de nouveau, de plus, autre, exclamation de frustration",N5
+72,7015,どうして,どうして,"pourquoi, pour quelle raison, comment, de quelle manière, dans quel but",N5
+72,7016,怒る,怒（おこ）る,"se fâcher, se mettre en colère, gronder, engueuler, être fâché",N5
+72,7017,太る,太（ふと）る,"grossir, devenir gros, prendre du poids, s'épaissir",N5
+72,7018,なる,なる,"devenir, obtenir, croître, atteindre, finir par",N5
+72,7019,ゆっくり,ゆっくり,"lentement, tranquillement, sans se presser, décontracté",N5
+72,7020,雪,雪（ゆき）,neige,N5
+72,7021,スキー,スキー,ski,N5
+72,7022,お風呂に入る,お風呂（ふろ）に入（はい）る,prendre un bain,N5
+72,7023,涼しい,涼（すず）しい,"frais, rafraîchissant, clair, lumineux, distinct, calme, impassible, indifférent, pur, droit, innocent",N5
+72,7024,会議,会議（かいぎ）,"réunion, conférence, session, assemblée, conseil, convention, congrès",N5
+72,7025,終わる,終（お）わる,"terminer, finir, se terminer, s'achever, achever, conclure",N5
+72,7026,晩ご飯,晩（ばん）ご飯（はん）,"dîner, repas du soir, souper",N5
+72,7027,歯,歯（は）,dent,N5
+72,7028,一緒に,一緒（いっしょ）に,"ensemble, en même temps, avec, côte à côte, avec, en commun",N5
+72,7029,散歩,散歩（さんぽ）,promenade,N5
+72,7030,まだ,まだ,"pas encore, jusqu'à présent, seulement, encore",N5
+72,7031,痛い,痛（いた）い,"douloureux, mal, aïe, ouille, ça fait mal",N5
+72,7032,切符,切符（きっぷ）,billet,N5
+72,7033,消す,消（け）す,"effacer, supprimer, éteindre, éliminer",N5
+72,7034,答える,答（こた）える,répondre,N5
+72,7035,曇り,曇（くも）り,"temps nuageux, couvert, ombre",N5
+72,7036,狭い,狭（せま）い,étroit,N5
+72,7037,来年,来年（らいねん）,l'année prochaine,N5
+72,7038,風呂,風呂（ふろ）,"bain, baignoire",N5
+72,7039,洗濯,洗濯（せんたく）,"lessive, lavage",N5
+72,7040,いいえ,いいえ,"non, pas du tout, de rien",N5
+72,7041,上手,上手（じょうず）,"habile, adroit, talentueux",N5
+72,7042,上手い,上手（うま）い,"habile, adroit, expert, astucieux, savoureux, prometteur, délicieux, appétissant, réussi, doué, bon, chanceux, prometteur",N5
+72,7043,去年,去年（きょねん）,l'année dernière,N5
+72,7044,いただきます,いただきます,"merci pour le repas, je reçois (ce repas), bon appétit, merci pour ce repas",N5
+72,7045,どのくらい,どのくらい,"combien de temps, à quelle distance, combien",N5
+72,7046,まで,まで,"jusqu'à (dans le temps ou l'espace), vers",N5
+72,7047,来月,来月（らいげつ）,le mois prochain,N5
+72,7048,ダイエット,ダイエット,régime,N5
+72,7049,先月,先月（せんげつ）,le mois dernier,N5
+73,8000,木曜日,木曜日（もくようび）,jeudi,N5
+73,8001,午後,午後（ごご）,"après-midi, p.m.",N5
+73,8002,一昨日,一昨日（おととい）,avant-hier,N5
+73,8003,明後日,明後日（あさって）,lendemain de demain,N5
+73,8004,辞書,辞書（じしょ）,"dictionnaire, lexique",N5
+73,8005,結構,結構（けっこう）,"splendide, agréable, assez, merveilleux, délicieux, doux, non merci, ça va, suffisant",N5
+73,8006,アイスクリーム,アイスクリーム,glace,N5
+73,8007,いつも,いつも,toujours,N5
+73,8008,週末,週末（しゅうまつ）,weekend,N5
+73,8009,手,手（て）,"main, bras",N5
+73,8010,上着,上着（うわぎ）,"veste, manteau, tunique, vêtement d'extérieur, pardessus",N5
+73,8011,どちら,どちら,"quelle direction, quel chemin, où, qui, lequel des deux choix, que, quelle, quel",N5
+73,8012,嬉しい,嬉（うれ）しい,"heureux, content, joyeux",N5
+73,8013,白い,白（しろ）い,blanc,N5
+73,8014,一番,一番（いちばん）,"numéro un, premier, première place",N5
+73,8015,人口,人口（じんこう）,population,N5
+73,8016,メニュー,メニュー,menu,N5
+73,8017,茶色,茶色（ちゃいろ）,"marron, brun clair, fauve",N5
+73,8018,黄色,黄色（きいろ）,jaune,N5
+73,8019,答え,答（こた）え,réponse,N5
+73,8020,探す,探（さが）す,"chercher (quelque chose de désiré, nécessaire), chercher, rechercher, fouiller",N5
+73,8021,何か,何（なに）か,"quelque chose, quelque, quelconque, d'une manière ou d'une autre, pour une raison quelconque, une sorte de",N5
+73,8022,箱,箱（はこ）,"boîte, caisse, coffre, paquet",N5
+73,8023,渡す,渡（わた）す,"remettre, passer, donner, traverser, transporter, construire, remettre à, transférer, faire traverser, franchir",N5
+73,8024,大人,大人（おとな）,adulte,N5
+73,8025,インド,インド,Inde,N5
+73,8026,ビル,ビル,immeuble,N5
+73,8027,試合,試合（しあい）,"match, jeu, rencontre, compétition",N5
+73,8028,天気,天気（てんき）,temps,N5
+73,8029,やる,やる,"faire (une action), pratiquer (un sport), gérer (une entreprise)",N5
+73,8030,首,首（くび）,"cou, tête, licenciement",N5
+73,8031,試験,試験（しけん）,"examen, test, essai, expérience",N5
+73,8032,奥さん,奥（おく）さん,"épouse, votre épouse, son épouse, femme mariée, madame",N5
+73,8033,までに,までに,"avant, au plus tard à, pas après",N5
+73,8034,銀行,銀行（ぎんこう）,banque,N5
+73,8035,決める,決（き）める,"décider, choisir, déterminer, résoudre, se décider",N5
+73,8036,花瓶,花瓶（かびん）,"vase, pot de fleurs",N5
+73,8037,入れる,入（い）れる,"mettre dans, laisser entrer, prendre, apporter, insérer, sertir (une pierre précieuse, etc.), encrer (un tatouage, par exemple), marquer (un point), admettre, accueillir, embaucher, engager, se conformer, accorder, adopter, prendre, écouter, prêter attention à, inclure, payer, projeter, faire, allumer, envoyer, appeler, marquer.",N5
+73,8038,文化,文化（ぶんか）,culture,N5
+73,8039,引く,引（ひ）く,"tirer, attirer, soustraire",N5
+73,8040,眠い,眠（ねむ）い,"endormi, somnolent",N5
+73,8041,自分,自分（じぶん）,soi-même,N5
+73,8042,吸う,吸（す）う,"fumer, aspirer, inhaler, sucer, siroter, absorber, embrasser",N5
+73,8043,履く,履（は）く,"mettre (vêtement pour le bas du corps, par ex. pantalon, jupe, chaussures), porter",N5
+73,8044,もっと,もっと,"encore, davantage, plus",N5
+73,8045,歴史,歴史（れきし）,histoire,N5
+73,8046,働く,働（はたら）く,"travailler, fonctionner, être efficace, entrer en action, commettre, perpétrer, faire, agir, se conjuguer",N5
+73,8047,黒い,黒（くろ）い,"noir, sombre, illicite, méchant, clandestin",N5
+73,8048,教科書,教科書（きょうかしょ）,"manuel, livre scolaire, ouvrage scolaire",N5
+73,8049,教師,教師（きょうし）,professeur,N5
+74,9000,毎晩,毎晩（まいばん）,chaque soir,N5
+74,9001,両親,両親（りょうしん）,"parents, deux parents",N5
+74,9002,勤める,勤（つと）める,"travailler (pour), être employé (chez), servir (dans), travailler pour, travailler, être employé, servir à, être employé chez, travailler en tant que",N5
+74,9003,病気,病気（びょうき）,maladie,N5
+74,9004,悲しい,悲（かな）しい,"triste, lugubre, peiné, chagriné, mélancolique, désolant",N5
+74,9005,寂しい,寂（さび）しい,"seul, solitaire, isolé, désolé",N5
+74,9006,吹く,吹（ふ）く,"souffler, jouer d'un instrument à vent",N5
+74,9007,箸,箸（はし）,baguettes,N5
+74,9008,若い,若（わか）い,"jeune, jeune adulte, juvénile, immature, peu mûr, bas, petit",N5
+74,9009,社長,社長（しゃちょう）,président-directeur général,N5
+74,9010,素敵,素敵（すてき）,"charmant, magnifique, gentil, génial, fantastique, superbe, cool, joli, extraordinaire",N5
+74,9011,心配,心配（しんぱい）,"inquiétude, souci, angoisse, préoccupation, peur",N5
+74,9012,紅茶,紅茶（こうちゃ）,thé noir,N5
+74,9013,お土産,お土産（みやげ）,"spécialité locale, souvenir, cadeau de voyage, article régional, présent",N5
+74,9014,母,母（はは）,mère,N5
+74,9015,封筒,封筒（ふうとう）,enveloppe,N5
+74,9016,コップ,コップ,"verre (à boire), gobelet",N5
+74,9017,セーター,セーター,pull,N5
+74,9018,父,父（ちち）,père,N5
+74,9019,雑誌,雑誌（ざっし）,"magazine, revue, périodique",N5
+74,9020,厚い,厚（あつ）い,"épais, profond, lourd",N5
+74,9021,チケット,チケット,billet,N5
+74,9022,薬,薬（くすり）,"médicament, pharmaceutiques, drogues (légales)",N5
+74,9023,風邪をひく,風邪（かぜ）をひく,attraper un rhume,N5
+74,9024,全部,全部（ぜんぶ）,"tout, entier, totalité, ensemble",N5
+74,9025,然う,然（そ）う,"ainsi, de cette façon, tel",N5
+74,9026,どう,どう,"comment, de quelle manière, que diriez-vous de",N5
+74,9027,あのー,あのー,"euh, alors, enfin, bon, hmm",N5
+74,9028,でも,でも,"mais, cependant, néanmoins, bien que, même ainsi",N5
+74,9029,思う,思（おも）う,"penser, croire",N5
+74,9030,来る,来（く）る,"venir (spatialement ou temporellement), approcher, arriver, revenir, faire et revenir, devenir, être causé par, provenir de, continuer",N5
+74,9031,ちょっと,ちょっと,"un peu, un instant, un moment, juste un peu, assez, facilement, plutôt, ne pas facilement, hé, une courte période",N5
+74,9032,事,事（こと）,"chose, affaire, sujet, question, événement",N5
+74,9033,じゃあ,じゃあ,"alors, eh bien",N5
+74,9034,あれ,あれ,"cela, cette chose, cette personne, là-bas, ce temps-là, ce lieu, là-bas",N5
+74,9035,ありがとう,ありがとう,merci,N5
+74,9036,こんな,こんな,"tel (concernant quelque chose ou quelqu'un proche du locuteur (y compris le locuteur), ou concernant des idées exprimées par le locuteur), comme ça, tel, de cette sorte, de ce genre, tel/pareil, tel que, tel que ceci, ce genre, ce type, comme cela, ce type de",N5
+74,9037,時,時（とき）,"temps, heure, moment, occasion, chance, opportunité, saison, l'époque, l'âge",N5
+74,9038,時,時（じ）,"heure, à l'heure, à l'instant, moment précis, quand, durant, temps",N5
+74,9039,様,様（さま）,"Monsieur, Madame, Mademoiselle, suffixe formel",N5
+74,9040,中,中（なか）,intérieur,N5
+74,9041,だから,だから,"donc, par conséquent, ainsi, en conséquence, pour cette raison, c'est pourquoi, pour cette cause, alors, de ce fait, comme j'ai dit, je t'ai déjà dit, à cause de cela",N5
+74,9042,話,話（はなし）,"parole, discours, conversation, histoire",N5
+74,9043,力,力（ちから）,"force, puissance, vigueur, énergie, capacité, compétence, faculté, effort, pouvoir, autorité, influence, soutien, aide, assistance, moyens, ressources",N5
+74,9044,年,年（とし）,"année, âge",N5
+74,9045,年,年（ねん）,"année, comptoir pour les années, grades, période du contrat d'apprentissage",N5
+74,9046,男,男（おとこ）,"homme, mâle, type, gars, copain, virilité, honneur masculin",N5
+74,9047,方,方（かた）,"direction, manière, façon, personne, méthode, côté",N5
+74,9048,違う,違（ちが）う,"différer (de), varier, ne pas correspondre, être différent de ce qui est promis",N5
+74,9049,子,子（こ）,"enfant, jeune femme, jeune animal, jeune geisha, rejeton, intérêt, nouvelles actions, joueur qui n'est pas le croupier, œuf d'oiseau, -eur, gamin",N5
+75,10000,そして,そして,et,N5
+75,10001,考える,考（かんが）える,"penser à, réfléchir à, considérer, prendre en compte",N5
+75,10002,目,目（め）,"œil, vue, regard, suffixe pour les nombres ordinaux",N5
+75,10003,声,声（こえ）,voix,N5
+75,10004,さあ,さあ,"interjection utilisée pour exprimer l'encouragement, l'incertitude, la réflexion ou l'hésitation",N5
+75,10005,ええ,ええ,"oui, c'est cela, euh, hein ?, d'accord, c'est exact, bien, bon",N5
+75,10006,出す,出（だ）す,"sortir, retirer, enlever, déployer, rendre public, se mettre à",N5
+75,10007,次,次（つぎ）,"prochain, suivant, subséquent, étape, station",N5
+75,10008,世界,世界（せかい）,"le monde, la société, l'univers",N5
+75,10009,女,女（おんな）,"femme, féminin, sexe féminin, amante, petite amie, maîtresse, fille",N5
+75,10010,ママ,ママ,Maman,N5
+75,10011,頼む,頼（たの）む,"demander, supplier, prier, appeler, commander, réserver, confier à, se fier à",N5
+75,10012,顔,顔（かお）,"visage, face, apparence, expression, honneur, influence, notoriété",N5
+75,10013,見える,見（み）える,"être vu, être visible, sembler, avoir l'air",N5
+75,10014,夢,夢（ゆめ）,rêve,N5
+75,10015,どうぞ,どうぞ,"s'il vous plaît, je vous en prie, allez-y, servez-vous, après vous, tenez, je vous en supplie",N5
+75,10016,なぜ,なぜ,"pourquoi, comment",N5
+75,10017,どんな,どんな,"quel genre de, quelle sorte de, n'importe quel, tout, quel type de, quelle type de, lequel",N5
+75,10018,こちら,こちら,"cette façon (direction proche du locuteur ou vers le locuteur), cette direction, ici, ce (objet), je, moi, nous, nous (inclusif), cette personne, lequel, par ici, ceci",N5
+75,10019,今度,今度（こんど）,"cette fois-ci, maintenant, la prochaine fois, une autre fois, futur proche",N5
+75,10020,これから,これから,"à partir de maintenant, à l'avenir, désormais, dorénavant, après cela, dans le futur, dès maintenant, désormais, prochainement, dans l'avenir",N5
+75,10021,取る,取（と）る,"prendre, cueillir, récolter, gagner, choisir, voler, manger, avoir, retirer, concourir, jouer",N5
+75,10022,最後,最後（さいご）,"dernier, fin, conclusion, plus récent, moment final",N5
+75,10023,見せる,見（み）せる,"montrer, afficher",N5
+75,10024,上,上（うえ）,"au-dessus, en haut, sur, aîné",N5
+75,10025,先,先（さき）,"précédent, précédent, antérieur, il y a quelque temps, précédent, précédent, conseil, pointe, bout, buse, tête, devant, en avance, l'autre côté, le futur, désormais, destination, l'autre partie, avant, avant, passé",N5
+75,10026,本当,本当（ほんとう）,"vérité, réalité, actualité, fait, véritable, authentique, naturel, véritablement, vraiment",N5
+75,10027,いつ,いつ,"quand, à quelle heure, combien de temps, quand,à quelle heure,combien de temps,temps normals,jours ordinaires,quelle heure",N5
+75,10028,後,後（あと）,"derrière, arrière, plus tard",N5
+75,10029,後,後（ご）,"après, post-, derrière, suivant",N5
+75,10030,少し,少（すこ）し,"petite quantité, peu, quelque chose, petit moment, courte distance, un peu",N5
+75,10031,皆さん,皆（みな）さん,"tout le monde, tous",N5
+75,10032,全然,全然（ぜんぜん）,"(pas) du tout, (pas) le moins du monde",N5
+75,10033,受ける,受（う）ける,"recevoir, obtenir, accepter, subir",N5
+75,10034,どうも,どうも,"merci, merci beaucoup, d'une certaine manière, malgré soi, avoir beau, peu importe à quel point on essaie, mais malgré tout, pour une raison quelconque",N5
+75,10035,他,他（ほか）,"autre (lieu, chose, personne), les autres, le reste",N5
+75,10036,気持ち,気持（きも）ち,"sentiment, sensation, ambiance, sentiment,sensation,ambiance,préparation,prêt,attitude,remerciements,sollicitude,sympathie,juste un peu,quelque peu,légèrement",N5
+75,10037,空,空（そら）,"ciel, air, firmament",N5
+75,10038,頭,頭（あたま）,tête,N5
+75,10039,金,金（かね）,argent,N5
+75,10040,関係,関係（かんけい）,"relation, rapport, connexion, lien, implication, préoccupation, influence, relation sexuelle, lié à, connecté à, rapport",N5
+75,10041,大事,大事（だいじ）,"important, précieux, grave, sérieux",N5
+75,10042,くらい,くらい,"environ, à peu près, autour de, ou alors, à peu près,autour de,ou alors,dans la mesure où,assez pour,si ... que ...,au moins,aussi ... que ...,comme,approximation,circa,environ,env.",N5
+75,10043,続ける,続（つづ）ける,continuer,N5
+75,10044,ごめんなさい,ごめんなさい,Je suis désolé,N5
+75,10045,問題,問題（もんだい）,"question (par exemple, dans un test), problème",N5
+75,10046,それに,それに,"de plus, en outre, aussi, par ailleurs, d'ailleurs, en plus",N5
+75,10047,決まる,決（き）まる,"être décidé, être réglé, avoir l'air bien",N5
+75,10048,所,所（ところ）,"lieu, endroit, scène, site, adresse, district, région, localité, maison, espace, pièce, par conséquent, sur le point de, venait de faire, était en train de faire, venait juste de faire",N5
+75,10049,見つける,見（み）つける,"découvrir, trouver, tomber sur, détecter, repérer, apercevoir",N5
+76,11000,円,円（えん）,"yen, unité monétaire japonaise, cercle",N5
+76,11001,動く,動（うご）く,"bouger, remuer, se déplacer, secouer, balancer",N5
+76,11002,王,王（おう）,roi,N5
+76,11003,もちろん,もちろん,"bien sûr, certainement, naturellement, évidemment",N5
+76,11004,度,度（ど）,"degré (angle, température, échelle, etc.), degré (échelle de mesure), degré (gradient, intensité), degré (température)",N5
+76,11005,幸せ,幸（しあわ）せ,"bonheur, chance, bénédiction, bonheur",N5
+76,11006,感じ,感（かん）じ,"sentiment, impression, sensation",N5
+76,11007,家族,家族（かぞく）,"famille, membres d'une famille",N5
+76,11008,消える,消（き）える,"s'éteindre, disparaître, s'effacer, s'évanouir",N5
+76,11009,急ぐ,急（いそ）ぐ,"se dépêcher, se hâter, presser, accélérer quelque chose",N5
+76,11010,最初,最初（さいしょ）,"début, commencement, premier, début de, le début",N5
+76,11011,止める,止（や）める,"arrêter (une activité), cesser, discontinuer, terminer, quitter",N5
+76,11012,止める,止（と）める,"arrêter, éteindre, garer, supprimer, retenir, soulager, dissuader, interdire, remarquer, se rendre compte de, se concentrer sur, faire attention à, garder à l'esprit, réparer, attacher, fixer avec une épingle, clouer, agrafer, détenir, maintenir en garde, stopper quelque chose",N5
+76,11013,間,間（あいだ）,"espace (entre), écart, intervalle, distance, étendue, période de temps, durée, parmi, relations, relation, point milieu, moyenne, à mi-chemin, terrain d'entente, en raison de, à cause de, quantité de temps, pendant que",N5
+76,11014,約束,約束（やくそく）,"promesse, accord, arrangement, parole, contrat, pacte, rendez-vous, engagement, destin, convention, règle, destinée",N5
+76,11015,残る,残（のこ）る,"rester, être laissé, demeurer, subsister",N5
+76,11016,枚,枚（まい）,"compteur pour les objets plats (par exemple, feuilles de papier)",N5
+76,11017,困る,困（こま）る,"être troublé, être inquiet, être dérangé, être embarrassé, être perplexe, être en difficulté, être en détresse",N5
+76,11018,口,口（くち）,"bouche, ouverture, entrée, embouchure",N5
+76,11019,普通,普通（ふつう）,"normal, ordinaire, régulier, habituel, commun, moyen, normalement, ordinairement, généralement, train local, train qui s’arrête à chaque station, général",N5
+76,11020,村,村（むら）,village,N5
+76,11021,落ちる,落（お）ちる,"tomber, chuter, chuter (par exemple pluie), couler (par exemple le soleil ou la lune), tomber sur (par exemple, lumière ou regard), être utilisé à un certain endroit (par exemple de l'argent), échouer, s'écraser, dégénérer, se dégrader, devenir indécent, être ruiné, sombrer, se pâlir, se détacher, céder, avouer, s'enfuir, être vaincu, reprendre ses esprits, s'évanouir, consentir, comprendre, geler, mourir",N5
+76,11022,番,番（ばん）,"numéro (dans une série), tour de rôle, tour, numéro dans une série, numéro, tour de rôle, tour, veille, garde, rang, position, combat, match, pièces, numéro dans la série, nombre ordinal, position dans une série",N5
+76,11023,別に,別（べつ）に,"(pas) particulièrement, (pas) spécialement, (pas) nécessairement, séparément, à part, en plus, spécialement, rien de particulier",N5
+76,11024,見つかる,見（み）つかる,"être trouvé, être découvert",N5
+76,11025,笑う,笑（わら）う,"rire, sourire, se moquer, railler, être stupéfait",N5
+76,11026,送る,送（おく）る,"envoyer, expédier, transmettre",N5
+76,11027,立つ,立（た）つ,se lever,N5
+76,11028,歳,歳（さい）,"âge, an, année",N5
+76,11029,最近,最近（さいきん）,"dernièrement, ces jours-ci, récemment, de nos jours",N5
+76,11030,頃,頃（ころ）,"environ, vers, approximativement, à peu près, autour de, période, moment, époque, temps approximatif, saison",N5
+76,11031,下,下（した）,"en dessous, en bas, sous, plus jeune, inférieur, juste après, infériorité, inférieur, échange, préliminaire, préparatoire",N5
+76,11032,感じる,感（かん）じる,"ressentir, percevoir, éprouver",N5
+76,11033,終わり,終（お）わり,la fin,N5
+76,11034,開ける,開（あ）ける,"ouvrir (une porte, etc.), déballer (par exemple, un colis, paquet), déverrouiller, ouvrir une porte, ouvrir, déballer, déverrouiller, vider, faire de la place, faire le vide, partir, se lever (jour), commencer, finir, dégager du temps, dégager, ouvrir quelque chose, ouvrir transitif, déverrouiller.",N5
+76,11035,足,足（あし）,"pied, jambe, allure, composant structurel inférieur, moyen de transport, argent, pieds",N5
+76,11036,生まれる,生（う）まれる,naître,N5
+76,11037,島,島（しま）,île,N5
+76,11038,もう一度,もう一度（いちど）,encore une fois,N5
+76,11039,それでは,それでは,"alors, donc ...",N5
+76,11040,合う,合（あ）う,"se rencontrer, se réunir, fusionner, s'unir, se joindre, correspondre, convenir",N5
+76,11041,理由,理由（りゆう）,"raison, prétexte, motif",N5
+76,11042,もしもし,もしもし,"allô (par exemple, au téléphone)",N5
+76,11043,残念,残念（ざんねん）,"dommage, regrettable, décevant, fâcheux, regrettable, malheureux",N5
+76,11044,選手,選手（せんしゅ）,"joueur, membre de l'équipe, athlète, sportif, coéquipier",N5
+76,11045,上がる,上（あ）がる,"monter, grimper, s'élever, être élevé, sortir",N5
+76,11046,聞こえる,聞（き）こえる,"être entendu, être audible, être réputé, pouvoir entendre",N5
+76,11047,切る,切（き）る,"couper, trancher, réaliser (une chirurgie), sectionner, arrêter, interrompre, raccrocher, déconnecter, perforer, déchirer, ouvrir, démarrer, fixer, exécuter quelque chose en un temps limité, émettre, réduire, diminuer, faire une remise, secouer, laisser égoutter, laisser s'égoutter, traverser, critiquer sévèrement, agir de manière décisive, faire, passer en premier, créer, tourner, boucler, replier, mélanger, licencier, renvoyer, lâcher, expulser, excommunier, fouiller, utiliser un atout, isoler la pierre d'un adversaire, allumer un feu, dessiner une forme dans les airs, finir, accomplir, réaliser une intervention chirurgicale, couper trans.",N5
+76,11048,大きな,大（おお）きな,"grand, gros, immense",N5
+76,11049,物,物（もの）,"chose, objet, article, truc, substance",N5
+77,12000,城,城（しろ）,château,N5
+77,12001,船,船（ふね）,"bateau, navire, vaisseau, embarcation",N5
+77,12002,点,点（てん）,"point, tache, petite quantité, marque, note, score, points, aspect, détail, partie, respect, manière, point de vue, signe de ponctuation, coup de pinceau, compteur pour points, notes, buts, etc., compteur pour marchandises, articles, vêtements, œuvres d'art",N5
+77,12003,月,月（つき）,"lune, mois",N5
+77,12004,について,について,"à propos de, concernant, au sujet de, pour, par rapport à, en ce qui concerne, quant à",N5
+77,12005,こんにちは,こんにちは,bonjour,N5
+77,12006,天,天（てん）,"ciel, paradis, dieu, sommet, début, tempura, Inde",N5
+77,12007,続く,続（つづ）く,"continuer, durer, se poursuivre, être ininterrompu, se reproduire, mener à, se connecter à, jouxter, suivre, succéder, être adjacent à, venir après, être consécutif à",N5
+77,12008,貸す,貸（か）す,"prêter, louer",N5
+77,12009,ううん,ううん,"non, euh, ben, enfin, hum, ah non",N5
+77,12010,楽しみ,楽（たの）しみ,"plaisir, amusement, passe-temps, anticipation",N5
+77,12011,手伝う,手伝（てつだ）う,"aider, assister, contribuer, prêter main forte",N5
+77,12012,近く,近（ちか）く,"près, voisinage, proximité, à proximité, presque, bientôt",N5
+77,12013,毎日,毎日（まいにち）,chaque jour,N5
+77,12014,上げる,上（あ）げる,"élever, monter, augmenter, faire voler, lancer, faire surface, atterrir, frire, montrer, invoquer, envoyer, inscrire, développer, améliorer, donner, citer, arrêter, nommer, offrir, supporter, conduire, terminer, faire humblement, vomir",N5
+77,12015,久しぶり,久（ひさ）しぶり,"ça fait longtemps, ça fait un bail, longtemps sans voir, il y a longtemps, après longtemps, première fois depuis longtemps, un long moment, ça faisait longtemps, c’est passé longtemps, longtemps que je n'ai pas vu quelqu'un",N5
+77,12016,向こう,向（む）こう,"côté opposé, autre côté, direction opposée, là-bas, par là, loin, au-delà, l'autre partie, l'autre personne, futur",N5
+77,12017,春,春（はる）,"printemps, début de l'année, jeunesse, adolescence, puberté, sexualité",N5
+77,12018,止まる,止（と）まる,"s'arrêter, cesser, suspendre, se poser, se percher, rester, s'immobiliser",N5
+77,12019,それから,それから,"et puis, après cela, ensuite, à partir de là, à partir de ce moment-là, de là",N5
+77,12020,集める,集（あつ）める,"rassembler, collecter, assembler",N5
+77,12021,酒,酒（さけ）,"alcool, saké",N5
+77,12022,ただいま,ただいま,"je suis là, je suis rentré, en ce moment, à l'instant",N5
+77,12023,落とす,落（お）とす,"laisser tomber, perdre",N5
+77,12024,火,火（ひ）,"feu, flamme, incendie",N5
+77,12025,歌,歌（うた）,"chanson, chant",N5
+77,12026,胸,胸（むね）,"poitrine, cœur, poumons, esprit, sentiments",N5
+77,12027,説明,説明（せつめい）,"explication, exposition",N5
+77,12028,森,森（もり）,forêt,N5
+77,12029,鍵,鍵（かぎ）,"clé, serrure",N5
+77,12030,丸,丸（まる）,"cercle (parfois utilisé pour zéro), symbole de validation, marque de validation, sphère, rond, totalité, entier, complet, zéro",N5
+77,12031,そうですね,そうですね,"C'est ça, n'est-ce pas?",N5
+77,12032,紹介,紹介（しょうかい）,"introduction, présentation, recommandation",N5
+77,12033,弱い,弱（よわ）い,"faible, frêle, délicat, tendre, peu compétent, faible (vin)",N5
+77,12034,手術,手術（しゅじゅつ）,"chirurgie, opération, intervention, dextérité, tour de main",N5
+77,12035,代,代（だい）,"frais, coût, prix, génération, âge, année scolaire, cohorte, règne, époque, un représentant de, au nom de, pour, numéro du standard téléphonique, compteur pour décennies d'âges, époques, etc., compteur pour générations, entreprise de demande par procuration, pronom, remplaçant, période, frais.",N5
+77,12036,皆,皆（みな）,"tous, tout le monde, tout",N5
+77,12037,左,左（ひだり）,gauche,N5
+77,12038,付く,付（つ）く,"être attaché, être lié à, adhérer, coller, s'accrocher, rester imprimé, cicatriser, tacher, teindre, porter, être acquis, augmenter, prendre racine, accompagner, assister, suivre, étudier avec, se joindre à, appartenir à, posséder, hanter, être allumé, être éclairé, être réglé, être résolu, être décidé, être donné, être senti, être perçu, avoir de la chance, devenir, attacher, être attaché intransitif",N5
+77,12039,集まる,集（あつ）まる,"se réunir, se rassembler, s'assembler",N5
+77,12040,感謝,感謝（かんしゃ）,"remerciement, gratitude",N5
+77,12041,メール,メール,"mail, courrier électronique, message",N5
+77,12042,びっくり,びっくり,"être surpris, être étonné, être effrayé, être stupéfait, être pris au dépourvu, sursauter",N5
+77,12043,門,門（もん）,"portail, porte, entrée, passage",N5
+77,12044,人々,人々（ひとびと）,"gens, hommes et femmes, chaque personne, tout le monde",N5
+77,12045,着く,着（つ）く,"arriver à, atteindre, parvenir à, s'asseoir sur, s'asseoir à",N5
+77,12046,興味,興味（きょうみ）,"intérêt (pour quelque chose), curiosité (à propos de quelque chose), enthousiasme (pour)",N5
+77,12047,後ろ,後（うし）ろ,"arrière, derrière",N5
+77,12048,生活,生活（せいかつ）,"vie quotidienne, existence, moyens de subsistance",N5
+77,12049,自信,自信（じしん）,confiance en soi,N5
+78,13000,払う,払（はら）う,"payer (par exemple, de l'argent, une facture), balayer, dégager, élaguer, chasser, payer, balayer, escamoter, pruner, chasser, éliminer, montrer, dépenser, exercer, se déplacer, libérer, balayer, écarter, faire un mouvement de balayage, réinitialiser",N5
+78,13001,週間,週間（しゅうかん）,semaine,N5
+78,13002,色々,色々（いろいろ）,divers,N5
+78,13003,ところで,ところで,"à propos, incidemment, de toute façon, même si, peu importe",N5
+78,13004,高校,高校（こうこう）,lycée,N5
+78,13005,押す,押（お）す,"pousser, appuyer sur",N5
+78,13006,下がる,下（さ）がる,"descendre, baisser, tomber, chuter, diminuer, s'abaisser",N5
+78,13007,客,客（きゃく）,"invité, visiteur, client, spectateur, touriste, voyageur",N5
+78,13008,白,白（しろ）,"blanc, innocence, personne innocente, espace vide, pierre de go blanche, tuile de dragon blanc, intestin de porc grillé en brochette",N5
+78,13009,赤い,赤（あか）い,rouge,N5
+78,13010,黒,黒（くろ）,noir,N5
+78,13011,神様,神様（かみさま）,dieu,N5
+78,13012,クラス,クラス,classe,N5
+78,13013,この間,この間（あいだ）,"l'autre jour, récemment, ces derniers temps, durant cette période, en attendant, pendant ce temps",N5
+78,13014,今年,今年（ことし）,cette année,N5
+78,13015,例えば,例（たと）えば,par exemple,N5
+78,13016,違い,違（ちが）い,"différence, divergence, erreur, incorrect",N5
+78,13017,小さな,小（ちい）さな,"petit, petite",N5
+78,13018,耳,耳（みみ）,"oreille, audition, bord, croûte, lisière",N5
+78,13019,デート,デート,"rendez-vous (avec quelqu'un), sortie (à deux), soirée en amoureux",N5
+78,13020,兄弟,兄弟（きょうだい）,frères et sœurs,N5
+78,13021,お礼,お礼（れい）,remerciement,N5
+78,13022,玉,玉（たま）,"balle, sphère, globe, orbe, portion, tas (de nouilles, etc.), gouttelette, balle, ampoule, lentille, gemme, bijou, perle, artiste, personne, caractère, objet, œuf, pièce de monnaie, précieux, beau, excellent",N5
+78,13023,隣,隣（となり）,voisin,N5
+78,13024,掛ける,掛（か）ける,"accrocher (ex. un manteau, un tableau au mur), laisser pendre, suspendre (à), hisser (ex. voile), lever (ex. drapeau), raccrocher, partir, suspendre à, suspendre, hisser, lever, poser, recouvrir, porter, créer, consacrer, utiliser, verser sur, saupoudrer sur, éclabousser, allumer, définir, imposer, multiplier, sécuriser, s'asseoir, se reposer, parier, miser, risquer, mettre un effet sur, tenir, argumenter, délibérer, augmenter davantage, attraper, ériger, appliquer, faire un jeu de mots, utiliser comme mot pivot, faire des jeux de mots, être en train de faire, commencer, être sur le point de, adresser, diriger, faire, suspendre, laisser pendre.",N5
+78,13025,返事,返事（へんじ）,"réponse, réplique, réponse",N5
+78,13026,願い,願（ねが）い,"souhait, désir, vœu, requête, prière, appel, demande, supplication",N5
+78,13027,張る,張（は）る,"coller, fixer, appliquer, étendre, étirer, tendre, mettre en place, former, remplir, gonfler, tendre, poser, surveiller, être à l'affût, devenir à une tuile de l'achèvement, coller trans",N5
+78,13028,踊る,踊（おど）る,"danser (à l'origine une danse sautillante), danser, danse",N5
+78,13029,雲,雲（くも）,nuage,N5
+78,13030,寺,寺（てら）,temple bouddhiste,N5
+78,13031,まあまあ,まあまあ,"comme ci comme ça, passable, moyen, bon, tranquille",N5
+78,13032,お姉さん,お姉（ねえ）さん,sœur aînée,N5
+78,13033,軽い,軽（かる）い,"léger (c'est-à-dire pas lourd), se sentir léger (c'est-à-dire offrant peu de résistance, se déplaçant facilement), frivole, léger, se sentir léger, agile, vif, non sérieux, mineur, trivial, petit, doux, facile, simple, léger",N5
+78,13034,多分,多分（たぶん）,"peut-être, probablement",N5
+78,13035,後で,後（あと）で,"plus tard, ensuite, après",N5
+78,13036,男の子,男（おとこ）の子（こ）,"garçon, enfant mâle, petit garçon",N5
+78,13037,彼氏,彼氏（かれし）,petit ami,N5
+78,13038,いらっしゃいませ,いらっしゃいませ,bienvenue,N5
+78,13039,お兄さん,お兄（にい）さん,"grand frère, frère aîné, jeune homme, camarade, frangin",N5
+78,13040,いい子,いい子（こ）,"bon garçon, bonne fille, bon enfant",N5
+78,13041,赤ちゃん,赤（あか）ちゃん,"bébé, nourrisson",N5
+78,13042,指,指（ゆび）,"doigt, orteil, chiffre",N5
+78,13043,少ない,少（すく）ない,"peu, rare, insuffisant, rarement",N5
+78,13044,角,角（かど）,"coin (ex. bureau, trottoir), coin, bord",N5
+78,13045,緊張,緊張（きんちょう）,"tension, nervosité, stress",N5
+78,13046,案内,案内（あんない）,"guidage, conduire, montrer, information, notification, annonce, invitation, connaissance, indication",N5
+78,13047,卵,卵（たまご）,"œufs, œuf, œufs de poisson, œufs d'insecte, spawn, œufs de grenouille, œufs d'oiseaux, œufs de reptile",N5
+78,13048,さようなら,さようなら,au revoir,N5
+78,13049,お腹,お腹（なか）,ventre,N5
+79,14000,背中,背中（せなか）,dos (du corps),N5
+79,14001,年生,年生（ねんせい）,élève en ... année,N5
+79,14002,意見,意見（いけん）,"avis, opinion, point de vue, commentaire",N5
+79,14003,趣味,趣味（しゅみ）,"loisir, passe-temps, goût, préférence, intérêt",N5
+79,14004,北,北（きた）,"nord, le Nord, régions du Nord, Corée du Nord",N5
+79,14005,警察官,警察官（けいさつかん）,"agent de police, policier, policière",N5
+79,14006,スイッチ,スイッチ,"interrupteur, bouton, console Nintendo Switch",N5
+79,14007,荷物,荷物（にもつ）,"bagage, fardeau, paquet",N5
+79,14008,そちら,そちら,"cette direction (loin de celui qui parle, près de celui à qui l'on parle), cette direction, là-bas, là, celui-là, vous, votre famille, votre entreprise, cette personne, cette direction",N5
+79,14009,看護師,看護師（かんごし）,"infirmière, infirmier",N5
+79,14010,自然,自然（しぜん）,"nature, naturel, naturalité, naturellement",N5
+79,14011,紫,紫（むらさき）,"pourpre, violet, violette",N5
+79,14012,次に,次（つぎ）に,"ensuite, puis, après cela",N5
+79,14013,戸,戸（と）,porte (surtout une porte coulissante japonaise),N5
+79,14014,髪,髪（かみ）,cheveux,N5
+79,14015,スーツ,スーツ,costume,N5
+79,14016,注意,注意（ちゅうい）,"prudence, attention, avertissement, réprimande",N5
+79,14017,今朝,今朝（けさ）,ce matin,N5
+79,14018,下手,下手（へた）,"maladroit, incompétent, peu habile, pauvre, gauche",N5
+79,14019,糸,糸（いと）,"fil, corde, ficelle, laine",N5
+79,14020,下げる,下（さ）げる,"abaisser, réduire, accrocher, suspendre, porter (par ex. un accessoire)",N5
+79,14021,肩,肩（かた）,épaule,N5
+79,14022,性格,性格（せいかく）,"caractère, personnalité, disposition, nature",N5
+79,14023,遅刻,遅刻（ちこく）,"retard, arrivée tardive",N5
+79,14024,温泉,温泉（おんせん）,source chaude,N5
+79,14025,店員,店員（てんいん）,employé de magasin,N5
+79,14026,真面目,真面目（まじめ）,"sérieux, honnête, assidu, sobre, grave, sincère, stable",N5
+79,14027,科学,科学（かがく）,science,N5
+79,14028,横,横（よこ）,"horizontal (par opposition à vertical), couché, au même niveau (statut social), horizontal, couché, d'un côté à l'autre, largeur, amplitude, côté, à côté de, à côté, non connecté, latéralement, de côté",N5
+79,14029,機会,機会（きかい）,"occasion, opportunité",N5
+79,14030,吐く,吐（は）く,"vomir, cracher, émettre, exhaler, prononcer, confesser, exprimer",N5
+79,14031,英語,英語（えいご）,anglais (langue),N5
+79,14032,青い,青（あお）い,"bleu, vert, pâle, non mûr, inexpérimenté",N5
+79,14033,階段,階段（かいだん）,escalier,N5
+79,14034,財布,財布（さいふ）,"porte-monnaie, sac à main, portefeuille",N5
+79,14035,短い,短（みじか）い,"court, bref",N5
+79,14036,泊まる,泊（と）まる,"séjourner (par exemple à l'hôtel), rester à, être amarré, être à quai, être mouillé, passer la nuit à, passer la nuit, rester, être hébergé, passer une nuit, passer la nuit sur place",N5
+79,14037,大勢,大勢（おおぜい）,"beaucoup, foule, grand nombre de personnes",N5
+79,14038,ドライブ,ドライブ,"conduire, excursion en voiture, conduite, promenade en voiture",N5
+79,14039,ビール,ビール,bière,N5
+79,14040,低い,低（ひく）い,"bas (rang, degré, valeur, contenu, qualité, etc.), bas, près du sol, court, profond, à voix basse",N5
+79,14041,禁止,禁止（きんし）,interdiction,N5
+79,14042,近所,近所（きんじょ）,"voisinage, quartier",N5
+79,14043,海外,海外（かいがい）,"étranger, à l'étranger, outre-mer",N5
+79,14044,お休み,お休（やす）み,"vacances, jour de congé, absence, sommeil, repos, bonne nuit, pause",N5
+79,14045,高校生,高校生（こうこうせい）,lycéen,N5
+79,14046,零,零（れい）,zéro,N5
+79,14047,茶,茶（ちゃ）,thé,N5
+79,14048,咲く,咲（さ）く,fleurir,N5
+79,14049,飼う,飼（か）う,"garder (un animal de compagnie ou un autre animal), avoir, posséder, élever, nourrir",N5
+80,15000,用事,用事（ようじ）,"tâches, choses à faire, course, affaires, engagement, occupations",N5
+80,15001,ピアノ,ピアノ,piano,N5
+80,15002,選択,選択（せんたく）,"sélection, choix, option",N5
+80,15003,小学生,小学生（しょうがくせい）,élève de l'école primaire,N5
+80,15004,塾,塾（じゅく）,"école préparatoire, cours privés, juku",N5
+80,15005,ナイフ,ナイフ,couteau,N5
+80,15006,草,草（くさ）,"herbe, gazon",N5
+80,15007,林,林（はやし）,"bois, forêt, bosquet",N5
+80,15008,コーチ,コーチ,entraîneur,N5
+80,15009,ワイン,ワイン,vin,N5
+80,15010,祭り,祭（まつ）り,"fête, festival, célébration",N5
+80,15011,地図,地図（ちず）,carte,N5
+80,15012,会話,会話（かいわ）,conversation,N5
+80,15013,警官,警官（けいかん）,policier,N5
+80,15014,成績,成績（せいせき）,"résultats, dossier, notes, marque",N5
+80,15015,田舎,田舎（いなか）,"campagne, zone rurale, région rurale, campagne profonde, patelin, village natal",N5
+80,15016,弁当,弁当（べんとう）,repas à emporter,N5
+80,15017,建物,建物（たてもの）,bâtiment,N5
+80,15018,以内,以内（いない）,"à l'intérieur de, moins de, dans un délai de, en deçà de",N5
+80,15019,移る,移（うつ）る,"déménager, transférer, bouger, changer, se déplacer, changer l'objet d'intérêt ou de préoccupation, s'écouler, être imprégné par une couleur ou une senteur, être infecté, être contagieux, se propager, glisser",N5
+80,15020,半,半（はん）,"moitié, semi-, demi-, xxh30, nombre impair, unité de superficie",N5
+80,15021,要る,要（い）る,"avoir besoin de, être nécessaire, être requis",N5
+80,15022,コピー,コピー,"copie, reproduction",N5
+80,15023,塩,塩（しお）,"sel (c'est-à-dire le chlorure de sodium), sel commun, sel de table, sel, sel commun, sel de table, difficulté, labeur, problème, salinité",N5
+80,15024,運転,運転（うんてん）,"fonctionnement, opération, conduite, utilisation, marche (d'une machine, etc.)",N5
+80,15025,メートル,メートル,mètre,N5
+80,15026,予約,予約（よやく）,"réservation, rendez-vous, réservation, commande à l'avance, contrat, abonnement, engagement",N5
+80,15027,居る,居（い）る,"être (pour les êtres animés), exister",N5
+80,15028,夕方,夕方（ゆうがた）,"soir, crépuscule",N5
+80,15029,湖,湖（みずうみ）,lac,N5
+80,15030,晴れる,晴（は）れる,"se dégager, s'éclaircir, être ensoleillé, cesser de pleuvoir, être rafraîchi, être dissipé",N5
+80,15031,神社,神社（じんじゃ）,sanctuaire shinto,N5
+80,15032,景色,景色（けしき）,paysage,N5
+80,15033,背,背（せ）,"dos, épine dorsale, envers, face arrière, hauteur, crête, dos d'une personne, stature",N5
+80,15034,季節,季節（きせつ）,saison,N5
+80,15035,出口,出口（でぐち）,"sortie, issue, échappatoire",N5
+80,15036,公開,公開（こうかい）,"ouverture au public, mise à disposition du public, mise en exposition, présentation, exhibition, projection (pièce, film, etc.), tenue (entretien, etc.), ouvert, public",N5
+80,15037,ページ,ページ,page,N5
+80,15038,ゴールド,ゴールド,or,N5
+80,15039,シリーズ,シリーズ,série,N5
+80,15040,掛かる,掛（か）かる,"prendre (du temps, de l'argent), être accroché, être sur le point de, être pris dans, recevoir un appel",N5
+80,15041,袋,袋（ふくろ）,"sac, poche, sachet, peau d'orange, impasse, parcelle de terre entourée d'eau",N5
+80,15042,住所,住所（じゅうしょ）,"adresse (par exemple, d'une maison), résidence, domicile",N5
+80,15043,どなた,どなた,qui,N5
+80,15044,エレベーター,エレベーター,ascenseur,N5
+80,15045,弾く,弾（ひ）く,"jouer (piano, guitare), jouer, jouer d'un instrument, jouer d'un instrument à cordes",N5
+80,15046,信号,信号（しんごう）,"signal, feu de signalisation",N5
+80,15047,眼鏡,眼鏡（めがね）,"lunettes, jugement, discernement, perspicacité",N5
+80,15048,体調,体調（たいちょう）,état physique,N5
+80,15049,シェフ,シェフ,"chef, cuisinier",N5
+81,16000,出身,出身（しゅっしん）,"origine d'une personne (par exemple, ville, pays, parenté, école)",N5
+81,16001,主婦,主婦（しゅふ）,"femme au foyer, maîtresse de maison, ménagère",N5
+81,16002,夕飯,夕飯（ゆうはん）,repas du soir,N5
+81,16003,釣り,釣（つ）り,pêche,N5
+81,16004,運動,運動（うんどう）,"exercice, entraînement physique, travail, pétition, campagne, mouvement, lobbying, motion",N5
+81,16005,上る,上（のぼ）る,"monter, gravir, grimper, se voir présenter (de la nourriture), s'élever, être promu, aller à (la capitale), remonter (à la nage, à la voile)",N5
+81,16006,着物,着物（きもの）,kimono,N5
+81,16007,引き出す,引（ひ）き出（だ）す,"retirer, sortir, extraire, retirer de l'argent",N5
+81,16008,叶う,叶（かな）う,"se réaliser (souhait, prière), s'accomplir, se concrétiser, être exaucé",N5
+81,16009,今月,今月（こんげつ）,ce mois-ci,N5
+81,16010,ストレス,ストレス,stress,N5
+81,16011,中国,中国（ちゅうごく）,"Chine, région de Chūgoku de l'ouest de Honshū, partie centrale d'un pays, région principale, province de deuxième rang le plus bas",N5
+81,16012,作家,作家（さっか）,"auteur, écrivain, romancier, artiste",N5
+81,16013,外科,外科（げか）,chirurgie,N5
+81,16014,テーブル,テーブル,table,N5
+81,16015,お祭り,お祭（まつ）り,"fête, festival, carnaval, célébration",N5
+81,16016,サボる,サボる,faire l'école buissonnière,N5
+81,16017,留学,留学（りゅうがく）,étudier à l'étranger,N5
+81,16018,いい事,いい事（こと）,bonne chose,N5
+81,16019,ポケット,ポケット,poche,N5
+81,16020,金持ち,金持（かねも）ち,personne riche,N5
+81,16021,シャワー,シャワー,douche,N5
+81,16022,等,等（など）,"etc., et cetera, et ainsi de suite, et quelque chose comme ça",N5
+81,16023,ゴロゴロ,ゴロゴロ,"ronronnement, grondement, gargouillement (p.ex. estomac), quelque chose de grand et lourd qui commence à rouler, éparpillés, courant, banal, de partout, oisiveté, glandouiller, avoir une substance étrangère à l'intérieur, tonnerre, rester à la maison, ronronner, grommeler, grogner, grondement, rouler, roulement lourd, être paresseux, ne rien faire, glander",N5
+81,16024,方面,方面（ほうめん）,"direction, zone, région, domaine (d'études)",N5
+81,16025,バンド,バンド,"bande, ceinture, bracelet",N5
+81,16026,家賃,家賃（やちん）,loyer,N5
+81,16027,みかん,蜜柑（みかん）,mandarine (surtout la mandarine satsuma (Citrus unshiu)),N5
+81,16028,外国,外国（がいこく）,pays étranger,N5
+81,16029,政治,政治（せいじ）,"politique, gouvernement",N5
+81,16030,アルバイト,アルバイト,"emploi à temps partiel, job à temps partiel, petit boulot, travail à temps partiel",N5
+81,16031,日記,日記（にっき）,journal intime,N5
+81,16032,グリーン,グリーン,"vert (couleur), pelouse, green de golf, écologique",N5
+81,16033,トマト,トマト,tomate (Solanum lycopersicum),N5
+81,16034,タバコ,タバコ,"tabac, cigarette",N5
+81,16035,意地悪,意地悪（いじわる）,"malveillant, mal intentionné, méchant, désagréable, cruel",N5
+81,16036,今晩,今晩（こんばん）,ce soir,N5
+81,16037,下着,下着（したぎ）,sous-vêtements,N5
+81,16038,フォーク,フォーク,fourchette,N5
+81,16039,毎朝,毎朝（まいあさ）,chaque matin,N5
+81,16040,語,語（ご）,"langue, mot",N5
+81,16041,食堂,食堂（しょくどう）,cantine,N5
+81,16042,キャンプ,キャンプ,camping,N5
+81,16043,イタリア,イタリア,Italie,N5
+81,16044,コレクション,コレクション,collection,N5
+81,16045,ツアー,ツアー,"visite guidée, excursion",N5
+81,16046,スイカ,スイカ,"pastèque (Citrullus lanatus), pastèque",N5
+81,16047,くしゃみ,くしゃみ,éternuement,N5
+81,16048,被る,被（かぶ）る,"mettre sur la tête, porter, avoir sur la tête, tirer sur la tête, se couronner, être couvert de, verser sur soi, endosser, prendre la responsabilité, chevaucher, se ressembler, être embué, arriver à sa fin, obtenir une main pleine, être vendu, commettre une erreur, être trompé, mettre sur la tête, mettre un chapeau, porter un chapeau",N5
+81,16049,手袋,手袋（てぶくろ）,gant,N5
+82,17000,身長,身長（しんちょう）,"taille, stature",N5
+82,17001,コンサート,コンサート,concert,N5
+82,17002,ハンカチ,ハンカチ,mouchoir,N5
+82,17003,シルバー,シルバー,"argent, retraité",N5
+82,17004,デパート,デパート,grand magasin,N5
+82,17005,イギリス,イギリス,Royaume-Uni,N5
+82,17006,交番,交番（こうばん）,poste de police,N5
+82,17007,ラジオ,ラジオ,radio,N5
+82,17008,お金持ち,お金持（かねも）ち,"riche, personne riche, fortuné, homme riche, femme riche",N5
+82,17009,スカート,スカート,jupe,N5
+82,17010,骨折,骨折（こっせつ）,fracture osseuse,N5
+82,17011,天ぷら,天（てん）ぷら,"beignets de poisson et légumes frits, tempura",N5
+82,17012,靴下,靴下（くつした）,chaussettes,N5
+82,17013,差す,差（さ）す,"briller, éclairer, pointer",N5
+82,17014,家事,家事（かじ）,"tâches ménagères, travaux domestiques, affaires de famille",N5
+82,17015,オレンジ,オレンジ,"orange (fruit), orange (couleur)",N5
+82,17016,自動車,自動車（じどうしゃ）,automobile,N5
+82,17017,お正月,お正月（しょうがつ）,Nouvel An (surtout les trois premiers jours),N5
+82,17018,スマホ,スマホ,smartphone,N5
+82,17019,正月,正月（しょうがつ）,Nouvel An (en particulier les trois premiers jours),N5
+82,17020,有名人,有名人（ゆうめいじん）,"célébrité, personnalité célèbre, personnage public, grand nom",N5
+82,17021,シャツ,シャツ,"chemise (sous-vêtement), maillot de corps, débardeur",N5
+82,17022,Tシャツ,Ｔ（ティー）シャツ,T-shirt,N5
+82,17023,サラダ,サラダ,salade,N5
+82,17024,受付,受付（うけつけ）,"accueil, bureau d'information, réception",N5
+82,17025,引き出し,引（ひ）き出（だ）し,"tiroir, retrait, variété de connaissances",N5
+82,17026,急行,急行（きゅうこう）,"se dépêcher (vers quelque part), précipitation, hâte, train express",N5
+82,17027,朝ご飯,朝（あさ）ご飯（はん）,petit déjeuner,N5
+82,17028,花見,花見（はなみ）,observation des fleurs de cerisier,N5
+82,17029,文章,文章（ぶんしょう）,"texte, article, composition, style d'écriture, prose",N5
+82,17030,バーベキュー,バーベキュー,barbecue,N5
+82,17031,フィルム,フィルム,film,N5
+82,17032,漫画家,漫画家（まんがか）,dessinateur de manga,N5
+82,17033,菓子,菓子（かし）,"confiserie, sucreries, bonbons, gâteau, collation",N5
+82,17034,注射,注射（ちゅうしゃ）,injection,N5
+82,17035,ズボン,ズボン,pantalon,N5
+82,17036,歌手,歌手（かしゅ）,chanteur,N5
+82,17037,お巡りさん,お巡（まわ）りさん,agent de police,N5
+82,17038,サークル,サークル,"groupe ayant un intérêt commun, club (par ex. club sportif d'entreprise), cercle",N5
+82,17039,ステーキ,ステーキ,steak,N5
+82,17040,幾ら,幾（いく）ら,"combien?, même, même si",N5
+82,17041,黄色い,黄色（きいろ）い,"jaune, voix aiguë (perçante)",N5
+82,17042,大抵,大抵（たいてい）,généralement,N5
+82,17043,丈夫,丈夫（じょうぶ）,"sain, robuste, fort, solide, durable, résistant",N5
+82,17044,経済,経済（けいざい）,"économie, sciences économiques, finances",N5
+82,17045,ボランティア,ボランティア,bénévole,N5
+82,17046,締める,締（し）める,"nouer, attacher, serrer, fixer, fermer",N5
+82,17047,カーテン,カーテン,rideau,N5
+82,17048,金色,金色（きんいろ）,"doré (couleur), couleur or",N5
+82,17049,歌舞伎,歌舞伎（かぶき）,"kabuki, théâtre classique japonais",N5
+83,18000,キャベツ,キャベツ,"chou (Brassica oleracea), chou",N5
+83,18001,貰う,貰（もら）う,"recevoir, obtenir, accepter, faire faire quelque chose par quelqu'un",N5
+83,18002,往復,往復（おうふく）,"faire un aller-retour, aller et venir",N5
+83,18003,醤油,醤油（しょうゆ）,sauce de soja,N5
+83,18004,二十歳,二十歳（はたち）,vingt ans,N5
+83,18005,内科,内科（ないか）,"médecine interne, c'est-à-dire traitement par des procédures médicales plutôt que chirurgicales",N5
+83,18006,辺,辺（へん）,"zone, voisinage, région, côté, circonstances",N5
+83,18007,お寺,お寺（てら）,temple,N5
+83,18008,本屋,本屋（ほんや）,librairie,N5
+83,18009,美術館,美術館（びじゅつかん）,musée d'art,N5
+83,18010,午前中,午前中（ごぜんちゅう）,dans la matinée,N5
+83,18011,アンケート,アンケート,"questionnaire, enquête, sondage",N5
+83,18012,笠,笠（かさ）,"chapeau conique, chapeau asiatique, chapeau de coolie",N5
+83,18013,ばつ,ばつ,"croix (marque), x, marque incorrecte",N5
+83,18014,点滴,点滴（てんてき）,perfusions intraveineuses,N5
+83,18015,幾つ,幾（いく）つ,"combien, quel âge, quelques (quand suivi de か)",N5
+83,18016,レポート,レポート,"rapport, compte rendu, dissertation",N5
+83,18017,作文,作文（さくぶん）,"rédaction, composition, écriture d'un essai, écrit",N5
+83,18018,ハンバーガー,ハンバーガー,hamburger (dans un pain),N5
+83,18019,茶碗,茶碗（ちゃわん）,"bol à riz, tasse à thé",N5
+83,18020,余り,余（あま）り,"reste, surplus, excédent, trop",N5
+83,18021,天気予報,天気予報（てんきよほう）,"prévisions météorologiques, bulletin météorologique",N5
+83,18022,晴れ,晴（は）れ,"beau temps, temps clair, temps ensoleillé, cérémonial, formel, public, innocenté de soupçons",N5
+83,18023,凄い,凄（すご）い,"incroyable, formidable, génial, impressionnant, terrible, très",N5
+83,18024,右側,右側（みぎがわ）,côté droit,N5
+83,18025,地蔵,地蔵（じぞう）,"Kshitigarbha (bodhisattva qui veille sur les enfants, les voyageurs et le monde souterrain)",N5
+83,18026,エジプト,エジプト,Égypte,N5
+83,18027,咳,咳（せき）,toux,N5
+83,18028,気温,気温（きおん）,température de l'air,N5
+83,18029,スプーン,スプーン,cuillère,N5
+83,18030,交差点,交差点（こうさてん）,carrefour,N5
+83,18031,アレルギー,アレルギー,allergie,N5
+83,18032,グラム,グラム,gramme,N5
+83,18033,大使館,大使館（たいしかん）,ambassade,N5
+83,18034,ジャーナリスト,ジャーナリスト,journaliste,N5
+83,18035,ぶどう,ぶどう,raisin,N5
+83,18036,家具,家具（かぐ）,meubles,N5
+83,18037,消しゴム,消（け）しゴム,gomme,N5
+83,18038,灰色,灰色（はいいろ）,gris,N5
+83,18039,ヶ月,ヶ月（かげつ）,mois (période de),N5
+83,18040,オーストラリア,オーストラリア,Australie,N5
+83,18041,可哀想,可哀想（かわいそう）,"pauvre, pitoyable, lamentable",N5
+83,18042,二日酔い,二日酔（ふつかよ）い,gueule de bois,N5
+83,18043,左側,左側（ひだりがわ）,côté gauche,N5
+83,18044,本棚,本棚（ほんだな）,étagère à livres,N5
+83,18045,終電,終電（しゅうでん）,dernier train (de la journée),N5
+83,18046,お手洗い,お手洗（てあら）い,toilettes,N5
+83,18047,レコード,レコード,"disque (par exemple, LP)",N5
+83,18048,鼻水,鼻水（はなみず）,"écoulement nasal, nez qui coule, morve",N5
+83,18049,八百屋,八百屋（やおや）,primeur,N5
+84,19000,レジ,レジ,caisse (enregistreuse),N5
+84,19001,グレー,グレー,gris,N5
+84,19002,入口,入口（いりぐち）,"entrée, accès, porte, approche, bouche",N5
+84,19003,飴,飴（あめ）,"bonbon, berlingot",N5
+84,19004,水色,水色（みずいろ）,bleu clair,N5
+84,19005,会社員,会社員（かいしゃいん）,employé de société,N5
+84,19006,お酒,お酒（さけ）,"alcool, saké",N5
+84,19007,ご馳走,ご馳走（ちそう）,"festin, traiter quelqu'un, régal, inviter, inviter à un repas",N5
+84,19008,ジャンル,ジャンル,genre,N5
+84,19009,昼ご飯,昼（ひる）ご飯（はん）,"déjeuner, repas de midi",N5
+84,19010,万年筆,万年筆（まんねんひつ）,stylo-plume,N5
+84,19011,この頃,この頃（ごろ）,"ces jours-ci, de nos jours, maintenant, à présent, récemment, dernièrement, actuellement, autour de maintenant, à l'époque, en ce temps-là, vers maintenant",N5
+84,19012,カナダ,カナダ,Canada,N5
+84,19013,発音,発音（はつおん）,prononciation,N5
+84,19014,研究者,研究者（けんきゅうしゃ）,chercheur,N5
+84,19015,格好いい,格好（かっこう）いい,"attrayant, beau, stylé, cool, élégant, tendance",N5
+84,19016,単語,単語（たんご）,mot,N5
+84,19017,無くす,無（な）くす,"perdre quelque chose, se débarrasser de, perdre quelqu'un, perdre",N5
+84,19018,売店,売店（ばいてん）,"kiosque, stand, étal, cabane, boutique, échoppe",N5
+84,19019,平日,平日（へいじつ）,"jour ouvrable, jour de semaine, jour ordinaire",N5
+84,19020,リットル,リットル,litre,N5
+84,19021,銀色,銀色（ぎんいろ）,argent (couleur),N5
+84,19022,火傷,火傷（やけど）,"brûlure, échaudure",N5
+84,19023,一号車,一号車（いちごうしゃ）,Voiture n° 1,N5
+84,19024,天の川,天（あま）の川（がわ）,"Voie lactée, bande lumineuse correspondant au plan de la galaxie",N5
+84,19025,黒板,黒板（こくばん）,tableau noir,N5
+84,19026,ストーブ,ストーブ,"chauffage (d'appoint), poêle",N5
+84,19027,山道,山道（やまみち）,"chemin de montagne, sentier de montagne, route de montagne, piste de montagne",N5
+84,19028,産婦人科,産婦人科（さんふじんか）,département de maternité et de gynécologie,N5
+84,19029,保険証,保険証（ほけんしょう）,carte d'assurance,N5
+84,19030,特急,特急（とっきゅう）,"train express limité, train à grande vitesse avec réservation, train rapide avec billet spécial",N5
+84,19031,サーフィン,サーフィン,surf,N5
+84,19032,消防士,消防士（しょうぼうし）,pompier,N5
+84,19033,アボカド,アボカド,"avocat (Persea americana), avocat",N5
+84,19034,番線,番線（ばんせん）,numéro de voie,N5
+84,19035,方言,方言（ほうげん）,dialecte,N5
+84,19036,乗り換え,乗（の）り換（か）え,"transfert (trains, bus, etc.), changement, correspondance",N5
+84,19037,玉ねぎ,玉（たま）ねぎ,oignon (Allium cepa),N5
+84,19038,インフルエンザ,インフルエンザ,grippe,N5
+84,19039,コンセント,コンセント,prise électrique,N5
+84,19040,背広,背広（せびろ）,costume (d'affaires),N5
+84,19041,温い,温（ぬる）い,"tiède, tempéré, lent, manquant de vigueur",N5
+84,19042,下痢,下痢（げり）,diarrhée,N5
+84,19043,沢山,沢山（たくさん）,"beaucoup, énormément, plein, plusieurs, un grand nombre, une bonne quantité, abondamment, largement, suffisamment, trop, de nombreux",N5
+84,19044,被せる,被（かぶ）せる,"couvrir (avec quelque chose), mettre (par exemple, sur la tête de quelqu'un d'autre), plaquer quelque chose (avec un métal), verser ou éclabousser un liquide (sur quelque chose), accuser (une personne de culpabilité)",N5
+84,19045,茶色い,茶色（ちゃいろ）い,marron clair,N5
+84,19046,玩具,玩具（おもちゃ）,"jouet, objet ludique",N5
+84,19047,真っ直ぐ,真（ま）っ直（す）ぐ,"droit (devant), direct, vertical, droit devant, droit, direct, droit, honnête, franc, directement, tout de suite, en avant",N5
+84,19048,二つ目,二（ふた）つ目（め）,deuxième,N5
+84,19049,葉書,葉書（はがき）,carte postale,N5
+85,20000,再来週,再来週（さらいしゅう）,la semaine suivante,N5
+85,20001,飛行場,飛行場（ひこうじょう）,aérodrome,N5
+85,20002,再来年,再来年（さらいねん）,année suivante,N5
+85,20003,改札,改札（かいさつ）,contrôle des billets,N5
+85,20004,片道,片道（かたみち）,aller simple,N5
+85,20005,豚カツ,豚（とん）カツ,tonkatsu,N5
+85,20006,一昨年,一昨年（おととし）,il y a deux ans,N5
+85,20007,生物学,生物学（せいぶつがく）,biologie,N5
+85,20008,一つ目,一（ひと）つ目（め）,"premier, initial, première chose, borgne",N5
+85,20009,Yシャツ,Ｙ（ワイ）シャツ,chemise,N5
+85,20010,発疹,発疹（ほっしん）,"éruption cutanée, rougeur, éruption",N5
+85,20011,アウトドア,アウトドア,en plein air,N5
+85,20012,抗生物質,抗生物質（こうせいぶっしつ）,antibiotique,N5
+85,20013,良く,良（よ）く,"bien, correctement, souvent, fréquemment, habilement, habile, bon.",N5
+85,20014,ご馳走様,ご馳走様（ちそうさま）,merci pour le repas,N5
+85,20015,ピーナッツ,ピーナッツ,cacahuète,N5
+85,20016,苺,苺（いちご）,"fraise (surtout la fraise de jardin, Fragaria × ananassa)",N5
+85,20017,指定席,指定席（していせき）,siège réservé,N5
+85,20018,易しい,易（やさ）しい,"facile, simple",N5
+85,20019,眼科,眼科（がんか）,"ophtalmologie, ophtalmologiste, médécin ophtalmologiste, docteur des yeux",N5
+85,20020,餅,餅（もち）,"gâteau de riz gluant, mochi",N5
+85,20021,大学院生,大学院生（だいがくいんせい）,étudiant de troisième cycle,N5
+85,20022,歯科,歯科（しか）,dentisterie,N5
+85,20023,青信号,青信号（あおしんごう）,"feu vert (circulation), feu vert, feu de circulation vert, signal de départ, autorisation de continuer, feu de signalisation, feu de circulation, signal vert, feu bleu, feu de circulation vert, feu de signalisation vert",N5
+85,20024,乗車券,乗車券（じょうしゃけん）,"billet (pour bus, train, etc.)",N5
+85,20025,一年生,一年生（いちねんせい）,"étudiant de première année, plante annuelle, débutant",N5
+85,20026,再来月,再来月（さらいげつ）,mois suivant le prochain,N5
+85,20027,煩い,煩（うるさ）い,"bruyant, fort, agaçant, ennuyeux, persistant, pointilleux, minutieux, exigeant, autoritaire, tais-toi!, silence!",N5
+85,20028,共通語,共通語（きょうつうご）,langue commune,N5
+85,20029,テープレコーダー,テープレコーダー,magnétophone,N5
+85,20030,定期券,定期券（ていきけん）,carte d'abonnement,N5
+85,20031,自由席,自由席（じゆうせき）,siège libre,N5
+85,20032,学割,学割（がくわり）,réduction pour étudiants,N5
+85,20033,直ぐ,直（す）ぐ,"immédiatement, tout de suite, aussitôt, directement, bientôt, prochainement, facilement, sans difficulté, tout près, à proximité, juste à côté, honnête, droit, franc, sincère, maintenant",N5
+85,20034,先ず,先（ま）ず,"d'abord, premièrement, avant tout, tout d'abord, probablement, très certainement, plus ou moins, dans l'ensemble, raisonnablement, de toute façon, en tout cas, pour l'instant, pour le moment",N5
+85,20035,切符売り場,切符（きっぷ）売（う）り場（ば）,guichet,N5
+85,20036,Ｌサイズ,Ｌ（エル）サイズ,Grande taille,N5
+85,20037,お祖父さん,お祖父（じい）さん,"grand-père, papi, bon-papa",N5
+85,20038,楽しみにする,楽（たの）しみにする,"attendre avec impatience, se réjouir de quelque chose",N5
+85,20039,他に,他（ほか）に,"autre, à part, de plus, en outre, en sus, par ailleurs, d'autre, outre, excepté, sauf, autrement, additionnellement",N5
+85,20040,元気がない,元気（げんき）がない,ne pas avoir l'air bien,N5
+85,20041,お地蔵さん,お地蔵（じぞう）さん,"Jizô (surtout statue), Kshitigarbha, Ksitigarbha, jizô, statue de jizô, jizô statue, statue de Bouddha",N5
+85,20042,ありがとうございます,ありがとうございます,merci beaucoup,N5
+85,20043,直ぐに,直（す）ぐに,"tout de suite, immédiatement, instantanément",N5
+85,20044,最後に,最後（さいご）に,enfin,N5
+85,20045,下さい,下（くだ）さい,"s'il vous plaît, donnez-moi, s'il vous plaît, faites pour moi",N5
+85,20046,皆で,皆（みな）で,tous ensemble,N5
+85,20047,行ってきます,行（い）ってきます,"À tout à l'heure, je reviens",N5
+85,20048,砕けた言い方,砕（くだ）けた言（い）い方（かた）,expression familière,N5
+85,20049,頭がいい,頭（あたま）がいい,intelligent,N5
+86,21000,気分が悪い,気分（きぶん）が悪（わる）い,ne pas se sentir bien,N5
+86,21001,タバコを吸う,タバコを吸（す）う,fumer une cigarette,N5
+86,21002,おはようございます,おはようございます,bonjour,N5
+86,21003,お祖母さん,お祖母（ばあ）さん,grand-mère,N5
+86,21004,二ヶ月前,二（に）ヶ月前（かげつまえ）,il y a deux mois,N5
+86,21005,お帰りなさい,お帰（かえ）りなさい,"bienvenue chez vous, bienvenue à la maison",N5
+86,21006,交通系ＩＣカード,交通系（こうつうけい）ＩＣ（アイシー）カード,"carte rechargeable telle qu'une Suica, Icoca, Pasmo, etc.",N5
+86,21007,今学期,今学期（こんがっき）,ce semestre,N5
+86,21008,ハラルフード,ハラルフード,nourriture halal,N5
+86,21009,お腹が空く,お腹（なか）が空（す）く,avoir faim,N5
+86,21010,体に気をつける,体（からだ）に気（き）をつける,prendre soin de sa santé,N5
+86,21011,何も,何（なに）も,"(rien) du tout, (ne) rien, pas du tout, rien, rien du tout, pas quelque chose",N5
+86,21012,お大事に,お大事（だいじ）に,"prends soin de toi, rétablis-toi vite, que Dieu te bénisse, soigne-toi bien, guéris vite, sois en sécurité",N5
+86,21013,嘘をつく,嘘（うそ）をつく,mentir,N5
+86,21014,お返事,お返事（へんじ）,réponse,N5
+86,21015,どうやって,どうやって,"comment, de quelle manière, par quel moyen",N5
+86,21016,速く,速（はや）く,"tôt, vite, rapidement",N5
+86,21017,出来るだけ,出来（でき）るだけ,"autant que possible, autant qu'on peut, dans la mesure du possible, si possible, autant que tu peux, tout ce que tu peux faire, tout ce que vous pouvez faire, tout ce que l'on peut faire",N5
+86,21018,二三日,二三日（にさんにち）,deux ou trois jours,N5
+86,21019,どうですか,どうですか,"Comment ça va ...?, Que diriez-vous de ...?, Comment est ...?, que diriez-vous de ceci?, comment ça va?, comment est-ce?, comment ça se passe?, qu'en est-il de ...?, comment ça va?, que dirais-tu?, comment vas-tu?",N5
+86,21020,二人ずつ,二人（ふたり）ずつ,deux par deux,N5
+86,21021,一人で,一人（ひとり）で,"seul, par soi-même, en solitaire, indépendamment",N5
+86,21022,初めまして,初（はじ）めまして,Enchanté,N5
+86,21023,咳が出る,咳（せき）が出（で）る,tousser,N5
+86,21024,来学期,来学期（らいがっき）,prochain semestre,N5
+86,21025,そうですか,そうですか,"Je vois., Ah bon ?, Vraiment ?, C'est vrai ?, D'accord.",N5
+86,21026,人参,人参（にんじん）,"carotte (Daucus carota), ginseng",N5
+86,21027,ホストファミリー,ホストファミリー,famille d'accueil,N5
+86,21028,もう直ぐ,もう直（す）ぐ,"bientôt, sous peu, dans peu de temps, presque, presque prêt, immédiatement",N5
+86,21029,字引,字引（じびき）,dictionnaire,N5
+86,21030,人気がある,人気（にんき）がある,être populaire,N5
+86,21031,遅くなる,遅（おそ）くなる,"être en retard, devenir en retard, se faire tard",N5
+86,21032,一年に一度,一年（いちねん）に一度（いちど）,une fois par an,N5
+86,21033,遅く,遅（おそ）く,"tard, lentement, lent, être en retard",N5
+86,21034,背が低い,背（せ）が低（ひく）い,"petit (de taille, pour une personne)",N5
+86,21035,二週間前,二週間前（にしゅうかんまえ）,il y a deux semaines,N5
+86,21036,行目,行目（ぎょうめ）,numéro de ligne,N5
+86,21037,次発,次発（じはつ）,"train suivant, prochain train, départ suivant, deuxième train à partir, train suivant à partir, train suivant à partir, prochain départ",N5
+86,21038,行ってらっしゃい,行（い）ってらっしゃい,"bonne journée, prends soin de toi, à bientôt, s'il te plaît, vas-y et reviens, je te verrai plus tard, passe une bonne journée, fais un bon voyage",N5
+86,21039,硬い言い方,硬（かた）い言（い）い方（かた）,"façon de parler rigide, expression formelle, expression littéraire",N5
+86,21040,興味がある,興味（きょうみ）がある,être intéressé par,N5
+86,21041,お元気で,お元気（げんき）で,"prends soin de toi, sois prudent, porte-toi bien, fais attention à toi, reste en bonne santé, prenez soin de vous",N5
+86,21042,二時半,二時半（にじはん）,deux heures et demie,N5
+86,21043,よろしくお願いします,よろしくお願（ねが）いします,Je vous prie de bien vouloir prendre soin de moi ou de me traiter avec bienveillance.,N5
+86,21044,熱がある,熱（ねつ）がある,avoir de la fièvre,N5
+86,21045,詰らない,詰（つま）らない,"ennuyeux, inintéressant, barbant, ennuyeux,insignifiant, trivia, sans valeur, absurde, stupide, inutile, décevant",N5
+86,21046,凄く,凄（すご）く,"extrêmement, très, incroyablement, formidablement",N5
+86,21047,丁寧な言い方,丁寧（ていねい）な言（い）い方（かた）,expression polie,N5
+86,21048,三つ目,三（みっ）つ目（め）,troisième,N5
+86,21049,お願いします,お願（ねが）いします,"s'il vous plaît, je vous en prie, prenez soin de moi",N5

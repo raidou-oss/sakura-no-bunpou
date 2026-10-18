@@ -1,0 +1,163 @@
+# Format : id_grammaire || phrase (| = découpage, [x] = trou, kanji（lecture）= furigana) || traduction || distracteurs séparés par ;
+1 || これは|ペン[だ]。 || C'est un stylo. || を;に;が
+1 || 今日（きょう）は|日曜日（にちようび）[だ]よ。 || Aujourd'hui, c'est dimanche. || へ;を;で
+2 || 私（わたし）は|学生（がくせい）[です]。 || Je suis étudiant. || ます;ません;でした
+2 || あの人（ひと）は|先生（せんせい）[です]か。 || Cette personne-là est-elle professeur ? || ます;ある;いる
+3 || 私（わたし）[は]|フランス人（じん）です。 || Je suis français. || を;で;へ
+3 || 田中（たなか）さん[は]|医者（いしゃ）です。 || Monsieur Tanaka est médecin. || を;に;へ
+4 || 私（わたし）[も]|学生（がくせい）です。 || Moi aussi, je suis étudiant. || を;へ;で
+4 || 猫（ねこ）が|好（す）きです。|犬（いぬ）[も]|好（す）きです。 || J'aime les chats. J'aime aussi les chiens. || を;へ;で
+5 || [これ]は|私（わたし）の|本（ほん）です。 || Ceci est mon livre. || どれ;どこ;だれ
+11 || [それ]は|何（なん）ですか。 || Qu'est-ce que c'est, ça (près de toi) ? || どれ;ここ;だれ
+19 || [あれ]は|富士山（ふじさん）です。 || Ça, là-bas, c'est le mont Fuji. || どれ;あそこ;だれ
+6 || これは|私[の]|かばんです。 || C'est mon sac. || を;へ;で
+6 || 日本語（にほんご）[の]|先生（せんせい）は|やさしいです。 || Le professeur de japonais est gentil. || を;へ;が
+7 || 今日（きょう）は|天気（てんき）が[いい]です。 || Il fait beau aujourd'hui. || よく;よかった;いく
+24 || この|ラーメンは|[おいしい]です。 || Ces ramen sont délicieux. || おいしく;おいしさ;おいしな
+28 || この|町（まち）は|[静（しず）か]です。 || Cette ville est calme. || 静かい;静かく;静かの
+8 || あなたは|学生（がくせい）です[か]。 || Es-tu étudiant ? || を;に;で
+8 || トイレは|どこです[か]。 || Où sont les toilettes ? || を;へ;で
+10 || 部屋（へや）に|猫（ねこ）[が]|います。 || Il y a un chat dans la pièce. || を;へ;で
+10 || だれ[が]|来（き）ましたか。 || Qui est venu ? || を;へ;で
+78 || この|ケーキ、|おいしいです[よ]。 || Ce gâteau est délicieux, tu sais ! || を;へ;に
+71 || 今日（きょう）は|暑（あつ）いです[ね]。 || Il fait chaud aujourd'hui, hein ? || を;へ;に
+12 || 毎朝（まいあさ）|パンを|[食（た）べ]ます。 || Je mange du pain tous les matins. || 食べる;食べて;食べた
+26 || 毎日（まいにち）|日本語（にほんご）を|[勉強（べんきょう）し]ます。 || J'étudie le japonais tous les jours. || 勉強する;勉強して;勉強した
+26 || 友（とも）だちに|手紙（てがみ）を|[書（か）き]ます。 || J'écris une lettre à un ami. || 書く;書いて;書か
+21 || 水（みず）[を]|飲（の）みます。 || Je bois de l'eau. || へ;に;や
+21 || 毎晩（まいばん）|テレビ[を]|見（み）ます。 || Je regarde la télé tous les soirs. || に;へ;が
+1082 || 明日（あした）、|京都（きょうと）へ|行（い）き[ます]。 || Demain, je vais à Kyoto. || です;だ;でした
+51 || 私（わたし）は|肉（にく）を|[食（た）べません]。 || Je ne mange pas de viande. || 食べます;食べました;食べない
+888 || 今日（きょう）は|学校（がっこう）へ|[行（い）かない]。 || Aujourd'hui, je ne vais pas à l'école. || 行く;行った;行きない
+888 || お酒（さけ）は|[飲（の）みません]。 || Je ne bois pas d'alcool. || 飲みます;飲みました;飲むません
+15 || パン[と]|牛乳（ぎゅうにゅう）を|買（か）いました。 || J'ai acheté du pain et du lait. || を;で;へ
+14 || [ここ]は|私（わたし）の|部屋（へや）です。 || Ici, c'est ma chambre. || これ;この;どこ
+20 || [そこ]に|座（すわ）ってください。 || Asseyez-vous là, s'il vous plaît. || それ;その;どれ
+29 || 駅（えき）は|[あそこ]です。 || La gare est là-bas. || あれ;あの;どの
+25 || 図書館（としょかん）[で]|本（ほん）を|読（よ）みます。 || Je lis des livres à la bibliothèque. || を;が;は
+25 || レストラン[で]|晩（ばん）ご飯（はん）を|食（た）べました。 || J'ai dîné au restaurant. || を;が;と
+32 || 七時（しちじ）[に]|起（お）きます。 || Je me lève à sept heures. || を;で;が
+32 || 机（つくえ）の上（うえ）[に]|本（ほん）が|あります。 || Il y a un livre sur le bureau. || を;で;と
+33 || コーヒー[か]|紅茶（こうちゃ）は|いかがですか。 || Café ou thé ? || を;で;へ
+955 || 友（とも）だち[と]|映画（えいが）を|見（み）ました。 || J'ai vu un film avec un ami. || を;へ;に
+9 || 明日（あした）は|雨（あめ）[でしょう]。 || Il pleuvra probablement demain. || ましょう;ません;でした
+18 || 彼（かれ）も|来（く）る[だろう]。 || Il viendra aussi, sans doute. || ません;ましょう;です
+13 || 公園（こうえん）に|大（おお）きい|木（き）[が]|あります。 || Il y a un grand arbre dans le parc. || を;で;へ
+13 || 時間（じかん）が|[あり]ますか。 || As-tu du temps ? || い;し;き
+23 || 庭（にわ）に|犬（いぬ）が|[い]ます。 || Il y a un chien dans le jardin. || あり;し;き
+23 || 私（わたし）には|兄（あに）が|二人（ふたり）[います]。 || J'ai deux grands frères. || あります;です;します
+30 || [この]|りんごは|甘（あま）いです。 || Cette pomme est sucrée. || これ;ここ;どの
+37 || [その]|かさは|だれのですか。 || À qui est ce parapluie ? || それ;そこ;どの
+47 || [あの]|建物（たてもの）は|病院（びょういん）です。 || Ce bâtiment là-bas est un hôpital. || あれ;あそこ;どの
+17 || 頭（あたま）が|痛（いた）い[んです]。 || C'est que j'ai mal à la tête. || ません;ます;でした
+17 || どうして|遅（おく）れた[んです]か。 || Pourquoi es-tu arrivé en retard ? || ます;ません;でしょう
+1104 || どこへ|行（い）く[の]？ || Tu vas où ? || を;が;へ
+874 || 昨日（きのう）は|[寒（さむ）かった]です。 || Il faisait froid hier. || 寒いだった;寒くて;寒いでした
+874 || 旅行（りょこう）は|[楽（たの）しかった]です。 || Le voyage était amusant. || 楽しいでした;楽しくない;楽しいかった
+16 || 泳（およ）ぐ[の]が|好（す）きです。 || J'aime nager. || を;に;で
+953 || [高（たか）い]|山（やま）に|登（のぼ）りました。 || J'ai gravi une haute montagne. || 高いな;高くて;高いの
+954 || [きれいな]|花（はな）ですね。 || Quelle jolie fleur ! || きれい;きれいの;きれいい
+31 || 来年（らいねん）、|日本（にほん）[へ]|行（い）きます。 || L'année prochaine, j'irai au Japon. || を;が;で
+22 || 毎晩（まいばん）|宿題（しゅくだい）を|[します]。 || Je fais mes devoirs tous les soirs. || きます;います;あります
+22 || 週末（しゅうまつ）は|テニスを|[する]。 || Le week-end, je joue au tennis. || くる;いる;ある
+39 || 友（とも）だちが|家（いえ）に|[来（き）ます]。 || Un ami vient à la maison. || します;います;行きます
+39 || 昨日（きのう）、|母（はは）が|[来（き）た]。 || Hier, ma mère est venue. || 来った;来るた;来て
+895 || 昨日（きのう）、|すしを|[食（た）べた]。 || Hier, j'ai mangé des sushis. || 食べる;食べって;食べだ
+41 || 昨日（きのう）、|手紙（てがみ）を|[書（か）いた]。 || Hier, j'ai écrit une lettre. || 書った;書きた;書くた
+41 || 先週（せんしゅう）、|海（うみ）で|[泳（およ）いだ]。 || La semaine dernière, j'ai nagé à la mer. || 泳いた;泳った;泳ぎた
+716 || 私（わたし）は|音楽（おんがく）が|[好（す）き]です。 || J'aime la musique. || 好きい;好く;好きな
+717 || 弟（おとうと）は|野菜（やさい）が|[きらい]です。 || Mon petit frère n'aime pas les légumes. || きらいい;きらく;きらいな
+34 || 料理（りょうり）を|作（つく）る[のが]|好（す）きです。 || J'aime cuisiner. || のを;のに;ので
+355 || 庭（にわ）[が]|ある|家（いえ）に|住（す）みたい。 || Je veux habiter une maison avec un jardin. || を;へ;で
+873 || この|映画（えいが）は|[おもしろくない]。 || Ce film n'est pas intéressant. || おもしろいない;おもしろじゃない;おもしろくなかった
+36 || バス[で]|学校（がっこう）へ|行（い）きます。 || Je vais à l'école en bus. || を;に;や
+36 || はし[で]|ご飯（はん）を|食（た）べます。 || Je mange le riz avec des baguettes. || を;が;へ
+62 || 雨（あめ）な[ので]、|出（で）かけません。 || Comme il pleut, je ne sors pas. || ほど;まで;のを
+45 || 時間（じかん）が|ない[から]、|タクシーで|行（い）こう。 || Comme on n'a pas le temps, allons-y en taxi. || まで;けど;のに
+52 || 授業（じゅぎょう）は|九時（くじ）[から]です。 || Les cours commencent à neuf heures. || を;が;へ
+361 || 高（たか）い[けど]、|買（か）います。 || C'est cher, mais je l'achète. || まで;を;へ
+44 || 日本語（にほんご）は|難（むずか）しいです[が]、|おもしろいです。 || Le japonais est difficile, mais intéressant. || を;で;へ
+896 || 今朝（けさ）は|何（なに）も|[食（た）べなかった]。 || Ce matin, je n'ai rien mangé. || 食べない;食べました;食べなくた
+897 || 昨日（きのう）は|会社（かいしゃ）に|[行（い）かなかった]。 || Hier, je ne suis pas allé au travail. || 行かない;行きなかった;行かないた
+416 || 朝（あさ）ご飯（はん）を|[食（た）べて]、|学校（がっこう）へ|行（い）きました。 || J'ai pris mon petit-déjeuner, puis je suis allé à l'école. || 食べた;食べる;食べって
+416 || 家（いえ）に|[帰（かえ）って]、|シャワーを|浴（あ）びました。 || Je suis rentré et j'ai pris une douche. || 帰て;帰った;帰りて
+27 || 今（いま）、|雨（あめ）が|[降（ふ）って]います。 || Il pleut en ce moment. || 降り;降る;降った
+27 || 弟（おとうと）は|ゲームを|し[て]います。 || Mon petit frère est en train de jouer. || た;る;ない
+38 || 山（やま）[へ]|向（む）かいました。 || Je me suis dirigé vers la montagne. || を;が;は
+48 || デパートへ|服（ふく）を|[買（か）い]に|行（い）きます。 || Je vais au grand magasin acheter des vêtements. || 買う;買って;買った
+714 || あの人（ひと）は|[だれ]ですか。 || Qui est cette personne ? || どこ;なに;いつ
+1094 || [なぜ]|日本語（にほんご）を|勉強（べんきょう）しているのですか。 || Pourquoi étudiez-vous le japonais ? || どこ;だれ;いつ
+1095 || [どうして]|昨日（きのう）|来（こ）なかったの？ || Pourquoi n'es-tu pas venu hier ? || どこ;だれ;どれ
+1096 || [なんで]|笑（わら）ってるの？ || Pourquoi tu rigoles ? || どこ;だれ;どれ
+951 || この|かばんは|[重（おも）い]。 || Ce sac est lourd. || 重いだ;重くて;重いな
+952 || 彼（かれ）は|親切（しんせつ）[だ]。 || Il est gentil. || い;く;の
+40 || 昨日（きのう）は|休（やす）み[でした]。 || Hier, c'était un jour de congé. || かった;ました;です
+40 || 子（こ）どもの時（とき）、|野菜（やさい）が|きらい[だった]。 || Enfant, je n'aimais pas les légumes. || かった;でした;ました
+49 || 私（わたし）は|学生（がくせい）[じゃない]。 || Je ne suis pas étudiant. || くない;ない;なかった
+50 || 昔（むかし）は|この|町（まち）は|静（しず）か[じゃなかった]。 || Autrefois, cette ville n'était pas calme. || くなかった;じゃない;なかった
+876 || テストは|[難（むずか）しくなかった]。 || Le contrôle n'était pas difficile. || 難しいじゃなかった;難しくない;難しいなかった
+356 || 先生（せんせい）は|「明日（あした）は|休（やす）みです」[と]|言（い）いました。 || Le professeur a dit : « Demain, c'est congé. » || へ;に;で
+358 || 田中（たなか）さんは|来（こ）ない[って]。 || Tanaka a dit qu'il ne viendrait pas. || まで;けど;から
+950 || 明日（あした）、|映画（えいが）を|[見（み）る]。 || Demain, je vais voir un film. || 見た;見て;見よ
+357 || これは|母（はは）が|[作（つく）った]|ケーキです。 || C'est un gâteau que ma mère a fait. || 作って;作りました;作ったの
+1103 || 私（わたし）[の]|作（つく）った|料理（りょうり）です。 || C'est un plat que j'ai préparé. || を;へ;で
+720 || この|かさは|だれ[の]ですか。 || À qui est ce parapluie ? || を;が;へ
+66 || ここで|たばこを|吸（す）う[な]。 || Ne fume pas ici ! || ね;よ;か
+43 || 千円（せんえん）[だけ]|あります。 || J'ai seulement mille yens. || まで;から;より
+712 || [どれ]が|あなたの|かばんですか。 || Lequel est ton sac ? || どの;どこ;だれ
+56 || 駅（えき）は|[どこ]ですか。 || Où est la gare ? || どれ;だれ;いつ
+713 || [どの]|電車（でんしゃ）に|乗（の）りますか。 || Quel train prends-tu ? || どれ;どこ;どう
+764 || 窓（まど）が|開（あ）い[て]います。 || La fenêtre est ouverte. || た;る;ない
+764 || 姉（あね）は|結婚（けっこん）[して]います。 || Ma grande sœur est mariée. || した;する;しない
+64 || 手（て）を|洗（あら）っ[てから]、|食（た）べてください。 || Lave-toi les mains avant de manger. || たから;てまで;たまで
+770 || 本屋（ほんや）へ|行（い）って、|辞書（じしょ）を|[買（か）いました]。 || Je suis allé à la librairie et j'ai acheté un dictionnaire. || 買って;買う;買いて
+42 || [もう]|宿題（しゅくだい）を|しました。 || J'ai déjà fait mes devoirs. || まだ;あまり;ぜんぜん
+72 || [まだ]|雨（あめ）が|降（ふ）っています。 || Il pleut encore. || もう;あまり;ちょっと
+83 || まだ|昼（ひる）ご飯（はん）を|食（た）べて[いません]。 || Je n'ai pas encore déjeuné. || います;いました;ありません
+46 || 写真（しゃしん）を|撮（と）って[もいい]ですか。 || Puis-je prendre une photo ? || はいけない;ください;から
+59 || 日本（にほん）へ|行（い）き[たい]です。 || Je veux aller au Japon. || ます;ません;ましょう
+59 || 冷（つめ）たい|水（みず）が|飲（の）み[たい]。 || Je veux boire de l'eau fraîche. || ます;ない;よう
+79 || 週末（しゅうまつ）は|本（ほん）を|読（よ）ん[だり]、|音楽（おんがく）を|聞（き）いたりします。 || Le week-end, je lis, j'écoute de la musique, ce genre de choses. || たり;でり;てり
+359 || この|店（みせ）は|[けっこう]|おいしいね。 || Ce resto est plutôt bon, hein. || たくさん;ぜんぜん;まだ
+715 || 公園（こうえん）に|人（ひと）が|[たくさん]|います。 || Il y a beaucoup de gens dans le parc. || ぜんぜん;まだ;もう
+53 || 寝（ね）る[まえに]、|歯（は）を|みがきます。 || Je me brosse les dents avant de dormir. || あとで;てから;ながら
+61 || 駅（えき）まで|十分（じゅっぷん）[くらい]|かかります。 || Il faut environ dix minutes jusqu'à la gare. || を;が;へ
+58 || 東京（とうきょう）から|大阪（おおさか）[まで]|新幹線（しんかんせん）で|行（い）きます。 || Je vais de Tokyo à Osaka en shinkansen. || より;から;だけ
+360 || 雨（あめ）が|やむ[まで]|ここで|待（ま）ちましょう。 || Attendons ici jusqu'à ce que la pluie cesse. || から;より;だけ
+76 || 食（た）べ[すぎ]ました。 || J'ai trop mangé. || たい;ながら;やすい
+76 || この|コーヒーは|熱（あつ）[すぎ]ます。 || Ce café est trop chaud. || くて;かった;くない
+84 || 私（わたし）は|カレー[にします]。 || Je vais prendre le curry. || がします;をします;でします
+57 || 部屋（へや）が|きれい[に]|なりました。 || La chambre est devenue propre. || く;を;が
+57 || 寒（さむ）[く]|なりましたね。 || Il commence à faire froid, hein. || に;で;が
+55 || 果物（くだもの）の中（なか）で、|りんごが|[いちばん]|好（す）きです。 || Parmi les fruits, ce sont les pommes que je préfère. || より;まだ;ほう
+73 || 犬（いぬ）[より]|猫（ねこ）のほうが|好（す）きです。 || Je préfère les chats aux chiens. || まで;から;だけ
+718 || 何（なに）[か]|飲（の）みますか。 || Tu veux boire quelque chose ? || も;が;を
+718 || 今朝（けさ）は|何（なに）[も]|食（た）べませんでした。 || Ce matin, je n'ai rien mangé. || か;が;を
+721 || 教室（きょうしつ）には|だれ[も]|いません。 || Il n'y a personne dans la classe. || を;が;へ
+70 || 一緒（いっしょ）に|帰（かえ）り[ましょう]。 || Rentrons ensemble. || ません;ました;でしょう
+75 || 荷物（にもつ）を|持（も）ち[ましょうか]。 || Voulez-vous que je porte vos bagages ? || ませんでしたか;ますか;ませんか
+82 || 一緒（いっしょ）に|映画（えいが）を|見（み）[ませんか]。 || Et si on allait voir un film ensemble ? || ましたか;ましょうか;ません
+35 || ここに|座（すわ）って[もいい]ですか。 || Puis-je m'asseoir ici ? || ください;はいけない;から
+60 || ゆっくり|話（はな）して[ください]。 || Parlez lentement, s'il vous plaît. || ましょう;ません;たい
+65 || ここで|写真（しゃしん）を|撮（と）らない[でください]。 || Ne prenez pas de photos ici, s'il vous plaît. || てください;ましょう;たい
+67 || 教室（きょうしつ）で|食（た）べて[はいけない]。 || On ne doit pas manger en classe. || もいい;ください;ほしい
+86 || 毎日（まいにち）|薬（くすり）を|飲（の）ま[なくてはいけない]。 || Je dois prendre mes médicaments tous les jours. || てはいけない;てもいい;たい
+87 || 明日（あした）までに|レポートを|出（だ）さ[なくてはならない]。 || Je dois rendre le rapport d'ici demain. || てはならない;てもいい;たい
+68 || 早（はや）く|寝（ね）[たほうがいい]よ。 || Tu ferais mieux de te coucher tôt. || ないほうがいい;てはいけない;すぎる
+69 || 夜（よる）|遅（おそ）く|コーヒーを|飲（の）ま[ないほうがいい]。 || Tu ferais mieux de ne pas boire de café tard le soir. || たほうがいい;なくてもいい;たい
+74 || もう|帰（かえ）ら[なきゃ]。 || Il faut que je rentre. || たい;ましょう;ても
+81 || かばんに|本（ほん）[や]|ノートが|入（はい）っています。 || Il y a des livres, des cahiers, etc. dans le sac. || を;で;へ
+63 || すしを|食（た）べた[ことがある]。 || J'ai déjà mangé des sushis. || ことにする;ことができる;ところだ
+63 || 富士山（ふじさん）に|登（のぼ）った[ことがあります]か。 || Avez-vous déjà gravi le mont Fuji ? || ことにします;ほうがいいです;ばかりです
+765 || 毎朝（まいあさ）|ジョギングを|[して]います。 || Je fais du jogging tous les matins. || した;する;しない
+769 || この|部屋（へや）は|広（ひろ）[くて]、|明（あか）るいです。 || Cette pièce est spacieuse et lumineuse. || いで;いて;くで
+769 || 彼女（かのじょ）は|きれい[で]、|やさしいです。 || Elle est jolie et gentille. || くて;て;の
+771 || この|店（みせ）は|安（やす）[くて]|おいしい。 || Ce resto est pas cher et bon. || いて;いで;かった
+85 || 私（わたし）は|歌（うた）を|歌（うた）う[のがへた]です。 || Je chante mal. || をへた;がへた;にへた
+77 || 兄（あに）は|料理（りょうり）を|作（つく）る[のがじょうず]です。 || Mon grand frère cuisine bien. || をじょうず;がじょうず;にじょうず
+719 || 赤（あか）い[の]を|ください。 || Donnez-moi le rouge, s'il vous plaît. || が;に;で
+722 || 私（わたし）は|妹（いもうと）に|花（はな）を|[あげました]。 || J'ai offert des fleurs à ma petite sœur. || くれました;くださいました;もらわれました
+723 || 友（とも）だちが|私（わたし）に|本（ほん）を|[くれました]。 || Un ami m'a offert un livre. || あげました;もらいました;やりました
+724 || 私（わたし）は|父（ちち）に|時計（とけい）を|[もらいました]。 || J'ai reçu une montre de mon père. || くれました;くださいました;あげられました
+54 || 安（やす）い[けれども]、|品質（ひんしつ）は|いい。 || C'est bon marché, mais la qualité est bonne. || まで;を;へ
+80 || 夏休（なつやす）みに|日本（にほん）へ|行（い）く[つもりです]。 || J'ai l'intention d'aller au Japon pendant les vacances d'été. || ところです;ことがあります;ばかりです

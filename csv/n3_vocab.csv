@@ -1,0 +1,1999 @@
+﻿unit,ordre,mot,furigana,sens,niveau
+109,0,流行る,流行（はや）る,"être populaire, être à la mode, se propager (par ex. une maladie)",N3
+109,1,なぜなら,なぜなら,"parce que, la raison est que, si vous voulez savoir pourquoi",N3
+109,2,正直,正直（しょうじき）,"honnêteté, intégrité, franchise, honnêtement, franchement",N3
+109,3,合格,合格（ごうかく）,"réussite (par ex. d'un examen), éligibilité",N3
+109,4,渋滞,渋滞（じゅうたい）,"embouteillage, encombrement, congestion, delai, stagnation",N3
+109,5,最高,最高（さいこう）,"le plus (haut, élevé, etc.), meilleur, suprême",N3
+109,6,チャンス,チャンス,"chance, opportunité, hasard",N3
+109,7,こちらこそ,こちらこそ,"moi de même, tout le plaisir est pour moi, c'est moi qui...",N3
+109,8,努力,努力（どりょく）,"effort, peine, travail acharné",N3
+109,9,年寄り,年寄（としよ）り,"personnes âgées, aînés",N3
+109,10,不自由,不自由（ふじゆう）,"inconfort, gêne, inconvénient, pauvreté, besoin, handicap, déficience (physique, mentale, etc.)",N3
+109,11,状況,状況（じょうきょう）,"situation (autour de soi), situation, circonstances",N3
+109,12,苦労,苦労（くろう）,"épreuves, peine, soucis, tracas",N3
+109,13,仲間,仲間（なかま）,"compagnon, camarade, collègue, associé, partenaire, groupe, cercle d'amis, membre de la même catégorie",N3
+109,14,嘘,嘘（うそ）,"mensonge, inexactitude, erreur, Vraiment ?!, Incroyable !",N3
+109,15,人生,人生（じんせい）,"la vie (humaine, c'est-à-dire de la conception à la mort)",N3
+109,16,日,日（にち）,"dimanche, jour (du mois), compteur pour les jours, Japon",N3
+109,17,からかう,からかう,"se moquer de, taquiner, ridiculiser, charrier",N3
+109,18,追いかける,追（お）いかける,"poursuivre, courir après, pourchasser",N3
+109,19,現実,現実（げんじつ）,"réalité, fait indéniable",N3
+109,20,役目,役目（やくめ）,"fonction, devoir, rôle",N3
+109,21,見舞う,見舞（みま）う,"demander des nouvelles (de la santé), rendre visite, frapper",N3
+109,22,結局,結局（けっきょく）,"après tout, finalement, à la fin",N3
+109,23,気配,気配（けはい）,"présence, tendance, indication, signe, indice, cours (d'un marché boursier)",N3
+109,24,患者,患者（かんじゃ）,(un) patient,N3
+109,25,金融,金融（きんゆう）,"finance, circulation monétaire, flux monétaire, crédit",N3
+109,26,土地,土地（とち）,"terrain, parcelle, sol, localité, région",N3
+109,27,低下,低下（ていか）,"baisse, chute, déclin, abaissement, détérioration, dégradation",N3
+109,28,撫でる,撫（な）でる,"caresser, brosser doucement, effleurer",N3
+109,29,驚かす,驚（おどろ）かす,"surprendre, effrayer",N3
+109,30,失う,失（うしな）う,"perdre, se séparer de",N3
+109,31,チーム,チーム,équipe,N3
+109,32,恋人,恋人（こいびと）,"amoureux, chéri",N3
+109,33,普段,普段（ふだん）,"habituel, ordinaire, quotidien, toujours",N3
+109,34,化学,化学（かがく）,chimie,N3
+109,35,物質,物質（ぶっしつ）,"matériau, substance",N3
+109,36,高級,高級（こうきゅう）,"haut de gamme, haut niveau, haute qualité, ancienneté",N3
+109,37,抜く,抜（ぬ）く,"extraire, omettre, tirer, débrancher, faire quelque chose jusqu'au bout, surpasser, dépasser, prendre (une photo), enregistrer (vidéo)",N3
+109,38,商品,商品（しょうひん）,"marchandise, article, bien, stock, produit",N3
+109,39,睡眠,睡眠（すいみん）,sommeil,N3
+109,40,不足,不足（ふそく）,"insuffisance, pénurie, déficit, manque",N3
+109,41,ビタミン,ビタミン,vitamine,N3
+109,42,今後,今後（こんご）,"à partir de maintenant, dorénavant, désormais",N3
+109,43,事態,事態（じたい）,"situation, état des choses",N3
+109,44,食品,食品（しょくひん）,"nourriture, produits alimentaires, denrées alimentaires",N3
+109,45,傷,傷（きず）,"blessure, coupure, éraflure, égratignure, cicatrice, fissure, rayure, imperfection, point faible, tache (sur la réputation), blessure (émotionnelle)",N3
+109,46,かなり,かなり,"considérablement, assez, plutôt",N3
+109,47,大会,大会（たいかい）,"convention, tournoi, rassemblement",N3
+109,48,憲法,憲法（けんぽう）,constitution,N3
+109,49,詳しい,詳（くわ）しい,"détaillé, complet, précis, connaître très bien, bien informé, bien renseigné",N3
+109,50,うどん,うどん,"udon, nouilles japonaises épaisses à base de blé",N3
+109,51,女優,女優（じょゆう）,actrice,N3
+109,52,解く,解（と）く,"dénouer, détacher, défaire, délier, découdre, résoudre, dissiper (un malentendu), lever (un soupçon), lever (une interdiction), apaiser, démêler (les cheveux)",N3
+109,53,解く,解（ほど）く,"dénouer, défaire, déballer (par ex. un colis)",N3
+109,54,温暖,温暖（おんだん）,"chaud, doux, tempéré, chaleureux",N3
+109,55,画家,画家（がか）,peintre,N3
+109,56,人気,人気（にんき）,"popularité, faveur du public, conditions (de marché)",N3
+109,57,シーズン,シーズン,"saison (de quelque chose), de saison",N3
+109,58,放送,放送（ほうそう）,"diffusion, émission, radiodiffusion",N3
+109,59,表現,表現（ひょうげん）,"expression, présentation, représentation, notation",N3
+109,60,的,的（てき）,"~ment, ~ique, ~el, ~if, typique de",N3
+109,61,重要,重要（じゅうよう）,"essentiel, important, majeur, capital, principal",N3
+109,62,その内,その内（うち）,"tôt ou tard, prochainement, bientôt, un de ces jours",N3
+109,63,評価,評価（ひょうか）,"évaluation, estimation, appréciation, notation, estimer la valeur, apprécier, reconnaître la valeur (de quelque chose)",N3
+109,64,下る,下（くだ）る,"descendre, aller vers le bas, être transmis (d'un ordre, jugement, etc.), passer (du temps), se rendre, capituler",N3
+109,65,交代,交代（こうたい）,"alternance, changement, relève, relais, équipe, substitution (sports, etc.), tour de rôle",N3
+109,66,お互い,お互（たが）い,"mutuel, réciproque, l'un l'autre",N3
+109,67,理解,理解（りかい）,"compréhension, entendement, appréciation, sympathie",N3
+109,68,儀式,儀式（ぎしき）,"cérémonie, formalité, rite, rituel",N3
+109,69,名刺,名刺（めいし）,carte de visite,N3
+109,70,交流,交流（こうりゅう）,"échange (culturel), interaction, réseautage (social, etc.), courant alternatif",N3
+109,71,合わせる,合（あ）わせる,"adapter (rythme, vitesse, etc.), joindre, unir, combiner, faire face, comparer, placer ensemble, connecter, superposer, mélanger, combiner, mettre lame contre lame",N3
+109,72,スタート,スタート,début,N3
+109,73,調整,調整（ちょうせい）,"réglage, ajustement, régulation, coordination, réconciliation, accordage, réparation, adaptation",N3
+110,1000,服装,服装（ふくそう）,"vêtements, tenue, habits",N3
+110,1001,講演,講演（こうえん）,"conférence, discours, colloque",N3
+110,1002,火災,火災（かさい）,"embrasement, incendie",N3
+110,1003,訓練,訓練（くんれん）,"pratique, entraînement, exercice",N3
+110,1004,担当,担当（たんとう）,"être responsable (d'un domaine de responsabilité), être en charge (d'un rôle professionnel, etc.)",N3
+110,1005,姿,姿（すがた）,"figure, forme, silhouette, apparence, tenue, état, condition, image, vêtu de ..., portant ...",N3
+110,1006,記事,記事（きじ）,"article, reportage, compte-rendu, récit, rapport",N3
+110,1007,出席,出席（しゅっせき）,"présence, être présent, assister à, paraître",N3
+110,1008,地域,地域（ちいき）,"zone, région",N3
+110,1009,母親,母親（ははおや）,mère,N3
+110,1010,論文,論文（ろんぶん）,"thèse, dissertation, essai, article, papier",N3
+110,1011,マスク,マスク,"masque, traits du visage",N3
+110,1012,会計,会計（かいけい）,"comptabilité, finance, comptable, trésorier, l'addition, facture",N3
+110,1013,年度,年度（ねんど）,"année fiscale (généralement du 1er avril au 31 mars au Japon), exercice fiscal, année académique, année scolaire, année de production",N3
+110,1014,それでも,それでも,"mais, et pourtant, néanmoins",N3
+110,1015,一般,一般（いっぱん）,"général, universel, ordinaire, moyen, commun",N3
+110,1016,世紀,世紀（せいき）,"siècle, ère",N3
+110,1017,現在,現在（げんざい）,"à notre époque, de nos jours, maintenant, actuellement, présent",N3
+110,1018,状態,状態（じょうたい）,"état actuel, condition, situation, circonstances, état",N3
+110,1019,影響,影響（えいきょう）,"influence, effet, influencer, affecter, impacter",N3
+110,1020,長所,長所（ちょうしょ）,"point fort, mérite, vertu, avantage",N3
+110,1021,最中,最中（さいちゅう）,"en plein milieu de, en cours de, pendant",N3
+110,1022,明らか,明（あき）らか,"évident, clair, manifeste, apparent",N3
+110,1023,ちゃんと,ちゃんと,"diligemment, sérieusement, correctement, de manière ordonnée, de manière satisfaisante, rapidement",N3
+110,1024,読み,読（よ）み,lecture,N3
+110,1025,対,対（たい）,"opposé, versus, égalité, pied d'égalité, d'égal à égal, contre ..., anti-, vers ..., à ...",N3
+110,1026,観客,観客（かんきゃく）,"audience, public, spectateur",N3
+110,1027,鉄道,鉄道（てつどう）,"chemin de fer, voie ferrée, transport ferroviaire",N3
+110,1028,実現,実現（じつげん）,"implémentation, mise en œuvre (par ex. d’un système), matérialisation, réalisation",N3
+110,1029,提出,提出（ていしゅつ）,"présentation, soumission (par ex. d'un rapport ou d'une thèse), dépôt",N3
+110,1030,迫る,迫（せま）る,"approcher, se rapprocher, être imminent, presser (quelqu'un pour quelque chose), exhorter, contraindre",N3
+110,1031,調子,調子（ちょうし）,"ton, hauteur, temps, rythme, humeur, manière, façon, style, condition, état de santé, élan, impulsion du moment, tension, tendance",N3
+110,1032,飛行,飛行（ひこう）,"aviation, vol, voler, prendre un vol",N3
+110,1033,計画,計画（けいかく）,"plan, projet, planning, schéma, programme",N3
+110,1034,失業,失業（しつぎょう）,chômage,N3
+110,1035,診断,診断（しんだん）,"diagnostic, examen médical",N3
+110,1036,筋肉,筋肉（きんにく）,"muscle, tendon",N3
+110,1037,満点,満点（まんてん）,"note parfaite, totalité des points, extrêmement, très, assez",N3
+110,1038,通貨,通貨（つうか）,"monnaie, devise (monétaire)",N3
+110,1039,クーラー,クーラー,"climatiseur, air conditionné, glacière",N3
+110,1040,以前,以前（いぜん）,"il y a, avant, depuis, autrefois",N3
+110,1041,困難,困難（こんなん）,"difficulté, détresse, obstacle",N3
+110,1042,一緒,一緒（いっしょ）,"ensemble, en même temps, pareil, identique",N3
+110,1043,文,文（ぶん）,"phrase, composition, texte, écrits, les arts littéraires (par opposition aux arts militaires), académie, littérature",N3
+110,1044,プロ,プロ,professionnel,N3
+110,1045,孫,孫（まご）,"petit-enfant, petit-fils, petite-fille",N3
+110,1046,優秀,優秀（ゆうしゅう）,"supériorité, excellence",N3
+110,1047,考え,考（かんが）え,"pensée, réflexion, opinion, concept, idée, notion, intention, plan, jugement, délibération, réflexion, espoir",N3
+110,1048,よる,よる,"être dû à, être causé par, dépendre de, se baser sur, provenir de, être basé à (un lieu, une organisation), avoir son siège à",N3
+110,1049,消費,消費（しょうひ）,"consommation, dépense",N3
+110,1050,電力,電力（でんりょく）,énergie électrique,N3
+110,1051,モデル,モデル,"modèle, exemplaire, mannequin, maquette, miniature",N3
+110,1052,入学,入学（にゅうがく）,"entrée à l'école ou à l'université, inscription, admission (à l'université, etc.)",N3
+110,1053,割引,割引（わりびき）,"réduction, rabais, remise, (après un nombre) dixièmes remisés",N3
+110,1054,費用,費用（ひよう）,"coût, dépenses, frais",N3
+110,1055,労働,労働（ろうどう）,"travail manuel, labeur, parti travailliste",N3
+110,1056,トラック,トラック,"camion, piste (de course)",N3
+110,1057,レベル,レベル,"niveau, standard, degré, grade, rang, classe, étage, couche, niveau (de géomètre)",N3
+110,1058,夫人,夫人（ふじん）,"épouse, madame, épouse d'un noble, consort de l'empereur",N3
+110,1059,存在,存在（そんざい）,"existence, être",N3
+110,1060,今晩は,今晩（こんばん）は,bonsoir,N3
+110,1061,幼稚,幼稚（ようち）,"enfant (en bas âge), enfantin, infantile",N3
+110,1062,叱る,叱（しか）る,"gronder, réprimander",N3
+110,1063,態度,態度（たいど）,"attitude, manières, comportement",N3
+110,1064,話しかける,話（はな）しかける,"s’adresser à (quelqu’un), aborder une personne, parler (à quelqu’un), commencer à parler, entamer une conversation",N3
+110,1065,完全,完全（かんぜん）,"perfection, complétude",N3
+110,1066,多少,多少（たしょう）,"plus ou moins, quelque peu, un peu, certains, quantité, montant",N3
+110,1067,責任,責任（せきにん）,"devoir, responsabilité, obligation, charge",N3
+110,1068,賞,賞（しょう）,"prix, récompense",N3
+110,1069,だけど,だけど,"mais, cependant, toutefois",N3
+110,1070,演技,演技（えんぎ）,"jeu (d'acteur), performance",N3
+110,1071,拍手,拍手（はくしゅ）,"applaudissements, applaudir",N3
+110,1072,演奏,演奏（えんそう）,performance musicale,N3
+110,1073,支払う,支払（しはら）う,payer,N3
+110,1074,日の出,日（ひ）の出（で）,lever du soleil,N3
+111,2000,発見,発見（はっけん）,"découverte, détection, trouvaille",N3
+111,2001,誤解,誤解（ごかい）,malentendu,N3
+111,2002,高速,高速（こうそく）,"grande vitesse, vitesse rapide, autoroute, voie rapide, voie express",N3
+111,2003,全員,全員（ぜんいん）,"tous les membres, tout l'équipage, tout le monde, chacun",N3
+111,2004,だって,だって,"après tout, mais, même, aussi",N3
+111,2005,体育,体育（たいいく）,"éducation physique, gymnastique, athlétisme",N3
+111,2006,競馬,競馬（けいば）,courses de chevaux,N3
+111,2007,恋,恋（こい）,amour (romantique),N3
+111,2008,のんびり,のんびり,"détendu, à loisir, insouciant",N3
+111,2009,故郷,故郷（ふるさと）,"ville natale, lieu de naissance, endroit d'origine, ancienne maison, ruines, vestiges historiques",N3
+111,2010,直に,直（じか）に,"directement, en personne, de première main",N3
+111,2011,人物,人物（じんぶつ）,"personne, personnage, figure, caractère, personnalité, personne talentueuse",N3
+111,2012,呼び出す,呼（よ）び出（だ）す,"appeler, convoquer, attirer, leurrer",N3
+111,2013,埋める,埋（う）める,"enterrer, remplir (une salle), boucher (un trou), combler (un écart), remplir (un siège, un poste vacant), compenser (une perte, un manque, etc.), réparer, ajouter de l'eau froide (dans un bain), couvrir",N3
+111,2014,節,節（ふし）,"articulation, jointure, air, mélodie, nœud (dans le bois, bambou), partie, point notable",N3
+111,2015,需要,需要（じゅよう）,"demande, requête",N3
+111,2016,供給,供給（きょうきゅう）,"approvisionnement, provision",N3
+111,2017,逮捕,逮捕（たいほ）,"arrestation, capture",N3
+111,2018,過去,過去（かこ）,"le passé, son passé (une histoire personnelle que l’on préférerait garder secrète), passé (temps)",N3
+111,2019,改めて,改（あらた）めて,"encore, de nouveau, une fois de plus, à nouveau, formellement, spécialement, intentionnellement, délibérément",N3
+111,2020,解決,解決（かいけつ）,"solution, résolution, règlement",N3
+111,2021,部分,部分（ぶぶん）,"portion, section, partie",N3
+111,2022,制度,制度（せいど）,"système, institution, organisation",N3
+111,2023,批判,批判（ひはん）,"critique, jugement, commentaire",N3
+111,2024,不満,不満（ふまん）,"insatisfaction, mécontentement, déplaisir",N3
+111,2025,苦手,苦手（にがて）,"mauvais (en), pas très bon (en), aversion (pour), difficile à gérer",N3
+111,2026,空く,空（す）く,"devenir moins fréquenté, se vider, avoir faim",N3
+111,2027,中,中（ちゅう）,"moyen, moyenne, milieu, collège, Chine, dans, pendant que, en (construction, etc.), volume deux (sur trois)",N3
+111,2028,冷める,冷（さ）める,"devenir froid (par ex. d'une température élevée à ambiante), descendre (fièvre), se refroidir (intérêt), s'atténuer, se calmer, se réduire",N3
+111,2029,資料,資料（しりょう）,"document, documents, documentation, dossier, données, informations",N3
+111,2030,進学,進学（しんがく）,entrer dans une école de niveau supérieur (en particulier entrer à l'université),N3
+111,2031,終える,終（お）える,"achever, finir, terminer, obtenir son diplôme",N3
+111,2032,現状,現状（げんじょう）,"état actuel, situation présente, état existant, statu quo",N3
+111,2033,深刻,深刻（しんこく）,"sérieux, sévère, grave, aigu",N3
+111,2034,プラス,プラス,"plus, addition, nombre positif, profit, avantage, atout, pôle positif, anode",N3
+111,2035,受験,受験（じゅけん）,passer un examen (surtout d'entrée à l'école ou à l'université),N3
+111,2036,工夫,工夫（くふう）,"stratagème, manigance, élaboration, trouver une solution, inventer, résoudre ingénieusement",N3
+111,2037,用紙,用紙（ようし）,"formulaire vierge, feuilles de papier",N3
+111,2038,特定,特定（とくてい）,"spécifique, spécial, particulier",N3
+111,2039,千切る,千切（ちぎ）る,"déchirer en morceaux, cueillir (par ex. des fruits), arracher, déchirer, faire ... intensément",N3
+111,2040,黙る,黙（だま）る,"se taire, être silencieux",N3
+111,2041,燃やす,燃（も）やす,brûler,N3
+111,2042,監督,監督（かんとく）,"supervision, contrôle, direction, superintendance, directeur, surintendant, superviseur, entraîneur",N3
+111,2043,変更,変更（へんこう）,"changement, modification, altération, révision, amendement",N3
+111,2044,そこで,そこで,"donc, alors, par conséquent, à cette fin",N3
+111,2045,方法,方法（ほうほう）,"méthode, processus, manière, façon, moyen, technique",N3
+111,2046,限界,限界（げんかい）,"limite, bordure",N3
+111,2047,新た,新（あら）た,"nouveau, frais, novateur",N3
+111,2048,溜まる,溜（た）まる,"se rassembler, se réunir, économiser, s’accumuler, s’entasser",N3
+111,2049,量,量（りょう）,"quantité, montant, volume, portion (de nourriture)",N3
+111,2050,暗記,暗記（あんき）,"mémorisation, apprendre par cœur",N3
+111,2051,素直,素直（すなお）,"obéissant, doux, docile, naturel, honnête, franc, direct (vis-à-vis de ses sentiments)",N3
+111,2052,資源,資源（しげん）,ressources,N3
+111,2053,輸入,輸入（ゆにゅう）,"importation, import, introduction, afférent",N3
+111,2054,頂上,頂上（ちょうじょう）,"sommet, cime, pointe",N3
+111,2055,単位,単位（たんい）,"unité, dénomination, crédit (à l'école)",N3
+111,2056,取れる,取（と）れる,"se détacher, être retiré, disparaître (douleur), être attrapé, être récolté, être interprété (comme)",N3
+111,2057,釣り合う,釣（つ）り合（あ）う,"équilibrer, être en harmonie, être en équilibre, convenir, bien aller ensemble, être un bon match",N3
+111,2058,可能,可能（かのう）,"potentiel, possible, praticable, faisable",N3
+111,2059,解散,解散（かいさん）,"dissolution, séparation",N3
+111,2060,助手,助手（じょしゅ）,"assistant, aide, adjoint, tuteur",N3
+111,2061,繋ぐ,繋（つな）ぐ,"attacher, fixer, connecter, transférer (un appel téléphonique)",N3
+111,2062,勝手に,勝手（かって）に,"arbitrairement, de son propre chef, volontairement, délibérément, à sa guise",N3
+111,2063,どこか,どこか,"quelque part, n'importe où, à certains égards",N3
+111,2064,翼,翼（つばさ）,"aile, constellation chinoise des « Ailes » (l'une des 28 demeures), compteur pour oiseaux ou ailes d'oiseaux",N3
+111,2065,結論,結論（けつろん）,conclusion,N3
+111,2066,修理,修理（しゅうり）,"réparation, remise en état, entretien",N3
+111,2067,進める,進（すす）める,"faire avancer, faire progresser, promouvoir, accélérer",N3
+111,2068,尊敬,尊敬（そんけい）,"respect, estime, révérence, honneur",N3
+111,2069,事実,事実（じじつ）,"fait, vérité, réalité",N3
+111,2070,納得,納得（なっとく）,"consentement, assentiment, accord, compréhension, saisie",N3
+111,2071,長男,長男（ちょうなん）,"fils aîné, premier fils",N3
+111,2072,品,品（しな）,"article, objet, chose, marchandises, stock, qualité, coquetterie, charme",N3
+111,2073,条件,条件（じょうけん）,"conditions, termes, exigences",N3
+111,2074,契約,契約（けいやく）,"contrat, accord, convention",N3
+112,3000,全く,全（まった）く,"vraiment, véritablement, entièrement, totalement, parfaitement, en effet, bon sang (expression d’exaspération)",N3
+112,3001,異常,異常（いじょう）,"étrangeté, anomalie, trouble",N3
+112,3002,語る,語（かた）る,"parler de, évoquer, raconter, narrer, réciter, chanter, indiquer, montrer",N3
+112,3003,車庫,車庫（しゃこ）,"garage, abri pour voiture, dépôt (de train, bus)",N3
+112,3004,当たり前,当（あ）たり前（まえ）,"naturel, raisonnable, évident, habituel, commun, ordinaire, banal, la norme",N3
+112,3005,老人,老人（ろうじん）,personne âgée,N3
+112,3006,より,より,"(plus/moins) que, comparé à, à partir de, de la part de, plus",N3
+112,3007,地球,地球（ちきゅう）,"la Terre, le globe",N3
+112,3008,盗難,盗難（とうなん）,"vol, braquage, cambriolage",N3
+112,3009,被害,被害（ひがい）,"dommages (subis), blessure, préjudice",N3
+112,3010,食料,食料（しょくりょう）,nourriture,N3
+112,3011,違反,違反（いはん）,"violation, infraction, délit, atteinte, transgression, contravention",N3
+112,3012,入社,入社（にゅうしゃ）,"rejoindre une entreprise, obtenir un emploi dans une entreprise, entrer dans une entreprise",N3
+112,3013,実力,実力（じつりょく）,"capacité réelle, aptitude réelle, force véritable, mérite, efficacité, compétence, armes, force",N3
+112,3014,人間,人間（にんげん）,"être humain, personne, homme, humanité, genre humain, caractère (d'une personne)",N3
+112,3015,国民,国民（こくみん）,"nation, nationalité, peuple, citoyen",N3
+112,3016,種,種（たね）,"graine, pépin, type, variété, qualité, ton, matériau, matière, sujet, thème, cause, source, astuce, secret",N3
+112,3017,トップ,トップ,"sommet, première position, direction, haut fonctionnaire",N3
+112,3018,全般,全般（ぜんぱん）,"(le) tout, universel, entièrement, général, dans l'ensemble",N3
+112,3019,温める,温（あたた）める,"chauffer, réchauffer, ruminer (une idée), renouer (une amitié)",N3
+112,3020,様々,様々（さまざま）,"varié, divers, multiple",N3
+112,3021,実感,実感（じっかん）,"sentiment réel, ressenti réel, ressentir réellement, expérimenter personnellement",N3
+112,3022,戦い,戦（たたか）い,"bataille, combat, lutte, conflit",N3
+112,3023,応援,応援（おうえん）,"aide, soutien, assistance, encouragement, support moral",N3
+112,3024,いたずら,いたずら,"farce, tour, blague, passe-temps, espiègle",N3
+112,3025,集中,集中（しゅうちゅう）,"concentration, convergence, centralisation, intégration, rassemblement",N3
+112,3026,死体,死体（したい）,"corps sans vie, dépouille, cadavre",N3
+112,3027,軍隊,軍隊（ぐんたい）,"forces armées, armée, troupes",N3
+112,3028,井戸,井戸（いど）,puits à eau,N3
+112,3029,別荘,別荘（べっそう）,"maison de vacances, villa",N3
+112,3030,さて,さて,"bon, alors, bien",N3
+112,3031,実験,実験（じっけん）,expérience,N3
+112,3032,出発,出発（しゅっぱつ）,départ,N3
+112,3033,テーマ,テーマ,"thème, sujet",N3
+112,3034,都会,都会（とかい）,"ville, Assemblée métropolitaine de Tokyo",N3
+112,3035,予防,予防（よぼう）,"prévention, précaution, protection contre",N3
+112,3036,関心,関心（かんしん）,"préoccupation, intérêt",N3
+112,3037,不,不（ふ）,"in-, im-, il-, ir-, mal-, mé-, préfixe négatif",N3
+112,3038,従兄弟,従兄弟（いとこ）,cousin (masculin),N3
+112,3039,職業,職業（しょくぎょう）,"occupation, métier",N3
+112,3040,議会,議会（ぎかい）,"congrès, parlement, diète, assemblée législative",N3
+112,3041,偉い,偉（えら）い,"génial, admirable, remarquable, célèbre, éminent, affreux, terrible",N3
+112,3042,却って,却（かえ）って,"au contraire, plutôt, d'autant plus, au lieu de cela",N3
+112,3043,印象,印象（いんしょう）,impression,N3
+112,3044,損,損（そん）,"perte, désavantage, dommage, préjudice",N3
+112,3045,疑問,疑問（ぎもん）,"question, problème, doute, supposition",N3
+112,3046,豊富,豊富（ほうふ）,"abondance, richesse, profusion",N3
+112,3047,演説,演説（えんぜつ）,"discours, allocution",N3
+112,3048,含める,含（ふく）める,"inclure, instruire, faire comprendre, mettre dans la bouche (de quelqu'un), imprégner de saveur",N3
+112,3049,今回,今回（こんかい）,"maintenant, cette fois",N3
+112,3050,観察,観察（かんさつ）,"observation, enquête",N3
+112,3051,汗,汗（あせ）,"sueur, transpiration, humidité, condensation",N3
+112,3052,元々,元々（もともと）,"à l'origine, par nature, dès le début",N3
+112,3053,共通,共通（きょうつう）,"(être) commun, (être) partagé",N3
+112,3054,市場,市場（いちば）,"marché (d'une ville), marketplace",N3
+112,3055,報告,報告（ほうこく）,"rapport, information, annonce",N3
+112,3056,涙,涙（なみだ）,"larme, sympathie",N3
+112,3057,流す,流（なが）す,"évacuer, renverser, verser (du sang, des larmes), emporter, distribuer (électricité sur des fils, musique sur un système audio, etc.), faire circuler, diffuser, émettre, laisser dériver",N3
+112,3058,表面,表面（ひょうめん）,"surface, face, extérieur, apparences, superficialité",N3
+112,3059,命,命（いのち）,"vie, durée de vie, espérance de vie, chose la plus importante, fondation, noyau, destin, destinée, karma",N3
+112,3060,酸素,酸素（さんそ）,oxygène (O),N3
+112,3061,電子,電子（でんし）,"électron, électronique (surtout comme préfixe)",N3
+112,3062,日常,日常（にちじょう）,"ordinaire, régulier, quotidien, habituel",N3
+112,3063,単なる,単（たん）なる,"simple, pur, seul",N3
+112,3064,信用,信用（しんよう）,"confiance, dépendance, crédit, foi, croyance",N3
+112,3065,決定,決定（けってい）,"décision, détermination",N3
+112,3066,勝負,勝負（しょうぶ）,"victoire ou défaite, match, concours, partie, combat",N3
+112,3067,許す,許（ゆる）す,"permettre, autoriser, approuver, tolérer, exempter (d'une amende), excuser (de), pardonner, relâcher, laisser partir, confier, abandonner, céder",N3
+112,3068,反省,反省（はんせい）,"regret, introspection, remords, méditation, contemplation, repentir, être désolé",N3
+112,3069,望み,望（のぞ）み,"souhait, désir, espoir, perspective, attente",N3
+112,3070,もしかしたら,もしかしたら,"peut-être, possiblement, éventuellement",N3
+112,3071,相撲,相撲（すもう）,"sumo, lutteur, rikishi",N3
+112,3072,不幸,不幸（ふこう）,"malheur, tristesse, chagrin, infortune, désastre, accident, décès",N3
+112,3073,克服,克服（こくふく）,"conquête, surmonter (problème, maladie, handicap), maîtriser, subjuguer",N3
+112,3074,要求,要求（ようきゅう）,"demande, requête ferme, réquisition, exigence, désir",N3
+113,4000,単に,単（たん）に,"simplement, seulement, uniquement, exclusivement",N3
+113,4001,街,街（がい）,"rue, quartier, district",N3
+113,4002,自身,自身（じしん）,"par soi-même, personnellement",N3
+113,4003,効果,効果（こうか）,"efficacité, efficience, résultat, effets (sonores, visuels, spéciaux, etc.)",N3
+113,4004,優れる,優（すぐ）れる,"surpasser, dépasser, exceller",N3
+113,4005,統計,統計（とうけい）,statistiques,N3
+113,4006,年齢,年齢（ねんれい）,"âge, nombre d'années",N3
+113,4007,行事,行事（ぎょうじ）,événement,N3
+113,4008,かも知れない,かも知（し）れない,"peut-être, possiblement, ça se pourrait",N3
+113,4009,一言,一言（ひとこと）,"un mot, quelques mots, bref commentaire",N3
+113,4010,入場,入場（にゅうじょう）,"entrée, admission",N3
+113,4011,分ける,分（わ）ける,"diviser (en), séparer (en), partager, classer, trier, distribuer, différencier (entre), rompre (une bagarre), arbitrer, déclarer un match nul, se frayer un chemin (à travers une foule)",N3
+113,4012,項目,項目（こうもく）,"élément (de données), entrée, article, chapitre",N3
+113,4013,都市,都市（とし）,"ville, commune, cité, municipal, urbain",N3
+113,4014,床,床（ゆか）,"sol (à l'intérieur), plancher, scène (pour le narrateur et le joueur de shamisen), plateforme de restauration construite au-dessus d'une rivière",N3
+113,4015,矛盾,矛盾（むじゅん）,"contradiction, incohérence",N3
+113,4016,全身,全身（ぜんしん）,"tout le corps, systémique",N3
+113,4017,貴重,貴重（きちょう）,"précieux, de valeur",N3
+113,4018,本物,本物（ほんもの）,"article authentique, vraie chose, l'original",N3
+113,4019,例外,例外（れいがい）,exception,N3
+113,4020,コンクール,コンクール,"compétition, concours",N3
+113,4021,再び,再（ふたた）び,"encore, une fois de plus, une seconde fois",N3
+113,4022,読書,読書（どくしょ）,lecture,N3
+113,4023,出会い,出会（であ）い,"rencontre, confluence",N3
+113,4024,罪,罪（つみ）,"crime, péché, méfait, peine, punition, faute, responsabilité, culpabilité, manque de considération",N3
+113,4025,発行,発行（はっこう）,"émission, publication, déclenchement d’un événement (logiciel)",N3
+113,4026,笑顔,笑顔（えがお）,"visage souriant, sourire",N3
+113,4027,鉄,鉄（てつ）,"fer (Fe), solide et dur (comme le fer), chemin de fer, passionné de chemin de fer",N3
+113,4028,縁,縁（ふち）,"bord, rebord, bordure, arête",N3
+113,4029,切れる,切（き）れる,"se casser, se briser, être coupé, se fissurer, être blessé, s'user, cesser de fonctionner, expirer (délai, etc.), être épuisé, être en rupture de stock, être rompu (relation), être déconnecté, être tranchant, perdre son sang-froid, s'énerver, être capable de faire complètement",N3
+113,4030,電波,電波（でんぱ）,"onde électromagnétique, onde radio, dire des choses étranges",N3
+113,4031,輸出,輸出（ゆしゅつ）,"exportation, efférent",N3
+113,4032,格好,格好（かっこう）,"forme, apparence, figure, posture, pose, allure, état, situation, convenable",N3
+113,4033,代金,代金（だいきん）,"prix, paiement, coût, facture, l'addition",N3
+113,4034,価格,価格（かかく）,"prix, valeur, coût",N3
+113,4035,使用,使用（しよう）,"utilisation, application, emploi, usage",N3
+113,4036,位置,位置（いち）,"lieu, position, emplacement",N3
+113,4037,当時,当時（とうじ）,"à ce moment-là, à cette époque",N3
+113,4038,限る,限（かぎ）る,"restreindre, limiter, confiner",N3
+113,4039,但し,但（ただ）し,"mais, pourtant, cependant, à condition que, pourvu que",N3
+113,4040,一度に,一度（いちど）に,"tout à la fois, en une fois",N3
+113,4041,天皇,天皇（てんのう）,Empereur du Japon,N3
+113,4042,禁煙,禁煙（きんえん）,"s'abstenir de fumer, arrêter de fumer, défense de fumer",N3
+113,4043,区域,区域（くいき）,"limites, frontière, domaine, zone, sphère, territoire",N3
+113,4044,装置,装置（そうち）,"équipement, installation, appareil, dispositif",N3
+113,4045,済ませる,済（す）ませる,"finir, mettre fin à, en terminer avec, laisser se terminer",N3
+113,4046,溺れる,溺（おぼ）れる,"se noyer, couler sous la surface (de l'eau), s'adonner à, se vautrer dans",N3
+113,4047,招く,招（まね）く,"inviter, demander, faire signe, faire entrer quelqu'un, faire venir, convoquer, s'attirer, causer, mener à",N3
+113,4048,特徴,特徴（とくちょう）,"caractéristique, trait, particularité, distinction",N3
+113,4049,重たい,重（おも）たい,"lourd, imposant, massif, sérieux, important, sévère, opprimé",N3
+113,4050,行けない,行（い）けない,"mauvais, pas bon, inutile, sans espoir, désespéré, ne doit pas faire",N3
+113,4051,ドレス,ドレス,robe,N3
+113,4052,エンジン,エンジン,moteur,N3
+113,4053,動作,動作（どうさ）,"action, mouvements, gestes, comportement, exécution, fonctionnement, manières",N3
+113,4054,相当,相当（そうとう）,"convenable, approprié, proportionné, adapté, considérable, substantiel, être digne de, correspondre à (en signification, fonction, etc.), être équivalent, extrêmement, considérablement",N3
+113,4055,機能,機能（きのう）,"fonction, fonctionnalité, installation, faculté, caractéristique",N3
+113,4056,書道,書道（しょどう）,calligraphie,N3
+113,4057,詩人,詩人（しじん）,poète,N3
+113,4058,部品,部品（ぶひん）,"pièces, accessoires, composants",N3
+113,4059,速度,速度（そくど）,"vitesse, vélocité, rapidité",N3
+113,4060,溢れる,溢（あふ）れる,"déborder, être plein à craquer",N3
+113,4061,心身,心身（しんしん）,esprit et corps,N3
+113,4062,普及,普及（ふきゅう）,"diffusion, propagation, popularisation, promulgation, familiarisation",N3
+113,4063,スタイル,スタイル,"silhouette, morphologie, style",N3
+113,4064,共に,共（とも）に,"ensemble, conjointement, à la fois, en même temps, avec, les deux",N3
+113,4065,成長,成長（せいちょう）,"croissance, développement, devenir adulte",N3
+113,4066,発展,発展（はってん）,"développement, croissance, avancement, extension, agrandissement, avoir une vie sexuelle active",N3
+113,4067,温度,温度（おんど）,température,N3
+113,4068,直ちに,直（ただ）ちに,"tout de suite, immédiatement, directement, en personne, automatiquement",N3
+113,4069,安定,安定（あんてい）,"stabilité, équilibre",N3
+113,4070,印刷,印刷（いんさつ）,"impression, imprimer",N3
+113,4071,裁判,裁判（さいばん）,"procès, jugement",N3
+113,4072,改善,改善（かいぜん）,"amélioration, perfectionnement, kaizen (philosophie japonaise d'amélioration continue)",N3
+113,4073,休憩,休憩（きゅうけい）,"repos, pause, récréation, entracte",N3
+113,4074,金魚,金魚（きんぎょ）,poisson rouge,N3
+114,5000,目立つ,目立（めだ）つ,"être visible, se démarquer",N3
+114,5001,販売,販売（はんばい）,vente,N3
+114,5002,検査,検査（けんさ）,"inspection (douane, usine, etc.), examen, scan (IRM, TEP, etc.)",N3
+114,5003,或いは,或（ある）いは,"ou, ou bien",N3
+114,5004,植物,植物（しょくぶつ）,"plante, végétation",N3
+114,5005,偉大,偉大（いだい）,grandeur,N3
+114,5006,フライパン,フライパン,"poêle, poêle à frire",N3
+114,5007,マラソン,マラソン,"marathon, course de fond",N3
+114,5008,神経,神経（しんけい）,"nerfs, sensibilité",N3
+114,5009,現代,現代（げんだい）,"de nos jours, à notre époque, temps modernes, ère moderne",N3
+114,5010,一流,一流（いちりゅう）,"de premier ordre, de premier plan, principal, particulier, unique, école (par ex. d'un art), un drapeau, une bannière",N3
+114,5011,空,空（から）,"vide, vacuité",N3
+114,5012,企業,企業（きぎょう）,"entreprise, société, affaire, corporation",N3
+114,5013,トレーニング,トレーニング,"formation, entraînement, faire de l'exercice",N3
+114,5014,義務,義務（ぎむ）,"devoir, obligation, responsabilité",N3
+114,5015,章,章（しょう）,"chapitre, section, médaille",N3
+114,5016,組合,組合（くみあい）,"association, syndicat, guilde",N3
+114,5017,益々,益々（ますます）,"de plus en plus, de moins en moins, continuer à",N3
+114,5018,商売,商売（しょうばい）,"commerce, affaires, business, transaction",N3
+114,5019,景気,景気（けいき）,"activité (marché), conjoncture, situation (des affaires)",N3
+114,5020,事件,事件（じけん）,"événement, affaire, incident, complot, scandale",N3
+114,5021,借金,借金（しゃっきん）,"dette, prêt, emprunt, passif",N3
+114,5022,ボーナス,ボーナス,bonus,N3
+114,5023,そっと,そっと,"doucement, furtivement, sans bruit, laisser tranquille",N3
+114,5024,回復,回復（かいふく）,"restauration, réhabilitation, rétablissement, amélioration, guérison (d'une maladie)",N3
+114,5025,儲かる,儲（もう）かる,"être rentable, générer un profit",N3
+114,5026,経営,経営（けいえい）,"gestion, administration, exploitation, direction (entreprise), management",N3
+114,5027,傾向,傾向（けいこう）,"tendance, penchant, inclinaison, propension",N3
+114,5028,犯罪,犯罪（はんざい）,"crime, infraction, délit",N3
+114,5029,遂に,遂（つい）に,"enfin, finalement, à la fin",N3
+114,5030,評判,評判（ひょうばん）,"gloire, notoriété, célébrité, réputation, popularité, rumeur, paroles",N3
+114,5031,繰り返す,繰（く）り返（かえ）す,"répéter, faire quelque chose encore une fois",N3
+114,5032,既に,既（すで）に,"déjà, trop tard",N3
+114,5033,審判,審判（しんぱん）,"arbitrage, arbitre, procès, jugement",N3
+114,5034,警告,警告（けいこく）,"avertissement, mise en garde",N3
+114,5035,まさか,まさか,"en aucun cas, jamais !, sans blague !, certainement (pas), inattendu, urgence, actuellement, pour l'instant",N3
+114,5036,物語る,物語（ものがた）る,"raconter, narrer, indiquer",N3
+114,5037,硬い,硬（かた）い,"dur, solide, rigide, raide, fort, ferme, sûr, stable, inébranlable, obstiné, têtu",N3
+114,5038,必ずしも,必（かなら）ずしも,"pas toujours, pas forcément, pas nécessairement, pas tout, pas entièrement",N3
+114,5039,ため息,ため息（いき）,soupir,N3
+114,5040,止まる,止（とど）まる,"rester, demeurer, séjourner (au même endroit), être limité à, être confiné à",N3
+114,5041,天候,天候（てんこう）,"météo, temps (météorologique)",N3
+114,5042,設計,設計（せっけい）,"plan, projet, tracé, conception, disposition",N3
+114,5043,さっぱり,さっぱり,"se sentir rafraîchi, se sentir soulagé, soigné, ordonné, complètement, pas du tout",N3
+114,5044,加える,加（くわ）える,"ajouter, additionner, joindre, augmenter, accélérer, inclure, compter dans, infliger (des dégâts)",N3
+114,5045,炊く,炊（た）く,"faire cuire (des grains, du riz), faire bouillir, faire mijoter, faire cuire à l'étouffée, faire cuire à feu doux",N3
+114,5046,そっくり,そっくり,"tout, complètement, exactement pareil, tout comme",N3
+114,5047,貨物,貨物（かもつ）,"cargaison, fret, argent ou actifs",N3
+114,5048,ほこり,ほこり,poussière,N3
+114,5049,蘇る,蘇（よみがえ）る,"être ressuscité, être réanimé, être réhabilité, être ravivé, être rafraîchi, être restauré, être rappelé (souvenirs)",N3
+114,5050,拭く,拭（ふ）く,"essuyer, sécher",N3
+114,5051,中学,中学（ちゅうがく）,"collège, école secondaire",N3
+114,5052,急激,急激（きゅうげき）,"soudain, précipité, radical, brusque",N3
+114,5053,伸びる,伸（の）びる,"s'étirer, s'étendre, s'allonger, faire des progrès, pousser (barbe, taille du corps), être épuisé, être reporté, être prolongé",N3
+114,5054,香り,香（かお）り,"arôme, fragrance, parfum, odeur",N3
+114,5055,蒸す,蒸（む）す,"cuire à la vapeur, étuver, être chaud et humide, être étouffant",N3
+114,5056,図々しい,図々（ずうずう）しい,"impudent, éhonté, effronté, sans gêne",N3
+114,5057,笑い,笑（わら）い,"rire, sourire, ricanement",N3
+114,5058,しゃがむ,しゃがむ,"s'accroupir, se baisser",N3
+114,5059,信頼,信頼（しんらい）,"confiance, foi",N3
+114,5060,貢献,貢献（こうけん）,"contribution (à un objectif ou une cause), services (rendus)",N3
+114,5061,本人,本人（ほんにん）,"elle-même, lui-même",N3
+114,5062,貸し,貸（か）し,"prêt, emprunt, faveur, dette, obligation, créancier, méthode de prêt, secteur du crédit",N3
+114,5063,参考,参考（さんこう）,"référence, consultation",N3
+114,5064,日中,日中（にっちゅう）,"journée, pendant la journée, sino-japonais",N3
+114,5065,郵送,郵送（ゆうそう）,envoi postal,N3
+114,5066,通り,通（とお）り,"avenue, rue, chemin, route, va-et-vient, circulation, flux (d'eau, d'air, etc.), transmission (du son), portée (par ex. de la voix), renommée, réputation, tel quel, inchangé",N3
+114,5067,通り掛かる,通（とお）り掛（か）かる,croiser par hasard,N3
+114,5068,順調,順調（じゅんちょう）,"favorable, satisfaisant, en bonne voie, OK, ça va",N3
+114,5069,こう,こう,"de cette manière (proche du locuteur), ainsi, euh... (interjection)",N3
+114,5070,先日,先日（せんじつ）,"l’autre jour, il y a quelques jours",N3
+114,5071,大陸,大陸（たいりく）,"continent, Asie continentale (surtout Chine continentale), Europe continentale",N3
+114,5072,金属,金属（きんぞく）,métal,N3
+114,5073,どうしても,どうしても,"à tout prix, peu importe, quoi qu'il arrive, par tous les moyens",N3
+114,5074,抜ける,抜（ぬ）ける,"sortir, tomber, être omis, manquer, s'échapper, se desserrer, se décolorer, s'user (vêtements), quitter (une réunion), être clair, être transparent (ciel), être stupide, être distrait",N3
+115,6000,一生,一生（いっしょう）,"toute la vie, le (seul, meilleur...) de sa vie",N3
+115,6001,話し合い,話（はな）し合（あ）い,"discussion, conversation, entretien, conférence",N3
+115,6002,出来事,出来事（できごと）,"incident, affaire, événement, fait",N3
+115,6003,痛み,痛（いた）み,"douleur, mal, courbature, chagrin, détresse, dommage, blessure, usure, contusion, fracture",N3
+115,6004,少女,少女（しょうじょ）,"petite fille, jeune fille, demoiselle, femme (généralement entre 7 et 18 ans)",N3
+115,6005,通知,通知（つうち）,"annonce, avis, notification, rapport, publication",N3
+115,6006,すれ違う,すれ違（ちが）う,"se croiser, se manquer, être en désaccord",N3
+115,6007,宿泊,宿泊（しゅくはく）,hébergement,N3
+115,6008,候補,候補（こうほ）,"candidat, concurrent, perspective, choix, sélection, candidature, nomination",N3
+115,6009,札,札（さつ）,"billet, monnaie papier",N3
+115,6010,整理,整理（せいり）,"tri, arrangement, organisation, mise en ordre, ajustement, consolidation, remboursement, réduction, diminution, élimination",N3
+115,6011,性能,性能（せいのう）,"capacité, performance, efficacité, rendement",N3
+115,6012,図書,図書（としょ）,livres,N3
+115,6013,リズム,リズム,rythme,N3
+115,6014,内容,内容（ないよう）,"sujet, contenu, matière, substance, détail, importance",N3
+115,6015,割る,割（わ）る,"diviser, couper, fendre, casser, réduire de moitié, séparer, déchirer, briser, diluer",N3
+115,6016,中止,中止（ちゅうし）,"suspension, arrêt, interruption",N3
+115,6017,疲れ,疲（つか）れ,"fatigue, épuisement",N3
+115,6018,油,油（あぶら）,huile,N3
+115,6019,干す,干（ほ）す,"aérer, sécher, dessécher, égoutter, boire jusqu'à la dernière goutte",N3
+115,6020,働き,働（はたら）き,"travail, labeur, réalisation, performance, capacité, talent, salaire, gains, activité, fonctionnement, opération, mouvement, conjugaison, inflexion",N3
+115,6021,筆,筆（ふで）,pinceau (pour écrire),N3
+115,6022,牧場,牧場（ぼくじょう）,"ferme (élevage), ranch (États-Unis), station (Australie, Nouvelle-Zélande), pâturage, prairie",N3
+115,6023,一体,一体（いったい）,"mais…, pourquoi diable…, qui donc..., bon sang, un objet, un corps, une unité, une forme",N3
+115,6024,折角,折角（せっかく）,"avec peine, avec difficulté, rare, précieux, de grande valeur, tant attendu, aimable, spécialement, particulièrement, expressément",N3
+115,6025,筆記,筆記（ひっき）,"(prendre) des notes, recopier",N3
+115,6026,手続き,手続（てつづ）き,"procédure, processus (juridique), démarche, formalités",N3
+115,6027,座席,座席（ざせき）,"siège, place assise",N3
+115,6028,防止,防止（ぼうし）,"prévention, contrôle",N3
+115,6029,直接,直接（ちょくせつ）,"direct, immédiat, personnel, de première main",N3
+115,6030,作業,作業（さぎょう）,"travail, opération, fabrication, corvée",N3
+115,6031,殺す,殺（ころ）す,tuer,N3
+115,6032,職,職（しょく）,"emploi, travail, poste, occupation, position, fonctions, métier, compétence",N3
+115,6033,提案,提案（ていあん）,"offre, proposition, suggestion",N3
+115,6034,州,州（しゅう）,"état, province, comté, oblast, continent",N3
+115,6035,主要,主要（しゅよう）,"principal, capital, majeur",N3
+115,6036,標準,標準（ひょうじゅん）,"standard, niveau, norme, moyenne",N3
+115,6037,支給,支給（しきゅう）,"provision, fourniture, paiement, allocation, subvention",N3
+115,6038,常識,常識（じょうしき）,"bon sens, sens commun, connaissance générale, pratique courante, pratique acceptée, étiquette sociale",N3
+115,6039,寿命,寿命（じゅみょう）,durée de vie,N3
+115,6040,左右,左右（さゆう）,"gauche et droite, influence, contrôle, domination",N3
+115,6041,神,神（かみ）,"dieu, divinité, esprit, kami, incroyable, fantastique, empereur du Japon, tonnerre",N3
+115,6042,給与,給与（きゅうよ）,"paie, salaire, honoraires, rémunération, allocation",N3
+115,6043,平均,平均（へいきん）,"moyenne, équilibre",N3
+115,6044,質,質（しつ）,"qualité, valeur",N3
+115,6045,肘,肘（ひじ）,coude,N3
+115,6046,連続,連続（れんぞく）,"série, consécutif, continuité, se produisant en succession, à la chaine",N3
+115,6047,インタビュー,インタビュー,interview,N3
+115,6048,精神,精神（せいしん）,"esprit, âme, cœur, intention",N3
+115,6049,谷,谷（たに）,vallée,N3
+115,6050,挟む,挟（はさ）む,"tenir entre (ses doigts, des baguettes), interposer, insérer, être de chaque côté, être de l'autre côté",N3
+115,6051,内,内（うち）,"à l'intérieur, dans, pendant, parmi, entre, nous, mon conjoint, je (principalement utilisé par les femmes et les enfants), moi",N3
+115,6052,内,内（ない）,"à l'intérieur, dans",N3
+115,6053,列車,列車（れっしゃ）,train (ordinaire),N3
+115,6054,可,可（か）,"possible, acceptable, tolérable",N3
+115,6055,重大,重大（じゅうだい）,"sérieux, important, grave, lourd, significatif",N3
+115,6056,さっき,さっき,"tout à l'heure, il y a peu, à l’instant",N3
+115,6057,大した,大（たい）した,"énorme, considérable, grand, important, significatif",N3
+115,6058,溜める,溜（た）める,"amasser, accumuler, stocker, laisser impayé",N3
+115,6059,会員,会員（かいいん）,"membre, adhérent, adhésion",N3
+115,6060,吐く,吐（つ）く,"expirer, respirer, soupirer, dire (un mensonge), utiliser (un langage grossier), vomir, cracher",N3
+115,6061,解説,解説（かいせつ）,"explication, commentaire",N3
+115,6062,伝統,伝統（でんとう）,"tradition, convention",N3
+115,6063,好み,好（この）み,"préférence, goût, choix, penchant",N3
+115,6064,変化,変化（へんか）,"changement, variation, altération, mutation, transition, transformation, variété, déclinaison, conjugaison",N3
+115,6065,冒険,冒険（ぼうけん）,"risque, entreprise périlleuse, aventure",N3
+115,6066,真似る,真似（まね）る,"imiter, mimer, parodier",N3
+115,6067,生まれ,生（う）まれ,"naissance, lieu de naissance, né le",N3
+115,6068,一瞬,一瞬（いっしゅん）,"un moment, un instant",N3
+115,6069,夫婦,夫婦（ふうふ）,"couple marié, époux, mari et femme, paire, lui et elle",N3
+115,6070,ボタン,ボタン,"bouton (de vêtement), bouton (à presser)",N3
+115,6071,言いつける,言（い）いつける,"dire (de faire), ordonner, charger de, diriger, dénoncer (quelqu'un), rapporter, dire souvent",N3
+115,6072,気候,気候（きこう）,climat,N3
+115,6073,ギャング,ギャング,"gang, gangster",N3
+115,6074,整数,整数（せいすう）,"entier, nombre entier",N3
+116,7000,基本,基本（きほん）,"fondement, base, norme, principe, standard",N3
+116,7001,型,型（かた）,"modèle, type, style, motif, moule, gabarit, kata (dans les arts martiaux), taille",N3
+116,7002,枕,枕（まくら）,"oreiller, traversin, introduction (par exemple à une histoire de rakugo), préambule",N3
+116,7003,ネックレス,ネックレス,collier,N3
+116,7004,絶対,絶対（ぜったい）,"absolument, inconditionnellement, catégoriquement, absolu, incontestable",N3
+116,7005,愛情,愛情（あいじょう）,"amour, affection",N3
+116,7006,パイロット,パイロット,pilote,N3
+116,7007,ドラマ,ドラマ,"série télévisée, feuilleton, pièce de théâtre",N3
+116,7008,本来,本来（ほんらい）,"à l'origine, principalement, essentiellement, naturellement, par nature, en soi, propre, légal",N3
+116,7009,確実,確実（かくじつ）,"certitude, fiabilité, solidité",N3
+116,7010,キャプテン,キャプテン,capitaine,N3
+116,7011,資格,資格（しかく）,"compétences, qualifications",N3
+116,7012,わがまま,わがまま,"égoïsme, égocentrisme, indulgence envers soi-même, caprice, désobéissance",N3
+116,7013,程,程（ほど）,"degré, étendue, limites, bornes, limite supérieure",N3
+116,7014,宇宙,宇宙（うちゅう）,"espace, univers, cosmos",N3
+116,7015,職場,職場（しょくば）,"poste, lieu de travail, milieu professionnel",N3
+116,7016,形式,形式（けいしき）,"forme (par opposition à la substance), formalité, méthode, mode, apparence, expression mathématique",N3
+116,7017,道路,道路（どうろ）,"avenue, chemin, route, rue, voie",N3
+116,7018,時期,時期（じき）,"temps, saison, période, phase, étape, bientôt, sous peu",N3
+116,7019,記者,記者（きしゃ）,"journaliste, reporter",N3
+116,7020,攻撃,攻撃（こうげき）,"attaque, frappe, offensive, critique, censure, dénonciation, condamnation",N3
+116,7021,冷静,冷静（れいせい）,"calme, maîtrise de soi, fraîcheur, sérénité",N3
+116,7022,現象,現象（げんしょう）,phénomène,N3
+116,7023,始まり,始（はじ）まり,"origine, début, commencement",N3
+116,7024,父母,父母（ふぼ）,"père et mère, parents",N3
+116,7025,目上,目上（めうえ）,"supérieur, aîné",N3
+116,7026,住民,住民（じゅうみん）,"citoyens, habitants, résidents, population",N3
+116,7027,分析,分析（ぶんせき）,analyse,N3
+116,7028,製造,製造（せいぞう）,"fabrication, production",N3
+116,7029,ヨット,ヨット,"yacht, voilier à un mât",N3
+116,7030,判断,判断（はんだん）,"jugement, décision, conclusion, arbitrage, divination",N3
+116,7031,教授,教授（きょうじゅ）,"professeur, enseignement, instruction",N3
+116,7032,機関,機関（きかん）,"machine, moteur, agence, organisation, institution, organe, corps, installation",N3
+116,7033,撃つ,撃（う）つ,"tirer (sur), attaquer, vaincre, détruire, venger",N3
+116,7034,他,他（た）,autre (surtout pour les personnes et les sujets abstraits),N3
+116,7035,デモ,デモ,"démo, manifestation",N3
+116,7036,示す,示（しめ）す,"montrer, démontrer, exprimer, rendre apparent, pointer (doigt, aiguille d'horloge, etc.), indiquer, afficher",N3
+116,7037,図,図（ず）,"dessin, image, diagramme, figure, illustration, graphique, graphe, vue, scène",N3
+116,7038,頭,頭（とう）,compteur pour les grands animaux (par ex. tête de bétail),N3
+116,7039,感ずる,感（かん）ずる,"ressentir, percevoir, éprouver",N3
+116,7040,矢張り,矢張（やは）り,"aussi, également, de même, non plus, encore, même ainsi, de toute façon, néanmoins, tout de même, comme prévu",N3
+116,7041,だが,だが,"mais, pourtant, cependant, néanmoins, malgré tout",N3
+116,7042,下,下（げ）,"faible (en degré, valeur, etc.), infériorité",N3
+116,7043,非常,非常（ひじょう）,"urgence, extraordinaire, inhabituel",N3
+116,7044,対象,対象（たいしょう）,"cible, objet (de culte, d'étude, etc.), sujet (de taxation, etc.), objectif",N3
+116,7045,中心,中心（ちゅうしん）,"centre, milieu, cœur, noyau, focus, pivot, accent, équilibre, -centré, centré sur, axé sur",N3
+116,7046,実際,実際（じっさい）,"praticité, pratique, réalité, conditions réelles",N3
+116,7047,我々,我々（われわれ）,nous,N3
+116,7048,述べる,述（の）べる,"exprimer (son opinion), mentionner, déclarer, donner (son avis)",N3
+116,7049,越える,越（こ）える,"excéder, dépasser, franchir, traverser",N3
+116,7050,まあ,まあ,"passablement, modérément, assez, plutôt, quelque peu, eh bien..., on pourrait dire..., hmmm, oh !, wow !",N3
+116,7051,否,否（ひ）,"non, négation",N3
+116,7052,同時,同時（どうじ）,"simultané(ment), concurrent, même temps, synchronisé, ensemble",N3
+116,7053,程度,程度（ていど）,"degré, quantité, niveau, norme, de l'ordre de (suivant un nombre), environ, approximativement",N3
+116,7054,際,際（さい）,"à l'occasion de, circonstances, conjoncture",N3
+116,7055,同様,同様（どうよう）,"identique, égal à, même (genre), semblable, similarité",N3
+116,7056,場,場（ば）,"lieu, endroit, espace, domaine, discipline, sphère, occasion, situation, champ",N3
+116,7057,関わる,関（かか）わる,"être affecté, être influencé, être concerné par, avoir à voir avec, s’en tenir à (opinions)",N3
+116,7058,占める,占（し）める,"occuper, tenir, représenter, constituer, composer",N3
+116,7059,目指す,目指（めざ）す,"viser, avoir en vue, se diriger vers, aller vers",N3
+116,7060,丸で,丸（まる）で,"tout à fait, entièrement, complètement, comme si, tout comme",N3
+116,7061,生ずる,生（しょう）ずる,"produire, engendrer, causer, résulter de, survenir, être généré",N3
+116,7062,触れる,触（ふ）れる,"toucher, ressentir, faire l'expérience de, entrer en contact avec, être ému (par), aborder un sujet, faire allusion à, violer (loi, droits d'auteur, etc.)",N3
+116,7063,整備,整備（せいび）,"maintenance, entretien, mise en place, établissement, développement, préparation, fourniture, équipement",N3
+116,7064,注,注（ちゅう）,"note (explicative), remarque, annotation, commentaire",N3
+116,7065,繋がる,繋（つな）がる,"être lié, être connecté à, être associé à, mener à, être lié (par le sang)",N3
+116,7066,積極的,積極的（せっきょくてき）,"dynamique, positif, actif, proactif, entreprenant",N3
+116,7067,全体,全体（ぜんたい）,"tout, ensemble, intégralité, quoi que ce soit",N3
+116,7068,腰,腰（こし）,"dos, bas du dos, taille, hanches, région lombaire, densité (cheveux, papier, etc.), fermeté (nouilles), résilience, ressort",N3
+116,7069,方向,方向（ほうこう）,"direction, orientation, sens, cap, chemin, ligne (de conduite)",N3
+116,7070,流れ,流（なが）れ,"courant, flux, cours des événements",N3
+116,7071,押さえる,押（お）さえる,"immobiliser, maintenir, retenir, arrêter, restreindre, saisir, attraper, capturer, prendre le contrôle de, réserver (un lieu, un horaire), réprimer (des informations), trouver (des preuves)",N3
+116,7072,額,額（がく）,"image (encadrée), montant ou somme (d'argent)",N3
+116,7073,権利,権利（けんり）,"droit, privilège",N3
+116,7074,個人,個人（こじん）,"individu, personnel, privé",N3
+117,8000,土,土（つち）,"terre, sol, boue, argile",N3
+117,8001,抱く,抱（いだ）く,"serrer dans ses bras, embrasser, tenir dans les bras (par ex. un bébé), nourrir (par ex. une rancune), entretenir (par ex. des soupçons), couver (des œufs)",N3
+117,8002,意識,意識（いしき）,"conscience, prise de conscience",N3
+117,8003,当てる,当（あ）てる,"frapper, exposer, appliquer (par ex. un patch), mettre contre, tenir contre, attribuer, appeler quelqu'un (par ex. en classe), deviner (une réponse), gagner (à la loterie)",N3
+117,8004,議論,議論（ぎろん）,"débat, discussion, conflit, dispute, polémique",N3
+117,8005,息,息（いき）,"souffle, respiration, ton, humeur",N3
+117,8006,材料,材料（ざいりょう）,"ingrédients, matériau, matière première",N3
+117,8007,頷く,頷（うなず）く,"hocher la tête, incliner la tête en signe d'assentiment, acquiescer",N3
+117,8008,知識,知識（ちしき）,"connaissance, savoir, information",N3
+117,8009,雰囲気,雰囲気（ふんいき）,"atmosphère (par ex. musicale), humeur, ambiance",N3
+117,8010,全国,全国（ぜんこく）,"à l'échelle nationale, dans tout le pays, national",N3
+117,8011,地,地（ち）,"terre, sol, terrain, lieu, territoire, fond (d'un paquet), terre (un des cinq éléments)",N3
+117,8012,馬,馬（うま）,"cheval, fou promu",N3
+117,8013,一層,一層（いっそう）,"davantage, encore plus, plus que jamais, une couche",N3
+117,8014,周囲,周囲（しゅうい）,"alentours, environs, circonférence",N3
+117,8015,利益,利益（りえき）,"profit, gains, bénéfice, avantage, intérêt (du public, etc.), grâce (de Dieu, Bouddha, etc.), bénédiction, miracle",N3
+117,8016,支える,支（ささ）える,"soutenir, supporter, étayer, maintenir, tenir, contenir, endiguer, contrôler, tenir à distance",N3
+117,8017,事情,事情（じじょう）,"circonstances, conditions, situation, raisons",N3
+117,8018,分,分（ぶ）,"un dixième, un pourcent, épaisseur, circonstances avantageuses",N3
+117,8019,段階,段階（だんかい）,"grade, niveau, étape, classe, phase, étapes, ordre, gradation",N3
+117,8020,組織,組織（そしき）,"organisation, structure, construction, tissu, système",N3
+117,8021,少なくとも,少（すく）なくとも,au moins,N3
+117,8022,適切,適切（てきせつ）,"pertinent, approprié, adéquat",N3
+117,8023,追う,追（お）う,"poursuivre, courir après, chasser, évincer, expulser, conduire (un troupeau), être pressé (par le temps, etc.)",N3
+117,8024,抱える,抱（かか）える,"tenir ou porter dans ses bras, avoir (surtout des problèmes, des dettes, etc.), employer, engager, embaucher",N3
+117,8025,基準,基準（きじゅん）,"standard, base, critère, norme, référence",N3
+117,8026,やや,やや,"un peu, quelque peu, légèrement",N3
+117,8027,瞬間,瞬間（しゅんかん）,"moment, seconde, instant",N3
+117,8028,姿勢,姿勢（しせい）,"attitude, posture, position",N3
+117,8029,流石,流石（さすが）,"comme on pouvait s’y attendre, malgré tout, même",N3
+117,8030,側,側（そば）,"près, proche, à côté, voisinage, proximité, en plus, tandis que, troisième personne",N3
+117,8031,範囲,範囲（はんい）,"étendue, portée, envergure",N3
+117,8032,少年,少年（しょうねん）,"garçon, jeune garçon, adolescent, jeune homme",N3
+117,8033,数字,数字（すうじ）,"numéral, chiffre, caractère numérique",N3
+117,8034,サービス,サービス,"service, aide, réduction, remise, cadeau gratuit, entretien, maintenance",N3
+117,8035,増加,増加（ぞうか）,"augmentation, croissance, ajout, incrément",N3
+117,8036,叩く,叩（たた）く,"frapper, applaudir, frapper à la porte, jouer de la batterie, insulter (par ex. sur Internet), dépenser tout l'argent",N3
+117,8037,努める,努（つと）める,"s’efforcer de, essayer de, faire un effort, s’appliquer, être diligent, être engagé (à faire quelque chose)",N3
+117,8038,掴む,掴（つか）む,"saisir, attraper, comprendre, empoigner, agripper, tenir, mettre la main sur, empocher",N3
+117,8039,話題,話題（わだい）,"sujet, thème",N3
+117,8040,一定,一定（いってい）,"défini, établi, constant, fixe, régularisé, standardisé",N3
+117,8041,穴,穴（あな）,"trou, déficit, pénurie, personne manquante (dans une équipe), vacance, peu connu des autres, fosse (d'un théâtre), cachette, bas-fonds (de la société)",N3
+117,8042,収める,収（おさ）める,"dédier, faire une offrande, payer (des frais), fournir, stocker, terminer, conclure, remettre (quelque chose à sa place), obtenir (par exemple un résultat)",N3
+117,8043,ですから,ですから,"donc, ainsi, par conséquent",N3
+117,8044,症状,症状（しょうじょう）,"symptômes, état",N3
+117,8045,障害,障害（しょうがい）,"obstacle, empêchement, entrave, difficulté, barrière, handicap, déficience, incapacité, trouble, dysfonctionnement",N3
+117,8046,有効,有効（ゆうこう）,"validité, efficacité",N3
+117,8047,飽くまで,飽（あ）くまで,"jusqu'au bout, jusqu'à la fin, obstinément, avec persistance, au maximum, après tout, seulement, simplement",N3
+117,8048,あっ,あっ,"Ah !, Oh !, Hé !",N3
+117,8049,豊か,豊（ゆた）か,"abondant, riche, aisé, très, extrêmement, plein de, grand",N3
+117,8050,重ねる,重（かさ）ねる,"empiler, entasser, accumuler, répéter plusieurs fois",N3
+117,8051,実施,実施（じっし）,"application, mise en œuvre, mise en pratique, exécution, fonctionnement, promulgation",N3
+117,8052,肌,肌（はだ）,"peau, corps (dans le contexte de contact corporel intime), surface, grain (par ex. du bois), texture, tempérament, caractère",N3
+117,8053,地方,地方（ちほう）,"district, région, zone, localité, la campagne, la province, zone rurale",N3
+117,8054,感覚,感覚（かんかく）,"sensation, sens, sentiment, intuition",N3
+117,8055,広げる,広（ひろ）げる,"étendre, élargir, agrandir, déployer, ouvrir, dérouler, déballer, disperser, répandre, faire prospérer, faire fleurir",N3
+117,8056,国家,国家（こっか）,"état, pays, nation",N3
+117,8057,言わば,言（い）わば,"pour ainsi dire, comme qui dirait, en quelque sorte",N3
+117,8058,次々,次々（つぎつぎ）,"successivement, à la suite, un par un",N3
+117,8059,方々,方々（かたがた）,"ils, messieurs, vous, divers",N3
+117,8060,僅か,僅（わず）か,"seulement, juste, peu, petite quantité",N3
+117,8061,通ずる,通（つう）ずる,"être ouvert (à la circulation), mener à, communiquer (avec), couler (liquide, courant), passer, être compris, être bien informé, rester en contact (par exemple avec l'ennemi), former une liaison, être intime",N3
+117,8062,覗く,覗（のぞ）く,"jeter un coup d'œil (à travers un trou, dans un magasin, etc.), regarder en bas dans (un ravin, etc.), jeter un coup d'œil rapide à, regarder (à travers un télescope, un microscope, etc.)",N3
+117,8063,バランス,バランス,équilibre,N3
+117,8064,検討,検討（けんとう）,"considération, examen, enquête, étude, analyse, discussion, vérification",N3
+117,8065,指導,指導（しどう）,"commandement, direction, leadership, coaching, shido (action disciplinaire au judo)",N3
+117,8066,舞台,舞台（ぶたい）,"scène (théâtre), lieu ou cadre (par exemple d'un roman, d'une pièce, etc.)",N3
+117,8067,対策,対策（たいさく）,"mesure, disposition, étape, contre-mesure, contre-plan",N3
+117,8068,構造,構造（こうぞう）,"structure, construction",N3
+117,8069,手段,手段（しゅだん）,"moyen, manière, mesure, façon",N3
+117,8070,記録,記録（きろく）,"enregistrement, procès-verbal, document, record (par exemple en sport), résultats, score",N3
+117,8071,立派,立派（りっぱ）,"splendide, beau, élégant, imposant, louable, créditable, digne, légitime, indéniable, indiscutable, solide",N3
+117,8072,定員,定員（ていいん）,"nombre fixe de personnel régulier, quota de personnel, capacité (d'un bateau, d'une salle, d'un avion, etc.)",N3
+117,8073,容易,容易（ようい）,"facile, simple, évident",N3
+117,8074,製品,製品（せいひん）,"biens manufacturés, produits finis, produit",N3
+118,9000,輝く,輝（かがや）く,"briller, scintiller, étinceler, être rayonnant",N3
+118,9001,自宅,自宅（じたく）,chez soi,N3
+118,9002,希望,希望（きぼう）,"espoir, souhait, aspiration",N3
+118,9003,備える,備（そな）える,"fournir, pourvoir, équiper, installer, se préparer à, posséder (tout ce qui est nécessaire), être doté de, être armé de, être né avec, avoir depuis la naissance",N3
+118,9004,法,法（ほう）,"loi, acte, principe, méthode, humeur, dharma",N3
+118,9005,世の中,世（よ）の中（なか）,"société, le monde, les temps",N3
+118,9006,要素,要素（ようそ）,"composant, facteur, élément (dans une liste, un tableau)",N3
+118,9007,期待,期待（きたい）,"attente, anticipation, espoir",N3
+118,9008,過程,過程（かてい）,"processus, cours (des choses), mécanisme",N3
+118,9009,切っ掛け,切（き）っ掛（か）け,"occasion, chance, signal, excuse, motif, impulsion",N3
+118,9010,一応,一応（いちおう）,"plus ou moins, en quelque sorte, à peu près, au cas où",N3
+118,9011,一旦,一旦（いったん）,"une fois, pour le moment, temporairement, un matin",N3
+118,9012,会,会（かい）,"réunion, assemblée, fête, association, club",N3
+118,9013,委員,委員（いいん）,membre du comité,N3
+118,9014,勢い,勢（いきお）い,"force, entrain, vigueur, énergie, esprit, vie, influence, puissance, élan, cours (des événements), naturellement, nécessairement",N3
+118,9015,互い,互（たが）い,"mutuel, réciproque",N3
+118,9016,奪う,奪（うば）う,"arracher, déposséder, voler, dérober",N3
+118,9017,十四,十四（じゅうよん）,"14, quatorze",N3
+118,9018,余裕,余裕（よゆう）,"surplus, marge, latitude, espace, temps, allocation, flexibilité, portée, corde, calme, placidité, complaisance, tranquillité",N3
+118,9019,自己,自己（じこ）,"soi, soi-même",N3
+118,9020,喜び,喜（よろこ）び,"joie, jubilation, plaisir, réjouissance",N3
+118,9021,中央,中央（ちゅうおう）,"centre, milieu, cœur, métropole, capitale, pouvoir central",N3
+118,9022,中身,中身（なかみ）,"contenu, intérieur, substance, garniture, lame (d'épée)",N3
+118,9023,囲む,囲（かこ）む,"entourer, encercler, clôturer, assiéger, jouer (go, shogi)",N3
+118,9024,じっと,じっと,"(se tenir, attendre) sans bouger, immobile, (regarder) fixement, (écouter) attentivement",N3
+118,9025,生命,生命（せいめい）,"vie, existence",N3
+118,9026,単純,単純（たんじゅん）,"simple, non compliqué, candide, naïf",N3
+118,9027,たっぷり,たっぷり,"plein, en abondance, ample",N3
+118,9028,大臣,大臣（だいじん）,"ministre, membre du conseil des ministres",N3
+118,9029,命ずる,命（めい）ずる,"ordonner, nommer (à un poste)",N3
+118,9030,撮影,撮影（さつえい）,"photographie, prise de vue, tournage, enregistrement (vidéo)",N3
+118,9031,寄せる,寄（よ）せる,"s'approcher, rapprocher, rassembler, collecter, laisser quelqu'un passer, utiliser comme prétexte, mettre de côté, presser, pousser, forcer",N3
+118,9032,作成,作成（さくせい）,"élaboration, fabrication, rédaction (document juridique, contrat, testament, etc.), préparation, écriture, production, création",N3
+118,9033,一種,一種（いっしゅ）,"une espèce, un genre, une variété",N3
+118,9034,巨大,巨大（きょだい）,"énorme, gigantesque, colossal",N3
+118,9035,揃う,揃（そろ）う,"devenir complet, être un ensemble complet, avoir tout à sa disposition, être égal, être uniforme, se rassembler, s'assembler",N3
+118,9036,地位,地位（ちい）,"position (sociale), statut",N3
+118,9037,皮,皮（かわ）,"peau, cuir, pelage, fourrure, zeste, pelure, écorce, coquille, gaine, emballage, masque (cachant sa vraie nature)",N3
+118,9038,幅,幅（はば）,"largeur, ampleur, liberté (par ex. de pensée), latitude, écart, différence (par ex. de prix), gamme (par ex. de voix)",N3
+118,9039,財産,財産（ざいさん）,"propriété, bien, fortune, actifs, avoirs, richesses",N3
+118,9040,予算,予算（よさん）,"estimation, budget",N3
+118,9041,巡る,巡（めぐ）る,"faire le tour, revenir, entourer, préoccuper (généralement pour des conflits)",N3
+118,9042,途端,途端（とたん）,"au moment même où, juste au moment où",N3
+118,9043,方針,方針（ほうしん）,"objectif, plan, politique",N3
+118,9044,骨,骨（ほね）,"os, structure, cadre, contour, noyau, colonne vertébrale, esprit, courage, laborieux, pénible, difficile",N3
+118,9045,展開,展開（てんかい）,"développement, évolution, progression, déploiement, expansion, extension, construction",N3
+118,9046,大いに,大（おお）いに,"très, beaucoup, énormément, beaucoup de",N3
+118,9047,必死,必死（ひっし）,"frénétique, désespéré, mort inévitable, échec et mat inévitable",N3
+118,9048,思想,思想（しそう）,"pensée, idée, idéologie",N3
+118,9049,主張,主張（しゅちょう）,"revendication, demande, insistance, affirmation, plaidoyer, accent, contention, opinion, principe",N3
+118,9050,響く,響（ひび）く,"résonner, être entendu de loin, réverbérer, secouer, toucher, avoir un effet, faire une impression",N3
+118,9051,計算,計算（けいさん）,"calcul, estimation, compte, prévision",N3
+118,9052,プログラム,プログラム,programme,N3
+118,9053,急速,急速（きゅうそく）,rapide (par ex. des progrès),N3
+118,9054,宗教,宗教（しゅうきょう）,"religion, appartenance religieuse, croyance, foi, credo, activité religieuse",N3
+118,9055,拡大,拡大（かくだい）,"agrandissement, expansion, amplification",N3
+118,9056,世間,世間（せけん）,"monde, société",N3
+118,9057,巻く,巻（ま）く,"enrouler, rouler, porter (turban, écharpe...), envelopper, contourner, lier (vers)",N3
+118,9058,微妙,微妙（びみょう）,"délicat, subtil, sensible, difficile, compliqué, douteux, discutable, risqué",N3
+118,9059,恐怖,恐怖（きょうふ）,"peur, effroi, consternation, terreur, horreur, frayeur, panique",N3
+118,9060,注ぐ,注（そそ）ぐ,"verser (dans), remplir, asperger d'en haut, verser (des larmes), concentrer son esprit (force, attention) sur, tomber sur (pluie, neige)",N3
+118,9061,処理,処理（しょり）,"traitement, gestion, arrangement, élimination",N3
+118,9062,取り入れる,取（と）り入（い）れる,"récolter, moissonner, adopter, incorporer, accepter, introduire",N3
+118,9063,許可,許可（きょか）,"permission, approbation, autorisation, licence, permettre, autoriser",N3
+118,9064,合計,合計（ごうけい）,"total, montant total",N3
+118,9065,風景,風景（ふうけい）,"paysage, scène, vue, spectacle, scène (par exemple d'un crime)",N3
+118,9066,式,式（しき）,"équation, formule, expression, cérémonie, style",N3
+118,9067,生産,生産（せいさん）,"production, fabrication",N3
+118,9068,農業,農業（のうぎょう）,agriculture,N3
+118,9069,偶々,偶々（たまたま）,"par hasard, de manière inattendue, accidentellement, fortuitement",N3
+118,9070,果たして,果（は）たして,"comme prévu, comme on s'y attendait, vraiment",N3
+118,9071,住宅,住宅（じゅうたく）,"résidence, logement, bâtiment résidentiel",N3
+118,9072,意思,意思（いし）,"intention, but, dessein",N3
+118,9073,知恵,知恵（ちえ）,"sagesse, esprit, sagacité, bon sens, intelligence, raison",N3
+118,9074,順,順（じゅん）,"ordre, tour, obéissant, docile, soumis, doux",N3
+119,10000,女子,女子（じょし）,"femme, fille",N3
+119,10001,震える,震（ふる）える,"trembler, frissonner, secouer, vibrer, tressaillir, frémir",N3
+119,10002,見解,見解（けんかい）,"opinion, point de vue",N3
+119,10003,以来,以来（いらい）,"depuis, dorénavant",N3
+119,10004,体重,体重（たいじゅう）,"poids corporel, (son propre) poids",N3
+119,10005,団体,団体（だんたい）,"groupe, organisation, association",N3
+119,10006,周辺,周辺（しゅうへん）,"circonférence, environs, alentours, autour, à proximité de, périphérique (informatique)",N3
+119,10007,あちこち,あちこち,"ici et là, partout, dans tous les sens, dans le désordre",N3
+119,10008,隠れる,隠（かく）れる,"se cacher, être caché, se dissimuler",N3
+119,10009,生,生（せい）,"vie, vivant, je, moi, moi-même",N3
+119,10010,光景,光景（こうけい）,"scène, spectacle, vue, panorama",N3
+119,10011,強化,強化（きょうか）,"renforcement, intensification, solidification, consolidation",N3
+119,10012,凡そ,凡（およ）そ,"environ, à peu près, approximativement, généralement, complètement, tout à fait, pas du tout (avec un verbe négatif), aperçu, idée générale",N3
+119,10013,説,説（せつ）,"théorie, doctrine, opinion, point de vue, rumeur, potins, ouï-dire",N3
+119,10014,集団,集団（しゅうだん）,"groupe, foule",N3
+119,10015,男子,男子（だんし）,jeune homme,N3
+119,10016,根,根（ね）,"racine (d'une plante, dent, cheveu, etc.), centre (d'un bouton, etc.), source, origine, cause, vraie nature de quelqu'un",N3
+119,10017,仲,仲（なか）,relation,N3
+119,10018,株,株（かぶ）,"action, titre, souche, racine, souche (de bactéries, etc.)",N3
+119,10019,足元,足元（あしもと）,"à ses pieds, sous les pieds, démarche, rythme, pas, le plus récent, actuel",N3
+119,10020,唯一,唯一（ゆいいつ）,"seul, unique",N3
+119,10021,発想,発想（はっそう）,"idée, conception, façon de penser, expression",N3
+119,10022,国会,国会（こっかい）,"diète nationale, assemblée, parlement, congrès",N3
+119,10023,水準,水準（すいじゅん）,"niveau, standard, norme, niveau d'eau",N3
+119,10024,心臓,心臓（しんぞう）,"cœur, tripes, nerf, culot, audace, colonne vertébrale, partie centrale",N3
+119,10025,敷く,敷（し）く,"étaler, étendre, disposer, prendre position",N3
+119,10026,支払い,支払（しはら）い,paiement,N3
+119,10027,当初,当初（とうしょ）,"au début, commencement",N3
+119,10028,援助,援助（えんじょ）,"assistance, aide, soutien",N3
+119,10029,解釈,解釈（かいしゃく）,"interprétation, explication",N3
+119,10030,講師,講師（こうし）,conférencier,N3
+119,10031,週,週（しゅう）,semaine,N3
+119,10032,民間,民間（みんかん）,"privé, civil, non officiel",N3
+119,10033,外れる,外（はず）れる,"être déconnecté, être désaligné",N3
+119,10034,改正,改正（かいせい）,"révision, amendement, modification",N3
+119,10035,大半,大半（たいはん）,"majorité, plus de la moitié, principalement, généralement",N3
+119,10036,高度,高度（こうど）,"altitude, hauteur, élévation, avancé, sophistiqué, de haute qualité, puissant",N3
+119,10037,強力,強力（きょうりょく）,"puissant, fort",N3
+119,10038,想像,想像（そうぞう）,"imagination, supposition, conjecture",N3
+119,10039,生える,生（は）える,"pousser, surgir, germer, faire (ses dents)",N3
+119,10040,指定,指定（してい）,"désignation, spécification, affectation, nomination, indication",N3
+119,10041,青年,青年（せいねん）,"jeune, jeune homme",N3
+119,10042,申請,申請（しんせい）,"demande, requête, pétition",N3
+119,10043,忽ち,忽（たちま）ち,"tout de suite, en un instant, soudainement, tout à coup, rapidement, promptement, immédiatement",N3
+119,10044,生物,生物（せいぶつ）,"être vivant, organisme, biologie",N3
+119,10045,屋根,屋根（やね）,toit,N3
+119,10046,代表,代表（だいひょう）,"représentant, délégation, type, exemple, modèle",N3
+119,10047,奇妙,奇妙（きみょう）,"étrange, bizarre, curieux",N3
+119,10048,正面,正面（しょうめん）,"devant, façade, face, front",N3
+119,10049,各地,各地（かくち）,"chaque endroit, divers endroits",N3
+119,10050,感想,感想（かんそう）,"impressions, pensées",N3
+119,10051,パターン,パターン,"motif, schéma comportemental, prévisibilité",N3
+119,10052,世話,世話（せわ）,"prendre soin, aide, assistance",N3
+119,10053,組み合わせ,組（く）み合（あ）わせ,combinaison,N3
+119,10054,武器,武器（ぶき）,"armes, artillerie, atout",N3
+119,10055,皮膚,皮膚（ひふ）,peau,N3
+119,10056,有無,有無（うむ）,"existence ou non-existence, présence ou absence, oui ou non",N3
+119,10057,詰める,詰（つ）める,"remplir, bourrer, entasser, boucher, conserver, s'efforcer de faire, mettre en échec, coincer (un doigt dans une porte, etc.), continuer à ..., faire ... sans interruption, faire ... complètement",N3
+119,10058,意義,意義（いぎ）,"sens, signification",N3
+119,10059,余計,余計（よけい）,"trop, excessif, superflu, de rechange, surplus, inutile, injustifié, excessivement, inutilement, d'autant plus",N3
+119,10060,学習,学習（がくしゅう）,études,N3
+119,10061,工事,工事（こうじ）,"travaux, chantier, construction",N3
+119,10062,大部分,大部分（だいぶぶん）,"la plupart, la plus grande partie, la majorité",N3
+119,10063,抵抗,抵抗（ていこう）,"résistance, opposition, tenir tête à, réticence, traînée, friction, résistance électrique, résistance (composant)",N3
+119,10064,関連,関連（かんれん）,"relation, connexion, pertinence, rapport",N3
+119,10065,崩れる,崩（くず）れる,"s'abimer, s'effondrer, s'écrouler, se déformer, se désorganiser, devenir désordonné, tomber en panne, s'effondrer (marché boursier), décliner, changer de l'argent en petite monnaie, se dégrader (météo), changer pour le pire",N3
+119,10066,見直す,見直（みなお）す,"revoir, regarder à nouveau, réexaminer, voir quelque chose sous un jour plus positif, se rétablir (marché, maladie, etc.)",N3
+119,10067,知り合い,知（し）り合（あ）い,"connaissance, relation",N3
+119,10068,有利,有利（ゆうり）,"avantageux, meilleur, rentable, lucratif",N3
+119,10069,才能,才能（さいのう）,"talent, capacité",N3
+119,10070,欠ける,欠（か）ける,"être endommagé, être cassé, être manquant, être insuffisant, être déficient, être négligent envers, décroître (lune)",N3
+119,10071,存ずる,存（ぞん）ずる,"penser, ressentir, considérer, savoir",N3
+119,10072,手前,手前（てまえ）,"avant, ce côté, son point de vue, son apparence, nous, vous",N3
+119,10073,微笑む,微笑（ほほえ）む,sourire,N3
+119,10074,特殊,特殊（とくしゅ）,"spécial, particulier, unique",N3
+120,11000,末,末（まつ）,"bout, extrémité, poudre",N3
+120,11001,末,末（すえ）,"pointe, sommet, fin, clôture, plus jeune enfant, descendants, progéniture, postérité, avenir",N3
+120,11002,どうせ,どうせ,"de toute façon, de toute manière, après tout, dans tous les cas, au mieux",N3
+120,11003,農家,農家（のうか）,"agriculteur, fermier, famille d'agriculteurs",N3
+120,11004,刺激,刺激（しげき）,"stimulus, impulsion, incitation, encouragement, motivation, provocation, excitation, frisson",N3
+120,11005,筆者,筆者（ひっしゃ）,"écrivain (souvent pour parler de soi), auteur",N3
+120,11006,恵まれる,恵（めぐ）まれる,"être béni de, être riche en, être comblé de",N3
+120,11007,煙,煙（けむり）,"fumée, émanations",N3
+120,11008,建設,建設（けんせつ）,"construction, établissement",N3
+120,11009,剥く,剥（む）く,"éplucher, peler, décortiquer, montrer (ses crocs), ouvrir grand (les yeux)",N3
+120,11010,到頭,到頭（とうとう）,"enfin, finalement",N3
+120,11011,ビデオ,ビデオ,vidéo,N3
+120,11012,的確,的確（てきかく）,"précis, exact, approprié, exactement le bon",N3
+120,11013,改める,改（あらた）める,"changer, altérer, réformer, corriger, réparer, améliorer, examiner, inspecter, faire correctement, faire formellement",N3
+120,11014,正式,正式（せいしき）,"authentique, officiel, bonne et due forme",N3
+120,11015,幼稚園,幼稚園（ようちえん）,"école maternelle, jardin d'enfants",N3
+120,11016,請求,請求（せいきゅう）,"réclamation, demande, appel, requête, facturation (pour un service)",N3
+120,11017,児童,児童（じどう）,"enfants, juvénile",N3
+120,11018,体制,体制（たいせい）,"ordre, système, structure, organisation, régime",N3
+120,11019,贈る,贈（おく）る,"offrir (comme un cadeau), présenter, conférer, accorder, décerner",N3
+120,11020,そうして,そうして,"et, ensuite, puis",N3
+120,11021,布,布（ぬの）,"tissu, étoffe",N3
+120,11022,運,運（うん）,"chance, fortune",N3
+120,11023,独特,独特（どくとく）,"particularité, originalité, unicité, caractéristique",N3
+120,11024,マイナス,マイナス,"moins, négatif, perte, pôle négatif (cathode)",N3
+120,11025,捜査,捜査（そうさ）,"recherche (surtout dans les enquêtes criminelles), enquête, investigation",N3
+120,11026,氏名,氏名（しめい）,"nom complet, identité",N3
+120,11027,法則,法則（ほうそく）,"loi, règle",N3
+120,11028,制限,制限（せいげん）,"restriction, contrainte, limitation, limite",N3
+120,11029,成立,成立（せいりつ）,"voir le jour, arrangements, établissement, conclusion, achèvement, être vrai",N3
+120,11030,胃,胃（い）,estomac,N3
+120,11031,直後,直後（ちょくご）,immédiatement après,N3
+120,11032,血液,血液（けつえき）,sang,N3
+120,11033,丘,丘（おか）,"colline, hauteur, monticule, terrain en hauteur, points bonus attribués au gagnant à la fin d'un jeu",N3
+120,11034,言い出す,言（い）い出（だ）す,"commencer à parler, proposer, suggérer, briser la glace",N3
+120,11035,墓,墓（はか）,"tombe, tombeau, site funéraire",N3
+120,11036,活用,活用（かつよう）,"usage pratique, application, conjugaison, déclinaison, inflexion",N3
+120,11037,比較,比較（ひかく）,comparaison,N3
+120,11038,正午,正午（しょうご）,"midi, mi-journée",N3
+120,11039,森林,森林（しんりん）,"forêt, bois",N3
+120,11040,岩,岩（いわ）,"rocher, escarpement, falaise, ancre",N3
+120,11041,宿,宿（やど）,"logement, auberge, hôtel, maison, domicile, habitation, maison des parents d'un serviteur (ou garant, etc.)",N3
+120,11042,窓口,窓口（まどぐち）,"guichet, comptoir, point de contact",N3
+120,11043,狙い,狙（ねら）い,"objectif, but, fins",N3
+120,11044,構成,構成（こうせい）,"organisation, configuration, composition, structure, assemblage",N3
+120,11045,せめて,せめて,"au moins, au minimum",N3
+120,11046,茹でる,茹（ゆ）でる,"faire bouillir (quelque chose dans de l'eau chaude), traiter à la vapeur médicinale (un gonflement, etc.)",N3
+120,11047,嫁,嫁（よめ）,"épouse, mariée, belle-fille",N3
+120,11048,新鮮,新鮮（しんせん）,frais,N3
+120,11049,浮く,浮（う）く,"flotter, devenir joyeux, être gai, se desserrer, devenir instable, être frivole, être incertain, avoir (du temps, de l'argent, etc.) en surplus, être peu fiable",N3
+120,11050,稀,稀（まれ）,"rare, peu fréquent",N3
+120,11051,外部,外部（がいぶ）,"extérieur, externe",N3
+120,11052,輪,輪（わ）,"anneau, cercle, boucle, cerceau, roue, cercle (par ex. d'amis)",N3
+120,11053,論ずる,論（ろん）ずる,"discuter, débattre, argumenter",N3
+120,11054,作者,作者（さくしゃ）,"auteur, écrivain, compositeur, artiste",N3
+120,11055,氷,氷（こおり）,"glace, glace pilée (généralement servie avec du sirop aromatisé)",N3
+120,11056,角度,角度（かくど）,angle,N3
+120,11057,跡,跡（あと）,"vestiges, ruines, site, trace, empreintes, cicatrice",N3
+120,11058,著者,著者（ちょしゃ）,"auteur (généralement d'un livre particulier), écrivain",N3
+120,11059,発達,発達（はったつ）,"développement, croissance",N3
+120,11060,ナンバー,ナンバー,numéro,N3
+120,11061,直前,直前（ちょくぜん）,juste avant,N3
+120,11062,無事,無事（ぶじ）,"sûreté, paix, tranquillité",N3
+120,11063,雄,雄（おす）,mâle (animal),N3
+120,11064,巣,巣（す）,"nid, colonie, lieu de reproduction, ruche, tanière, repaire, toile (d'araignée)",N3
+120,11065,潰す,潰（つぶ）す,"écraser, broyer, fermer, contrecarrer, bloquer, tuer (le temps), gâcher (par ex. son talent)",N3
+120,11066,面積,面積（めんせき）,"mesure de superficie, étendue, aire, surface",N3
+120,11067,性,性（せい）,"nature (d'une personne), sexe, genre, -té, -ité",N3
+120,11068,振り向く,振（ふ）り向（む）く,"tourner la tête, se retourner vers, regarder par-dessus son épaule",N3
+120,11069,軍,軍（ぐん）,"armée, troupes, force, équipe",N3
+120,11070,覚悟,覚悟（かくご）,"résolution, résignation, préparation",N3
+120,11071,設備,設備（せつび）,"équipement, aménagements, dispositif, installation, outillage",N3
+120,11072,大人しい,大人（おとな）しい,"obéissant, docile, calme, sage, doux",N3
+120,11073,筋,筋（すじ）,"muscle, tendon, veine, artère, corde, ligne, source (d'information, etc.)",N3
+121,12000,オフィス,オフィス,bureau,N3
+121,12001,ステージ,ステージ,"scène, prestation, représentation, niveau (jeu vidéo)",N3
+121,12002,パンツ,パンツ,"sous-vêtements, culotte, slip, pantalon (surtout pour femmes)",N3
+121,12003,ぴったり,ぴったり,"parfaitement, étroitement, de près, exactement, idéalement, soudainement (s'arrêter)",N3
+121,12004,ぼんやり,ぼんやり,"faiblement, vaguement, distraitement, négligemment, paresseusement, sans but, imbécile, cancre",N3
+121,12005,一斉,一斉（いっせい）,"simultané, tout à la fois",N3
+121,12006,印,印（しるし）,"marque, signe, symbole, badge, drapeau, preuve, témoignage, gage (de gratitude, d'affection, etc.)",N3
+121,12007,営業,営業（えいぎょう）,"affaires, business, commerce, ventes, activité",N3
+121,12008,栄養,栄養（えいよう）,"nutrition, nourriture, alimentation",N3
+121,12009,欧米,欧米（おうべい）,"l'Europe et les États-Unis, l’Occident",N3
+121,12010,箇所,箇所（かしょ）,"passage, endroit, compteur de lieux",N3
+121,12011,快適,快適（かいてき）,"agréable, confortable",N3
+121,12012,学者,学者（がくしゃ）,érudit,N3
+121,12013,活躍,活躍（かつやく）,"activité (surtout énergique), grands efforts, service remarquable, prospérer, participer activement",N3
+121,12014,看板,看板（かんばん）,"panneau, enseigne, plaque de porte, attraction, caractéristique, point fort, porte-parole, réputation (d'un magasin), apparence, heure de fermeture",N3
+121,12015,基盤,基盤（きばん）,"fondation, fondement, base, assise, infrastructure",N3
+121,12016,鬼,鬼（おに）,"ogre, démon, esprit d'une personne décédée, personne semblable à un ogre (c-à-d féroce, impitoyable), le loup (dans le jeu du loup), très, extrêmement, super-",N3
+121,12017,議員,議員（ぎいん）,"membre de la Diète, du congrès ou du parlement",N3
+121,12018,掘る,掘（ほ）る,"creuser, excaver, évider, déterrer (par ex. des légumes)",N3
+121,12019,刑事,刑事（けいじ）,"détective (police), affaire criminelle",N3
+121,12020,繋がり,繋（つな）がり,"connexion, lien, relation",N3
+121,12021,見下ろす,見下（みお）ろす,"surplomber, avoir une vue sur, regarder de haut, mépriser",N3
+121,12022,見送る,見送（みおく）る,"accompagner quelqu’un (à une gare, un aéroport, etc.), escorter (jusqu’à la maison), laisser passer, enterrer quelqu’un",N3
+121,12023,原稿,原稿（げんこう）,"manuscrit, original",N3
+121,12024,原理,原理（げんり）,"principe, théorie, vérité fondamentale",N3
+121,12025,呼吸,呼吸（こきゅう）,"respiration, souffle, astuce, truc, le secret (pour faire quelque chose)",N3
+121,12026,広場,広場（ひろば）,"place, espace public, forum",N3
+121,12027,攻める,攻（せ）める,"attaquer, assaillir, agresser",N3
+121,12028,混乱,混乱（こんらん）,"désordre, chaos, confusion, pagaille",N3
+121,12029,資本,資本（しほん）,"fonds, capitaux",N3
+121,12030,事務,事務（じむ）,"affaires, travail de bureau, administration",N3
+121,12031,自殺,自殺（じさつ）,suicide,N3
+121,12032,実績,実績（じっせき）,"réalisations, résultats réels, accomplissements, résultats passés, bilan",N3
+121,12033,終了,終了（しゅうりょう）,"fin, fermeture, arrêt",N3
+121,12034,純粋,純粋（じゅんすい）,"pur, véritable, vrai, authentique",N3
+121,12035,小屋,小屋（こや）,"cabane, abri, enclos (pour animaux), petit théâtre, chapiteau (de cirque), stand, sa propre maison",N3
+121,12036,焦点,焦点（しょうてん）,"point principal, focus (par ex. en photographie), point focal",N3
+121,12037,深夜,深夜（しんや）,tard dans la nuit,N3
+121,12038,身分,身分（みぶん）,"position sociale, statut social, rang",N3
+121,12039,針,針（はり）,"aiguille, épingle, crochet, dard, épine, pointeur, compteur de points de suture",N3
+121,12040,成分,成分（せいぶん）,"ingrédient, composant",N3
+121,12041,盛る,盛（も）る,"servir (nourriture), distribuer, remplir, empiler, entasser, prescrire, administrer, graduer, exagérer",N3
+121,12042,遡る,遡（さかのぼ）る,"remonter le courant, remonter dans le temps, remonter à l'origine, dater de, retracer, rendre rétroactif",N3
+121,12043,相違,相違（そうい）,"différence, contradiction, variation",N3
+121,12044,相互,相互（そうご）,"mutuel, réciproque",N3
+121,12045,足る,足（た）る,"suffire, être assez, être digne de",N3
+121,12046,損害,損害（そんがい）,"dommage, dégât, préjudice, perte",N3
+121,12047,態と,態（わざ）と,"exprès, intentionnellement, volontairement",N3
+121,12048,大して,大（たい）して,"(pas) tellement, (pas) très",N3
+121,12049,知人,知人（ちじん）,"ami, connaissance",N3
+121,12050,地区,地区（ちく）,"district, section, secteur, quartier, zone",N3
+121,12051,長期,長期（ちょうき）,"longue durée, à long terme",N3
+121,12052,吊る,吊（つ）る,"suspendre, accrocher (quelque chose à quelque chose), être pendu (par le cou), soulever un adversaire par son pagne",N3
+121,12053,哲学,哲学（てつがく）,philosophie,N3
+121,12054,当日,当日（とうじつ）,"le jour convenu, le jour même",N3
+121,12055,同一,同一（どういつ）,"identité, similitude, égalité, équité",N3
+121,12056,特色,特色（とくしょく）,"caractéristique, particularité, idiosyncrasie, couleur personnelle, couleur d'accompagnement (en impression)",N3
+121,12057,農民,農民（のうみん）,"paysans, fermiers",N3
+121,12058,派手,派手（はで）,"voyant, bruyant, tapageur, tape à l'œil, criard",N3
+121,12059,板,板（いた）,"planche, plaque, feuille (de métal), vitre, dalle, planche à découper, cuisinier, scène (au théâtre)",N3
+121,12060,武士,武士（ぶし）,"guerrier, samouraï",N3
+121,12061,部,部（ぶ）,"département (dans une organisation), division, bureau, club, partie, composant, élément, catégorie, compteur pour les exemplaires d'un journal ou d'un magazine",N3
+121,12062,文明,文明（ぶんめい）,"civilisation, culture, ère Bummei (1469.4.28-1487.7.20)",N3
+121,12063,別れ,別（わか）れ,"séparation, adieu, branche (latérale), bifurcation, ramification, division, section",N3
+121,12064,保存,保存（ほぞん）,"préservation, conservation, stockage, sauvegarde (par exemple sur disque), maintenance",N3
+121,12065,棒,棒（ぼう）,"poteau, tige, bâton, barre",N3
+121,12066,膨大,膨大（ぼうだい）,"énorme, vaste, colossal, étendu, très nombreux, gonflement, expansion",N3
+121,12067,鳴く,鳴（な）く,"chanter (oiseau), siffler, aboyer, ronronner, faire un son (animal)",N3
+121,12068,友,友（とも）,"ami, compagnon, camarade, pote",N3
+121,12069,幼児,幼児（ようじ）,"nourrisson, bébé, enfant (plus de 1 an mais pas encore en âge scolaire)",N3
+121,12070,裸,裸（はだか）,"nu, dénudé, à découvert",N3
+121,12071,列,列（れつ）,"file, ligne, queue, rangée, colonne, séquence, chaîne, train",N3
+121,12072,囁く,囁（ささや）く,"chuchoter, murmurer, répandre une rumeur",N3
+121,12073,睨む,睨（にら）む,"regarder avec colère, fusiller du regard, fixer intensément, estimer, deviner, soupçonner, juger, garder un œil sur quelqu'un, surveiller, tenir compte de, prendre en considération",N3
+122,13000,進歩,進歩（しんぽ）,"progrès, avancée, amélioration, développement",N3
+122,13001,精々,精々（せいぜい）,"au maximum, au mieux, au plus, autant que possible",N3
+122,13002,上下,上下（じょうげ）,"haut et bas, au-dessus et en dessous, montée et descente, fluctuation, dirigeant et dirigé, le gouvernement et le peuple",N3
+122,13003,冷やす,冷（ひ）やす,"refroidir (à partir de la température ambiante), rafraîchir, réfrigérer, se calmer, se détendre, retrouver son calme, se relaxer, être effrayé (par), avoir peur (de)",N3
+122,13004,誤り,誤（あやま）り,"erreur, faute, bug",N3
+122,13005,主役,主役（しゅやく）,"rôle principal, acteur principal, actrice principale",N3
+122,13006,柄,柄（え）,"manche, poignée, tige (d'un champignon, d'une feuille, etc.)",N3
+122,13007,先頭,先頭（せんとう）,"tête, avant-garde, premier, chef de file, pionnier",N3
+122,13008,目安,目安（めやす）,"critère, norme, référence, objectif, estimation approximative",N3
+122,13009,増大,増大（ぞうだい）,"agrandissement, augmentation, accroissement",N3
+122,13010,専門,専門（せんもん）,"spécialité, sujet d'étude, domaine d'expertise",N3
+122,13011,レンズ,レンズ,lentille (optique),N3
+122,13012,這う,這（は）う,"ramper, se traîner",N3
+122,13013,曲げる,曲（ま）げる,"plier, courber, incliner, enrouler, pencher, déformer la vérité, céder (un point), s'écarter (d'un principe)",N3
+122,13014,研修,研修（けんしゅう）,"formation (surtout continue), cours d’initiation",N3
+122,13015,農村,農村（のうそん）,"communauté agricole, village fermier, rural",N3
+122,13016,爽やか,爽（さわ）やか,"frais, rafraîchissant, revigorant, vivifiant, clair (par ex. d'une voix), fluide, éloquent",N3
+122,13017,以後,以後（いご）,"après cela, à l'avenir, dorénavant, par la suite, depuis (verbe)",N3
+122,13018,呆れる,呆（あき）れる,"être étonné, être choqué, être stupéfait, être abasourdi, être dégouté",N3
+122,13019,先端,先端（せんたん）,"extrémité pointue, pointe, fer de lance, avant-garde, avancé, pointe de l'innovation, sommet (d'une courbe)",N3
+122,13020,預かる,預（あず）かる,"prendre soin de, s'occuper de, garder, conserver, prendre en charge, être chargé de, réserver (un jugement), laisser indécis",N3
+122,13021,群れ,群（む）れ,"groupe, foule, troupeau, banc, essaim, amas, meute",N3
+122,13022,日程,日程（にってい）,"emploi du temps, programme, agenda, ordre du jour",N3
+122,13023,タイヤ,タイヤ,pneu,N3
+122,13024,帯,帯（おび）,"obi, ceinture de kimono, bande de papier sur les livres",N3
+122,13025,建築,建築（けんちく）,"construction, architecture (des bâtiments)",N3
+122,13026,センター,センター,centre,N3
+122,13027,無数,無数（むすう）,"nombre incalculable, nombre infini, innombrable",N3
+122,13028,誕生,誕生（たんじょう）,"naissance, création, formation",N3
+122,13029,重点,重点（じゅうてん）,"point important, mettre l’accent sur, insister sur, deux-points (ponctuation), emphase",N3
+122,13030,臭い,臭（くさ）い,"puant, malodorant, suspect, louche, maladroit, incompétent, ressemblant à, ayant l'air de, -âtre",N3
+122,13031,維持,維持（いじ）,"maintenance, conservation, entretien, préservation",N3
+122,13032,苦情,苦情（くじょう）,"plainte, réclamation, objection, grief",N3
+122,13033,率直,率直（そっちょく）,"franchise, candeur, sincérité, direct",N3
+122,13034,役所,役所（やくしょ）,"bureau gouvernemental, bureau administratif",N3
+122,13035,銀,銀（ぎん）,"argent (minerai, monnaie, couleur), pièce d'argent",N3
+122,13036,青少年,青少年（せいしょうねん）,"jeunesse, jeune personne",N3
+122,13037,実行,実行（じっこう）,"pratique, exécution (par ex. d'un programme), réalisation, mise en œuvre",N3
+122,13038,住まい,住（す）まい,"habitation, maison, résidence, adresse",N3
+122,13039,素人,素人（しろうと）,"amateur, personne ordinaire, novice",N3
+122,13040,チーズ,チーズ,"fromage, cheese (lorsqu'on prend des photos)",N3
+122,13041,続き,続（つづ）き,"suite, continuation, continuité, deuxième série, succession",N3
+122,13042,余所,余所（よそ）,"autre endroit, ailleurs, lieux étrangers, extérieur (à sa famille ou son groupe), ces gens-là, sujet sans rapport",N3
+122,13043,響き,響（ひび）き,"écho, réverbération, son (distinctif d’un objet ou d’une activité), bruit, qualité d’un son",N3
+122,13044,遺体,遺体（いたい）,"corps, cadavre, dépouille, restes",N3
+122,13045,瓶,瓶（びん）,"bouteille, pot, carafe, flacon, fiole, ampoule",N3
+122,13046,差別,差別（さべつ）,"discrimination, distinction, différenciation",N3
+122,13047,両側,両側（りょうがわ）,les deux côtés,N3
+122,13048,用語,用語（ようご）,"terme, terminologie, formulation, choix des mots, phraséologie",N3
+122,13049,原料,原料（げんりょう）,matières premières,N3
+122,13050,通路,通路（つうろ）,"passage, chemin, voie, avenue, allée",N3
+122,13051,悲劇,悲劇（ひげき）,"tragédie, désastre, tragédie (théâtre)",N3
+122,13052,役人,役人（やくにん）,fonctionnaire,N3
+122,13053,国境,国境（こっきょう）,"frontière (nationale, provinciale)",N3
+122,13054,敷地,敷地（しきち）,"site, parcelle, terrain, emplacement",N3
+122,13055,強引,強引（ごういん）,"autoritaire, coercitif, insistant, forcé, tyrannique",N3
+122,13056,延長,延長（えんちょう）,"extension, élongation, prolongement, prolongation, rallongement",N3
+122,13057,バック,バック,"arrière, dos, marche arrière, arrière-plan, revers (sport), remboursement, dos crawlé (natation)",N3
+122,13058,くっ付く,くっ付（つ）く,"adhérer à, se coller à, accompagner, devenir intime",N3
+122,13059,潰れる,潰（つぶ）れる,"être écrasé, être brisé, être cassé, s'effondrer, devenir inutile, cesser de fonctionner, être gaspillé (par ex. le temps), faire faillite, cesser ses activités, échouer",N3
+122,13060,限度,限度（げんど）,"limite, bordures",N3
+122,13061,リボン,リボン,ruban,N3
+122,13062,編集,編集（へんしゅう）,"édition, compilation, éditorial (par ex. comité)",N3
+122,13063,構想,構想（こうそう）,"plan, idée, conception",N3
+122,13064,用途,用途（ようと）,"utilisation, utilité, service, but",N3
+122,13065,開始,開始（かいし）,"début, commencement, ouverture, initiation",N3
+122,13066,欄,欄（らん）,"colonne de texte (par exemple dans un journal), champ (dans un formulaire, une page web, etc.)",N3
+122,13067,騒ぎ,騒（さわ）ぎ,"tumulte, agitation, tapage",N3
+122,13068,容器,容器（ようき）,récipient,N3
+122,13069,回数,回数（かいすう）,"nombre de fois, fréquence, compte",N3
+122,13070,ずれる,ずれる,"glisser, se décaler, se déboîter, être désaligné, dévier, être désynchronisé",N3
+122,13071,独立,独立（どくりつ）,"indépendance, autonomie",N3
+122,13072,博士,博士（はかせ）,"doctorat, docteur (comme titre), expert, personne érudite",N3
+122,13073,こっそり,こっそり,"furtivement, secrètement",N3
+122,13074,傾く,傾（かたむ）く,"s'incliner vers, pencher, tanguer, être disposé à, être enclin à, descendre (soleil), sombrer, décliner",N3
+123,14000,コンクリート,コンクリート,béton,N3
+123,14001,日差し,日差（ひざ）し,"lumière du soleil, rayons du soleil",N3
+123,14002,トンネル,トンネル,tunnel,N3
+123,14003,絵画,絵画（かいが）,"dessin, image, peinture",N3
+123,14004,無限,無限（むげん）,"infini, sans fin",N3
+123,14005,頂点,頂点（ちょうてん）,"sommet, cime",N3
+123,14006,広さ,広（ひろ）さ,étendue,N3
+123,14007,梅,梅（うめ）,"abricot japonais, prune chinoise, le plus bas (d’un système de classement à trois niveaux)",N3
+123,14008,芝居,芝居（しばい）,"pièce (de théâtre), représentation",N3
+123,14009,地名,地名（ちめい）,nom de lieu,N3
+123,14010,衣服,衣服（いふく）,vêtements,N3
+123,14011,境,境（さかい）,"frontière, limite, tournant décisif, zone, région, endroit, état (psychologique, mental)",N3
+123,14012,追加,追加（ついか）,"ajout, supplément, ajouter (par exemple à un fichier), annexe",N3
+123,14013,しつこい,しつこい,"insistant, obstiné, persistant, trop riche (goût, etc.), gras, lourd",N3
+123,14014,到着,到着（とうちゃく）,arrivée,N3
+123,14015,行方,行方（ゆくえ）,"où se trouve (quelqu'un), résultat",N3
+123,14016,塞ぐ,塞（ふさ）ぐ,"boucher, bloquer, obstruer, obturer, couvrir (oreilles, yeux, etc.), fermer (yeux, bouche), se mettre en travers, obstruer, occuper, prendre de la place, remplir son rôle, se sentir déprimé",N3
+123,14017,石油,石油（せきゆ）,"pétrole, kérosène",N3
+123,14018,活力,活力（かつりょく）,"vitalité, énergie, dynamisme",N3
+123,14019,ランチ,ランチ,"déjeuner, repas de midi",N3
+123,14020,捻る,捻（ひね）る,"tourner, tordre, actionner (un interrupteur, etc.), tordre (un cou), se creuser la tête, battre facilement",N3
+123,14021,ゴール,ゴール,"but (football), panier (basketball), ligne d’arrivée",N3
+123,14022,発売,発売（はつばい）,"vente, mise en vente, sortie, lancement (produit)",N3
+123,14023,職人,職人（しょくにん）,"artisan, ouvrier, mécanicien",N3
+123,14024,承知,承知（しょうち）,"connaissance, conscience, consentement, acceptation, conformité, reconnaissance, pardon, excuse",N3
+123,14025,真っ白,真（ま）っ白（しろ）,"blanc pur, blanc immaculé, vierge (esprit, papier)",N3
+123,14026,透明,透明（とうめい）,"transparent, clair",N3
+123,14027,振興,振興（しんこう）,"encouragement, élan, essor",N3
+123,14028,支配,支配（しはい）,"domination, contrôle, direction, guidage, orientation",N3
+123,14029,儲ける,儲（もう）ける,"tirer profit de, obtenir, gagner, acquérir, avoir (enfanter, engendrer) un enfant, avoir un coup de chance",N3
+123,14030,共同,共同（きょうどう）,"association, coopération, collaboration, union",N3
+123,14031,憧れる,憧（あこが）れる,"languir après, aspirer à, désirer ardemment, admirer, être attiré par",N3
+123,14032,撒く,撒（ま）く,"éparpiller, saupoudrer, disperser, distribuer (tracts, etc.), répandre (rumeurs, etc.), semer, échapper à",N3
+123,14033,案外,案外（あんがい）,de manière inattendue,N3
+123,14034,基地,基地（きち）,"base (secrète, militaire, etc)",N3
+123,14035,放る,放（ほう）る,"jeter, lancer, balancer, jeter à la poubelle, se débarrasser de, négliger, abandonner, laisser seul, renoncer à, laisser inachevé",N3
+123,14036,修正,修正（しゅうせい）,"amendement, correction, révision, modification, altération, retouche, mise à jour, réparation",N3
+123,14037,証明,証明（しょうめい）,"preuve, vérification, certificat, attestation",N3
+123,14038,育児,育児（いくじ）,"garde d’enfants, soins, éducation",N3
+123,14039,収穫,収穫（しゅうかく）,"récolte, moisson, cueillette, fruits (de son travail), résultats",N3
+123,14040,胡椒,胡椒（こしょう）,poivre,N3
+123,14041,最低,最低（さいてい）,"le moins, le plus bas, le minimum, le pire, méchant, dégoûtant, horrible",N3
+123,14042,すっきり,すっきり,"se sentir rafraîchi, soigneusement, proprement, clairement, complètement, pas du tout",N3
+123,14043,水面,水面（すいめん）,surface de l’eau,N3
+123,14044,金銭,金銭（きんせん）,"argent, espèces",N3
+123,14045,擦る,擦（こす）る,"frotter, récurer",N3
+123,14046,半ば,半（なか）ば,"milieu, moitié, semi, à mi-chemin, partiellement",N3
+123,14047,支出,支出（ししゅつ）,"dépenses, frais",N3
+123,14048,女王,女王（じょおう）,reine,N3
+123,14049,旗,旗（はた）,"drapeau, bannière",N3
+123,14050,一家,一家（いっか）,"une maison, un foyer, un ménage, une famille, une lignée, une école (de pensée), une famille (gang, yakuza)",N3
+123,14051,夜間,夜間（やかん）,"la nuit, pendant la nuit",N3
+123,14052,税,税（ぜい）,"impôt, taxe",N3
+123,14053,可愛がる,可愛（かわい）がる,"aimer, chérir, choyer, être affectueux, favoriser, tourmenter, taquiner",N3
+123,14054,予測,予測（よそく）,"prédiction, estimation",N3
+123,14055,木材,木材（もくざい）,"bois, bois de construction, bois d'œuvre",N3
+123,14056,尖る,尖（とが）る,"devenir pointu, devenir tranchant, avoir l'air mécontent, avoir l'air aigri, être sur les nerfs, être irritable",N3
+123,14057,移転,移転（いてん）,"déménagement, déplacement, relocalisation, transfert",N3
+123,14058,中間,中間（ちゅうかん）,"milieu, mi-chemin, intermédiaire",N3
+123,14059,着せる,着（き）せる,"mettre des vêtements à (quelqu'un), plaquer, dorer, accuser (d'un crime), donner (une mauvaise réputation)",N3
+123,14060,自国,自国（じこく）,son propre pays,N3
+123,14061,嵌める,嵌（は）める,"insérer, mettre (de manière à ce qu'il y ait un ajustement parfait), boutonner, mettre (quelque chose qui enveloppe, par ex. des gants, une bague), catégoriser (dans une catégorie particulière), placer un objet en forme d'anneau autour de quelque chose (surtout un qui restreint la liberté, comme des menottes), piéger (accuser quelqu'un d'un crime, etc.)",N3
+123,14062,不利,不利（ふり）,"désavantage, handicap, inconvénient",N3
+123,14063,地味,地味（じみ）,"ordinaire, simple, discret, sobre, modeste",N3
+123,14064,死亡,死亡（しぼう）,"décès, mort, mortalité, mourir, décéder",N3
+123,14065,コード,コード,"code (mot de passe), code (informatique), règles",N3
+123,14066,潜る,潜（もぐ）る,"plonger (sous l'eau), s'enfoncer, se glisser, ramper sous, s'enterrer, se terrer, se cacher (surtout du gouvernement), se dissimuler, passer inaperçu",N3
+123,14067,唸る,唸（うな）る,"gémir, grogner, rugir, hurler, gronder, vrombir, bruisser, pousser des « oh » et des « ah » d'admiration, chanter d'une voix forte et basse (surtout chant ou récitation traditionnelle)",N3
+123,14068,豪華,豪華（ごうか）,"splendeur, extravagance, magnificence, pompe",N3
+123,14069,ハンドル,ハンドル,"poignée, volant, guidon (de vélo), nom d'utilisateur",N3
+123,14070,議長,議長（ぎちょう）,"président, orateur (par exemple d'une assemblée), président (par exemple d'un conseil, sénat, etc.), modérateur (par exemple d'un groupe de discussion)",N3
+123,14071,慰める,慰（なぐさ）める,"réconforter, consoler",N3
+123,14072,ベルト,ベルト,"ceinture (accessoire, dans un véhicule, etc.), sangle, courroie, zone, région",N3
+123,14073,スケジュール,スケジュール,"programme, emploi du temps, planning",N3
+123,14074,神話,神話（しんわ）,"mythe, légende",N3
+124,15000,政党,政党（せいとう）,parti politique,N3
+124,15001,性別,性別（せいべつ）,"distinction de sexe, sexe, genre",N3
+124,15002,知事,知事（ちじ）,"gouverneur préfectoral, préfet",N3
+124,15003,要領,要領（ようりょう）,"point, essentiel, bases, fondement, grandes lignes, les ficelles",N3
+124,15004,友情,友情（ゆうじょう）,"amitié, fraternité, camaraderie",N3
+124,15005,体系,体系（たいけい）,"système, organisation, architecture",N3
+124,15006,欠陥,欠陥（けっかん）,"défaut, carence, faute, déficience, difformité, pénurie, écart",N3
+124,15007,例える,例（たと）える,"comparer, assimiler, parler de manière figurée, illustrer, utiliser une comparaison",N3
+124,15008,婦人,婦人（ふじん）,"femme, dame, femme adulte",N3
+124,15009,御数,御数（おかず）,"accompagnement pour plats de riz, plat d'accompagnement, matière à réflexion",N3
+124,15010,首都,首都（しゅと）,"capitale, métropole",N3
+124,15011,濃度,濃度（のうど）,"concentration, épaisseur, densité, cardinalité",N3
+124,15012,日曜,日曜（にちよう）,dimanche,N3
+124,15013,退く,退（ど）く,"s'écarter, faire place, démissionner, prendre sa retraite, quitter, se retirer (d'une organisation)",N3
+124,15014,脅かす,脅（おど）かす,"menacer, intimider, surprendre, effrayer",N3
+124,15015,人差し指,人差（ひとさ）し指（ゆび）,index (doigt),N3
+124,15016,乗客,乗客（じょうきゃく）,passager,N3
+124,15017,国王,国王（こくおう）,"roi, monarque",N3
+124,15018,回転,回転（かいてん）,"rotation (autour de quelque chose), révolution, circulation, tournant",N3
+124,15019,手帳,手帳（てちょう）,"carnet, bloc-notes, calepin, certificat, carte d'identité",N3
+124,15020,怠る,怠（おこた）る,"négliger de faire quelque chose, se dérober, être sur ses gardes",N3
+124,15021,心理,心理（しんり）,"état d'esprit, mentalité, psychologie",N3
+124,15022,包丁,包丁（ほうちょう）,"couteau de cuisine, couteau à découper, cuisine, nourriture",N3
+124,15023,果実,果実（かじつ）,"fruit, noix, baie",N3
+124,15024,打ち合わせ,打（う）ち合（あ）わせ,"préparatifs, réunion préparatoire, séance d'information, ajustement parfait",N3
+124,15025,国語,国語（こくご）,"langue nationale, langue japonaise (matière scolaire), mots japonais natifs (par opposition aux mots d'emprunt)",N3
+124,15026,安易,安易（あんい）,"facile, simple, décontracté",N3
+124,15027,直線,直線（ちょくせん）,ligne droite,N3
+124,15028,近代,近代（きんだい）,"époque actuelle, temps modernes",N3
+124,15029,花火,花火（はなび）,feux d’artifice,N3
+124,15030,おや,おや,"oh !, oh ?, ça par exemple !, tiens !",N3
+124,15031,訪問,訪問（ほうもん）,"visite, appel",N3
+124,15032,解ける,解（と）ける,"se dénouer, se résoudre, être résolu, se détendre, être levé (restriction), être clarifié (malentendu), être rompu (sort, malédiction), fondre",N3
+124,15033,境界,境界（きょうかい）,"frontière, limite",N3
+124,15034,プラン,プラン,"plan, projet, offre (tarifaire)",N3
+124,15035,虎,虎（とら）,"tigre, ivrogne, saoul",N3
+124,15036,本部,本部（ほんぶ）,"quartier général, siège social, bureau principal",N3
+124,15037,歩道,歩道（ほどう）,"trottoir, chemin piéton, passage piéton",N3
+124,15038,過剰,過剰（かじょう）,"excès, sur-",N3
+124,15039,会合,会合（かいごう）,"réunion, assemblée, association, conjonction",N3
+124,15040,地点,地点（ちてん）,"site, point sur une carte, endroit",N3
+124,15041,パス,パス,"réussir (un examen), pass (ticket), passe (sport), passer (son tour)",N3
+124,15042,ゴム,ゴム,"gomme (caoutchouc), élastique, gomme (à effacer), préservatif",N3
+124,15043,博物館,博物館（はくぶつかん）,musée,N3
+124,15044,年代,年代（ねんだい）,"âge, époque, période, génération",N3
+124,15045,寄越す,寄越（よこ）す,"envoyer, transférer, remettre (par exemple de l'argent)",N3
+124,15046,寺院,寺院（じいん）,temple,N3
+124,15047,吠える,吠（ほ）える,"aboyer, hurler, rugir, crier",N3
+124,15048,夕日,夕日（ゆうひ）,"soleil du soir, soleil couchant",N3
+124,15049,ロビー,ロビー,"hall, salon",N3
+124,15050,教養,教養（きょうよう）,"culture, raffinement, éducation, cultivation",N3
+124,15051,公害,公害（こうがい）,"pollution, nuisance publique, contamination",N3
+124,15052,揉む,揉（も）む,"frotter, froisser, masser, discuter, avoir une discussion animée, entraîner, coacher, bousculer, se presser, secouer",N3
+124,15053,平等,平等（びょうどう）,"égalité, impartialité, uniformité",N3
+124,15054,集まり,集（あつ）まり,"rassemblement, réunion, assemblée, collection, fréquentation",N3
+124,15055,長女,長女（ちょうじょ）,fille aînée,N3
+124,15056,付近,付近（ふきん）,"voisinage, environs, proximité, alentours",N3
+124,15057,役者,役者（やくしゃ）,"acteur, actrice",N3
+124,15058,平ら,平（たい）ら,"plat, nivelé, lisse, calme, assis en tailleur",N3
+124,15059,当分,当分（とうぶん）,"pour le moment, actuellement, présentement, à ce moment, pour un certain temps",N3
+124,15060,診察,診察（しんさつ）,examen médical,N3
+124,15061,騒音,騒音（そうおん）,bruit,N3
+124,15062,真っ先,真（ま）っ先（さき）,"la tête, le premier, le début, tout devant",N3
+124,15063,典型,典型（てんけい）,"type, modèle, maquette, exemplaire, épitome, archétypal, représentatif",N3
+124,15064,破れる,破（やぶ）れる,"se déchirer, se briser, se casser, s'user, être interrompu (négociations, etc.), tomber en panne, s'effondrer, tomber en ruine",N3
+124,15065,知らせ,知（し）らせ,"nouvelles, annonce, avis, notification, information, présage",N3
+124,15066,眩しい,眩（まぶ）しい,"éblouissant, rayonnant",N3
+124,15067,汚染,汚染（おせん）,"pollution, contamination",N3
+124,15068,テント,テント,tente,N3
+124,15069,独身,独身（どくしん）,"célibat, célibataire, non marié",N3
+124,15070,深まる,深（ふか）まる,"s'approfondir, s'intensifier, s'accentuer, se renforcer",N3
+124,15071,頻りに,頻（しき）りに,"fréquemment, à plusieurs reprises, souvent, incessamment, avec empressement",N3
+124,15072,署名,署名（しょめい）,signature,N3
+124,15073,零す,零（こぼ）す,"renverser, laisser tomber, verser (des larmes), râler, se plaindre, laisser transparaître ses sentiments",N3
+124,15074,催し,催（もよお）し,"événement, festivités, rencontre sociale, auspices, ouverture, tenue (d'une réunion)",N3
+125,16000,測定,測定（そくてい）,mesure,N3
+125,16001,クリーム,クリーム,crème,N3
+125,16002,公共,公共（こうきょう）,"public, communautaire, communal",N3
+125,16003,中年,中年（ちゅうねん）,"âge moyen, âge mûr, entre deux âges",N3
+125,16004,売買,売買（ばいばい）,"commerce, achat et vente, trafic (par ex. d’êtres humains, d’armes, de drogues), négoce",N3
+125,16005,製作,製作（せいさく）,"fabrication, production",N3
+125,16006,休暇,休暇（きゅうか）,"vacances, jour de congé, absence (du travail), permission (pour un militaire)",N3
+125,16007,可愛らしい,可愛（かわい）らしい,"adorable, mignon",N3
+125,16008,空中,空中（くうちゅう）,"dans les airs, ciel",N3
+125,16009,組,組（くみ）,"ensemble (d'objets), groupe (de personnes), classe (d'élèves), entreprise (surtout de construction), famille (mafia), équipe, composition (typographie)",N3
+125,16010,個体,個体（こたい）,"individu, spécimen",N3
+125,16011,東西,東西（とうざい）,"est et ouest, Orient et Occident, Est et Ouest, Mesdames et Messieurs !, Votre attention, s'il vous plaît !, approchez, approchez",N3
+125,16012,嗅ぐ,嗅（か）ぐ,"sentir, renifler",N3
+125,16013,倉庫,倉庫（そうこ）,"entrepôt, dépôt, hangar",N3
+125,16014,投票,投票（とうひょう）,"vote, scrutin, élection",N3
+125,16015,方角,方角（ほうがく）,"direction, sens, point cardinal",N3
+125,16016,汲む,汲（く）む,"puiser (de l'eau), aller chercher (de l'eau), servir à la louche, écoper, boire un verre ensemble, considérer, compatir",N3
+125,16017,パイプ,パイプ,"tube, tuyau, canaux (officiels, de communication), relations (d'affaires), pipe à tabac",N3
+125,16018,剥がす,剥（は）がす,"arracher, déchirer, enlever, écorcher, dépouiller, déshabiller, priver de, détacher, déconnecter",N3
+125,16019,補償,補償（ほしょう）,"compensation, réparation",N3
+125,16020,宣伝,宣伝（せんでん）,"publicité, annonce, réclame, propagande",N3
+125,16021,匂う,匂（にお）う,"être parfumé, sentir (bon), puer, sentir (mauvais), briller, être lumineux",N3
+125,16022,衝突,衝突（しょうとつ）,"collision, accident, conflit, querelle, affrontement",N3
+125,16023,産地,産地（さんち）,zone de production,N3
+125,16024,アクセント,アクセント,"accent (en langue), accentuation",N3
+125,16025,真っ暗,真（ま）っ暗（くら）,"noir complet, obscurité totale, très sombre, avenir sombre, mauvaises perspectives",N3
+125,16026,論争,論争（ろんそう）,"différend, controverse, dispute",N3
+125,16027,重量,重量（じゅうりょう）,"poids, boxeur poids lourd",N3
+125,16028,痒い,痒（かゆ）い,"démangeant, qui gratte",N3
+125,16029,恩恵,恩恵（おんけい）,"grâce, faveur, bénédiction, avantage, bienfait",N3
+125,16030,零れる,零（こぼ）れる,"se renverser, tomber de, déborder, se faufiler, devenir visible (bien que normalement non), s’échapper (d’un sourire, d’une larme, etc.)",N3
+125,16031,彫刻,彫刻（ちょうこく）,"sculpture, gravure",N3
+125,16032,継続,継続（けいぞく）,"continuation, suite",N3
+125,16033,繁栄,繁栄（はんえい）,"prospérité, prospérer, florissant, épanouissement",N3
+125,16034,否定,否定（ひてい）,"négation, déni, répudiation",N3
+125,16035,真っ黒,真（ま）っ黒（くろ）,"tout noir, noir de jais",N3
+125,16036,石炭,石炭（せきたん）,charbon,N3
+125,16037,ブレーキ,ブレーキ,frein,N3
+125,16038,接続,接続（せつぞく）,"connexion, attachement, union, joint, lien, changement de train, conjonction",N3
+125,16039,大気,大気（たいき）,atmosphère,N3
+125,16040,泉,泉（いずみ）,"source, fontaine",N3
+125,16041,気味,気味（きみ）,"sensation, sentiment, tendance, propension",N3
+125,16042,莫大,莫大（ばくだい）,"énorme, immense, vaste, noix de malva",N3
+125,16043,スター,スター,"star (cinéma, sport, etc.), célébrité, étoile (symbole), astérisque",N3
+125,16044,釘,釘（くぎ）,clou,N3
+125,16045,原子,原子（げんし）,atome,N3
+125,16046,功績,功績（こうせき）,"réalisations, mérite, service méritoire, acte méritoire",N3
+125,16047,正,正（せい）,"vrai, régulier, 10^40, dix mille sextillions, original, positif, supérieur à zéro",N3
+125,16048,園,園（その）,"jardin (surtout artificiel), verger, parc, plantation, lieu, emplacement",N3
+125,16049,ふざける,ふざける,"plaisanter, blaguer, rigoler, se moquer, rire de, faire une farce, faire l'idiot, folâtrer, flirter, s'embrasser",N3
+125,16050,外交,外交（がいこう）,"diplomatie, vente (par exemple porte-à-porte), démarchage",N3
+125,16051,集会,集会（しゅうかい）,"réunion, assemblée, rassemblement, congrégation, convention",N3
+125,16052,人事,人事（じんじ）,"ressources humaines, RH",N3
+125,16053,露,露（つゆ）,"rosée, larmes, (pas) un peu, (pas) du tout",N3
+125,16054,カバー,カバー,"couverture (par ex. d'un livre), couverture (médiatique), compenser (une perte, une faiblesse)",N3
+125,16055,見出し,見出（みだ）し,"titre, en-tête, gros titre, manchette, légende, index, entrée (de dictionnaire)",N3
+125,16056,灰,灰（はい）,cendres,N3
+125,16057,輸送,輸送（ゆそう）,"transport, transportation",N3
+125,16058,オイル,オイル,"huile, huile moteur, kérosène",N3
+125,16059,にっこり,にっこり,"sourire, sourire en coin",N3
+125,16060,鋏,鋏（はさみ）,"ciseaux, sécateur, tondeuse, perforatrice",N3
+125,16061,大,大（だい）,"grand, important, fort, université",N3
+125,16062,稲,稲（いね）,plant de riz,N3
+125,16063,人種,人種（じんしゅ）,"race (humaine), type de personne",N3
+125,16064,統一,統一（とういつ）,"unité, consolidation, uniformité, unification, compatible",N3
+125,16065,ヘリコプター,ヘリコプター,hélicoptère,N3
+125,16066,惨め,惨（みじ）め,"misérable, lamentable, malheureux, triste, pitoyable",N3
+125,16067,率,率（りつ）,"taux, ratio, proportion, pourcentage",N3
+125,16068,公演,公演（こうえん）,représentation publique,N3
+125,16069,関節,関節（かんせつ）,articulations,N3
+125,16070,野,野（の）,"plaine, champ, élément (structurel) caché, sauvage, sans poste politique",N3
+125,16071,寄付,寄付（きふ）,"contribution, don",N3
+125,16072,テンポ,テンポ,"tempo, rythme",N3
+125,16073,野党,野党（やとう）,parti de l’opposition,N3
+125,16074,土曜,土曜（どよう）,samedi,N3
+126,17000,拡充,拡充（かくじゅう）,"croissance, expansion",N3
+126,17001,乱暴,乱暴（らんぼう）,"impoli, violent, brutal, hors-la-loi, déraisonnable, imprudent",N3
+126,17002,国籍,国籍（こくせき）,nationalité,N3
+126,17003,プラスチック,プラスチック,plastique,N3
+126,17004,緩い,緩（ゆる）い,"lâche (nœud), indulgent, laxiste, doux (courbe, pente, etc.), lent, faible, mou",N3
+126,17005,停止,停止（ていし）,"suspension, interruption, arrêt, interdiction, immobilisation, impasse, statu quo, mise en suspens",N3
+126,17006,抗議,抗議（こうぎ）,"protestation, objection",N3
+126,17007,続々,続々（ぞくぞく）,"successivement, l'un après l'autre",N3
+126,17008,ワンピース,ワンピース,robe,N3
+126,17009,過失,過失（かしつ）,"erreur, bévue, accident, faute, défaut, négligence",N3
+126,17010,止す,止（よ）す,"cesser, arrêter, laisser tomber, abandonner (une activité), abolir, démissionner, renoncer",N3
+126,17011,不正,不正（ふせい）,"fraude, illégalité, injustice, tricherie, irrégularité, malhonnêteté",N3
+126,17012,姉妹,姉妹（しまい）,sœurs,N3
+126,17013,吊るす,吊（つ）るす,"accrocher, suspendre, pendre",N3
+126,17014,腫れる,腫（は）れる,"enfler, gonfler (à cause d'une inflammation)",N3
+126,17015,パーセント,パーセント,"pour cent, pourcentage",N3
+126,17016,基金,基金（ききん）,fonds (capital),N3
+126,17017,陸,陸（りく）,"terre, rivage",N3
+126,17018,冷ます,冷（さ）ます,"refroidir (par ex. d'une température élevée à ambiante), laisser refroidir, atténuer, jeter un froid sur, gâcher",N3
+126,17019,うっかり,うっかり,"par inadvertance, sans réfléchir, par mégarde",N3
+126,17020,進路,進路（しんろ）,"route, chemin, parcours, carrière, choix universitaires, parcours (de vie future)",N3
+126,17021,徹底,徹底（てってい）,"exhaustivité, complétude, cohérence, application rigoureuse (d'une politique)",N3
+126,17022,シャッター,シャッター,"obturateur de caméra, volet (porte, fenêtre, etc.), rideau (de fer)",N3
+126,17023,過半数,過半数（かはんすう）,majorité,N3
+126,17024,応じる,応（おう）じる,"répondre, satisfaire, accepter, se conformer à, postuler pour",N3
+126,17025,彫る,彫（ほ）る,"sculpter, graver, tailler, ciseler, tatouer",N3
+126,17026,温まる,温（あたた）まる,"se réchauffer, devenir chaud",N3
+126,17027,見学,見学（けんがく）,"observation, visite d'étude, excursion",N3
+126,17028,相続,相続（そうぞく）,"succession, héritage",N3
+126,17029,爆発,爆発（ばくはつ）,"explosion, détonation, éruption",N3
+126,17030,香水,香水（こうすい）,parfum,N3
+126,17031,カーブ,カーブ,"courbe, virage, balle courbe",N3
+126,17032,醜い,醜（みにく）い,"laid, disgracieux, inconvenant",N3
+126,17033,カロリー,カロリー,calorie,N3
+126,17034,応用,応用（おうよう）,"application, mise en pratique, appliqué (langues, physique...)",N3
+126,17035,ダム,ダム,"barrage, digue",N3
+126,17036,濡らす,濡（ぬ）らす,"mouiller, tremper, plonger",N3
+126,17037,通訳,通訳（つうやく）,"interprétation (traduction orale), interprète",N3
+126,17038,名字,名字（みょうじ）,nom de famille,N3
+126,17039,出版,出版（しゅっぱん）,"édition, publication, parution",N3
+126,17040,スタンド,スタンド,"gradins, tribunes, stand, kiosque, comptoir (d'un bar), présentoir, lampe (sur pied), station (-service)",N3
+126,17041,脂,脂（あぶら）,"gras, graisse, matière grasse, suif, saindoux, huile",N3
+126,17042,商店,商店（しょうてん）,"magasin, petite boutique, entreprise, société",N3
+126,17043,虹,虹（にじ）,arc-en-ciel,N3
+126,17044,書店,書店（しょてん）,librairie,N3
+126,17045,課税,課税（かぜい）,taxation,N3
+126,17046,厳重,厳重（げんじゅう）,"strict, rigoureux, sévère, ferme, fort, sécurisé",N3
+126,17047,利害,利害（りがい）,"avantages et inconvénients, intérêt",N3
+126,17048,漁業,漁業（ぎょぎょう）,pêche (industrie),N3
+126,17049,縮める,縮（ちぢ）める,"raccourcir, réduire, condenser, rétrécir",N3
+126,17050,アウト,アウト,"hors-jeu, sortie, disqualification",N3
+126,17051,砕く,砕（くだ）く,"casser, briser, fracasser, réduire en miettes",N3
+126,17052,御,御（お）,préfixe honorifique/poli/humble,N3
+126,17053,御,御（ご）,"préfixe honorifique/poli/humble, suffixe honorifique",N3
+126,17054,直,直（じき）,"bientôt, dans un instant, sous peu, prochainement, à proximité, proche, direct, transaction comptant, transaction en espèces",N3
+126,17055,マーケット,マーケット,marché,N3
+126,17056,都心,都心（としん）,"centre-ville (surtout d'une capitale), centre urbain",N3
+126,17057,農産物,農産物（のうさんぶつ）,produit agricole,N3
+126,17058,作物,作物（さくもつ）,"production (agricole), récoltes",N3
+126,17059,アンテナ,アンテナ,"antenne, méthode utilisée pour recueillir des informations ou des opinions",N3
+126,17060,東洋,東洋（とうよう）,Orient,N3
+126,17061,集合,集合（しゅうごう）,"rassemblement, assemblée, réunion, ensemble",N3
+126,17062,解放,解放（かいほう）,"libération, émancipation",N3
+126,17063,浴衣,浴衣（ゆかた）,yukata (kimono léger en coton porté en été ou utilisé comme peignoir),N3
+126,17064,銅,銅（どう）,cuivre (Cu),N3
+126,17065,農薬,農薬（のうやく）,"produit chimique agricole (par ex. pesticide, herbicide, fongicide, etc.), produit agrochimique",N3
+126,17066,出入り,出入（でい）り,"entrer et sortir, va-et-vient, revenus et dépenses",N3
+126,17067,南北,南北（なんぼく）,"nord et sud, Corée du Sud et Corée du Nord",N3
+126,17068,観測,観測（かんそく）,"observation, enquête, mesure",N3
+126,17069,凹む,凹（へこ）む,"être bosselé, être indenté, s'enfoncer, s'effondrer, céder, s'affaisser, se sentir déprimé, être intimidé, être dépassé",N3
+126,17070,どっと,どっと,"soudainement, éclater (rire, applaudissements)",N3
+126,17071,書籍,書籍（しょせき）,"livre, publication",N3
+126,17072,会談,会談（かいだん）,"conversation, discussion, entretien, conférence (généralement entre personnes importantes)",N3
+126,17073,学会,学会（がっかい）,"société scientifique, réunion académique, conférence académique",N3
+126,17074,大凡,大凡（おおよそ）,"environ, à peu près, approximativement, généralement, complètement, tout à fait, pas du tout (avec un verbe négatif), aperçu, idée générale",N3
+127,18000,交じる,交（ま）じる,"être mélangé, être mélangé avec, s'associer avec, se mêler à, s'intéresser, rejoindre",N3
+127,18001,バケツ,バケツ,"seau, godet",N3
+127,18002,プリント,プリント,"impression, copie, polycopié, flyer",N3
+127,18003,ぶつぶつ,ぶつぶつ,"grognement, râlement, boutons, éruption cutanée, découper en petits morceaux, mijoter",N3
+127,18004,負け,負（ま）け,"défaite, perte, perdre (un jeu, un match)",N3
+127,18005,作曲,作曲（さっきょく）,"composition, arrangement (musical)",N3
+127,18006,近頃,近頃（ちかごろ）,"dernièrement, récemment, de nos jours",N3
+127,18007,畳む,畳（たた）む,"plier (vêtements, parapluie), fermer (un magasin, une entreprise), libérer (un lieu)",N3
+127,18008,シーツ,シーツ,drap (de lit),N3
+127,18009,強盗,強盗（ごうとう）,"voleur, agresseur, vol, cambriolage",N3
+127,18010,省く,省（はぶ）く,"omettre, laisser de côté, exclure, éliminer, réduire, économiser, couper",N3
+127,18011,殿,殿（どの）,"forme d’adresse utilisée pour les lettres officielles et aux inférieurs, M.",N3
+127,18012,宝,宝（たから）,trésor,N3
+127,18013,サンプル,サンプル,"échantillon, exemple",N3
+127,18014,衛星,衛星（えいせい）,satellite,N3
+127,18015,一致,一致（いっち）,"accord, union, correspondance, conformité, cohérence, coopération",N3
+127,18016,競技,競技（きょうぎ）,"jeu, match, concours",N3
+127,18017,掬う,掬（すく）う,"racler, écoper",N3
+127,18018,痺れる,痺（しび）れる,"devenir engourdi, avoir des fourmis (dans un membre), être excité, être titillé, être fasciné",N3
+127,18019,薬局,薬局（やっきょく）,"pharmacie, droguerie",N3
+127,18020,縮小,縮小（しゅくしょう）,"réduction, diminution",N3
+127,18021,ウイスキー,ウイスキー,"whisky, whiskey",N3
+127,18022,演劇,演劇（えんげき）,"pièce de théâtre, drame",N3
+127,18023,見慣れる,見慣（みな）れる,"s'habituer à voir, se familiariser avec",N3
+127,18024,油断,油断（ゆだん）,"négligence, imprudence, inattention, manque de préparation",N3
+127,18025,漁師,漁師（りょうし）,pêcheur,N3
+127,18026,スピーカー,スピーカー,"haut-parleur, enceinte",N3
+127,18027,賢明,賢明（けんめい）,"sagesse, intelligence, prudence",N3
+127,18028,制作,制作（せいさく）,"œuvre (film, livre), production, création, réalisation (de quelque chose), développement",N3
+127,18029,天然,天然（てんねん）,"nature, spontanéité, étourderie naturelle",N3
+127,18030,器具,器具（きぐ）,"ustensile, outil, instrument, dispositif",N3
+127,18031,蒔く,蒔（ま）く,"semer, planter, ensemencer, saupoudrer",N3
+127,18032,バイオリン,バイオリン,violon,N3
+127,18033,暮れ,暮（く）れ,"coucher de soleil, crépuscule, tombée de la nuit, fin, clôture, fin de l'année",N3
+127,18034,金曜,金曜（きんよう）,vendredi,N3
+127,18035,ユーモア,ユーモア,humour,N3
+127,18036,消極的,消極的（しょうきょくてき）,"négatif, peu enthousiaste, passif, démotivé, pessimiste",N3
+127,18037,能,能（のう）,"talent, don, capacité, théâtre noh",N3
+127,18038,葬式,葬式（そうしき）,"funérailles, enterrement, obsèques",N3
+127,18039,齧る,齧（かじ）る,"mâcher, ronger, grignoter, croquer, avoir des notions de, s'essayer à",N3
+127,18040,出迎える,出迎（でむか）える,"accueillir, saluer, aller à la rencontre de",N3
+127,18041,ライター,ライター,briquet,N3
+127,18042,ブラウス,ブラウス,"chemisier, blouse",N3
+127,18043,振り仮名,振（ふ）り仮名（がな）,furigana (kana au-dessus ou à côté des kanji pour indiquer la prononciation),N3
+127,18044,司会,司会（しかい）,"présidence, diriger une réunion, présentateur, hôte, modérateur",N3
+127,18045,校舎,校舎（こうしゃ）,bâtiment scolaire,N3
+127,18046,科目,科目（かもく）,"matière (scolaire), programme, cours",N3
+127,18047,ベテラン,ベテラン,"personne avec beaucoup d'expérience, vétéran (dans un domaine particulier)",N3
+127,18048,退ける,退（の）ける,"mettre à l'écart, déplacer (quelque chose, quelqu'un), enlever, exclure, retirer, garder à part, réussir malgré les difficultés, faire résolument",N3
+127,18049,ピン,ピン,"épingle (à cheveux), quille (bowling), drapeau (golf)",N3
+127,18050,仮名,仮名（かな）,"kana, syllabaire japonais (hiragana, katakana)",N3
+127,18051,盆,盆（ぼん）,"plateau, famille, ménage, O-Bon, Fête des Lanternes, Fête des Morts",N3
+127,18052,矢印,矢印（やじるし）,flèche de direction,N3
+127,18053,ずらり,ずらり,"en rangée, en ligne",N3
+127,18054,推定,推定（すいてい）,"présomption, supposition, estimation",N3
+127,18055,恐縮,恐縮（きょうしゅく）,"se sentir obligé, être reconnaissant, être désolé, être honteux, reculer de peur",N3
+127,18056,甥,甥（おい）,neveu,N3
+127,18057,火山,火山（かざん）,volcan,N3
+127,18058,ドキドキ,ドキドキ,"boum-boum, battement, palpitation, battre la chamade",N3
+127,18059,録音,録音（ろくおん）,enregistrement (audio),N3
+127,18060,頭脳,頭脳（ずのう）,"tête, cerveau, intellect, entendement",N3
+127,18061,オーケストラ,オーケストラ,orchestre,N3
+127,18062,総理大臣,総理大臣（そうりだいじん）,premier ministre,N3
+127,18063,くっ付ける,くっ付（つ）ける,"attacher, coller ensemble, mettre côte à côte, marier quelqu’un, caser quelqu’un",N3
+127,18064,略す,略（りゃく）す,"abréger, omettre, prendre, capturer",N3
+127,18065,清掃,清掃（せいそう）,"nettoyage, collecte des ordures, récupération",N3
+127,18066,公式,公式（こうしき）,"officiel, formalité, formel",N3
+127,18067,障子,障子（しょうじ）,shoji (porte coulissante en papier),N3
+127,18068,白髪,白髪（しらが）,"cheveux blancs, cheveux gris",N3
+127,18069,堀,堀（ほり）,"douves, fossé, canal",N3
+127,18070,地盤,地盤（じばん）,"sol, croûte (terre), lit (gravier, rivière, etc.), fondation (bâtiment, etc.), base, circonscription, base de pouvoir, soutien (électoral), appui, point d'appui",N3
+127,18071,モダン,モダン,moderne,N3
+127,18072,エプロン,エプロン,tablier,N3
+127,18073,せっせと,せっせと,"diligemment, assidûment, d'arrache-pied",N3
+127,18074,商社,商社（しょうしゃ）,"société commerciale, entreprise",N3
+128,19000,時速,時速（じそく）,vitesse (par heure),N3
+128,19001,古典,古典（こてん）,"vieux livre, classique",N3
+128,19002,砕ける,砕（くだ）ける,"se casser (en morceaux), être cassé, être brisé, s'effondrer, s'émietter, devenir moins formel, devenir facile à comprendre, être inquiet",N3
+128,19003,ミシン,ミシン,machine à coudre,N3
+128,19004,公表,公表（こうひょう）,"annonce officielle, proclamation",N3
+128,19005,岸,岸（きし）,"côte, rive, rivage",N3
+128,19006,ぶら下げる,ぶら下（さ）げる,"suspendre, accrocher, balancer",N3
+128,19007,ピストル,ピストル,pistolet,N3
+128,19008,前進,前進（ぜんしん）,"avance, progrès",N3
+128,19009,躓く,躓（つまず）く,"trébucher, buter, échouer",N3
+128,19010,革,革（かわ）,cuir,N3
+128,19011,ベージュ,ベージュ,beige,N3
+128,19012,私立,私立（しりつ）,privé (établissement),N3
+128,19013,実る,実（みの）る,"porter des fruits, mûrir",N3
+128,19014,ダイヤモンド,ダイヤモンド,diamant,N3
+128,19015,便所,便所（べんじょ）,"toilettes, wc, latrines",N3
+128,19016,遣っ付ける,遣（や）っ付（つ）ける,"battre, attaquer (un ennemi), se débarrasser de, achever",N3
+128,19017,日陰,日陰（ひかげ）,"ombre, ombrage, ensoleillement",N3
+128,19018,姪,姪（めい）,nièce,N3
+128,19019,生憎,生憎（あいにく）,"malheureusement, désolé mais ...",N3
+128,19020,生存,生存（せいぞん）,"existence, être, survie, exister, vivre, survivre",N3
+128,19021,広々,広々（ひろびろ）,"vaste, spacieux",N3
+128,19022,マスター,マスター,"maîtriser, apprendre, propriétaire, gérant, maître, master (diplôme)",N3
+128,19023,引き止める,引（ひ）き止（と）める,"retenir, arrêter, détenir, restreindre",N3
+128,19024,ざっと,ざっと,"environ, en chiffres ronds, sommairement, brièvement",N3
+128,19025,局,局（きょく）,"bureau (par ex. de poste), département, station de diffusion (télévision, radio), chaîne",N3
+128,19026,理科,理科（りか）,science,N3
+128,19027,目印,目印（めじるし）,"marque, signe, repère, point de référence",N3
+128,19028,湯気,湯気（ゆげ）,"vapeur, buée",N3
+128,19029,通勤,通勤（つうきん）,"trajet domicile-travail, aller au travail",N3
+128,19030,ビニール,ビニール,"vinyle, plastique (par ex. sac)",N3
+128,19031,位,位（くらい）,"trône, couronne, position gouvernementale, rang, grade, degré, étendue, quantité",N3
+128,19032,詫びる,詫（わ）びる,s'excuser,N3
+128,19033,ぴかぴか,ぴかぴか,"brillant, scintillant, flambant neuf",N3
+128,19034,発条,発条（ばね）,ressort,N3
+128,19035,加減,加減（かげん）,"degré, étendue, condition, état de santé, ajustement, modération, addition et soustraction",N3
+128,19036,噴火,噴火（ふんか）,éruption (volcanique),N3
+128,19037,批評,批評（ひひょう）,"critique, revue, commentaire",N3
+128,19038,方程式,方程式（ほうていしき）,"équation, formule, méthode de résolution d'un problème, manière définie d'obtenir un résultat particulier",N3
+128,19039,フワフワ,フワフワ,"avec légèreté, doux, moelleux, spongieux, de manière instable, frivole",N3
+128,19040,下り,下（くだ）り,"pente descendante, allant vers le bas, train descendant (s'éloignant de Tokyo)",N3
+128,19041,ちり,ちり,"poussière, saleté",N3
+128,19042,マッチ,マッチ,allumette,N3
+128,19043,出場,出場（しゅつじょう）,"apparition (sur scène), performance, participation (par ex. dans un tournoi)",N3
+128,19044,団地,団地（だんち）,"appartements à unités multiples, complexe d'appartements",N3
+128,19045,尊重,尊重（そんちょう）,"respect, estime, considération",N3
+128,19046,名詞,名詞（めいし）,"nom (grammaire), substantif",N3
+128,19047,花嫁,花嫁（はなよめ）,"future mariée, jeune mariée",N3
+128,19048,商業,商業（しょうぎょう）,"commerce, affaires",N3
+128,19049,警備,警備（けいび）,"défense, garde, sécurité, maintien de l'ordre",N3
+128,19050,半径,半径（はんけい）,rayon (d'un cercle),N3
+128,19051,ぎっしり,ぎっしり,"densément, étroitement, entassé",N3
+128,19052,貸し出し,貸（か）し出（だ）し,"prêt, emprunt",N3
+128,19053,吸収,吸収（きゅうしゅう）,"absorption, aspiration, attraction, succion",N3
+128,19054,名物,名物（めいぶつ）,"produit célèbre, spécialité (d'une région)",N3
+128,19055,原,原（はら）,"champ, plaine, prairie, toundra, lande",N3
+128,19056,文体,文体（ぶんたい）,style littéraire,N3
+128,19057,名作,名作（めいさく）,chef-d'œuvre,N3
+128,19058,執筆,執筆（しっぴつ）,écriture (par ex. en tant que profession),N3
+128,19059,摩擦,摩擦（まさつ）,"friction, frottement, heurt, irritation",N3
+128,19060,逸れる,逸（そ）れる,"s'écarter, dévier, s'éloigner, manquer (la cible), s'égarer (d'une conversation), digresser",N3
+128,19061,口紅,口紅（くちべに）,rouge à lèvres,N3
+128,19062,インク,インク,encre,N3
+128,19063,裂ける,裂（さ）ける,"se fendre, se déchirer, éclater",N3
+128,19064,捜索,捜索（そうさく）,"recherche (surtout pour quelqu'un ou quelque chose de disparu), enquête, investigation",N3
+128,19065,名所,名所（めいしょ）,"lieu célèbre, nom d'une partie (d'un instrument, etc.), nom et adresse",N3
+128,19066,短期,短期（たんき）,court terme,N3
+128,19067,管,管（かん）,"tuyau, tube, conduit",N3
+128,19068,スマート,スマート,"élégant, chic, stylé, mince, smart (-phone), intelligent",N3
+128,19069,真っ青,真（ま）っ青（さお）,"bleu profond, bleu vif, livide, blême, pâle, blanc comme un linge, blafard",N3
+128,19070,用心,用心（ようじん）,"soin, précaution, garde, prudence",N3
+128,19071,遊園地,遊園地（ゆうえんち）,parc d'attractions,N3
+128,19072,蓮,蓮（はす）,"lotus (sacré, indien), rose de Sharon",N3
+128,19073,包帯,包帯（ほうたい）,"bandage, pansement",N3
+128,19074,ハンバーグ,ハンバーグ,steak haché,N3
+129,20000,代理,代理（だいり）,"représentation, agence, procuration, délégué, agent, avocat, remplaçant, suppléant, intérimaire (principal, etc.)",N3
+129,20001,だらし無い,だらし無（な）い,"négligent, relaché, désordonné",N3
+129,20002,大工,大工（だいく）,charpentier,N3
+129,20003,推薦,推薦（すいせん）,"recommandation, référence, approbation, parrainage",N3
+129,20004,是非とも,是非（ぜひ）とも,"à tout prix, coûte que coûte",N3
+129,20005,就任,就任（しゅうにん）,"entrée en fonction, prise de poste",N3
+129,20006,琴,琴（こと）,"koto (cithare japonaise à 13 cordes), zheng (cithare chinoise)",N3
+129,20007,娯楽,娯楽（ごらく）,"amusement, distraction, divertissement",N3
+129,20008,紺,紺（こん）,"bleu marine, bleu foncé",N3
+129,20009,ロケット,ロケット,fusée,N3
+129,20010,裁く,裁（さば）く,juger,N3
+129,20011,見本,見本（みほん）,"échantillon, spécimen, modèle, exemple",N3
+129,20012,跨ぐ,跨（また）ぐ,"enjamber, traverser, franchir, passer par-dessus, s'étendre sur, couvrir, chevaucher",N3
+129,20013,改造,改造（かいぞう）,"remodelage, restructuration, remaniement",N3
+129,20014,学科,学科（がっか）,"sujet d'étude, discipline, département (d'une université)",N3
+129,20015,消防,消防（しょうぼう）,"pompiers, lutte contre les incendies",N3
+129,20016,狡い,狡（ずる）い,"rusé, astucieux, malhonnête, sournois, fourbe, injuste, avare",N3
+129,20017,薬品,薬品（やくひん）,"médicament, produit pharmaceutique",N3
+129,20018,モーター,モーター,moteur,N3
+129,20019,学部,学部（がくぶ）,"faculté, département d'une université",N3
+129,20020,干渉,干渉（かんしょう）,"interférence, intervention, se mêler de",N3
+129,20021,架空,架空（かくう）,"aérien, en hauteur, fictif, imaginaire",N3
+129,20022,金庫,金庫（きんこ）,"coffre-fort, caisse, chambre forte, salle des coffres, dépôt, trésorerie",N3
+129,20023,臨時,臨時（りんじ）,"temporaire, spécial, extraordinaire",N3
+129,20024,自治,自治（じち）,"autonomie gouvernementale, autogestion, autonomie locale",N3
+129,20025,紙幣,紙幣（しへい）,"billets, argent papier",N3
+129,20026,童話,童話（どうわ）,"conte de fées, conte pour enfants",N3
+129,20027,若々しい,若々（わかわか）しい,"jeunesse, jeune",N3
+129,20028,大使,大使（たいし）,ambassadeur,N3
+129,20029,通行,通行（つうこう）,"circulation, passage, traffic, usage courant",N3
+129,20030,官庁,官庁（かんちょう）,"organisme gouvernemental, agence gouvernementale, autorités",N3
+129,20031,捩る,捩（ねじ）る,"visser, tordre, déformer, parodier, faire un jeu de mots, torturer, arracher",N3
+129,20032,小,小（しょう）,"petitesse, petite chose, mois court (moins de 31 jours), école élémentaire",N3
+129,20033,大層,大層（たいそう）,"beaucoup, exagéré, très bien",N3
+129,20034,冠,冠（かんむり）,"couvre-chef traditionnel porté avec des vêtements sokutai ou ikan, couronne, diadème, radical supérieur du kanji, premier vers d'un haikai, etc., meilleur, sans égal, premier",N3
+129,20035,判事,判事（はんじ）,"juge, magistrature",N3
+129,20036,親類,親類（しんるい）,"relation, parenté, parent",N3
+129,20037,サイレン,サイレン,sirène (alarme),N3
+129,20038,最終,最終（さいしゅう）,"dernier, final",N3
+129,20039,旧,旧（きゅう）,"ancien, ex-",N3
+129,20040,喧しい,喧（やかま）しい,"agaçant, bruyant, tapageur, strict, pointilleux, critique, rigoureux",N3
+129,20041,ボーイ,ボーイ,"garçon, groom, serveur",N3
+129,20042,スライド,スライド,"glisser, coulisser, diapositive, changement (de valeur ou de situation)",N3
+129,20043,屑,屑（くず）,"déchet, ferraille, ordure, résidu",N3
+129,20044,芸能,芸能（げいのう）,"arts du spéctacle, divertissement, réalisations",N3
+129,20045,絶滅,絶滅（ぜつめつ）,"destruction, extinction, extermination",N3
+129,20046,岬,岬（みさき）,"cap (sur la côte), pointe",N3
+129,20047,締め切る,締（し）め切（き）る,"fermer, condamner (par ex. une porte), interrompre (par ex. pour un délai dépassé)",N3
+129,20048,噴水,噴水（ふんすい）,"fontaine, jet d'eau",N3
+129,20049,転々,転々（てんてん）,"se déplacer d'un endroit à l'autre, être passé de main en main à plusieurs reprises, aller çà et là",N3
+129,20050,ばったり,ばったり,"avec fracas, d'un coup, de manière inattendue (rencontrer quelqu'un), brusquement (finir)",N3
+129,20051,主義,主義（しゅぎ）,"doctrine, règle, principe, -isme",N3
+129,20052,強気,強気（つよき）,"confiant, assuré, sûr de soi, ferme, fort, présomptueux",N3
+129,20053,助教授,助教授（じょきょうじゅ）,"professeur adjoint, professeur associé",N3
+129,20054,満員,満員（まんいん）,"complet, bondé, occupé, plein, pas de place, épuisé",N3
+129,20055,櫛,櫛（くし）,peigne,N3
+129,20056,酔っ払い,酔（よ）っ払（ぱら）い,"ivre, saoul",N3
+129,20057,望遠鏡,望遠鏡（ぼうえんきょう）,télescope,N3
+129,20058,電柱,電柱（でんちゅう）,"poteau téléphonique, poteau électrique, lampadaire, réverbère",N3
+129,20059,クラシック,クラシック,"musique classique, classique",N3
+129,20060,為替,為替（かわせ）,"mandat (transfert d'argent), change, échange (de devise)",N3
+129,20061,下品,下品（げひん）,"vulgarité, méchanceté, grossièreté, obscénité",N3
+129,20062,溶く,溶（と）く,"dissoudre (peinture), battre (œufs), fondre (métal, etc.), mélanger (eau avec farine, etc.)",N3
+129,20063,賞金,賞金（しょうきん）,"prix, récompense monétaire",N3
+129,20064,雑巾,雑巾（ぞうきん）,"chiffon (de ménage, pour la poussière)",N3
+129,20065,冷凍,冷凍（れいとう）,"congélation, stockage à froid, réfrigération",N3
+129,20066,歓迎,歓迎（かんげい）,"accueil, réception, bienvenue",N3
+129,20067,日日,日日（ひにち）,"le nombre de jours, date",N3
+129,20068,南米,南米（なんべい）,Amérique du Sud,N3
+129,20069,発揮,発揮（はっき）,"exposition, démonstration, présentation, affichage, manifestation",N3
+129,20070,光線,光線（こうせん）,"faisceau, rayon (lumineux)",N3
+129,20071,協調,協調（きょうちょう）,"coopération, conciliation, harmonie",N3
+129,20072,付属,付属（ふぞく）,"attaché, appartenant (à), inclus, joint, affilié, annexé, associé, subordonné, accessoire, dépendant, auxiliaire",N3
+129,20073,枚数,枚数（まいすう）,nombre d'objets plats,N3
+129,20074,災難,災難（さいなん）,"calamité, malheur, désastre, infortune",N3
+130,21000,草臥れる,草臥（くたび）れる,"se fatiguer, être épuisé, s'user, être abîmé par une longue utilisation",N3
+130,21001,加速,加速（かそく）,accélération,N3
+130,21002,箒,箒（ほうき）,balai,N3
+130,21003,瓦,瓦（かわら）,tuile (toiture),N3
+130,21004,毎度,毎度（まいど）,"chaque fois, merci pour votre fidélité",N3
+130,21005,敬う,敬（うやま）う,"respecter, honorer",N3
+130,21006,ハンサム,ハンサム,"beau (en parlant d'un homme), séduisant",N3
+130,21007,要旨,要旨（ようし）,"point, essentiel, idée principale, résumé, fondamentaux",N3
+130,21008,のろのろ,のろのろ,"lentement, doucement, mollement",N3
+130,21009,錆びる,錆（さ）びる,"rouiller, s'oxyder",N3
+130,21010,塞がる,塞（ふさ）がる,"être fermé, être bloqué, être guéri (blessure), être bouché, être obstrué, être occupé",N3
+130,21011,椀,椀（わん）,bol (en bois),N3
+130,21012,平野,平野（へいや）,"plaine, plein champ",N3
+130,21013,生る,生（な）る,porter des fruits,N3
+130,21014,内戦,内戦（ないせん）,guerre civile,N3
+130,21015,車掌,車掌（しゃしょう）,"agent ferroviaire, contrôleur, accompagnateur de transports en commun, machiniste",N3
+130,21016,針金,針金（はりがね）,fil de fer,N3
+130,21017,各,各（かく）,"chaque, tous les",N3
+130,21018,出入り口,出入（でい）り口（ぐち）,entrée et sortie,N3
+130,21019,滞在,滞在（たいざい）,séjour,N3
+130,21020,ストッキング,ストッキング,bas (vêtement féminin),N3
+130,21021,国立,国立（こくりつ）,national,N3
+130,21022,坊や,坊（ぼう）や,garçon,N3
+130,21023,水曜,水曜（すいよう）,mercredi,N3
+130,21024,毛糸,毛糸（けいと）,"laine à tricoter, fil de laine",N3
+130,21025,盛り,盛（さか）り,"apogée, sommet, prime (de sa vie), ses meilleurs jours, rut, être en chaleur",N3
+130,21026,直角,直角（ちょっかく）,"angle droit, perpendiculaire",N3
+130,21027,民謡,民謡（みんよう）,"chanson folklorique, chanson populaire",N3
+130,21028,蒸し暑い,蒸（む）し暑（あつ）い,"humide, lourd, étouffant",N3
+130,21029,必需品,必需品（ひつじゅひん）,"articles de première nécessité, essentiel",N3
+130,21030,巡査,巡査（じゅんさ）,"policier, gendarme",N3
+130,21031,悠々,悠々（ゆうゆう）,"tranquille, détendu, calme, paisible, facile",N3
+130,21032,バン,バン,chignon (coiffure),N3
+130,21033,家主,家主（やぬし）,"propriétaire, logeur, chef de ménage",N3
+130,21034,半島,半島（はんとう）,péninsule,N3
+130,21035,切れ,切（き）れ,"morceau, tranche, bande, lambeau, tissu, tranchant, compteur pour morceaux",N3
+130,21036,連合,連合（れんごう）,"syndicat, union, alliance, combinaison, RENGO (Confédération des syndicats ouvriers japonais)",N3
+130,21037,再三,再三（さいさん）,"encore et encore, à plusieurs reprises",N3
+130,21038,接近,接近（せっきん）,"se rapprocher, s'approcher, être proche (âge, compétence, etc.), devenir proche (amical)",N3
+130,21039,消防署,消防署（しょうぼうしょ）,caserne de pompiers,N3
+130,21040,万歳,万歳（ばんざい）,"banzai (un cri de célébration), lever les bras en l'air, quelque chose digne de célébration, abandonner, vie éternelle (et prospérité), hourra",N3
+130,21041,クリーニング,クリーニング,"nettoyage, nettoyage à sec, service de blanchisserie",N3
+130,21042,灯油,灯油（とうゆ）,"huile de lampe, kérosène",N3
+130,21043,ガム,ガム,"chewing gum, gomme, caoutchouc",N3
+130,21044,来日,来日（らいにち）,"arrivée au Japon, venue au Japon, visite au Japon",N3
+130,21045,ロッカー,ロッカー,"casier, vestiaire",N3
+130,21046,省略,省略（しょうりゃく）,"omission, abréviation, abrègement",N3
+130,21047,夫妻,夫妻（ふさい）,"mari et femme, couple marié",N3
+130,21048,目下,目下（めした）,"subordonné, inférieur, subalterne",N3
+130,21049,トランプ,トランプ,cartes à jouer,N3
+130,21050,苛々,苛々（いらいら）,"s'énerver, être irrité",N3
+130,21051,通過,通過（つうか）,"passage (d'un train dans une gare sans s'arrêter), transit, passage (examen d'une loi au parlement)",N3
+130,21052,点々,点々（てんてん）,"ici et là, petit à petit, sporadiquement, dispersé en gouttelettes, points, taches",N3
+130,21053,流域,流域（りゅういき）,bassin (fluvial),N3
+130,21054,湾,湾（わん）,"baie, golfe, crique, anse",N3
+130,21055,萎む,萎（しぼ）む,"dépérir, se ratatiner, flétrir, s'affaisser, s'estomper, se faner",N3
+130,21056,ダイヤル,ダイヤル,"cadran, bouton de réglage",N3
+130,21057,南極,南極（なんきょく）,"Pôle Sud, Antarctique",N3
+130,21058,和服,和服（わふく）,vêtements japonais,N3
+130,21059,炙る,炙（あぶ）る,"réchauffer (par exemple, ses mains au-dessus d’un feu), sécher, brûler, rôtir, griller, toaster",N3
+130,21060,課,課（か）,"leçon, cours, section (dans une organisation), département, compteur pour les leçons et chapitres (d'un livre)",N3
+130,21061,予備,予備（よび）,"préparation, réserve, de rechange",N3
+130,21062,グラウンド,グラウンド,terrain de sport,N3
+130,21063,救助,救助（きゅうじょ）,"aide, sauvetage, secours",N3
+130,21064,消毒,消毒（しょうどく）,"désinfection, stérilisation",N3
+130,21065,開放,開放（かいほう）,"ouvert, ouvrir grand, libéralisation",N3
+130,21066,不規則,不規則（ふきそく）,"irrégularité, instabilité, désordonné",N3
+130,21067,売れ行き,売（う）れ行（ゆ）き,"ventes, demande",N3
+130,21068,オーバー,オーバー,"pardessus, excédant, exagération",N3
+130,21069,物理,物理（ぶつり）,"la physique, loi de la nature",N3
+130,21070,コーラス,コーラス,"chœur, refrain",N3
+130,21071,休業,休業（きゅうぎょう）,"fermeture (d'un magasin, d'une entreprise)",N3
+130,21072,薬缶,薬缶（やかん）,bouilloire,N3
+130,21073,海洋,海洋（かいよう）,"océan, mer",N3
+130,21074,判子,判子（はんこ）,"cachet, sceau (utilisé pour signer)",N3
+131,22000,正門,正門（せいもん）,"entrée principale, porte principale",N3
+131,22001,夕刊,夕刊（ゆうかん）,"journal du soir, édition du soir",N3
+131,22002,便箋,便箋（びんせん）,"papier à lettres, papeterie",N3
+131,22003,熱帯,熱帯（ねったい）,tropiques,N3
+131,22004,溶岩,溶岩（ようがん）,lave,N3
+131,22005,うろうろ,うろうろ,"errant sans but, de manière agitée",N3
+131,22006,火曜,火曜（かよう）,mardi,N3
+131,22007,温室,温室（おんしつ）,serre (bâtiment),N3
+131,22008,破産,破産（はさん）,"faillite, insolvabilité, banqueroute",N3
+131,22009,キャンパス,キャンパス,campus,N3
+131,22010,私鉄,私鉄（してつ）,chemin de fer privé,N3
+131,22011,剃刀,剃刀（かみそり）,rasoir,N3
+131,22012,物騒,物騒（ぶっそう）,"dangereux, peu sûr",N3
+131,22013,気象,気象（きしょう）,"météo, climat, disposition, tempérament",N3
+131,22014,セメント,セメント,ciment,N3
+131,22015,物置,物置（ものおき）,"salle de stockage, débarras, remise",N3
+131,22016,コック,コック,"cuisinier, chef, robinet, vanne, coq",N3
+131,22017,副詞,副詞（ふくし）,adverbe,N3
+131,22018,目次,目次（もくじ）,table des matières,N3
+131,22019,ランニング,ランニング,"course à pied, débardeur",N3
+131,22020,罹る,罹（かか）る,"souffrir de, être atteint",N3
+131,22021,レクリエーション,レクリエーション,récréation,N3
+131,22022,停電,停電（ていでん）,"panne de courant, coupure d'électricité, panne d'électricité",N3
+131,22023,ノック,ノック,"frapper (par ex. à une porte), cogner",N3
+131,22024,スチュワーデス,スチュワーデス,hôtesse de l'air,N3
+131,22025,大戦,大戦（たいせん）,"grande guerre, grande bataille",N3
+131,22026,待ち合わせる,待（ま）ち合（あ）わせる,"se donner rendez-vous, se rencontrer à un lieu et une heure convenus, convenir d'un rendez-vous",N3
+131,22027,航空,航空（こうくう）,"aviation, vol",N3
+131,22028,めっきり,めっきり,remarquablement,N3
+131,22029,評論,評論（ひょうろん）,critique,N3
+131,22030,実用,実用（じつよう）,"utilisation pratique, utilité",N3
+131,22031,行儀,行儀（ぎょうぎ）,"manières, comportement",N3
+131,22032,風呂敷,風呂敷（ふろしき）,"tissu d'emballage, emballage en tissu",N3
+131,22033,至急,至急（しきゅう）,"urgent, pressant",N3
+131,22034,採点,採点（さいてん）,"notation, évaluation, score",N3
+131,22035,定規,定規（じょうぎ）,règle (de mesure),N3
+131,22036,客間,客間（きゃくま）,"salon, salle de réception, chambre d'amis",N3
+131,22037,突き当たり,突（つ）き当（あ）たり,"bout (par ex. de la rue), fond (par ex. d'un couloir)",N3
+131,22038,ラケット,ラケット,raquette (instrument sportif),N3
+131,22039,包装,包装（ほうそう）,"emballage, empaquetage, conditionnement",N3
+131,22040,怠ける,怠（なま）ける,"être paresseux, se relâcher, négliger (par ex. son travail)",N3
+131,22041,ローマ字,ローマ字（じ）,"alphabet latin, romanisation, romaji",N3
+131,22042,秤,秤（はかり）,"balance, machine à peser",N3
+131,22043,掛け算,掛（か）け算（ざん）,multiplication,N3
+131,22044,工芸,工芸（こうげい）,"arts industriels, artisanat",N3
+131,22045,文芸,文芸（ぶんげい）,"littérature, art et lettres, belles-lettres",N3
+131,22046,凍える,凍（こご）える,"être engourdi de froid, geler, être transi, être gelé, geler",N3
+131,22047,しゃぶる,しゃぶる,"sucer, suçoter",N3
+131,22048,輸血,輸血（ゆけつ）,transfusion sanguine,N3
+131,22049,合同,合同（ごうどう）,"combinaison, union, incorporation, amalgamation, fusion, congruence",N3
+131,22050,掃く,掃（は）く,"balayer, brosser",N3
+131,22051,問答,問答（もんどう）,"questions et réponses, dialogue",N3
+131,22052,ピクニック,ピクニック,pique-nique,N3
+131,22053,レジャー,レジャー,loisir,N3
+131,22054,自衛,自衛（じえい）,"autodéfense, légitime défense",N3
+131,22055,友好,友好（ゆうこう）,amitié,N3
+131,22056,養分,養分（ようぶん）,"nourriture, nutriment, alimentation",N3
+131,22057,定期,定期（ていき）,"période fixe, régulier, périodique, abonnement à durée déterminée, dépôt à terme, contrats à terme",N3
+131,22058,ファスナー,ファスナー,fermeture éclair,N3
+131,22059,地帯,地帯（ちたい）,"zone, région, ceinture (géograhique)",N3
+131,22060,割り算,割（わ）り算（ざん）,division,N3
+131,22061,障る,障（さわ）る,"entraver, gêner, interférer avec, affecter, être nuisible à",N3
+131,22062,総量,総量（そうりょう）,quantité totale,N3
+131,22063,坊さん,坊（ぼう）さん,"prêtre bouddhiste, moine, garçon",N3
+131,22064,当番,当番（とうばん）,"être de service, être de garde",N3
+131,22065,羨む,羨（うらや）む,envier,N3
+131,22066,盆地,盆地（ぼんち）,bassin (par ex. entre des montagnes),N3
+131,22067,分数,分数（ぶんすう）,fraction,N3
+131,22068,オルガン,オルガン,orgue,N3
+131,22069,無地,無地（むじ）,"uni, sans ornement",N3
+131,22070,ブローチ,ブローチ,broche (accessoire),N3
+131,22071,羊毛,羊毛（ようもう）,laine,N3
+131,22072,算盤,算盤（そろばん）,"boulier, abaque",N3
+131,22073,元日,元日（がんじつ）,"nouvel an, jour de l'an",N3
+131,22074,道順,道順（みちじゅん）,"itinéraire, route, chemin",N3
+132,23000,独りでに,独（ひと）りでに,"par soi-même, automatiquement, naturellement",N3
+132,23001,煮える,煮（に）える,"bouillir, cuire, cuisiner",N3
+132,23002,断定,断定（だんてい）,"conclusion, décision",N3
+132,23003,造船,造船（ぞうせん）,construction navale,N3
+132,23004,目覚まし,目覚（めざ）まし,"réveil, ouvrir les yeux, garder les yeux ouverts, type de bonbon donné à un enfant après qu'il se réveille d'une sieste",N3
+132,23005,高地,高地（こうち）,"hauteurs, plateau, terrain élevé",N3
+132,23006,技師,技師（ぎし）,"ingénieur, technicien",N3
+132,23007,起訴,起訴（きそ）,"accusations, poursuite (judiciaire), inculpation",N3
+132,23008,新,新（しん）,"nouveau, néo-",N3
+132,23009,ウール,ウール,laine,N3
+132,23010,小数,小数（しょうすう）,"fraction de, fraction décimale",N3
+132,23011,発電,発電（はつでん）,"production (d'électricité), envoi d'un télégramme, télégraphie",N3
+132,23012,スケート,スケート,"patin, patinage",N3
+132,23013,銘々,銘々（めいめい）,"chacun, individuel",N3
+132,23014,馬鹿らしい,馬鹿（ばか）らしい,absurde,N3
+132,23015,ウェイトレス,ウェイトレス,serveuse,N3
+132,23016,プラットホーム,プラットホーム,quai (de gare),N3
+132,23017,容積,容積（ようせき）,"capacité, volume",N3
+132,23018,朗らか,朗（ほが）らか,"lumineux, joyeux, mélodieux, radieux",N3
+132,23019,散らかす,散（ち）らかす,"éparpiller, disperser, laisser en désordre",N3
+132,23020,述語,述語（じゅつご）,prédicat (grammaire),N3
+132,23021,テニスコート,テニスコート,court de tennis,N3
+132,23022,ジェット機,ジェット機（き）,"jet, avion à réaction",N3
+132,23023,防犯,防犯（ぼうはん）,"prévention du crime, prévention de la délinquance",N3
+132,23024,北極,北極（ほっきょく）,"Pôle Nord, l'Arctique",N3
+132,23025,火口,火口（かこう）,"cratère, caldeira, brûleur (par ex. sur un four)",N3
+132,23026,計,計（けい）,"compteur, appareil de mesure, total",N3
+132,23027,厚かましい,厚（あつ）かましい,"impertinent, sans-gêne, effronté, insolent, sans scrupules",N3
+132,23028,瀬,瀬（せ）,"eaux peu profondes, banc de sable, rapides, courant, torrent, position, lieu, chance, opportunité",N3
+132,23029,肌着,肌着（はだぎ）,"sous-vêtement, lingerie, chemise de nuit, maillot de corps",N3
+132,23030,ナイロン,ナイロン,nylon,N3
+132,23031,下旬,下旬（げじゅん）,dernier tiers d'un mois (à partir du 21),N3
+132,23032,夕立,夕立（ゆうだち）,averse du soir (soudaine),N3
+132,23033,炭鉱,炭鉱（たんこう）,"mine de charbon, puits de charbon",N3
+132,23034,チョーク,チョーク,craie (pour tableau),N3
+132,23035,レインコート,レインコート,imperméable,N3
+132,23036,在学,在学（ざいがく）,"(inscrit) à l'école, actuellement étudiant",N3
+132,23037,中旬,中旬（ちゅうじゅん）,"milieu d'un mois, deuxième tiers d'un mois (du 11e au 20e jour d'un mois)",N3
+132,23038,引き算,引（ひ）き算（ざん）,soustraction,N3
+132,23039,長短,長短（ちょうたん）,"longueur, long et court, avantages et inconvénients, points forts et faibles",N3
+132,23040,カセット,カセット,"cassette, cartouche de jeu",N3
+132,23041,エチケット,エチケット,"bonnes manières, étiquette",N3
+132,23042,牧畜,牧畜（ぼくちく）,élevage de bétail,N3
+132,23043,発射,発射（はっしゃ）,"tir, lancement, décharge, catapulte",N3
+132,23044,学術,学術（がくじゅつ）,"science, étude, érudition, apprentissage, arts et sciences, poursuites académiques",N3
+132,23045,憎らしい,憎（にく）らしい,"détestable, odieux, haïssable",N3
+132,23046,観,観（かん）,"regard, apparence, vue, perspective sur ..., vision de ...",N3
+132,23047,祭日,祭日（さいじつ）,"jour férié, jour de fête",N3
+132,23048,破く,破（やぶ）く,"déchirer, violer, vaincre, écraser, détruire",N3
+132,23049,集金,集金（しゅうきん）,collecte d'argent,N3
+132,23050,会館,会館（かいかん）,"salle de réunion, halle",N3
+132,23051,下車,下車（げしゃ）,"descente (d'un train, bus, etc.)",N3
+132,23052,コレラ,コレラ,choléra,N3
+132,23053,一休み,一休（ひとやす）み,"pause (courte), répit",N3
+132,23054,零点,零点（れいてん）,"zéro, aucun point",N3
+132,23055,欲張り,欲張（よくば）り,"avarice, convoitise, cupidité, avidité",N3
+132,23056,可決,可決（かけつ）,"approbation, adoption (d'une motion, d'un projet de loi), homologation",N3
+132,23057,坊ちゃん,坊（ぼっ）ちゃん,"fils (d’autrui), jeune maître, jeune homme naïf d’une famille aisée",N3
+132,23058,出迎え,出迎（でむか）え,"accueil, rencontre, réception (de quelqu'un)",N3
+132,23059,回り道,回（まわ）り道（みち）,"détour, déviation, dérivation",N3
+132,23060,カー,カー,voiture,N3
+132,23061,タイプライター,タイプライター,machine à écrire,N3
+132,23062,モノレール,モノレール,monorail,N3
+132,23063,行員,行員（こういん）,employé de banque,N3
+132,23064,裁縫,裁縫（さいほう）,couture,N3
+132,23065,紙屑,紙屑（かみくず）,"chiffon de papier, chutes de papier, vieux papiers",N3
+132,23066,仲直り,仲直（なかなお）り,"réconciliation, faire la paix avec",N3
+132,23067,ラジカセ,ラジカセ,radio-cassette,N3
+132,23068,具体,具体（ぐたい）,"concret, tangible, matériel",N3
+132,23069,扇ぐ,扇（あお）ぐ,"éventer, inciter, susciter, provoquer",N3
+132,23070,開会,開会（かいかい）,"ouverture (d’une réunion, d'une cérémonie)",N3
+132,23071,経度,経度（けいど）,longitude,N3
+132,23072,列島,列島（れっとう）,"archipel, chaîne d'îles",N3
+132,23073,下線,下線（かせん）,"soulignement, tiret bas",N3
+132,23074,順々,順々（じゅんじゅん）,"l'un après l'autre, à tour de rôle",N3
+133,24000,謙遜,謙遜（けんそん）,"humble, humilité, modestie",N3
+133,24001,イコール,イコール,égal,N3
+133,24002,謎々,謎々（なぞなぞ）,"devinette, énigme, casse-tête",N3
+133,24003,縮れる,縮（ちぢ）れる,"être ondulé, être frisé, être crépu",N3
+133,24004,純情,純情（じゅんじょう）,"cœur pur, naïveté, dévouement désintéressé",N3
+133,24005,経由,経由（けいゆ）,"par, via, en passant par",N3
+133,24006,ウーマン,ウーマン,femme,N3
+133,24007,作製,作製（さくせい）,"fabrication, production",N3
+133,24008,複写,複写（ふくしゃ）,"copie, duplicata, reproduction",N3
+133,24009,ゼミ,ゼミ,séminaire,N3
+133,24010,交差,交差（こうさ）,"croisement, intersection, croisement génétique",N3
+133,24011,円周,円周（えんしゅう）,circonférence,N3
+133,24012,好き好き,好（す）き好（ず）き,question de goût,N3
+133,24013,はきはき,はきはき,"vivement, intelligemment, promptement, avec lucidité",N3
+133,24014,高等,高等（こうとう）,"supérieur, classe élevée, haute qualité",N3
+133,24015,ペンチ,ペンチ,"pinces, tenailles",N3
+133,24016,ぼろ,ぼろ,"chiffon, guenille, vêtements en lambeaux, défaut, délabré, de mauvaise qualité",N3
+133,24017,涼む,涼（すず）む,"se rafraîchir, prendre le frais, profiter de la fraîcheur du soir",N3
+133,24018,免税,免税（めんぜい）,"exemption de droits de douane, exonération fiscale, exonération de droits",N3
+133,24019,単数,単数（たんすう）,singulier,N3
+133,24020,三日月,三日月（みかづき）,"nouvelle lune, croissant de lune",N3
+133,24021,ラッシュアワー,ラッシュアワー,heure de pointe,N3
+133,24022,水産,水産（すいさん）,"produits de la mer, pêcheries",N3
+133,24023,ビルディング,ビルディング,bâtiment,N3
+133,24024,停車,停車（ていしゃ）,"arrêt (d'un train, voiture, etc.)",N3
+133,24025,綴じる,綴（と）じる,"relier, classer, couvrir d'œuf (par ex. un donburi)",N3
+133,24026,上旬,上旬（じょうじゅん）,les dix premiers jours du mois,N3
+133,24027,ずらす,ずらす,"déplacer, faire glisser, échelonner (par ex. des horaires de travail)",N3
+133,24028,仮名遣い,仮名遣（かなづか）い,"orthographe en kana, écriture syllabique",N3
+133,24029,級,級（きゅう）,"classe (par ex. à l'école), niveau, rang",N3
+133,24030,送り仮名,送（おく）り仮名（がな）,terminaison kana (kana écrit après un kanji pour compléter la lecture complète - généralement kun - du mot),N3
+133,24031,御中,御中（おんちゅう）,"et compagnie, messieurs, à l'attention de ...",N3
+133,24032,領事,領事（りょうじ）,consul,N3
+133,24033,日の入り,日（ひ）の入（い）り,coucher du soleil,N3
+133,24034,夜行,夜行（やこう）,"promenade nocturne, train de nuit, voyage de nuit",N3
+133,24035,落第,落第（らくだい）,"échec, abandon d'un cursus",N3
+133,24036,清書,清書（せいしょ）,"copie propre, version propre",N3
+133,24037,全,全（ぜん）,"tout, entier, complet, global, pan-, omni-, toti-",N3
+133,24038,そそっかしい,そそっかしい,"étourdi, distrait, inattentif",N3
+133,24039,洋品店,洋品店（ようひんてん）,magasin qui vend des vêtements et accessoires de style occidental,N3
+133,24040,形容動詞,形容動詞（けいようどうし）,"adjectif en -na, quasi-adjectif, nom adjectival, adjectif nominal",N3
+133,24041,球,球（きゅう）,"sphère, compteur pour balles",N3
+133,24042,四つ角,四（よ）つ角（かど）,"quatre coins, carrefour, croisée des chemins",N3
+133,24043,書き取り,書（か）き取（と）り,"écrire à partir d'un autre texte, écrire un texte en kanji à partir de hiragana, transcription (de matériel oral)",N3
+133,24044,超過,超過（ちょうか）,"excès, surplus, être plus que",N3
+133,24045,帰す,帰（かえ）す,renvoyer (quelqu'un chez lui),N3
+133,24046,煙い,煙（けむ）い,enfumé,N3
+133,24047,瀬戸物,瀬戸物（せともの）,"faïence, vaisselle, porcelaine, céramique",N3
+133,24048,実に,実（じつ）に,"en effet, vraiment, absolument, véritablement, très, assez",N3
+133,24049,店屋,店屋（みせや）,"magasin, boutique, échoppe",N3
+133,24050,製,製（せい）,fabriqué en,N3
+133,24051,並行,並行（へいこう）,"(aller) côte à côte, de front, concurrent, se produisant ensemble, en même temps, parallèle",N3
+133,24052,オートメーション,オートメーション,automatisation,N3
+133,24053,寒帯,寒帯（かんたい）,zone glaciale,N3
+133,24054,言付ける,言付（ことづ）ける,"envoyer un message, transmettre un message, prétexter",N3
+133,24055,潜在,潜在（せんざい）,"potentialité, latence",N3
+133,24056,昨,昨（さく）,"dernier (année dernière), hier",N3
+133,24057,無沙汰,無沙汰（ぶさた）,"ne pas écrire ou contacter pendant un moment, négliger d'écrire (d'appeler, de visiter, etc.), long silence",N3
+133,24058,亜,亜（あ）,"sub-, sous-",N3
+133,24059,それと,それと,"et, et puis",N3
+133,24060,それとも,それとも,"ou, ou bien",N3
+133,24061,見かけ,見（み）かけ,apparence extérieure,N3
+133,24062,お喋り,お喋（しゃべ）り,"bavardage, papotage, bavard, loquace",N3
+133,24063,お代わり,お代（か）わり,"deuxième portion, rab",N3
+133,24064,ダイアグラム,ダイアグラム,"diagramme, schéma",N3
+133,24065,お待ち遠様,お待（ま）ち遠様（どおさま）,Je suis désolé de vous avoir fait attendre,N3
+133,24066,お待たせしました,お待（ま）たせしました,"désolé de vous avoir fait attendre, merci d’avoir attendu",N3
+133,24067,お先に,お先（さき）に,"pardon de partir (avant vous), avant, précédemment",N3
+133,24068,お邪魔します,お邪魔（じゃま）します,"excusez-moi de vous déranger, salutation utilisée en entrant chez quelqu'un",N3
+133,24069,捕る,捕（と）る,"prendre, attraper, capturer",N3
+133,24070,計る,計（はか）る,"mesurer, peser, sonder, chronométrer, conjecturer, inférer, présumer",N3
+133,24071,お構いなく,お構（かま）いなく,ne vous en faites pas pour moi,N3
+133,24072,お掛け下さい,お掛（か）け下（くだ）さい,veuillez vous asseoir,N3
+133,24073,オーバーコート,オーバーコート,pardessus,N3
+133,24074,下らない,下（くだ）らない,"inutile, stupide, trivial, sans intérêt",N3
+134,25000,仕様が無い,仕様（しよう）が無（な）い,"on ne peut rien y faire, c'est inévitable, cela ne sert à rien (de faire quelque chose), il n'y a aucune raison (de faire quelque chose)",N3
+134,25001,やむを得ない,やむを得（え）ない,inévitable,N3
+134,25002,先ほど,先（さき）ほど,"il y a quelque temps, il n’y a pas longtemps, à l’instant",N3
+134,25003,漢和,漢和（かんわ）,"Chine et Japon, chinois et japonais (langues), dictionnaire de kanji",N3
+134,25004,此間,此間（こないだ）,"l’autre jour, récemment, dernièrement, il y a peu",N3
+134,25005,ダイヤ,ダイヤ,diamant,N3
+134,25006,いわゆる,いわゆる,"ce qu'on appelle, le soi-disant, pour ainsi dire",N3
+134,25007,いつまでも,いつまでも,"pour toujours, éternellement, indéfiniment, quoi qu'il arrive",N3
+134,25008,いつでも,いつでも,"à tout moment, toujours, en tout temps",N3
+134,25009,面倒くさい,面倒（めんどう）くさい,"ennuyeux, fatigant, pénible à faire",N3
+134,25010,あれこれ,あれこれ,"une chose ou une autre, ceci et cela, environ, à peu près",N3
+134,25011,あくび,あくび,"bâiller, bâillement, radical « bâillement »",N3
+134,25012,まとまる,まとまる,"s'ordonner, s'oganiser, être en ordre",N3
+134,25013,打付ける,打付（ぶつ）ける,"frapper (par ex. sa tête), heurter, percuter, lancer (une balle, une question, une demande), exprimer, extérioriser (par ex. sa colère)",N3
+134,25014,行ってまいります,行（い）ってまいります,"au revoir, je pars, à plus tard",N3
+134,25015,交ざる,交（ま）ざる,"être mélangé, être mêlé à, s'associer avec, se mêler à, rejoindre",N3
+134,25016,有らゆる,有（あ）らゆる,"tous, chaque",N3
+134,25017,ご無沙汰,ご無沙汰（ぶさた）,"ne pas écrire ou contacter pendant longtemps, long silence",N3
+134,25018,目出度い,目出度（めでた）い,"heureux, auspicieux, propice, joyeux, naïf",N3
+134,25019,応える,応（こた）える,"répondre à, satisfaire (des exigences, des attentes), affecter, avoir un effet sur, être dur pour quelqu'un (chaleur, travail, maladie...)",N3
+134,25020,いよいよ,いよいよ,"enfin, finalement, au pire moment, de plus en plus",N3
+134,25021,打つかる,打（ぶ）つかる,"heurter, entrer en collision avec, se cogner contre, être en conflit, rencontrer, se heurter à, s'affronter",N3
+134,25022,堪らない,堪（たま）らない,"insupportable, intolérable, irrésistible, hors du commun, ne pas pouvoir s'empêcher de, avoir hâte de faire",N3
+134,25023,田んぼ,田（た）んぼ,"rizière, champ de riz, ferme",N3
+134,25024,街角,街角（まちかど）,coin de rue,N3
+134,25025,勿体ない,勿体（もったい）ない,"impie, profane, sacrilège, trop bien, plus que ce qu'on mérite, indigne de, gaspilleur",N3
+134,25026,引っかかる,引（ひ）っかかる,"être coincé dans, s'arrêter par, passer pour une courte visite, être retardé, être impliqué dans, tomber dans un piège, se faire avoir, se soucier de, éclabousser",N3
+134,25027,替わる,替（か）わる,"succéder à, remplacer, prendre la place de, prendre le relais, représenter, être échangé, changer (de place avec)",N3
+134,25028,ねじ,ねじ,"vis, clé (d'une pendule, montre)",N3
+134,25029,間もなく,間（ま）もなく,"bientôt, sous peu, sans avoir le temps de ...",N3
+134,25030,いらっしゃい,いらっしゃい,"bienvenue !, venir, aller, rester",N3
+134,25031,御目出度い,御目出度（おめでた）い,"spécial, de bon augure, propice, heureux, naïf, innocent, bienveillant",N3
+134,25032,領収,領収（りょうしゅう）,"reçu, bon",N3
+134,25033,空き,空（あ）き,"espace, place, vide, ouverture, vacance, libre (siège, temps...), chose inutilisée",N3
+134,25034,歌留多,歌留多（かるた）,"karuta, cartes à jouer traditionnelles japonaises",N3
+134,25035,貸間,貸間（かしま）,chambre à louer,N3
+134,25036,諄い,諄（くど）い,"bavard, verbeux, importun, prolixe, répétitif, interminable, lourd (goût), riche, fort, écoeurant, voyant, criard",N3
+134,25037,しみじみ,しみじみ,"sincèrement, profondément, chaleureusement, intensément, calmement",N3
+134,25038,まとめる,まとめる,"rassembler, collecter, consolider, unifier, conclure, mettre en ordre, établir, décider",N3
+134,25039,当てはめる,当（あ）てはめる,"appliquer, adapter",N3
+134,25040,呼びかける,呼（よ）びかける,"interpeller, accoster, s’adresser à (foule), héler",N3
+134,25041,見っともない,見（み）っともない,"honteux, scandaleux, indécent, inconvenant, déplacé, inapproprié",N3
+134,25042,効く,効（き）く,"être efficace, faire effet, faire son travail, remplir bien sa fonction, être possible à utiliser",N3
+134,25043,混ぜる,混（ま）ぜる,"mélanger, remuer, mixer, brasser",N3
+134,25044,逆さま,逆（さか）さま,"inversé, à l'envers",N3
+134,25045,ためらう,ためらう,hésiter,N3
+134,25046,済まない,済（す）まない,"inexcusable, injustifiable, impardonnable, plein de remords, rongé par la conscience, désolé, merci",N3
+134,25047,ひっくり返る,ひっくり返（かえ）る,"être renversé, être bouleversé, basculer, être inversé, tomber, se renverser",N3
+134,25048,日付,日付（ひづけ）,date,N3
+134,25049,よると,よると,selon,N3
+134,25050,お手伝いさん,お手伝（てつだ）いさん,"femme de ménage, bonne",N3
+134,25051,割合に,割合（わりあい）に,comparativement,N3
+134,25052,孰れ,孰（いず）れ,"où, lequel, qui, de toute façon, en tout cas, tôt ou tard",N3
+134,25053,割と,割（わり）と,"relativement, comparativement",N3
+134,25054,傾らか,傾（なだ）らか,"en pente douce, doux, facile",N3
+134,25055,碗,碗（わん）,"bol (en céramique, en porcelaine)",N3
+134,25056,著す,著（あらわ）す,"écrire, publier, rédiger",N3
+134,25057,じゃん拳,じゃん拳（けん）,pierre-feuille-ciseaux (jeu),N3
+134,25058,待合室,待合室（まちあいしつ）,salle d'attente,N3
+134,25059,ともかく,ともかく,"de toute façon, dans tout les cas, d'une manière ou d'une autre, quoi qu'il en soit",N3
+134,25060,少しも,少（すこ）しも,"rien du tout, même pas un peu",N3
+134,25061,俄か,俄（にわ）か,"soudain, de but en blanc, imprévu, inattendu, improvisé",N3
+134,25062,建つ,建（た）つ,"être érigé, être construit",N3
+134,25063,まごまご,まごまご,"confus, troublé, perdu",N3
+134,25064,しゃっくり,しゃっくり,hoquet,N3
+134,25065,常に,常（つね）に,"toujours, constamment",N3
+134,25066,まぶた,まぶた,paupière,N3
+134,25067,宛名,宛名（あてな）,nom/adresse du destinataire,N3
+134,25068,ようやく,ようやく,"enfin, finalement, tout juste, de justesse, à peine, difficilement, progressivement, petit à petit",N3
+134,25069,しばしば,しばしば,"souvent, encore et encore, fréquemment",N3
+134,25070,もたれる,もたれる,"s'appuyer sur, s'adosser à, peser lourd (sur l'estomac), être difficile à digérer",N3
+134,25071,もしかすると,もしかすると,"peut-être, possiblement, éventuellement",N3
+134,25072,診る,診（み）る,examiner (médicalement),N3
+134,25073,こうして,こうして,"ainsi, de cette manière",N3
+134,25074,乗り越し,乗（の）り越（こ）し,"dépasser (son arrêt, sa gare)",N3
+135,26000,叔父,叔父（おじ）,oncle (plus jeune que nos parents),N3
+135,26001,尚,尚（なお）,"de plus, d'autre part, pourtant, davantage, en outre, plus, supplémentaire",N3
+135,26002,治める,治（おさ）める,"gouverner, gérer, régir, maîtriser",N3
+135,26003,小母さん,小母（おば）さん,"vieille dame, m'dame (vocatif)",N3
+135,26004,小人,小人（しょうにん）,"enfant, nain, personne de petite taille, personne étroite d'esprit",N3
+135,26005,へそ,へそ,"nombril, centre, point principal",N3
+135,26006,刺身,刺身（さしみ）,sashimi (poisson ou crustacé cru tranché),N3
+135,26007,ひっくり返す,ひっくり返（かえ）す,"retourner, renverser, mettre à l'envers, mettre à l'endroit, bouleverser",N3
+135,26008,流行り,流行（はや）り,"mode, tendance, fashion, prévalence (par ex. d'une maladie)",N3
+135,26009,何となく,何（なん）となく,"d'une manière ou d'une autre, pour une raison ou une autre, vaguement",N3
+135,26010,一昨昨日,一昨昨日（さきおととい）,"deux jours avant hier, il y a trois jours",N3
+135,26011,一先ず,一先（ひとま）ず,pour le moment,N3
+135,26012,のんき,のんき,"insouciant, optimiste, imprudent, irréfléchi, inattentif, nonchalant",N3
+135,26013,射す,射（さ）す,"briller, rayonner",N3
+135,26014,とんでも無い,とんでも無（な）い,"impensable, inattendu, scandaleux, pas du tout !, loin de là !, impossible !, absurde !, je vous en prie",N3
+135,26015,放れる,放（はな）れる,"être affranchi, être libéré, être relâché",N3
+135,26016,でたらめ,でたらめ,"absurde, insensé, conneries, balivernes, aléatoire",N3
+135,26017,ちり紙,ちり紙（がみ）,"mouchoir (en papier), papier toilette",N3
+135,26018,和英,和英（わえい）,Japonais-Anglais,N3
+135,26019,注す,注（さ）す,"verser, servir (des boissons), mettre (du rouge à lèvres, etc.), appliquer, colorer, teindre, allumer (un feu), brûler",N3
+135,26020,それなら,それなら,"dans ce cas ..., si c'est le cas ...",N3
+135,26021,疾っくに,疾（と）っくに,"il y a longtemps, déjà",N3
+135,26022,それなのに,それなのに,"et pourtant, malgré cela, pour autant",N3
+135,26023,物差し,物差（ものさ）し,"règle, mesure",N3
+135,26024,その上,その上（うえ）,"de plus, en plus, en outre",N3
+135,26025,そのまま,そのまま,"sans changement, tel quel",N3
+135,26026,れんが,れんが,brique,N3
+135,26027,そう言えば,そう言（い）えば,"ce qui me fait penser..., maintenant que vous le dites..., à ce sujet ...",N3
+135,26028,うがい,うがい,"gargarisme, rinçage de bouche",N3
+135,26029,すり,すり,pickpocket,N3
+135,26030,しゃれ,しゃれ,"blague, jeu de mots, élégant, bien habillé, raffiné",N3
+135,26031,尻尾,尻尾（しっぽ）,queue (d'un animal),N3
+135,26032,点く,点（つ）く,"s’allumer (par ex. l’électricité), être allumé, prendre feu",N3
+135,26033,湯のみ,湯（ゆ）のみ,tasse à thé,N3
+135,26034,当てはまる,当（あ）てはまる,"appliquer (une règle), être applicable, entrer dans (une catégorie), remplir",N3
+135,26035,裁つ,裁（た）つ,couper (du tissu),N3
+135,26036,しかも,しかも,"de plus, en outre, néanmoins, et pourtant",N3
+135,26037,ご免ください,ご免（めん）ください,"puis-je entrer ?, veuillez me pardonner, je suis désolé",N3
+135,26038,初めに,初（はじ）めに,"premièrement, tout d'abord, pour commencer, au début, introduction, préface",N3
+135,26039,湧く,湧（わ）く,"jaillir, surgir (eau), apparaître (soudainement : sueur, larmes, etc.), ressentir des émotions (joie, courage, etc.), éclore (surtout pour les insectes parasites, etc.)",N3
+135,26040,こしらえる,こしらえる,"fabriquer, confectionner",N3
+135,26041,先先週,先先週（せんせんしゅう）,"il y a deux semaines, il y a quinze jours",N3
+135,26042,今にも,今（いま）にも,"à tout moment, bientôt, sur le point",N3
+135,26043,先々月,先々月（せんせんげつ）,"avant-dernier mois, il y a deux mois",N3
+135,26044,絶えず,絶（た）えず,"constamment, toujours, continuellement, sans cesse",N3
+135,26045,くれぐれも,くれぐれも,"à plusieurs reprises, sincèrement, vivement",N3
+135,26046,思わず,思（おも）わず,"involontairement, par réflexe, spontanément, instinctivement, sans réfléchir",N3
+135,26047,申し訳ない,申（もう）し訳（わけ）ない,"je suis désolé, (c'est) inexcusable, je me sens coupable, merci beaucoup (pour l'aide, etc.)",N3
+135,26048,明々後日,明々後日（しあさって）,"dans trois jours, après après demain",N3
+135,26049,御目出度う,御目出度（おめでと）う,félicitations !,N3
+135,26050,お目にかかる,お目（め）にかかる,"rencontrer (quelqu'un de statut supérieur), être reconnu (surtout par quelqu'un de statut supérieur)",N3

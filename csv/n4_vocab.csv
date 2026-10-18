@@ -1,0 +1,1096 @@
+﻿unit,ordre,mot,furigana,sens,niveau
+87,0,来,来（らい）,"prochain (année, etc.), depuis (le mois dernier, etc.)",N4
+87,1,ダンス,ダンス,danse,N4
+87,2,ごめん,ごめん,"pardon, je suis désolé, puis-je entrer ?, permission, congé, renvoi, ne pas vouloir",N4
+87,3,アフリカ,アフリカ,Afrique,N4
+87,4,形,形（かたち）,"forme, silhouette, visage",N4
+87,5,慣れる,慣（な）れる,"s'habituer à, se familiariser avec, devenir compétent en, devenir apprivoisé, devenir domestiqué",N4
+87,6,後輩,後輩（こうはい）,"cadet (au travail, à l'école...), junior, personne plus jeune",N4
+87,7,親,親（おや）,"parent, parents, croupier (cartes, mah-jong...), fondateur, propriétaire (d'un animal)",N4
+87,8,アニメ,アニメ,"anime, animation, dessin animé, film d'animation",N4
+87,9,ジャケット,ジャケット,"veste, jaquette (de livre, de CD...)",N4
+87,10,どんどん,どんどん,"bruit de tambour, rapidement, de manière régulière",N4
+87,11,増える,増（ふ）える,"augmenter, se multiplier",N4
+87,12,音,音（おと）,"son, bruit, note, renommée, lecture kanji d'origine chinoise",N4
+87,13,免許,免許（めんきょ）,"permis, autorisation, licence, certificat",N4
+87,14,彼ら,彼（かれ）ら,"ils (généralement masculin), eux",N4
+87,15,畳,畳（たたみ）,"tatami, revêtements de sol japonais en paille",N4
+87,16,匂い,匂（にお）い,"odeur, parfum, senteur, arôme, puanteur, aura, effluve, saveur",N4
+87,17,君,君（きみ）,"tu, toi, copain, pote, monarque, dirigeant, souverain, maître",N4
+87,18,君,君（くん）,"Monsieur (jeune), suffixe familier pour les noms, maître, garçon",N4
+87,19,絶対に,絶対（ぜったい）に,"absolument, inconditionnellement, jamais (avec un verbe négatif)",N4
+87,20,犯人,犯人（はんにん）,"délinquant, criminel, coupable",N4
+87,21,喧嘩,喧嘩（けんか）,"querelle, bagarre, combat, dispute",N4
+87,22,逃げる,逃（に）げる,"fuir, s'enfuir, s'échapper",N4
+87,23,プレゼント,プレゼント,"cadeau, offrir un cadeau",N4
+87,24,持っていく,持（も）っていく,"prendre, emporter (quelque chose)",N4
+87,25,前,前（ぜん）,"précédent, le dernier, ancien, pré-, avant",N4
+87,26,必ず,必（かなら）ず,"toujours, sans exception, nécessairement, sans faute",N4
+87,27,私,私（わたくし）,"je (formel), moi, personnel (affaires, etc.), privé, égoïsme, partialité, confidentialité",N4
+87,28,出来る,出来（でき）る,"pouvoir, être capable de faire, être prêt, être achevé, être bon en, devenir intime, être élevé, tomber enceinte",N4
+87,29,ずっと,ずっと,"de manière continue, tout le temps, très, de loin, il y a longtemps, droit",N4
+87,30,やっと,やっと,"enfin, finalement, à peine, de justesse, tout juste",N4
+87,31,クリスマス,クリスマス,Noël,N4
+87,32,妻,妻（つま）,"épouse, chérie, garniture (en part. avec du sashimi), embellissement",N4
+87,33,厳しい,厳（きび）しい,"sévère, strict, rigide, grave, solennel, majestueux, intense (froid), difficile",N4
+87,34,空港,空港（くうこう）,aéroport,N4
+87,35,大統領,大統領（だいとうりょう）,"président (d'une nation), patron, chef",N4
+87,36,信じる,信（しん）じる,"croire à, faire confiance à, avoir confiance en, se fier à, avoir foi en",N4
+87,37,痩せる,痩（や）せる,"mincir, maigrir, perdre du poids, être stérile, être infertile, être aride",N4
+87,38,不安,不安（ふあん）,"anxiété, inquiétude, peur, insécurité",N4
+87,39,がっかり,がっかり,"être déçu, être abattu, être découragé, perdre courage",N4
+87,40,具合,具合（ぐあい）,"condition, état, manière, santé",N4
+87,41,生きる,生（い）きる,"vivre, exister, gagner sa vie, subsister, être en vigueur, prendre vie, être animé",N4
+87,42,夕食,夕食（ゆうしょく）,"repas du soir, dîner",N4
+87,43,本当に,本当（ほんとう）に,"vraiment, réellement",N4
+87,44,驚く,驚（おどろ）く,"être surpris, être étonné",N4
+87,45,変,変（へん）,"étrange, bizarre, excentrique, drôle, suspect, louche, changement, incident",N4
+87,46,褒める,褒（ほ）める,"faire l'éloge de, louer, dire du bien",N4
+87,47,泥棒,泥棒（どろぼう）,"voleur, cambrioleur",N4
+87,48,殴る,殴（なぐ）る,"frapper, donner un coup, battre",N4
+88,1000,留守番,留守番（るすばん）,"gardien (de la maison), gardiennage, rester à la maison, personne qui garde la maison",N4
+88,1001,忘れ物,忘（わす）れ物（もの）,"objet perdu, objet oublié",N4
+88,1002,虫,虫（むし）,"insecte, ver",N4
+88,1003,急,急（きゅう）,"urgent, soudain, brusque, aigu, raide, rapide, crise, précipitation, hâte",N4
+88,1004,濡れる,濡（ぬ）れる,se mouiller,N4
+88,1005,お客さん,お客（きゃく）さん,"invité, visiteur, client, spectateur, passager",N4
+88,1006,書類,書類（しょるい）,"document, papier officiel",N4
+88,1007,布団,布団（ふとん）,"futon (matelas japonais posé sur le sol), coussin rond (méditation zen)",N4
+88,1008,入院,入院（にゅういん）,hospitalisation,N4
+88,1009,その後,その後（あと）,"après cela, ensuite, plus tard",N4
+88,1010,壁,壁（かべ）,"mur, cloison, barrière, obstacle",N4
+88,1011,餌,餌（えさ）,"nourriture (pour animaux), fourrage, appât, leurre, tentation",N4
+88,1012,能力,能力（のうりょく）,"capacité, aptitude, faculté",N4
+88,1013,無理,無理（むり）,"déraisonnable, impossible, forcé, contraint, excessif (travail, etc.), travailler trop dur",N4
+88,1014,締め切り,締（し）め切（き）り,"date limite, fermeture, cloture, fin, fermé (porte, fenêtre)",N4
+88,1015,文字,文字（もじ）,"lettre (de l'alphabet), caractère, écriture",N4
+88,1016,連絡,連絡（れんらく）,"contacter, communication, appel, message, connexion",N4
+88,1017,卒業,卒業（そつぎょう）,"obtention du diplôme, achèvement (d'un cours), passer à autre chose",N4
+88,1018,番組,番組（ばんぐみ）,"émission, programme (TV...)",N4
+88,1019,食事,食事（しょくじ）,repas,N4
+88,1020,グラス,グラス,"verre (matière, récipient), lunettes",N4
+88,1021,割れる,割（わ）れる,"se casser, être brisé, se fissurer, se déchirer, être divisé, être identifié, devenir clair",N4
+88,1022,お湯,お湯（ゆ）,"eau chaude, bain chaud",N4
+88,1023,お尻,お尻（しり）,"fesses, postérieur",N4
+88,1024,長い間,長（なが）い間（あいだ）,"longtemps, longuement",N4
+88,1025,乾く,乾（かわ）く,sécher,N4
+88,1026,一生懸命,一生懸命（いっしょうけんめい）,"très fort, de toutes ses forces",N4
+88,1027,海外旅行,海外旅行（かいがいりょこう）,"voyage à l'étranger, voyage outre-mer",N4
+88,1028,公務員,公務員（こうむいん）,"fonctionnaire, employé du gouvernement, agent public",N4
+88,1029,給料,給料（きゅうりょう）,"salaire, rémunération, paie",N4
+88,1030,昼食,昼食（ちゅうしょく）,"déjeuner, repas de midi, nourriture servie lors d'une cérémonie du thé",N4
+88,1031,失敗,失敗（しっぱい）,"échec, erreur, faute, bévue",N4
+88,1032,携帯,携帯（けいたい）,"port (sur soi ou à la main), téléphone portable",N4
+88,1033,握手,握手（あくしゅ）,poignée de main,N4
+88,1034,不味い,不味（まず）い,"mauvais (goût), infect, terrible, maladroit, quelconque, gênant",N4
+88,1035,貯める,貯（た）める,"économiser, épargner",N4
+88,1036,捕まえる,捕（つか）まえる,"attraper, arrêter, capturer",N4
+88,1037,場所,場所（ばしょ）,"lieu, emplacement, endroit, position, place, espace, tournoi de sumo",N4
+88,1038,多く,多（おお）く,"beaucoup, nombreux, en grande quantité, la plupart (de), principalement",N4
+88,1039,ちょうど,ちょうど,"exactement, précisément, juste, tout à fait, comme si",N4
+88,1040,言語,言語（げんご）,langue,N4
+88,1041,息子,息子（むすこ）,fils,N4
+88,1042,似合う,似合（にあ）う,"convenir, correspondre, devenir, ressembler",N4
+88,1043,そうだ,そうだ,"c'est ainsi, c'est vrai, il me semble, on dit que",N4
+88,1044,準備,準備（じゅんび）,"préparation, préparatifs, arrangements, dispositions",N4
+88,1045,数学,数学（すうがく）,"mathématiques, arithmétique",N4
+88,1046,小説,小説（しょうせつ）,"roman, (court) récit",N4
+88,1047,留守,留守（るす）,"absence, être absent de chez soi, gardien (de la maison), négligence (de ses études)",N4
+88,1048,健康,健康（けんこう）,"santé, sain, en forme, solide, bien-portant",N4
+88,1049,ワープロ,ワープロ,traitement de texte,N4
+89,2000,環境,環境（かんきょう）,"environnement, circonstance",N4
+89,2001,そう,そう,"semblant être, ayant l'air de",N4
+89,2002,駐車場,駐車場（ちゅうしゃじょう）,"parking, place de stationnement",N4
+89,2003,美しい,美（うつく）しい,"beau, magnifique, ravissant",N4
+89,2004,重い,重（おも）い,"lourd (poids, sentiment), lent, pesant, déprimé, sombre, grave, important, sérieux",N4
+89,2005,汚す,汚（よご）す,"salir, tacher, polluer, contaminer, déshonorer, souiller",N4
+89,2006,深い,深（ふか）い,"profond, dense, épais, proche (relation), intime, intense, fort, tard",N4
+89,2007,素晴らしい,素晴（すば）らしい,"merveilleux, splendide, magnifique",N4
+89,2008,やった,やった,"hourra, youpi, ouah, oui, super, génial",N4
+89,2009,とか,とか,"et ainsi de suite, tel que, quelque chose comme, un (certain), on dit que ..., ou autre",N4
+89,2010,韓国,韓国（かんこく）,"Corée du Sud, République de Corée, Empire coréen",N4
+89,2011,味噌,味噌（みそ）,"miso (condiment à base de soja fermenté), moment clé, personne faible",N4
+89,2012,ああ,ああ,"comme ça (loin du locuteur et de l'interlocuteur), ainsi",N4
+89,2013,人形,人形（にんぎょう）,"poupée, marionnette",N4
+89,2014,ハイキング,ハイキング,randonnée,N4
+89,2015,履歴書,履歴書（りれきしょ）,"curriculum vitae, CV",N4
+89,2016,諦める,諦（あきら）める,"abandonner, renoncer, se résigner (à)",N4
+89,2017,台風,台風（たいふう）,"typhon, ouragan",N4
+89,2018,ほとんど,ほとんど,"principalement, presque tout, quasiment, tout sauf, à peu près",N4
+89,2019,苦い,苦（にが）い,amer,N4
+89,2020,事故,事故（じこ）,"accident, incident, problème, circonstances, raisons",N4
+89,2021,競争,競争（きょうそう）,"compétition, concours, concourir",N4
+89,2022,間に合う,間（ま）に合（あ）う,"arriver à temps, être à l'heure, convenir, être suffisant",N4
+89,2023,大分,大分（だいぶ）,"considérablement, fortement, très, beaucoup",N4
+89,2024,バイク,バイク,"moto, motocyclette",N4
+89,2025,展覧会,展覧会（てんらんかい）,exposition,N4
+89,2026,途中,途中（とちゅう）,"en chemin, en route, au milieu de, à mi-chemin",N4
+89,2027,面接,面接（めんせつ）,entretien (par ex. pour un emploi),N4
+89,2028,郵便局,郵便局（ゆうびんきょく）,bureau de poste,N4
+89,2029,恥ずかしい,恥（は）ずかしい,"timide, gêné, embarrassé, mal à l'aise, honteux, humiliant",N4
+89,2030,スピーチ,スピーチ,discours,N4
+89,2031,宇宙人,宇宙人（うちゅうじん）,"extraterrestre, alien",N4
+89,2032,離れる,離（はな）れる,"être séparé, s'éloigner, quitter (un emploi, etc.), perdre le contact avec",N4
+89,2033,味,味（あじ）,"goût, saveur, charme, intelligent, astucieux",N4
+89,2034,ギター,ギター,guitare,N4
+89,2035,嫌,嫌（いや）,"désagréable, détestable, réticent",N4
+89,2036,帰り,帰（かえ）り,"retour, chemin du retour",N4
+89,2037,サンドイッチ,サンドイッチ,sandwich,N4
+89,2038,ポップコーン,ポップコーン,pop-corn,N4
+89,2039,きっと,きっと,"très probablement, fermement, sans relâche, rigide, soudainement, brusquement",N4
+89,2040,調べる,調（しら）べる,"examiner, enquêter, vérifier, s'informer, rechercher",N4
+89,2041,遅れる,遅（おく）れる,"être en retard, être retardé, être à la traîne",N4
+89,2042,サンダル,サンダル,sandale,N4
+89,2043,砂,砂（すな）,"sable, gravier, poussière (d'or, d'argent)",N4
+89,2044,起こる,起（お）こる,"se produire, arriver",N4
+89,2045,このように,このように,"de cette manière, de cette façon, comme ça",N4
+89,2046,スープ,スープ,soupe (à l'occidentale),N4
+89,2047,洋服,洋服（ようふく）,vêtements de style occidental,N4
+89,2048,歯医者,歯医者（はいしゃ）,dentiste,N4
+89,2049,昼休み,昼休（ひるやす）み,"pause déjeuner, pause de midi, récréation de midi",N4
+90,3000,翻訳,翻訳（ほんやく）,"traduction, déchiffrement, décryptage",N4
+90,3001,法律,法律（ほうりつ）,loi,N4
+90,3002,庭,庭（にわ）,"jardin, parc, terrain, cour, champ (d'action), zone",N4
+90,3003,勝つ,勝（か）つ,"gagner, être victorieux",N4
+90,3004,席,席（せき）,"siège, lieu (d'un rassemblement...), position, poste",N4
+90,3005,今夜,今夜（こんや）,"ce soir, cette nuit",N4
+90,3006,相談,相談（そうだん）,"consultation, demander conseil (à quelqu'un), discussion",N4
+90,3007,足りる,足（た）りる,"être suffisant, suffire, valoir la peine de, faire (le travail)",N4
+90,3008,毎月,毎月（まいつき）,"chaque mois, tous les mois, mensuel",N4
+90,3009,地震,地震（じしん）,tremblement de terre,N4
+90,3010,出張,出張（しゅっちょう）,"voyage d'affaires, mission officielle",N4
+90,3011,インターネット,インターネット,Internet,N4
+90,3012,待ち合わせ,待（ま）ち合（あ）わせ,"rendez-vous, (se) retrouver",N4
+90,3013,戦争,戦争（せんそう）,guerre,N4
+90,3014,タイプ,タイプ,"type, genre, sorte, style, machine à écrire, dactylographie",N4
+90,3015,向かう,向（む）かう,"faire face, aller vers",N4
+90,3016,変える,変（か）える,"changer, modifier, transformer, convertir, réformer",N4
+90,3017,暖房,暖房（だんぼう）,chauffage,N4
+90,3018,旅館,旅館（りょかん）,"ryokan, auberge japonaise",N4
+90,3019,スクリーン,スクリーン,écran,N4
+90,3020,原因,原因（げんいん）,"cause, origine, source",N4
+90,3021,育てる,育（そだ）てる,"élever, éduquer, former, enseigner, développer",N4
+90,3022,遠く,遠（とお）く,"loin, éloigné, à distance, de loin",N4
+90,3023,はっきり,はっきり,"clairement, distinctement, être précis, être clair, se clarifier",N4
+90,3024,星,星（ほし）,"étoile, délinquant, coupable (argot policier)",N4
+90,3025,急に,急（きゅう）に,"rapidement, vite, précipitamment, soudainement, brusquement, de manière inattendue",N4
+90,3026,夫,夫（おっと）,mari,N4
+90,3027,値段,値段（ねだん）,"prix, coût",N4
+90,3028,就職,就職（しゅうしょく）,"trouver un emploi, obtenir un travail",N4
+90,3029,引退,引退（いんたい）,"prendre sa retraite, se retirer",N4
+90,3030,若者,若者（わかもの）,"jeune homme, jeune femme, jeunes gens, la jeunesse, les jeunes",N4
+90,3031,安全,安全（あんぜん）,"sécurité, sûreté",N4
+90,3032,浅い,浅（あさ）い,"peu profond, superficiel (blessure), léger (sommeil), pâle, insuffisant (connaissance), court (temps)",N4
+90,3033,品物,品物（しなもの）,"biens, article, marchandise, produit",N4
+90,3034,反対,反対（はんたい）,"opposition, résistance, objection, inverse, opposé, contraste",N4
+90,3035,ハンドバッグ,ハンドバッグ,"sac à main, pochette",N4
+90,3036,売り切れ,売（う）り切（き）れ,"épuisé, complet",N4
+90,3037,大体,大体（だいたい）,"grandes lignes, essentiel, général, dans l'ensemble, approximativement, pour commencer",N4
+90,3038,あんな,あんな,"un tel (loin du locuteur et de l'interlocuteur ou inconnu des deux), comme ça, ce genre de",N4
+90,3039,そんな,そんな,"tel (actions ou idées de l'interlocuteur), pareil, ce genre de",N4
+90,3040,技術,技術（ぎじゅつ）,"art, artisanat, technique, technologie, ingénierie, compétence",N4
+90,3041,珍しい,珍（めずら）しい,"inhabituel, rare, insolite, nouveau, original, beau (par ex. cadeau)",N4
+90,3042,電池,電池（でんち）,"pile, batterie",N4
+90,3043,ファイル,ファイル,fichier,N4
+90,3044,冷房,冷房（れいぼう）,"climatisation, air conditionné",N4
+90,3045,チェック,チェック,"vérification, inspection, à carreaux, quadrillé, addition (restaurant), échec (échecs)",N4
+90,3046,以上,以上（いじょう）,"plus que, au dessus, et plus, pas moins que, ci-dessus, la fin",N4
+90,3047,参加,参加（さんか）,"participation, adhésion, engagement",N4
+90,3048,運ぶ,運（はこ）ぶ,"porter, transporter, déplacer, aller, manier (un outil), utiliser, progresser",N4
+90,3049,以下,以下（いか）,"moins que, en dessous, et moins, ne dépassant pas, ci-dessous, le reste",N4
+91,4000,以外,以外（いがい）,"à l'exception de, sauf",N4
+91,4001,外国語,外国語（がいこくご）,langue étrangère,N4
+91,4002,間違い,間違（まちが）い,"erreur, faute, bévue, problème, conduite inappropriée (par ex. entre un homme et une femme)",N4
+91,4003,グループ,グループ,groupe (de personnes),N4
+91,4004,字,字（じ）,"caractère, lettre, écriture, calligraphie",N4
+91,4005,一度,一度（いちど）,"une fois, un moment, temporairement, un degré, un ton",N4
+91,4006,届ける,届（とど）ける,"envoyer, expédier, livrer, transmettre, faire une déclaration, rapporter, notifier",N4
+91,4007,ペラペラ,ペラペラ,"couramment (parler une langue), incessamment (parler), l'un après l'autre (feuilleter des pages), mince (papier, tissu...)",N4
+91,4008,真ん中,真（ま）ん中（なか）,"milieu, centre, cœur",N4
+91,4009,鹿,鹿（しか）,"cerf, cervidé",N4
+91,4010,竹,竹（たけ）,"bambou, milieu (d'un système de classement à trois niveaux)",N4
+91,4011,現金,現金（げんきん）,"espèces, argent liquide, monnaie, mercenaire, intéressé, calculateur",N4
+91,4012,期間,期間（きかん）,"période, terme, intervalle",N4
+91,4013,経験,経験（けいけん）,expérience,N4
+91,4014,見物,見物（けんぶつ）,"tourisme, regarder, visionner, touriste, observateur, spectateur",N4
+91,4015,研究,研究（けんきゅう）,"étude, recherche, enquête",N4
+91,4016,研究室,研究室（けんきゅうしつ）,"laboratoire, salle de séminaire, bureau d'un professeur",N4
+91,4017,父親,父親（ちちおや）,père,N4
+91,4018,ガソリン,ガソリン,"essence, pétrole",N4
+91,4019,工場,工場（こうじょう）,"usine, atelier, moulin, fabrique",N4
+91,4020,場合,場合（ばあい）,"cas, situation, occasion",N4
+91,4021,数,数（かず）,"chiffre, nombre, quantité",N4
+91,4022,行動,行動（こうどう）,"action, conduite, comportement, mobilisation",N4
+91,4023,助ける,助（たす）ける,"sauver, secourir, aider, soutenir (financièrement), faciliter, stimuler",N4
+91,4024,片付ける,片付（かたづ）ける,"ranger, arranger, régler (problème), terminer, éliminer quelqu'un",N4
+91,4025,ポスター,ポスター,"affiche, poster",N4
+91,4026,戻る,戻（もど）る,"revenir en arrière, récupérer, être restitué, rebondir, revenir en position initiale",N4
+91,4027,デザート,デザート,"dessert, désert",N4
+91,4028,閉まる,閉（し）まる,"être fermé, se fermer, être ferme (d'un corps, visage), être serré, devenir sobre",N4
+91,4029,亡くなる,亡（な）くなる,mourir,N4
+91,4030,起こす,起（お）こす,"élever, relever, réveiller, éveiller, provoquer, déclencher, générer, produire, établir",N4
+91,4031,自分で,自分（じぶん）で,"par moi-même, en personne, par soi-même",N4
+91,4032,負ける,負（ま）ける,"perdre, être vaincu, se rendre, être inférieur à, baisser le prix",N4
+91,4033,是非,是非（ぜひ）,"volontiers, absolument, avec plaisir, coûte que coûte, je vous en prie, vrai ou faux, pour et contre",N4
+91,4034,寄る,寄（よ）る,"s'approcher, se rapprocher, se réunir, passer (en allant quelque part), vieillir, être influencé par",N4
+91,4035,交通,交通（こうつう）,"trafic, transport, communication, échange (d'idées, etc.), relations",N4
+91,4036,もし,もし,"si, au cas où, en supposant",N4
+91,4037,別れる,別（わか）れる,"se séparer (de personnes), rompre, perdre (un proche)",N4
+91,4038,絵文字,絵文字（えもじ）,"emoji, smiley, émoticône",N4
+91,4039,感情,感情（かんじょう）,"émotion, sentiment, sentiments",N4
+91,4040,表す,表（あらわ）す,"représenter, révéler, afficher, exprimer",N4
+91,4041,利用,利用（りよう）,"utilisation, emploi, usage",N4
+91,4042,建てる,建（た）てる,"construire, édifier",N4
+91,4043,役に立つ,役（やく）に立（た）つ,être utile,N4
+91,4044,バッグ,バッグ,sac,N4
+91,4045,用意,用意（ようい）,"préparation, arrangements, se préparer, préparer (un repas...)",N4
+91,4046,そんなに,そんなに,"autant, tellement, si, comme ça",N4
+91,4047,柔道,柔道（じゅうどう）,judo,N4
+91,4048,別,別（べつ）,"autre, différent, distinction, autre, particulier, séparé, supplémentaire, exception",N4
+91,4049,結婚式,結婚式（けっこんしき）,"cérémonie de mariage, noces",N4
+92,5000,招待,招待（しょうたい）,invitation,N4
+92,5001,周り,周（まわ）り,"circonférence, périmètre, alentours, environs, quartier, voisinage",N4
+92,5002,仕方,仕方（しかた）,"façon, méthode, moyen",N4
+92,5003,愛す,愛（あい）す,aimer,N4
+92,5004,淹れる,淹（い）れる,"préparer (du thé, du café, etc.), infuser une boisson (avec de l'eau chaude)",N4
+92,5005,交換,交換（こうかん）,"échange, remplacement",N4
+92,5006,パパ,パパ,"papa, père",N4
+92,5007,確認,確認（かくにん）,"confirmation, vérification, validation, contrôle, identification",N4
+92,5008,鳴る,鳴（な）る,"sonner, résonner, retentir, faire écho, tinter, gronder",N4
+92,5009,太陽,太陽（たいよう）,"soleil, solaire",N4
+92,5010,都合が悪い,都合（つごう）が悪（わる）い,incommode,N4
+92,5011,期限,期限（きげん）,"période, durée, limite de temps, échéance, date limite",N4
+92,5012,過ぎる,過（す）ぎる,"traverser, dépasser, être terminé, surpasser, être excessif, être trop",N4
+92,5013,屋上,屋上（おくじょう）,"toit, toit-terrasse",N4
+92,5014,お帰り,お帰（かえ）り,"retour, bienvenue à la maison",N4
+92,5015,なさる,なさる,faire,N4
+92,5016,いらっしゃる,いらっしゃる,"venir, aller, être (quelque part), être en train de (faire)",N4
+92,5017,校長,校長（こうちょう）,"directeur, proviseur, principal",N4
+92,5018,あちら,あちら,"par là, là-bas, celui-là, cette personne là, pays étranger (surtout occidental)",N4
+92,5019,お子さん,お子（こ）さん,enfant,N4
+92,5020,任せる,任（まか）せる,"confier (une tâche) à quelqu'un, s'en remettre à, laisser suivre son cours naturel, compter sur",N4
+92,5021,募集,募集（ぼしゅう）,"recrutement, embauche, invitation, collecte (de fonds, dons...), sollicitation",N4
+92,5022,少々,少々（しょうしょう）,"juste une minute, petite quantité",N4
+92,5023,パスポート,パスポート,passeport,N4
+92,5024,壊れる,壊（こわ）れる,"être cassé, se casser, échouer",N4
+92,5025,予定,予定（よてい）,"plan, programme, arrangement, intention",N4
+92,5026,愛,愛（あい）,"amour, affection, soin, attachement, désir, envie",N4
+92,5027,水泳,水泳（すいえい）,natation,N4
+92,5028,今すぐ,今（いま）すぐ,"tout de suite, immédiatement, maintenant",N4
+92,5029,きつい,きつい,"intense, sévère, difficile, puissant, déterminé, fort, serré",N4
+92,5030,薄い,薄（うす）い,"fin, mince, pâle, léger, dilué, faible (goût), mince (probabilité)",N4
+92,5031,石,石（いし）,"pierre, gemme, joyau",N4
+92,5032,磨く,磨（みが）く,"polir, faire briller, brosser (par ex. les dents), affiner, améliorer",N4
+92,5033,水着,水着（みずぎ）,maillot de bain,N4
+92,5034,ガス,ガス,"gaz (naturel, toxique...), essence, pétrole, brouillard épais, cuisinière à gaz, flatulence",N4
+92,5035,喜ぶ,喜（よろこ）ぶ,"être ravi, être content, féliciter, accepter avec gratitude",N4
+92,5036,税金,税金（ぜいきん）,"taxe, impôt",N4
+92,5037,ちゃん,ちゃん,suffixe pour une personne familière,N4
+92,5038,伝える,伝（つた）える,"transmettre, communiquer, rapporter, dire",N4
+92,5039,カップ,カップ,"tasse (récipient, unité de mesure, récompense), bonnet (soutien-gorge)",N4
+92,5040,空気,空気（くうき）,"air, atmosphère, ambiance, situation, quelqu'un sans présence",N4
+92,5041,助かる,助（たす）かる,"être sauvé, être secouru, survivre, échapper au danger, être aidé",N4
+92,5042,怪我,怪我（けが）,"blessure, se blesser",N4
+92,5043,運転手,運転手（うんてんしゅ）,"conducteur, chauffeur",N4
+92,5044,将来,将来（しょうらい）,"avenir, futur (généralement proche), perspectives",N4
+92,5045,約束を守る,約束（やくそく）を守（まも）る,"tenir une promesse, tenir parole",N4
+92,5046,復習,復習（ふくしゅう）,révision,N4
+92,5047,冗談,冗談（じょうだん）,"plaisanterie, blague, histoire drôle",N4
+92,5048,連れて行く,連（つ）れて行（い）く,"emmener quelqu'un (quelque part), conduire quelqu'un",N4
+92,5049,ゴミ,ゴミ,"ordures, déchets, détritus, immondices",N4
+93,6000,ガラス,ガラス,"verre, vitre, vitré",N4
+93,6001,実は,実（じつ）は,"en fait, à vrai dire, pour être honnête",N4
+93,6002,非常に,非常（ひじょう）に,"très, extrêmement, excessivement",N4
+93,6003,桜,桜（さくら）,"cerisier, fleur de cerisier, faux acheteur, viande de cheval",N4
+93,6004,同僚,同僚（どうりょう）,"collègue, associé",N4
+93,6005,水道,水道（すいどう）,"conduite d'eau, approvisionnement en eau",N4
+93,6006,テニス,テニス,tennis,N4
+93,6007,二階建て,二階建（にかいだ）て,bâtiment avec un étage,N4
+93,6008,マンション,マンション,"immeuble résidentiel, appartement",N4
+93,6009,選ぶ,選（えら）ぶ,"choisir, séléctionner",N4
+93,6010,包む,包（つつ）む,"envelopper, emballer, couvrir, cacher, être englouti par, être enveloppé par",N4
+93,6011,駄目,駄目（だめ）,"pas bien, sans espoir, inutile, en vain, pas permis",N4
+93,6012,汚れる,汚（よご）れる,"se salir, devenir sale, être souillé, être corrompu, perdre sa chasteté",N4
+93,6013,間違える,間違（まちが）える,"faire une erreur, faire une faute, se tromper, confondre",N4
+93,6014,釣る,釣（つ）る,"pêcher, attraper, appâter, attirer, séduire, allécher",N4
+93,6015,眠る,眠（ねむ）る,"dormir, mourir, inexploité, fermer les yeux",N4
+93,6016,盗む,盗（ぬす）む,"voler, dérober",N4
+93,6017,祈る,祈（いの）る,"prier, souhaiter",N4
+93,6018,あんなに,あんなに,"à ce point, à ce degré, tellement",N4
+93,6019,自動,自動（じどう）,"automatique, verbe intransitif",N4
+93,6020,産業,産業（さんぎょう）,"industrie, gagne-pain, moyens de subsistance, occupation",N4
+93,6021,付ける,付（つ）ける,"attacher, fixer, coller, appliquer, suivre, allumer (la lumière)",N4
+93,6022,政府,政府（せいふ）,"gouvernement, administration",N4
+93,6023,指輪,指輪（ゆびわ）,bague,N4
+93,6024,作品,作品（さくひん）,"œuvre (livre, film...), opus, performance, production",N4
+93,6025,授業中,授業中（じゅぎょうちゅう）,pendant le cours,N4
+93,6026,火事,火事（かじ）,"incendie, conflagration",N4
+93,6027,観光,観光（かんこう）,tourisme,N4
+93,6028,サラリーマン,サラリーマン,employé de bureau,N4
+93,6029,スーツケース,スーツケース,valise,N4
+93,6030,女性,女性（じょせい）,"femme, féminin, genre féminin",N4
+93,6031,関西,関西（かんさい）,Kansai (moitié sud-ouest du Japon),N4
+93,6032,広告,広告（こうこく）,"publicité, annonce, avis, notification",N4
+93,6033,宇宙飛行士,宇宙飛行士（うちゅうひこうし）,astronaute,N4
+93,6034,時代,時代（じだい）,"période, époque, ère, âge, vieillesse, ancienneté, antiquité",N4
+93,6035,通う,通（かよ）う,"aller et revenir (d'un lieu), aller à (école, travail), fréquenter, circuler (sang, électricité)",N4
+93,6036,植える,植（う）える,"planter, cultiver, implanter, inoculer (agent infectieux), inculquer (idée, valeur)",N4
+93,6037,味方,味方（みかた）,"ami, allié, partisan, prendre parti pour, soutenir",N4
+93,6038,プロジェクト,プロジェクト,projet,N4
+93,6039,しっかり,しっかり,"fermement, robuste, correctement, intelligemment",N4
+93,6040,道具,道具（どうぐ）,"outil, instrument, ustensile, appareil, dispositif, moyen",N4
+93,6041,俳優,俳優（はいゆう）,"acteur, actrice, comédien, artiste, interprète",N4
+93,6042,鍋,鍋（なべ）,"casserole, marmite, ragoût",N4
+93,6043,アルコール,アルコール,alcool,N4
+93,6044,様,様（よう）,"semblant ..., manière de ..., forme, comme, semblable",N4
+93,6045,居る,居（お）る,"être (animé), exister, être en train de, (avoir l'audace de) faire",N4
+93,6046,為,為（ため）,"bien, bénéfice, but, objectif, conséquence, résultat, à propos de",N4
+93,6047,又,又（また）,"encore, de nouveau, une autre fois, une prochaine fois, aussi, de plus, d'autre part, ou, sinon",N4
+93,6048,行う,行（おこな）う,"effectuer, faire, se comporter, réaliser",N4
+93,6049,御座る,御座（ござ）る,être,N4
+94,7000,気,気（き）,"esprit, mentalité, nature, disposition, motivation, intention, humeur, sentiments, atmosphère",N4
+94,7001,日,日（ひ）,"jour, jours, soleil, lumière du soleil, cas (surtout malheureux), événement",N4
+94,7002,心,心（こころ）,"esprit, cœur, âme, sens d'une phrase (énigme, etc.)",N4
+94,7003,又は,又（また）は,"ou, autrement",N4
+94,7004,特に,特（とく）に,"particulièrement, spécialement",N4
+94,7005,変わる,変（か）わる,"changer, être modifié, être transformé, varier, passer à, être différent, être peu commun",N4
+94,7006,相手,相手（あいて）,"compagnon, partenaire, compagnie, correspondant, adversaire",N4
+94,7007,返る,返（かえ）る,"rentrer, retourner, revenir, (devenir) extrêmement, (devenir) complètement",N4
+94,7008,結果,結果（けっか）,"résultat, conséquence, issue, aboutissement, porter ses fruits",N4
+94,7009,或る,或（あ）る,"un certain ..., quelque ...",N4
+94,7010,体,体（からだ）,"corps, torse, carrure, physique, santé, cadavre",N4
+94,7011,全て,全（すべ）て,"tout, entièrement, complètement, totalement, entier",N4
+94,7012,情報,情報（じょうほう）,"information, nouvelles, renseignements, conseils, données",N4
+94,7013,確か,確（たし）か,"sûr, certain, fiable, digne de confiance, si je ne me trompe pas",N4
+94,7014,目的,目的（もくてき）,"but, intention, objectif",N4
+94,7015,進む,進（すす）む,"avancer, progresser, s'améliorer, s'approfondir, être en avance (horloge), faire de son plein gré",N4
+94,7016,例,例（れい）,"exemple, précédent, susmentionné, illustration, usage",N4
+94,7017,比べる,比（くら）べる,"comparer, faire une comparaison, concurrencer, rivaliser",N4
+94,7018,立てる,立（た）てる,"se lever, mettre debout, installer, ériger, établir, clore",N4
+94,7019,描く,描（えが）く,"dessiner, peindre, décrire, imaginer",N4
+94,7020,中々,中々（なかなか）,"très, considérablement, en aucun cas, pas facilement, milieu, excellent",N4
+94,7021,表,表（おもて）,"surface, face, devant (d'un bâtiment...), extérieur, apparence, public",N4
+94,7022,十分,十分（じゅうぶん）,"assez, suffisant, parfaitement, complètement, division par dix",N4
+94,7023,守る,守（まも）る,"protéger, garder, défendre, tenir (une promesse), respecter (les règles)",N4
+94,7024,昔,昔（むかし）,"autrefois, ancien",N4
+94,7025,様子,様子（ようす）,"état, situation, circonstances, apparence, signe, indication",N4
+94,7026,頂く,頂（いただ）く,"recevoir, accepter, manger, boire, être couronné de, porter (sur la tête), avoir (comme chef, dirigeant)",N4
+94,7027,打つ,打（う）つ,"frapper, cogner, battre, gifler, marteler, marquer, taper",N4
+94,7028,残す,残（のこ）す,"laisser (derrière), laisser (inachevé), mettre de côté, léguer, tenir bon",N4
+94,7029,男性,男性（だんせい）,"homme, mâle, genre masculin",N4
+94,7030,致す,致（いた）す,faire,N4
+94,7031,無くなる,無（な）くなる,"être perdu (d'un objet), être manquant, être épuisé, disparaître",N4
+94,7032,社会,社会（しゃかい）,"société, public, communauté, le monde, études sociales",N4
+94,7033,光,光（ひかり）,lumière,N4
+94,7034,暫く,暫（しばら）く,"petit moment, court instant, un instant, un moment, assez longtemps",N4
+94,7035,名,名（な）,"nom, prénom, titre, célébrité, réputation, prétexte",N4
+94,7036,似る,似（に）る,"ressembler, tenir de, être similaire (en statut, condition, etc.), être semblable",N4
+94,7037,立場,立場（たちば）,"point de vue, position, situation",N4
+94,7038,済む,済（す）む,"finir, se terminer, s'en tirer, se sentir à l'aise, être désolé",N4
+94,7039,一方,一方（いっぽう）,"l'un, l'autre, d'un côté, d'une part, bien que, pendant ce temps, avoir tendance à ...",N4
+94,7040,何とか,何（なん）とか,"d'une façon ou d'une autre, de toute façon, en quelque sorte",N4
+94,7041,活動,活動（かつどう）,"activité (d'une personne, groupe, animal, volcan...), action, film (muet)",N4
+94,7042,思い出す,思（おも）い出（だ）す,"se rappeler, se souvenir, se remémorer",N4
+94,7043,決して,決（けっ）して,"jamais, en aucun cas, pas le moins du monde",N4
+94,7044,連れる,連（つ）れる,"mener, emmener (une personne)",N4
+94,7045,酷い,酷（ひど）い,"cruel, sans cœur, sévère, fort, extrême, terrible, affreux, excessif, scandaleux, injuste",N4
+94,7046,正しい,正（ただ）しい,"juste, correct, vertueux, équitable, honnête, véridique, légal",N4
+94,7047,迎える,迎（むか）える,"aller à la rencontre de, recevoir, accueillir, atteindre, accepter (dans un groupe), inviter",N4
+94,7048,申し上げる,申（もう）し上（あ）げる,"dire, informer de, exprimer, présenter (des salutations, félicitations), faire",N4
+94,7049,参る,参（まい）る,"aller, venir, appeler, être vaincu, mourir, être ennuyé, être épris de, visiter (un sanctuaire, une tombe)",N4
+95,8000,振る,振（ふ）る,"agiter, secouer, balancer, saupoudrer, rejeter (quelqu'un), larguer",N4
+95,8001,友人,友人（ゆうじん）,ami,N4
+95,8002,表情,表情（ひょうじょう）,"expression (faciale, vocale), allure, regard, apparence",N4
+95,8003,調査,調査（ちょうさ）,"étude, enquête (criminelle), examen, recherche, sondage",N4
+95,8004,並ぶ,並（なら）ぶ,"faire la queue, s'aligner, se mettre en rang, rivaliser, égaler",N4
+95,8005,回る,回（まわ）る,"tourner, pivoter, visiter plusieurs endroits, bien fonctionner, passer un certain temps",N4
+95,8006,気分,気分（きぶん）,"sentiment, humeur",N4
+95,8007,届く,届（とど）く,"atteindre, parvenir à, être attentif, porter (d'un son)",N4
+95,8008,割合,割合（わりあい）,"taux, ratio, pourcentage, proportion, comparativement, contrairement aux attentes",N4
+95,8009,突然,突然（とつぜん）,"brusque, soudain, inattendu",N4
+95,8010,尋ねる,尋（たず）ねる,"demander, interroger, s'enquérir, se renseigner, rechercher, enquêter",N4
+95,8011,では,では,"alors, eh bien, donc, sinon ..., à moins que ...",N4
+95,8012,腕,腕（うで）,"bras, compétence, talent, efforts, aptitude",N4
+95,8013,種類,種類（しゅるい）,"variété, genre, type, catégorie, compteur pour genres et espèces",N4
+95,8014,自由,自由（じゆう）,"liberté, libre, comme il vous plaît",N4
+95,8015,他人,他人（たにん）,"une autre personne, les autres, personne non apparentée, étranger, inconnu",N4
+95,8016,イメージ,イメージ,"image (de soi), image (informatique), image mentale, impression, vue d'artiste",N4
+95,8017,呉れる,呉（く）れる,"donner, (se voir) donner, faire pour quelqu'un, faire au détriment de quelqu'un",N4
+95,8018,教育,教育（きょういく）,"formation, éducation",N4
+95,8019,家庭,家庭（かてい）,"maison, famille, foyer",N4
+95,8020,可笑しい,可笑（おか）しい,"drôle, amusant, ridicule, étrange, bizarre, inhabituel, inapproprié, suspect",N4
+95,8021,何でも,何（なん）でも,"n'importe quoi, quoi que ce soit, tout, on m'a dit, on dit que",N4
+95,8022,金額,金額（きんがく）,"montant, somme d'argent",N4
+95,8023,抱く,抱（だ）く,"étreindre, tenir dans ses bras, faire un câlin, faire l'amour, couver (des œufs)",N4
+95,8024,血,血（ち）,"sang, ascendance",N4
+95,8025,目標,目標（もくひょう）,"marque, signe, objectif, cible",N4
+95,8026,ケース,ケース,"boîte, caisse, affaire, cas, casse",N4
+95,8027,大きさ,大（おお）きさ,"taille, dimensions, volume",N4
+95,8028,度,度（たび）,(x) fois,N4
+95,8029,不思議,不思議（ふしぎ）,"merveilleux, incroyable, étonnant, étrangement, curieusement",N4
+95,8030,すると,すると,"ensuite, alors",N4
+95,8031,によると,によると,selon (quelqu'un),N4
+95,8032,通る,通（とお）る,"passer, prendre (un itinéraire), connecter, être admis, se répandre, réussir (un test, un projet de loi...), être compris",N4
+95,8033,記憶,記憶（きおく）,"mémoire, souvenir, stockage",N4
+95,8034,代わり,代（か）わり,"remplaçant, adjoint, de secours, indemnisation, échange, deuxième portion, (du) rab",N4
+95,8035,差,差（さ）,"différence, variation",N4
+95,8036,旅,旅（たび）,"voyage, excursion, périple",N4
+95,8037,申す,申（もう）す,"dire, être appelé, faire",N4
+95,8038,特別,特別（とくべつ）,spécial,N4
+95,8039,ファックス,ファックス,"FAX, facsimile",N4
+95,8040,焼く,焼（や）く,"brûler, rôtir, griller, cuire, réchauffer, bronzer, envier",N4
+95,8041,何だか,何（なん）だか,"(un) peu, d'une certaine façon, en quelque sorte",N4
+95,8042,価値,価値（かち）,"valeur, mérite, importance",N4
+95,8043,回答,回答（かいとう）,réponse,N4
+95,8044,きちんと,きちんと,"avec précision, exactement, soigneusement",N4
+95,8045,付き合う,付（つ）き合（あ）う,"tenir compagnie à, sortir avec, être en couple avec, suivre, accompagner quelqu'un",N4
+95,8046,市,市（し）,ville,N4
+95,8047,すっかり,すっかり,"tout, complètement, entièrement",N4
+95,8048,下さる,下（くだ）さる,"donner, conférer, accorder, faire une faveur",N4
+95,8049,主人,主人（しゅじん）,"chef (de famille), mari, propriétaire (d'un magasin, logement), employeur, maître, hôte",N4
+96,9000,ドイツ,ドイツ,Allemagne,N4
+96,9001,問い合わせ,問（と）い合（あ）わせ,"demande de renseignements, question, interrogation",N4
+96,9002,随分,随分（ずいぶん）,"très, beaucoup, extrêmement, étonnamment, remarquable, méprisable, répréhensible",N4
+96,9003,医師,医師（いし）,"médecin, docteur",N4
+96,9004,会場,会場（かいじょう）,"salle de réunion, lieu de rencontre, lieu, terrain",N4
+96,9005,エネルギー,エネルギー,"énergie, force, puissance, endurance, valeur énergétique",N4
+96,9006,分野,分野（ぶんや）,"champ, sphère, domaine, division, branche",N4
+96,9007,申し込み,申（もう）し込（こ）み,"demande, inscription, requête, abonnement, offre, proposition",N4
+96,9008,意外,意外（いがい）,"inattendu, surprenant",N4
+96,9009,構う,構（かま）う,"prendre soin de, s'occuper de, se soucier de, se préparer à, se mêler de, taquiner",N4
+96,9010,葉,葉（は）,feuille,N4
+96,9011,下ろす,下（お）ろす,"descendre, baisser, déposer, décharger, retirer (de l'argent), fileter, râper, évincer",N4
+96,9012,市民,市民（しみん）,"citoyen, citoyenneté, citadin, public, habitant de la ville, bourgeoisie, classe moyenne",N4
+96,9013,協力,協力（きょうりょく）,"coopération, collaboration",N4
+96,9014,ヨーロッパ,ヨーロッパ,Europe,N4
+96,9015,現場,現場（げんば）,"lieu réel, scène, lieu du crime, site, emplacement, usine, (sur) site",N4
+96,9016,細かい,細（こま）かい,"petit, fin, minutieux, mineur, trivial, sensible, attentif",N4
+96,9017,裏,裏（うら）,"dessous, côté opposé, arrière, derrière (la maison), intérieur, en coulisses",N4
+96,9018,ボール,ボール,"balle, bol, carton",N4
+96,9019,場面,場面（ばめん）,"scène, cadre (par exemple d'un roman)",N4
+96,9020,並べる,並（なら）べる,"aligner, exposer, arranger, énumérer, être égal (à)",N4
+96,9021,複雑,複雑（ふくざつ）,"complexe, compliqué, mitigé (sentiments)",N4
+96,9022,楽,楽（らく）,"confort, aisance, soulagement, (en) paix, détente, facile",N4
+96,9023,誘う,誘（さそ）う,"inviter, demander (à quelqu'un de faire), tenter, attirer, leurrer",N4
+96,9024,小学校,小学校（しょうがっこう）,"école primaire, école élémentaire",N4
+96,9025,底,底（そこ）,"fond, partie basse, semelle",N4
+96,9026,直る,直（なお）る,"être guéri, aller mieux, être soigné, être réparé, être corrigé",N4
+96,9027,喋る,喋（しゃべ）る,"discuter, parler, bavarder, papoter",N4
+96,9028,残り,残（のこ）り,"reste, résidu, restant, surplus",N4
+96,9029,偶に,偶（たま）に,"occasionnellement, de temps en temps",N4
+96,9030,未来,未来（みらい）,"avenir, futur (lointain), futur (conjugaison), le monde à venir",N4
+96,9031,主に,主（おも）に,"principalement, essentiellement",N4
+96,9032,直す,直（なお）す,"guérir, soigner, refaire, réparer, remplacer, convertir",N4
+96,9033,詩,詩（し）,"poème, vers de poésie",N4
+96,9034,倒れる,倒（たお）れる,"s'effondrer, perdre connaissance, être cloué au lit, mourir, être ruiné, être vaincu (dans un jeu), tomber (gouvernement)",N4
+96,9035,飾る,飾（かざ）る,"décorer, orner, parer de",N4
+96,9036,塗る,塗（ぬ）る,"peindre, plâtrer, laquer, vernir, étaler, enduire, poser (du papier peint)",N4
+96,9037,挨拶,挨拶（あいさつ）,"salutation, condoléances, félicitations, allocution, vengeance",N4
+96,9038,宜しい,宜（よろ）しい,"bien, très bien, parfait, OK, bon, entendu, d'accord, pouvoir",N4
+96,9039,止む,止（や）む,"cesser, s'arrêter, être terminé",N4
+96,9040,熱,熱（ねつ）,"chaleur, fièvre, température, passion, enthousiasme, rage",N4
+96,9041,複数,複数（ふくすう）,"plusieurs, pluriel, multiple",N4
+96,9042,分かれる,分（わ）かれる,"se séparer, se diviser, bifurquer, se disperser",N4
+96,9043,訪ねる,訪（たず）ねる,"visiter, rendre visite à",N4
+96,9044,線,線（せん）,"ligne, rayure, ligne (téléphonique...), fil, rayon (X), ligne (de chemin de fer), contour",N4
+96,9045,収入,収入（しゅうにゅう）,"revenu, recettes, chiffre d'affaires",N4
+96,9046,売れる,売（う）れる,"(bien) se vendre, être très connu, être populaire, être célèbre",N4
+96,9047,そろそろ,そろそろ,"lentement, progressivement, prudemment, d'ici peu, d'un moment à l'autre",N4
+96,9048,伺う,伺（うかが）う,"demander, s'informer, implorer (pour une révélation, un conseil), visiter, parler à (un public)",N4
+96,9049,光る,光（ひか）る,"briller, scintiller, être lumineux",N4
+97,10000,皆様,皆様（みなさま）,tout le monde,N4
+97,10001,波,波（なみ）,vague,N4
+97,10002,秘密,秘密（ひみつ）,"secret, confidentialité, vie privée, mystère, enseignements ésotériques",N4
+97,10003,両方,両方（りょうほう）,"les deux, les deux côtés, les deux parties",N4
+97,10004,都合,都合（つごう）,"circonstances, condition, occasion, gérer, prêter de l'argent, lever des fonds, en tout",N4
+97,10005,アドバイス,アドバイス,conseil,N4
+97,10006,思い出,思（おも）い出（で）,souvenir,N4
+97,10007,江戸,江戸（えど）,"Edo (capitale du shogunat, maintenant Tokyo), Yedo",N4
+97,10008,廊下,廊下（ろうか）,"couloir, corridor, passage",N4
+97,10009,メッセージ,メッセージ,message,N4
+97,10010,米,米（こめ）,(grains décortiqués de) riz,N4
+97,10011,適当,適当（てきとう）,"approprié, convenable, adéquat, vague, flou, irresponsable",N4
+97,10012,触る,触（さわ）る,"toucher, sentir",N4
+97,10013,物凄い,物凄（ものすご）い,"terrifiant, stupéfiant, formidable, incroyable, effrayant, affreux",N4
+97,10014,カード,カード,"carte, crème de fruit",N4
+97,10015,料金,料金（りょうきん）,"frais, prix, taxe",N4
+97,10016,盛ん,盛（さか）ん,"populaire, prospère, enthousiaste, énergique, vigoureux",N4
+97,10017,弁護士,弁護士（べんごし）,avocat (profession),N4
+97,10018,ソフト,ソフト,"doux, logiciel, glace à l'italienne, softball, chapeau (mou ou en feutre)",N4
+97,10019,相変わらず,相変（あいか）わらず,"comme d'habitude, comme toujours, comme avant, encore",N4
+97,10020,成功,成功（せいこう）,"succès, réussite",N4
+97,10021,管理,管理（かんり）,"contrôle, gestion (par ex. d'une entreprise)",N4
+97,10022,暮らし,暮（く）らし,"vie, existence, moyens de subsistance, conditions de vie",N4
+97,10023,鏡,鏡（かがみ）,"miroir, glace, tête de fût",N4
+97,10024,県,県（けん）,"préfecture (du Japon), comté (de Chine), département (de France)",N4
+97,10025,投げる,投（な）げる,"jeter, lancer, abandonner, faire face à la défaite",N4
+97,10026,事務所,事務所（じむしょ）,bureau (bâtiment),N4
+97,10027,勇気,勇気（ゆうき）,"courage, bravoure, vaillance",N4
+97,10028,丁寧,丁寧（ていねい）,"poli, courtois, civil, minutieux, consciencieux",N4
+97,10029,踏む,踏（ふ）む,"marcher sur, piétiner, expérimenter, subir, évaluer, rimer, hériter (du trône), suivre (règles, principes...)",N4
+97,10030,沸く,沸（わ）く,"chauffer (de l'eau), bouillir, s'exciter, éclater (applaudissements, acclamations)",N4
+97,10031,適用,適用（てきよう）,"application, emploi, utilisation",N4
+97,10032,持てる,持（も）てる,"être capable de posséder, plaire, être populaire, être accueilli, endurer (le temps, les éléments...)",N4
+97,10033,人類,人類（じんるい）,"l'humanité, le genre humain",N4
+97,10034,文句,文句（もんく）,"plainte, grognement, objection, phrase, mots, expression",N4
+97,10035,理想,理想（りそう）,"idéal, idéaux",N4
+97,10036,習慣,習慣（しゅうかん）,"habitude, coutume, pratique culturelle",N4
+97,10037,教会,教会（きょうかい）,église,N4
+97,10038,平和,平和（へいわ）,"paix, harmonie",N4
+97,10039,悩み,悩（なや）み,"ennui, peine, soucis, inquiétude, tourment, angoisse, problème",N4
+97,10040,コース,コース,"parcours (chemin, itinéraire, cursus, option), cours, service (d'un repas au restaurant), repas complet",N4
+97,10041,枝,枝（えだ）,"branche, rameau, brindille",N4
+97,10042,アジア,アジア,"Asie (surtout « l'Extrême-Orient »), Asiatique",N4
+97,10043,部下,部下（ぶか）,"subordonné, (employé) inférieur",N4
+97,10044,数える,数（かぞ）える,"compter, énumérer",N4
+97,10045,年間,年間（ねんかん）,"(x) années, durant une ère",N4
+97,10046,湯,湯（ゆ）,"eau chaude, bain chaud, source chaude, fer fondu",N4
+97,10047,天井,天井（てんじょう）,"plafond, prix plafond",N4
+97,10048,陰,陰（かげ）,"ombre, côté opposé, arrière, fond",N4
+97,10049,懐かしい,懐（なつ）かしい,"nostalgique, souvenir tendre",N4
+98,11000,揺れる,揺（ゆ）れる,"secouer, balancer, vaciller",N4
+98,11001,親しい,親（した）しい,"proche (ami...), familier, intime, bien connu (de quelqu'un)",N4
+98,11002,噛む,噛（か）む,"mordre, mâcher, ronger, se briser sur (le rivage), s'engager (engrenages, fermetures éclair...), bafouiller, réprimander",N4
+98,11003,医療,医療（いりょう）,"soins médicaux, traitement médical",N4
+98,11004,畑,畑（はたけ）,"champ (de fruits, légumes...), terre cultivée, potager, domaine (de spécialisation), utérus, lieu de naissance",N4
+98,11005,携帯電話,携帯電話（けいたいでんわ）,"téléphone mobile, téléphone portable",N4
+98,11006,用,用（よう）,"tâche, affaire, utilisation, devoir, service, besoin naturel",N4
+98,11007,問い,問（と）い,"problème, question",N4
+98,11008,注目,注目（ちゅうもく）,"attention, observation, remarque",N4
+98,11009,中学生,中学生（ちゅうがくせい）,collégien,N4
+98,11010,拾う,拾（ひろ）う,"ramasser, trouver, rassembler",N4
+98,11011,柔らかい,柔（やわ）らかい,"souple, tendre, mou, informel, ouvert (d'esprit)",N4
+98,11012,登場,登場（とうじょう）,"entrée (en scène), apparition (à l'écran), entrée, introduction (sur un marché)",N4
+98,11013,皿,皿（さら）,"assiette, plat, vaisselle, portion, service, plat (d'un repas)",N4
+98,11014,江戸時代,江戸時代（えどじだい）,époque Edo (1603-1868),N4
+98,11015,移動,移動（いどう）,"mouvement, déplacement, transfert, migration, mobile, itinérance",N4
+98,11016,保険,保険（ほけん）,"assurance, garantie",N4
+98,11017,熱心,熱心（ねっしん）,"zèle, enthousiasme",N4
+98,11018,発表,発表（はっぴょう）,"annonce, parution, publication, déclaration, communiqué, faire connaître, révélation (d'une histoire), exprimer (son opinion), diffusion, dévoilement",N4
+98,11019,騙す,騙（だま）す,"tromper, duper, rouler, amadouer, cajoler",N4
+98,11020,滑る,滑（すべ）る,"glisser, coulisser, déraper, échouer (un examen), faire un bide, tomber",N4
+98,11021,ピンク,ピンク,"rose, érotique, pornographique",N4
+98,11022,毛,毛（け）,"cheveux, fourrure, laine, duvet, plumage",N4
+98,11023,壊す,壊（こわ）す,"casser, détruire, démolir, abîmer, ruiner, gâcher, endommager",N4
+98,11024,規則,規則（きそく）,"règles, règlements, conventions",N4
+98,11025,あら,あら,"oh, ah",N4
+98,11026,付き合い,付（つ）き合（あ）い,"fréquentation, socialisation, camaraderie",N4
+98,11027,池,池（いけ）,"étang, bassin, mare",N4
+98,11028,芸術,芸術（げいじゅつ）,"(beaux) arts, l'art",N4
+98,11029,キス,キス,"baiser, bisou",N4
+98,11030,感動,感動（かんどう）,"être fortement ému, excitation, passion, émotion profonde",N4
+98,11031,謝る,謝（あやま）る,s'excuser,N4
+98,11032,売り上げ,売（う）り上（あ）げ,"quantité vendue, ventes, recettes, chiffre d'affaires",N4
+98,11033,昼間,昼間（ひるま）,"jour, journée, pendant la journée",N4
+98,11034,バター,バター,beurre,N4
+98,11035,首相,首相（しゅしょう）,"premier ministre, chancelier",N4
+98,11036,捕まる,捕（つか）まる,"être attrapé, être arrêté, s'accrocher à, trouver (une preuve)",N4
+98,11037,離婚,離婚（りこん）,divorce,N4
+98,11038,祖父,祖父（そふ）,"grand-père, vieil homme",N4
+98,11039,得意,得意（とくい）,"triomphe, prospérité, fierté, point fort, spécialité, client régulier",N4
+98,11040,隅,隅（すみ）,"coin, recoin, renfoncement",N4
+98,11041,スペイン,スペイン,Espagne,N4
+98,11042,騒ぐ,騒（さわ）ぐ,"faire du bruit, être bruyant, bruisser, faire la fête, s'agiter, perdre son calme, être inquiet",N4
+98,11043,注文,注文（ちゅうもん）,"commande (pour un article), demande, ordre, requête",N4
+98,11044,前後,前後（ぜんご）,"avant et arrière, avant et après, ordre, contexte, conséquences, inversion",N4
+98,11045,落ち込む,落（お）ち込（こ）む,"se sentir triste, être déprimé, être en déclin (affaires, économie...), tomber dans (un trou)",N4
+98,11046,祖母,祖母（そぼ）,grand-mère,N4
+98,11047,タオル,タオル,serviette,N4
+98,11048,セット,セット,"ensemble, manche, menu fixe, coiffure",N4
+98,11049,文学,文学（ぶんがく）,littérature,N4
+99,12000,縦,縦（たて）,"vertical, hauteur, longueur, nord-sud, hiérarchie, chaîne (tissage)",N4
+99,12001,ビジネス,ビジネス,"affaires, business",N4
+99,12002,完成,完成（かんせい）,"complet, achèvement, perfection, accomplissement",N4
+99,12003,親戚,親戚（しんせき）,"parent, membre de la famille, relation, proche",N4
+99,12004,中学校,中学校（ちゅうがっこう）,"collège, école secondaire",N4
+99,12005,アルバム,アルバム,album,N4
+99,12006,一階,一階（いっかい）,"rez-de-chaussée, un étage, un niveau, un rang",N4
+99,12007,地下,地下（ちか）,"souterrain, sous-sol, clandestin, métro",N4
+99,12008,礼,礼（れい）,"remerciement, gratitude, manières, étiquette, cadeau, cérémonie",N4
+99,12009,蹴る,蹴（け）る,"donner un coup de pied, refuser, rejeter",N4
+99,12010,祭る,祭（まつ）る,"prier, adorer, vénérer",N4
+99,12011,通信,通信（つうしん）,"correspondance, communication, signal, télécommunications",N4
+99,12012,最悪,最悪（さいあく）,"pire, horrible, terrible, épouvantable, dans le pire des cas",N4
+99,12013,折れる,折（お）れる,"se casser, se briser, se fracturer, être plié, céder, se soumettre, tourner (à un virage)",N4
+99,12014,港,港（みなと）,"port, havre",N4
+99,12015,赤ん坊,赤（あか）ん坊（ぼう）,"bébé, nourrisson",N4
+99,12016,貿易,貿易（ぼうえき）,commerce (extérieur),N4
+99,12017,海岸,海岸（かいがん）,"côte, plage",N4
+99,12018,桃,桃（もも）,pêche (fruit),N4
+99,12019,パート,パート,"partie, employé à temps partiel, travail à temps partiel",N4
+99,12020,サイン,サイン,"autographe, signature, signe, sinus",N4
+99,12021,棚,棚（たな）,"étagère, rayon, tablette, treillis",N4
+99,12022,コート,コート,"manteau, court (de tennis, basket)",N4
+99,12023,じゃが芋,じゃが芋（いも）,"pomme de terre, patate",N4
+99,12024,ゴルフ,ゴルフ,golf,N4
+99,12025,テキスト,テキスト,"texte, manuel",N4
+99,12026,都,都（と）,"capitale, métropole",N4
+99,12027,猿,猿（さる）,"singe, primate, personne sournoise, idiot",N4
+99,12028,奥様,奥様（おくさま）,"épouse, dame mariée, madame",N4
+99,12029,優勝,優勝（ゆうしょう）,"victoire générale, championnat",N4
+99,12030,染める,染（そ）める,"teindre, colorer",N4
+99,12031,焼ける,焼（や）ける,"être brûlé, être rôti, être chauffé, attraper un coup de soleil, être jaloux",N4
+99,12032,テープ,テープ,"ruban adhésif, cassette (audio)",N4
+99,12033,折る,折（お）る,"casser, fracturer, rompre, briser, cueillir (des fleurs), plier, interrompre, terminer",N4
+99,12034,看護婦,看護婦（かんごふ）,infirmière,N4
+99,12035,手数料,手数料（てすうりょう）,"frais (de gestion), commission",N4
+99,12036,関東,関東（かんとう）,Kanto (moitié est du Japon),N4
+99,12037,髭,髭（ひげ）,"barbe, moustache, moustaches (chat...)",N4
+99,12038,ショップ,ショップ,boutique,N4
+99,12039,仏,仏（ほとけ）,"Bouddha, personne miséricordieuse, les morts",N4
+99,12040,羨ましい,羨（うらや）ましい,"envieux, jaloux, enviable (position, etc.)",N4
+99,12041,カラー,カラー,"couleur, coloration, teinture de cheveux",N4
+99,12042,尻,尻（しり）,"fesses, derrière, croupe, face inférieure, dernière place, fin, conséquence",N4
+99,12043,生理,生理（せいり）,"les règles, menstruation, physiologie",N4
+99,12044,紅葉,紅葉（こうよう）,"couleurs d'automne, feuilles rougissant (en automne)",N4
+99,12045,記号,記号（きごう）,"symbole, code, signe",N4
+99,12046,踊り,踊（おど）り,danse,N4
+99,12047,講義,講義（こうぎ）,cours,N4
+99,12048,口座,口座（こうざ）,compte (par ex. bancaire),N4
+99,12049,親友,親友（しんゆう）,"ami proche, meilleur ami, ami intime",N4
+100,13000,ジーンズ,ジーンズ,"jean, denim",N4
+100,13001,ソファ,ソファ,canapé,N4
+100,13002,チョコレート,チョコレート,chocolat,N4
+100,13003,パートナー,パートナー,partenaire,N4
+100,13004,バナナ,バナナ,banane,N4
+100,13005,ファッション,ファッション,"mode, fashion",N4
+100,13006,フィリピン,フィリピン,Philippines,N4
+100,13007,ペット,ペット,"animal de compagnie, trompette",N4
+100,13008,ベンチ,ベンチ,banc,N4
+100,13009,ボート,ボート,"bateau, bateau à rames",N4
+100,13010,ポスト,ポスト,"poste, boîte aux lettres, post-",N4
+100,13011,マイク,マイク,"micro, microphone",N4
+100,13012,ロボット,ロボット,"robot, pion, marionnette",N4
+100,13013,安心,安心（あんしん）,"soulagement, tranquillité d'esprit",N4
+100,13014,引っ越し,引（ひ）っ越（こ）し,déménagement,N4
+100,13015,引っ越す,引（ひ）っ越（こ）す,déménager,N4
+100,13016,化粧,化粧（けしょう）,"maquillage, cosmétiques",N4
+100,13017,苛める,苛（いじ）める,"harceler, taquiner, tourmenter, persécuter, châtier",N4
+100,13018,課長,課長（かちょう）,"chef de section, responsable de section",N4
+100,13019,我慢,我慢（がまん）,"endurance, patience, persévérance, supporter (quelque chose), maîtrise de soi, retenue",N4
+100,13020,楽器,楽器（がっき）,instrument de musique,N4
+100,13021,汽車,汽車（きしゃ）,"train, train à vapeur",N4
+100,13022,亀,亀（かめ）,"tortue, gros buveur",N4
+100,13023,劇場,劇場（げきじょう）,théâtre,N4
+100,13024,胡瓜,胡瓜（きゅうり）,concombre,N4
+100,13025,些とも,些（ちっ）とも,pas du tout (verbe négatif),N4
+100,13026,差し上げる,差（さ）し上（あ）げる,"donner, offrir, soulever, élever, monter",N4
+100,13027,坂,坂（さか）,"pente, colline, côte, descente",N4
+100,13028,賛成,賛成（さんせい）,"approbation, accord, soutien, faveur",N4
+100,13029,写す,写（うつ）す,"transcrire, dupliquer, reproduire, imiter, filmer, photographier",N4
+100,13030,邪魔,邪魔（じゃま）,"obstacle, rendre visite (au domicile de quelqu'un)",N4
+100,13031,象,象（ぞう）,éléphant,N4
+100,13032,成人,成人（せいじん）,"adulte, devenir adulte, grandir, mûrir, atteindre la majorité",N4
+100,13033,西洋,西洋（せいよう）,"l'Occident, l'Ouest, les pays occidentaux",N4
+100,13034,全力,全力（ぜんりょく）,"tout son possible, toutes ses forces",N4
+100,13035,贈り物,贈（おく）り物（もの）,"cadeau, présent",N4
+100,13036,足す,足（た）す,"additionner, ajouter (quelque chose), s'occuper de (ses affaires)",N4
+100,13037,台,台（だい）,"support, étagère, table, banc, podium, plateforme, compteur pour machines, période",N4
+100,13038,地下鉄,地下鉄（ちかてつ）,métro,N4
+100,13039,着替える,着替（きが）える,"changer de vêtements, se changer",N4
+100,13040,転ぶ,転（ころ）ぶ,"tomber (d'une personne), chuter, se dérouler, se passer",N4
+100,13041,曇る,曇（くも）る,"devenir nuageux, se couvrir, se brouiller, être sombre, être morose, se voiler",N4
+100,13042,年上,年上（としうえ）,"plus âgé, aîné",N4
+100,13043,部長,部長（ぶちょう）,"chef de section, chef d'un département, chef d'un club, chef d'une équipe",N4
+100,13044,物価,物価（ぶっか）,"coût de la vie, prix des matières premières",N4
+100,13045,編む,編（あ）む,"tricoter, tresser, compiler (anthologie, dictionnaire), éditer",N4
+100,13046,暮れる,暮（く）れる,"s'assombrir, se terminer, arriver à sa fin, être plongé (dans le désespoir)",N4
+100,13047,訳す,訳（やく）す,"traduire, interpréter",N4
+100,13048,冷える,冷（ひ）える,"refroidir, se rafraîchir",N4
+101,14000,アクセサリー,アクセサリー,accessoire,N4
+101,14001,カット,カット,"coupe, découpe, coupe de cheveux, battre (les cartes), prise (dans un film)",N4
+101,14002,クレジットカード,クレジットカード,carte de crédit,N4
+101,14003,シャンプー,シャンプー,shampoing,N4
+101,14004,ニコニコ,ニコニコ,"avec un sourire amical, souriant",N4
+101,14005,ネクタイ,ネクタイ,cravate,N4
+101,14006,ブーツ,ブーツ,bottes,N4
+101,14007,フリー,フリー,"libre, freelance",N4
+101,14008,フロント,フロント,"facade, front (météo), ligne de front, réception, accueil",N4
+101,14009,ベル,ベル,"cloche, bel",N4
+101,14010,マフラー,マフラー,"écharpe, silencieux",N4
+101,14011,メキシコ,メキシコ,Mexique,N4
+101,14012,医学,医学（いがく）,"médecine, science médicale",N4
+101,14013,一日中,一日中（いちにちじゅう）,"toute la journée, tout au long de la journée",N4
+101,14014,遠慮,遠慮（えんりょ）,"réserve, retenue, modestie, défiance, hésitation, prévoyance",N4
+101,14015,王子,王子（おうじ）,prince,N4
+101,14016,化粧品,化粧品（けしょうひん）,"cosmétiques, articles de toilette",N4
+101,14017,家内,家内（かない）,"(ma) femme, au sein de la famille",N4
+101,14018,花粉症,花粉症（かふんしょう）,"rhume des foins, allergie au pollen",N4
+101,14019,蚊,蚊（か）,moustique,N4
+101,14020,敬語,敬語（けいご）,"honorifique, terme de respect, langage honorifique",N4
+101,14021,鯨,鯨（くじら）,baleine,N4
+101,14022,絹,絹（きぬ）,soie,N4
+101,14023,郊外,郊外（こうがい）,"banlieue, périphérie",N4
+101,14024,高等学校,高等学校（こうとうがっこう）,"lycée, école secondaire",N4
+101,14025,支店,支店（してん）,"succursale, agence, filiale",N4
+101,14026,取り替える,取（と）り替（か）える,"échanger, remplacer",N4
+101,14027,勝ち,勝（か）ち,"victoire, succès, triomphe",N4
+101,14028,乗り換える,乗（の）り換（か）える,"changer (de train, de bus), passer à autre chose (avis, amour), changer de méthode",N4
+101,14029,乗り物,乗（の）り物（もの）,véhicule,N4
+101,14030,食後,食後（しょくご）,"après le repas, après manger",N4
+101,14031,新聞社,新聞社（しんぶんしゃ）,"entreprise de presse, société d'édition de journaux",N4
+101,14032,生活費,生活費（せいかつひ）,"frais de subsistance, coût de la vie",N4
+101,14033,占い,占（うらな）い,"prédiction, divination, la bonne aventure",N4
+101,14034,大学院,大学院（だいがくいん）,"programme de master, école doctorale, établissement de 2ème et 3ème cycle universitaire",N4
+101,14035,虫歯,虫歯（むしば）,"carie, dent cariée",N4
+101,14036,貯金,貯金（ちょきん）,"mettre de l'argent de côté, économies, épargne",N4
+101,14037,田,田（た）,rizière,N4
+101,14038,電子レンジ,電子（でんし）レンジ,(four à) micro-ondes,N4
+101,14039,当たり,当（あ）たり,"coup, succès, devinette, prédiction, toucher, meurtrissure, par, chaque",N4
+101,14040,同情,同情（どうじょう）,"compassion, pitié, sympathie",N4
+101,14041,俳句,俳句（はいく）,"haïku, poème de 17 mores",N4
+101,14042,倍,倍（ばい）,"deux fois, double, (x) fois",N4
+101,14043,不便,不便（ふべん）,"peu pratique, inconvénient, incommode",N4
+101,14044,便秘,便秘（べんぴ）,constipation,N4
+101,14045,有料,有料（ゆうりょう）,"payant, entrée payante",N4
+101,14046,預金,預金（よきん）,"dépôt, compte bancaire",N4
+101,14047,寮,寮（りょう）,"auberge, villa, dortoir, résidence universitaire",N4
+101,14048,餡,餡（あん）,"pâte de haricots rouges, anko, farce (d'un ravioli, d'un petit pain...)",N4
+102,15000,残業,残業（ざんぎょう）,heures supplémentaires (travail),N4
+102,15001,目茶苦茶,目茶苦茶（めちゃくちゃ）,"absurde, déraisonnable, insensé, incohérent, désordonné, chaotique",N4
+102,15002,原爆,原爆（げんばく）,bombe atomique,N4
+102,15003,喫煙,喫煙（きつえん）,"tabagisme, (lieu) fumeur",N4
+102,15004,劇,劇（げき）,"pièce de théâtre, drame, drogue puissante",N4
+102,15005,卒業式,卒業式（そつぎょうしき）,cérémonie de remise des diplômes,N4
+102,15006,押し入れ,押（お）し入（い）れ,placard,N4
+102,15007,食料品,食料品（しょくりょうひん）,"produits alimentaires, épicerie",N4
+102,15008,美容院,美容院（びよういん）,"salon de beauté, salon de coiffure",N4
+102,15009,沸かす,沸（わ）かす,"faire bouillir, chauffer, exciter, fondre (métal)",N4
+102,15010,身振り,身振（みぶ）り,"geste, gesticulation, signe",N4
+102,15011,オートバイ,オートバイ,moto,N4
+102,15012,先発,先発（せんぱつ）,"commencer en premier, partir en avance",N4
+102,15013,記念,記念（きねん）,"commémoration, célébration, honorer la mémoire de quelque chose",N4
+102,15014,うんと,うんと,"beaucoup, énormément, avec beaucoup d'effort",N4
+102,15015,梯子,梯子（はしご）,"échelle, escaliers, aller à plusieurs endroits successivement",N4
+102,15016,小鳥,小鳥（ことり）,"petit oiseau, oiseau chanteur, oisillon, petit oiseau, petit oiseau",N4
+102,15017,チップ,チップ,"pourboire, puce (électronique), jeton de poker, lob (sport)",N4
+102,15018,工業,工業（こうぎょう）,industrie (manufacturière),N4
+102,15019,夕べ,夕（ゆう）べ,"soir, hier soir",N4
+102,15020,シングル,シングル,"individuel, simple, lit simple, simple (tennis)",N4
+102,15021,回,回（かい）,"compteur pour les occurrences, fois, manche, tour, partie, épisode, chapitre",N4
+102,15022,ジャム,ジャム,confiture,N4
+102,15023,個,個（こ）,"compteur pour petits objets, compteur pour unités militaires, individuel",N4
+102,15024,ブラシ,ブラシ,"brosse, brossé",N4
+102,15025,電報,電報（でんぽう）,télégramme,N4
+102,15026,昼寝,昼寝（ひるね）,sieste,N4
+102,15027,スニーカー,スニーカー,"baskets, sneakers",N4
+102,15028,すっと,すっと,"droit, rapidement, tout à coup, tranquillement, se sentir rafraîchi",N4
+102,15029,登山,登山（とざん）,"alpinisme, escalade (en montagne)",N4
+102,15030,将棋,将棋（しょうぎ）,"shogi, échecs japonais",N4
+102,15031,貧乏,貧乏（びんぼう）,"pauvre, démuni, misérable",N4
+102,15032,ぐっすり,ぐっすり,"profondément endormi, dormir à poings fermés",N4
+102,15033,アナウンサー,アナウンサー,présentateur,N4
+102,15034,通帳,通帳（つうちょう）,"livret de banque, carnet de banque",N4
+102,15035,土産,土産（みやげ）,"cadeau de voyage, cadeau apporté par un visiteur, cadeau non désiré",N4
+102,15036,階,階（かい）,"étage, compteur pour les étages, escaliers",N4
+102,15037,落語,落語（らくご）,"rakugo (récit comique traditionnel japonais), histoire comique",N4
+102,15038,予報,予報（よほう）,"prévision, prédiction",N4
+102,15039,電灯,電灯（でんとう）,"lampe, lumière électrique",N4
+102,15040,スカーフ,スカーフ,écharpe,N4
+102,15041,返品,返品（へんぴん）,retour d'un produit,N4
+102,15042,プリン,プリン,"flan aux œufs, pudding",N4
+102,15043,地理,地理（ちり）,géographie,N4
+102,15044,召し上がる,召（め）し上（あ）がる,"manger, boire",N4
+102,15045,コンタクト,コンタクト,"contact, lentille de contact",N4
+102,15046,スクール,スクール,école,N4
+102,15047,会議室,会議室（かいぎしつ）,"salle de conférence, salle de réunion, salle du conseil",N4
+102,15048,食費,食費（しょくひ）,"dépenses alimentaires, frais de nourriture",N4
+102,15049,刈る,刈（か）る,"couper (herbe, cheveux...), tondre, tailler, élaguer, raser, moissonner, récolter",N4
+103,16000,スリッパ,スリッパ,pantoufles,N4
+103,16001,剃る,剃（そ）る,raser,N4
+103,16002,売り場,売（う）り場（ば）,"point de vente, comptoir (dans un magasin), bon moment pour vendre",N4
+103,16003,保健,保健（ほけん）,"préservation de la santé, hygiène, sanitaire",N4
+103,16004,アイロン,アイロン,"fer à repasser, fer à lisser, fer à boucler, fer à friser",N4
+103,16005,下宿,下宿（げしゅく）,"pension, logement",N4
+103,16006,木綿,木綿（もめん）,coton,N4
+103,16007,ペンキ,ペンキ,peinture,N4
+103,16008,延期,延期（えんき）,"report, ajournement",N4
+103,16009,ダブル,ダブル,"double, lit double, doubles (tennis), personne de parenté mixte",N4
+103,16010,曜日,曜日（ようび）,jour de la semaine,N4
+103,16011,ボールペン,ボールペン,stylo à bille,N4
+103,16012,家庭教師,家庭教師（かていきょうし）,"professeur particulier, tuteur, coach",N4
+103,16013,祝い,祝（いわ）い,"félicitations, fête, cadeau de remerciements",N4
+103,16014,込む,込（こ）む,"être bondé, être compliqué",N4
+103,16015,一日目,一日目（いちにちめ）,"le premier jour, jour un",N4
+103,16016,座談会,座談会（ざだんかい）,"réunion, symposium, discussion table ronde",N4
+103,16017,ストップ,ストップ,"arrêt, stop",N4
+103,16018,眉毛,眉毛（まゆげ）,sourcil,N4
+103,16019,括弧,括弧（かっこ）,"parenthèses, crochets",N4
+103,16020,ケチ,ケチ,"avarice, radinerie, pingre, dérisoire, étroit d'esprit, mesquin, mauvais présage, poisse",N4
+103,16021,ガソリンスタンド,ガソリンスタンド,"station-service, station essence",N4
+103,16022,アナウンス,アナウンス,"annonce (surtout par haut-parleurs), annonce officielle",N4
+103,16023,パーマ,パーマ,permanente (coiffure),N4
+103,16024,トレーナー,トレーナー,"entraîneur, sweat-shirt",N4
+103,16025,整形外科,整形外科（せいけいげか）,"chirurgie plastique, chirurgie orthopédique, chirurgie esthétique",N4
+103,16026,徹夜,徹夜（てつや）,"nuit blanche, toute la nuit",N4
+103,16027,二日間,二日間（ふつかかん）,période de deux jours,N4
+103,16028,奨学金,奨学金（しょうがくきん）,"bourse d'études, prêt étudiant",N4
+103,16029,旅行会社,旅行会社（りょこうがいしゃ）,agence de voyage,N4
+103,16030,降り出す,降（ふ）り出（だ）す,"commencer à pleuvoir, commencer à neiger",N4
+103,16031,達,達（たち）,suffixe de pluralisation (surtout pour les personnes et animaux),N4
+103,16032,無駄遣い,無駄遣（むだづか）い,"gaspillage (d'argent, de temps, etc.), dilapidation",N4
+103,16033,大家さん,大家（おおや）さん,propriétaire (d'un logement),N4
+103,16034,えっと,えっと,"voyons voir, eh bien, euh..., hum...",N4
+103,16035,レントゲン,レントゲン,"rayon X, radiographie, roentgen (unité)",N4
+103,16036,待ち遠しい,待（ま）ち遠（どお）しい,attendu avec impatience,N4
+103,16037,授業料,授業料（じゅぎょうりょう）,"frais de scolarité, prix d'un cours",N4
+103,16038,英会話,英会話（えいかいわ）,"conversation en anglais, école de conversation en anglais",N4
+103,16039,ニヤニヤ,ニヤニヤ,"sourire, ricaner",N4
+103,16040,耳鼻科,耳鼻科（じびか）,"oto-rhino-laryngologie, ORL",N4
+103,16041,人工,人工（じんこう）,"artificiel, d'origine humaine",N4
+103,16042,扇子,扇子（せんす）,éventail pliable,N4
+103,16043,饅頭,饅頭（まんじゅう）,"manjū, petit pain à la vapeur avec garniture",N4
+103,16044,盆踊り,盆踊（ぼんおど）り,"danse du fête de Bon, danse du festival des lanternes",N4
+103,16045,白黒,白黒（しろくろ）,"noir et blanc, monochrome, bien et mal",N4
+103,16046,迷信,迷信（めいしん）,"superstition, croyance superstitieuse",N4
+103,16047,メーター,メーター,"mètre, animateur",N4
+103,16048,パンダ,パンダ,panda,N4
+103,16049,料,料（りょう）,"tarif, frais, prix, matériau",N4
+104,17000,売り切れる,売（う）り切（き）れる,"être épuisé (article), être complet (spectacle)",N4
+104,17001,スポーツ選手,スポーツ選手（せんしゅ）,athlète,N4
+104,17002,プロポーズ,プロポーズ,demande (en mariage),N4
+104,17003,両,両（りょう）,"les deux (mains, parents, côtés...), compteur pour les wagons (dans un train), compteur pour les véhicules",N4
+104,17004,空手,空手（からて）,"karaté, mains nues",N4
+104,17005,講堂,講堂（こうどう）,"auditorium, salle de conférence",N4
+104,17006,国際関係,国際関係（こくさいかんけい）,relations internationales,N4
+104,17007,床屋,床屋（とこや）,"salon de coiffure, coiffeur",N4
+104,17008,女子学生,女子学生（じょしがくせい）,étudiante,N4
+104,17009,大ヒット,大（だい）ヒット,"grand succès, hit, article populaire (film, musique)",N4
+104,17010,エスカレーター,エスカレーター,"escalier mécanique, escalator",N4
+104,17011,八分,八分（はっぷん）,huit minutes,N4
+104,17012,ヒーター,ヒーター,"radiateur, poêle, chauffage",N4
+104,17013,紺色,紺色（こんいろ）,"bleu foncé, bleu marine",N4
+104,17014,キャッシュカード,キャッシュカード,carte de retrait,N4
+104,17015,痛み止め,痛（いた）み止（ど）め,antidouleur,N4
+104,17016,暗証番号,暗証番号（あんしょうばんごう）,code PIN,N4
+104,17017,駅員,駅員（えきいん）,"employé de gare, personnel de gare",N4
+104,17018,国際,国際（こくさい）,international,N4
+104,17019,短冊,短冊（たんざく）,"longue bande étroite de papier sur laquelle des poèmes japonais sont écrits (verticalement), mince rectangle",N4
+104,17020,一年中,一年中（いちねんじゅう）,toute l'année,N4
+104,17021,痴漢,痴漢（ちかん）,"agresseur sexuel, tripoteur, pervers",N4
+104,17022,大浴場,大浴場（だいよくじょう）,grand bain public,N4
+104,17023,茶店,茶店（ちゃみせ）,maison de thé,N4
+104,17024,乗り遅れる,乗（の）り遅（おく）れる,"manquer, rater (un train, un bus), en retard (sur son époque)",N4
+104,17025,チェックイン,チェックイン,enregistrement,N4
+104,17026,ステレオ,ステレオ,stéréo,N4
+104,17027,専攻,専攻（せんこう）,"discipline, domaine, majeure, matière principale",N4
+104,17028,バイバイ,バイバイ,"au revoir, à bientôt, à plus",N4
+104,17029,バレンタインデー,バレンタインデー,Saint-Valentin,N4
+104,17030,すっぽん,すっぽん,"tortue à carapace molle chinoise, trappe dans un théâtre kabuki",N4
+104,17031,顔文字,顔文字（かおもじ）,"émoticône, smiley, kaomoji",N4
+104,17032,辞典,辞典（じてん）,dictionnaire,N4
+104,17033,ショッピングモール,ショッピングモール,centre commercial,N4
+104,17034,羨ましがる,羨（うらや）ましがる,(quelqu'un est) envieux,N4
+104,17035,両替,両替（りょうがえ）,change (de devises),N4
+104,17036,落語家,落語家（らくごか）,"conteur de rakugo, conteur comique",N4
+104,17037,体温計,体温計（たいおんけい）,thermomètre médical,N4
+104,17038,ヘッドホン,ヘッドホン,casque audio,N4
+104,17039,ホームステイ,ホームステイ,séjour chez l'habitant,N4
+104,17040,ホワイトデー,ホワイトデー,White Day (14 mars),N4
+104,17041,発車,発車（はっしゃ）,départ d'un véhicule,N4
+104,17042,力仕事,力（ちから）仕事（しごと）,"travail physique, travail manuel",N4
+104,17043,ツイン,ツイン,jumeau,N4
+104,17044,チェックアウト,チェックアウト,check-out,N4
+104,17045,アプリ,アプリ,"appli, application",N4
+104,17046,予習,予習（よしゅう）,préparation pour un cours,N4
+104,17047,屋,屋（や）,"magasin (de quelque chose), professionnel (en quelque chose), quelqu'un avec un trait de personnalité, maison, toit",N4
+104,17048,時間通り,時間通（じかんどお）り,à l'heure,N4
+104,17049,梳く,梳（す）く,"peigner, démêler (les cheveux), dénouer, découdre, résoudre",N4
+105,18000,昔々,昔々（むかしむかし）,"il était une fois, il y a fort longtemps",N4
+105,18001,億,億（おく）,cent millions,N4
+105,18002,男子学生,男子学生（だんしがくせい）,étudiant masculin,N4
+105,18003,虫眼鏡,虫眼鏡（むしめがね）,loupe,N4
+105,18004,寝坊,寝坊（ねぼう）,"se lever tard, faire la grasse matinée, lève-tard, gros dormeur",N4
+105,18005,知らせる,知（し）らせる,"annoncer, faire savoir, notifier",N4
+105,18006,キロ,キロ,"kilo-, kilogramme, kilomètre",N4
+105,18007,ワンルームマンション,ワンルームマンション,"studio, appartement studio",N4
+105,18008,ルームメイト,ルームメイト,colocataire,N4
+105,18009,ホームシック,ホームシック,mal du pays,N4
+105,18010,カンニング,カンニング,triche (à un examen),N4
+105,18011,恥ずかしがり屋,恥（は）ずかしがり屋（や）,personne timide,N4
+105,18012,割り引き券,割（わ）り引（び）き券（けん）,bon de réduction,N4
+105,18013,ＳＮＳ,ＳＮＳ（エスエヌエス）,réseau social,N4
+105,18014,主夫,主夫（しゅふ）,"père au foyer, homme au foyer",N4
+105,18015,ブロー,ブロー,"séchage au sèche-cheveux, coup",N4
+105,18016,期末試験,期末試験（きまつしけん）,"examen final, partiels",N4
+105,18017,未満,未満（みまん）,"moins que, insuffisant",N4
+105,18018,通用,通用（つうよう）,"usage commun, circulation, se présenter comme",N4
+105,18019,推薦状,推薦状（すいせんじょう）,"lettre de recommandation, lettre d'invitation, référence",N4
+105,18020,泊,泊（はく）,"compteur pour les nuitées, séjour d'une nuit, hébergement",N4
+105,18021,泳ぎ方,泳（およ）ぎ方（かた）,façon de nager,N4
+105,18022,朝食付き,朝食付（ちょうしょくつ）き,petit-déjeuner inclus,N4
+105,18023,預け入れ,預（あず）け入（い）れ,dépôt,N4
+105,18024,過ぎ,過（す）ぎ,"passé, après, trop (de), sur- (par exemple, manger)",N4
+105,18025,休校,休校（きゅうこう）,fermeture provisoire d'une école,N4
+105,18026,センチ,センチ,"centimètre, centi-, sentimental",N4
+105,18027,朝寝坊,朝寝坊（あさねぼう）,"lève-tard, qui fait la grasse matinée",N4
+105,18028,残高照会,残高照会（ざんだかしょうかい）,consultation de solde (compte bancaire),N4
+105,18029,トロッコ列車,トロッコ列車（れっしゃ）,train touristique,N4
+105,18030,電気工学,電気工学（でんきこうがく）,génie électrique,N4
+105,18031,スクランブル交差点,スクランブル交差点（こうさてん）,"carrefour à la japonaise, passage piéton omnidirectionnel",N4
+105,18032,一人暮らし,一人（ひとり）暮（ぐ）らし,habiter seul,N4
+105,18033,おめでとうございます,おめでとうございます,"félicitations, bravo",N4
+105,18034,お蔭,お蔭（かげ）,"grâce (de Dieu), bénévolence (de Bouddha), bénédiction, assistance, aide",N4
+105,18035,迎えに行く,迎（むか）えに行（い）く,"aller rencontrer quelqu'un, aller chercher quelqu'un",N4
+105,18036,気に入る,気（き）に入（い）る,"apprécier, être satisfait de, convenir (à ses goûts)",N4
+105,18037,髪を梳かす,髪（かみ）を梳（と）かす,peigner (ses cheveux),N4
+105,18038,匹,匹（ひき）,compteur pour les petits animaux,N4
+105,18039,楽しそうに,楽（たの）しそうに,joyeusement,N4
+105,18040,お陰で,お陰（かげ）で,"grâce à ..., en raison de ..., à cause de ...",N4
+105,18041,お陰様で,お陰様（かげさま）で,"(Je vais bien) merci, grâce à vous, par chance",N4
+105,18042,何度も,何度（なんど）も,"plusieurs fois, souvent, à plusieurs reprises, maintes fois",N4
+105,18043,諺,諺（ことわざ）,"proverbe, dicton, aphorisme, maxime",N4
+105,18044,雨が止む,雨（あめ）が止（や）む,la pluie s'arrête,N4
+105,18045,一泊二食付き,一泊（いっぱく）二食（にしょく）付（つ）き,une nuit avec deux repas,N4
+105,18046,一生に一度,一生（いっしょう）に一度（いちど）,une fois dans sa vie,N4
+105,18047,ろうそく,ろうそく,bougie,N4
+105,18048,よろしくお伝えください,よろしくお伝（つた）えください,veuillez transmettre mes salutations,N4
+105,18049,お願い,お願（ねが）い,"demande, requête, souhait, s'il vous plaît",N4
+106,19000,お見舞い,お見舞（みま）い,"rendre visite à quelqu'un de malade, s'enquérir (de la santé de quelqu'un)",N4
+106,19001,お守り,お守（まも）り,"talisman, amulette, porte-bonheur",N4
+106,19002,お出でになる,お出（い）でになる,"être, venir, aller",N4
+106,19003,お出掛け,お出掛（でか）け,"sortie, excursion, sur le point de (commencer, sortir, partir)",N4
+106,19004,お城,お城（しろ）,château,N4
+106,19005,お宅,お宅（たく）,"votre maison, votre famille, votre mari, votre entreprise, vous",N4
+106,19006,コピーを取る,コピーを取（と）る,faire une photocopie,N4
+106,19007,こんなに,こんなに,"ainsi, comme ça, de cette façon",N4
+106,19008,ご主人,ご主人（しゅじん）,"mari, maître",N4
+106,19009,しかし,しかし,"cependant, mais",N4
+106,19010,その為,その為（ため）,"de ce fait, pour cette raison",N4
+106,19011,その頃,その頃（ころ）,"à ce moment-là, à cette époque, à cet instant, alors",N4
+106,19012,蕎麦,蕎麦（そば）,"soba, sarrasin, nouilles japonaises de sarrasin",N4
+106,19013,それで,それで,"et, alors, à cause de cela",N4
+106,19014,それ程,それ程（ほど）,"autant, à ce degré, dans cette mesure",N4
+106,19015,揃える,揃（そろ）える,"rassembler, collecter, arranger, mettre en ordre, préparer, assortir",N4
+106,19016,ただ,ただ,"ordinaire, gratuit, tel quel, sûr, seulement, juste, mais, cependant",N4
+106,19017,どうしたらいい,どうしたらいい,"que faire ?, quel est le meilleur choix à faire ?",N4
+106,19018,どうしよう,どうしよう,que faire ?,N4
+106,19019,どこでも,どこでも,n'importe où,N4
+106,19020,ところが,ところが,"même si, cependant, néanmoins, au contraire, en fait",N4
+106,19021,とにかく,とにかく,"de toute façon, en tout cas, de toute manière, au moins",N4
+106,19022,どんなに,どんなに,"comment, combien",N4
+106,19023,と申します,と申（もう）します,"s'appelle, m'appelle",N4
+106,19024,に比べて,に比（くら）べて,"par rapport à, comparé à",N4
+106,19025,のようなもの,のようなもの,quelque chose comme ...,N4
+106,19026,パーマを掛ける,パーマを掛（か）ける,se faire friser les cheveux,N4
+106,19027,皮膚科,皮膚科（ひふか）,dermatologie,N4
+106,19028,めまい,めまい,"étourdissement, vertige",N4
+106,19029,もう少し,もう少（すこ）し,"un peu plus, un peu plus longtemps",N4
+106,19030,ようこそ,ようこそ,bienvenue !,N4
+106,19031,違いない,違（ちが）いない,"pas d'erreur, certain",N4
+106,19032,係の者,係（かかり）の者（もの）,notre responsable,N4
+106,19033,仕方がない,仕方（しかた）がない,"on ne peut rien y faire, c'est inévitable, c'est inutile",N4
+106,19034,平和記念資料館,平和記念資料館（へいわきねんしりょうかん）,Musée Mémorial de la Paix,N4
+106,19035,保険に入る,保険（ほけん）に入（はい）る,souscrire une assurance,N4
+106,19036,宝くじ,宝（たから）くじ,"loterie, billet de loterie",N4
+106,19037,宝くじに当たる,宝（たから）くじに当（あ）たる,gagner à la loterie,N4
+106,19038,放っておく,放（ほう）っておく,"laisser tranquille, laisser tel quel, ignorer, négliger",N4
+106,19039,縫いぐるみ,縫（ぬ）いぐるみ,peluche,N4
+106,19040,本当は,本当（ほんとう）は,"en fait, à l'origine",N4
+106,19041,名,名（めい）,"compteur pour les personnes (pour des places, réservations...), prénom, célèbre, grand",N4
+106,19042,名前をつける,名前（なまえ）をつける,"donner un nom, nommer",N4
+106,19043,名様,名様（めいさま）,"compteur pour les personnes (pour des places, réservations...)",N4
+106,19044,戻ってくる,戻（もど）ってくる,revenir,N4
+106,19045,良かったら,良（よ）かったら,"si vous voulez, si cela ne vous dérange pas",N4
+106,19046,連れて帰る,連（つ）れて帰（かえ）る,ramener (une personne),N4
+106,19047,奢る,奢（おご）る,"gâter (quelqu'un), payer (sa tournée, un repas), vivre luxueusement",N4
+107,20000,お腹を壊す,お腹（なか）を壊（こわ）す,"avoir un mal de ventre, avoir la diarrhée",N4
+107,20001,顔が青い,顔（かお）が青（あお）い,"avoir l'air pâle, avoir l'air blafard",N4
+107,20002,ご存じ,ご存（ぞん）じ,"connaître, (une) connaissance",N4
+107,20003,〜顔をする,〜 顔（かお）をする,avoir l'air (expression faciale),N4
+107,20004,眼鏡をかける,眼鏡（めがね）をかける,"porter des lunettes, mettre des lunettes",N4
+107,20005,気がつく,気（き）がつく,"remarquer, prendre conscience, réaliser, être scrupuleux, être attentif, revenir à soi",N4
+107,20006,お返し,お返（かえ）し,"cadeau de retour, rendre la pareille, revanche, monnaie (dans une transaction en espèces)",N4
+107,20007,計画を立てる,計画（けいかく）を立（た）てる,"faire des plans, faire des projets",N4
+107,20008,お釣り,お釣（つ）り,"(la) monnaie, (un) solde",N4
+107,20009,お預け入れ,お預（あず）け入（い）れ,dépôt (bancaire),N4
+107,20010,アイロンを掛ける,アイロンを掛（か）ける,"repasser, faire le repassage",N4
+107,20011,刺す,刺（さ）す,"percer, poignarder, piquer (insecte), coudre, faire avancer avec une perche (un bateau)",N4
+107,20012,申し訳ありません,申（もう）し訳（わけ）ありません,"je suis désolé, (c'est) inexcusable, merci beaucoup (pour l'aide)",N4
+107,20013,お振込,お振込（ふりこみ）,virement bancaire,N4
+107,20014,お饅頭,お饅頭（まんじゅう）,"manjū, petit pain sucré",N4
+107,20015,影響を受ける,影響（えいきょう）を受（う）ける,"être affecté, être influencé",N4
+107,20016,上手くいく,上手（うま）くいく,"se passer sans problème, bien se dérouler, faire l'affaire, avoir une bonne relation",N4
+107,20017,かしこまりました,かしこまりました,certainement !,N4
+107,20018,始めは,始（はじ）めは,"au début, à l'origine",N4
+107,20019,やっぱり,やっぱり,"comme prévu, comme on s'y attendrait, de toute façon, néanmoins",N4
+107,20020,気をつける,気（き）をつける,"faire attention, être prudent, prendre soin",N4
+107,20021,アジア研究,アジア研究（けんきゅう）,études asiatiques,N4
+107,20022,上手く,上手（うま）く,"habilement, bien, adroitement, intelligemment, avec succès",N4
+107,20023,銃で撃たれる,銃（じゅう）で撃（う）たれる,"être abattu, se faire tirer dessus",N4
+107,20024,居なくなる,居（い）なくなる,"disparaître (personnes ou animaux), partir, s'en aller",N4
+107,20025,世話をする,世話（せわ）をする,prendre soin de,N4
+107,20026,気にする,気（き）にする,"s'inquiéter, se soucier de, se préoccuper",N4
+107,20027,髪形,髪形（かみがた）,coiffure,N4
+107,20028,失礼します,失礼（しつれい）します,"excusez-moi, pardon, je vous prie de m'excuser",N4
+107,20029,生活のゆとり,生活（せいかつ）のゆとり,"aisance de vie, marge pour vivre confortablement",N4
+107,20030,辞める,辞（や）める,"démissionner, prendre sa retraite, quitter (son emploi)",N4
+107,20031,自由に,自由（じゆう）に,"librement, à volonté, à sa guise, comme on veut",N4
+107,20032,誠に,誠（まこと）に,"sincèrement, véritablement, vraiment, absolument",N4
+107,20033,成るべく,成（な）るべく,"autant que possible, dans la mesure du possible",N4
+107,20034,治る,治（なお）る,"être guéri, aller mieux, être soigné, être réparé, être corrigé",N4
+107,20035,積もり,積（つ）もり,"intention, plan, conviction, croyance",N4
+107,20036,引っかく,引（ひ）っかく,"griffer, égratigner",N4
+107,20037,滅多に,滅多（めった）に,"rarement, peu souvent",N4
+107,20038,出来れば,出来（でき）れば,si possible,N4
+107,20039,持ってくる,持（も）ってくる,"apporter, prendre (quelque chose) avec soi, aller chercher",N4
+107,20040,振込,振込（ふりこみ）,virement bancaire,N4
+107,20041,お嬢さん,お嬢（じょう）さん,"fille (de quelqu'un), jeune femme, mademoiselle",N4
+107,20042,はたを織る,はたを織（お）る,tisser (sur un métier à tisser),N4
+107,20043,のどが渇く,のどが渇（かわ）く,avoir soif,N4
+107,20044,のど,のど,"gorge, voix chantée",N4
+107,20045,なるほど,なるほど,"je vois, en effet",N4
+107,20046,１９６０年代,１９６０（せんきゅうひゃくろくじゅう）年代（ねんだい）,années 60,N4
+107,20047,の紹介で,の紹介（しょうかい）で,"grâce à, par l'intermédiaire de",N4
+107,20048,という意味だ,という意味（いみ）だ,signifie que,N4
+108,21000,風が吹く,風（かぜ）が吹（ふ）く,le vent souffle,N4
+108,21001,文句を言う,文句（もんく）を言（い）う,"se plaindre, faire une réclamation",N4
+108,21002,ただの,ただの,rien de plus que ...,N4
+108,21003,林檎,林檎（りんご）,"pomme, pommier",N4
+108,21004,待たせる,待（ま）たせる,faire attendre (quelqu'un),N4
+108,21005,そんなことはない,そんなことはない,je ne pense pas,N4
+108,21006,そうか,そうか,est-ce ainsi ? (généralement rhétorique),N4
+108,21007,怠け者,怠（なま）け者（もの）,"paresseux, fainéant",N4
+108,21008,代わりに,代（か）わりに,"au lieu de, à la place de, en échange de, en retour de, pour compenser",N4
+108,21009,おしゃれ,おしゃれ,"élégant, bien habillé, à la mode",N4
+108,21010,大切にする,大切（たいせつ）にする,"chérir, prendre soin de, s'occuper de",N4
+108,21011,お世話になる,お世話（せわ）になる,"être redevable, être reconnaissant, recevoir une faveur",N4
+108,21012,冊,冊（さつ）,"compteur pour les livres, volume",N4
+108,21013,ご覧になる,ご覧（らん）になる,"voir, regarder, observer, essayer de",N4
+108,21014,仲がいい,仲（なか）がいい,"proche, intime, en bons termes",N4
+108,21015,こんな風に,こんな風（ふう）に,"de cette manière, comme ça",N4
+108,21016,連れてくる,連（つ）れてくる,amener (quelqu'un) avec soi,N4
+108,21017,このぐらい,このぐらい,à ce point,N4
+108,21018,混んでいる,混（こ）んでいる,être bondé,N4
+108,21019,今日中に,今日中（きょうじゅう）に,"d'ici aujourd'hui, avant la fin de la journée",N4
+108,21020,お餅,お餅（もち）,"mochi, gâteau de riz gluant",N4
+108,21021,お疲れ様,お疲（つか）れ様（さま）,"merci pour votre travail acharné, bon travail, au revoir",N4
+108,21022,おやつ,おやつ,"en-cas, collation de l'après-midi, goûter",N4
+108,21023,お湯を沸かす,お湯（ゆ）を沸（わ）かす,faire bouillir de l'eau,N4
+108,21024,お湯が沸く,お湯（ゆ）が沸（わ）く,l'eau bouille,N4
+108,21025,お先に失礼します,お先（さき）に失礼（しつれい）します,excusez-moi de partir (en premier),N4
+108,21026,お祝い,お祝（いわ）い,"félicitations, célébration, fête, cadeau de félicitations",N4
+108,21027,通帳記入,通帳記入（つうちょうきにゅう）,mise à jour du carnet de banque,N4
+108,21028,漬ける,漬（つ）ける,"tremper, baigner, immerger, mariner",N4
+108,21029,お休みになる,お休（やす）みになる,dormir,N4
+108,21030,お休みなさい,お休（やす）みなさい,bonne nuit,N4
+108,21031,お祈り,お祈（いの）り,"prière, supplication",N4
+108,21032,お気の毒に,お気（き）の毒（どく）に,"mes sympathies, c'est dommage, mes condoléances",N4
+108,21033,お引き出し,お引（ひ）き出（だ）し,retrait,N4
+108,21034,おにぎり,おにぎり,"onigiri, boulette de riz",N4
+108,21035,おばさん,おばさん,tante,N4
+108,21036,おじさん,おじさん,"oncle, vieil homme, monsieur",N4
+108,21037,そうそう,そうそう,"tellement, particulièrement, surtout, tout à fait, en effet",N4
+108,21038,道に迷う,道（みち）に迷（まよ）う,"se perdre, s'égarer",N4
+108,21039,その他,その他（ほか）,"etc., autrement, en plus, en outre, le reste, les autres",N4
+108,21040,いかが,いかが,"comment, de quelle manière, que diriez-vous de, douteux",N4
+108,21041,どうぞ宜しく,どうぞ宜（よろ）しく,"enchanté de vous rencontrer, comment allez-vous, mes salutations, mes amitiés",N4
+108,21042,悪口を言う,悪口（わるぐち）を言（い）う,"insulter, médire",N4
+108,21043,宜しかったら,宜（よろ）しかったら,"si vous ne voyez pas d'inconvénient, si vous voulez",N4
+108,21044,ナス,ナス,aubergine,N4
+108,21045,元気でね,元気（げんき）でね,prends soin de toi,N4
+108,21046,鍵をかける,鍵（かぎ）をかける,fermer à clé,N4
+108,21047,迎えに来る,迎（むか）えに来（く）る,"venir chercher quelqu'un, passer prendre quelqu'un",N4
+108,21048,仰っしゃる,仰（おっしゃ）る,"dire, parler, raconter, discuter",N4
+108,21049,馬鹿にする,馬鹿（ばか）にする,"se moquer de, mépriser, prendre à la légère",N4
+108,21050,いつの間にか,いつの間（ま）にか,"avant qu'on ne s'en rende compte, sans s'en apercevoir, à l'insu",N4
