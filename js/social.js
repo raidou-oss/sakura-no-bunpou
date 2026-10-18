@@ -124,7 +124,7 @@ async function localProfile(main) {
 }
 
 function editProfile(main, p, rerender) {
-  const name = h('input#pf-name', { value: p.username, maxlength: 20, minlength: 3, required: true, autocomplete: 'nickname' });
+  const name = h('input#pf-name', { value: p.username, maxlength: 20, minlength: 2, required: true, autocomplete: 'nickname' });
   const bio = h('textarea#pf-bio', { maxlength: 160, rows: 3 }, p.bio || '');
   const files = {};
   const preview = h('div.edit-preview', h('div.banner', p.banner_url ? { style: { backgroundImage: `url("${p.banner_url}")` } } : null), avatar(p, 'xl'));
@@ -141,7 +141,7 @@ function editProfile(main, p, rerender) {
     e.preventDefault(); save.disabled = true; save.textContent = 'Enregistrement…';
     try {
       const patch = { username: name.value.trim(), bio: bio.value.trim() };
-      if (!/^[\w\-.ぁ-んァ-ン一-龯]{3,20}$/.test(patch.username)) throw new Error('Pseudo : 3 à 20 caractères (lettres, chiffres, _ - .).');
+      if (!USERNAME_RE.test(patch.username)) throw new Error(USERNAME_HINT);
       if (files.avatar) patch.avatar_url = await C.uploadImage(files.avatar, 'avatar');
       if (files.banner) patch.banner_url = await C.uploadImage(files.banner, 'banner');
       const np = await C.updateProfile(patch);
@@ -222,45 +222,86 @@ export function portalPage(main) {
   accountPage(slot, { portal: true });
 }
 
+/** Pseudo : 2 à 20 caractères, japonais compris (kana, kanji), sans espaces ni symboles à risque */
+export const USERNAME_RE = /^[^\s@<>"'`/\\]{2,20}$/u;
+const USERNAME_HINT = 'Identifiant : 2 à 20 caractères, sans espace ni @ < > " \' ` / \\. Kana et kanji acceptés.';
+
 export async function accountPage(main, { portal = false } = {}) {
   if (!C.enabled) { location.hash = '#/profil'; return; }
   if (C.isRecovery()) return newPassword(main);
   if (C.currentUser()) { if (!portal) location.hash = '#/profil'; return; }
   let mode = portal ? 'login' : 'signup';
+  let lastEmail = '';
   const render = () => {
-    const email = h('input#ac-email', { type: 'email', required: true, autocomplete: 'email', placeholder: 'toi@exemple.fr' });
-    const pass = h('input#ac-pass', { type: 'password', required: mode !== 'reset', minlength: 6, autocomplete: mode === 'signup' ? 'new-password' : 'current-password' });
-    const name = h('input#ac-name', { required: true, minlength: 3, maxlength: 20, autocomplete: 'nickname', placeholder: 'Ton pseudo' });
+    const ident = h('input#ac-ident', { required: true, maxlength: 60, autocomplete: 'username', placeholder: 'さくら、yuki_fr…', autocapitalize: 'off', spellcheck: 'false' });
+    const name = h('input#ac-name', { required: true, minlength: 2, maxlength: 20, autocomplete: 'username', placeholder: 'さくら、由紀、yuki_fr…', autocapitalize: 'off', spellcheck: 'false' });
+    const email = h('input#ac-email', { type: 'email', required: true, autocomplete: 'email', placeholder: 'toi@exemple.fr', value: lastEmail });
+    const pass = h('input#ac-pass', { type: 'password', required: true, minlength: 6, autocomplete: mode === 'signup' ? 'new-password' : 'current-password' });
     const msg = h('p.form-msg', { 'aria-live': 'polite' });
+    const extra = h('div.form-extra');
     const submit = h('button.btn.primary.wide', { type: 'submit' }, mode === 'signup' ? 'Créer mon compte' : mode === 'login' ? 'Se connecter' : 'Envoyer le lien');
+    const say = (text, ok) => { msg.className = `form-msg ${ok ? 'ok' : 'ko'}`; msg.textContent = text; };
+
+    /** Bouton « Renvoyer » avec un délai de 60 s entre deux envois */
+    const resendButton = (label, send) => {
+      const btn = h('button.btn.small.ghost', { type: 'button' }, label);
+      let left = 0, timer;
+      const tick = () => { btn.disabled = left > 0; btn.textContent = left > 0 ? `${label} (${left} s)` : label; if (left-- > 0) timer = setTimeout(tick, 1000); };
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        try { await send(); say('E-mail renvoyé. Pense à regarder dans les spams.', true); left = 60; tick(); }
+        catch (err) { say(err.message); btn.disabled = false; }
+      });
+      left = 60; tick();
+      return btn;
+    };
+
     const form = h('form.card.auth-card', { onsubmit: async e => {
-      e.preventDefault(); submit.disabled = true; msg.textContent = '';
+      e.preventDefault(); submit.disabled = true; msg.textContent = ''; extra.replaceChildren();
       try {
         if (mode === 'signup') {
-          if (!/^[\w\-.ぁ-んァ-ン一-龯]{3,20}$/.test(name.value.trim())) throw new Error('Pseudo : 3 à 20 caractères (lettres, chiffres, _ - .).');
-          const r = await C.signUp(email.value.trim(), pass.value, name.value.trim());
-          if (r.needsConfirm) { msg.className = 'form-msg ok'; msg.textContent = 'Compte créé ! Ouvre l’e-mail de confirmation, puis reviens te connecter.'; mode = 'login'; submit.disabled = false; return; }
+          const pseudo = name.value.trim();
+          if (!USERNAME_RE.test(pseudo)) throw new Error(USERNAME_HINT);
+          if (!(await C.usernameAvailable(pseudo))) throw new Error('Cet identifiant est déjà pris.');
+          lastEmail = email.value.trim();
+          const r = await C.signUp(lastEmail, pass.value, pseudo);
+          if (r.needsConfirm) {
+            say(`Compte créé ! Un e-mail de confirmation a été envoyé à ${lastEmail}. Clique sur le lien, puis connecte-toi avec ton identifiant.`, true);
+            extra.append(resendButton('Renvoyer l’e-mail de confirmation', () => C.resendConfirmation(lastEmail)));
+            submit.disabled = false; return;
+          }
         } else if (mode === 'login') {
-          await C.signIn(email.value.trim(), pass.value);
+          await C.signInWithLogin(ident.value.trim(), pass.value);
         } else {
-          await C.resetPassword(email.value.trim());
-          msg.className = 'form-msg ok'; msg.textContent = 'Si un compte existe avec cet e-mail, un lien vient de t’être envoyé.'; submit.disabled = false; return;
+          lastEmail = email.value.trim();
+          await C.resetPassword(lastEmail);
+          say('Si un compte existe avec cet e-mail, un lien de réinitialisation vient d’être envoyé.', true);
+          extra.append(resendButton('Renvoyer l’e-mail', () => C.resetPassword(lastEmail)));
+          submit.disabled = false; return;
         }
         toast('Bienvenue !'); if (!portal) location.hash = '#/profil';
-      } catch (err) { msg.className = 'form-msg ko'; msg.textContent = err.message; submit.disabled = false; }
+      } catch (err) {
+        say(err.message); submit.disabled = false;
+        if (/Confirme d’abord/.test(err.message) && mode === 'login' && ident.value.includes('@'))
+          extra.append(resendButton('Renvoyer l’e-mail de confirmation', () => C.resendConfirmation(ident.value.trim())));
+      }
     } },
-      h('div.tabs.auth-tabs',
+      mode !== 'reset' ? h('div.tabs.auth-tabs',
         h('button', { type: 'button', class: mode === 'signup' ? 'tab active' : 'tab', onclick: () => { mode = 'signup'; render(); } }, 'Inscription'),
-        h('button', { type: 'button', class: mode === 'login' ? 'tab active' : 'tab', onclick: () => { mode = 'login'; render(); } }, 'Connexion')),
+        h('button', { type: 'button', class: mode === 'login' ? 'tab active' : 'tab', onclick: () => { mode = 'login'; render(); } }, 'Connexion')) : null,
       h('h1.auth-title', h('span.kanji-pop', { lang: 'ja' }, mode === 'signup' ? 'ようこそ' : mode === 'login' ? 'おかえり' : '鍵'),
         h('span', mode === 'signup' ? 'Crée ton compte' : mode === 'login' ? 'Content de te revoir' : 'Mot de passe oublié')),
-      mode === 'signup' ? h('label.field', { for: 'ac-name' }, h('span', 'Pseudo'), name) : null,
-      h('label.field', { for: 'ac-email' }, h('span', 'E-mail'), email),
+      mode === 'login' ? h('label.field', { for: 'ac-ident' }, h('span', 'Identifiant'), ident) : null,
+      mode === 'signup' ? h('label.field', { for: 'ac-name' }, h('span', 'Identifiant (kana et kanji acceptés)'), name) : null,
+      mode !== 'login' ? h('label.field', { for: 'ac-email' }, h('span', 'E-mail'), email) : null,
+      mode === 'reset' ? h('p.small', 'Indique l’e-mail utilisé à l’inscription : on t’envoie un lien pour choisir un nouveau mot de passe.') : null,
       mode !== 'reset' ? h('label.field', { for: 'ac-pass' }, h('span', 'Mot de passe (6 caractères min.)'), pass) : null,
-      submit, msg,
+      submit, msg, extra,
       mode === 'login' ? h('button.linkish', { type: 'button', onclick: () => { mode = 'reset'; render(); } }, 'Mot de passe oublié ?') : null,
-      mode === 'signup' ? h('p.small', 'Ta progression actuelle sera rattachée à ton compte.') : null);
+      mode === 'reset' ? h('button.linkish', { type: 'button', onclick: () => { mode = 'login'; render(); } }, 'Retour à la connexion') : null,
+      mode === 'signup' ? h('p.small', 'L’e-mail sert seulement à confirmer ton compte et à récupérer ton mot de passe. Tu te connectes ensuite avec ton identifiant.') : null);
     main.replaceChildren(form);
+    (mode === 'login' ? ident : mode === 'signup' ? name : email).focus({ preventScroll: true });
   };
   render();
 }

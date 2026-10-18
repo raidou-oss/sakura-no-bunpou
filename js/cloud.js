@@ -35,10 +35,11 @@ async function sb() {
 const fail = (error, fallback) => {
   if (!error) return;
   const m = error.message || '';
-  if (/Invalid login credentials/i.test(m)) throw new Error('E-mail ou mot de passe incorrect.');
+  if (/Invalid login credentials/i.test(m)) throw new Error('Identifiant ou mot de passe incorrect.');
+  if (/rate limit|too many|security purposes/i.test(m)) throw new Error('Trop d’e-mails envoyés d’un coup. Réessaie dans quelques minutes.');
   if (/Email not confirmed/i.test(m)) throw new Error('Confirme d’abord ton adresse : un e-mail t’a été envoyé.');
   if (/already registered|already exists/i.test(m)) throw new Error('Un compte existe déjà avec cet e-mail.');
-  if (/duplicate key.*username/i.test(m)) throw new Error('Ce pseudo est déjà pris.');
+  if (/duplicate key.*username|profiles_username/i.test(m)) throw new Error('Ce pseudo est déjà pris.');
   if (/duplicate key.*reactions/i.test(m)) throw new Error('Tu as déjà envoyé cette réaction aujourd’hui.');
   if (/Password should be/i.test(m)) throw new Error('Le mot de passe doit faire au moins 6 caractères.');
   throw new Error(fallback || m);
@@ -79,6 +80,26 @@ export async function updatePassword(password) {
   const { error } = await c.auth.updateUser({ password });
   fail(error);
   recovery = false;
+}
+/** Connexion par identifiant (pseudo, japonais compris) ou par e-mail */
+export async function signInWithLogin(login, password) {
+  if (login.includes('@')) return signIn(login, password);
+  const c = await sb();
+  const { data, error } = await c.rpc('login_email', { p_login: login, p_password: password });
+  if (error) fail(error, /login_email/.test(error.message) ? 'La connexion par identifiant n’est pas encore activée sur ce site.' : undefined);
+  if (!data) throw new Error('Identifiant ou mot de passe incorrect.');
+  return signIn(data, password);
+}
+export async function usernameAvailable(name) {
+  const c = await sb();
+  const { data, error } = await c.rpc('username_available', { p_username: name });
+  if (error) return true; // fonction absente : le serveur tranchera
+  return data;
+}
+export async function resendConfirmation(email) {
+  const c = await sb();
+  const { error } = await c.auth.resend({ type: 'signup', email, options: { emailRedirectTo: location.origin + location.pathname } });
+  fail(error);
 }
 export async function signOut() { const c = await sb(); await c.auth.signOut(); }
 export async function resetPassword(email) {

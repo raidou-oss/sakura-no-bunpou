@@ -87,3 +87,5 @@ create policy "remplacement dans son dossier" on storage.objects for update to a
 drop policy if exists "suppression dans son dossier" on storage.objects;
 create policy "suppression dans son dossier" on storage.objects for delete to authenticated
   using (bucket_id = 'profiles' and (storage.foldername(name))[1] = auth.uid()::text);
+
+-- Pour la connexion par identifiant et les pseudos en japonais, exécute aussi supabase/migration_02_pseudo.sql.
