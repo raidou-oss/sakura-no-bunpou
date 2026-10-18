@@ -22,14 +22,22 @@ let cards = store.get(K_CARDS, {});
 let settings = { ...DEFAULT_SETTINGS, ...store.get(K_SETTINGS, {}) };
 let stats = store.get(K_STATS, { days: {} });
 
-const save = () => store.set(K_CARDS, cards);
-const saveStats = () => store.set(K_STATS, stats);
+const K_UPDATED = 'sakura.updated.v1';
+const listeners = new Set();
+/** Prévient les abonnés (synchro en ligne) qu'une donnée a changé */
+export const onChange = fn => { listeners.add(fn); return () => listeners.delete(fn); };
+let silent = false;
+const touch = () => { if (silent) return; store.set(K_UPDATED, Date.now()); listeners.forEach(fn => fn()); };
+export const lastUpdated = () => store.get(K_UPDATED, 0);
+const save = () => { store.set(K_CARDS, cards); touch(); };
+const saveStats = () => { store.set(K_STATS, stats); touch(); };
 
 export const getSettings = () => settings;
-export function setSettings(patch) { settings = { ...settings, ...patch }; store.set(K_SETTINGS, settings); }
+export function setSettings(patch) { settings = { ...settings, ...patch }; store.set(K_SETTINGS, settings); touch(); }
 
 // Carte : { r: répétitions réussies d'affilée, i: intervalle (jours), e: facilité, d: échéance (ms), l: oublis, s: vue le }
 export const getCard = key => cards[key];
+export const allStats = () => stats;
 export const allCards = () => cards;
 export const isDue = (c, now = Date.now()) => c && c.d <= now;
 
@@ -137,6 +145,17 @@ export function importAll(text) {
   cards = data.cards || {}; settings = { ...DEFAULT_SETTINGS, ...data.settings }; stats = data.stats || { days: {} };
   save(); store.set(K_SETTINGS, settings); saveStats();
 }
+/** Instantané complet pour la synchro en ligne */
+export const snapshot = () => ({ cards, settings, stats, updated: lastUpdated() });
+/** Remplace la progression locale par celle du compte (sans redéclencher de synchro) */
+export function replaceAll(data) {
+  silent = true;
+  cards = data.cards || {}; settings = { ...DEFAULT_SETTINGS, ...(data.settings || {}) }; stats = data.stats || { days: {} };
+  store.set(K_CARDS, cards); store.set(K_SETTINGS, settings); store.set(K_STATS, stats);
+  store.set(K_UPDATED, data.updated || Date.now());
+  silent = false;
+}
+
 export function resetAll() {
   cards = {}; stats = { days: {} }; save(); saveStats();
 }

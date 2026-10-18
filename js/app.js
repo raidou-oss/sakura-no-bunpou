@@ -3,6 +3,9 @@ import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } 
 import * as D from './data.js';
 import * as S from './srs.js';
 import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems } from './review.js';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES } from './level.js';
+import * as C from './cloud.js';
+import { profilePage, communityPage, accountPage, rankBlock, navAccount } from './social.js';
 
 const main = $('#main');
 const GAMES = {
@@ -29,16 +32,21 @@ const routes = [
   [/^\/jeux$/, gamesHub],
   [/^\/jeux\/(\w+)$/, game],
   [/^\/reglages$/, settingsPage],
+  [/^\/profil(?:\/([0-9a-f-]{36}))?$/, id => profilePage(main, id)],
+  [/^\/communaute$/, () => communityPage(main)],
+  [/^\/compte$/, () => accountPage(main)],
 ];
 
 async function route() {
+  // Retour d'un lien e-mail (confirmation, mot de passe) : Supabase lit le jeton avant le routage
+  if (/access_token|error_description|type=recovery/.test(location.hash)) return;
   const path = decodeURIComponent(location.hash.replace(/^#/, '')) || '/';
   const [p, query] = path.split('?');
   for (const [re, view] of routes) {
     const m = p.match(re);
     if (m) {
       const section = p.split('/')[1] || 'home';
-      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire' }[section] || section)));
+      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil' }[section] || section)));
       $$('.nav a').forEach(a => a.classList.contains('active') ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
       try {
         main.classList.remove('wide');
@@ -62,27 +70,10 @@ async function refreshBadge() {
   const n = await countDue();
   const b = $('#due-badge');
   b.hidden = n === 0; b.textContent = n > 99 ? '99+' : n;
+  navAccount();
 }
 
 // --- Accueil ----------------------------------------------------------------------
-async function levelMastery() {
-  const grammar = await D.grammar();
-  const cards = S.allCards();
-  const out = {};
-  for (const lv of D.LEVELS) {
-    const pts = grammar.filter(g => g.lv === lv);
-    let sum = 0, started = 0, bloomed = 0;
-    for (const g of pts) {
-      const c = cards[`g:${g.id}`];
-      if (!c) continue;
-      started++; if (c.i >= S.MATURE) bloomed++;
-      sum += Math.min(1, c.i / S.MATURE) * 0.9 + (c.s ? 0.1 : 0);
-    }
-    out[lv] = { total: pts.length, started, bloomed, open: pts.length ? sum / pts.length : 0 };
-  }
-  return out;
-}
-
 function petalsLayer(n = 14) {
   if (reducedMotion()) return null;
   const layer = h('div.petal-rain', { 'aria-hidden': 'true' });
@@ -98,6 +89,7 @@ function petalsLayer(n = 14) {
 
 async function home() {
   const [{ queue, dueCount }, mastery] = await Promise.all([buildSrsQueue(), levelMastery()]);
+  const rank = await computeRank(mastery);
   const newCount = queue.length - dueCount;
   const streak = S.streak();
   const days = S.lastDays(7);
@@ -111,6 +103,7 @@ async function home() {
       h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span>桜</span><span>の</span><span>文法</span>' }),
       h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.')),
     h('div.today.glass',
+      rankBlock(rank),
       h('p.today-title', 'Aujourd’hui'),
       queue.length
         ? h('div.counters', counter(dueCount, dueCount > 1 ? 'à réviser' : 'à réviser', 'due'), counter(newCount, newCount > 1 ? 'nouvelles' : 'nouvelle', 'new'))
@@ -403,4 +396,10 @@ function settingsPage() {
         } }, 'Tout effacer'))));
 }
 
+C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => navAccount());
+C.onAuth(() => {
+  navAccount();
+  if (C.isRecovery()) location.hash = '#/compte';
+  else if (/access_token|error_description/.test(location.hash)) location.hash = C.currentUser() ? '#/profil' : '#/compte';
+});
 route();

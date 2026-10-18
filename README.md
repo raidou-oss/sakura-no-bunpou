@@ -63,3 +63,15 @@ data/               JSON générés
 tools/              script de génération + phrases à trous
 csv/                données sources
 ```
+
+## Activer les comptes (profils, photos, réactions)
+
+Le site fonctionne sans comptes. Pour les activer, il faut un projet Supabase (gratuit) :
+
+1. Crée un compte sur https://supabase.com puis **New project** (région Europe, mot de passe au choix).
+2. Dans le projet : **SQL Editor → New query**, colle tout le contenu de `supabase/schema.sql`, clique sur **Run**.
+3. **Authentication → URL Configuration** : mets `https://raidou-oss.github.io/sakura-no-bunpou/` dans *Site URL* et dans *Redirect URLs*.
+4. **Project Settings → API** : copie *Project URL* et la clé *anon public* (ou *publishable*) dans `js/config.js`.
+
+Ce que ça active : inscription par e-mail, profil public (pseudo, bio, photo, bannière), rang N5 → N1 avec jauge,
+page Communauté classée par rang, réactions entre élèves (une de chaque type par jour), synchro de la progression entre appareils.
