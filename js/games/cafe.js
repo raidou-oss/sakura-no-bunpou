@@ -130,7 +130,7 @@ function avatar(mood = 'ok') {
     `<path d="M24 44c2-16 12-24 26-24s24 8 26 24l-6-6-8 4-12-6-12 6-8-4z" fill="${hc}"/><circle cx="50" cy="14" r="8" fill="${hc}"/>`,
   ][style];
   return (m = mood) => `<svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true">
-    <rect x="18" y="74" width="64" height="30" rx="20" fill="var(--plum)"/>
+    <rect x="18" y="74" width="64" height="30" rx="20" fill="var(--tide-2)"/>
     <circle cx="50" cy="50" r="27" fill="${s}"/>${hair}
     <circle cx="40" cy="52" r="3" fill="#2A1F2D"/><circle cx="60" cy="52" r="3" fill="#2A1F2D"/>
     ${m === 'happy' ? '<path d="M40 62q10 9 20 0" stroke="#2A1F2D" stroke-width="3" fill="none" stroke-linecap="round"/>'

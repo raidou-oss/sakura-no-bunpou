@@ -311,13 +311,13 @@ async function vocabUnit(lv, unit) {
     h('a.back', { href: `#/vocabulaire/${lv}` }, `Vocabulaire ${lv}`),
     h('header.page-head', h('h1', `Unité ${nth}`), h('p.section-note', `${list.length} mots`)),
     h('div.actions.left', btn, h('a.btn', { href: `#/jeux/hanabira?lv=${lv}&unit=${unit}` }, 'Jouer à Hanabira avec ces mots')),
-    h('table.vocab-table',
+    h('div.table-wrap', h('table.vocab-table',
       h('thead', h('tr', h('th', { scope: 'col' }, 'Mot'), h('th', { scope: 'col' }, 'Sens'), h('th', { scope: 'col' }, h('span.sr', 'Statut')))),
       h('tbody', list.map(v => {
         const st = statusOf(D.vocabKey(v));
         return h('tr', h('td.vw', { lang: 'ja', html: ruby(v.f || v.w, true) }), h('td', v.m),
           h('td', h('span', { class: `dot ${st.cls}`, title: st.label }, h('span.sr', st.label))));
-      }))));
+      })))));
 }
 
 // --- Jeux ---------------------------------------------------------------------

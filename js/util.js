@@ -71,14 +71,17 @@ export function toast(msg) {
 export const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /** Fleur de sakura en SVG ; `open` de 0 à 1 ouvre les pétales un par un */
+let blossomId = 0;
 export function blossom(open = 1, size = 64, label = '') {
+  const id = `bloom${++blossomId}`;
   const petals = [];
   for (let i = 0; i < 5; i++) {
     const fill = Math.max(0, Math.min(1, open * 5 - i));
-    petals.push(`<path class="petal" style="--fill:${fill.toFixed(2)}" transform="rotate(${i * 72} 50 50)"
+    petals.push(`<path class="petal" fill="url(#${id})" style="--fill:${fill.toFixed(2)}" transform="rotate(${i * 72} 50 50)"
       d="M50 50 C36 36 36 18 44 9 L50 15 L56 9 C64 18 64 36 50 50Z"/>`);
   }
   return `<svg class="blossom" viewBox="0 0 100 100" width="${size}" height="${size}" role="img" aria-label="${esc(label)}">
+    <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38D6FF"/><stop offset=".5" stop-color="#8FB4FF"/><stop offset="1" stop-color="#FF8CC6"/></linearGradient></defs>
     ${petals.join('')}<circle cx="50" cy="50" r="7" class="pistil"/></svg>`;
 }
 
