@@ -6,10 +6,10 @@ import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems } from
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  narabe: { file: './games/narabe.js', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  narabe: { file: './games/narabe.js', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -104,43 +104,49 @@ async function home() {
   const maxRev = Math.max(10, ...days.map(d => d.rev));
   const set = S.getSettings();
 
+  const counter = (n, label, cls) => h(`div.counter.${cls}`, h('span.counter-n', n), h('span.counter-label', label));
   const hero = h('section.hero',
     petalsLayer(),
-    h('h1.hero-title.vstack', { lang: 'ja', 'aria-label': '桜の文法', html: stack('桜の文法') }),
-    h('div.hero-body',
-      h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.'),
-      h('div.today',
-        !queue.length ? h('p.today-count', 'Tout est révisé pour aujourd’hui.')
-          : dueCount ? h('p.today-count', h('strong', dueCount), ` carte${dueCount > 1 ? 's' : ''} à réviser`, newCount ? [' et ', h('strong', newCount), ` nouvelle${newCount > 1 ? 's' : ''}`] : '')
-          : h('p.today-count', h('strong', newCount), ` nouvelle${newCount > 1 ? 's' : ''} carte${newCount > 1 ? 's' : ''} à découvrir aujourd’hui`),
-        queue.length
-          ? h('a.btn.primary.big', { href: '#/revision' }, 'Commencer la révision')
-          : h('a.btn.primary.big', { href: `#/entrainement/${set.grammarLevels[0] || 'N5'}` }, 'S’entraîner librement'),
-        h('div.streak',
-          streak ? [h('span.streak-n', streak), h('span', streak > 1 ? ' jours d’affilée' : ' jour d’affilée')] : h('span', 'Ta série commence aujourd’hui'),
-          h('ol.week', { 'aria-label': 'Révisions des 7 derniers jours' },
-            days.map(d => h('li', { title: `${d.key} : ${d.rev} révision(s)`, style: { '--v': d.rev / maxRev } },
-              h('span.sr', `${d.key} : ${d.rev}`))))))));
+    h('div.hero-copy',
+      h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span>桜</span><span>の</span><span>文法</span>' }),
+      h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.')),
+    h('div.today.glass',
+      h('p.today-title', 'Aujourd’hui'),
+      queue.length
+        ? h('div.counters', counter(dueCount, dueCount > 1 ? 'à réviser' : 'à réviser', 'due'), counter(newCount, newCount > 1 ? 'nouvelles' : 'nouvelle', 'new'))
+        : h('p.today-done', 'Tout est révisé. Reviens demain, ou entraîne-toi librement.'),
+      queue.length
+        ? h('a.btn.primary.big.wide', { href: '#/revision' }, 'Commencer la révision')
+        : h('a.btn.primary.big.wide', { href: `#/entrainement/${set.grammarLevels[0] || 'N5'}` }, 'S’entraîner librement'),
+      h('div.streak',
+        h('span.streak-text', streak ? [h('strong', streak), streak > 1 ? ' jours d’affilée' : ' jour d’affilée'] : 'Ta série commence aujourd’hui'),
+        h('ol.week', { 'aria-label': 'Révisions des 7 derniers jours' },
+          days.map(d => h('li', { title: `${d.key} : ${d.rev} révision(s)`, class: d.rev ? 'on' : null, style: { '--v': d.rev / maxRev } },
+            h('span.sr', `${d.key} : ${d.rev}`)))))));
 
   const garden = h('section.garden',
-    h('h2', 'Ton jardin'),
-    h('p.section-note', 'Chaque fleur s’ouvre à mesure que les points de grammaire de son niveau s’installent dans ta mémoire.'),
+    h('div.section-head', h('h2', 'Ton jardin'),
+      h('p.section-note', 'Chaque fleur s’ouvre à mesure que les points de grammaire de son niveau s’installent dans ta mémoire.')),
     h('ul.levels', D.LEVELS.map(lv => {
       const m = mastery[lv];
-      return h('li', h('a.level', { href: `#/grammaire/${lv}` },
-        h('span.level-flower', { html: blossom(m.open, 72, `${lv} : ${Math.round(m.open * 100)} %`) }),
+      const pct = Math.round(m.open * 100);
+      return h('li', h('a.level.glass', { href: `#/grammaire/${lv}` },
+        h('span.ring', { style: { '--p': pct } },
+          h('span.level-flower', { html: blossom(m.open, 64, `${lv} : ${pct} %`) })),
         h('span.level-name', lv), h('span.level-jp', { lang: 'ja' }, D.LEVEL_JP[lv]),
-        h('span.level-stat', `${m.started}/${m.total} vus`), m.bloomed ? h('span.level-stat', `${m.bloomed} en fleur`) : null));
+        h('span.level-stat', `${m.started}/${m.total} vus`)));
     })));
 
-  const g = GAMES.cafe;
   const games = h('section.games-teaser',
-    h('h2', 'Pause jeux'),
-    h('a.cafe-tile', { href: '#/jeux/cafe' },
-      h('span.cafe-sign.vstack', { lang: 'ja', 'aria-hidden': 'true', html: stack(g.jp) }),
-      h('span.cafe-text', h('strong', g.name), h('span', g.desc))),
-    h('ul.mini-games', ['hanabira', 'joshi', 'narabe'].map(k => h('li', h('a', { href: `#/jeux/${k}` },
-      h('span.mg-jp', { lang: 'ja' }, GAMES[k].jp), h('span.mg-name', GAMES[k].name))))));
+    h('div.section-head', h('h2', 'Pause jeux')),
+    h('ul.game-grid', Object.entries(GAMES).map(([k, gm]) => h('li', { class: k === 'cafe' ? 'featured' : null },
+      h('a.game-tile.glass', { href: `#/jeux/${k}`, 'data-glyph': gm.glyph },
+        h('span.game-emblem', { lang: 'ja', 'aria-hidden': 'true' }, gm.glyph),
+        h('span.game-tile-text',
+          h('span.game-tile-jp', { lang: 'ja' }, gm.jp),
+          h('strong', gm.name),
+          h('span.game-tile-desc', k === 'cafe' ? gm.desc : gm.short)),
+        h('span.play-chip', 'Jouer'))))));
 
   main.replaceChildren(hero, garden, games);
 }
@@ -326,9 +332,15 @@ function gamesHub() {
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '遊び'), 'Jeux'),
       h('p.section-note', 'Pour apprendre sans en avoir l’air. Les jeux ne touchent pas à ton planning de révision.')),
-    h('ul.game-list', Object.entries(GAMES).map(([k, g]) => h('li', h('a', { href: `#/jeux/${k}`, class: `game-card game-${k}` },
-      h('span.game-jp', { lang: 'ja' }, g.jp), h('strong', g.name), h('span', g.desc),
-      best[k] ? h('span.small', `Record : ${best[k]}`) : null)))));
+    h('ul.game-grid.hub', Object.entries(GAMES).map(([k, g]) => h('li', { class: k === 'cafe' ? 'featured' : null },
+      h('a.game-tile.glass', { href: `#/jeux/${k}`, 'data-glyph': g.glyph },
+        h('span.game-emblem', { lang: 'ja', 'aria-hidden': 'true' }, g.glyph),
+        h('span.game-tile-text',
+          h('span.game-tile-jp', { lang: 'ja' }, g.jp),
+          h('strong', g.name),
+          h('span.game-tile-desc', g.desc),
+          best[k] ? h('span.record', `Record : ${best[k]}`) : null),
+        h('span.play-chip', 'Jouer'))))));
 }
 
 async function game(name, params) {
