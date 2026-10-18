@@ -1,7 +1,8 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast } from './util.js?v=20261019013902';
-import * as C from './cloud.js?v=20261019013902';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019013902';
+import { h, $, toast } from './util.js?v=20261019015005';
+import { wallpaperSVG } from './wallpaper.js?v=20261019015005';
+import * as C from './cloud.js?v=20261019015005';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019015005';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -226,7 +227,7 @@ export function portalPage(main) {
       left: `${Math.random() * 100}%`, animationDelay: `${-Math.random() * 14}s`, animationDuration: `${10 + Math.random() * 8}s`,
       '--drift': `${Math.random() * 120 - 60}px`, '--size': `${8 + Math.random() * 10}px`, '--spin': `${Math.random() * 720 - 360}deg` } }));
   }
-  main.replaceChildren(h('section.portal', petals,
+  main.replaceChildren(h('section.portal', h('div.wallpaper-wrap', { html: wallpaperSVG(), 'aria-hidden': 'true' }), petals,
     h('div.portal-copy',
       h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span>桜</span><span>の</span><span>文法</span>' }),
       h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.'),

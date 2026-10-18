@@ -1,7 +1,7 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast } from './util.js?v=20261019013902';
-import * as D from './data.js?v=20261019013902';
-import * as S from './srs.js?v=20261019013902';
+import { h, ruby, shuffle, sample, pick, blossom, toast } from './util.js?v=20261019015005';
+import * as D from './data.js?v=20261019015005';
+import * as S from './srs.js?v=20261019015005';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
