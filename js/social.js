@@ -1,7 +1,7 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast } from './util.js';
-import * as C from './cloud.js';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES } from './level.js';
+import { h, $, toast } from './util.js?v=20261018232551';
+import * as C from './cloud.js?v=20261018232551';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES } from './level.js?v=20261018232551';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();

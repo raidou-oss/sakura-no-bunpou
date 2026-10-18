@@ -1,7 +1,7 @@
 // Rang de l'élève : N5 → N1, avec une jauge d'avancement dans le rang en cours.
 // Un niveau est validé quand 60 % de sa grammaire est bien installée (fleur ouverte à 60 %).
-import * as D from './data.js';
-import * as S from './srs.js';
+import * as D from './data.js?v=20261018232551';
+import * as S from './srs.js?v=20261018232551';
 
 export const RANK_THRESHOLD = 0.6;
 export const RANK_NAMES = ['N5', 'N4', 'N3', 'N2', 'N1'];
