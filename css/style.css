@@ -565,3 +565,35 @@ textarea:focus { outline: none; border-color: var(--cyan); }
 .point-big { display: block; width: fit-content; }
 .nav-list a.active { padding-right: 30px; }
 @media (max-width: 860px) { .nav-list a.active { padding-right: 2px; } .nav-list a { min-width: 0; } }
+
+/* --- Portail de connexion ------------------------------------------------------------ */
+body.portal-mode .shell { grid-template-columns: minmax(0, 1fr); }
+body.portal-mode .nav { display: none; }
+body.portal-mode .main { max-width: 1180px; margin: 0 auto; padding-top: clamp(28px, 6vh, 72px); padding-bottom: 48px; }
+.portal { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, 440px); gap: clamp(28px, 6vw, 80px); align-items: center; min-height: calc(100vh - 140px); isolation: isolate; }
+.portal::before {
+  content: ""; position: absolute; z-index: -2; width: min(34vw, 340px); aspect-ratio: 1; left: 24%; top: -6%; border-radius: 50%;
+  background: radial-gradient(circle at 36% 34%, #F6FBFF 0%, #CBEFFF 34%, #7FB8FF 60%, rgba(127, 168, 255, 0) 71%);
+  -webkit-mask: radial-gradient(circle at 64% 44%, transparent 38%, #000 52%); mask: radial-gradient(circle at 64% 44%, transparent 38%, #000 52%); opacity: .45;
+}
+.portal .petal-rain { inset: -80px -40px -40px; }
+.portal .hero-title { font-size: clamp(4.2rem, 10vw, 8.4rem); }
+.portal-points { list-style: none; margin: 34px 0 0; padding: 0; display: grid; gap: 14px; max-width: 520px; }
+.portal-points li { display: grid; grid-template-columns: 74px minmax(0, 1fr); align-items: center; gap: 14px; color: var(--mist); }
+.portal-points .kanji-pop { font-size: 1.7rem; transform: rotate(-4deg); }
+.portal-form .auth-card { margin: 0; max-width: none; }
+@media (max-width: 860px) {
+  .portal { grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 24px; }
+  .portal::before { width: 60vw; left: 40%; top: -30px; }
+  .portal-points { margin-top: 20px; }
+  body.portal-mode .main { padding-bottom: 40px; }
+}
+body.portal-mode { overflow-x: hidden; }
+.portal { overflow-x: clip; }
+@media (max-width: 860px) {
+  .portal-copy { display: contents; }
+  .portal .hero-title, .portal .hero-lead { order: 0; }
+  .portal-form { order: 1; }
+  .portal-points { order: 2; }
+  .portal .petal-rain { inset: -40px 0 0; }
+}

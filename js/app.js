@@ -5,7 +5,7 @@ import * as S from './srs.js';
 import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems } from './review.js';
 import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES } from './level.js';
 import * as C from './cloud.js';
-import { profilePage, communityPage, accountPage, rankBlock, navAccount } from './social.js';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount } from './social.js';
 
 const main = $('#main');
 const GAMES = {
@@ -40,6 +40,10 @@ const routes = [
 async function route() {
   // Retour d'un lien e-mail (confirmation, mot de passe) : Supabase lit le jeton avant le routage
   if (/access_token|error_description|type=recovery/.test(location.hash)) return;
+  // Portail : tant qu'on n'est pas connecté, on ne voit que l'écran de connexion
+  const locked = C.enabled && !C.currentUser() && !C.isRecovery();
+  document.body.classList.toggle('portal-mode', locked);
+  if (locked) { main.classList.remove('wide'); portalPage(main); window.scrollTo(0, 0); return; }
   const path = decodeURIComponent(location.hash.replace(/^#/, '')) || '/';
   const [p, query] = path.split('?');
   for (const [re, view] of routes) {
@@ -396,10 +400,16 @@ function settingsPage() {
         } }, 'Tout effacer'))));
 }
 
-C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => navAccount());
+let booted = false;
 C.onAuth(() => {
+  if (!booted) return;
   navAccount();
-  if (C.isRecovery()) location.hash = '#/compte';
-  else if (/access_token|error_description/.test(location.hash)) location.hash = C.currentUser() ? '#/profil' : '#/compte';
+  if (C.isRecovery()) { location.hash = '#/compte'; route(); }
+  else if (/access_token|error_description/.test(location.hash)) location.hash = '#/';
+  else route();
 });
-route();
+C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => {
+  booted = true;
+  if (/access_token|error_description/.test(location.hash) && !C.isRecovery()) location.hash = '#/';
+  navAccount(); route();
+});

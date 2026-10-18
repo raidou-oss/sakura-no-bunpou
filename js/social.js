@@ -201,11 +201,32 @@ function newPassword(main) {
 }
 
 // --- Connexion / inscription -------------------------------------------------------------
-export async function accountPage(main) {
+/** Portail d'entrée : visible tant qu'on n'est pas connecté */
+export function portalPage(main) {
+  const slot = h('div.portal-form');
+  const petals = h('div.petal-rain', { 'aria-hidden': 'true' });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (let i = 0; i < 18; i++) petals.append(h('span', { style: {
+      left: `${Math.random() * 100}%`, animationDelay: `${-Math.random() * 14}s`, animationDuration: `${10 + Math.random() * 8}s`,
+      '--drift': `${Math.random() * 120 - 60}px`, '--size': `${8 + Math.random() * 10}px`, '--spin': `${Math.random() * 720 - 360}deg` } }));
+  }
+  main.replaceChildren(h('section.portal', petals,
+    h('div.portal-copy',
+      h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span>桜</span><span>の</span><span>文法</span>' }),
+      h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.'),
+      h('ul.portal-points',
+        h('li', h('span.kanji-pop', { lang: 'ja' }, '復習'), h('span', 'Révisions espacées : ce que tu rates revient vite, ce que tu sais revient plus tard.')),
+        h('li', h('span.kanji-pop', { lang: 'ja' }, '遊び'), h('span', 'Mini-jeux : sers des clients au café, attrape les pétales, place les particules.')),
+        h('li', h('span.kanji-pop', { lang: 'ja' }, '仲間'), h('span', 'Ton rang de N5 à N1, ton profil, et des réactions entre élèves.')))),
+    slot));
+  accountPage(slot, { portal: true });
+}
+
+export async function accountPage(main, { portal = false } = {}) {
   if (!C.enabled) { location.hash = '#/profil'; return; }
   if (C.isRecovery()) return newPassword(main);
-  if (C.currentUser()) { location.hash = '#/profil'; return; }
-  let mode = 'signup';
+  if (C.currentUser()) { if (!portal) location.hash = '#/profil'; return; }
+  let mode = portal ? 'login' : 'signup';
   const render = () => {
     const email = h('input#ac-email', { type: 'email', required: true, autocomplete: 'email', placeholder: 'toi@exemple.fr' });
     const pass = h('input#ac-pass', { type: 'password', required: mode !== 'reset', minlength: 6, autocomplete: mode === 'signup' ? 'new-password' : 'current-password' });
@@ -225,7 +246,7 @@ export async function accountPage(main) {
           await C.resetPassword(email.value.trim());
           msg.className = 'form-msg ok'; msg.textContent = 'Si un compte existe avec cet e-mail, un lien vient de t’être envoyé.'; submit.disabled = false; return;
         }
-        toast('Bienvenue !'); location.hash = '#/profil';
+        toast('Bienvenue !'); if (!portal) location.hash = '#/profil';
       } catch (err) { msg.className = 'form-msg ko'; msg.textContent = err.message; submit.disabled = false; }
     } },
       h('div.tabs.auth-tabs',
