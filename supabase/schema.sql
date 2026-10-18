@@ -89,3 +89,4 @@ create policy "suppression dans son dossier" on storage.objects for delete to au
   using (bucket_id = 'profiles' and (storage.foldername(name))[1] = auth.uid()::text);
 
 -- Pour la connexion par identifiant et les pseudos en japonais, exécute aussi supabase/migration_02_pseudo.sql.
+-- Pour les jauges sur les profils et les réactions en temps réel, exécute aussi supabase/migration_03_live.sql.

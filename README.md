@@ -72,6 +72,20 @@ Le site fonctionne sans comptes. Pour les activer, il faut un projet Supabase (g
 2. Dans le projet : **SQL Editor → New query**, colle tout le contenu de `supabase/schema.sql`, clique sur **Run**.
 3. **Authentication → URL Configuration** : mets `https://raidou-oss.github.io/sakura-no-bunpou/` dans *Site URL* et dans *Redirect URLs*.
 4. **Project Settings → API** : copie *Project URL* et la clé *anon public* (ou *publishable*) dans `js/config.js`.
+5. Exécute aussi, dans l'ordre, `supabase/migration_02_pseudo.sql` (connexion par identifiant) et `supabase/migration_03_live.sql` (réactions en direct, jauges).
 
 Ce que ça active : inscription par e-mail, profil public (pseudo, bio, photo, bannière), rang N5 → N1 avec jauge,
 page Communauté classée par rang, réactions entre élèves (une de chaque type par jour), synchro de la progression entre appareils.
+
+## Algorithme de progression
+
+Chaque carte révisée a un score de maîtrise entre 0 et 1 (`js/level.js`) :
+- 0,15 dès la première bonne réponse, puis une courbe logarithmique jusqu'à 1 quand l'intervalle de révision atteint 21 jours ;
+- −8 % par oubli (plancher 60 %) : une carte souvent ratée est fragile ;
+- érosion si la révision est en retard : rétention ≈ e^(−retard / 2(intervalle+1)), plancher 50 %.
+
+Par niveau, la progression grammaire et la progression vocabulaire sont la moyenne des scores sur tous les éléments du niveau.
+On valide un niveau (N5 → N4 → … → N1) quand la grammaire atteint 55 % **et** le vocabulaire 45 %.
+La jauge du rang combine les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée à son objectif.
+
+Après chaque modification du site : `python3 tools/bump_version.py` pour forcer les navigateurs à recharger les fichiers.

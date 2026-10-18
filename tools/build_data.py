@@ -77,6 +77,12 @@ for lv in ('n5', 'n4', 'n3', 'n2', 'n1'):
         json.dump(items, f, ensure_ascii=False, separators=(',', ':'))
     vocab_counts[lv.upper()] = len(items)
 
+# Totaux par niveau (jauges de progression sans charger tout le vocabulaire)
+meta = {'vocab': vocab_counts, 'grammar': {}}
+for g in grammar:
+    meta['grammar'][g['lv']] = meta['grammar'].get(g['lv'], 0) + 1
+with open(os.path.join(OUT, 'meta.json'), 'w', encoding='utf-8') as f:
+    json.dump(meta, f, ensure_ascii=False)
 with open(os.path.join(OUT, 'grammar.json'), 'w', encoding='utf-8') as f:
     json.dump(grammar, f, ensure_ascii=False, separators=(',', ':'))
 with open(os.path.join(OUT, 'sentences.json'), 'w', encoding='utf-8') as f:

@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261018232551';
-import * as S from './srs.js?v=20261018232551';
-import { computeRank } from './level.js?v=20261018232551';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019013902';
+import * as S from './srs.js?v=20261019013902';
+import { computeRank } from './level.js?v=20261019013902';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -51,14 +51,14 @@ export async function init() {
   const c = await sb();
   const { data } = await c.auth.getSession();
   session = data.session;
-  if (session) { await loadOwnProfile(); await pullProgress(); }
+  if (session) { await loadOwnProfile(); await pullProgress(); startLive().catch(() => {}); }
   emit();
   c.auth.onAuthStateChange(async (event, s) => {
     if (event === 'PASSWORD_RECOVERY') recovery = true;
     const was = session?.user?.id;
     session = s;
-    if (s && s.user.id !== was) { await loadOwnProfile(); await pullProgress(); }
-    if (!s) profile = null;
+    if (s && s.user.id !== was) { await loadOwnProfile(); await pullProgress(); startLive().catch(() => {}); }
+    if (!s) { profile = null; stopLive().catch(() => {}); }
     emit();
   });
   S.onChange(schedulePush);
@@ -122,7 +122,7 @@ export async function updateProfile(patch) {
   const c = await sb();
   const { data, error } = await c.from('profiles').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', session.user.id).select().single();
   fail(error, 'Impossible d’enregistrer le profil.');
-  profile = data; emit();
+  profile = data; emit(); trackPresence();
   return data;
 }
 export async function listProfiles(search = '') {
@@ -222,8 +222,51 @@ export async function pushProgress() {
   await c.from('progress').upsert({ user_id: session.user.id, data: snap, updated_at: new Date().toISOString() });
   const r = await computeRank();
   const patch = { rank: r.rank, gauge: r.gauge, xp: r.xp, streak: r.streak, learned: r.learned, updated_at: new Date().toISOString() };
-  const { data } = await c.from('profiles').update(patch).eq('id', session.user.id).select().single();
-  if (data) profile = data;
+  let res = await c.from('profiles').update({ ...patch, grammar_pct: r.grammar, vocab_pct: r.vocab }).eq('id', session.user.id).select().single();
+  if (res.error && /grammar_pct|vocab_pct|column/i.test(res.error.message)) res = await c.from('profiles').update(patch).eq('id', session.user.id).select().single();
+  if (res.data) { profile = res.data; trackPresence(); }
+}
+
+// --- Présence : qui est connecté en ce moment -------------------------------------------
+let presence = null, reactChannel = null, online = [];
+const onlineListeners = new Set(), reactionListeners = new Set();
+export const onOnline = fn => { onlineListeners.add(fn); fn(online); return () => onlineListeners.delete(fn); };
+export const onReaction = fn => { reactionListeners.add(fn); return () => reactionListeners.delete(fn); };
+export const onlineUsers = () => online;
+
+function presencePayload() {
+  return { id: session.user.id, username: profile?.username || '…', avatar_url: profile?.avatar_url || null,
+    rank: profile?.rank ?? 0, gauge: profile?.gauge ?? 0, since: Date.now() };
+}
+function trackPresence() { if (presence && session) presence.track(presencePayload()).catch(() => {}); }
+
+async function startLive() {
+  const c = await sb();
+  await stopLive();
+  const me = session.user.id;
+  presence = c.channel('sakura-online', { config: { presence: { key: me } } });
+  presence.on('presence', { event: 'sync' }, () => {
+    const state = presence.presenceState();
+    online = Object.values(state).map(metas => metas[metas.length - 1]).filter(Boolean)
+      .sort((a, b) => (a.id === me ? -1 : b.id === me ? 1 : (b.rank - a.rank) || (b.gauge - a.gauge)));
+    onlineListeners.forEach(fn => fn(online));
+  });
+  presence.subscribe(status => { if (status === 'SUBSCRIBED') trackPresence(); });
+  // Réactions reçues en direct
+  reactChannel = c.channel(`sakura-react-${me}`)
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'reactions', filter: `to_user=eq.${me}` }, async payload => {
+      const r = payload.new;
+      const sender = online.find(u => u.id === r.from_user) || await getProfile(r.from_user).catch(() => null);
+      reactionListeners.forEach(fn => fn({ ...r, sender }));
+    })
+    .subscribe();
+}
+async function stopLive() {
+  const c = client;
+  if (!c) return;
+  if (presence) { await c.removeChannel(presence).catch(() => {}); presence = null; }
+  if (reactChannel) { await c.removeChannel(reactChannel).catch(() => {}); reactChannel = null; }
+  online = []; onlineListeners.forEach(fn => fn(online));
 }
 // Envoi immédiat quand on quitte la page
 addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && session) { clearTimeout(pushTimer); pushProgress().catch(() => {}); } });

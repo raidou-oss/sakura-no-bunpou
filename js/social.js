@@ -1,21 +1,37 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast } from './util.js?v=20261018232551';
-import * as C from './cloud.js?v=20261018232551';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES } from './level.js?v=20261018232551';
+import { h, $, toast } from './util.js?v=20261019013902';
+import * as C from './cloud.js?v=20261019013902';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019013902';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
 
 /** Rang en kanji stylé + jauge vers le niveau suivant */
+/** Jauge simple réutilisable */
+export function gauge(value, label, { kind = '', mark = null } = {}) {
+  const p = toPct(value);
+  return h(`div.gauge-row${kind ? '.' + kind : ''}`,
+    h('div.gauge-label', h('span', label), h('strong', `${p} %`)),
+    h('div.gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': p, 'aria-label': label },
+      h('span', { style: { width: `${Math.max(2, p)}%` } }),
+      mark != null ? h('i.gauge-mark', { style: { left: `${toPct(mark)}%` }, title: `Objectif ${toPct(mark)} %` }) : null));
+}
+
+/** Rang en kanji stylé + jauge vers le niveau suivant (+ détail grammaire / vocabulaire) */
 export function rankBlock(r, { compact = false } = {}) {
-  const next = r.rank >= RANK_NAMES.length ? null : (r.rank + 1 < RANK_NAMES.length ? RANK_NAMES[r.rank + 1] : 'N1 validé');
-  const pct = Math.round(r.gauge * 100);
+  const done = r.rank >= RANK_NAMES.length;
+  const next = done ? null : (r.rank + 1 < RANK_NAMES.length ? RANK_NAMES[r.rank + 1] : 'N1 validé');
+  const p = toPct(r.gauge);
+  const lv = RANK_NAMES[Math.min(r.rank, RANK_NAMES.length - 1)];
   return h(`div.rank${compact ? '.compact' : ''}`,
     h('div.rank-top',
       h('span.rank-badge.kanji-pop', { lang: 'ja' }, rankLabel(r.rank).replace(' validé', '')),
-      h('span.rank-text', h('strong', rankTitle(r.rank)), h('span', next ? `${pct} % vers ${next}` : 'Tous les niveaux validés'))),
-    h('div.gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': pct, 'aria-label': `Avancement du rang ${rankLabel(r.rank)}` },
-      h('span', { style: { width: `${Math.max(3, pct)}%` } })));
+      h('span.rank-text', h('strong', rankTitle(r.rank)), h('span', next ? `${p} % vers ${next}` : 'Tous les niveaux validés'))),
+    h('div.gauge.main-gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': p, 'aria-label': `Avancement du rang ${rankLabel(r.rank)}` },
+      h('span', { style: { width: `${Math.max(3, p)}%` } })),
+    !compact && r.grammar != null && !done ? h('div.rank-split',
+      gauge(r.grammar, `Grammaire ${lv}`, { kind: 'g', mark: THRESHOLD.grammar }),
+      gauge(r.vocab, `Vocabulaire ${lv}`, { kind: 'v', mark: THRESHOLD.vocab })) : null);
 }
 
 function avatar(p, size = 'm') {
@@ -54,7 +70,7 @@ export async function profilePage(main, id) {
   render(fresh);
 
   async function render(p) {
-    const r = { rank: p.rank, gauge: p.gauge };
+    const r = isMe ? await computeRank() : { rank: p.rank, gauge: p.gauge, grammar: p.grammar_pct ?? null, vocab: p.vocab_pct ?? null };
     const header = h('section.profile-head',
       h('div.banner', p.banner_url ? { style: { backgroundImage: `url("${p.banner_url}")` } } : null),
       h('div.profile-id',
@@ -304,4 +320,61 @@ export async function accountPage(main, { portal = false } = {}) {
     (mode === 'login' ? ident : mode === 'signup' ? name : email).focus({ preventScroll: true });
   };
   render();
+}
+
+// --- Connectés en direct (panneau latéral) -------------------------------------------------
+let onlineMounted = false;
+export function mountOnline() {
+  if (onlineMounted || !C.enabled) return;
+  onlineMounted = true;
+  const list = h('ul.online-list');
+  const count = h('span.online-count', '0');
+  const panel = h('aside.online-panel', { 'aria-label': 'Élèves connectés' },
+    h('header.online-head',
+      h('span.live-dot', { 'aria-hidden': 'true' }),
+      h('h2', 'En ligne'), count,
+      h('button.online-close', { type: 'button', 'aria-label': 'Fermer', onclick: () => document.body.classList.remove('online-open') }, '×')),
+    h('p.online-hint.small', 'Touche un élève pour lui envoyer une réaction.'),
+    list);
+  const fab = h('button.online-fab', { type: 'button', onclick: () => document.body.classList.toggle('online-open'), 'aria-label': 'Voir les élèves connectés' },
+    h('span.live-dot', { 'aria-hidden': 'true' }), h('span.online-fab-n', '0'));
+  document.querySelector('.shell').append(panel);
+  document.body.append(fab);
+  let openId = null;
+
+  const render = users => {
+    const me = C.currentUser()?.id;
+    count.textContent = users.length;
+    fab.querySelector('.online-fab-n').textContent = users.length;
+    document.body.classList.toggle('has-online', Boolean(me));
+    if (!users.length) { list.replaceChildren(h('li.online-empty.small', 'Personne d’autre pour l’instant.')); return; }
+    list.replaceChildren(...users.map(u => {
+      const isMe = u.id === me;
+      const item = h('li.online-item', { class: openId === u.id ? 'online-item open' : 'online-item' });
+      const row = h('button.online-row', { type: 'button', disabled: isMe, onclick: () => { openId = openId === u.id ? null : u.id; render(C.onlineUsers()); } },
+        avatar(u, 's'),
+        h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null),
+        h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank).replace(' validé', '')));
+      item.append(row);
+      if (openId === u.id && !isMe) {
+        item.append(h('div.online-stamps',
+          ...Object.entries(C.REACTIONS).map(([k, v]) => h('button.mini-stamp', {
+            type: 'button', title: `${v.jp} · ${v.fr}`, 'aria-label': `Envoyer ${v.fr} à ${u.username}`,
+            onclick: async e => {
+              const btn = e.currentTarget; btn.disabled = true;
+              try { await C.sendReaction(u.id, k); btn.classList.add('sent'); toast(`${v.icon} ${v.jp} envoyé à ${u.username}`); }
+              catch (err) { toast(err.message); btn.disabled = false; }
+            } }, h('span', { 'aria-hidden': 'true' }, v.icon))),
+          h('a.online-profile.small', { href: `#/profil/${u.id}`, onclick: () => document.body.classList.remove('online-open') }, 'Voir le profil')));
+      }
+      return item;
+    }));
+  };
+  C.onOnline(render);
+  C.onAuth(() => render(C.onlineUsers()));
+  C.onReaction(r => {
+    const v = C.REACTIONS[r.kind];
+    toast(`${v?.icon || '🌸'} ${r.sender?.username || 'Quelqu’un'} t’envoie ${v?.jp || r.kind}`);
+    navAccount();
+  });
 }

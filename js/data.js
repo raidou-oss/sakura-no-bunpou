@@ -3,7 +3,7 @@
 const cache = {};
 async function load(name) {
   if (!cache[name]) {
-    cache[name] = fetch(`data/${name}.json?v=20261018232551`).then(r => {
+    cache[name] = fetch(`data/${name}.json?v=20261019013902`).then(r => {
       if (!r.ok) throw new Error(`Impossible de charger ${name}.json`);
       return r.json();
     });
@@ -19,6 +19,9 @@ export const LEVEL_NAMES = { N5: 'N5', N4: 'N4', N3: 'N3', N2: 'N2', N1: 'N1', k
 export const LEVEL_JP = { N5: '蕾', N4: '綻', N3: '咲', N2: '満開', N1: '花吹雪' };
 
 let grammarIdx, sentByG;
+
+/** Totaux par niveau : { vocab: {N5: 1100…}, grammar: {N5: 132…} } */
+export const meta = () => load('meta');
 
 export async function grammar() {
   const list = await load('grammar');

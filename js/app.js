@@ -1,18 +1,18 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261018232551';
-import * as D from './data.js?v=20261018232551';
-import * as S from './srs.js?v=20261018232551';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems } from './review.js?v=20261018232551';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES } from './level.js?v=20261018232551';
-import * as C from './cloud.js?v=20261018232551';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount } from './social.js?v=20261018232551';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019013902';
+import * as D from './data.js?v=20261019013902';
+import * as S from './srs.js?v=20261019013902';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems } from './review.js?v=20261019013902';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019013902';
+import * as C from './cloud.js?v=20261019013902';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019013902';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261018232551', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261018232551', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261018232551', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  narabe: { file: './games/narabe.js?v=20261018232551', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019013902', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019013902', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019013902', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  narabe: { file: './games/narabe.js?v=20261019013902', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -131,7 +131,7 @@ async function home() {
         h('span.ring', { style: { '--p': pct } },
           h('span.level-flower', { html: blossom(m.open, 64, `${lv} : ${pct} %`) })),
         h('span.level-name', lv), h('span.level-jp', { lang: 'ja' }, D.LEVEL_JP[lv]),
-        h('span.level-stat', `${m.started}/${m.total} vus`)));
+        h('span.level-stat', `Gram. ${toPct(m.grammar)} % · Voc. ${toPct(m.vocab)} %`), m.passed ? h('span.level-ok', 'Validé') : null));
     })));
 
   const games = h('section.games-teaser',
@@ -194,6 +194,10 @@ async function grammarList(lv, params) {
   const counts = new Map();
   sents.forEach(s => counts.set(s.g, (counts.get(s.g) || 0) + 1));
   const furi = furiFor(lv);
+  const [lessonP, progress] = D.LEVELS.includes(lv) ? await Promise.all([lessonProgress(lv), progressByLevel()]) : [new Map(), null];
+  const sectionGauge = progress ? h('section.section-progress.glass',
+    gauge(progress[lv].grammar, `Progression grammaire ${lv}`, { kind: 'g', mark: 0.55 }),
+    h('p.small', `${progress[lv].gSeen} points vus sur ${progress[lv].gTotal} · ${progress[lv].gBloom} en fleur (révisés à 21 jours ou plus). Le trait marque l’objectif de 55 % pour valider le niveau.`)) : null;
 
   const tabs = h('div.tabs', { role: 'tablist', 'aria-label': 'Niveau' },
     [...D.LEVELS, 'kansai', 'extra'].map(l => h('a.tab', { href: `#/grammaire/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, D.LEVEL_NAMES[l])));
@@ -212,6 +216,8 @@ async function grammarList(lv, params) {
       return h('section.lesson',
         h('header.lesson-head',
           h('h2', q ? D.LEVEL_NAMES[le] : `Leçon ${le}`), h('span.lesson-count', `${items.length} points`),
+          !q && lessonP.has(le) ? h('span.lesson-gauge', { title: `Leçon ${le} : ${toPct(lessonP.get(le))} % maîtrisée` },
+            h('span.mini-gauge', h('span', { style: { width: `${toPct(lessonP.get(le))}%` } })), h('span.small', `${toPct(lessonP.get(le))} %`)) : null,
           !q && h('div.lesson-actions',
             withSent && h('a.btn.small', { href: `#/entrainement/${lv}/${le}` }, 'S’entraîner'),
             notAdded ? h('button.btn.small', { onclick: e => {
@@ -234,7 +240,7 @@ async function grammarList(lv, params) {
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '文法'), 'Grammaire'),
       h('p.section-note', `${grammar.length} points du N5 au N1. Ajoute une leçon à tes révisions ou ouvre un point pour voir ses exemples.`)),
-    tabs, search, listEl);
+    tabs, ...(sectionGauge ? [sectionGauge] : []), search, listEl);
 }
 
 async function grammarPoint(id) {
@@ -283,12 +289,16 @@ async function vocabList(lv = 'N5') {
   const units = new Map();
   list.forEach(v => { if (!units.has(v.unit)) units.set(v.unit, []); units.get(v.unit).push(v); });
   const cards = S.allCards();
+  const progress = await progressByLevel();
   const tabs = h('div.tabs', { role: 'tablist', 'aria-label': 'Niveau' },
     D.LEVELS.map(l => h('a', { href: `#/vocabulaire/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, l)));
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '単語'), 'Vocabulaire'),
-      h('p.section-note', `${list.length} mots en ${lv}, rangés par unité.`, (lv === 'N2' || lv === 'N1') ? ' Les sens de ce niveau sont en anglais pour le moment.' : '')),
+      h('p.section-note', `${list.length} mots en ${lv}, rangés par unité.`)),
     tabs,
+    h('section.section-progress.glass',
+      gauge(progress[lv].vocab, `Progression vocabulaire ${lv}`, { kind: 'v', mark: 0.45 }),
+      h('p.small', `${progress[lv].vSeen} mots vus sur ${progress[lv].vTotal} · ${progress[lv].vBloom} en fleur. Objectif 45 % pour valider le niveau.`)),
     h('ul.units', [...units].map(([u, words], i) => {
       const seen = words.filter(w => cards[D.vocabKey(w)]).length;
       return h('li', h('a.unit', { href: `#/vocabulaire/${lv}/${u}` },
@@ -410,6 +420,7 @@ C.onAuth(() => {
 });
 C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => {
   booted = true;
+  mountOnline();
   if (/access_token|error_description/.test(location.hash) && !C.isRecovery()) location.hash = '#/';
   navAccount(); route();
 });
