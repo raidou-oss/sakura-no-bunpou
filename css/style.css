@@ -695,3 +695,12 @@ body.portal-mode .portal .petal-rain { opacity: .7; }
   .wallpaper { opacity: .85; }
   .portal-form .auth-card { box-shadow: 8px 8px 0 rgba(3, 8, 28, .9), 0 20px 60px -20px rgba(0, 0, 0, .7); }
 }
+
+/* Fond façon affiche sur l'accueil : même dessin que le portail, voilé pour garder le texte lisible */
+.wallpaper-wrap.soft { display: none; }
+body.wp-home .wallpaper-wrap.soft { display: block; }
+.wallpaper-wrap.soft .wallpaper { opacity: .55; }
+.wallpaper-wrap.soft::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 11, 38, .25) 0%, rgba(5, 11, 38, .55) 55%, rgba(5, 11, 38, .85) 100%); }
+body.wp-home .hero::before { display: none; }                 /* la lune est dans le fond */
+body.wp-home .today { background: rgba(7, 16, 52, .82); box-shadow: 12px 12px 0 rgba(3, 8, 28, .75), 0 30px 80px -20px rgba(0, 0, 0, .6); }
+@media (prefers-reduced-motion: reduce) { .wallpaper-wrap .wp-ribbon, .wallpaper-wrap .wp-ribbons, .wallpaper-wrap .wp-petals { animation: none !important; } }
