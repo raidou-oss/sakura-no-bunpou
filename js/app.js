@@ -1,26 +1,27 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019105841';
-import * as D from './data.js?v=20261019105841';
-import * as S from './srs.js?v=20261019105841';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019105841';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019105841';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019105841';
-import * as C from './cloud.js?v=20261019105841';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019105841';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019105841';
-import { play, setVolume } from './sfx.js?v=20261019105841';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019105841';
-import { celebrate, verdict } from './celebrate.js?v=20261019105841';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019105841';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019105841';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019113147';
+import * as D from './data.js?v=20261019113147';
+import * as S from './srs.js?v=20261019113147';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019113147';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019113147';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019113147';
+import * as C from './cloud.js?v=20261019113147';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019113147';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019113147';
+import { play, setVolume } from './sfx.js?v=20261019113147';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019113147';
+import { celebrate, verdict } from './celebrate.js?v=20261019113147';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019113147';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019113147';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019105841', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019105841', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019105841', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  theme: { file: './games/theme.js?v=20261019105841', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
-  narabe: { file: './games/narabe.js?v=20261019105841', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019113147', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019113147', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019113147', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  theme: { file: './games/theme.js?v=20261019113147', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
+  choix: { file: './games/choix.js?v=20261019113147', glyph: '択', short: 'Le bon choix, le plus vite possible.', jp: '選択クイズ', name: 'Sentaku', desc: 'Quiz à choix : la bonne particule, la bonne forme, le bon sens. Trois erreurs et c’est fini.' },
+  narabe: { file: './games/narabe.js?v=20261019113147', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -532,3 +533,21 @@ C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => {
   if (/access_token|error_description/.test(location.hash) && !C.isRecovery()) location.hash = '#/';
   navAccount(); route();
 });
+
+// --- Mise à jour automatique : si une nouvelle version est en ligne, on recharge (une fois) -------------
+const MY_VERSION = new URL(import.meta.url).searchParams.get('v');
+async function checkUpdate() {
+  if (!MY_VERSION) return;
+  if (/^#\/(lecon|revision|entrainement|jeux\/)/.test(location.hash) && document.querySelector('.session, .game-head')) return;
+  try {
+    const { v } = await (await fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' })).json();
+    if (!v || v <= MY_VERSION) return;
+    const k = 'sakura.reloadedFor';
+    if (sessionStorage.getItem(k) === v) return;
+    sessionStorage.setItem(k, v);
+    await Promise.all(['./', 'index.html'].map(u => fetch(u, { cache: 'reload' }).catch(() => {})));
+    location.reload();
+  } catch {}
+}
+checkUpdate();
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkUpdate(); });

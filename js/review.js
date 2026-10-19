@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019105841';
-import { speak, speakBtn } from './voice.js?v=20261019105841';
-import { pitchSVG } from './pitch.js?v=20261019105841';
-import { play } from './sfx.js?v=20261019105841';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019105841';
-import * as D from './data.js?v=20261019105841';
-import * as S from './srs.js?v=20261019105841';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019113147';
+import { speak, speakBtn } from './voice.js?v=20261019113147';
+import { pitchSVG } from './pitch.js?v=20261019113147';
+import { play } from './sfx.js?v=20261019113147';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019113147';
+import * as D from './data.js?v=20261019113147';
+import * as S from './srs.js?v=20261019113147';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -202,6 +202,23 @@ export async function typedVocab(v) {
   return { key: null, kind: 'vocab-type', v, lv: v.lv, ex, accept: [target] };
 }
 
+/** Point de grammaire à écrire à partir de son sens (si sa forme s'écrit en japonais seul) */
+export function typedMeaning(g) {
+  const forms = String(g.f || g.t).replace(/[①-⑳]/g, '').split(/[・／/]/).map(x => x.replace(/[〜～\s]/g, '').trim()).filter(Boolean);
+  if (!forms.length || forms.some(x => /[A-Za-zÀ-ÿ+⇒＋]/.test(x))) return null;
+  return { key: null, kind: 'meaning-type', g, lv: g.lv, accept: forms };
+}
+
+/** Transforme une question à choix en question à écrire (même clé de révision) */
+export async function toTyped(item) {
+  if (!item || item.kind.endsWith('-type')) return item;
+  let t = null;
+  if (item.kind === 'cloze' && item.s) t = typedCloze(item.s, item.g);
+  else if ((item.kind === 'vocab' || item.kind === 'vocab-rev') && item.v) t = await typedVocab(item.v);
+  else if (item.kind === 'meaning' && item.g) t = typedMeaning(item.g);
+  return t ? { ...t, key: item.key, lid: item.lid } : item;
+}
+
 /** Questions d'entraînement libre à partir de phrases (sans effet sur les révisions) */
 export function practiceItems(sents, grammarById) {
   return shuffle(sents).map(s => ({ key: null, kind: 'cloze', s, g: grammarById.get(s.g), lv: s.lv, options: shuffle([s.a, ...s.d]), answer: s.a, disp: clozeDisp(s) }));
@@ -212,7 +229,7 @@ export function practiceItems(sents, grammarById) {
  * mode 'srs' : `queue` = clés de cartes, les réponses sont notées.
  * mode 'practice' : `items` = questions prêtes, rien n'est enregistré.
  */
-export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone, onAnswer, extraActions = null, untilCorrect = false, celebrateEnd = true }) {
+export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone, onAnswer, extraActions = null, untilCorrect = false, celebrateEnd = true, typed = true }) {
   const list = mode === 'srs' ? [...queue] : [...items];
   const total = list.length;
   const retries = new Map();
@@ -247,7 +264,8 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     updateBar();
     if (idx >= list.length) return finish();
     const entry = list[idx];
-    const item = mode === 'srs' ? await resolve(entry, lastSentence) : entry;
+    let item = mode === 'srs' ? await resolve(entry, lastSentence) : entry;
+    if (typed) item = await toTyped(item);
     if (!item) { idx++; return next(); }
     if (item.s) lastSentence = item.s.id;
     const card = item.key && S.getCard(item.key);
@@ -321,23 +339,53 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     });
   }
 
-  // Exercice écrit : on tape le mot / la particule / la forme qui manque (kanji ou kana)
+  // Exercice écrit : on tape le mot / la particule / la forme qui manque (kanji ou kana, orthographe exacte)
   function askTyped(item, furi) {
     const input = h('input.type-answer', { type: 'text', lang: 'ja', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
-      placeholder: 'Écris ta réponse en japonais (kana ou kanji)…', 'aria-label': 'Ta réponse' });
+      placeholder: 'Écris ta réponse en japonais…', 'aria-label': 'Ta réponse' });
     let romaji = false; try { romaji = localStorage.getItem('sakura.theme.romaji') === '1'; } catch {}
     if (romaji) bindRomaji(input);
-    const romajiBox = h('label.check.small', h('input', { type: 'checkbox', checked: romaji, onchange: e => {
+    const romajiBox = h('label.check.small', { title: 'En romaji, tape en MAJUSCULES pour obtenir des katakana' }, h('input', { type: 'checkbox', checked: romaji, onchange: e => {
       try { localStorage.setItem('sakura.theme.romaji', e.target.checked ? '1' : '0'); } catch {}
       if (e.target.checked) bindRomaji(input); else toast('Romaji désactivé à la prochaine question');
-      input.focus(); } }), h('span', 'Taper en romaji'));
+      input.focus(); } }), h('span', 'Taper en romaji (MAJUSCULES = katakana)'));
+    const fb = h('p.type-feedback', { 'aria-live': 'polite' });
+    const hintBox = h('div.type-hints');
+    let tries = 0, hints = 0;
+    const reading = kana(item.accept[0]).replace(/[〜～]/g, '');
+    const hintSteps = [
+      // 1er indice : le sens du point visé (sans sa forme, qui serait la réponse) et la longueur
+      () => item.kind === 'cloze-type'
+        ? h('p', h('strong', 'Sens du point visé : '), `« ${item.g.s} » · ${[...reading].length} kana`)
+        : h('p', h('strong', 'Longueur : '), `${[...reading].length} kana`),
+      () => {
+        const ch = [...reading], k = Math.max(1, Math.ceil(ch.length / 2));
+        return h('p', h('strong', 'Début : '), h('span.type-mask', { lang: 'ja' }, ch.slice(0, k).join('') + '＿'.repeat(ch.length - k)));
+      },
+    ];
+    const hintBtn = h('button.btn', { type: 'button', onclick: () => {
+      if (hints >= hintSteps.length) return;
+      hintBox.append(hintSteps[hints++]()); play('cursor');
+      if (hints >= hintSteps.length) hintBtn.disabled = true;
+      input.focus();
+    } }, 'Indice');
+    const giveUp = h('button.btn.ghost', { type: 'button', onclick: () => finishTyped(false, true) }, 'Voir la réponse');
     const send = h('button.btn.primary', { type: 'button', onclick: () => check() }, 'Valider');
+    const tools = h('div.actions.left.type-tools', hintBtn, giveUp);
+    function finishTyped(right, gaveUp = false) {
+      input.readOnly = true; send.remove(); tools.remove(); fb.remove();
+      answer(item, input.value.trim(), null, right, input, { gaveUp, tries, hints });
+    }
     const check = () => {
       const v = input.value.trim();
       if (!v) { input.focus(); return; }
-      const right = item.accept.some(a => answerRegex(a).test(normJa(v)));
-      input.readOnly = true; send.remove();
-      answer(item, v, null, right, input);
+      if (item.accept.some(a => answerRegex(a).test(normJa(v)))) return finishTyped(true);
+      tries++;
+      play('wrong');
+      input.classList.remove('shake'); void input.offsetWidth; input.classList.add('shake');
+      fb.textContent = tries === 1 ? 'Pas tout à fait : vérifie l’orthographe (ー, っ, petits kana, katakana…) et réessaie.'
+        : `Toujours pas (${tries} essais). Prends un indice, ou regarde la réponse : la question sera à revoir.`;
+      input.select();
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing && !input.readOnly) { e.preventDefault(); e.stopPropagation(); check(); } });
     let prompt;
@@ -345,8 +393,11 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       prompt = [
         h('div.kicker-row', h('p.kicker', `Écris ce qui manque · ${D.LEVEL_NAMES[item.lv]}`), regChip(item.s)),
         h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.s, { furi }) }),
-        h('p.fr', item.s.fr),
-        h('p.small.type-hint', 'Indice : ', h('span', item.g.s))];
+        h('p.fr', item.s.fr)];
+    } else if (item.kind === 'meaning-type') {
+      prompt = [
+        h('p.kicker', `Écris le point de grammaire · ${D.LEVEL_NAMES[item.lv]}`),
+        h('p.word-fr', item.g.s)];
     } else {
       prompt = [
         h('div.kicker-row', h('p.kicker', `Écris le mot · ${item.lv}`), item.ex?.reg ? regChip(item.ex) : null),
@@ -354,15 +405,17 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
         item.ex ? h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.ex, { furi }) }) : null,
         item.ex ? h('p.fr', item.ex.fr) : null];
     }
-    stage.replaceChildren(h('div.card.question.typed', ...prompt, h('div.type-row', input, send), romajiBox));
+    stage.replaceChildren(h('div.card.question.typed', ...prompt, h('div.type-row', input, send), fb, hintBox, tools, romajiBox));
     play('card');
     setKeys(null);
     setTimeout(() => input.focus(), 60);
   }
 
-  function answer(item, choice, buttons, forced = null, input = null) {
+  function answer(item, choice, buttons, forced = null, input = null, typedInfo = null) {
     const right = forced ?? choice === item.answer;
-    play(right ? 'correct' : 'wrong');
+    const gaveUp = !!typedInfo?.gaveUp;
+    if (gaveUp) { input.value = ''; input.placeholder = ''; item = { ...item, gaveUp: true }; }
+    play(right ? 'correct' : gaveUp ? 'back' : 'wrong');
     if (right) burst(input || buttons.find(b => b.dataset.v === choice));
     if (input) input.classList.add(right ? 'ok' : 'ko');
     seen++; if (right) ok++;
@@ -376,18 +429,32 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     const furi = showFuri(item.lv);
     // Réponse complète
     const reveal = h('div.reveal');
-    if (input) reveal.append(h('p.type-solution', right ? 'Bonne réponse : ' : 'La réponse était : ', h('strong', { lang: 'ja', html: ruby(item.accept[0], true) })));
-    if (item.kind === 'vocab-type') {
+    if (input) {
+      reveal.append(h('p.type-solution', right ? 'Bonne réponse : ' : 'La réponse : ', h('strong', { lang: 'ja', html: ruby(item.accept[0], true) }),
+        item.accept.length > 1 && !right ? h('span.small', { lang: 'ja' }, ` (aussi accepté : ${item.accept.slice(1).map(plain).join('、')})`) : null));
+      if (right && (typedInfo?.tries || typedInfo?.hints)) reveal.append(h('p.small.type-note', `Réussi ${typedInfo.hints ? `avec ${typedInfo.hints} indice${typedInfo.hints > 1 ? 's' : ''}` : ''}${typedInfo.hints && typedInfo.tries ? ' et ' : ''}${typedInfo.tries ? `après ${typedInfo.tries} erreur${typedInfo.tries > 1 ? 's' : ''}` : ''} : compté comme difficile.`));
+      if (gaveUp) reveal.append(h('p.again-note', 'Réponse consultée : la question est marquée « à revoir » et reviendra.'));
+    }
+    if (item.kind === 'meaning-type') {
+      reveal.append(h('div.type-explain',
+        h('p', h('strong', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }), ` : ${item.g.s}`),
+        gramAudio(item.g, { compact: true }),
+        h('a.gram-link', { href: `#/point/${item.g.id}` }, 'Ouvrir la fiche du point')));
+    } else if (item.kind === 'vocab-type') {
       const v = item.v;
       const big = card.querySelector('.jp.big');
       if (big && item.ex) big.innerHTML = sentenceHTML(item.ex, { fill: true, furi, cls: right ? 'ok' : 'ko' });
-      reveal.append(wordAudio(v), h('p.small', v.m));
+      reveal.append(h('div.type-explain',
+        h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v), h('p.small', v.m),
+        !item.ex ? vocabExamplesEl(v, { max: 1, compact: true }) : null));
     } else if (item.kind === 'cloze' || item.kind === 'cloze-type') {
       const big = card.querySelector('.jp.big');
       big.innerHTML = sentenceHTML(item.s, { fill: true, furi, cls: right ? 'ok' : 'ko' });
       big.dataset.say = sentenceText(item.s);
       reveal.append(h('div.word-audio', speakBtn(() => big.dataset.say, { label: 'Réécouter la phrase' }), h('span.small', 'Écouter la phrase'),
-          regButton(item.s, big, { furi, cls: right ? 'ok' : 'ko' })),
+          item.kind === 'cloze' ? regButton(item.s, big, { furi, cls: right ? 'ok' : 'ko' }) : null),
+        item.kind === 'cloze-type' && !right ? h('p.small.type-explain', `Explication : ici on utilise `, h('span', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }),
+          ` (« ${item.g.s} »). La phrase complète veut dire : ${item.s.fr}`) : null,
         h('a.gram-link', { href: `#/point/${item.g.id}` },
         h('span', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }), ' — ', item.g.s));
       if (S.getSettings().autoSpeak) speak(sentenceText(item.s));
@@ -406,20 +473,26 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
         const fmt = d => d === 1 ? '1 j' : d < 30 ? `${d} j` : `${Math.round(d / 30)} mois`;
         const mk = (label, q, cls, n) => h(`button.btn.grade.${cls}`, { onclick: () => done(item, q), 'data-n': n },
           h('span', label), h('small', fmt(pv[q])));
+        if (typedInfo?.tries || typedInfo?.hints) {
+          actions.append(mk('Difficile', S.GRADES.HARD, 'hard', 1));
+          setKeys(e => { if (e.key === 'Enter' || e.key === ' ' || e.key === '1') { e.preventDefault(); done(item, S.GRADES.HARD); } });
+        } else {
         actions.append(mk('Difficile', S.GRADES.HARD, 'hard', 1), mk('Bien', S.GRADES.GOOD, 'good', 2), mk('Facile', S.GRADES.EASY, 'easy', 3));
         setKeys(e => {
           if (e.key === 'Enter' || e.key === ' ' || e.key === '2') { e.preventDefault(); done(item, S.GRADES.GOOD); }
           if (e.key === '1') done(item, S.GRADES.HARD);
           if (e.key === '3') done(item, S.GRADES.EASY);
         });
+        }
       } else {
         actions.append(h('p.again-note', 'Cette carte revient un peu plus loin dans la séance.'),
           h('button.btn.primary', { onclick: () => done(item, S.GRADES.AGAIN) }, 'Continuer'));
         setKeys(e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(item, S.GRADES.AGAIN); } });
       }
     } else {
-      actions.append(h('button.btn.primary', { onclick: () => done(item, right ? 4 : 0) }, 'Continuer'));
-      setKeys(e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(item, right ? 4 : 0); } });
+      const q = !right ? 0 : (typedInfo?.tries || typedInfo?.hints) ? 3 : 4;
+      actions.append(h('button.btn.primary', { onclick: () => done(item, q) }, 'Continuer'));
+      setKeys(e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(item, q); } });
     }
     card.append(reveal, actions);
     actions.querySelector('button')?.focus({ preventScroll: true });
@@ -429,7 +502,12 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   function done(item, q) {
     onAnswer?.(item, q >= 3);
     if (mode === 'srs') S.grade(item.key, q);
-    else S.recordPractice(item.g ? `g:${item.g.id}` : item.v ? D.vocabKey(item.v) : null, q >= 3);
+    else {
+      const k = item.g ? `g:${item.g.id}` : item.v ? D.vocabKey(item.v) : null;
+      S.recordPractice(k, q >= 3);
+      // Réponse consultée : l'élément part dans les révisions comme « à revoir »
+      if (item.gaveUp && k) { if (S.getCard(k)) S.grade(k, S.GRADES.AGAIN); else S.addCard(k); }
+    }
     if (q < 3) {
       missed.add(item.key || item.s?.id || (item.v && `v:${item.v.w}`) || (item.g && `g:${item.g.id}`));
       const id = item.key || item.s?.id || item.v?.w;

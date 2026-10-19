@@ -26,3 +26,5 @@ bump(os.path.join(ROOT, 'js', 'data.js'), data)
 html = re.compile(r"((?:css|js)/[\w/.-]+?\.(?:js|css))(\?v=\w+)?(\")")
 bump(os.path.join(ROOT, 'index.html'), html)
 print('version', V)
+# Numéro lu par le site pour se recharger tout seul quand une nouvelle version est en ligne
+open(os.path.join(ROOT, 'version.json'), 'w').write('{"v": "%s"}\n' % V)

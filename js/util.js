@@ -50,10 +50,11 @@ export const jr = text => {
   return esc(text).replace(DECOR_RE, m => `<ruby>${m}<rt>${DECOR[m]}</rt></ruby>`);
 };
 
-// --- Réponses écrites : kanji ou kana au choix, hiragana = katakana, ponctuation ignorée ---------
-const PUNCT = /[\s　。、．，,.!！?？「」『』（）()・…〜～ー-]/g;
+// --- Réponses écrites : kanji ou lecture au choix, mais orthographe exacte (ー, katakana, petits kana…) ---
+// Seuls les espaces et la ponctuation de fin de phrase sont ignorés.
+const PUNCT = /[\s　。、．，,.!！?？「」『』（）()…〜～]/g;
 export const toHira = s => s.replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
-export const normJa = s => toHira(String(s).normalize('NFKC').replace(PUNCT, ''));
+export const normJa = s => String(s).normalize('NFKC').replace(PUNCT, '');
 const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 /** Expression régulière qui accepte une réponse annotée (漢字（かんじ）…) écrite en kanji OU en kana */
 export function answerRegex(annotated) {

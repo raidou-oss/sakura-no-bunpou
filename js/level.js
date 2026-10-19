@@ -13,8 +13,8 @@
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261019105841';
-import * as S from './srs.js?v=20261019105841';
+import * as D from './data.js?v=20261019113147';
+import * as S from './srs.js?v=20261019113147';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };

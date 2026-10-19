@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019105841';
-import * as D from './data.js?v=20261019105841';
-import * as S from './srs.js?v=20261019105841';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019105841';
-import { speakBtn, speak } from './voice.js?v=20261019105841';
-import { itemScore } from './level.js?v=20261019105841';
-import { play } from './sfx.js?v=20261019105841';
-import { celebrate, verdict } from './celebrate.js?v=20261019105841';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019113147';
+import * as D from './data.js?v=20261019113147';
+import * as S from './srs.js?v=20261019113147';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019113147';
+import { speakBtn, speak } from './voice.js?v=20261019113147';
+import { itemScore } from './level.js?v=20261019113147';
+import { play } from './sfx.js?v=20261019113147';
+import { celebrate, verdict } from './celebrate.js?v=20261019113147';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -228,9 +228,9 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
       c.g.forEach(g => {
         const sents = sentsByG.get(g.id) || [];
         const sid = sents.length ? sents[Math.floor(Math.random() * sents.length)].id : null;
-        plan.push({ lid: `g:${g.id}`, sid, type: sid && Math.random() < 0.5 });
+        plan.push({ lid: `g:${g.id}`, sid });
       });
-      c.v.forEach((v, k) => plan.push({ lid: `v${k}:${v.w}`, type: Math.random() < 0.4 }));
+      c.v.forEach((v, k) => plan.push({ lid: `v${k}:${v.w}` }));
       plan = shuffle(plan);
     }
     const okSet = new Set(resume?.ok || []);
@@ -244,8 +244,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
       if (p.lid.startsWith('g:')) {
         const g = byId.get(Number(p.lid.slice(2))) || c.g.find(x => `g:${x.id}` === p.lid);
         const sent = (sentsByG.get(g.id) || []).find(x => x.id === p.sid);
-        if (sent && p.type) it = typedCloze(sent, g);
-        else if (sent) it = practiceItems([sent], byId)[0];
+        if (sent) it = typedCloze(sent, g);
         else {
           const others = grammarAll.filter(x => x.lv === g.lv && x.s !== g.s);
           it = { key: null, kind: 'meaning', g, lv: g.lv, answer: g.s, options: shuffle([g.s, ...shuffle(others).slice(0, 3).map(x => x.s)]) };
@@ -253,17 +252,16 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
       } else {
         const v = c.v.find((x, k) => `v${k}:${x.w}` === p.lid);
         if (!v) continue;
-        it = p.type ? await typedVocab(v) : vocabPractice(v, vocabAll);
+        it = await typedVocab(v);
       }
       it.lid = p.lid;
       items.push(it);
     }
     phase.textContent = 'Exercices';
     phase.classList.add('quiz');
-    const typed = items.filter(x => x.kind.endsWith('-type')).length;
     dots.replaceChildren(h('span.small.lesson-rule', okSet.size
-      ? `Reprise : ${okSet.size} exercice${okSet.size > 1 ? 's' : ''} sur ${total} déjà réussi${okSet.size > 1 ? 's' : ''}, il en reste ${items.length}${typed ? ` (dont ${typed} à écrire)` : ''}.`
-      : `${total} exercices${typed ? `, dont ${typed} à écrire` : ''} : chaque erreur revient jusqu'à ce qu'elle soit réussie.`));
+      ? `Reprise : ${okSet.size} exercice${okSet.size > 1 ? 's' : ''} sur ${total} déjà réussi${okSet.size > 1 ? 's' : ''}, il en reste ${items.length}.`
+      : `${total} exercices à écrire, orthographe exacte. Une réponse consultée part dans tes révisions et la question revient jusqu'à ce qu'elle soit réussie.`));
     if (!items.length) return finish(0, total);
     const ordered = resume ? items : shuffle(items);
     runSession(stage, { mode: 'practice', items: ordered, untilCorrect: true, celebrateEnd: false,
