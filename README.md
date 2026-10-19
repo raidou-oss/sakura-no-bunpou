@@ -116,3 +116,8 @@ Après chaque modification du site : `python3 tools/bump_version.py` pour forcer
 Les phrases à trous sont dans `tools/sentences_*.txt` (les fichiers `sentences_z*` sont les ajouts : au moins une phrase pour chaque point du N5 au N1, deux pour le N5 et le N4). Après modification : `python3 tools/build_sentences.py` (régénère seulement `data/sentences.json` et vérifie le format, les distracteurs, les lectures et les doublons).
 
 Leçons : une leçon n'est validée qu'une fois tous ses exercices réussis (une erreur revient jusqu'à être corrigée). On peut enchaîner 1, 2, 3 ou 5 leçons par session. Les unités de vocabulaire sont découpées en leçons de 12 mots ; en mode « Les deux », la leçon n associe la leçon de grammaire n et le bloc de mots n.
+
+## Exemples de vocabulaire et furigana
+
+- `tools/vocab_examples_n*_*.txt` (mot || phrase || traduction) : phrases écrites pour le vocabulaire. Tous les mots N5 et N4 ont un exemple. `python3 tools/build_vocab_examples.py` génère `data/vocab_ex_n*.json` en complétant avec les phrases de grammaire du même niveau ou plus faciles qui contiennent le mot (même lecture), les plus courtes d'abord. `--missing N4` liste les mots encore sans exemple.
+- Furigana : réglage « Partout » par défaut. `tools/build_sentences.py` ajoute aussi les lectures aux réponses et aux distracteurs des phrases à trous (dictionnaire tiré des données déjà annotées, avec des règles pour les lectures qui dépendent du contexte).

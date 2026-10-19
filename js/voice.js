@@ -1,21 +1,37 @@
 // Voix japonaises : synthèse vocale du navigateur (Web Speech API, voix ja-JP de l'appareil).
 // Rien à télécharger : chaque système fournit ses voix (Kyoko/Otoya sur Apple, Nanami/Haruka
 // sur Windows, Google 日本語 sur Chrome et Android).
-import { h, toast } from './util.js?v=20261019033652';
-import * as S from './srs.js?v=20261019033652';
+import { h, toast } from './util.js?v=20261019095843';
+import * as S from './srs.js?v=20261019095843';
 
 const synth = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
 export const supported = !!synth;
-const PREFERRED = [/Google 日本語/, /Nanami/, /Kyoko/, /O-?ren/, /Otoya/, /Haruka/, /Ayumi/, /Keita/, /Ichiro/, /Sayaka/];
 let voice = null, warned = false;
 
-function pickVoice() {
-  if (!synth) return null;
-  const ja = synth.getVoices().filter(v => /^ja[-_]?/i.test(v.lang));
-  if (!ja.length) return null;
-  for (const re of PREFERRED) { const v = ja.find(x => re.test(x.name)); if (v) return v; }
-  return ja.find(v => v.localService) || ja[0];
+// Classement des voix : les voix « naturelles » (neuronales) sont bien moins robotiques que les
+// voix système classiques. Edge : « Microsoft Nanami Online (Natural) » ; Apple : « Kyoko (Premium /
+// Enhanced) » ; Chrome : « Google 日本語 ». À qualité égale, on préfère une voix féminine, plus douce.
+const SOFT = /Nanami|Kyoko|O-?ren|Haruka|Ayumi|Sayaka|Mizuki|Aoi|Shiori|Mayu|Nanako|Hikari/i;
+function score(v) {
+  let s = 0;
+  if (/Natural|Neural|Online/i.test(v.name)) s += 100;
+  if (/Premium/i.test(v.name)) s += 90;
+  if (/Enhanced|Siri/i.test(v.name)) s += 70;
+  if (/Google/i.test(v.name)) s += 55;
+  if (SOFT.test(v.name)) s += 25;
+  if (/Ichiro|Otoya|Keita|Hattori|Daichi|Naoki/i.test(v.name)) s -= 15;
+  if (/compact|eloquence/i.test(v.name)) s -= 40;
+  return s;
 }
+export const japaneseVoices = () => synth ? synth.getVoices().filter(v => /^ja[-_]?/i.test(v.lang)).sort((a, b) => score(b) - score(a)) : [];
+
+function pickVoice() {
+  const ja = japaneseVoices();
+  if (!ja.length) return null;
+  const wanted = S.getSettings().voiceName;
+  return (wanted && ja.find(v => v.name === wanted)) || ja[0];
+}
+export function refreshVoice() { voice = pickVoice(); return voice; }
 if (synth) {
   voice = pickVoice();
   synth.addEventListener?.('voiceschanged', () => { voice = pickVoice(); });
@@ -30,7 +46,9 @@ export function speak(text, { rate, onend } = {}) {
   const u = new SpeechSynthesisUtterance(clean);
   u.lang = 'ja-JP';
   if (voice) u.voice = voice;
-  u.rate = rate || S.getSettings().voiceRate || 0.95;
+  u.rate = rate || S.getSettings().voiceRate || 0.9;
+  u.pitch = S.getSettings().voicePitch ?? 1.06;   // un peu plus haut : timbre plus doux
+  u.volume = 0.92;
   u.onend = onend || null;
   u.onerror = onend || null;
   synth.speak(u);

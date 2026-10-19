@@ -1,0 +1,111 @@
+# Exemples de vocabulaire N4 (mots courants)
+親 || 親（おや）に心配（しんぱい）をかけたくないです。 || Je ne veux pas inquiéter mes parents.
+犯人 || 警察（けいさつ）が犯人（はんにん）を捕（つか）まえました。 || La police a arrêté le coupable.
+必ず || 明日（あした）は必（かなら）ず来（き）てください。 || Venez demain sans faute.
+信じる || 私（わたし）はあなたを信（しん）じています。 || J'ai confiance en toi.
+がっかり || 試合（しあい）に負（ま）けて、がっかりしました。 || J'ai été déçu d'avoir perdu le match.
+驚く || 値段（ねだん）が高（たか）くて驚（おどろ）きました。 || J'ai été surpris par le prix élevé.
+無理 || 一日（いちにち）で全部（ぜんぶ）覚（おぼ）えるのは無理（むり）です。 || Impossible de tout retenir en une journée.
+締め切り || レポートの締（し）め切（き）りは金曜日（きんようび）です。 || La date limite du rapport est vendredi.
+連絡 || 着（つ）いたら連絡（れんらく）してください。 || Prévenez-moi quand vous arrivez.
+給料 || 今日（きょう）は給料日（きゅうりょうび）です。 || C'est jour de paie aujourd'hui.
+息子 || 息子（むすこ）は今年（ことし）小学生（しょうがくせい）になりました。 || Mon fils est entré à l'école primaire cette année.
+環境 || 環境（かんきょう）のためにゴミを分（わ）けましょう。 || Trions les déchets pour l'environnement.
+韓国 || 韓国（かんこく）の料理（りょうり）は辛（から）いです。 || La cuisine coréenne est épicée.
+途中 || 学校（がっこう）へ行（い）く途中（とちゅう）で友達（ともだち）に会（あ）いました。 || J'ai croisé un ami en allant à l'école.
+起こる || 昨日（きのう）、駅前（えきまえ）で事故（じこ）が起（お）こりました。 || Hier, un accident s'est produit devant la gare.
+法律 || 法律（ほうりつ）を守（まも）らなければなりません。 || Il faut respecter la loi.
+勝つ || 昨日（きのう）の試合（しあい）は私（わたし）たちのチームが勝（か）ちました。 || Notre équipe a gagné le match d'hier.
+足りる || お金（かね）が足（た）りません。 || Je n'ai pas assez d'argent.
+安全 || この町（まち）は夜（よる）も安全（あんぜん）です。 || Cette ville est sûre même la nuit.
+反対 || 両親（りょうしん）は私（わたし）の留学（りゅうがく）に反対（はんたい）しています。 || Mes parents sont contre mon départ à l'étranger.
+売り切れ || 人気（にんき）のパンはもう売（う）り切（き）れです。 || Le pain le plus populaire est déjà épuisé.
+場合 || 雨（あめ）の場合（ばあい）は中止（ちゅうし）です。 || En cas de pluie, c'est annulé.
+行動 || 言葉（ことば）より行動（こうどう）が大切（たいせつ）です。 || Les actes comptent plus que les paroles.
+助ける || 困（こま）っている人（ひと）を助（たす）けましょう。 || Aidons les gens en difficulté.
+起こす || 明日（あした）の朝（あさ）、六時（ろくじ）に起（お）こしてください。 || Réveille-moi à six heures demain matin.
+寄る || 帰（かえ）りにスーパーに寄（よ）ります。 || Je passe au supermarché en rentrant.
+役に立つ || この辞書（じしょ）はとても役（やく）に立（た）ちます。 || Ce dictionnaire est très utile.
+別 || これとは別（べつ）の色（いろ）はありますか。 || Vous l'avez dans une autre couleur ?
+愛す || 彼（かれ）は家族（かぞく）を愛（あい）しています。 || Il aime sa famille.
+期限 || この牛乳（ぎゅうにゅう）は期限（きげん）が切（き）れています。 || Ce lait a dépassé sa date limite.
+過ぎる || もう十時（じゅうじ）を過（す）ぎました。 || Il est déjà plus de dix heures.
+任せる || この仕事（しごと）は私（わたし）に任（まか）せてください。 || Confiez-moi ce travail.
+愛 || 母（はは）の愛（あい）は大（おお）きいです。 || L'amour d'une mère est immense.
+今すぐ || 今（いま）すぐ来（き）てください。 || Venez tout de suite.
+薄い || このお茶（ちゃ）は少（すこ）し薄（うす）いです。 || Ce thé est un peu léger.
+税金 || 税金（ぜいきん）を払（はら）いに行（い）きます。 || Je vais payer mes impôts.
+運転手 || タクシーの運転手（うんてんしゅ）に道（みち）を聞（き）きました。 || J'ai demandé le chemin au chauffeur de taxi.
+冗談 || 冗談（じょうだん）を言（い）わないでください。 || Ne plaisante pas.
+政府 || 政府（せいふ）は新（あたら）しい計画（けいかく）を発表（はっぴょう）しました。 || Le gouvernement a annoncé un nouveau plan.
+観光 || 京都（きょうと）へ観光（かんこう）に行（い）きます。 || Je vais faire du tourisme à Kyoto.
+関西 || 大阪（おおさか）は関西（かんさい）にあります。 || Osaka se trouve dans le Kansai.
+又 || 又（また）会（あ）いましょう。 || Revoyons-nous.
+心 || 彼女（かのじょ）は心（こころ）が優（やさ）しいです。 || Elle a bon cœur.
+又は || 黒（くろ）又（また）は青（あお）のペンで書（か）いてください。 || Écrivez au stylo noir ou bleu.
+変わる || 町（まち）の様子（ようす）がずいぶん変（か）わりました。 || La ville a beaucoup changé.
+結果 || 試験（しけん）の結果（けっか）はいつ分（わ）かりますか。 || Quand connaîtra-t-on les résultats de l'examen ?
+確か || 確（たし）か、会議（かいぎ）は三時（さんじ）からです。 || Si je me souviens bien, la réunion commence à trois heures.
+比べる || 二（ふた）つの値段（ねだん）を比（くら）べてみました。 || J'ai comparé les deux prix.
+十分 || 時間（じかん）は十分（じゅうぶん）あります。 || On a largement le temps.
+打つ || 彼（かれ）はボールを強（つよ）く打（う）ちました。 || Il a frappé la balle avec force.
+残す || 料理（りょうり）を残（のこ）さないで食（た）べてください。 || Mangez tout, ne laissez rien dans votre assiette.
+済む || 宿題（しゅくだい）はもう済（す）みました。 || J'ai déjà fini mes devoirs.
+一方 || 姉（あね）は外（そと）で遊（あそ）ぶのが好（す）きです。一方（いっぽう）、妹（いもうと）は家（いえ）で本（ほん）を読（よ）みます。 || Ma grande sœur aime jouer dehors. Ma petite sœur, elle, lit à la maison.
+思い出す || この歌（うた）を聞（き）くと、子供（こども）の頃（ころ）を思（おも）い出（だ）します。 || Cette chanson me rappelle mon enfance.
+決して || このことは決（けっ）して忘（わす）れません。 || Je n'oublierai jamais ça.
+申し上げる || 心（こころ）からお礼（れい）を申（もう）し上（あ）げます。 || Je vous remercie du fond du cœur.
+友人 || 友人（ゆうじん）と旅行（りょこう）に行（い）きました。 || Je suis parti en voyage avec un ami.
+調査 || 町（まち）の人（ひと）に調査（ちょうさ）をしました。 || Nous avons fait une enquête auprès des habitants.
+不思議 || 不思議（ふしぎ）な夢（ゆめ）を見（み）ました。 || J'ai fait un rêve étrange.
+代わり || 私（わたし）が先生（せんせい）の代（か）わりに説明（せつめい）します。 || Je vais expliquer à la place du professeur.
+付き合う || 二人（ふたり）は三年（さんねん）付（つ）き合（あ）っています。 || Ils sortent ensemble depuis trois ans.
+会場 || コンサートの会場（かいじょう）は人（ひと）でいっぱいでした。 || La salle de concert était pleine de monde.
+意外 || 彼（かれ）が料理（りょうり）が上手（じょうず）なのは意外（いがい）でした。 || J'ai été surpris qu'il cuisine si bien.
+構う || 私（わたし）のことは構（かま）わないでください。 || Ne vous occupez pas de moi.
+直る || パソコンがやっと直（なお）りました。 || L'ordinateur est enfin réparé.
+残り || 夏休（なつやす）みの残（のこ）りは一週間（いっしゅうかん）です。 || Il reste une semaine de vacances d'été.
+直す || 壊（こわ）れた椅子（いす）を直（なお）しました。 || J'ai réparé la chaise cassée.
+倒れる || 強（つよ）い風（かぜ）で木（き）が倒（たお）れました。 || Un arbre est tombé à cause du vent fort.
+止む || やっと雨（あめ）が止（や）みました。 || La pluie s'est enfin arrêtée.
+訪ねる || 週末（しゅうまつ）に祖母（そぼ）の家（いえ）を訪（たず）ねました。 || Le week-end, je suis allé rendre visite à ma grand-mère.
+皆様 || 皆様（みなさま）、こんばんは。 || Bonsoir à tous.
+料金 || バスの料金（りょうきん）はいくらですか。 || Combien coûte le bus ?
+勇気 || 勇気（ゆうき）を出（だ）して話（はな）しかけました。 || J'ai pris mon courage à deux mains pour lui parler.
+文句 || 彼（かれ）はいつも文句（もんく）ばかり言（い）っています。 || Il ne fait que se plaindre.
+悩み || 何（なに）か悩（なや）みがあったら、相談（そうだん）してください。 || Si quelque chose te tracasse, parles-en-moi.
+付き合い || 彼（かれ）とは長（なが）い付（つ）き合（あ）いです。 || Nous nous connaissons depuis longtemps.
+感動 || その映画（えいが）を見（み）て感動（かんどう）しました。 || Ce film m'a ému.
+謝る || 遅（おく）れたことを先生（せんせい）に謝（あやま）りました。 || Je me suis excusé auprès du professeur pour mon retard.
+騒ぐ || 図書館（としょかん）で騒（さわ）がないでください。 || Ne faites pas de bruit à la bibliothèque.
+最悪 || 雨（あめ）で財布（さいふ）もなくして、最悪（さいあく）の日（ひ）でした。 || Avec la pluie et le portefeuille perdu, c'était une journée horrible.
+サイン || ここにサインをお願（ねが）いします。 || Signez ici, s'il vous plaît.
+優勝 || 私（わたし）たちのチームが優勝（ゆうしょう）しました。 || Notre équipe a remporté le championnat.
+踊り || 祭（まつ）りで日本（にほん）の踊（おど）りを見（み）ました。 || J'ai vu une danse japonaise à la fête.
+ペット || 何（なに）かペットを飼（か）っていますか。 || Tu as un animal de compagnie ?
+足す || 二（に）に三（さん）を足（た）すと五（ご）です。 || Deux plus trois font cinq.
+物価 || 東京（とうきょう）は物価（ぶっか）が高（たか）いです。 || Les prix sont élevés à Tokyo.
+勝ち || この試合（しあい）は私（わたし）たちの勝（か）ちです。 || Ce match, c'est nous qui l'avons gagné.
+貯金 || 毎月（まいつき）一万円（いちまんえん）貯金（ちょきん）しています。 || J'économise dix mille yens par mois.
+売り切れる || 人気（にんき）の本（ほん）はすぐ売（う）り切（き）れます。 || Les livres populaires sont vite épuisés.
+乗り遅れる || バスに乗（の）り遅（おく）れてしまいました。 || J'ai raté le bus.
+知らせる || 結果（けっか）が分（わ）かったら知（し）らせてください。 || Faites-moi savoir quand vous aurez le résultat.
+休校 || 台風（たいふう）で学校（がっこう）が休校（きゅうこう）になりました。 || L'école a fermé à cause du typhon.
+何度も || 何度（なんど）も練習（れんしゅう）しました。 || Je me suis entraîné plusieurs fois.
+雨が止む || 雨（あめ）が止（や）んだら、出（で）かけましょう。 || Sortons quand la pluie s'arrêtera.
+こんなに || こんなにおいしい料理（りょうり）は初（はじ）めてです。 || C'est la première fois que je mange un plat aussi délicieux.
+しかし || 彼（かれ）は頑張（がんば）った。しかし、合格（ごうかく）できなかった。 || Il a fait de son mieux. Mais il n'a pas réussi.
+ところが || 晴（は）れると思（おも）った。ところが、雨（あめ）が降（ふ）った。 || Je pensais qu'il ferait beau. Or, il a plu.
+どんなに || どんなに疲（つか）れていても、日記（にっき）を書（か）きます。 || Aussi fatigué que je sois, j'écris mon journal.
+に比べて || 去年（きょねん）に比（くら）べて、今年（ことし）は暑（あつ）いです。 || Par rapport à l'an dernier, il fait chaud cette année.
+もう少し || もう少（すこ）しゆっくり話（はな）してください。 || Parlez un peu plus lentement, s'il vous plaît.
+違いない || 彼（かれ）は疲（つか）れているに違（ちが）いない。 || Il doit sûrement être fatigué.
+計画を立てる || 夏休（なつやす）みの計画（けいかく）を立（た）てました。 || J'ai fait des projets pour les vacances d'été.
+やっぱり || やっぱり家（いえ）が一番（いちばん）です。 || Finalement, on n'est jamais mieux que chez soi.
+辞める || 父（ちち）は来年（らいねん）会社（かいしゃ）を辞（や）めます。 || Mon père quitte son entreprise l'année prochaine.
+文句を言う || 料理（りょうり）に文句（もんく）を言（い）わないでください。 || Ne te plains pas de la cuisine.
+代わりに || 肉（にく）の代（か）わりに魚（さかな）を食（た）べました。 || J'ai mangé du poisson au lieu de la viande.
+混んでいる || 朝（あさ）の電車（でんしゃ）はとても混（こ）んでいます。 || Le train du matin est bondé.
+今日中に || このレポートは今日中（きょうじゅう）に出（だ）してください。 || Rendez ce rapport avant la fin de la journée.
+悪口を言う || 人（ひと）の悪口（わるぐち）を言（い）うのはよくないです。 || Ce n'est pas bien de dire du mal des autres.
+いつの間にか || いつの間（ま）にか寝（ね）てしまいました。 || Je me suis endormi sans m'en rendre compte.

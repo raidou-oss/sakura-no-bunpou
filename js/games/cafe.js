@@ -1,10 +1,9 @@
 // コトバ珈琲 (Kotoba Kōhī) : un client étranger dicte sa commande en français,
 // tu la passes au barista en japonais, puis tu lis le montant annoncé en caisse.
-import { play } from '../sfx.js?v=20261019033652';
-import { burst } from '../celebrate.js?v=20261019033652';
-import { tileBoard } from './tiles.js?v=20261019033652';
-import { speak } from '../voice.js?v=20261019033652';
-import { h, ruby, shuffle, pick, sample, toast } from '../util.js?v=20261019033652';
+import { play } from '../sfx.js?v=20261019095843';
+import { burst } from '../celebrate.js?v=20261019095843';
+import { tileBoard } from './tiles.js?v=20261019095843';
+import { h, ruby, shuffle, pick, sample, toast, jr } from '../util.js?v=20261019095843';
 
 const DRINKS = [
   { hot: 'ホットコーヒー', ice: 'アイスコーヒー', fr: ['café', 'cafés'], g: 'm', price: 380 },
@@ -149,7 +148,7 @@ export default function cafe(root, { settings, saveBest }) {
   let level, served, tips, perfect, timer;
 
   const head = (hud) => h('header.game-head',
-    h('h1', h('span.jp-head', { lang: 'ja' }, 'コトバ珈琲'), 'Kotoba Kōhī'), hud);
+    h('h1', h('span.jp-head', { lang: 'ja', html: jr('コトバ珈琲') }), 'Kotoba Kōhī'), hud);
 
   function menu() {
     clearInterval(timer);
@@ -199,7 +198,7 @@ export default function cafe(root, { settings, saveBest }) {
         clearInterval(timer);
         const bonus = Math.round(left * 2) + (tries === 0 ? 100 : 30);
         if (tries === 0) perfect++;
-        faceEl.innerHTML = face('happy'); play('correct'); burst(answerZone, { count: 26 }); speak('かしこまりました！');
+        faceEl.innerHTML = face('happy'); play('correct'); burst(answerZone, { count: 26 });
         feedback.replaceChildren(h('p.barista', { lang: 'ja' }, '「かしこまりました！」'), h('p.small', `Parfait. +${bonus}円 de pourboire.`));
         tips += bonus; showTips();
         setTimeout(() => checkout(), 900);
@@ -215,7 +214,7 @@ export default function cafe(root, { settings, saveBest }) {
           k = Math.max(k, p);
         }
         if (tries >= 2) return fail();
-        faceEl.innerHTML = face('sad'); play('wrong'); speak('すみません、もう一度お願いします。');
+        faceEl.innerHTML = face('sad'); play('wrong');
         feedback.replaceChildren(h('p.barista', { lang: 'ja' }, '「すみません、もう一度お願いします。」'),
           h('p.small', k < chosen.length ? `Le barista n’a pas compris à partir de la tuile ${k + 1}. Corrige et renvoie.` : 'Il manque quelque chose à la fin de ta phrase.'));
         chosen.splice(k);

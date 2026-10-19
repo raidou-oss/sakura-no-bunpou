@@ -76,13 +76,13 @@
 767 || 隣（となり）の|部屋（へや）から|音楽（おんがく）が|[聞（き）こえ]ます。 || On entend de la musique qui vient de la pièce d'à côté. || 聞き;聞かせ;聞いて
 768 || 晴（は）れた|日（ひ）には|ここから|富士山（ふじさん）が|[見（み）え]ます。 || Par temps clair, on voit le mont Fuji d'ici. || 見せ;見て;見
 178 || 赤（あか）ちゃんが|急（きゅう）に|泣（な）き[だし]た。 || Le bébé s'est soudain mis à pleurer. || おわっ;なおし;すぎ
-668 || この|歌（うた）は|八十年[代（だい）]に|はやった。 || Cette chanson était à la mode dans les années 80. || 歳;回;番
+668 || この|歌（うた）は|八十年（はちじゅうねん）[代（だい）]に|はやった。 || Cette chanson était à la mode dans les années 80. || 歳;回;番
 1111 || 家（いえ）を|建（た）てるのに|お金（かね）が|たくさん|[かかり]ました。 || Construire la maison a coûté beaucoup d'argent. || かけ;かかえ;かき
 1113 || この|時計（とけい）は|十万円（じゅうまんえん）|[し]ました。 || Cette montre a coûté cent mille yens. || あり;なり;き
 119 || 昨日（きのう）は|十時間（じゅうじかん）[も]|寝（ね）た。 || Hier, j'ai dormi dix heures, carrément. || しか;より;へ
 367 || クラスの|[ほとんど]の|人（ひと）が|賛成（さんせい）した。 || Presque toute la classe était d'accord. || だんだん;とうとう;なるべく
 369 || [こんな]|大（おお）きな|魚（さかな）を|見（み）たのは|初（はじ）めてだ。 || C'est la première fois que je vois un poisson aussi gros. || これ;ここ;こう
-652 || [各]|クラスから|代表（だいひょう）を|一人（ひとり）|選（えら）びます。 || On choisit un représentant dans chaque classe. || 何;方;以
+652 || [各（かく）]|クラスから|代表（だいひょう）を|一人（ひとり）|選（えら）びます。 || On choisit un représentant dans chaque classe. || 何;方;以
 1106 || 私（わたし）は|りんご[の次（つぎ）に]|みかんが|好（す）きだ。 || Après les pommes, ce sont les mandarines que je préfère. || の前に;の上に;の中に
 382 || 百人（ひゃくにん）[以上（いじょう）]の|人（ひと）が|集（あつ）まった。 || Plus de cent personnes se sont rassemblées. || 以下;以外;以内
 383 || 三人（さんにん）[以下（いか）]の|グループで|話（はな）し合（あ）ってください。 || Discutez en groupes de trois personnes ou moins. || 以上;以外;以前
@@ -93,7 +93,7 @@
 138 || 父（ちち）が|言（い）う[ように]、|健康（けんこう）が|いちばん|大切（たいせつ）だ。 || Comme le dit mon père, la santé est ce qu'il y a de plus important. || ために;せいで;ばかり
 634 || この|本（ほん）は|二千円（にせんえん）[は]|する。 || Ce livre coûte au moins deux mille yens. || を;へ;で
 634 || 駅（えき）まで|歩（ある）いて|二十分（にじゅっぷん）[は]|かかる。 || Il faut au moins vingt minutes à pied jusqu'à la gare. || を;へ;で
-621 || 何（なん）[人]か|来（き）ていない|人（ひと）が|いる。 || Il y a quelques personnes qui ne sont pas venues. || 回;本;枚
+621 || 何（なん）[人（にん）]か|来（き）ていない|人（ひと）が|いる。 || Il y a quelques personnes qui ne sont pas venues. || 回;本;枚
 394 || 雪（ゆき）で|町（まち）が|[真（ま）っ]白（しろ）に|なった。 || La ville est devenue toute blanche sous la neige. || 全;各;毎
 725 || 試験（しけん）まで|あと|三日（みっか）[しか]|ない。 || Il ne reste que trois jours avant l'examen. || だけ;まで;ほど
 391 || すしは|日本（にほん）の|有名（ゆうめい）な|料理（りょうり）の[一（ひと）つ]だ。 || Les sushis sont l'un des plats japonais célèbres. || 一人;一回;一番

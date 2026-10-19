@@ -1,0 +1,421 @@
+# Exemples de vocabulaire N4 : mot || phrase || traduction
+来 || 来年（らいねん）、日本（にほん）へ行（い）きます。 || L'année prochaine, je vais au Japon.
+ごめん || 遅（おく）れてごめん。 || Désolé, je suis en retard.
+アフリカ || いつかアフリカを旅行（りょこう）したいです。 || J'aimerais voyager en Afrique un jour.
+形 || このクッキーは星（ほし）の形（かたち）をしています。 || Ces biscuits ont la forme d'une étoile.
+慣れる || 日本（にほん）の生活（せいかつ）にもう慣（な）れました。 || Je me suis déjà habitué à la vie au Japon.
+後輩 || 後輩（こうはい）に仕事（しごと）を教（おし）えています。 || J'apprends le travail à un cadet.
+アニメ || 日本（にほん）のアニメが大好（だいす）きです。 || J'adore les animés japonais.
+ジャケット || 寒（さむ）いのでジャケットを着（き）ていきます。 || Il fait froid, je mets une veste.
+免許 || 去年（きょねん）、車（くるま）の免許（めんきょ）を取（と）りました。 || J'ai eu mon permis de conduire l'an dernier.
+畳 || 和室（わしつ）の畳（たたみ）の上（うえ）で寝（ね）ました。 || J'ai dormi sur les tatamis de la pièce japonaise.
+匂い || 台所（だいどころ）からいい匂（にお）いがします。 || Ça sent bon depuis la cuisine.
+君 || 君（きみ）の考（かんが）えはいいと思（おも）う。 || Je trouve que ton idée est bonne.
+絶対に || 明日（あした）は絶対（ぜったい）に遅（おく）れないでください。 || Demain, ne soyez surtout pas en retard.
+喧嘩 || 兄（あに）と喧嘩（けんか）をしました。 || Je me suis disputé avec mon grand frère.
+逃げる || 猫（ねこ）が窓（まど）から逃（に）げました。 || Le chat s'est enfui par la fenêtre.
+前 || 駅（えき）の前（まえ）で待（ま）っています。 || Je t'attends devant la gare.
+私 || 私（わたくし）が担当（たんとう）の山田（やまだ）でございます。 || Je suis Yamada, la personne en charge.
+出来る || 私（わたし）は泳（およ）ぐことが出来（でき）ます。 || Je sais nager.
+クリスマス || クリスマスに家族（かぞく）とケーキを食（た）べます。 || À Noël, je mange un gâteau en famille.
+妻 || 妻（つま）は料理（りょうり）がとても上手（じょうず）です。 || Ma femme cuisine très bien.
+大統領 || アメリカの大統領（だいとうりょう）が日本（にほん）に来（き）ました。 || Le président américain est venu au Japon.
+痩せる || 運動（うんどう）して五（ご）キロ痩（や）せました。 || J'ai perdu cinq kilos en faisant du sport.
+不安 || 明日（あした）の試験（しけん）が不安（ふあん）です。 || Je suis inquiet pour l'examen de demain.
+具合 || 具合（ぐあい）が悪（わる）いので、早（はや）く帰（かえ）ります。 || Je ne me sens pas bien, je rentre tôt.
+生きる || 祖母（そぼ）は百歳（ひゃくさい）まで生（い）きました。 || Ma grand-mère a vécu jusqu'à cent ans.
+夕食 || 夕食（ゆうしょく）は七時（しちじ）からです。 || Le dîner est servi à partir de sept heures.
+変 || この牛乳（ぎゅうにゅう）は変（へん）な味（あじ）がします。 || Ce lait a un drôle de goût.
+褒める || 先生（せんせい）に作文（さくぶん）を褒（ほ）められました。 || Le professeur a fait l'éloge de ma rédaction.
+泥棒 || 昨日（きのう）、隣（となり）の家（いえ）に泥棒（どろぼう）が入（はい）りました。 || Hier, un voleur est entré chez les voisins.
+殴る || 人（ひと）を殴（なぐ）ってはいけません。 || Il ne faut pas frapper les gens.
+留守番 || 子供（こども）が一人（ひとり）で留守番（るすばん）をしています。 || L'enfant garde la maison tout seul.
+虫 || 夏（なつ）の夜（よる）は虫（むし）が多（おお）いです。 || Les nuits d'été, il y a beaucoup d'insectes.
+濡れる || 雨（あめ）で服（ふく）が濡（ぬ）れてしまいました。 || Mes vêtements ont été mouillés par la pluie.
+布団 || 毎朝（まいあさ）、布団（ふとん）をたたみます。 || Tous les matins, je plie mon futon.
+その後 || その後（ご）、彼（かれ）に会（あ）っていません。 || Je ne l'ai pas revu depuis.
+餌 || 毎朝（まいあさ）、犬（いぬ）に餌（えさ）をあげます。 || Tous les matins, je donne à manger au chien.
+能力 || 彼（かれ）は語学（ごがく）の能力（のうりょく）が高（たか）いです。 || Il est très doué pour les langues.
+文字 || この文字（もじ）は読（よ）めません。 || Je n'arrive pas à lire ce caractère.
+卒業 || 来年（らいねん）、大学（だいがく）を卒業（そつぎょう）します。 || Je finis l'université l'année prochaine.
+番組 || 好（す）きなテレビ番組（ばんぐみ）は何（なん）ですか。 || Quelle est ton émission de télé préférée ?
+グラス || グラスにワインを注（そそ）ぎました。 || J'ai versé du vin dans le verre.
+割れる || 落（お）としたら、お皿（さら）が割（わ）れました。 || L'assiette s'est cassée quand je l'ai fait tomber.
+お湯 || お湯（ゆ）を沸（わ）かしてお茶（ちゃ）を入（い）れます。 || Je fais bouillir de l'eau pour préparer du thé.
+お尻 || ずっと座（すわ）っていたので、お尻（しり）が痛（いた）いです。 || J'ai mal aux fesses à force d'être assis.
+長い間 || 長（なが）い間（あいだ）、お世話（せわ）になりました。 || Merci pour tout ce que vous avez fait pendant si longtemps.
+乾く || 洗濯物（せんたくもの）がもう乾（かわ）きました。 || Le linge est déjà sec.
+海外旅行 || 夏休（なつやす）みに海外旅行（かいがいりょこう）をします。 || Pendant les vacances d'été, je pars en voyage à l'étranger.
+公務員 || 父（ちち）は公務員（こうむいん）です。 || Mon père est fonctionnaire.
+昼食 || 会議（かいぎ）の後（あと）で昼食（ちゅうしょく）をとりましょう。 || Déjeunons après la réunion.
+携帯 || 携帯（けいたい）を家（いえ）に忘（わす）れました。 || J'ai oublié mon portable à la maison.
+握手 || 選手（せんしゅ）と握手（あくしゅ）しました。 || J'ai serré la main du joueur.
+不味い || この料理（りょうり）は少（すこ）し不味（まず）いです。 || Ce plat n'est pas très bon.
+貯める || 旅行（りょこう）のためにお金（かね）を貯（た）めています。 || J'économise de l'argent pour le voyage.
+捕まえる || 子供（こども）が虫（むし）を捕（つか）まえました。 || L'enfant a attrapé un insecte.
+場所 || 会議（かいぎ）の場所（ばしょ）を教（おし）えてください。 || Indiquez-moi le lieu de la réunion.
+ちょうど || 今（いま）、ちょうど三時（さんじ）です。 || Il est trois heures pile.
+言語 || 世界（せかい）にはたくさんの言語（げんご）があります。 || Il existe de nombreuses langues dans le monde.
+数学 || 数学（すうがく）は得意（とくい）ではありません。 || Je ne suis pas doué en maths.
+留守 || 母（はは）は今（いま）、留守（るす）です。 || Ma mère n'est pas à la maison en ce moment.
+ワープロ || 昔（むかし）はワープロで手紙（てがみ）を書（か）きました。 || Autrefois, j'écrivais mes lettres sur traitement de texte.
+そう || 私（わたし）もそう思（おも）います。 || Je pense comme toi.
+美しい || 富士山（ふじさん）は本当（ほんとう）に美（うつく）しいです。 || Le mont Fuji est vraiment magnifique.
+汚す || 新（あたら）しい服（ふく）を汚（よご）してしまいました。 || J'ai sali mes vêtements neufs.
+素晴らしい || 素晴（すば）らしい景色（けしき）ですね。 || Quel paysage magnifique !
+とか || 休（やす）みの日（ひ）は映画（えいが）とか買（か）い物（もの）とかに行（い）きます。 || Les jours de repos, je vais au cinéma, faire du shopping, ce genre de choses.
+味噌 || 味噌汁（みそしる）を毎朝（まいあさ）飲（の）みます。 || Je bois de la soupe miso tous les matins.
+ああ || ああ、疲（つか）れた。 || Ah, je suis fatigué.
+人形 || 妹（いもうと）は人形（にんぎょう）で遊（あそ）んでいます。 || Ma petite sœur joue à la poupée.
+ハイキング || 週末（しゅうまつ）に山（やま）へハイキングに行（い）きました。 || Le week-end, j'ai fait une randonnée en montagne.
+履歴書 || 面接（めんせつ）の前（まえ）に履歴書（りれきしょ）を送（おく）ります。 || J'envoie mon CV avant l'entretien.
+諦める || 夢（ゆめ）を諦（あきら）めないでください。 || N'abandonne pas ton rêve.
+苦い || この薬（くすり）はとても苦（にが）いです。 || Ce médicament est très amer.
+競争 || 二人（ふたり）は走（はし）って競争（きょうそう）しました。 || Les deux ont fait la course.
+大分 || 病気（びょうき）は大分（だいぶ）よくなりました。 || Je vais beaucoup mieux.
+バイク || 兄（あに）はバイクで会社（かいしゃ）へ行（い）きます。 || Mon grand frère va au travail à moto.
+展覧会 || 美術館（びじゅつかん）で絵（え）の展覧会（てんらんかい）を見（み）ました。 || J'ai vu une exposition de peinture au musée.
+面接 || 明日（あした）、アルバイトの面接（めんせつ）があります。 || J'ai un entretien pour un petit boulot demain.
+郵便局 || 郵便局（ゆうびんきょく）で荷物（にもつ）を送（おく）りました。 || J'ai envoyé un colis à la poste.
+恥ずかしい || 人（ひと）の前（まえ）で歌（うた）うのは恥（は）ずかしいです。 || C'est gênant de chanter devant les gens.
+スピーチ || 結婚式（けっこんしき）でスピーチをしました。 || J'ai fait un discours au mariage.
+宇宙人 || 宇宙人（うちゅうじん）はいると思（おも）いますか。 || Tu crois que les extraterrestres existent ?
+離れる || 家族（かぞく）と離（はな）れて暮（く）らしています。 || Je vis loin de ma famille.
+ギター || 毎晩（まいばん）ギターを練習（れんしゅう）しています。 || Je m'entraîne à la guitare tous les soirs.
+嫌 || 雨（あめ）の日（ひ）は嫌（いや）です。 || Je n'aime pas les jours de pluie.
+サンドイッチ || お昼（ひる）にサンドイッチを作（つく）りました。 || J'ai préparé des sandwiches pour midi.
+ポップコーン || 映画館（えいがかん）でポップコーンを買（か）いました。 || J'ai acheté du pop-corn au cinéma.
+きっと || 明日（あした）はきっと晴（は）れるでしょう。 || Demain, il fera sûrement beau.
+サンダル || 夏（なつ）はサンダルで出（で）かけます。 || En été, je sors en sandales.
+砂 || 靴（くつ）の中（なか）に砂（すな）が入（はい）りました。 || Du sable est entré dans mes chaussures.
+このように || このように書（か）いてください。 || Écrivez de cette manière, s'il vous plaît.
+洋服 || デパートで洋服（ようふく）を買（か）いました。 || J'ai acheté des vêtements au grand magasin.
+歯医者 || 明日（あした）、歯医者（はいしゃ）に行（い）きます。 || Demain, je vais chez le dentiste.
+昼休み || 昼休（ひるやす）みに公園（こうえん）を散歩（さんぽ）します。 || Je me promène au parc pendant la pause déjeuner.
+翻訳 || この手紙（てがみ）を英語（えいご）に翻訳（ほんやく）してください。 || Traduisez cette lettre en anglais, s'il vous plaît.
+席 || この席（せき）は空（あ）いていますか。 || Cette place est libre ?
+相談 || 進路（しんろ）について先生（せんせい）に相談（そうだん）しました。 || J'ai demandé conseil au professeur sur mon orientation.
+毎月 || 毎月（まいつき）、家賃（やちん）を払（はら）います。 || Je paie le loyer tous les mois.
+待ち合わせ || 駅（えき）で友達（ともだち）と待（ま）ち合（あ）わせをしています。 || J'ai rendez-vous avec un ami à la gare.
+戦争 || 戦争（せんそう）のない世界（せかい）になってほしいです。 || J'aimerais un monde sans guerre.
+タイプ || 彼（かれ）は私（わたし）の好（す）きなタイプです。 || C'est mon genre d'homme.
+変える || 髪型（かみがた）を変（か）えました。 || J'ai changé de coiffure.
+暖房 || 寒（さむ）いので暖房（だんぼう）をつけましょう。 || Il fait froid, allumons le chauffage.
+旅館 || 京都（きょうと）の旅館（りょかん）に泊（と）まりました。 || J'ai séjourné dans une auberge japonaise à Kyoto.
+スクリーン || 大（おお）きいスクリーンで映画（えいが）を見（み）ました。 || J'ai vu le film sur un grand écran.
+育てる || 庭（にわ）でトマトを育（そだ）てています。 || Je fais pousser des tomates dans le jardin.
+はっきり || もっとはっきり話（はな）してください。 || Parlez plus clairement, s'il vous plaît.
+星 || 今夜（こんや）は星（ほし）がたくさん見（み）えます。 || Ce soir, on voit beaucoup d'étoiles.
+夫 || 夫（おっと）は毎朝（まいあさ）コーヒーを入（い）れてくれます。 || Mon mari me prépare un café tous les matins.
+就職 || 兄（あに）は銀行（ぎんこう）に就職（しゅうしょく）しました。 || Mon grand frère a été embauché dans une banque.
+引退 || その選手（せんしゅ）は今年（ことし）引退（いんたい）します。 || Ce joueur prend sa retraite cette année.
+浅い || この川（かわ）は浅（あさ）いです。 || Cette rivière est peu profonde.
+品物 || この店（みせ）の品物（しなもの）はいいです。 || Les articles de ce magasin sont bons.
+ハンドバッグ || 母（はは）に新（あたら）しいハンドバッグをあげました。 || J'ai offert un nouveau sac à main à ma mère.
+大体 || 話（はなし）は大体（だいたい）わかりました。 || J'ai compris l'essentiel.
+技術 || 日本（にほん）の技術（ぎじゅつ）は進（すす）んでいます。 || La technologie japonaise est avancée.
+珍しい || 珍（めずら）しい花（はな）を見（み）つけました。 || J'ai trouvé une fleur rare.
+電池 || 時計（とけい）の電池（でんち）が切（き）れました。 || La pile de la montre est à plat.
+ファイル || 書類（しょるい）をファイルに入（い）れてください。 || Mettez les documents dans le classeur.
+冷房 || 暑（あつ）いので冷房（れいぼう）をつけました。 || Il fait chaud, j'ai allumé la clim.
+チェック || 出（で）かける前（まえ）に天気（てんき）をチェックします。 || Je vérifie la météo avant de sortir.
+運ぶ || この箱（はこ）を二階（にかい）へ運（はこ）んでください。 || Portez cette boîte au premier étage.
+届ける || 忘（わす）れ物（もの）を交番（こうばん）に届（とど）けました。 || J'ai déposé l'objet trouvé au poste de police.
+ペラペラ || 彼女（かのじょ）は英語（えいご）がペラペラです。 || Elle parle couramment anglais.
+真ん中 || 部屋（へや）の真（ま）ん中（なか）にテーブルがあります。 || Il y a une table au milieu de la pièce.
+鹿 || 奈良（なら）の公園（こうえん）には鹿（しか）がたくさんいます。 || Il y a beaucoup de daims dans le parc de Nara.
+竹 || この箸（はし）は竹（たけ）でできています。 || Ces baguettes sont en bambou.
+現金 || この店（みせ）は現金（げんきん）しか使（つか）えません。 || Ce magasin n'accepte que l'argent liquide.
+期間 || 試験（しけん）の期間（きかん）は一週間（いっしゅうかん）です。 || La période d'examens dure une semaine.
+見物 || 京都（きょうと）でお寺（てら）を見物（けんぶつ）しました。 || J'ai visité des temples à Kyoto.
+研究室 || 先生（せんせい）は研究室（けんきゅうしつ）にいます。 || Le professeur est dans son laboratoire.
+父親 || 彼（かれ）は優（やさ）しい父親（ちちおや）です。 || C'est un père attentionné.
+ガソリン || 車（くるま）にガソリンを入（い）れました。 || J'ai mis de l'essence dans la voiture.
+工場 || この町（まち）には大（おお）きい工場（こうじょう）があります。 || Il y a une grande usine dans cette ville.
+数 || 参加者（さんかしゃ）の数（かず）を数（かぞ）えてください。 || Comptez le nombre de participants.
+ポスター || 壁（かべ）に映画（えいが）のポスターを貼（は）りました。 || J'ai collé une affiche de film au mur.
+戻る || 五分（ごふん）で戻（もど）ります。 || Je reviens dans cinq minutes.
+デザート || デザートにアイスクリームを食（た）べました。 || J'ai pris une glace en dessert.
+亡くなる || 祖父（そふ）は去年（きょねん）亡（な）くなりました。 || Mon grand-père est décédé l'an dernier.
+是非 || 是非（ぜひ）、遊（あそ）びに来（き）てください。 || Venez nous voir, absolument.
+交通 || 東京（とうきょう）は交通（こうつう）が便利（べんり）です。 || À Tokyo, les transports sont pratiques.
+もし || もし雨（あめ）が降（ふ）ったら、家（いえ）にいます。 || S'il pleut, je reste à la maison.
+別れる || 駅（えき）で友達（ともだち）と別（わか）れました。 || Je me suis séparé de mon ami à la gare.
+絵文字 || メッセージに絵文字（えもじ）をつけました。 || J'ai ajouté des emojis au message.
+感情 || 彼（かれ）は感情（かんじょう）を顔（かお）に出（だ）しません。 || Il ne montre pas ses émotions.
+表す || この色（いろ）は春（はる）を表（あらわ）しています。 || Cette couleur représente le printemps.
+利用 || 図書館（としょかん）を利用（りよう）してください。 || Utilisez la bibliothèque.
+バッグ || 新（あたら）しいバッグを買（か）いました。 || J'ai acheté un nouveau sac.
+用意 || 旅行（りょこう）の用意（ようい）はできましたか。 || Tu as fini de préparer ton voyage ?
+柔道 || 弟（おとうと）は柔道（じゅうどう）を習（なら）っています。 || Mon petit frère fait du judo.
+結婚式 || 来月（らいげつ）、姉（あね）の結婚式（けっこんしき）があります。 || Le mariage de ma grande sœur a lieu le mois prochain.
+招待 || 友達（ともだち）をパーティーに招待（しょうたい）しました。 || J'ai invité des amis à la fête.
+周り || 家（いえ）の周（まわ）りに花（はな）を植（う）えました。 || J'ai planté des fleurs autour de la maison.
+仕方 || 漢字（かんじ）の勉強（べんきょう）の仕方（しかた）を教（おし）えてください。 || Apprends-moi comment étudier les kanji.
+淹れる || 母（はは）がお茶（ちゃ）を淹（い）れてくれました。 || Ma mère m'a préparé du thé.
+交換 || 友達（ともだち）とプレゼントを交換（こうかん）しました。 || J'ai échangé des cadeaux avec des amis.
+パパ || パパ、一緒（いっしょ）に遊（あそ）ぼう！ || Papa, viens jouer avec moi !
+確認 || 出発（しゅっぱつ）の時間（じかん）を確認（かくにん）してください。 || Vérifiez l'heure de départ.
+太陽 || 太陽（たいよう）は東（ひがし）から昇（のぼ）ります。 || Le soleil se lève à l'est.
+都合が悪い || 明日（あした）は都合（つごう）が悪（わる）いです。 || Demain, ça ne m'arrange pas.
+屋上 || デパートの屋上（おくじょう）でビールを飲（の）みました。 || J'ai bu une bière sur le toit du grand magasin.
+なさる || 先生（せんせい）は何（なに）をなさっていますか。 || Que faites-vous, professeur ?
+いらっしゃる || 社長（しゃちょう）は会議室（かいぎしつ）にいらっしゃいます。 || Le directeur est dans la salle de réunion.
+校長 || 校長（こうちょう）先生（せんせい）の話（はなし）は長（なが）いです。 || Les discours du directeur d'école sont longs.
+お子さん || お子（こ）さんは何歳（なんさい）ですか。 || Quel âge a votre enfant ?
+募集 || アルバイトを募集（ぼしゅう）しています。 || Nous recrutons des employés à temps partiel.
+壊れる || パソコンが壊（こわ）れてしまいました。 || Mon ordinateur est tombé en panne.
+水泳 || 水泳（すいえい）は体（からだ）にいいです。 || La natation est bonne pour la santé.
+きつい || この靴（くつ）は少（すこ）しきついです。 || Ces chaussures sont un peu serrées.
+石 || 川（かわ）に石（いし）を投（な）げました。 || J'ai lancé une pierre dans la rivière.
+磨く || 寝（ね）る前（まえ）に歯（は）を磨（みが）きます。 || Je me brosse les dents avant de dormir.
+水着 || 海（うみ）に行（い）くので、水着（みずぎ）を買（か）いました。 || Je vais à la mer, alors j'ai acheté un maillot de bain.
+ガス || 出（で）かける前（まえ）にガスを止（と）めてください。 || Coupez le gaz avant de sortir.
+伝える || 田中（たなか）さんによろしく伝（つた）えてください。 || Transmettez mes amitiés à monsieur Tanaka.
+カップ || カップにコーヒーを入（い）れます。 || Je verse le café dans la tasse.
+空気 || 山（やま）の空気（くうき）はおいしいです。 || L'air de la montagne est pur.
+助かる || 手伝（てつだ）ってくれて助（たす）かりました。 || Merci de ton aide, ça m'a bien rendu service.
+怪我 || 転（ころ）んで足（あし）に怪我（けが）をしました。 || Je suis tombé et je me suis blessé à la jambe.
+将来 || 将来（しょうらい）、医者（いしゃ）になりたいです。 || Plus tard, je veux devenir médecin.
+約束を守る || 約束（やくそく）を守（まも）るのは大切（たいせつ）です。 || C'est important de tenir ses promesses.
+復習 || 授業（じゅぎょう）の後（あと）で復習（ふくしゅう）します。 || Je révise après le cours.
+連れて行く || 子供（こども）を公園（こうえん）に連（つ）れて行（い）きました。 || J'ai emmené l'enfant au parc.
+ゴミ || ゴミは月曜日（げつようび）に出（だ）してください。 || Sortez les poubelles le lundi.
+ガラス || ガラスのコップが割（わ）れました。 || Le verre en verre s'est brisé.
+実は || 実（じつ）は、来月（らいげつ）結婚（けっこん）します。 || À vrai dire, je me marie le mois prochain.
+非常に || 今日（きょう）は非常（ひじょう）に暑（あつ）いです。 || Il fait extrêmement chaud aujourd'hui.
+同僚 || 同僚（どうりょう）と昼（ひる）ご飯（はん）を食（た）べました。 || J'ai déjeuné avec un collègue.
+水道 || 水道（すいどう）の水（みず）を飲（の）んでも大丈夫（だいじょうぶ）です。 || On peut boire l'eau du robinet sans problème.
+二階建て || 私（わたし）の家（いえ）は二階建（にかいだ）てです。 || Ma maison a deux niveaux.
+マンション || 駅（えき）の近（ちか）くのマンションに住（す）んでいます。 || J'habite dans un immeuble près de la gare.
+包む || プレゼントをきれいな紙（かみ）で包（つつ）みました。 || J'ai emballé le cadeau dans du joli papier.
+駄目 || ここで遊（あそ）んでは駄目（だめ）です。 || Il est interdit de jouer ici.
+汚れる || 雨（あめ）で靴（くつ）が汚（よご）れました。 || Mes chaussures se sont salies à cause de la pluie.
+釣る || 川（かわ）で魚（さかな）を三匹（さんびき）釣（つ）りました。 || J'ai pêché trois poissons dans la rivière.
+盗む || 電車（でんしゃ）で財布（さいふ）を盗（ぬす）まれました。 || On m'a volé mon portefeuille dans le train.
+自動 || このドアは自動（じどう）で開（ひら）きます。 || Cette porte s'ouvre automatiquement.
+産業 || この町（まち）の主（おも）な産業（さんぎょう）は農業（のうぎょう）です。 || La principale industrie de cette ville est l'agriculture.
+付ける || 名札（なふだ）を胸（むね）に付（つ）けてください。 || Accrochez votre badge sur la poitrine.
+指輪 || 彼（かれ）から指輪（ゆびわ）をもらいました。 || Il m'a offert une bague.
+作品 || これは有名（ゆうめい）な画家（がか）の作品（さくひん）です。 || C'est l'œuvre d'un peintre célèbre.
+授業中 || 授業中（じゅぎょうちゅう）は携帯（けいたい）を使（つか）わないでください。 || N'utilisez pas votre portable pendant le cours.
+サラリーマン || 兄（あに）はサラリーマンです。 || Mon grand frère est employé de bureau.
+スーツケース || スーツケースに服（ふく）を入（い）れました。 || J'ai mis des vêtements dans la valise.
+女性 || あの女性（じょせい）は医者（いしゃ）です。 || Cette femme est médecin.
+広告 || 新聞（しんぶん）で仕事（しごと）の広告（こうこく）を見（み）ました。 || J'ai vu une offre d'emploi dans le journal.
+宇宙飛行士 || 子供（こども）のころ、宇宙飛行士（うちゅうひこうし）になりたかったです。 || Enfant, je voulais devenir astronaute.
+時代 || 江戸時代（えどじだい）の町（まち）はどんな町（まち）でしたか。 || À quoi ressemblaient les villes de l'époque d'Edo ?
+植える || 庭（にわ）に木（き）を植（う）えました。 || J'ai planté un arbre dans le jardin.
+味方 || 私（わたし）はいつもあなたの味方（みかた）です。 || Je suis toujours de ton côté.
+プロジェクト || 新（あたら）しいプロジェクトが始（はじ）まりました。 || Un nouveau projet a commencé.
+しっかり || しっかり勉強（べんきょう）してください。 || Étudiez sérieusement.
+道具 || 料理（りょうり）の道具（どうぐ）をそろえました。 || J'ai rassemblé les ustensiles de cuisine.
+俳優 || 好（す）きな俳優（はいゆう）は誰（だれ）ですか。 || Qui est ton acteur préféré ?
+鍋 || 冬（ふゆ）は家族（かぞく）で鍋（なべ）を食（た）べます。 || En hiver, on mange une fondue japonaise en famille.
+アルコール || 運転（うんてん）する前（まえ）にアルコールを飲（の）んではいけません。 || Il ne faut pas boire d'alcool avant de conduire.
+様 || お客様（きゃくさま）、こちらへどうぞ。 || Par ici, cher client.
+居る || 子供（こども）たちは庭（にわ）に居（い）ます。 || Les enfants sont dans le jardin.
+為 || 健康（けんこう）の為（ため）に毎日（まいにち）歩（ある）きます。 || Je marche tous les jours pour ma santé.
+御座る || お手洗（てあら）いは二階（にかい）に御座（ござ）います。 || Les toilettes se trouvent au premier étage.
+特に || 果物（くだもの）の中（なか）で、特（とく）にりんごが好（す）きです。 || Parmi les fruits, j'aime particulièrement les pommes.
+相手 || 試合（しあい）の相手（あいて）は強（つよ）いチームです。 || L'adversaire du match est une équipe forte.
+或る || 或（あ）る日（ひ）、森（もり）で熊（くま）に会（あ）いました。 || Un jour, j'ai rencontré un ours dans la forêt.
+全て || 宿題（しゅくだい）は全（すべ）て終（お）わりました。 || J'ai fini tous mes devoirs.
+情報 || インターネットで情報（じょうほう）を調（しら）べます。 || Je cherche des informations sur internet.
+目的 || 旅行（りょこう）の目的（もくてき）は何（なん）ですか。 || Quel est le but de votre voyage ?
+例 || 例（れい）を一（ひと）つ見（み）せてください。 || Montrez-moi un exemple.
+描く || 子供（こども）が家族（かぞく）の絵（え）を描（か）きました。 || L'enfant a dessiné sa famille.
+中々 || この問題（もんだい）は中々（なかなか）難（むずか）しいです。 || Ce problème est plutôt difficile.
+表 || 表（ひょう）を見（み）てください。 || Regardez le tableau.
+様子 || 友達（ともだち）の様子（ようす）が少（すこ）し変（へん）です。 || Mon ami a l'air un peu bizarre.
+頂く || 先生（せんせい）に本（ほん）を頂（いただ）きました。 || J'ai reçu un livre de mon professeur.
+男性 || あの男性（だんせい）は誰（だれ）ですか。 || Qui est cet homme ?
+致す || 私（わたし）がご案内（あんない）致（いた）します。 || Je vais vous guider.
+無くなる || 冷蔵庫（れいぞうこ）の牛乳（ぎゅうにゅう）が無（な）くなりました。 || Il n'y a plus de lait dans le frigo.
+社会 || 社会（しゃかい）のルールを守（まも）りましょう。 || Respectons les règles de la société.
+光 || 窓（まど）から光（ひかり）が入（はい）ります。 || La lumière entre par la fenêtre.
+暫く || 暫（しばら）くお待（ま）ちください。 || Veuillez patienter un instant.
+名 || 名（な）は何（なん）と言（い）いますか。 || Comment vous appelez-vous ?
+似る || 私（わたし）は母（はは）に似（に）ています。 || Je ressemble à ma mère.
+立場 || 相手（あいて）の立場（たちば）で考（かんが）えてください。 || Mettez-vous à la place de l'autre.
+活動 || 大学（だいがく）でボランティア活動（かつどう）をしています。 || Je fais du bénévolat à l'université.
+連れる || 犬（いぬ）を連（つ）れて散歩（さんぽ）します。 || Je me promène avec le chien.
+酷い || 昨日（きのう）は酷（ひど）い雨（あめ）でした。 || Hier, il a plu à torrents.
+参る || 明日（あした）、そちらに参（まい）ります。 || Je viendrai chez vous demain.
+振る || 駅（えき）で友達（ともだち）に手（て）を振（ふ）りました。 || J'ai fait signe de la main à mon ami à la gare.
+表情 || 彼女（かのじょ）は明（あか）るい表情（ひょうじょう）をしています。 || Elle a l'air radieux.
+回る || 地球（ちきゅう）は太陽（たいよう）の周（まわ）りを回（まわ）っています。 || La Terre tourne autour du Soleil.
+届く || 昨日（きのう）、荷物（にもつ）が届（とど）きました。 || Le colis est arrivé hier.
+割合 || クラスの女子（じょし）の割合（わりあい）は半分（はんぶん）です。 || Les filles représentent la moitié de la classe.
+突然 || 突然（とつぜん）、雨（あめ）が降（ふ）り出（だ）しました。 || Soudain, il s'est mis à pleuvoir.
+尋ねる || 駅員（えきいん）に道（みち）を尋（たず）ねました。 || J'ai demandé le chemin à un employé de la gare.
+では || では、始（はじ）めましょう。 || Bien, commençons.
+腕 || 重（おも）い荷物（にもつ）を持（も）って、腕（うで）が痛（いた）いです。 || J'ai porté un bagage lourd, j'ai mal au bras.
+種類 || この店（みせ）にはいろいろな種類（しゅるい）のパンがあります。 || Cette boulangerie propose différentes sortes de pain.
+自由 || 週末（しゅうまつ）は自由（じゆう）な時間（じかん）が多（おお）いです。 || Le week-end, j'ai beaucoup de temps libre.
+他人 || 他人（たにん）の物（もの）を使（つか）ってはいけません。 || Il ne faut pas utiliser les affaires des autres.
+イメージ || 日本（にほん）にはどんなイメージがありますか。 || Quelle image as-tu du Japon ?
+呉れる || 友達（ともだち）が本（ほん）を呉（く）れました。 || Un ami m'a donné un livre.
+教育 || 子供（こども）の教育（きょういく）は大切（たいせつ）です。 || L'éducation des enfants est importante.
+家庭 || 彼（かれ）は温（あたた）かい家庭（かてい）で育（そだ）ちました。 || Il a grandi dans une famille chaleureuse.
+可笑しい || その話（はなし）は可笑（おか）しくて笑（わら）いました。 || Cette histoire était drôle, j'ai ri.
+金額 || 合計（ごうけい）の金額（きんがく）はいくらですか。 || Quel est le montant total ?
+抱く || 母（はは）が赤（あか）ちゃんを抱（だ）いています。 || La mère tient le bébé dans ses bras.
+血 || 指（ゆび）から血（ち）が出（で）ています。 || Mon doigt saigne.
+目標 || 今年（ことし）の目標（もくひょう）はN3に合格（ごうかく）することです。 || Mon objectif cette année est de réussir le N3.
+ケース || 眼鏡（めがね）をケースに入（い）れました。 || J'ai rangé mes lunettes dans l'étui.
+度 || 京都（きょうと）には三度（さんど）行（い）きました。 || Je suis allé trois fois à Kyoto.
+通る || この道（みち）は車（くるま）がよく通（とお）ります。 || Beaucoup de voitures passent par cette route.
+記憶 || 子供（こども）のころの記憶（きおく）があまりありません。 || J'ai peu de souvenirs de mon enfance.
+特別 || 今日（きょう）は特別（とくべつ）な日（ひ）です。 || Aujourd'hui est un jour spécial.
+ファックス || 書類（しょるい）をファックスで送（おく）りました。 || J'ai envoyé les documents par fax.
+何だか || 何（なん）だか眠（ねむ）いです。 || Je ne sais pas pourquoi, j'ai sommeil.
+価値 || この絵（え）には大（おお）きな価値（かち）があります。 || Ce tableau a une grande valeur.
+回答 || アンケートの回答（かいとう）をありがとうございました。 || Merci pour vos réponses au questionnaire.
+きちんと || 部屋（へや）をきちんと片付（かたづ）けてください。 || Range ta chambre correctement.
+市 || 横浜（よこはま）は大（おお）きい市（し）です。 || Yokohama est une grande ville.
+すっかり || 約束（やくそく）をすっかり忘（わす）れていました。 || J'avais complètement oublié le rendez-vous.
+下さる || 先生（せんせい）が手紙（てがみ）を下（くだ）さいました。 || Le professeur m'a envoyé une lettre.
+主人 || 主人（しゅじん）は今（いま）、出張中（しゅっちょうちゅう）です。 || Mon mari est en déplacement en ce moment.
+ドイツ || ドイツのビールは有名（ゆうめい）です。 || La bière allemande est célèbre.
+問い合わせ || 詳（くわ）しいことは電話（でんわ）でお問（と）い合（あ）わせください。 || Pour plus de détails, renseignez-vous par téléphone.
+随分 || 日本語（にほんご）が随分（ずいぶん）上手（じょうず）になりましたね。 || Ton japonais s'est beaucoup amélioré.
+医師 || 彼（かれ）は大学病院（だいがくびょういん）の医師（いし）です。 || Il est médecin dans un hôpital universitaire.
+エネルギー || 太陽（たいよう）のエネルギーを使（つか）います。 || On utilise l'énergie solaire.
+分野 || 私（わたし）の専門（せんもん）の分野（ぶんや）は経済（けいざい）です。 || Mon domaine de spécialité est l'économie.
+申し込み || 申（もう）し込（こ）みは明日（あした）までです。 || Les inscriptions sont ouvertes jusqu'à demain.
+葉 || 秋（あき）になると、木（き）の葉（は）が赤（あか）くなります。 || En automne, les feuilles des arbres rougissent.
+下ろす || 銀行（ぎんこう）でお金（かね）を下（お）ろしました。 || J'ai retiré de l'argent à la banque.
+市民 || 市民（しみん）のための図書館（としょかん）です。 || C'est une bibliothèque pour les habitants de la ville.
+協力 || 皆（みな）さんの協力（きょうりょく）をお願（ねが）いします。 || Nous comptons sur votre coopération à tous.
+現場 || 事故（じこ）の現場（げんば）に警察（けいさつ）が来（き）ました。 || La police est arrivée sur les lieux de l'accident.
+細かい || 細（こま）かいお金（かね）がありません。 || Je n'ai pas de monnaie.
+裏 || 紙（かみ）の裏（うら）に名前（なまえ）を書（か）いてください。 || Écrivez votre nom au dos de la feuille.
+ボール || 子供（こども）たちがボールで遊（あそ）んでいます。 || Les enfants jouent au ballon.
+場面 || この映画（えいが）の最後（さいご）の場面（ばめん）が好（す）きです。 || J'aime la dernière scène de ce film.
+並べる || 机（つくえ）を一列（いちれつ）に並（なら）べてください。 || Alignez les bureaux en une rangée.
+複雑 || この問題（もんだい）はとても複雑（ふくざつ）です。 || Ce problème est très compliqué.
+楽 || この仕事（しごと）は楽（らく）です。 || Ce travail est facile.
+誘う || 友達（ともだち）を映画（えいが）に誘（さそ）いました。 || J'ai invité un ami au cinéma.
+小学校 || 弟（おとうと）は小学校（しょうがっこう）に通（かよ）っています。 || Mon petit frère va à l'école primaire.
+底 || 池（いけ）の底（そこ）に魚（さかな）がいます。 || Il y a des poissons au fond de l'étang.
+喋る || 授業中（じゅぎょうちゅう）に喋（しゃべ）らないでください。 || Ne bavardez pas pendant le cours.
+偶に || 偶（たま）に外（そと）で食事（しょくじ）をします。 || Je mange dehors de temps en temps.
+未来 || 未来（みらい）の自分（じぶん）に手紙（てがみ）を書（か）きました。 || J'ai écrit une lettre à moi-même dans le futur.
+主に || 週末（しゅうまつ）は主（おも）に家（いえ）で過（す）ごします。 || Le week-end, je reste surtout à la maison.
+詩 || 彼（かれ）は美（うつく）しい詩（し）を書（か）きます。 || Il écrit de beaux poèmes.
+飾る || 部屋（へや）に花（はな）を飾（かざ）りました。 || J'ai décoré la pièce avec des fleurs.
+塗る || 壁（かべ）を白（しろ）く塗（ぬ）りました。 || J'ai peint le mur en blanc.
+挨拶 || 朝（あさ）、近所（きんじょ）の人（ひと）に挨拶（あいさつ）します。 || Le matin, je salue mes voisins.
+宜しい || この席（せき）に座（すわ）っても宜（よろ）しいですか。 || Puis-je m'asseoir à cette place ?
+複数 || 答（こた）えは複数（ふくすう）あります。 || Il y a plusieurs réponses possibles.
+分かれる || 道（みち）が二（ふた）つに分（わ）かれています。 || La route se divise en deux.
+線 || 赤（あか）い線（せん）を引（ひ）いてください。 || Tracez une ligne rouge.
+収入 || 今月（こんげつ）は収入（しゅうにゅう）が少（すく）なかったです。 || Mes revenus ont été faibles ce mois-ci.
+売れる || この本（ほん）はよく売（う）れています。 || Ce livre se vend bien.
+そろそろ || そろそろ帰（かえ）りましょう。 || Il est bientôt temps de rentrer.
+伺う || 明日（あした）、お宅（たく）に伺（うかが）います。 || Je passerai chez vous demain.
+光る || 夜空（よぞら）に星（ほし）が光（ひか）っています。 || Les étoiles brillent dans le ciel nocturne.
+波 || 今日（きょう）は海（うみ）の波（なみ）が高（たか）いです。 || Les vagues sont hautes aujourd'hui.
+秘密 || これは二人（ふたり）だけの秘密（ひみつ）です。 || C'est un secret entre nous deux.
+両方 || 肉（にく）も魚（さかな）も両方（りょうほう）好（す）きです。 || J'aime à la fois la viande et le poisson.
+都合 || 明日（あした）のご都合（つごう）はいかがですか。 || Demain, ça vous arrange ?
+アドバイス || 先輩（せんぱい）にアドバイスをもらいました。 || J'ai reçu des conseils de mon aîné.
+思い出 || 日本（にほん）での一年（いちねん）はいい思（おも）い出（で）です。 || Mon année au Japon est un bon souvenir.
+江戸 || 東京（とうきょう）は昔（むかし）、江戸（えど）と呼（よ）ばれていました。 || Autrefois, Tokyo s'appelait Edo.
+メッセージ || 友達（ともだち）にメッセージを送（おく）りました。 || J'ai envoyé un message à un ami.
+米 || 日本人（にほんじん）は米（こめ）をよく食（た）べます。 || Les Japonais mangent beaucoup de riz.
+適当 || 適当（てきとう）な答（こた）えを選（えら）んでください。 || Choisissez la réponse appropriée.
+触る || 展示品（てんじひん）に触（さわ）らないでください。 || Ne touchez pas aux objets exposés.
+物凄い || 物凄（ものすご）い雨（あめ）が降（ふ）っています。 || Il pleut des cordes.
+カード || このカードで払（はら）えますか。 || Je peux payer avec cette carte ?
+盛ん || この町（まち）はサッカーが盛（さか）んです。 || Le foot est très populaire dans cette ville.
+弁護士 || 姉（あね）は弁護士（べんごし）として働（はたら）いています。 || Ma grande sœur travaille comme avocate.
+ソフト || 新（あたら）しいソフトをパソコンに入（い）れました。 || J'ai installé un nouveau logiciel sur l'ordinateur.
+相変わらず || 彼（かれ）は相変（あいか）わらず元気（げんき）です。 || Il est toujours en pleine forme.
+管理 || このビルは会社（かいしゃ）が管理（かんり）しています。 || Cet immeuble est géré par une société.
+暮らし || 田舎（いなか）の暮（く）らしは静（しず）かです。 || La vie à la campagne est calme.
+鏡 || 鏡（かがみ）で顔（かお）を見（み）ます。 || Je me regarde dans le miroir.
+県 || 私（わたし）は静岡県（しずおかけん）の出身（しゅっしん）です。 || Je viens de la préfecture de Shizuoka.
+投げる || ボールを投（な）げてください。 || Lance le ballon.
+事務所 || 事務所（じむしょ）は三階（さんがい）にあります。 || Le bureau se trouve au deuxième étage.
+丁寧 || 彼（かれ）はいつも丁寧（ていねい）に話（はな）します。 || Il parle toujours poliment.
+沸く || お湯（ゆ）が沸（わ）きました。 || L'eau bout.
+適用 || この割引（わりびき）は学生（がくせい）にも適用（てきよう）されます。 || Cette réduction s'applique aussi aux étudiants.
+持てる || この箱（はこ）は重（おも）くて一人（ひとり）では持（も）てません。 || Cette boîte est trop lourde pour être portée seul.
+人類 || 人類（じんるい）は月（つき）に行（い）きました。 || L'humanité est allée sur la Lune.
+理想 || 理想（りそう）の家（いえ）はどんな家（いえ）ですか。 || À quoi ressemble ta maison idéale ?
+習慣 || 毎朝（まいあさ）走（はし）るのが習慣（しゅうかん）です。 || Courir tous les matins est une habitude.
+教会 || 日曜日（にちようび）に教会（きょうかい）へ行（い）きます。 || Je vais à l'église le dimanche.
+平和 || 世界（せかい）の平和（へいわ）を願（ねが）っています。 || Je souhaite la paix dans le monde.
+コース || 料理（りょうり）のコースを予約（よやく）しました。 || J'ai réservé un menu complet.
+枝 || 木（き）の枝（えだ）に鳥（とり）がとまっています。 || Un oiseau est posé sur une branche.
+アジア || 日本（にほん）はアジアの国（くに）です。 || Le Japon est un pays d'Asie.
+部下 || 部長（ぶちょう）は部下（ぶか）に優（やさ）しいです。 || Le chef de service est gentil avec ses subordonnés.
+数える || 一（いち）から十（じゅう）まで数（かぞ）えてください。 || Comptez de un à dix.
+年間 || 三年間（さんねんかん）日本語（にほんご）を勉強（べんきょう）しています。 || J'étudie le japonais depuis trois ans.
+湯 || 温泉（おんせん）の湯（ゆ）はとても熱（あつ）いです。 || L'eau de la source chaude est très chaude.
+天井 || この部屋（へや）は天井（てんじょう）が高（たか）いです。 || Cette pièce a un plafond haut.
+陰 || 木（き）の陰（かげ）で休（やす）みましょう。 || Reposons-nous à l'ombre de l'arbre.
+懐かしい || この歌（うた）を聞（き）くと、懐（なつ）かしい気持（きも）ちになります。 || Quand j'écoute cette chanson, ça me rend nostalgique.
+揺れる || 地震（じしん）で家（いえ）が揺（ゆ）れました。 || La maison a tremblé à cause du séisme.
+親しい || 彼（かれ）とは子供（こども）のころから親（した）しいです。 || Nous sommes proches depuis l'enfance.
+噛む || よく噛（か）んで食（た）べてください。 || Mâchez bien en mangeant.
+医療 || この国（くに）の医療（いりょう）は進（すす）んでいます。 || La médecine de ce pays est avancée.
+畑 || 祖父（そふ）は畑（はたけ）で野菜（やさい）を作（つく）っています。 || Mon grand-père cultive des légumes dans son champ.
+携帯電話 || 携帯電話（けいたいでんわ）の番号（ばんごう）を教（おし）えてください。 || Donnez-moi votre numéro de portable.
+用 || 何（なに）かご用（よう）ですか。 || Je peux vous aider ?
+注目 || この映画（えいが）は世界（せかい）から注目（ちゅうもく）されています。 || Ce film attire l'attention du monde entier.
+中学生 || 妹（いもうと）は中学生（ちゅうがくせい）です。 || Ma petite sœur est collégienne.
+拾う || 道（みち）で財布（さいふ）を拾（ひろ）いました。 || J'ai ramassé un portefeuille dans la rue.
+柔らかい || このパンはとても柔（やわ）らかいです。 || Ce pain est très moelleux.
+登場 || 新（あたら）しいキャラクターが登場（とうじょう）しました。 || Un nouveau personnage est apparu.
+皿 || 皿（さら）を棚（たな）にしまってください。 || Range les assiettes dans le placard.
+江戸時代 || 江戸時代（えどじだい）は二百六十年（にひゃくろくじゅうねん）ぐらい続（つづ）きました。 || L'époque d'Edo a duré environ deux cent soixante ans.
+移動 || バスで次（つぎ）の町（まち）へ移動（いどう）します。 || Nous nous déplaçons vers la ville suivante en bus.
+保険 || 旅行（りょこう）の前（まえ）に保険（ほけん）に入（はい）りました。 || J'ai pris une assurance avant le voyage.
+熱心 || 彼（かれ）は熱心（ねっしん）に勉強（べんきょう）しています。 || Il étudie avec ardeur.
+発表 || 明日（あした）、授業（じゅぎょう）で発表（はっぴょう）します。 || Demain, je fais un exposé en cours.
+騙す || 人（ひと）を騙（だま）してはいけません。 || Il ne faut pas tromper les gens.
+滑る || 雪（ゆき）の道（みち）で滑（すべ）って転（ころ）びました。 || J'ai glissé sur la route enneigée et je suis tombé.
+ピンク || ピンクの花（はな）が咲（さ）いています。 || Des fleurs roses sont en fleur.
+毛 || この犬（いぬ）は毛（け）が長（なが）いです。 || Ce chien a de longs poils.
+壊す || 弟（おとうと）がおもちゃを壊（こわ）しました。 || Mon petit frère a cassé un jouet.
+規則 || 学校（がっこう）の規則（きそく）を守（まも）ってください。 || Respectez le règlement de l'école.
+あら || あら、雨（あめ）が降（ふ）ってきたわ。 || Oh, il s'est mis à pleuvoir.
+池 || 公園（こうえん）の池（いけ）に鯉（こい）がいます。 || Il y a des carpes dans l'étang du parc.
+芸術 || パリは芸術（げいじゅつ）の町（まち）です。 || Paris est une ville d'art.
+キス || 母（はは）は子供（こども）の頬（ほお）にキスをしました。 || La mère a embrassé son enfant sur la joue.
+売り上げ || 今月（こんげつ）の売（う）り上（あ）げはよかったです。 || Les ventes de ce mois-ci ont été bonnes.
+昼間 || 昼間（ひるま）は暖（あたた）かいです。 || Il fait doux en journée.
+バター || パンにバターを塗（ぬ）ります。 || Je beurre le pain.
+首相 || 首相（しゅしょう）がテレビで話（はな）しています。 || Le Premier ministre parle à la télé.
+捕まる || 泥棒（どろぼう）が警察（けいさつ）に捕（つか）まりました。 || Le voleur a été arrêté par la police.
+離婚 || 両親（りょうしん）は去年（きょねん）離婚（りこん）しました。 || Mes parents ont divorcé l'an dernier.
+祖父 || 祖父（そふ）は毎朝（まいあさ）早（はや）く起（お）きます。 || Mon grand-père se lève tôt tous les matins.
+得意 || 私（わたし）は料理（りょうり）が得意（とくい）です。 || Je suis doué pour la cuisine.
+隅 || 部屋（へや）の隅（すみ）に机（つくえ）を置（お）きました。 || J'ai mis le bureau dans un coin de la pièce.
+スペイン || スペインの料理（りょうり）はおいしいです。 || La cuisine espagnole est délicieuse.
+注文 || ラーメンを注文（ちゅうもん）しました。 || J'ai commandé des ramen.
+前後 || 二十歳（はたち）前後（ぜんご）の人（ひと）が多（おお）いです。 || Il y a beaucoup de gens d'environ vingt ans.
+落ち込む || 試験（しけん）に落（お）ちて落（お）ち込（こ）んでいます。 || J'ai raté l'examen, je suis déprimé.
+タオル || お風呂（ふろ）の後（あと）でタオルを使（つか）います。 || J'utilise une serviette après le bain.
+セット || ハンバーガーのセットを注文（ちゅうもん）しました。 || J'ai commandé un menu hamburger.
+文学 || 大学（だいがく）で日本（にほん）の文学（ぶんがく）を勉強（べんきょう）しています。 || J'étudie la littérature japonaise à l'université.
+縦 || 縦（たて）に線（せん）を引（ひ）いてください。 || Tracez une ligne verticale.
+ビジネス || 父（ちち）はビジネスで海外（かいがい）によく行（い）きます。 || Mon père va souvent à l'étranger pour affaires.
+親戚 || お正月（しょうがつ）に親戚（しんせき）が集（あつ）まります。 || La famille élargie se réunit au Nouvel An.
+中学校 || 中学校（ちゅうがっこう）の友達（ともだち）に会（あ）いました。 || J'ai revu un ami du collège.
+アルバム || 古（ふる）いアルバムを見（み）ました。 || J'ai regardé un vieil album photo.
+一階 || 受付（うけつけ）は一階（いっかい）にあります。 || L'accueil est au rez-de-chaussée.
+地下 || 駐車場（ちゅうしゃじょう）は地下（ちか）にあります。 || Le parking est au sous-sol.
+礼 || 手伝（てつだ）ってくれた人（ひと）にお礼（れい）を言（い）いました。 || J'ai remercié la personne qui m'a aidé.
+蹴る || ボールを蹴（け）って遊（あそ）びました。 || J'ai joué à taper dans le ballon.
+通信 || 山（やま）の中（なか）は通信（つうしん）が悪（わる）いです。 || En montagne, le réseau est mauvais.
+折れる || 強（つよ）い風（かぜ）で木（き）の枝（えだ）が折（お）れました。 || Une branche s'est cassée à cause du vent fort.
+港 || 港（みなと）に大（おお）きな船（ふね）が止（と）まっています。 || Un grand bateau est amarré au port.
+赤ん坊 || 赤（あか）ん坊（ぼう）が泣（な）いています。 || Le bébé pleure.
+貿易 || 日本（にほん）は多（おお）くの国（くに）と貿易（ぼうえき）をしています。 || Le Japon commerce avec de nombreux pays.
+海岸 || 海岸（かいがん）を散歩（さんぽ）しました。 || Je me suis promené sur la plage.
+桃 || この桃（もも）はとても甘（あま）いです。 || Cette pêche est très sucrée.
+棚 || 本（ほん）を棚（たな）に戻（もど）してください。 || Remettez le livre sur l'étagère.

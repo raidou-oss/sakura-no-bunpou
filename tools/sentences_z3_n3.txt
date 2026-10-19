@@ -79,7 +79,7 @@
 494 || 兄（あに）[と違（ちが）って]、|私（わたし）は|スポーツが|苦手（にがて）だ。 || Contrairement à mon grand frère, je suis nul en sport. || と同時に;と並んで;として
 658 || 大阪（おおさか）は|東京（とうきょう）[と並（なら）んで]、|日本（にほん）を|代表（だいひょう）する|都市（とし）だ。 || Osaka est, au même titre que Tokyo, une ville emblématique du Japon. || と違って;と同時に;と比べて
 461 || 一人（ひとり）[当（あ）たり]|三千円（さんぜんえん）|払（はら）ってください。 || Payez trois mille yens par personne. || 向け;向き;同士
-640 || 一ドルは|日本円（にほんえん）で|百五十円（ひゃくごじゅうえん）[に当（あ）たる]。 || Un dollar correspond à cent cinquante yens. || に限る;に代わる;に向く
+640 || 一（いち）ドルは|日本円（にほんえん）で|百五十円（ひゃくごじゅうえん）[に当（あ）たる]。 || Un dollar correspond à cent cinquante yens. || に限る;に代わる;に向く
 472 || 暑（あつ）い|日（ひ）は|冷（つめ）たい|ビール[に限（かぎ）る]。 || Par jour de chaleur, rien ne vaut une bière bien fraîche. || に当たる;に代わる;に向く
 267 || 寝（ね）[ようとした]|時（とき）、|電話（でんわ）が|鳴（な）った。 || Au moment où j'allais me coucher, le téléphone a sonné. || ようにした;ようになった;ようでした
 482 || 家（いえ）を|出（で）[ようとしたが]、|雨（あめ）が|降（ふ）ってきた。 || J'étais sur le point de sortir quand il s'est mis à pleuvoir. || ようにしたが;ようになったが;ようでしたが

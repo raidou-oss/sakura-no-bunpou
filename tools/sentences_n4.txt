@@ -71,13 +71,13 @@
 767 || 鳥（とり）の|声（こえ）が|[聞（き）こえ]ます。 || On entend le chant des oiseaux. || 聞き;聞か;聞け
 768 || 窓（まど）から|海（うみ）が|[見（み）え]ます。 || On voit la mer depuis la fenêtre. || 見;見せ;見られ
 178 || 急（きゅう）に|雨（あめ）が|降（ふ）り[だし]た。 || Il s'est soudain mis à pleuvoir. || おわっ;なおし;すぎ
-668 || 父（ちち）は|五十[代（だい）]です。 || Mon père a la cinquantaine. || 番;年;回
+668 || 父（ちち）は|五十（ごじゅう）[代（だい）]です。 || Mon père a la cinquantaine. || 番;年;回
 1111 || 駅（えき）まで|三十分（さんじゅっぷん）|[かかり]ます。 || Il faut trente minutes jusqu'à la gare. || なり;あり;し
 1113 || この|かばんは|一万円（いちまんえん）|[し]ました。 || Ce sac a coûté dix mille yens. || なり;かかれ;あり
 119 || 三時間（さんじかん）[も]|待（ま）った。 || J'ai attendu trois heures entières ! || へ;か;の
 367 || 宿題（しゅくだい）は|[ほとんど]|終（お）わった。 || J'ai presque fini mes devoirs. || ぜんぜん;まだ;なかなか
 369 || [そんな]|こと、|言（い）わないで。 || Ne dis pas des choses pareilles. || それ;そこ;そう
-652 || [各]|部屋（へや）に|エアコンが|あります。 || Il y a la clim dans chaque chambre. || 毎;何;次
+652 || [各（かく）]|部屋（へや）に|エアコンが|あります。 || Il y a la clim dans chaque chambre. || 毎;何;次
 1106 || 東京（とうきょう）[の次（つぎ）に]|大（おお）きい|町（まち）は|どこですか。 || Quelle est la plus grande ville après Tokyo ? || の前に;の中で;のために
 382 || 二十歳（はたち）[以上（いじょう）]の|人（ひと）は|お酒（さけ）が|飲（の）めます。 || Les personnes de vingt ans et plus peuvent boire de l'alcool. || 以外;以来;以前
 383 || 六歳（ろくさい）[以下（いか）]の|子（こ）どもは|無料（むりょう）です。 || C'est gratuit pour les enfants de six ans et moins. || 以外;以前;以上の
@@ -86,7 +86,7 @@
 673 || 話（はなし）は|[だいたい]|わかりました。 || J'ai à peu près compris ce que vous dites. || ぜんぜん;なかなか;けっして
 183 || クラス[のなかで]|だれが|いちばん|背（せ）が|高（たか）いですか。 || Dans la classe, qui est le plus grand ? || のために;のように;のあとで
 138 || 先生（せんせい）が|言（い）った[ように]、|やってみてください。 || Faites comme le professeur l'a dit. || ために;ばかり;まで
-621 || 何（なん）[回]か|日本（にほん）へ|行（い）ったことがある。 || Je suis allé au Japon plusieurs fois. || 目;番;度目
+621 || 何（なん）[回（かい）]か|日本（にほん）へ|行（い）ったことがある。 || Je suis allé au Japon plusieurs fois. || 目;番;度目
 394 || 顔（かお）が|[真（ま）っ]赤（か）になった。 || Mon visage est devenu tout rouge. || 全;超;大
 725 || 財布（さいふ）に|百円（ひゃくえん）[しか]|ない。 || Je n'ai que cent yens dans mon porte-monnaie. || だけ;まで;ほど
 391 || 東京（とうきょう）は|世界（せかい）で|大（おお）きい|都市（とし）の[一（ひと）つ]だ。 || Tokyo est l'une des plus grandes villes du monde. || 一番;一人;一回

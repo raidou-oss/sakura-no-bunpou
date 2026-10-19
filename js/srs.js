@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261019033652';
+import { store, today, dayKey, DAY } from './util.js?v=20261019095843';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -14,15 +14,19 @@ export const MATURE = 21; // jours : au-delà, la carte est « en fleur »
 const DEFAULT_SETTINGS = {
   grammarLevels: ['N5'], vocabLevels: ['N5'],
   newGrammar: 5, newVocab: 10,
-  furigana: 'auto', // auto = N5/N4 seulement ; always ; never
+  furigana: 'always', // always (par défaut) ; auto = N5/N4 seulement ; never
   sound: true,
-  voiceRate: 0.95,   // vitesse de la voix japonaise
+  voiceRate: 0.9,    // vitesse de la voix japonaise
+  voicePitch: 1.06,  // timbre (un peu plus haut = plus doux)
+  voiceName: '',     // voix choisie (vide = la plus naturelle disponible)
   autoSpeak: true,   // lit la réponse à voix haute en révision
   pitch: true,       // schéma d'accent tonal
 };
 
 let cards = store.get(K_CARDS, {});
 let settings = { ...DEFAULT_SETTINGS, ...store.get(K_SETTINGS, {}) };
+// Furigana partout par défaut : on bascule une fois les anciens réglages « N5 et N4 seulement »
+if (!settings.furiV2) { if (settings.furigana === 'auto') settings.furigana = 'always'; settings.furiV2 = true; store.set(K_SETTINGS, settings); }
 let stats = store.get(K_STATS, { days: {} });
 
 const K_UPDATED = 'sakura.updated.v1';

@@ -1,16 +1,16 @@
 // 助詞ダッシュ (Joshi Dash) : 60 secondes pour placer un maximum de particules.
-import { play as sfx } from '../sfx.js?v=20261019033652';
-import { burst } from '../celebrate.js?v=20261019033652';
-import { h, shuffle, toast } from '../util.js?v=20261019033652';
-import * as D from '../data.js?v=20261019033652';
-import { sentenceHTML } from '../review.js?v=20261019033652';
+import { play as sfx } from '../sfx.js?v=20261019095843';
+import { burst } from '../celebrate.js?v=20261019095843';
+import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019095843';
+import * as D from '../data.js?v=20261019095843';
+import { sentenceHTML, clozeDisp } from '../review.js?v=20261019095843';
 
 const PARTICLES = new Set(['は', 'が', 'を', 'に', 'で', 'へ', 'と', 'も', 'の', 'か', 'や', 'よ', 'ね', 'から', 'まで', 'より', 'しか', 'だけ', 'でも', 'ほど', 'こそ', 'さえ', 'すら', 'など', 'ばかり', 'くらい', 'ごろ', 'でも']);
 const DURATION = 60;
 
 export default async function joshi(root, { settings, saveBest }) {
   const all = (await D.sentences()).filter(s => PARTICLES.has(s.a));
-  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja' }, '助詞ダッシュ'), 'Joshi Dash'), hud);
+  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('助詞ダッシュ') }), 'Joshi Dash'), hud);
 
   function menu() {
     root.replaceChildren(head(null), h('section.card.game-intro',
@@ -39,7 +39,7 @@ export default async function joshi(root, { settings, saveBest }) {
         h('p.jp.big', { lang: 'ja', html: sentenceHTML(cur, { furi }) }),
         h('p.fr', cur.fr),
         h('div.options.four', shuffle([cur.a, ...cur.d]).map((o, i) => h('button.option', { lang: 'ja', onclick: () => pickIt(o) },
-          h('span.option-key', i + 1), h('span.option-text', o)))));
+          h('span.option-key', i + 1), h('span.option-text', { html: ruby(clozeDisp(cur)[o] || o, true) })))));
     }
 
     function pickIt(o) {
@@ -49,7 +49,7 @@ export default async function joshi(root, { settings, saveBest }) {
       if (o === cur.a) { good++; combo++; score += 1 + Math.floor(combo / 5); card.classList.remove('flash-ko'); card.classList.add('flash-ok'); }
       else { combo = 0; left = Math.max(0, left - 3); card.classList.remove('flash-ok'); card.classList.add('flash-ko'); }
       setTimeout(() => card.classList.remove('flash-ok', 'flash-ko'), 250);
-      lastEl.innerHTML = `${o === cur.a ? '○' : '×'} <span lang="ja">${sentenceHTML(cur, { fill: true, furi: false, cls: o === cur.a ? 'ok' : 'ko' })}</span>`;
+      lastEl.innerHTML = `${o === cur.a ? '○' : '×'} <span lang="ja">${sentenceHTML(cur, { fill: true, furi: settings.furigana !== 'never', cls: o === cur.a ? 'ok' : 'ko' })}</span>`;
       scoreEl.textContent = score; timeEl.textContent = Math.ceil(left);
       comboEl.textContent = combo >= 3 ? `série ×${combo}` : '';
       if (left > 0) next();

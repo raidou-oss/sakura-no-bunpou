@@ -1,10 +1,10 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast } from './util.js?v=20261019033652';
-import * as D from './data.js?v=20261019033652';
-import { wallpaperSVG } from './wallpaper.js?v=20261019033652';
-import * as C from './cloud.js?v=20261019033652';
-import { play } from './sfx.js?v=20261019033652';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019033652';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019095843';
+import * as D from './data.js?v=20261019095843';
+import { wallpaperSVG } from './wallpaper.js?v=20261019095843';
+import * as C from './cloud.js?v=20261019095843';
+import { play } from './sfx.js?v=20261019095843';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019095843';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -29,7 +29,7 @@ export function rankBlock(r, { compact = false } = {}) {
   return h(`div.rank${compact ? '.compact' : ''}`,
     h('div.rank-top',
       h('span.rank-badge.kanji-pop', { lang: 'ja' }, rankLabel(r.rank).replace(' validé', '')),
-      h('span.rank-text', h('strong', rankTitle(r.rank)), h('span', next ? `${p} % vers ${next}` : 'Tous les niveaux validés'))),
+      h('span.rank-text', h('strong', { html: jr(rankTitle(r.rank)) }), h('span', next ? `${p} % vers ${next}` : 'Tous les niveaux validés'))),
     h('div.gauge.main-gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': p, 'aria-label': `Avancement du rang ${rankLabel(r.rank)}` },
       h('span', { style: { width: `${Math.max(3, p)}%` } })),
     !compact && r.grammar != null && !done ? h('div.rank-split',
@@ -128,7 +128,7 @@ const stamp = kind => { const v = C.REACTIONS[kind]; return h('span.stamp', h('s
 async function localProfile(main) {
   const r = await computeRank();
   main.replaceChildren(
-    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '自分'), 'Mon profil')),
+    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('自分') }), 'Mon profil')),
     h('section.profile-stats',
       h('div.glass.rank-card', rankBlock(r)),
       h('div.stat-chips', chip(r.xp, 'XP'), chip(r.streak, r.streak > 1 ? 'jours d’affilée' : 'jour d’affilée'), chip(r.learned, 'cartes apprises'))),
@@ -180,7 +180,7 @@ function editProfile(main, p, rerender) {
 
 // --- Communauté -------------------------------------------------------------------------
 export async function communityPage(main) {
-  const head = h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '仲間'), 'Communauté'),
+  const head = h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('仲間') }), 'Communauté'),
     h('p.section-note', 'Les élèves de 桜の文法, classés par rang. Ouvre un profil pour lui envoyer une réaction.'));
   if (!C.enabled) {
     main.replaceChildren(head, h('div.card.empty', h('h2', 'Comptes pas encore activés'), h('p', 'La communauté apparaîtra dès que les comptes seront activés sur ce site.')));
@@ -231,7 +231,7 @@ export function portalPage(main) {
   }
   main.replaceChildren(h('section.portal', h('div.wallpaper-wrap', { html: wallpaperSVG(), 'aria-hidden': 'true' }), petals,
     h('div.portal-copy',
-      h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span>桜</span><span>の</span><span>文法</span>' }),
+      h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span><ruby>桜<rt>さくら</rt></ruby></span><span>の</span><span><ruby>文法<rt>ぶんぽう</rt></ruby></span>' }),
       h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.'),
       h('ul.portal-points',
         h('li', h('span.kanji-pop', { lang: 'ja' }, '復習'), h('span', 'Révisions espacées : ce que tu rates revient vite, ce que tu sais revient plus tard.')),
@@ -308,7 +308,7 @@ export async function accountPage(main, { portal = false } = {}) {
       mode !== 'reset' ? h('div.tabs.auth-tabs',
         h('button', { type: 'button', class: mode === 'signup' ? 'tab active' : 'tab', onclick: () => { mode = 'signup'; render(); } }, 'Inscription'),
         h('button', { type: 'button', class: mode === 'login' ? 'tab active' : 'tab', onclick: () => { mode = 'login'; render(); } }, 'Connexion')) : null,
-      h('h1.auth-title', h('span.kanji-pop', { lang: 'ja' }, mode === 'signup' ? 'ようこそ' : mode === 'login' ? 'おかえり' : '鍵'),
+      h('h1.auth-title', h('span.kanji-pop', { lang: 'ja', html: jr(mode === 'signup' ? 'ようこそ' : mode === 'login' ? 'おかえり' : '鍵') }),
         h('span', mode === 'signup' ? 'Crée ton compte' : mode === 'login' ? 'Content de te revoir' : 'Mot de passe oublié')),
       mode === 'login' ? h('label.field', { for: 'ac-ident' }, h('span', 'Identifiant'), ident) : null,
       mode === 'signup' ? h('label.field', { for: 'ac-name' }, h('span', 'Identifiant (kana et kanji acceptés)'), name) : null,
@@ -387,7 +387,7 @@ export function mountOnline() {
         const item = h('li.online-item', { class: open ? 'online-item open' : 'online-item' });
         const row = h('button.online-row', { type: 'button', disabled: isMe, onclick: () => { openId = open ? null : u.id; pokeOpen = null; render(C.onlineUsers()); } },
           avatar(u, 's'),
-          h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil' }, '先輩') : null),
+          h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil', html: jr('先輩') }) : null),
           h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank || 0).replace(' validé', '')));
         item.append(row);
         if (open && !isMe) {
@@ -426,11 +426,11 @@ export function mountOnline() {
     const isReply = p.kind === 'reply';
     const card = h('section.poke-card', { role: 'alert' },
       h('header.poke-head', avatar({ id: p.from, username: p.name, avatar_url: p.avatar_url }, 's'),
-        h('div', h('p.poke-title', { lang: 'ja' }, isReply ? 'お返事！' : 'つんつん！'),
+        h('div', h('p.poke-title', { lang: 'ja', html: jr(isReply ? 'お返事！' : 'つんつん！') }),
           h('p.poke-who', h('strong', p.name), ` (${rankLabel(p.rank || 0).replace(' validé', '')}) `, isReply ? 'te répond' : 'te demande conseil')),
         h('button.poke-x', { type: 'button', 'aria-label': 'Fermer', onclick: close }, '×')),
       p.msg ? h('blockquote.poke-msg', p.msg) : null,
-      g ? h('a.poke-point', { href: `#/point/${g.id}`, onclick: close }, h('span', { lang: 'ja' }, g.t), ` · ${g.s}`) : null,
+      g ? h('a.poke-point', { href: `#/point/${g.id}`, onclick: close }, h('span', { lang: 'ja', html: ruby(D.gramLabel(g), true) }), ` · ${g.s}`) : null,
       replyBox,
       h('div.poke-actions',
         h('button.btn.small.primary', { type: 'button', onclick: e => {

@@ -23,7 +23,7 @@ export function h(tag, attrs, ...kids) {
   return el;
 }
 
-const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+export const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
 
@@ -32,6 +32,23 @@ export function ruby(text, show = true) {
   const safe = esc(text);
   return show ? safe.replace(KANJI_READING, '<ruby>$1<rt>$2</rt></ruby>') : safe.replace(KANJI_READING, '$1');
 }
+
+// Lectures des mots japonais de l'interface (titres, menus, tampons…), pour avoir des furigana partout
+const DECOR = {
+  花吹雪: 'はなふぶき', 新記録: 'しんきろく', 今日: 'きょう', 文法: 'ぶんぽう', 単語: 'たんご', 遊: 'あそ', 設定: 'せってい', 授業: 'じゅぎょう',
+  自分: 'じぶん', 仲間: 'なかま', 珈琲: 'コーヒー', 花: 'はな', 助詞: 'じょし', 並: 'なら', 替: 'か', 作文: 'さくぶん', 復習: 'ふくしゅう',
+  庭: 'にわ', 蕾: 'つぼみ', 綻: 'ほころび', 咲: 'さき', 満開: 'まんかい', 桜: 'さくら', 修了: 'しゅうりょう', 見事: 'みごと', 完璧: 'かんぺき',
+  勝利: 'しょうり', 疲: 'つか', 両方: 'りょうほう', 言葉: 'ことば', 先輩: 'せんぱい', 返事: 'へんじ', 済: 'すみ', 練習: 'れんしゅう',
+  番付: 'ばんづけ', 鍵: 'かぎ', 大丈夫: 'だいじょうぶ', 一緒: 'いっしょ', 頑張: 'がんば', 凄: 'すご', 日本語: 'にほんご', 勉強: 'べんきょう',
+  巡: 'めぐ', 語: 'ご', 遊び: 'あそび', 己: 'おのれ', 整: 'せい', 絆: 'きずな', 文: 'ぶん', 法: 'ほう',
+};
+const DECOR_RE = new RegExp(Object.keys(DECOR).sort((a, b) => b.length - a.length).join('|'), 'g');
+/** Ajoute des furigana aux mots connus d'un libellé (sans toucher à ce qui a déjà une lecture) */
+export const jr = text => {
+  if (!text) return '';
+  if (/（/.test(text)) return ruby(text, true);
+  return esc(text).replace(DECOR_RE, m => `<ruby>${m}<rt>${DECOR[m]}</rt></ruby>`);
+};
 
 /** Texte brut sans lecture ni balises de phrase */
 export const plain = text => text.replace(KANJI_READING, '$1').replace(/[[\]|]/g, '');

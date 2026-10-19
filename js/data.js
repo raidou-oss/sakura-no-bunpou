@@ -3,7 +3,7 @@
 const cache = {};
 async function load(name) {
   if (!cache[name]) {
-    cache[name] = fetch(`data/${name}.json?v=20261019033652`).then(r => {
+    cache[name] = fetch(`data/${name}.json?v=20261019095843`).then(r => {
       if (!r.ok) throw new Error(`Impossible de charger ${name}.json`);
       return r.json();
     });
@@ -50,6 +50,12 @@ export async function vocab(lv) {
   return vocabObj[lv];
 }
 export const vocabKey = v => `v:${v.lv}:${v.w}`;
+
+/** Phrases d'exemple d'un mot : [[phrase annotée, traduction], …] */
+export async function vocabExamples(v) {
+  if (!v?.lv) return [];
+  try { return (await load(`vocab_ex_${v.lv.toLowerCase()}`))[v.w] || []; } catch { return []; }
+}
 
 /** Sens court pour les QCM : premier ou deux premiers sens */
 export function shortMeaning(m) {

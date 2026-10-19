@@ -30,7 +30,7 @@
 795 || 彼（かれ）は|疲（つか）れた[だの]|眠（ねむ）いだのと|文句（もんく）ばかり|言（い）う。 || Il ne fait que se plaindre : je suis fatigué, j'ai sommeil, et j'en passe. || とか;なり;やら
 796 || 彼（かれ）は|[あくまでも]|自分（じぶん）の|意見（いけん）を|曲（ま）げなかった。 || Il n'a jamais démordu de son opinion, jusqu'au bout. || いかなる;どうにか;さぞ
 798 || お忙（いそが）しい[ところを]|お越（こ）しいただき、|ありがとうございます。 || Merci d'être venu alors que vous êtes très occupé. || ところに;ところで;ところへ
-799 || この|魚（さかな）は|二メートル[からある]。 || Ce poisson fait au moins deux mètres. || からする;までする;ほどなる
+799 || この|魚（さかな）は|二（に）メートル[からある]。 || Ce poisson fait au moins deux mètres. || からする;までする;ほどなる
 800 || 彼（かれ）は|医者（いしゃ）[にして]|作家（さっか）でもある。 || Il est à la fois médecin et écrivain. || につき;にあって;にとって
 801 || 二人（ふたり）は|抜（ぬ）き[つ]|抜（ぬ）かれつの|レースを|した。 || Les deux ont fait une course où ils se dépassaient tour à tour. || て;たり;ても
 802 || これは|[飽（あ）くまで]|私（わたし）の|個人的（こじんてき）な|意見（いけん）です。 || Ce n'est que mon avis personnel. || いかなる;どうにか;さぞ

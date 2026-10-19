@@ -417,7 +417,7 @@ ordre,lecon,niveau,titre,furigana,sens,slug,id
 416,25,JLPT3,にしても,にしても,"Même si, Peu importe...",にしても,262
 417,25,JLPT3,～というのは事実だ,と言（い）うのは事実（じじつ）だ,"C’est un fait que, Il est vrai que",というのは事実だ,455
 418,25,JLPT3,から言うと,から言（い）うと,D'après,から言うと,244
-419,25,JLPT3,に取って,にとって,"Pour (moi/toi), À mes/tes yeux",に取って,247
+419,25,JLPT3,に取って,に取（と）って,"Pour (moi/toi), À mes/tes yeux",に取って,247
 420,25,JLPT3,ことから,事（こと）から,"Du fait que, Au vu de, Comme",ことから,259
 421,25,JLPT3,というより,と言（い）うより,"Plutôt que de dire que..., Plus comme ... que ...",というより,250
 422,25,JLPT3,はもちろん,はもちろん,Non seulement ... mais aussi ...,はもちろん,463
@@ -457,7 +457,7 @@ ordre,lecon,niveau,titre,furigana,sens,slug,id
 456,27,JLPT3,再び,再（ふたた）び,"Encore, À nouveau, Une deuxième fois",再び,465
 457,27,JLPT3,み,味（み）,"~eur, Met en avant une qualité ou un état",み,462
 458,27,JLPT3,と同じくらい,と同（おな）じくらい,"À peu près le même que, À peu près autant que",と同じくらい,624
-459,27,JLPT3,と同じで・と違って,とおなじで・とちがって,"Comme, Contrairement à",と同じで-と違って,494
+459,27,JLPT3,と同じで・と違って,と同（おな）じで・と違（ちが）って,"Comme, Contrairement à",と同じで-と違って,494
 460,27,JLPT3,と並んで,と並（なら）んで,"Comparable à, Au même niveau que",と並んで,658
 461,27,JLPT3,に違いない,に違（ちが）いない,Il n'y a aucun doute que,に違いない,286
 462,27,JLPT3,当たり,当（あ）たり,"Par ~, Chaque ~, ~ pièce",当たり,461

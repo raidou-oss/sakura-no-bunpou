@@ -1046,3 +1046,26 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 .lesson-phase.quiz { background: var(--sakura); }
 .lesson-rule { color: var(--mist); }
 .lesson-wrap.quizzing > .lesson-head-bar { display: none; }
+.voice-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.voice-select { flex: 1; min-width: 220px; max-width: 460px; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line-hi); background: rgba(5, 11, 38, .7); color: var(--ink); font: inherit; }
+
+/* Furigana sur les titres stylisés (le texte est en dégradé « clip » : la lecture garde une couleur pleine) */
+.hero-title rt { font-family: var(--jp); font-size: .17em; font-weight: 700; letter-spacing: .12em; color: var(--pale); -webkit-text-fill-color: var(--pale); background: none; filter: none; }
+.hero-title ruby { ruby-position: over; }
+.nav-jp rt, .brand-name rt { font-size: .55em; opacity: .85; letter-spacing: 0; }
+.jp-head rt, .seg-jp rt, .lesson-kind rt, .level-jp rt, .game-tile-jp rt, .daily-label rt, .lc-done rt, .can-help rt, .poke-title rt, .kanji-pop rt, .rank-text rt { font-size: .45em; color: inherit; opacity: .8; -webkit-text-fill-color: currentColor; }
+.cel-title rt { font-family: var(--jp); font-size: .16em; letter-spacing: .2em; color: #fff; -webkit-text-fill-color: #fff; }
+.option-text rt { font-size: .5em; }
+
+/* Exemples de vocabulaire */
+.vocab-ex { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.vocab-ex:empty { display: none; }
+.vx { padding: 10px 14px; border-radius: var(--r-m); background: rgba(5, 11, 38, .45); border-left: 3px solid var(--sakura); }
+.vx .jp { font-size: 1.12rem; line-height: 2; }
+.vx .fr { margin: 2px 0 0; color: var(--mist); font-size: .9rem; }
+.vocab-ex.compact { margin-top: 6px; }
+.vocab-ex.compact .vx { padding: 6px 10px; }
+.vocab-ex.compact .jp { font-size: .98rem; }
+.vocab-ex.compact .fr { font-size: .8rem; }
+.vocab-table .vm { margin: 0; }
+.reveal .vocab-ex { text-align: left; }

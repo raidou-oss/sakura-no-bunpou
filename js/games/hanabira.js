@@ -1,14 +1,14 @@
 // 花びら (Hanabira) : des pétales portant des mots tombent ; attrape celui qui correspond au sens affiché.
-import { play as sfx } from '../sfx.js?v=20261019033652';
-import { h, ruby, shuffle, sample, pick, reducedMotion, toast } from '../util.js?v=20261019033652';
-import * as D from '../data.js?v=20261019033652';
+import { play as sfx } from '../sfx.js?v=20261019095843';
+import { h, ruby, shuffle, sample, pick, reducedMotion, toast, jr, esc } from '../util.js?v=20261019095843';
+import * as D from '../data.js?v=20261019095843';
 
 export default async function hanabira(root, { params, settings, saveBest }) {
   let lv = params.get('lv') || settings.vocabLevels[0] || 'N5';
   const unit = params.get('unit') ? Number(params.get('unit')) : null;
   let raf, running = false;
 
-  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja' }, '花びら'), 'Hanabira'), hud);
+  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('花びら') }), 'Hanabira'), hud);
 
   function menu() {
     cancelAnimationFrame(raf);
@@ -68,13 +68,13 @@ export default async function hanabira(root, { params, settings, saveBest }) {
         setTimeout(newRound, reducedMotion() ? 150 : 550);
       } else {
         p.el.classList.add('wilted'); p.el.disabled = true;
-        lose(`${p.w.w} veut dire « ${D.shortMeaning(p.w.m)} ».`);
+        lose(`${ruby(p.w.f || p.w.w, true)} veut dire « ${esc(D.shortMeaning(p.w.m))} ».`);
       }
     }
 
     function lose(msg) {
       sfx('wrong'); lives--; livesEl.textContent = '♥'.repeat(Math.max(lives, 0)) + '♡'.repeat(3 - Math.max(lives, 0));
-      prompt.append(h('span.small.miss', msg));
+      prompt.append(h('span.small.miss', { lang: 'ja', html: msg }));
       if (lives <= 0) end();
     }
 
@@ -90,7 +90,7 @@ export default async function hanabira(root, { params, settings, saveBest }) {
       if (!locked && tp && tp.y > H - 40) {
         locked = true;
         tp.el.classList.add('caught');
-        lose(`C’était ${target.w}.`);
+        lose(`C’était ${ruby(target.f || target.w, true)}.`);
         if (lives > 0) setTimeout(newRound, 900);
       }
       raf = requestAnimationFrame(tick);

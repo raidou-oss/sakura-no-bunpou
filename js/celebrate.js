@@ -1,7 +1,7 @@
 // Félicitations dans la DA du site : gerbe de pétales sur une bonne réponse, et grande scène
 // plein écran (bandes diagonales, rayons, kanji qui claque, pluie de pétales) pour une victoire.
-import { reducedMotion } from './util.js?v=20261019033652';
-import { play } from './sfx.js?v=20261019033652';
+import { reducedMotion, jr } from './util.js?v=20261019095843';
+import { play } from './sfx.js?v=20261019095843';
 
 const COLORS = ['#FF94CB', '#FFB5DA', '#46D9FF', '#7FA8FF', '#FFFFFF', '#63F0C3'];
 
@@ -80,7 +80,7 @@ export function celebrate({ title = '見事！', sub = 'Bravo !', detail = '', t
       <p class="cel-detail"></p>
       <p class="cel-hint">Touche pour continuer</p>
     </div>`;
-  el.querySelector('.cel-title').textContent = title;
+  el.querySelector('.cel-title').innerHTML = jr(title);
   el.querySelector('.cel-sub').textContent = sub;
   el.querySelector('.cel-detail').textContent = detail;
   document.body.append(el);

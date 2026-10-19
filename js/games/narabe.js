@@ -1,17 +1,17 @@
 // 並べ替え (Narabe) : remettre les morceaux d'une phrase dans l'ordre.
-import { h, ruby, shuffle } from '../util.js?v=20261019033652';
-import { play as sfx } from '../sfx.js?v=20261019033652';
-import { burst } from '../celebrate.js?v=20261019033652';
-import { tileBoard } from './tiles.js?v=20261019033652';
-import { speak, speakBtn } from '../voice.js?v=20261019033652';
-import * as D from '../data.js?v=20261019033652';
+import { h, ruby, shuffle, jr } from '../util.js?v=20261019095843';
+import { play as sfx } from '../sfx.js?v=20261019095843';
+import { burst } from '../celebrate.js?v=20261019095843';
+import { tileBoard } from './tiles.js?v=20261019095843';
+import { speakBtn } from '../voice.js?v=20261019095843';
+import * as D from '../data.js?v=20261019095843';
 
 const ROUNDS = 8;
 
 export default async function narabe(root, { settings, saveBest }) {
   const sents = (await D.sentences()).filter(s => s.jp.split('|').length >= 3);
   let lv = settings.grammarLevels[0] || 'N5';
-  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja' }, '並べ替え'), 'Narabe'), hud);
+  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('並べ替え') }), 'Narabe'), hud);
 
   function menu() {
     const counts = Object.fromEntries(D.LEVELS.map(l => [l, sents.filter(s => s.lv === l).length]));
@@ -50,11 +50,11 @@ export default async function narabe(root, { settings, saveBest }) {
         const target = pieces.map(p => p.t).join('');
         if (attempt === target) {
           const pts = tries ? 1 : 3; score += pts; scoreEl.textContent = score;
-          sfx('correct'); speak(s.jp); burst(line, { count: 26 });
+          sfx('correct'); burst(line, { count: 26 });
           fb.replaceChildren(h('p', tries ? 'Bien rattrapé. +1' : 'Parfait du premier coup. +3'), speakBtn(s.jp, { label: 'Réécouter la phrase', small: true }));
           finishRound();
         } else if (++tries >= 2) {
-          sfx('wrong'); speak(s.jp);
+          sfx('wrong');
           fb.replaceChildren(h('p', 'La phrase était :'), h('p.correct-line', { lang: 'ja', html: ruby(target, true) }));
           finishRound();
         } else {

@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019033652';
-import { speak, speakBtn } from './voice.js?v=20261019033652';
-import { pitchSVG } from './pitch.js?v=20261019033652';
-import { play } from './sfx.js?v=20261019033652';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019033652';
-import * as D from './data.js?v=20261019033652';
-import * as S from './srs.js?v=20261019033652';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019095843';
+import { speak, speakBtn } from './voice.js?v=20261019095843';
+import { pitchSVG } from './pitch.js?v=20261019095843';
+import { play } from './sfx.js?v=20261019095843';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019095843';
+import * as D from './data.js?v=20261019095843';
+import * as S from './srs.js?v=20261019095843';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -18,6 +18,18 @@ export function wordAudio(v, { compact = false } = {}) {
   const show = S.getSettings().pitch !== false && v.p != null;
   return h('div.word-audio', speakBtn(r, { label: `Écouter ${v.w}` }), show ? h('span', { html: pitchSVG(r, v.p, { compact }) }) : null);
 }
+/** Phrases d'exemple d'un mot (chargées à la demande, s'insèrent dans `box`) */
+export function vocabExamplesEl(v, { max = 2, compact = false } = {}) {
+  const box = h(`div.vocab-ex${compact ? '.compact' : ''}`);
+  D.vocabExamples(v).then(list => {
+    const furi = S.getSettings().furigana !== 'never';
+    box.replaceChildren(...list.slice(0, max).map(([jp, fr]) => h('div.vx',
+      h('div.jp-line', h('p.jp', { lang: 'ja', html: ruby(jp, furi) }), speakBtn(jp, { label: 'Écouter l’exemple', small: true })),
+      h('p.fr', fr))));
+  });
+  return box;
+}
+
 /** Ligne « écouter » d'un point de grammaire (+ accent si c'est un mot simple) */
 export function gramAudio(g, { compact = false } = {}) {
   const r = g.r || plain(g.t).replace(/[〜～]/g, '');
@@ -79,7 +91,7 @@ async function resolve(key, last) {
     if (sents.length) {
       const pool = sents.length > 1 ? sents.filter(s => s.id !== last) : sents;
       const s = pick(pool);
-      return { key, kind: 'cloze', g, s, lv: g.lv, options: shuffle([s.a, ...s.d]), answer: s.a };
+      return { key, kind: 'cloze', g, s, lv: g.lv, options: shuffle([s.a, ...s.d]), answer: s.a, disp: clozeDisp(s) };
     }
     const others = (await D.grammar()).filter(x => x.lv === g.lv && x.s !== g.s);
     const opts = shuffle([g.s, ...sample(others, 3).map(x => x.s)]);
@@ -94,9 +106,12 @@ async function resolve(key, last) {
   const reverse = card && card.r >= 2 && Math.random() < 0.4;
   const mean = D.shortMeaning(v.m);
   const others = sample(list.filter(x => D.shortMeaning(x.m) !== mean && x.w !== v.w), 3);
-  if (reverse) return { key, kind: 'vocab-rev', v, lv, options: shuffle([v.w, ...others.map(x => x.w)]), answer: v.w, others };
+  if (reverse) return { key, kind: 'vocab-rev', v, lv, options: shuffle([v.w, ...others.map(x => x.w)]), answer: v.w, others, disp: Object.fromEntries([v, ...others].map(x => [x.w, x.f || x.w])) };
   return { key, kind: 'vocab', v, lv, options: shuffle([mean, ...others.map(x => D.shortMeaning(x.m))]), answer: mean };
 }
+
+/** Choix d'une phrase à trous avec leurs furigana : { texte brut → texte annoté } */
+export const clozeDisp = s => Object.fromEntries([[s.a, s.af || s.a], ...s.d.map((d, i) => [d, s.df?.[i] || d])]);
 
 /** Question de vocabulaire hors révision (sens du mot, 4 choix pris dans `list`) */
 export function vocabPractice(v, list) {
@@ -107,7 +122,7 @@ export function vocabPractice(v, list) {
 
 /** Questions d'entraînement libre à partir de phrases (sans effet sur les révisions) */
 export function practiceItems(sents, grammarById) {
-  return shuffle(sents).map(s => ({ key: null, kind: 'cloze', s, g: grammarById.get(s.g), lv: s.lv, options: shuffle([s.a, ...s.d]), answer: s.a }));
+  return shuffle(sents).map(s => ({ key: null, kind: 'cloze', s, g: grammarById.get(s.g), lv: s.lv, options: shuffle([s.a, ...s.d]), answer: s.a, disp: clozeDisp(s) }));
 }
 
 // --- Séance -----------------------------------------------------------------------
@@ -178,7 +193,8 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
         h('p.kicker', `Nouveau mot · ${v.lv} · unité ${v.unit}`),
         h('p.word', { lang: 'ja', html: ruby(v.f || v.w, true) }),
         wordAudio(v),
-        h('p.gram-meaning', v.m));
+        h('p.gram-meaning', v.m),
+        vocabExamplesEl(v, { max: 1 }));
       if (S.getSettings().autoSpeak) setTimeout(() => speak(kana(v.f || v.w)), 250);
     }
     const go = h('button.btn.primary', { onclick: () => ask(item) }, 'Je teste');
@@ -202,7 +218,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     } else if (item.kind === 'vocab') {
       prompt = [
         h('p.kicker', `Sens du mot · ${item.lv}`),
-        h('p.word', { lang: 'ja' }, item.v.w)];
+        h('p.word', { lang: 'ja', html: ruby(item.v.f || item.v.w, furi) })];
     } else {
       prompt = [
         h('p.kicker', `Quel mot ? · ${item.lv}`),
@@ -210,9 +226,10 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     }
     const jpOpts = item.kind === 'cloze' || item.kind === 'vocab-rev';
     const buttons = item.options.map((o, i) => h('button.option', {
-      lang: jpOpts ? 'ja' : null, 'data-n': i + 1,
+      lang: jpOpts ? 'ja' : null, 'data-n': i + 1, 'data-v': o,
       onclick: () => answer(item, o, buttons),
-    }, h('span.option-key', { 'aria-hidden': 'true' }, i + 1), h('span.option-text', o)));
+    }, h('span.option-key', { 'aria-hidden': 'true' }, i + 1),
+      jpOpts ? h('span.option-text', { html: ruby(item.disp?.[o] || o, furi) }) : h('span.option-text', o)));
     stage.replaceChildren(h('div.card.question', ...prompt, h('div.options', buttons)));
     play('card');
     setKeys(e => {
@@ -224,11 +241,11 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   function answer(item, choice, buttons) {
     const right = choice === item.answer;
     play(right ? 'correct' : 'wrong');
-    if (right) burst(buttons.find(b => b.querySelector('.option-text').textContent === choice));
+    if (right) burst(buttons.find(b => b.dataset.v === choice));
     seen++; if (right) ok++;
     buttons.forEach(b => {
       b.disabled = true;
-      const t = b.querySelector('.option-text').textContent;
+      const t = b.dataset.v;
       if (t === item.answer) b.classList.add('correct');
       else if (t === choice) b.classList.add('wrong');
     });
@@ -243,10 +260,10 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
         h('span', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }), ' — ', item.g.s));
       if (S.getSettings().autoSpeak) speak(sentenceText(item.s));
     } else if (item.kind === 'meaning') {
-      reveal.append(h('p.small', `${item.g.t} : ${item.g.s}`), gramAudio(item.g, { compact: true }));
+      reveal.append(h('p.small', h('span', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }), ` : ${item.g.s}`), gramAudio(item.g, { compact: true }));
     } else {
       const v = item.v;
-      reveal.append(h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v), h('p.small', v.m));
+      reveal.append(h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v), h('p.small', v.m), vocabExamplesEl(v, { max: 1, compact: true }));
       if (S.getSettings().autoSpeak) speak(kana(v.f || v.w));
     }
 

@@ -1,11 +1,11 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain } from '../util.js?v=20261019033652';
-import * as D from '../data.js?v=20261019033652';
-import { play as sfx } from '../sfx.js?v=20261019033652';
-import { speak, speakBtn } from '../voice.js?v=20261019033652';
-import { burst } from '../celebrate.js?v=20261019033652';
+import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019095843';
+import * as D from '../data.js?v=20261019095843';
+import { play as sfx } from '../sfx.js?v=20261019095843';
+import { speakBtn } from '../voice.js?v=20261019095843';
+import { burst } from '../celebrate.js?v=20261019095843';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
@@ -55,7 +55,7 @@ export default async function theme(root, { settings, saveBest, params }) {
   let lv = params?.get('lv') || settings.grammarLevels[0] || 'N5';
   const lesson = params?.get('le') ? Number(params.get('le')) : null;
   let romaji = localStorage.getItem('sakura.theme.romaji') === '1';
-  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja' }, '作文'), 'Thème'), hud);
+  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('作文') }), 'Thème'), hud);
 
   const poolFor = l => sents.filter(s => s.lv === l && (!lesson || byId.get(s.g)?.le === lesson));
 
@@ -105,7 +105,7 @@ export default async function theme(root, { settings, saveBest, params }) {
         hintLevel++;
         sfx('cursor');
         const parts = s.jp.replace(/[[\]]/g, '').split('|');
-        const lines = [h('p', 'Point à utiliser : ', h('strong', { lang: 'ja' }, s.a), g ? ` (${g.s})` : '')];
+        const lines = [h('p', 'Point à utiliser : ', h('strong', { lang: 'ja', html: ruby(s.af || s.a, true) }), g ? ` (${g.s})` : '')];
         if (hintLevel >= 2) lines.push(h('p', 'Début : ', h('span', { lang: 'ja', html: ruby(parts[0], true) }), ' …'));
         if (hintLevel >= 3) lines.push(h('p', 'Morceaux : ', h('span', { lang: 'ja', html: shuffle(parts).map(p => ruby(p, true)).join(' ／ ') })));
         hint.replaceChildren(...lines);
@@ -117,7 +117,7 @@ export default async function theme(root, { settings, saveBest, params }) {
         const v = norm(wk?.toKana ? wk.toKana(raw, { IMEMode: true }) : raw);
         if (re.test(v)) {
           const pts = Math.max(1, (tries ? 2 : 3) - (hintLevel ? 1 : 0)); score += pts; scoreEl.textContent = score;
-          sfx('correct'); burst(input, { count: 28 }); speak(plain(s.jp));
+          sfx('correct'); burst(input, { count: 28 });
           fb.replaceChildren(h('p.theme-ok', tries ? `Bien corrigé ! +${pts}` : `Parfait ! +${pts}`), answerLine());
           return close();
         }
@@ -140,7 +140,7 @@ export default async function theme(root, { settings, saveBest, params }) {
       function answerLine() {
         return h('div.theme-answer', h('p.jp', { lang: 'ja', html: ruby(s.jp.replace(/[[\]|]/g, ''), true) }), speakBtn(plain(s.jp), { label: 'Écouter la phrase', small: true }));
       }
-      function reveal() { tries = 3; sfx('back'); fb.replaceChildren(h('p', 'La phrase était :'), answerLine()); speak(plain(s.jp)); close(); }
+      function reveal() { tries = 3; sfx('back'); fb.replaceChildren(h('p', 'La phrase était :'), answerLine()); close(); }
       function close() {
         closed = true; input.readOnly = true; ok.remove(); hintBtn.remove(); skip.remove();
         const nx = h('button.btn.primary', { onclick: next }, i + 1 >= pool.length ? 'Voir le score' : 'Phrase suivante');

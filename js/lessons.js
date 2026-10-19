@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle } from './util.js?v=20261019033652';
-import * as D from './data.js?v=20261019033652';
-import * as S from './srs.js?v=20261019033652';
-import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText } from './review.js?v=20261019033652';
-import { speakBtn, speak } from './voice.js?v=20261019033652';
-import { cardScore } from './level.js?v=20261019033652';
-import { play } from './sfx.js?v=20261019033652';
-import { celebrate, verdict } from './celebrate.js?v=20261019033652';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019095843';
+import * as D from './data.js?v=20261019095843';
+import * as S from './srs.js?v=20261019095843';
+import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl } from './review.js?v=20261019095843';
+import { speakBtn, speak } from './voice.js?v=20261019095843';
+import { cardScore } from './level.js?v=20261019095843';
+import { play } from './sfx.js?v=20261019095843';
+import { celebrate, verdict } from './celebrate.js?v=20261019095843';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -79,7 +79,7 @@ export async function lessonsHub(main, lv = 'N5') {
     seg.replaceChildren(...Object.entries(KINDS).map(([k, m]) => h('button', {
       type: 'button', role: 'tab', 'aria-selected': String(k === mode), class: k === mode ? 'active' : null,
       onclick: () => { if (k === mode) return; mode = k; store.set(MODE_KEY, k); render(true); },
-    }, h('span.seg-jp', { lang: 'ja' }, m.jp), m.label)));
+    }, h('span.seg-jp', { lang: 'ja', html: jr(m.jp) }), m.label)));
     countSeg.replaceChildren(h('span.seg-label', 'Par session'), ...COUNTS.map(c => h('button', {
       type: 'button', role: 'radio', 'aria-checked': String(c === count), class: c === count ? 'active' : null,
       onclick: () => { if (c === count) return; count = c; store.set(COUNT_KEY, c); render(true); },
@@ -91,14 +91,14 @@ export async function lessonsHub(main, lv = 'N5') {
       const p = progressOf([...c.g, ...c.v]);
       const done = isDone(lv, mode, n), seen = !done && isSeen(lv, mode, n);
       const sub = [c.g.length ? `${c.g.length} point${c.g.length > 1 ? 's' : ''}` : null, c.v.length ? `${c.v.length} mots` : null].filter(Boolean).join(' · ');
-      const preview = [...c.g.slice(0, 3).map(g => g.t), ...c.v.slice(0, mode === 'm' ? 2 : 4).map(v => v.w)].join(' ・ ');
+      const preview = [...c.g.slice(0, 3).map(g => ruby(D.gramLabel(g), true)), ...c.v.slice(0, mode === 'm' ? 2 : 4).map(v => ruby(v.f || v.w, true))].join(' ・ ');
       const last = nums[Math.min(nums.length - 1, i + count - 1)];
       return h('li', { style: { '--i': i } }, h('a.lesson-card', { href: `#/lecon/${lv}/${mode}/${n}${count > 1 ? `?x=${count}` : ''}`, class: `lesson-card${done ? ' done' : ''}${seen ? ' seen' : ''}` },
         h('span.lc-num', String(i + 1).padStart(2, '0')),
-        h('span.lc-body', h('strong', lessonTitle(plan, mode, n)), h('span.lc-sub', sub), h('span.lc-preview', { lang: 'ja' }, preview),
+        h('span.lc-body', h('strong', lessonTitle(plan, mode, n)), h('span.lc-sub', sub), h('span.lc-preview', { lang: 'ja', html: preview }),
           count > 1 && last !== n ? h('span.lc-chain', `→ jusqu'à : ${lessonTitle(plan, mode, last)}`) : null),
         h('span.lc-gauge', { title: `${Math.round(p * 100)} % maîtrisé` }, h('span', { style: { width: `${Math.round(p * 100)}%` } })),
-        done ? h('span.lc-done', { 'aria-label': 'Leçon validée' }, '済') : seen ? h('span.lc-todo', 'Quiz à faire') : null));
+        done ? h('span.lc-done', { 'aria-label': 'Leçon validée', html: jr('済') }) : seen ? h('span.lc-todo', 'Quiz à faire') : null));
     }));
     if (animate) { grid.classList.remove('regrid'); void grid.offsetWidth; grid.classList.add('regrid'); }
   };
@@ -106,7 +106,7 @@ export async function lessonsHub(main, lv = 'N5') {
   const tabs = h('div.tabs', { role: 'tablist', 'aria-label': 'Niveau' },
     D.LEVELS.map(l => h('a', { href: `#/lecons/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, l)));
   main.replaceChildren(
-    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '授業'), 'Leçons'),
+    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('授業') }), 'Leçons'),
       h('p.section-note', 'Apprends pas à pas : grammaire, vocabulaire, ou les deux en même temps. Chaque leçon se termine par des exercices sur tout ce que tu as vu.')),
     tabs, h('div.lesson-controls', seg, countSeg), desc, grid);
 }
@@ -167,7 +167,8 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
       h('p.kicker', `Vocabulaire · ${v.lv}`),
       h('p.word.lesson-word', { lang: 'ja', html: ruby(v.f || v.w, true) }),
       wordAudio(v),
-      h('p.point-sense', v.m));
+      h('p.point-sense', v.m),
+      vocabExamplesEl(v, { max: 2 }));
   }
 
   function show() {
@@ -249,7 +250,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
 
   const wrap = h('div.session.lesson-wrap',
     h('header.session-head.lesson-head-bar', h('a.session-quit', { href: `#/lecons/${lv}`, 'aria-label': 'Quitter la leçon' }, '×'), bar, counter),
-    h('header.lesson-title', h('h1', title), h('span.lesson-kind', { lang: 'ja' }, KINDS[kind].jp), phase, dots),
+    h('header.lesson-title', h('h1', title), h('span.lesson-kind', { lang: 'ja', html: jr(KINDS[kind].jp) }), phase, dots),
     stage);
   main.replaceChildren(
     h('a.back', { href: `#/lecons/${lv}` }, `Leçons ${lv} · ${KINDS[kind].label}`),

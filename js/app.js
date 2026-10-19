@@ -1,26 +1,26 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019033652';
-import * as D from './data.js?v=20261019033652';
-import * as S from './srs.js?v=20261019033652';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019033652';
-import { speakBtn, supported as voiceOK } from './voice.js?v=20261019033652';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019033652';
-import * as C from './cloud.js?v=20261019033652';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019033652';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019033652';
-import { play, setVolume } from './sfx.js?v=20261019033652';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019033652';
-import { celebrate, verdict } from './celebrate.js?v=20261019033652';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019033652';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019033652';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019095843';
+import * as D from './data.js?v=20261019095843';
+import * as S from './srs.js?v=20261019095843';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl } from './review.js?v=20261019095843';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019095843';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019095843';
+import * as C from './cloud.js?v=20261019095843';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019095843';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019095843';
+import { play, setVolume } from './sfx.js?v=20261019095843';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019095843';
+import { celebrate, verdict } from './celebrate.js?v=20261019095843';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019095843';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019095843';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019033652', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019033652', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019033652', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  theme: { file: './games/theme.js?v=20261019033652', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
-  narabe: { file: './games/narabe.js?v=20261019033652', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019095843', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019095843', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019095843', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  theme: { file: './games/theme.js?v=20261019095843', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
+  narabe: { file: './games/narabe.js?v=20261019095843', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -160,7 +160,7 @@ async function home() {
   const hero = h('section.hero',
     petalsLayer(),
     h('div.hero-copy',
-      h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span>桜</span><span>の</span><span>文法</span>' }),
+      h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span><ruby>桜<rt>さくら</rt></ruby></span><span>の</span><span><ruby>文法<rt>ぶんぽう</rt></ruby></span>' }),
       h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.'),
       await resumeRow()),
     h('div.today.glass',
@@ -187,7 +187,7 @@ async function home() {
       return h('li', h('a.level.glass', { href: `#/grammaire/${lv}` },
         h('span.ring', { style: { '--p': pct } },
           h('span.level-flower', { html: blossom(m.open, 64, `${lv} : ${pct} %`) })),
-        h('span.level-name', lv), h('span.level-jp', { lang: 'ja' }, D.LEVEL_JP[lv]),
+        h('span.level-name', lv), h('span.level-jp', { lang: 'ja', html: jr(D.LEVEL_JP[lv]) }),
         h('span.level-stat', `Gram. ${toPct(m.grammar)} % · Voc. ${toPct(m.vocab)} %`), m.passed ? h('span.level-ok', 'Validé') : null));
     })));
 
@@ -197,7 +197,7 @@ async function home() {
       h('a.game-tile.glass', { href: `#/jeux/${k}`, 'data-glyph': gm.glyph },
         h('span.game-emblem', { lang: 'ja', 'aria-hidden': 'true' }, gm.glyph),
         h('span.game-tile-text',
-          h('span.game-tile-jp', { lang: 'ja' }, gm.jp),
+          h('span.game-tile-jp', { lang: 'ja', html: jr(gm.jp) }),
           h('strong', gm.name),
           h('span.game-tile-desc', k === 'cafe' ? gm.desc : gm.short)),
         h('span.play-chip', 'Jouer'))))));
@@ -297,7 +297,7 @@ async function grammarList(lv, params) {
   search.addEventListener('input', render);
   render();
   main.replaceChildren(
-    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '文法'), 'Grammaire'),
+    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('文法') }), 'Grammaire'),
       h('p.section-note', `${grammar.length} points du N5 au N1. Ajoute une leçon à tes révisions ou ouvre un point pour voir ses exemples.`)),
     tabs, ...(sectionGauge ? [sectionGauge] : []), search, listEl);
 }
@@ -340,8 +340,8 @@ async function grammarPoint(id) {
             h('p.fr', s.fr))))
         : h('p.section-note', 'Pas encore de phrase pour ce point : il sera révisé par son sens.')),
     h('nav.point-nav', { 'aria-label': 'Points voisins' },
-      prev ? h('a', { href: `#/point/${prev.id}`, rel: 'prev' }, h('small', 'Précédent'), h('span', { lang: 'ja' }, prev.t)) : h('span'),
-      next ? h('a', { href: `#/point/${next.id}`, rel: 'next' }, h('small', 'Suivant'), h('span', { lang: 'ja' }, next.t)) : h('span'))));
+      prev ? h('a', { href: `#/point/${prev.id}`, rel: 'prev' }, h('small', 'Précédent'), h('span', { lang: 'ja', html: ruby(D.gramLabel(prev), true) })) : h('span'),
+      next ? h('a', { href: `#/point/${next.id}`, rel: 'next' }, h('small', 'Suivant'), h('span', { lang: 'ja', html: ruby(D.gramLabel(next), true) })) : h('span'))));
 }
 
 // --- Vocabulaire ----------------------------------------------------------------
@@ -354,7 +354,7 @@ async function vocabList(lv = 'N5') {
   const tabs = h('div.tabs', { role: 'tablist', 'aria-label': 'Niveau' },
     D.LEVELS.map(l => h('a', { href: `#/vocabulaire/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, l)));
   main.replaceChildren(
-    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '単語'), 'Vocabulaire'),
+    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('単語') }), 'Vocabulaire'),
       h('p.section-note', `${list.length} mots en ${lv}, rangés par unité.`)),
     tabs,
     h('section.section-progress.glass',
@@ -364,7 +364,7 @@ async function vocabList(lv = 'N5') {
       const seen = words.filter(w => cards[D.vocabKey(w)]).length;
       return h('li', h('a.unit', { href: `#/vocabulaire/${lv}/${u}` },
         h('span.unit-n', `Unité ${i + 1}`),
-        h('span.unit-sample', { lang: 'ja' }, words.slice(0, 4).map(w => w.w).join('・')),
+        h('span.unit-sample', { lang: 'ja', html: words.slice(0, 4).map(w => ruby(w.f || w.w, true)).join('・') }),
         h('span.unit-bar', { style: { '--v': seen / words.length } }),
         h('span.small', `${seen}/${words.length}`)));
     })));
@@ -389,7 +389,7 @@ async function vocabUnit(lv, unit) {
       h('thead', h('tr', h('th', { scope: 'col' }, 'Mot'), h('th', { scope: 'col' }, 'Sens'), h('th', { scope: 'col' }, h('span.sr', 'Statut')))),
       h('tbody', list.map(v => {
         const st = statusOf(D.vocabKey(v));
-        return h('tr', h('td.vw', h('span', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v, { compact: true })), h('td', v.m),
+        return h('tr', h('td.vw', h('span', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v, { compact: true })), h('td', h('p.vm', v.m), vocabExamplesEl(v, { max: 1, compact: true })),
           h('td', h('span', { class: `dot ${st.cls}`, title: st.label }, h('span.sr', st.label))));
       })))));
 }
@@ -398,13 +398,13 @@ async function vocabUnit(lv, unit) {
 function gamesHub() {
   const best = store.get('sakura.games.v1', {});
   main.replaceChildren(
-    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '遊び'), 'Jeux'),
+    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('遊び') }), 'Jeux'),
       h('p.section-note', 'Pour apprendre sans en avoir l’air. Les jeux ne touchent pas à ton planning de révision.')),
     h('ul.game-grid.hub', Object.entries(GAMES).map(([k, g]) => h('li', { class: k === 'cafe' ? 'featured' : null },
       h('a.game-tile.glass', { href: `#/jeux/${k}`, 'data-glyph': g.glyph },
         h('span.game-emblem', { lang: 'ja', 'aria-hidden': 'true' }, g.glyph),
         h('span.game-tile-text',
-          h('span.game-tile-jp', { lang: 'ja' }, g.jp),
+          h('span.game-tile-jp', { lang: 'ja', html: jr(g.jp) }),
           h('strong', g.name),
           h('span.game-tile-desc', g.desc),
           best[k] ? h('span.record', `Record : ${best[k]}`) : null),
@@ -427,6 +427,33 @@ async function game(name, params) {
 }
 
 // --- Réglages --------------------------------------------------------------------
+/** Choix de la voix (les plus naturelles en premier), vitesse et timbre */
+function voiceSettings(s) {
+  const box = h('div.voice-settings');
+  const SAMPLE = 'こんにちは。今日（きょう）もいっしょに、日本語（にほんご）を勉強（べんきょう）しましょう。';
+  const render = () => {
+    const voices = japaneseVoices();
+    const current = refreshVoice();
+    const select = h('select.voice-select', { 'aria-label': 'Voix japonaise', onchange: e => { S.setSettings({ voiceName: e.target.value }); refreshVoice(); speak(SAMPLE); } },
+      voices.map(v => h('option', { value: v.name, selected: current && v.name === current.name },
+        `${v.name}${/Natural|Neural|Online|Premium|Enhanced/i.test(v.name) ? ' ★ naturelle' : ''}`)));
+    box.replaceChildren(
+      h('fieldset', h('legend', 'Voix'),
+        voices.length ? h('div.voice-row', select, speakBtn(SAMPLE, { label: 'Tester la voix' }))
+          : h('p.small', 'Aucune voix japonaise trouvée sur cet appareil.'),
+        h('p.small', 'Les voix marquées ★ sont les plus naturelles. Sur Windows, ouvre le site avec Edge pour avoir « Nanami Online (Natural) » ; sur iPhone et Mac, télécharge « Kyoko (Premium) » dans Réglages › Accessibilité › Contenu énoncé › Voix › Japonais.')),
+      h('fieldset', h('legend', 'Vitesse'),
+        h('div.checks', [[0.75, 'Lente'], [0.9, 'Posée'], [1.05, 'Normale']].map(([v, l]) =>
+          h('label.check', h('input', { type: 'radio', name: 'rate', checked: Math.abs((s.voiceRate || .9) - v) < .01, onchange: () => { S.setSettings({ voiceRate: v }); speak(SAMPLE); } }), h('span', l))))),
+      h('fieldset', h('legend', 'Timbre'),
+        h('div.checks', [[0.95, 'Grave'], [1.06, 'Doux'], [1.18, 'Clair']].map(([v, l]) =>
+          h('label.check', h('input', { type: 'radio', name: 'pitch', checked: Math.abs((s.voicePitch ?? 1.06) - v) < .01, onchange: () => { S.setSettings({ voicePitch: v }); speak(SAMPLE); } }), h('span', l))))));
+  };
+  render();
+  window.speechSynthesis?.addEventListener?.('voiceschanged', render, { once: true });
+  return box;
+}
+
 function settingsPage() {
   const s = S.getSettings();
   const levelBoxes = (field, label) => h('fieldset',
@@ -442,14 +469,14 @@ function settingsPage() {
       S.setSettings({ [field]: Math.max(0, Math.min(max, Number(e.target.value) || 0)) }); toast('Réglage enregistré');
     } }));
   const furi = h('fieldset', h('legend', 'Furigana'),
-    h('div.checks', [['auto', 'N5 et N4 seulement'], ['always', 'Toujours'], ['never', 'Jamais']].map(([v, l]) =>
+    h('div.checks', [['always', 'Partout (conseillé)'], ['auto', 'N5 et N4 seulement'], ['never', 'Jamais']].map(([v, l]) =>
       h('label.check', h('input', { type: 'radio', name: 'furi', checked: s.furigana === v, onchange: () => { S.setSettings({ furigana: v }); toast('Réglage enregistré'); } }), h('span', l)))));
   const fileIn = h('input', { type: 'file', accept: 'application/json', hidden: true, onchange: async e => {
     try { S.importAll(await e.target.files[0].text()); toast('Progression importée'); settingsPage(); }
     catch (err) { toast(err.message); }
   } });
   main.replaceChildren(
-    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '設定'), 'Réglages')),
+    h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('設定') }), 'Réglages')),
     h('div.card.settings',
       h('h2', 'Nouvelles cartes'),
       levelBoxes('grammarLevels', 'Niveaux de grammaire à découvrir'),
@@ -457,11 +484,7 @@ function settingsPage() {
       h('div.fields', num('newGrammar', 'Nouveaux points de grammaire par jour', 50), num('newVocab', 'Nouveaux mots par jour', 100)),
       h('h2', 'Affichage'), furi,
       h('h2', 'Voix et prononciation'),
-      voiceOK ? h('fieldset', h('legend', 'Vitesse de la voix'),
-        h('div.checks', [[0.7, 'Lente'], [0.95, 'Normale'], [1.15, 'Rapide']].map(([v, l]) =>
-          h('label.check', h('input', { type: 'radio', name: 'rate', checked: Math.abs((s.voiceRate || .95) - v) < .01, onchange: () => { S.setSettings({ voiceRate: v }); toast('Réglage enregistré'); } }), h('span', l))),
-          speakBtn('こんにちは。桜の文法へようこそ。', { label: 'Tester la voix' })))
-        : h('p.section-note', 'Ton navigateur ne propose pas de voix de synthèse.'),
+      voiceOK ? voiceSettings(s) : h('p.section-note', 'Ton navigateur ne propose pas de voix de synthèse.'),
       h('div.checks',
         h('label.check', h('input', { type: 'checkbox', checked: s.autoSpeak !== false, onchange: e => { S.setSettings({ autoSpeak: e.target.checked }); toast('Réglage enregistré'); } }), h('span', 'Lire la réponse à voix haute en révision')),
         h('label.check', h('input', { type: 'checkbox', checked: s.pitch !== false, onchange: e => { S.setSettings({ pitch: e.target.checked }); toast('Réglage enregistré'); } }), h('span', 'Afficher le schéma d’accent tonal'))),

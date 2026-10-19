@@ -10,7 +10,7 @@
 5 || [これ]は|私（わたし）の|本（ほん）です。 || Ceci est mon livre. || どれ;どこ;だれ
 11 || [それ]は|何（なん）ですか。 || Qu'est-ce que c'est, ça (près de toi) ? || どれ;ここ;だれ
 19 || [あれ]は|富士山（ふじさん）です。 || Ça, là-bas, c'est le mont Fuji. || どれ;あそこ;だれ
-6 || これは|私[の]|かばんです。 || C'est mon sac. || を;へ;で
+6 || これは|私（わたし）[の]|かばんです。 || C'est mon sac. || を;へ;で
 6 || 日本語（にほんご）[の]|先生（せんせい）は|やさしいです。 || Le professeur de japonais est gentil. || を;へ;が
 7 || 今日（きょう）は|天気（てんき）が[いい]です。 || Il fait beau aujourd'hui. || よく;よかった;いく
 24 || この|ラーメンは|[おいしい]です。 || Ces ramen sont délicieux. || おいしく;おいしさ;おいしな
