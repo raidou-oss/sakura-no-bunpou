@@ -1,22 +1,22 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019124428';
-import * as D from './data.js?v=20261019124428';
-import * as S from './srs.js?v=20261019124428';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019124428';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019124428';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019124428';
-import * as C from './cloud.js?v=20261019124428';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019124428';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019124428';
-import { play, setVolume } from './sfx.js?v=20261019124428';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019124428';
-import { celebrate, verdict } from './celebrate.js?v=20261019124428';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019124428';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019124428';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019124428';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019130103';
+import * as D from './data.js?v=20261019130103';
+import * as S from './srs.js?v=20261019130103';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019130103';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019130103';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019130103';
+import * as C from './cloud.js?v=20261019130103';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019130103';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019130103';
+import { play, setVolume } from './sfx.js?v=20261019130103';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019130103';
+import { celebrate, verdict } from './celebrate.js?v=20261019130103';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019130103';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019130103';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019130103';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019124428';
+import { GAMES } from './gamelist.js?v=20261019130103';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -556,3 +556,20 @@ async function checkUpdate() {
 }
 checkUpdate();
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkUpdate(); });
+
+// --- Pétales qui tombent doucement sur tout le site (discrets, coupés si « réduire les animations ») ---
+(function petalSky() {
+  if (reducedMotion() || document.querySelector('.petal-sky')) return;
+  const n = matchMedia('(max-width: 860px)').matches ? 8 : 14;
+  const sky = h('div.petal-sky', { 'aria-hidden': 'true' });
+  for (let i = 0; i < n; i++) {
+    const big = Math.random() < 0.25;
+    sky.append(h('span', { class: big ? 'near' : null, style: {
+      left: `${Math.random() * 100}%`, animationDelay: `${-Math.random() * 26}s`,
+      animationDuration: `${(big ? 13 : 18) + Math.random() * 12}s`,
+      '--drift': `${Math.random() * 220 - 110}px`, '--sway': `${18 + Math.random() * 30}px`,
+      '--size': `${big ? 11 + Math.random() * 6 : 6 + Math.random() * 6}px`, '--spin': `${Math.random() * 900 - 450}deg`,
+    } }, h('i')));
+  }
+  document.body.append(sky);
+})();

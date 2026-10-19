@@ -1,9 +1,9 @@
 // 仮名 : hiragana et katakana pour ceux qui partent de zéro. Tableaux à écouter + entraînement à la lecture.
-import { h, shuffle, jr, toast } from './util.js?v=20261019124428';
-import * as S from './srs.js?v=20261019124428';
-import { speak, speakBtn } from './voice.js?v=20261019124428';
-import { play } from './sfx.js?v=20261019124428';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019124428';
+import { h, shuffle, jr, toast, toHira } from './util.js?v=20261019130103';
+import * as S from './srs.js?v=20261019130103';
+import { speak, speakBtn } from './voice.js?v=20261019130103';
+import { play } from './sfx.js?v=20261019130103';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019130103';
 
 // Gojūon : [romaji des 5 colonnes a i u e o], null = case vide
 const BASE = [
@@ -162,7 +162,7 @@ export function kanaQuiz(main, script = 'hira') {
     }
     function ask(c) {
       let tries = 0, hint = false;
-      const input = h('input.type-answer.romaji', { type: 'text', lang: 'en', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder: 'romaji…', 'aria-label': 'Lecture en romaji' });
+      const input = h('input.type-answer.romaji', { type: 'text', lang: 'en', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', placeholder: 'romaji (ex. ka)…', 'aria-label': 'Lecture en romaji', inputmode: 'latin' });
       const fb = h('p.type-feedback', { 'aria-live': 'polite' });
       const hintBox = h('div.type-hints');
       const send = h('button.btn.primary', { type: 'button', onclick: () => check() }, 'Valider');
@@ -179,9 +179,10 @@ export function kanaQuiz(main, script = 'hira') {
       if (mode === 'listen') setTimeout(() => speak(c.k), 250);
       setTimeout(() => input.focus(), 60);
       function check() {
-        const v = input.value.trim().toLowerCase().replace(/\s+/g, '');
+        // Clavier japonais activé, lettres pleine chasse, majuscules : tout est ramené à la même forme
+        const v = input.value.normalize('NFKC').trim().toLowerCase().replace(/[\s'’.。-]+/g, '');
         if (!v) return input.focus();
-        if (accepts(c.r).includes(v)) return close(true);
+        if (accepts(c.r).includes(v) || toHira(v) === toHira(c.k)) return close(true);
         tries++;
         play('wrong');
         input.classList.remove('shake'); void input.offsetWidth; input.classList.add('shake');
@@ -200,20 +201,22 @@ export function kanaQuiz(main, script = 'hira') {
         if (!clean) missed.add(c.k);
         // Raté ou aidé : le kana revient plus loin dans la séance
         if (!right || !clean) queue.splice(Math.min(queue.length, 3 + Math.floor(Math.random() * 3)), 0, c); else done++;
-        const cont = h('button.btn.primary', { onclick: next }, 'Continuer');
+        // Un seul passage à la question suivante, même si Entrée et le clic arrivent ensemble
+        let moved = false;
+        const go = () => { if (moved) return; moved = true; document.removeEventListener('keydown', k); next(); };
+        const k = e => { if (e.key === 'Enter') { e.preventDefault(); go(); } };
+        const cont = h('button.btn.primary', { type: 'button', onclick: go }, 'Continuer');
         card.append(h('div.reveal',
           h('p.type-solution', right ? 'Exact : ' : 'La réponse : ', h('strong', { lang: 'ja' }, c.k), ` = ${c.r}`, ALT[c.r] ? h('span.small', ` (aussi : ${ALT[c.r].join(', ')})`) : null),
           mode === 'listen' ? null : h('div.word-audio', speakBtn(c.k, { label: 'Écouter' }), h('span.small', 'Écouter')),
           !clean ? h('p.again-note', gaveUp ? 'Réponse consultée : ce kana est marqué « à revoir » et revient tout de suite.' : 'Avec de l’aide : il reviendra une fois de plus.') : null),
           h('div.actions', cont));
         card.classList.add(right ? 'is-right' : 'is-wrong');
-        const k = e => { if (e.key === 'Enter') { e.preventDefault(); document.removeEventListener('keydown', k); next(); } };
-        setTimeout(() => document.addEventListener('keydown', k), 50);
-        cont.addEventListener('click', () => document.removeEventListener('keydown', k));
+        setTimeout(() => { if (!moved) document.addEventListener('keydown', k); }, 50);
         window.addEventListener('hashchange', () => document.removeEventListener('keydown', k), { once: true });
         cont.focus({ preventScroll: true });
       }
-      input.addEventListener('keydown', e => { if (e.key === 'Enter' && !input.readOnly) { e.preventDefault(); e.stopPropagation(); check(); } });
+      input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing && !input.readOnly) { e.preventDefault(); e.stopPropagation(); check(); } });
     }
     function end() {
       bar.firstChild.style.width = '100%';

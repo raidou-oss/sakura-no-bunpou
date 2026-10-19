@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019124428';
-import { speak, speakBtn } from './voice.js?v=20261019124428';
-import { pitchSVG } from './pitch.js?v=20261019124428';
-import { play } from './sfx.js?v=20261019124428';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019124428';
-import * as D from './data.js?v=20261019124428';
-import * as S from './srs.js?v=20261019124428';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019130103';
+import { speak, speakBtn } from './voice.js?v=20261019130103';
+import { pitchSVG } from './pitch.js?v=20261019130103';
+import { play } from './sfx.js?v=20261019130103';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019130103';
+import * as D from './data.js?v=20261019130103';
+import * as S from './srs.js?v=20261019130103';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -187,19 +187,87 @@ export function typedCloze(s, g) {
   return { key: null, kind: 'cloze-type', s: shown, g, lv: s.lv, accept: [inner, s.af || s.a].filter((x, i, l) => l.indexOf(x) === i) };
 }
 
-/** Mot de vocabulaire à écrire : retiré d'une phrase d'exemple, sinon à partir du sens */
+// Formes conjuguées : on prend la plus courte terminaison plausible après le radical (負う → 負った, 食べる → 食べました)
+const TERMINAL = /(?:た|て|[んい]だ|[んい]で|る|う|く|ぐ|す|つ|ぬ|ぶ|む|い|ば|ろ|よう)$/;
+const FOLLOW = /^(?:が|を|に|で|と|も|か|よ|ね|な|わ|から|けど|けれど|こと|の|は|へ|や|し|ので|のに|ん|です|でしょう|だろう|じゃ|ぞ|ぜ|ほう|とき|ところ|もの|あと|まえ|ため|つもり|はず|みたい|らしい|まま|ながら|だけ|しか|まで|より|ほど|くらい|ぐらい|でも|って|くだ|いる|いま|いた|いて|しま|おき|おく|みる|みた|みま|ある|あり|あげ|くれ|もら|ほし|[ァ-ヺ㐀-鿿々]|[。、！？!?」』）)\s]|$)/;
+// Première syllabe possible après le radical, selon la terminaison du mot au dictionnaire
+const ROW = { う: 'わいうえおっ', く: 'かきくけこい', ぐ: 'がぎぐげごい', す: 'さしすせそ', つ: 'たちつてとっ', ぬ: 'なにぬねのん', ぶ: 'ばびぶべぼん', む: 'まみむめもん' };
+const I_E = /[いきぎしじちぢにひびぴみりえけげせぜてでねへべぺめれ]$/;
+function firstOk(target, p) {
+  const end = target.slice(-1), stem = target.slice(0, -1), c = p[0];
+  if (ROW[end]) return ROW[end].includes(c);
+  if (end === 'い') return 'かくけ'.includes(c);
+  if (end === 'る') {
+    if ('らりるれろっ'.includes(c)) return true;
+    // Verbe en -iru / -eru (ou radical en kanji seul : 見る, 寝る) : la terminaison suit directement le radical
+    if (I_E.test(stem)) return true;
+    // Radical en kanji seul (見る, 寝る, 出る) : seules les terminaisons d'ichidan, pour ne pas confondre 見る et 見せる
+    return /[㐀-鿿々]$|）$/.test(stem) && 'まますたてなられろよばず'.includes(c);
+  }
+  return false;
+}
+function conjugated(text, target) {
+  if (!/[ぁ-ゖ]$/.test(target) || [...plain(target)].length < 2) return null;
+  const stem = target.slice(0, -1);
+  if (!/[㐀-鿿々]|（/.test(stem) && [...stem].length < 2) return null;   // radical trop court en kana seuls : trop ambigu
+  let from = 0;
+  while (true) {
+    const i = text.indexOf(stem, from);
+    if (i < 0) return null;
+    const run = (text.slice(i + stem.length).match(/^[ぁ-ゖ]{1,6}/) || [''])[0];
+    if (run && target.endsWith('い') && !target.endsWith('いい')) {
+      const m = run.match(/^(?:かった|くて|く|ければ)/);
+      if (m) return { index: i, surface: stem + m[0] };
+    } else if (run && firstOk(target, run)) {
+      for (let n = 1; n <= run.length; n++) {
+        const p = run.slice(0, n);
+        if (n > 1 && /[はをがのにも]/.test(p.slice(1))) break;          // une particule : on est sorti du mot
+        if (/[^んい][でだ]/.test(p)) break;                               // 休みでした : で n'est pas une terminaison ici
+        const rest = text.slice(i + stem.length + n);
+        if (/[いっん]$/.test(p) && /^[てでただ]/.test(rest)) continue;    // 脱いで, 待って, 飲んだ : la forme continue
+        if (TERMINAL.test(p) && FOLLOW.test(rest)) return { index: i, surface: stem + p };
+      }
+    }
+    from = i + 1;
+  }
+}
+
+/** Mot de vocabulaire à écrire : retiré d'une phrase d'exemple (forme conjuguée comprise), sinon à partir du sens */
 export async function typedVocab(v) {
   const target = v.f || v.w;
   const pref = preferred();
-  let ex = null;
-  for (const [jp, fr, reg, alt] of shuffle(await D.vocabExamples(v))) {
-    const st = inStyle({ jp, reg, alt }, pref);
-    for (const t of [target, v.w]) {
-      if (t && st.text.includes(t)) { ex = { jp: st.text.replace(t, `[${t}]`), fr, reg: st.reg }; break; }
-    }
-    if (ex) break;
+  let ex = null, conj = null;
+  const list = shuffle(await D.vocabExamples(v)).map(([jp, fr, reg, alt]) => ({ ...inStyle({ jp, reg, alt }, pref), fr }));
+  for (const st of list) {
+    const t = [target, v.w].find(x => x && st.text.includes(x));
+    if (t) { ex = { jp: st.text.replace(t, `[${t}]`), fr: st.fr, reg: st.reg }; break; }
   }
-  return { key: null, kind: 'vocab-type', v, lv: v.lv, ex, accept: [target] };
+  if (!ex) for (const st of list) {
+    const m = conjugated(st.text, target) || (v.f && conjugated(st.text, v.w));
+    if (m) { conj = m.surface; ex = { jp: st.text.slice(0, m.index) + `[${m.surface}]` + st.text.slice(m.index + m.surface.length), fr: st.fr, reg: st.reg }; break; }
+  }
+  return { key: null, kind: 'vocab-type', v, lv: v.lv, ex, conj, accept: [conj || target] };
+}
+
+/** Met en valeur, dans la traduction, le mot français qui correspond au sens du mot japonais */
+const deacc = s => [...s].map(c => c.normalize('NFD')[0]).join('').toLowerCase();
+const STOP = new Set(['les', 'des', 'une', 'pour', 'avec', 'dans', 'sur', 'qui', 'que', 'est', 'etre', 'avoir', 'faire', 'quelque', 'chose', 'quelqu', 'chez']);
+export function highlightFr(fr, meaning) {
+  const esc = t => t.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  if (!meaning) return esc(fr);
+  const words = String(meaning).replace(/\([^)]*\)/g, ' ').split(/[,;/]/)
+    .flatMap(alt => alt.trim().split(/[\s'’-]+/)).map(w => deacc(w).replace(/[^a-z]/g, ''))
+    .filter(w => w.length >= 2 && !STOP.has(w)).sort((a, b) => b.length - a.length);
+  const nfr = deacc(fr);
+  for (const w of words) {
+    const stem = w.length <= 3 ? w : w.slice(0, Math.max(3, w.length - 2));
+    const re = new RegExp(`(^|[^a-z])(${stem}${w.length <= 3 ? '' : '[a-z]*'})(?![a-z])`, 'g');
+    const m = re.exec(nfr);
+    if (!m) continue;
+    const start = m.index + m[1].length, end = start + m[2].length;
+    return `${esc(fr.slice(0, start))}<mark class="fr-key">${esc(fr.slice(start, end))}</mark>${esc(fr.slice(end))}`;
+  }
+  return esc(fr);
 }
 
 /** Point de grammaire à écrire à partir de son sens (si sa forme s'écrit en japonais seul) */
@@ -339,41 +407,48 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     });
   }
 
-  // Exercice écrit : on tape le mot / la particule / la forme qui manque (kanji ou kana, orthographe exacte)
+  // Exercice écrit : la phrase au centre, le sens en dessous, et une barre de réponse en bas (orthographe exacte)
   function askTyped(item, furi) {
-    const input = h('input.type-answer', { type: 'text', lang: 'ja', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
-      placeholder: 'Écris ta réponse en japonais…', 'aria-label': 'Ta réponse' });
+    const input = h('input.type-answer', { type: 'text', lang: 'ja', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false',
+      placeholder: '答え', 'aria-label': 'Ta réponse en japonais' });
     let romaji = false; try { romaji = localStorage.getItem('sakura.theme.romaji') === '1'; } catch {}
     if (romaji) bindRomaji(input);
-    const romajiBox = h('label.check.small', { title: 'En romaji, tape en MAJUSCULES pour obtenir des katakana' }, h('input', { type: 'checkbox', checked: romaji, onchange: e => {
+    const romajiBox = h('label.check.small.type-romaji', { title: 'En romaji, tape en MAJUSCULES pour obtenir des katakana' }, h('input', { type: 'checkbox', checked: romaji, onchange: e => {
       try { localStorage.setItem('sakura.theme.romaji', e.target.checked ? '1' : '0'); } catch {}
       if (e.target.checked) bindRomaji(input); else toast('Romaji désactivé à la prochaine question');
-      input.focus(); } }), h('span', 'Taper en romaji (MAJUSCULES = katakana)'));
+      input.focus(); } }), h('span', 'Romaji (MAJUSCULES = katakana)'));
     const fb = h('p.type-feedback', { 'aria-live': 'polite' });
     const hintBox = h('div.type-hints');
     let tries = 0, hints = 0;
     const reading = kana(item.accept[0]).replace(/[〜～]/g, '');
     const hintSteps = [
-      // 1er indice : le sens du point visé (sans sa forme, qui serait la réponse) et la longueur
       () => item.kind === 'cloze-type'
         ? h('p', h('strong', 'Sens du point visé : '), `« ${item.g.s} » · ${[...reading].length} kana`)
-        : h('p', h('strong', 'Longueur : '), `${[...reading].length} kana`),
+        : item.conj ? h('p', h('strong', 'Forme du dictionnaire : '), h('span', { lang: 'ja', html: ruby(item.v.f || item.v.w, true) }), ' — à conjuguer comme dans la phrase')
+          : h('p', h('strong', 'Longueur : '), `${[...reading].length} kana`),
       () => {
         const ch = [...reading], k = Math.max(1, Math.ceil(ch.length / 2));
         return h('p', h('strong', 'Début : '), h('span.type-mask', { lang: 'ja' }, ch.slice(0, k).join('') + '＿'.repeat(ch.length - k)));
       },
     ];
-    const hintBtn = h('button.btn', { type: 'button', onclick: () => {
+    const hintBtn = h('button.chip-btn', { type: 'button', onclick: () => {
       if (hints >= hintSteps.length) return;
       hintBox.append(hintSteps[hints++]()); play('cursor');
       if (hints >= hintSteps.length) hintBtn.disabled = true;
       input.focus();
     } }, 'Indice');
-    const giveUp = h('button.btn.ghost', { type: 'button', onclick: () => finishTyped(false, true) }, 'Voir la réponse');
-    const send = h('button.btn.primary', { type: 'button', onclick: () => check() }, 'Valider');
-    const tools = h('div.actions.left.type-tools', hintBtn, giveUp);
+    const giveUp = h('button.chip-btn.ghost', { type: 'button', onclick: () => finishTyped(false, true) }, 'Voir la réponse');
+    // Écouter la phrase entière aide beaucoup : ça compte comme un indice
+    const sentence = item.kind === 'cloze-type' ? item.s : item.ex;
+    const listen = sentence ? h('button.bar-btn.listen', { type: 'button', title: 'Écouter la phrase (compte comme un indice)', 'aria-label': 'Écouter la phrase (compte comme un indice)',
+      onclick: () => { hints = Math.max(hints, 1); speak(sentenceText(sentence)); input.focus(); },
+      html: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>' }) : null;
+    const send = h('button.bar-btn.send', { type: 'button', 'aria-label': 'Valider', onclick: () => check(),
+      html: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 4.5l17 7.5-17 7.5 3-7.5z M6.5 12h7" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>' });
+    const bar = h('div.answer-bar', listen, input, send);
+    const tools = h('div.type-tools', hintBtn, giveUp, romajiBox);
     function finishTyped(right, gaveUp = false) {
-      input.readOnly = true; send.remove(); tools.remove(); fb.remove();
+      input.readOnly = true; bar.classList.add('done'); tools.remove(); fb.remove();
       answer(item, input.value.trim(), null, right, input, { gaveUp, tries, hints });
     }
     const check = () => {
@@ -382,7 +457,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       if (item.accept.some(a => answerRegex(a).test(normJa(v)))) return finishTyped(true);
       tries++;
       play('wrong');
-      input.classList.remove('shake'); void input.offsetWidth; input.classList.add('shake');
+      bar.classList.remove('shake'); void bar.offsetWidth; bar.classList.add('shake');
       fb.textContent = tries === 1 ? 'Pas tout à fait : vérifie l’orthographe (ー, っ, petits kana, katakana…) et réessaie.'
         : `Toujours pas (${tries} essais). Prends un indice, ou regarde la réponse : la question sera à revoir.`;
       input.select();
@@ -391,21 +466,22 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     let prompt;
     if (item.kind === 'cloze-type') {
       prompt = [
-        h('div.kicker-row', h('p.kicker', `Écris ce qui manque · ${D.LEVEL_NAMES[item.lv]}`), regChip(item.s)),
-        h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.s, { furi }) }),
-        h('p.fr', item.s.fr)];
+        h('p.jp.big.type-sentence', { lang: 'ja', html: sentenceHTML(item.s, { furi }) }),
+        h('p.fr.type-fr', item.s.fr)];
     } else if (item.kind === 'meaning-type') {
+      prompt = [h('p.type-fr.solo', { html: `Écris le point de grammaire qui veut dire <mark class="fr-key">${item.g.s.replace(/[&<>]/g, '')}</mark>` })];
+    } else if (item.ex) {
       prompt = [
-        h('p.kicker', `Écris le point de grammaire · ${D.LEVEL_NAMES[item.lv]}`),
-        h('p.word-fr', item.g.s)];
+        h('p.jp.big.type-sentence', { lang: 'ja', html: sentenceHTML(item.ex, { furi }) }),
+        h('p.fr.type-fr', { html: highlightFr(item.ex.fr, item.v.m) })];
     } else {
-      prompt = [
-        h('div.kicker-row', h('p.kicker', `Écris le mot · ${item.lv}`), item.ex?.reg ? regChip(item.ex) : null),
-        h('p.word-fr', D.shortMeaning(item.v.m)),
-        item.ex ? h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.ex, { furi }) }) : null,
-        item.ex ? h('p.fr', item.ex.fr) : null];
+      prompt = [h('p.type-fr.solo', { html: `Écris le mot qui veut dire <mark class="fr-key">${D.shortMeaning(item.v.m).replace(/[&<>]/g, '')}</mark>` })];
     }
-    stage.replaceChildren(h('div.card.question.typed', ...prompt, h('div.type-row', input, send), fb, hintBox, tools, romajiBox));
+    const chip = item.kind === 'cloze-type' ? regChip(item.s) : item.ex?.reg ? regChip(item.ex) : null;
+    stage.replaceChildren(h('div.card.question.typed.clean',
+      h('div.type-top', h('span.type-tag', item.kind === 'cloze-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : item.kind === 'meaning-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : `Vocabulaire · ${item.lv}`), chip),
+      h('div.type-body', ...prompt),
+      hintBox, fb, tools, bar));
     play('card');
     setKeys(null);
     setTimeout(() => input.focus(), 60);
