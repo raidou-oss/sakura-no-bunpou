@@ -1,20 +1,21 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019020334';
-import * as D from './data.js?v=20261019020334';
-import * as S from './srs.js?v=20261019020334';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019020334';
-import { speakBtn, supported as voiceOK } from './voice.js?v=20261019020334';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019020334';
-import * as C from './cloud.js?v=20261019020334';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019020334';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019020334';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019021305';
+import * as D from './data.js?v=20261019021305';
+import * as S from './srs.js?v=20261019021305';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019021305';
+import { speakBtn, supported as voiceOK } from './voice.js?v=20261019021305';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019021305';
+import * as C from './cloud.js?v=20261019021305';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019021305';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019021305';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019021305';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019020334', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019020334', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019020334', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  narabe: { file: './games/narabe.js?v=20261019020334', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019021305', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019021305', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019021305', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  narabe: { file: './games/narabe.js?v=20261019021305', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -45,8 +46,8 @@ async function route() {
   // Portail : tant qu'on n'est pas connecté, on ne voit que l'écran de connexion
   const locked = C.enabled && !C.currentUser() && !C.isRecovery();
   document.body.classList.toggle('portal-mode', locked);
-  setWallpaper(locked);
-  if (locked) { main.classList.remove('wide'); portalPage(main); window.scrollTo(0, 0); return; }
+  if (locked) setWallpaper(true);
+  if (locked) { main.classList.remove('wide'); portalPage(main); enter(); window.scrollTo(0, 0); return; }
   const path = decodeURIComponent(location.hash.replace(/^#/, '')) || '/';
   const [p, query] = path.split('?');
   for (const [re, view] of routes) {
@@ -56,8 +57,14 @@ async function route() {
       $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil' }[section] || section)));
       $$('.nav a').forEach(a => a.classList.contains('active') ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
       try {
-        main.classList.remove('wide');
-        await view(...m.slice(1), new URLSearchParams(query));
+        const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定' }[section] || '桜';
+        moveIndicator();
+        await sweep(async () => {
+          main.classList.remove('wide');
+          setWallpaper(false);
+          await view(...m.slice(1), new URLSearchParams(query));
+          window.scrollTo(0, 0);
+        }, { label: kanji, section: p });
       } catch (err) {
         console.error(err);
         main.replaceChildren(h('div.card.error', h('h2', 'Impossible d’afficher cette page'), h('p', err.message),
@@ -96,6 +103,7 @@ async function refreshBadge() {
   const b = $('#due-badge');
   b.hidden = n === 0; b.textContent = n > 99 ? '99+' : n;
   navAccount();
+  requestAnimationFrame(moveIndicator);
 }
 
 // --- Accueil ----------------------------------------------------------------------

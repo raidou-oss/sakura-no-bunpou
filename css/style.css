@@ -747,3 +747,67 @@ body.wp-home .today { background: rgba(7, 16, 52, .82); box-shadow: 12px 12px 0 
 .vocab-table td.vw .speak-btn { width: 30px; height: 30px; }
 .vocab-table td.vw .speak-btn svg { width: 16px; height: 16px; }
 .reveal .word-audio { justify-content: center; }
+
+/* --- Transitions façon menu Persona ----------------------------------------------------- */
+:root { --ease-out: cubic-bezier(.16, 1, .3, 1); --ease-snap: cubic-bezier(.7, 0, .2, 1); --ease-spring: cubic-bezier(.34, 1.45, .64, 1); }
+
+/* Balayage entre deux pages : trois bandes diagonales qui traversent l'écran */
+.page-sweep { position: fixed; inset: 0; z-index: 90; pointer-events: none; overflow: hidden; visibility: hidden; }
+.page-sweep.in, .page-sweep.out { visibility: visible; }
+.page-sweep i { position: absolute; top: -20%; bottom: -20%; left: -10%; width: 130%; transform: translateX(-120%) skewX(-18deg); will-change: transform; }
+.page-sweep .b1 { background: var(--cyan); }
+.page-sweep .b2 { background: linear-gradient(100deg, #FF94CB, #7FA8FF); }
+.page-sweep .b3 { background: #050B26; box-shadow: inset 6px 0 0 rgba(255, 255, 255, .85); }
+.page-sweep.in .b1 { animation: sweep-in .3s var(--ease-snap) both; }
+.page-sweep.in .b2 { animation: sweep-in .3s var(--ease-snap) .04s both; }
+.page-sweep.in .b3 { animation: sweep-in .3s var(--ease-snap) .08s both; }
+.page-sweep.out i { transform: translateX(0) skewX(-18deg); }
+.page-sweep.out .b3 { animation: sweep-out .5s var(--ease-out) both; }
+.page-sweep.out .b2 { animation: sweep-out .5s var(--ease-out) .05s both; }
+.page-sweep.out .b1 { animation: sweep-out .5s var(--ease-out) .1s both; }
+@keyframes sweep-in { from { transform: translateX(-120%) skewX(-18deg); } to { transform: translateX(0) skewX(-18deg); } }
+@keyframes sweep-out { from { transform: translateX(0) skewX(-18deg); } to { transform: translateX(120%) skewX(-18deg); } }
+.sweep-kanji { position: absolute; left: 50%; top: 50%; z-index: 2; font: 400 clamp(5rem, 16vw, 12rem)/1 var(--jp-heavy); color: #fff; white-space: nowrap;
+  filter: drop-shadow(.05em .05em 0 var(--cyan)) drop-shadow(-.03em -.02em 0 var(--sakura)); opacity: 0; transform: translate(-50%, -50%) rotate(-6deg) scale(.9); }
+.page-sweep.in .sweep-kanji { animation: sweep-kanji-in .26s var(--ease-out) .12s both; }
+.page-sweep.out .sweep-kanji { animation: sweep-kanji-out .3s var(--ease-snap) both; }
+@keyframes sweep-kanji-in { from { opacity: 0; transform: translate(-80%, -50%) rotate(-6deg) scale(.9); } to { opacity: 1; transform: translate(-50%, -50%) rotate(-6deg) scale(1); } }
+@keyframes sweep-kanji-out { from { opacity: 1; transform: translate(-50%, -50%) rotate(-6deg) scale(1); } to { opacity: 0; transform: translate(-10%, -50%) rotate(-6deg) scale(1.08); } }
+
+/* Entrée en cascade : glisse depuis la gauche, penché, puis se redresse */
+.entering .stagger { animation: p-in .62s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 42ms + 40ms); }
+@keyframes p-in { from { opacity: 0; transform: translateX(-46px) skewX(-10deg); clip-path: inset(-60px 100% -60px -60px); } 55% { clip-path: inset(-60px -60px -60px -60px); } to { opacity: 1; transform: none; clip-path: none; } }
+
+/* Menu : pastille qui saute vers l'onglet actif */
+.nav-list { position: relative; }
+.nav-indicator { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 999px; pointer-events: none; opacity: 0;
+  background: var(--ink); box-shadow: 6px 5px 0 rgba(70, 217, 255, .9), 0 10px 30px -8px rgba(70, 217, 255, .8);
+  transition: transform .55s var(--ease-spring), width .45s var(--ease-out), height .45s var(--ease-out), opacity .2s; }
+.nav-indicator.instant { transition: none; }
+.nav-indicator.pop { animation: ind-pop .55s var(--ease-out); }
+@keyframes ind-pop { 0% { filter: brightness(1.6); } 35% { scale: 1.06 .9; } 100% { filter: none; scale: 1; } }
+.nav-list li { position: relative; z-index: 1; }
+.nav-list a.active { background: transparent; box-shadow: none; transition: color .25s .1s; }
+.nav-list a { transition: color .2s, background .2s, transform .35s var(--ease-spring); }
+.nav-list a:not(.active):hover { transform: translateX(6px) skewX(-6deg); }
+.nav-list a.active .nav-fr { animation: nav-word .5s var(--ease-out); display: inline-block; }
+@keyframes nav-word { from { transform: translateX(-10px) skewX(-12deg); opacity: .4; } }
+@media (max-width: 860px) {
+  .nav-list a:not(.active):hover { transform: translateY(-2px); }
+  .nav-indicator { box-shadow: 3px 3px 0 rgba(70, 217, 255, .9), 0 8px 22px -8px rgba(70, 217, 255, .8); }
+}
+
+/* Révisions : chaque carte arrive en glissant, les choix en cascade */
+.stage > .card { animation: card-in .5s var(--ease-out) both; }
+@keyframes card-in { from { opacity: 0; transform: translateX(60px) skewX(-8deg); } to { opacity: 1; transform: none; } }
+.options .option { animation: p-in .5s var(--ease-out) both; }
+.options .option:nth-child(2) { animation-delay: .05s; } .options .option:nth-child(3) { animation-delay: .1s; } .options .option:nth-child(4) { animation-delay: .15s; }
+.option, .btn, .game-tile, .unit-card { transition: transform .3s var(--ease-spring), box-shadow .3s, background .2s, border-color .2s; }
+.option:not(:disabled):hover { transform: translateX(4px) skewX(-4deg); }
+.reveal { animation: p-in .5s var(--ease-out) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-sweep { display: none; }
+  .entering .stagger, .stage > .card, .options .option, .reveal, .nav-indicator.pop, .nav-list a.active .nav-fr { animation: none !important; }
+  .nav-indicator { transition: none; }
+}

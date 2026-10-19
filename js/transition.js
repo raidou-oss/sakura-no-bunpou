@@ -1,0 +1,81 @@
+// Transitions façon menu Persona : bandes diagonales qui balaient l'écran entre deux pages,
+// éléments qui entrent en glissant (légèrement penchés, en cascade) et sélecteur de menu qui
+// saute d'un onglet à l'autre avec un petit rebond.
+import { reducedMotion } from './util.js?v=20261019021305';
+
+const STAGGER = 'main > *, .levels > li, .game-grid > li, .units > li, .points > li, .members > li, .react-list > li, .example-list > li, .portal-points > li, tbody > tr';
+const MAX_STAGGER = 18;
+let overlay = null, first = true, lastSection = null;
+
+function bands() {
+  if (overlay) return overlay;
+  overlay = document.createElement('div');
+  overlay.className = 'page-sweep';
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.innerHTML = '<i class="b1"></i><i class="b2"></i><i class="b3"></i><span class="sweep-kanji"></span>';
+  document.body.append(overlay);
+  return overlay;
+}
+
+const wait = ms => new Promise(r => setTimeout(r, ms));
+
+/**
+ * Change de page : couvre l'écran, exécute `render`, puis révèle la nouvelle page.
+ * `label` : kanji affiché furtivement pendant le balayage (nom de la section).
+ */
+export async function sweep(render, { label = '', section = '' } = {}) {
+  const skip = first || reducedMotion() || section === lastSection && section !== '';
+  first = false; lastSection = section;
+  if (skip) { await render(); enter(); return; }
+  const o = bands();
+  o.querySelector('.sweep-kanji').textContent = label;
+  o.classList.remove('out'); void o.offsetWidth;
+  o.classList.add('in');
+  await wait(300);
+  await render();
+  enter();
+  o.classList.replace('in', 'out');
+  await wait(560);
+  o.classList.remove('out');
+}
+
+/** Cascade d'entrée des éléments de la page */
+export function enter(root = document.getElementById('main')) {
+  if (!root || reducedMotion() || root.classList.contains('wide')) return;   // les jeux gèrent leurs propres animations
+  root.classList.remove('entering'); void root.offsetWidth;
+  const seen = new Map();
+  root.querySelectorAll(STAGGER).forEach(el => {
+    const parent = el.parentElement;
+    const n = seen.get(parent) || 0;
+    seen.set(parent, n + 1);
+    if (n >= MAX_STAGGER) { el.style.removeProperty('--i'); el.classList.remove('stagger'); return; }
+    el.style.setProperty('--i', parent === root ? n : n + 2);
+    el.classList.add('stagger');
+  });
+  root.classList.add('entering');
+  clearTimeout(root._enterT);
+  root._enterT = setTimeout(() => root.classList.remove('entering'), 1600);
+}
+
+/** Sélecteur du menu : une pastille qui glisse vers l'onglet actif */
+export function moveIndicator() {
+  const list = document.querySelector('.nav-list');
+  if (!list) return;
+  let ind = list.querySelector('.nav-indicator');
+  if (!ind) {
+    ind = document.createElement('li');
+    ind.className = 'nav-indicator';
+    ind.setAttribute('aria-hidden', 'true');
+    list.prepend(ind);
+  }
+  const a = list.querySelector('a.active');
+  if (!a || !a.offsetParent) { ind.style.opacity = 0; return; }
+  const lr = list.getBoundingClientRect(), r = a.getBoundingClientRect();
+  const wasHidden = ind.style.opacity === '0' || !ind.style.width;
+  ind.classList.toggle('instant', wasHidden);
+  ind.style.width = `${r.width}px`; ind.style.height = `${r.height}px`;
+  ind.style.transform = `translate(${r.left - lr.left}px, ${r.top - lr.top}px)`;
+  ind.style.opacity = 1;
+  ind.classList.remove('pop'); void ind.offsetWidth; ind.classList.add('pop');
+}
+window.addEventListener('resize', () => requestAnimationFrame(moveIndicator));

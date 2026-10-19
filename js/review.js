@@ -1,9 +1,9 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019020334';
-import { speak, speakBtn } from './voice.js?v=20261019020334';
-import { pitchSVG } from './pitch.js?v=20261019020334';
-import * as D from './data.js?v=20261019020334';
-import * as S from './srs.js?v=20261019020334';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019021305';
+import { speak, speakBtn } from './voice.js?v=20261019021305';
+import { pitchSVG } from './pitch.js?v=20261019021305';
+import * as D from './data.js?v=20261019021305';
+import * as S from './srs.js?v=20261019021305';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
