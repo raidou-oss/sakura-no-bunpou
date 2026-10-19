@@ -1,14 +1,15 @@
 // 絆 Liens de confident (façon Persona) : plus on échange avec quelqu'un (réactions, pokes), plus le lien monte.
 // Réactions : lues dans la base (visibles des deux côtés). Pokes : comptés de son côté, avec la progression du compte.
-import { h, jr, toast } from './util.js?v=20261019150232';
-import * as C from './cloud.js?v=20261019150232';
-import * as S from './srs.js?v=20261019150232';
-import { play } from './sfx.js?v=20261019150232';
+import { h, jr, toast } from './util.js?v=20261019150853';
+import * as C from './cloud.js?v=20261019150853';
+import * as S from './srs.js?v=20261019150853';
+import { play } from './sfx.js?v=20261019150853';
 
 export const REACT_XP = 15;          // par réaction échangée (envoyée ou reçue)
 export const POKE_XP = 30;           // par poke : plus d'interaction, donc plus d'XP
 export const POKE_DAILY = 3;         // pokes comptés par jour et par personne (pas de « farm »)
-const THRESH = [0, 1, 30, 80, 150, 240, 350, 480, 640, 830, 1050];   // XP pour atteindre le rang 1 … 10
+// XP cumulée pour atteindre le rang 1 … 10 : chaque rang demande plus que le précédent (+39, +70, +100, +140, +180, +230, +290, +350, +420)
+const THRESH = [0, 1, 40, 110, 210, 350, 530, 760, 1050, 1400, 1820];
 export const MAX_RANK = 10;
 export const TITLES = ['', 'Connaissance', 'Camarade', 'Copain', 'Ami', 'Bon ami', 'Super ami', 'Ami proche', 'Meilleur ami', 'Âme sœur d’étude', 'Lien indéfectible'];
 export const ARCANA = [

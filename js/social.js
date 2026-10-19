@@ -1,12 +1,12 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby } from './util.js?v=20261019150232';
-import * as D from './data.js?v=20261019150232';
-import { wallpaperSVG } from './wallpaper.js?v=20261019150232';
-import * as C from './cloud.js?v=20261019150232';
-import { play } from './sfx.js?v=20261019150232';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019150232';
-import { GAMES } from './gamelist.js?v=20261019150232';
-import * as L from './links.js?v=20261019150232';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019150853';
+import * as D from './data.js?v=20261019150853';
+import { wallpaperSVG } from './wallpaper.js?v=20261019150853';
+import * as C from './cloud.js?v=20261019150853';
+import { play } from './sfx.js?v=20261019150853';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019150853';
+import { GAMES } from './gamelist.js?v=20261019150853';
+import * as L from './links.js?v=20261019150853';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -405,13 +405,34 @@ export function mountOnline() {
   onlineMounted = true;
   const list = h('ul.online-list');
   const count = h('span.online-count', '0');
+  // 絆 Accès aux confidents, juste sous les connectés (c'est le même sujet : les autres élèves)
+  const confRows = h('ol.oc-rows');
+  const confBox = h('section.online-conf',
+    h('a.oc-head', { href: '#/confidents', onclick: () => document.body.classList.remove('online-open') },
+      h('span.oc-kanji', { lang: 'ja' }, '絆'), h('span.oc-word', 'CONFIDENTS'), h('span.oc-go', { 'aria-hidden': 'true' }, '›')),
+    confRows);
+  const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+  const refreshConf = async (fresh = false) => {
+    if (!C.currentUser()) { confRows.replaceChildren(); return; }
+    const links = (await L.allLinks({ fresh }).catch(() => [])).slice(0, 3);
+    if (!links.length) { confRows.replaceChildren(h('li.oc-empty.small', 'Réagis ou poke un élève pour nouer ton premier lien.')); return; }
+    const names = await Promise.all(links.map(l => l.name || C.getProfile(l.id).then(p => p?.username).catch(() => null)));
+    confRows.replaceChildren(...links.map((l, k) => h('li', h('a.oc-row', { href: '#/confidents', onclick: () => document.body.classList.remove('online-open') },
+      h('span.oc-arc', { lang: 'ja' }, L.arcanaOf(l.id)[0]),
+      h('span.oc-name', names[k] || 'Élève'),
+      h('span.oc-rank', l.rank >= L.MAX_RANK ? 'MAX' : ROMAN[l.rank]),
+      h('span.oc-bar', h('i', { style: { width: `${Math.round(l.pct * 100)}%` } }))))));
+  };
+  C.onInteraction(() => setTimeout(() => refreshConf(true), 600));
+  C.onAuth(() => refreshConf(true));
+  setTimeout(() => refreshConf(true), 1500);
   const panel = h('aside.online-panel', { 'aria-label': 'Élèves connectés' },
     h('header.online-head',
       h('span.live-dot', { 'aria-hidden': 'true' }),
       h('h2', 'En ligne'), count,
       h('button.online-close', { type: 'button', 'aria-label': 'Fermer', onclick: () => document.body.classList.remove('online-open') }, '×')),
     h('p.online-hint.small', 'Classés du N5 au N1. Touche un élève pour une réaction ou un poke (先輩 = plus avancé que toi).'),
-    list);
+    list, confBox);
   const fab = h('button.online-fab', { type: 'button', onclick: () => document.body.classList.toggle('online-open'), 'aria-label': 'Voir les élèves connectés' },
     h('span.live-dot', { 'aria-hidden': 'true' }), h('span.online-fab-n', '0'));
   document.querySelector('.shell').append(panel);

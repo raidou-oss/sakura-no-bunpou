@@ -1,25 +1,25 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019150232';
-import * as D from './data.js?v=20261019150232';
-import * as S from './srs.js?v=20261019150232';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019150232';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019150232';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019150232';
-import * as C from './cloud.js?v=20261019150232';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019150232';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019150232';
-import { play, setVolume } from './sfx.js?v=20261019150232';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019150232';
-import { celebrate, verdict } from './celebrate.js?v=20261019150232';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019150232';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019150232';
-import { initGloss } from './gloss.js?v=20261019150232';
-import { initLinks } from './links.js?v=20261019150232';
-import { confidentsPage } from './confidents.js?v=20261019150232';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019150232';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019150853';
+import * as D from './data.js?v=20261019150853';
+import * as S from './srs.js?v=20261019150853';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019150853';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019150853';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019150853';
+import * as C from './cloud.js?v=20261019150853';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019150853';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019150853';
+import { play, setVolume } from './sfx.js?v=20261019150853';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019150853';
+import { celebrate, verdict } from './celebrate.js?v=20261019150853';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019150853';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019150853';
+import { initGloss } from './gloss.js?v=20261019150853';
+import { initLinks } from './links.js?v=20261019150853';
+import { confidentsPage } from './confidents.js?v=20261019150853';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019150853';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019150232';
+import { GAMES } from './gamelist.js?v=20261019150853';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -63,7 +63,7 @@ async function route() {
     const m = p.match(re);
     if (m) {
       const section = p.split('/')[1] || 'home';
-      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil', lecon: 'lecons', 'kana-quiz': 'kana' }[section] || section)));
+      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil', lecon: 'lecons', 'kana-quiz': 'kana', confidents: 'communaute' }[section] || section)));
       $$('.nav a').forEach(a => a.classList.contains('active') ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
       try {
         const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定', lecons: '授業', lecon: '授業', kana: '仮名', 'kana-quiz': '仮名', confidents: '絆' }[section] || '桜';
