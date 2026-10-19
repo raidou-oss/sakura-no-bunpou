@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019163603';
-import * as D from './data.js?v=20261019163603';
-import * as S from './srs.js?v=20261019163603';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019163603';
-import { speakBtn, speak } from './voice.js?v=20261019163603';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261019163603';
-import { play } from './sfx.js?v=20261019163603';
-import { celebrate, verdict } from './celebrate.js?v=20261019163603';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019214709';
+import * as D from './data.js?v=20261019214709';
+import * as S from './srs.js?v=20261019214709';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019214709';
+import { speakBtn, speak } from './voice.js?v=20261019214709';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261019214709';
+import { play } from './sfx.js?v=20261019214709';
+import { celebrate, verdict } from './celebrate.js?v=20261019214709';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -89,8 +89,8 @@ const mark = (key, lv, kind, ns) => { const m = { ...S.getExtra(key, {}) }; ns.f
 // --- Hub -------------------------------------------------------------------------------
 export async function lessonsHub(main, lv = 'N5') {
   lv = D.LEVELS.includes(lv) ? lv : 'N5';
-  let mode = store.get(MODE_KEY, 'm');
-  let count = COUNTS.includes(store.get(COUNT_KEY, 1)) ? store.get(COUNT_KEY, 1) : 1;
+  let mode = S.getSettings().lessonMode || store.get(MODE_KEY, 'm');
+  let count = S.getSettings().lessonCount ?? store.get(COUNT_KEY, 1); if (!COUNTS.includes(count)) count = 1;
   const plan = await levelPlan(lv);
   covered = await lessonCoveredKeys().catch(() => new Set());
   const grid = h('ul.lesson-grid');
@@ -101,11 +101,11 @@ export async function lessonsHub(main, lv = 'N5') {
   const render = (animate = false) => {
     seg.replaceChildren(...Object.entries(KINDS).map(([k, m]) => h('button', {
       type: 'button', role: 'tab', 'aria-selected': String(k === mode), class: k === mode ? 'active' : null,
-      onclick: () => { if (k === mode) return; mode = k; store.set(MODE_KEY, k); render(true); },
+      onclick: () => { if (k === mode) return; mode = k; store.set(MODE_KEY, k); S.setSettings({ lessonMode: k }); render(true); },
     }, h('span.seg-jp', { lang: 'ja', html: jr(m.jp) }), m.label)));
     countSeg.replaceChildren(h('span.seg-label', 'Par session'), ...COUNTS.map(c => h('button', {
       type: 'button', role: 'radio', 'aria-checked': String(c === count), class: c === count ? 'active' : null,
-      onclick: () => { if (c === count) return; count = c; store.set(COUNT_KEY, c); render(true); },
+      onclick: () => { if (c === count) return; count = c; store.set(COUNT_KEY, c); S.setSettings({ lessonCount: c }); render(true); },
     }, c === 1 ? '1 leçon' : `${c} leçons`)));
     desc.textContent = `${KINDS[mode].desc}${count > 1 ? ` Tu enchaînes ${count} leçons d'affilée, avec un seul quiz à la fin.` : ''} Une leçon est validée quand tu as réussi tous ses exercices.`;
     const nums = lessonNumbers(plan, mode);
@@ -115,7 +115,7 @@ export async function lessonsHub(main, lv = 'N5') {
       const mq = masteryOfItems([...c.g, ...c.v]);
       const done = isDone(lv, mode, n), seen = !done && isSeen(lv, mode, n);
       const st = (S.getExtra('lessonState', {}) || {})[`${lv}:${mode}:${n}:${count}`];
-      const inProgress = st ? (st.phase === 'quiz' ? `En cours · exercices ${st.ok?.length || 0}/${st.plan?.length || 0}` : `En cours · étape ${(st.i || 0) + 1}/${st.n || '?'}`) : null;
+      const inProgress = st && !st.cleared ? (st.phase === 'quiz' ? `En cours · exercices ${st.ok?.length || 0}/${st.plan?.length || 0}` : `En cours · étape ${(st.i || 0) + 1}/${st.n || '?'}`) : null;
       const sub = [c.g.length ? `${c.g.length} point${c.g.length > 1 ? 's' : ''}` : null, c.v.length ? `${c.v.length} mots` : null].filter(Boolean).join(' · ');
       const preview = [...c.g.slice(0, 3).map(g => ruby(D.gramLabel(g), true)), ...c.v.slice(0, mode === 'm' ? 2 : 4).map(v => ruby(v.f || v.w, true))].join(' ・ ');
       const last = nums[Math.min(nums.length - 1, i + count - 1)];
@@ -173,10 +173,11 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
   const nextHref = nextN != null ? `#/lecon/${lv}/${kind}/${nextN}${count > 1 ? `?x=${count}` : ''}` : null;
   // État sauvegardé (lié au compte) : on reprend là où on s'était arrêté
   const STATE_KEY = `${lv}:${kind}:${covered[0]}:${count}`;
-  const saved = (S.getExtra('lessonState', {}) || {})[STATE_KEY] || null;
+  let saved = (S.getExtra('lessonState', {}) || {})[STATE_KEY] || null;
+  if (saved?.cleared) saved = null;   // leçon terminée (marque gardée pour la synchro entre appareils)
   const saveState = st => {
     const all = { ...(S.getExtra('lessonState', {}) || {}) };
-    if (st) all[STATE_KEY] = { ...st, n: steps.length, t: Date.now() }; else delete all[STATE_KEY];
+    all[STATE_KEY] = st ? { ...st, n: steps.length, t: Date.now() } : { cleared: true, t: Date.now() };
     S.setExtra('lessonState', all);
   };
   let i = saved?.phase === 'browse' ? Math.min(saved.i || 0, steps.length - 1) : 0, dir = 1, keyHandler = null;

@@ -1,8 +1,8 @@
 // Tuiles à assembler en phrase (Narabe, Kotoba Kōhī) : toucher pour ajouter / retirer,
 // ou glisser-déposer pour insérer un morceau n'importe où dans la phrase et la réordonner.
 // Clavier : sur une tuile placée, flèches gauche / droite pour la déplacer.
-import { h } from '../util.js?v=20261019163603';
-import { play } from '../sfx.js?v=20261019163603';
+import { h } from '../util.js?v=20261019214709';
+import { play } from '../sfx.js?v=20261019214709';
 
 /**
  * line : zone de la phrase ; tray : réserve ; items : toutes les tuiles ; chosen : tableau (muté) des tuiles placées.

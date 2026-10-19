@@ -1,13 +1,13 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019163603';
-import * as D from '../data.js?v=20261019163603';
-import * as S from '../srs.js?v=20261019163603';
-import { play as sfx } from '../sfx.js?v=20261019163603';
-import { speakBtn } from '../voice.js?v=20261019163603';
-import { burst } from '../celebrate.js?v=20261019163603';
-import { regChip } from '../review.js?v=20261019163603';
+import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019214709';
+import * as D from '../data.js?v=20261019214709';
+import * as S from '../srs.js?v=20261019214709';
+import { play as sfx } from '../sfx.js?v=20261019214709';
+import { speakBtn } from '../voice.js?v=20261019214709';
+import { burst } from '../celebrate.js?v=20261019214709';
+import { regChip } from '../review.js?v=20261019214709';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
@@ -56,14 +56,14 @@ export default async function theme(root, { settings, saveBest, params }) {
   const byId = new Map(grammar.map(g => [g.id, g]));
   let lv = params?.get('lv') || settings.grammarLevels[0] || 'N5';
   const lesson = params?.get('le') ? Number(params.get('le')) : null;
-  let romaji = localStorage.getItem('sakura.theme.romaji') === '1';
+  let romaji = settings.romaji ?? localStorage.getItem('sakura.theme.romaji') === '1';
   const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('作文') }), 'Thème'), hud);
 
   const poolFor = l => sents.filter(s => s.lv === l && (!lesson || byId.get(s.g)?.le === lesson));
 
   function menu() {
     const counts = Object.fromEntries(D.LEVELS.map(l => [l, poolFor(l).length]));
-    const romajiBox = h('label.check', h('input', { type: 'checkbox', checked: romaji, onchange: e => { romaji = e.target.checked; try { localStorage.setItem('sakura.theme.romaji', romaji ? '1' : '0'); } catch {} } }),
+    const romajiBox = h('label.check', h('input', { type: 'checkbox', checked: romaji, onchange: e => { romaji = e.target.checked; try { localStorage.setItem('sakura.theme.romaji', romaji ? '1' : '0'); } catch {} S.setSettings({ romaji }); } }),
       h('span', 'Taper en romaji (converti en kana automatiquement)'));
     root.replaceChildren(head(null), h('section.card.game-intro',
       h('p', `Lis la phrase en français et écris-la en japonais, en entier. ${ROUNDS} phrases par partie.`),

@@ -1921,3 +1921,11 @@ html.reduce-motion .gauge-glow { animation: none !important; }
 .oc-head.on .oc-go { color: var(--sakura); }
 html.reduce-motion .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sakura), -3px -3px 0 var(--cyan); }
 @media (prefers-reduced-motion: reduce) { .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sakura), -3px -3px 0 var(--cyan); } }
+
+/* ☁ Synchro avec le compte (réglages) */
+.sync-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 4px auto 10px; padding: 10px 14px;
+  background: var(--panel, rgba(10, 16, 46, .6)); border: 1px solid var(--line); clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%); }
+.sync-dot { width: 10px; height: 10px; border-radius: 50%; background: #5ee6a8; box-shadow: 0 0 8px #5ee6a8; flex: none; }
+.sync-box[data-status="syncing"] .sync-dot, .sync-box[data-status="pending"] .sync-dot { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: gap-blink 1s ease-in-out infinite; }
+.sync-box[data-status="error"] .sync-dot, .sync-box[data-status="offline"] .sync-dot { background: var(--sakura); box-shadow: 0 0 8px var(--sakura); }
+.sync-txt { font-weight: 600; }

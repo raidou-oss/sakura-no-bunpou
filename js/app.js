@@ -1,26 +1,26 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019163603';
-import * as D from './data.js?v=20261019163603';
-import * as S from './srs.js?v=20261019163603';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019163603';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019163603';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261019163603';
-import * as C from './cloud.js?v=20261019163603';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019163603';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019163603';
-import { play, setVolume } from './sfx.js?v=20261019163603';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019163603';
-import { celebrate, verdict } from './celebrate.js?v=20261019163603';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019163603';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019163603';
-import { initGloss } from './gloss.js?v=20261019163603';
-import { initLinks } from './links.js?v=20261019163603';
-import { confidentsPage } from './confidents.js?v=20261019163603';
-import { initTilt } from './tilt.js?v=20261019163603';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019163603';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019214709';
+import * as D from './data.js?v=20261019214709';
+import * as S from './srs.js?v=20261019214709';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019214709';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019214709';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261019214709';
+import * as C from './cloud.js?v=20261019214709';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019214709';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019214709';
+import { play, setVolume } from './sfx.js?v=20261019214709';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019214709';
+import { celebrate, verdict } from './celebrate.js?v=20261019214709';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019214709';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019214709';
+import { initGloss } from './gloss.js?v=20261019214709';
+import { initLinks } from './links.js?v=20261019214709';
+import { confidentsPage } from './confidents.js?v=20261019214709';
+import { initTilt } from './tilt.js?v=20261019214709';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019214709';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019163603';
+import { GAMES } from './gamelist.js?v=20261019214709';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -520,7 +520,8 @@ function settingsPage() {
         h('input', { type: 'range', min: 0, max: 1, step: .05, value: s.sfxVolume ?? .6, oninput: e => { S.setSettings({ sfxVolume: Number(e.target.value) }); setVolume(); play('cursor', { gap: 90 }); } })),
       h('p.section-note', 'Les voix sont celles de ton appareil (clic droit sur 🔊 pour écouter lentement). Accents tonals : données Kanjium, licence CC BY-SA 4.0.'),
       h('h2', 'Ta progression'),
-      h('p.section-note', 'Elle est enregistrée dans ce navigateur. Exporte-la pour la garder ou la passer sur un autre appareil.'),
+      syncBox(),
+      h('p.section-note', C.enabled && C.currentUser() ? 'Tout est lié à ton compte : niveau, XP, révisions, leçons, records des jeux, confidents et réglages. Tu peux aussi l’exporter dans un fichier.' : 'Elle est enregistrée dans ce navigateur. Connecte-toi pour la lier à ton compte, ou exporte-la dans un fichier.'),
       h('div.actions.left',
         h('button.btn', { onclick: () => {
           const a = h('a', { href: URL.createObjectURL(new Blob([S.exportAll()], { type: 'application/json' })), download: `sakura-no-bunpou-${new Date().toISOString().slice(0, 10)}.json` });
@@ -534,6 +535,31 @@ function settingsPage() {
           setTimeout(() => { if (btn.dataset.armed) { delete btn.dataset.armed; btn.textContent = 'Tout effacer'; } }, 5000);
         } }, 'Tout effacer'))));
 }
+
+// ☁ État de la synchro avec le compte (réglages)
+function syncBox() {
+  if (!C.enabled || !C.currentUser()) return null;
+  const txt = h('span.sync-txt'), dot = h('i.sync-dot');
+  const btn = h('button.btn.small', { type: 'button', onclick: async () => {
+    btn.disabled = true;
+    try { await C.syncNow(); toast('Progression synchronisée avec ton compte'); } catch (e) { toast(`Synchro impossible : ${e.message}`); }
+    btn.disabled = false;
+  } }, 'Synchroniser maintenant');
+  const ago = t => { const m = Math.round((Date.now() - t) / 60000); return m < 1 ? 'à l’instant' : m < 60 ? `il y a ${m} min` : `il y a ${Math.round(m / 60)} h`; };
+  const paint = st => {
+    box.dataset.status = st.status;
+    txt.textContent = { syncing: 'Synchronisation…', pending: 'Modifications en attente d’envoi…', error: `Échec de la synchro (${st.error || 'réseau'}). Nouvel essai automatique.`, offline: 'Hors ligne : tout sera envoyé au retour du réseau.', ok: `Synchronisé avec ton compte ${ago(st.at)}.`, idle: 'Synchronisé avec ton compte.' }[st.status] || '';
+  };
+  const box = h('div.sync-box', dot, txt, btn);
+  const off = C.onSync(paint); paint(C.getSyncState());
+  const tick = setInterval(() => { if (!box.isConnected) { clearInterval(tick); off(); } else paint(C.getSyncState()); }, 30000);
+  return box;
+}
+// Une synchro a apporté des données d'un autre appareil : on rafraîchit ce qui est affiché quand c'est sans risque
+window.addEventListener('sakura:synced', () => {
+  refreshBadge();
+  if (/^#?\/?$|^#\/(profil|lecons|grammaire|vocabulaire|jeux|kana|reglages)(\/N[1-5])?$/.test(location.hash) && !document.querySelector('input:focus, textarea:focus')) route();
+});
 
 let booted = false;
 C.onAuth(() => {

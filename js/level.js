@@ -13,8 +13,8 @@
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261019163603';
-import * as S from './srs.js?v=20261019163603';
+import * as D from './data.js?v=20261019214709';
+import * as S from './srs.js?v=20261019214709';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };
@@ -51,7 +51,7 @@ export const LESSON_CREDIT = 0.3;
 export const isMastered = c => !!c && c.i >= MATURE && (c.r || 0) >= 4 && (c.e || 0) >= 2.3;
 let coveredP = null, coveredAt = 0;
 async function coveredKeys() {
-  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261019163603').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
+  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261019214709').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
   return coveredP;
 }
 /** Score total d'un élément : révisions espacées + jeux / exercices */
@@ -134,6 +134,9 @@ export async function computeRank(progress) {
   progress = progress || await progressByLevel();
   let rank = RANK_NAMES.length;
   for (let i = 0; i < RANK_NAMES.length; i++) if (!progress[RANK_NAMES[i]].passed) { rank = i; break; }
+  // Un rang atteint reste acquis (la maîtrise peut baisser si on oublie, le rang non)
+  const peak = S.getExtra('peak', {}) || {};
+  rank = Math.max(rank, peak.rank || 0);
   const lv = RANK_NAMES[Math.min(rank, RANK_NAMES.length - 1)];
   const cur = progress[lv];
   const cards = Object.values(S.allCards()), now = Date.now();
@@ -145,6 +148,12 @@ export async function computeRank(progress) {
   for (const [k, c] of Object.entries(S.allCards())) xp += Math.round(cardScore(c, now) * (k.startsWith('g:') ? 30 : 10));
   // XP de pratique : chaque élément réussi en jeu ou en exercice
   for (const [k, g] of Object.entries(gm)) xp += k.startsWith('k:') ? Math.min(6, g.ok) : Math.min(20, g.ok * 2);
+  // L'XP ne redescend jamais : une carte oubliée fait baisser la maîtrise, pas le niveau (Lv) du joueur
+  // On cumule seulement les hausses : après un oubli, ce qu'on regagne compte de nouveau, sans jamais perdre de Lv.
+  const raw = xp, lastRaw = peak.raw ?? raw;
+  xp = Math.max(raw, (peak.xp || 0) + Math.max(0, raw - lastRaw));
+  const up = xp > (peak.xp || 0) || rank > (peak.rank || 0);
+  if (up || raw !== peak.raw) S.setExtra('peak', { xp, raw, rank: Math.max(rank, peak.rank || 0), t: Date.now() }, { quiet: !up });
   return {
     rank, label: rankLabel(rank), level: lv,
     gauge: rank >= RANK_NAMES.length ? 1 : Math.min(1, cur.gauge),

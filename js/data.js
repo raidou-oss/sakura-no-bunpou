@@ -3,7 +3,7 @@
 const cache = {};
 async function load(name) {
   if (!cache[name]) {
-    cache[name] = fetch(`data/${name}.json?v=20261019163603`).then(r => {
+    cache[name] = fetch(`data/${name}.json?v=20261019214709`).then(r => {
       if (!r.ok) throw new Error(`Impossible de charger ${name}.json`);
       return r.json();
     });

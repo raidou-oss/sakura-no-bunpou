@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261019163603';
+import { store, today, dayKey, DAY } from './util.js?v=20261019214709';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -47,7 +47,7 @@ let silent = false;
 const touch = () => { if (silent) return; store.set(K_UPDATED, Date.now()); listeners.forEach(fn => fn()); };
 export const lastUpdated = () => store.get(K_UPDATED, 0);
 export const getExtra = (k, d) => extra[k] ?? d;
-export function setExtra(k, v) { extra[k] = v; store.set(K_EXTRA, extra); touch(); }
+export function setExtra(k, v, { quiet = false } = {}) { extra[k] = v; store.set(K_EXTRA, extra); if (!quiet) touch(); }
 
 /**
  * Résultat d'un élément travaillé hors révisions (jeux, entraînement, exercices de leçon).
@@ -85,7 +85,12 @@ export function addCard(key) {
   return true;
 }
 
-export function removeCard(key) { delete cards[key]; save(); }
+export function removeCard(key) {
+  delete cards[key];
+  // Pierre tombale : la synchro ne doit pas faire revenir une carte retirée depuis un autre appareil
+  extra.removed = { ...(extra.removed || {}), [key]: Date.now() }; store.set(K_EXTRA, extra);
+  save();
+}
 
 /** Applique une note et renvoie la carte mise à jour */
 export function grade(key, q) {
@@ -195,5 +200,72 @@ export function replaceAll(data) {
 }
 
 export function resetAll() {
-  cards = {}; stats = { days: {} }; extra = { games: {}, lessonsDone: {}, lessonsSeen: {}, last: null, lessonState: {}, gm: {} }; store.set(K_EXTRA, extra); save(); saveStats();
+  // resetAt : la synchro ignore tout ce qui a été fait avant l'effacement, sur tous les appareils
+  cards = {}; stats = { days: {} }; extra = { games: {}, lessonsDone: {}, lessonsSeen: {}, last: null, lessonState: {}, gm: {}, resetAt: Date.now() }; store.set(K_EXTRA, extra); save(); saveStats();
+}
+
+// --- Fusion de deux progressions (cet appareil + le compte en ligne) ---------------------------
+// On ne remplace plus tout par « le plus récent » : chaque élément garde le meilleur des deux côtés,
+// pour ne jamais perdre une révision, un record, une leçon ou de l'XP faite sur un autre appareil.
+const isObj = x => x && typeof x === 'object' && !Array.isArray(x);
+const maxMerge = (a = {}, b = {}) => {          // nombres : le plus grand ; objets : récursif ; sinon a
+  const out = { ...b, ...a };
+  for (const k of Object.keys(out)) {
+    const x = a[k], y = b[k];
+    if (typeof x === 'number' && typeof y === 'number') out[k] = Math.max(x, y);
+    else if (isObj(x) && isObj(y)) out[k] = maxMerge(x, y);
+    else if (x === undefined) out[k] = y;
+  }
+  return out;
+};
+const newer = (x, y, t = o => o?.t || 0) => (t(y) > t(x) ? y : x);
+const cardTime = c => Math.max(c?.s || 0, 0);
+export function mergeData(A, B) {
+  A = A || {}; B = B || {};
+  const xa = A.extra || {}, xb = B.extra || {};
+  // Un effacement complet sur un appareil l'emporte sur tout ce qui l'a précédé
+  const resetAt = Math.max(xa.resetAt || 0, xb.resetAt || 0);
+  if ((xa.resetAt || 0) < resetAt && (A.updated || 0) < resetAt) return mergeData(B, B);
+  if ((xb.resetAt || 0) < resetAt && (B.updated || 0) < resetAt) return mergeData(A, A);
+  const removed = maxMerge(xa.removed, xb.removed);
+  const cards = {};
+  for (const k of new Set([...Object.keys(A.cards || {}), ...Object.keys(B.cards || {})])) {
+    const a = A.cards?.[k], b = B.cards?.[k];
+    let c = !a ? b : !b ? a : cardTime(b) > cardTime(a) ? b : cardTime(a) > cardTime(b) ? a : ((b.r || 0) > (a.r || 0) ? b : a);
+    if (removed[k] && removed[k] > cardTime(c) && !(c.s === 0 && removed[k] < (c.d || 0))) continue;
+    cards[k] = c;
+  }
+  const days = {};
+  for (const d of new Set([...Object.keys(A.stats?.days || {}), ...Object.keys(B.stats?.days || {})])) days[d] = maxMerge(A.stats?.days?.[d], B.stats?.days?.[d]);
+  const lessonState = {};
+  for (const k of new Set([...Object.keys(xa.lessonState || {}), ...Object.keys(xb.lessonState || {})])) {
+    const st = newer(xa.lessonState?.[k], xb.lessonState?.[k]);
+    if (st) lessonState[k] = st;
+  }
+  const gm = {};
+  for (const k of new Set([...Object.keys(xa.gm || {}), ...Object.keys(xb.gm || {})])) gm[k] = maxMerge(xa.gm?.[k], xb.gm?.[k]);
+  const aNewer = (A.updated || 0) >= (B.updated || 0);
+  const extra = {
+    ...(aNewer ? { ...xb, ...xa } : { ...xa, ...xb }),
+    games: maxMerge(xa.games, xb.games),
+    gameDetail: maxMerge(xa.gameDetail, xb.gameDetail),
+    lessonsDone: maxMerge(xa.lessonsDone, xb.lessonsDone),
+    lessonsSeen: maxMerge(xa.lessonsSeen, xb.lessonsSeen),
+    links: maxMerge(aNewer ? xa.links : xb.links, aNewer ? xb.links : xa.links),
+    peak: maxMerge(xa.peak, xb.peak),
+    last: newer(xa.last, xb.last) || null,
+    lessonState, gm, removed, resetAt,
+  };
+  const settings = aNewer ? { ...(B.settings || {}), ...(A.settings || {}) } : { ...(A.settings || {}), ...(B.settings || {}) };
+  return { cards, settings, stats: { ...(B.stats || {}), ...(A.stats || {}), days }, extra, updated: Math.max(A.updated || 0, B.updated || 0) };
+}
+/** Fusionne la progression du compte dans celle de cet appareil ; renvoie ce qui a changé de chaque côté */
+export function mergeIn(remote) {
+  const local = snapshot();
+  const merged = mergeData(local, remote);
+  const j = JSON.stringify;
+  const localChanged = j(merged.cards) !== j(local.cards) || j(merged.stats) !== j(local.stats) || j(merged.extra) !== j(local.extra) || j(merged.settings) !== j(local.settings);
+  const remoteChanged = !remote || j(merged.cards) !== j(remote.cards) || j(merged.stats) !== j(remote.stats) || j(merged.extra) !== j(remote.extra || {}) || j(merged.settings) !== j(remote.settings);
+  if (localChanged) replaceAll(merged);
+  return { merged: snapshot(), localChanged, remoteChanged };
 }

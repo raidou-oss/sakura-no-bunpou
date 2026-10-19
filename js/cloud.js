@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019163603';
-import * as S from './srs.js?v=20261019163603';
-import { computeRank, publicScores } from './level.js?v=20261019163603';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019214709';
+import * as S from './srs.js?v=20261019214709';
+import { computeRank, publicScores } from './level.js?v=20261019214709';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -219,34 +219,70 @@ export async function markSeen() {
 // La progression stockée dans ce navigateur appartient à un compte : si quelqu'un d'autre se
 // connecte, on charge SA progression (ou on repart de zéro) au lieu de lui donner celle du précédent.
 const K_OWNER = 'sakura.owner.v1';
-async function pullProgress() {
-  const c = await sb();
-  const me = session.user.id;
-  const owner = localStorage.getItem(K_OWNER);
-  const { data } = await c.from('progress').select('data, updated_at').eq('user_id', me).maybeSingle();
-  if (owner && owner !== me) {
-    S.replaceAll(data ? data.data : { cards: {}, settings: S.getSettings(), stats: { days: {} }, extra: {}, updated: 1 });
+// État de la synchro, affiché dans les réglages : idle | syncing | ok | error | offline
+let syncState = { status: 'idle', at: 0, error: '' };
+const syncListeners = new Set();
+export const getSyncState = () => syncState;
+export const onSync = fn => { syncListeners.add(fn); return () => syncListeners.delete(fn); };
+const setSync = patch => { syncState = { ...syncState, ...patch }; syncListeners.forEach(fn => { try { fn(syncState); } catch {} }); };
+
+let syncing = null, again = false;
+/**
+ * Synchro complète : on lit la progression du compte, on la FUSIONNE avec celle de cet appareil
+ * (chaque révision, record, leçon… garde le meilleur des deux), puis on renvoie le résultat.
+ * Plusieurs appareils peuvent donc travailler en parallèle sans s'écraser.
+ */
+export function syncNow() {
+  if (!session) return Promise.resolve();
+  if (syncing) { again = true; return syncing; }
+  syncing = (async () => {
+    do {
+      again = false;
+      await doSync();
+    } while (again);
+  })().finally(() => { syncing = null; });
+  return syncing;
+}
+async function doSync() {
+  if (!session) return;
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) { setSync({ status: 'offline' }); return; }
+  setSync({ status: 'syncing' });
+  try {
+    const c = await sb();
+    const me = session.user.id;
+    const { data, error } = await c.from('progress').select('data, updated_at').eq('user_id', me).maybeSingle();
+    if (error) throw error;
+    const owner = localStorage.getItem(K_OWNER);
+    let remoteChanged = true, localChanged = false;
+    if (owner && owner !== me) {
+      // Un autre compte s'était servi de ce navigateur : on charge la progression de CE compte, sans mélanger
+      S.replaceAll(data ? data.data : { cards: {}, settings: S.getSettings(), stats: { days: {} }, extra: {}, updated: 1 });
+      localChanged = true; remoteChanged = !data;
+    } else if (data) {
+      ({ localChanged, remoteChanged } = S.mergeIn(data.data));
+    }
     localStorage.setItem(K_OWNER, me);
-    if (!data) await pushProgress();
-    return;
+    // Ancien niveau affiché sur le profil : il sert de plancher pour ne pas perdre de Lv après la mise à jour
+    if (profile?.xp) {
+      const peak = S.getExtra('peak', {}) || {};
+      if (profile.xp > (peak.xp || 0)) { S.setExtra('peak', { ...peak, xp: profile.xp, rank: Math.max(peak.rank || 0, profile.rank || 0) }, { quiet: true }); remoteChanged = true; }
+    }
+    if (remoteChanged) await upload(c);
+    else await pushProfile(c);
+    setSync({ status: 'ok', at: Date.now(), error: '' });
+    if (localChanged) window.dispatchEvent(new CustomEvent('sakura:synced'));
+  } catch (e) {
+    setSync({ status: 'error', error: e?.message || String(e) });
+    throw e;
   }
-  localStorage.setItem(K_OWNER, me);
-  const local = S.snapshot();
-  const remoteTime = data ? data.data.updated || Date.parse(data.updated_at) : 0;
-  if (data && remoteTime > (local.updated || 0)) S.replaceAll(data.data);
-  else await pushProgress();
 }
-let pushTimer;
-function schedulePush() {
-  if (!session) return;
-  clearTimeout(pushTimer);
-  pushTimer = setTimeout(() => pushProgress().catch(() => {}), 4000);
-}
-export async function pushProgress() {
-  if (!session) return;
-  const c = await sb();
+async function upload(c) {
   const snap = S.snapshot();
-  await c.from('progress').upsert({ user_id: session.user.id, data: snap, updated_at: new Date().toISOString() });
+  const { error } = await c.from('progress').upsert({ user_id: session.user.id, data: snap, updated_at: new Date().toISOString() });
+  if (error) throw error;
+  await pushProfile(c);
+}
+async function pushProfile(c) {
   const r = await computeRank();
   const patch = { rank: r.rank, gauge: r.gauge, xp: r.xp, streak: r.streak, learned: r.learned, updated_at: new Date().toISOString() };
   // Les colonnes récentes (jauges, scores) peuvent manquer si une migration n'a pas été lancée : on retombe sur moins
@@ -257,6 +293,28 @@ export async function pushProgress() {
     if (!res.error || !/column|schema|scores|grammar_pct|vocab_pct/i.test(res.error.message)) break;
   }
   if (res.data) { profile = res.data; trackPresence(); }
+}
+const pullProgress = () => syncNow().catch(() => {});
+let pushTimer;
+function schedulePush() {
+  if (!session) return;
+  setSync({ status: 'pending' });
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(() => syncNow().catch(() => {}), 2500);
+}
+export const pushProgress = () => syncNow();
+// Synchro aussi quand on revient sur l'onglet, quand le réseau revient, régulièrement, et avant de quitter
+if (typeof window !== 'undefined') {
+  let lastFocus = 0;
+  const onBack = () => { if (!session || Date.now() - lastFocus < 5000) return; lastFocus = Date.now(); syncNow().catch(() => {}); };
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') onBack();
+    else if (session && (syncState.status === 'pending' || syncState.status === 'error')) { clearTimeout(pushTimer); syncNow().catch(() => {}); }
+  });
+  window.addEventListener('focus', onBack);
+  window.addEventListener('online', () => { if (session) syncNow().catch(() => {}); });
+  window.addEventListener('pagehide', () => { if (session && syncState.status === 'pending') { clearTimeout(pushTimer); syncNow().catch(() => {}); } });
+  setInterval(() => { if (session && document.visibilityState === 'visible') syncNow().catch(() => {}); }, 90000);
 }
 
 // --- Présence : qui est connecté en ce moment -------------------------------------------

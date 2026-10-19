@@ -1,9 +1,9 @@
 // 仮名 : hiragana et katakana pour ceux qui partent de zéro. Tableaux à écouter + entraînement à la lecture.
-import { h, shuffle, jr, toast, toHira } from './util.js?v=20261019163603';
-import * as S from './srs.js?v=20261019163603';
-import { speak, speakBtn } from './voice.js?v=20261019163603';
-import { play } from './sfx.js?v=20261019163603';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019163603';
+import { h, shuffle, jr, toast, toHira } from './util.js?v=20261019214709';
+import * as S from './srs.js?v=20261019214709';
+import { speak, speakBtn } from './voice.js?v=20261019214709';
+import { play } from './sfx.js?v=20261019214709';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019214709';
 
 // Gojūon : [romaji des 5 colonnes a i u e o], null = case vide
 const BASE = [
@@ -104,12 +104,12 @@ export function kanaPage(main, script = 'hira') {
 const QUIZ_KEY = 'sakura.kanaQuiz.v1';
 export function kanaQuiz(main, script = 'hira') {
   script = ['hira', 'kata', 'both'].includes(script) ? script : 'hira';
-  let saved = {}; try { saved = JSON.parse(localStorage.getItem(QUIZ_KEY)) || {}; } catch {}
+  let saved = S.getSettings().kanaQuiz || {}; if (!S.getSettings().kanaQuiz) try { saved = JSON.parse(localStorage.getItem(QUIZ_KEY)) || {}; } catch {}
   let groups = saved.groups || ['base'];
   let rows = saved.rows || BASE.map(r => r[0]);
   let mode = saved.mode || 'read';
   let count = saved.count || 20;
-  const save = () => { try { localStorage.setItem(QUIZ_KEY, JSON.stringify({ groups, rows, mode, count })); } catch {} };
+  const save = () => { try { localStorage.setItem(QUIZ_KEY, JSON.stringify({ groups, rows, mode, count })); } catch {} S.setSettings({ kanaQuiz: { groups, rows, mode, count } }); };
 
   const pool = () => script === 'both'
     ? [...cells('hira', groups, rows), ...cells('kata', groups, rows)]
