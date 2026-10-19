@@ -1,25 +1,25 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019150853';
-import * as D from './data.js?v=20261019150853';
-import * as S from './srs.js?v=20261019150853';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019150853';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019150853';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019150853';
-import * as C from './cloud.js?v=20261019150853';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019150853';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019150853';
-import { play, setVolume } from './sfx.js?v=20261019150853';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019150853';
-import { celebrate, verdict } from './celebrate.js?v=20261019150853';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019150853';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019150853';
-import { initGloss } from './gloss.js?v=20261019150853';
-import { initLinks } from './links.js?v=20261019150853';
-import { confidentsPage } from './confidents.js?v=20261019150853';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019150853';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019152041';
+import * as D from './data.js?v=20261019152041';
+import * as S from './srs.js?v=20261019152041';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019152041';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019152041';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019152041';
+import * as C from './cloud.js?v=20261019152041';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019152041';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019152041';
+import { play, setVolume } from './sfx.js?v=20261019152041';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019152041';
+import { celebrate, verdict } from './celebrate.js?v=20261019152041';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019152041';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019152041';
+import { initGloss } from './gloss.js?v=20261019152041';
+import { initLinks } from './links.js?v=20261019152041';
+import { confidentsPage } from './confidents.js?v=20261019152041';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019152041';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019150853';
+import { GAMES } from './gamelist.js?v=20261019152041';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -585,3 +585,21 @@ initGloss();
 if (C.enabled) initLinks();
 // L'indication du bouton Kanji Dojo s'efface dès qu'on fait défiler la page
 addEventListener('scroll', () => document.body.classList.toggle('scrolled', scrollY > 30), { passive: true });
+
+// --- Titres de page façon « Social Link » : kanji en relief, mot dans un bandeau blanc, grand mot en contour derrière ---
+function p3Heads(root = main) {
+  root.querySelectorAll('header.page-head, header.game-head, header.cf-head').forEach(head => {
+    if (head.dataset.p3) return;
+    const h1 = head.querySelector('h1');
+    if (!h1 || head.classList.contains('cf-head')) { head.dataset.p3 = '1'; return; }
+    head.dataset.p3 = '1';
+    head.classList.add('p3-head');
+    // Le texte du titre (hors kanji) passe dans un bandeau
+    const words = [...h1.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim());
+    words.forEach(n => { const s = h('span.ph-word', n.textContent.trim()); n.replaceWith(s); });
+    const word = h1.querySelector('.ph-word')?.textContent || '';
+    if (word && !head.querySelector('.ph-bg')) head.prepend(h('span.ph-bg', { 'aria-hidden': 'true' }, word.toUpperCase()));
+  });
+}
+new MutationObserver(() => p3Heads()).observe(main, { childList: true, subtree: true });
+p3Heads();

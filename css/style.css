@@ -1591,3 +1591,99 @@ body.portal-mode .petal-sky { display: none; }
 .oc-bar { grid-column: 2 / 4; height: 4px; background: rgba(150, 186, 255, .15); overflow: hidden; transform: skewX(-20deg); }
 .oc-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--sakura)); }
 .oc-empty { color: var(--mist); margin: 0; }
+
+/* ==========================================================================================
+   DA « SOCIAL LINK » PARTOUT — biais, bandeaux blancs, coins coupés, rayures, toute la largeur
+   ========================================================================================== */
+:root { --p3-cut: 22px; --p3-panel: linear-gradient(135deg, rgba(10, 22, 64, .9), rgba(26, 14, 58, .86));
+  --p3-stripes: repeating-linear-gradient(-60deg, transparent 0 22px, rgba(70, 217, 255, .035) 22px 24px); }
+
+/* Toute la largeur */
+.main, .main.wide { max-width: none; padding-left: clamp(16px, 3vw, 46px); padding-right: clamp(16px, 3vw, 46px); }
+
+/* Titres */
+.p3-head { position: relative; overflow: hidden; padding: 6px 0 20px; margin-bottom: 18px; }
+.p3-head .ph-bg { position: absolute; right: -8px; top: -14px; z-index: 0; font: 900 italic clamp(3.6rem, 11vw, 9rem)/0.9 var(--display); letter-spacing: -.02em; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 2px rgba(70, 217, 255, .16); transform: skewX(-12deg); pointer-events: none; user-select: none; }
+.p3-head h1 { position: relative; z-index: 1; display: flex; align-items: flex-end; flex-wrap: wrap; gap: 8px 16px; margin: 0; transform: skewX(-8deg); transform-origin: left bottom; font-size: clamp(2.2rem, 5.6vw, 4rem); }
+.p3-head h1 .jp-head { font: 400 1.25em/0.9 var(--jp-heavy); transform: none; color: #fff; text-shadow: 4px 4px 0 var(--sakura-deep), 8px 8px 0 rgba(70, 217, 255, .5); }
+.p3-head h1 .jp-head rt { font-size: .2em; letter-spacing: .25em; color: var(--cyan); text-shadow: none; -webkit-text-fill-color: var(--cyan); }
+.p3-head .ph-word { display: inline-block; font: 900 italic 1em/0.95 var(--display); letter-spacing: .01em; color: var(--night); background: var(--ink);
+  padding: 4px 22px 2px 14px; box-shadow: 6px 6px 0 var(--cyan); clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); text-transform: uppercase; }
+.p3-head > *:not(.ph-bg):not(h1) { position: relative; z-index: 1; }
+.p3-head .section-note { margin-top: 16px; max-width: 760px; }
+.game-head.p3-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+/* Panneaux : coin coupé, dégradé nuit → violet, rayures */
+.card, section.glass, div.glass:not(.stat-chip), .lesson, .section-progress, .scores-box, .links-box, .react-box, .kana-intro, .kana-tips {
+  border-radius: 0; background: var(--p3-stripes), var(--p3-panel); border: 1px solid var(--line-hi);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--p3-cut)), calc(100% - var(--p3-cut)) 100%, 0 100%); }
+.stat-chip { border-radius: 0; transform: skewX(-8deg); background: var(--p3-panel); border-left: 5px solid var(--cyan); }
+.stat-chip > * { transform: skewX(8deg); }
+.card h2, section.glass > h2, .lesson h2 { position: relative; }
+
+/* Tuiles et cartes cliquables : angles vifs, barre d'accent, décalage au survol */
+a.glass, .unit, .lesson-card, .member, .game-tile, .level, .point {
+  border-radius: 0; background: rgba(8, 18, 58, .82); border: 1px solid var(--line); box-shadow: inset 5px 0 0 var(--azure);
+  transition: transform .3s var(--ease-spring), box-shadow .25s, background .2s, border-color .2s; }
+a.glass::after { border-radius: 0; }
+a.glass:hover, .unit:hover, .lesson-card:hover, .member:hover, .game-tile:hover, .level:hover, .point:hover {
+  transform: translateX(6px) skewX(-3deg); background: rgba(20, 42, 110, .92); border-color: var(--line-hi); box-shadow: inset 9px 0 0 var(--sakura), 7px 7px 0 rgba(255, 148, 203, .55); }
+.lesson-card.done { box-shadow: inset 5px 0 0 var(--sakura); }
+.lesson-card.ongoing { box-shadow: inset 5px 0 0 var(--cyan); }
+.point { background: rgba(8, 18, 58, .6); }
+
+/* Onglets et sélecteurs en parallélogrammes */
+.tabs, .segmented { border-radius: 0; background: none; border: 0; padding: 0; gap: 6px; }
+.tab, .segmented button { border-radius: 0; transform: skewX(-10deg); background: rgba(8, 18, 58, .82); border-left: 4px solid transparent; }
+.tab:hover, .segmented button:hover { background: rgba(20, 42, 110, .92); border-left-color: var(--cyan); }
+.tab.active, .segmented button.active { color: var(--night); background: var(--ink); border-left-color: var(--sakura); box-shadow: 5px 5px 0 var(--sakura); transform: skewX(-10deg) translateX(3px); }
+.tab-flip { border-radius: 0; transform: skewX(-10deg); box-shadow: 5px 5px 0 var(--sakura); }
+
+/* Boutons en biais */
+.btn { border-radius: 0; transform: skewX(-10deg); font-style: italic; font-weight: 800; letter-spacing: .02em; }
+.btn:hover { transform: skewX(-10deg) translateX(3px); box-shadow: 4px 4px 0 var(--cyan); }
+.btn:active { transform: skewX(-10deg) scale(.97); }
+.btn.primary { box-shadow: 5px 5px 0 var(--sakura); }
+.btn.primary:hover { box-shadow: 7px 7px 0 var(--cyan); }
+.btn:disabled { transform: skewX(-10deg); }
+.chip-btn, .poke-chip, .reg-btn { border-radius: 0; transform: skewX(-10deg); }
+
+/* Jauges, champs */
+.gauge, .mini-gauge, .progress, .unit-bar { border-radius: 0 !important; transform: skewX(-20deg); }
+.gauge span, .mini-gauge span, .progress span { border-radius: 0 !important; }
+.search, input.type-answer, .theme-input, textarea.poke-input, .field input, .field textarea { border-radius: 0; }
+.answer-bar { border-radius: 0; clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%); }
+
+/* Panneau latéral et en ligne : même langage */
+.online-panel { border-radius: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
+.nav::before { border-radius: 0; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%); }
+.nav-list a { border-radius: 0; transform: skewX(-8deg); }
+.nav-list a.active { box-shadow: 6px 6px 0 var(--sakura); }
+@media (max-width: 860px) {
+  .nav::before { clip-path: none; border-radius: 999px; }
+  .nav-list a { transform: none; }
+  .nav-list a.active { box-shadow: none; }
+}
+
+/* Grilles plus larges maintenant que la page prend toute la place */
+.lesson-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.points { display: grid; grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); gap: 6px; }
+@media (max-width: 700px) { .points { grid-template-columns: minmax(0, 1fr); } }
+.cf-head { max-width: none; }
+/* Plus de place pour les exercices, jeux et fiches */
+.session { max-width: 1100px; }
+.point-page { max-width: 1200px; }
+.game-intro { max-width: 1000px; }
+.dash { max-width: 1000px; }
+.narabe, .theme { max-width: 1100px; }
+.section-progress { max-width: none; }
+.kana-grid { max-width: 900px; }
+.kana-grid.cols-3 { max-width: 600px; }
+.stat-chip { transform: none; }
+.stat-chip > * { transform: none; }
+/* Titre des leçons en bandeau */
+.lesson-title h1 { display: inline-block; padding: 2px 20px 0 12px; color: var(--night); background: var(--ink); transform: skewX(-8deg); box-shadow: 6px 6px 0 var(--cyan);
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); }
+.point-page .point-big { display: inline-block; transform: skewX(-6deg); text-shadow: 4px 4px 0 var(--sakura-deep), 8px 8px 0 rgba(70, 217, 255, .45); }
+html, body { overflow-x: clip; }
