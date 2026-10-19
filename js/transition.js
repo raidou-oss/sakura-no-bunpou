@@ -1,8 +1,8 @@
 // Transitions façon menu Persona : bandes diagonales qui balaient l'écran entre deux pages,
 // éléments qui entrent en glissant (légèrement penchés, en cascade) et sélecteur de menu qui
 // saute d'un onglet à l'autre avec un petit rebond.
-import { reducedMotion } from './util.js?v=20261019022349';
-import { play } from './sfx.js?v=20261019022349';
+import { reducedMotion } from './util.js?v=20261019023757';
+import { play } from './sfx.js?v=20261019023757';
 
 const STAGGER = 'main > *, .levels > li, .game-grid > li, .units > li, .points > li, .members > li, .react-list > li, .example-list > li, .portal-points > li, tbody > tr';
 const MAX_STAGGER = 18;
@@ -24,7 +24,8 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
  * Change de page : couvre l'écran, exécute `render`, puis révèle la nouvelle page.
  * `label` : kanji affiché furtivement pendant le balayage (nom de la section).
  */
-export async function sweep(render, { label = '', section = '' } = {}) {
+export async function sweep(render, { label = '', section = '', soft = false } = {}) {
+  if (soft && !first && !reducedMotion()) { lastSection = section; return swap(render); }
   const skip = first || reducedMotion() || section === lastSection && section !== '';
   first = false; lastSection = section;
   if (skip) { await render(); enter(); return; }
@@ -40,6 +41,33 @@ export async function sweep(render, { label = '', section = '' } = {}) {
   play('slash');
   await wait(560);
   o.classList.remove('out');
+}
+
+/** Changement de niveau : le contenu glisse en fondu, la pastille d'onglet saute vers le nouveau niveau */
+async function swap(render) {
+  const main = document.getElementById('main');
+  const oldTab = main.querySelector('.tabs .tab.active')?.getBoundingClientRect();
+  const y = window.scrollY;
+  main.classList.add('swap-out');
+  await wait(140);
+  await render();
+  window.scrollTo(0, y);
+  main.classList.remove('swap-out');
+  main.classList.add('swap-in');
+  setTimeout(() => main.classList.remove('swap-in'), 500);
+  const tab = main.querySelector('.tabs .tab.active');
+  if (oldTab && tab) {
+    const r = tab.getBoundingClientRect();
+    const pill = document.createElement('span');
+    pill.className = 'tab-flip';
+    Object.assign(pill.style, { left: `${oldTab.left}px`, top: `${oldTab.top}px`, width: `${oldTab.width}px`, height: `${oldTab.height}px` });
+    document.body.append(pill);
+    tab.classList.add('flip-target');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      Object.assign(pill.style, { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` });
+    }));
+    setTimeout(() => { pill.remove(); tab.classList.remove('flip-target'); }, 460);
+  }
 }
 
 /** Cascade d'entrée des éléments de la page */

@@ -1,9 +1,10 @@
 // 並べ替え (Narabe) : remettre les morceaux d'une phrase dans l'ordre.
-import { h, ruby, shuffle } from '../util.js?v=20261019022349';
-import { play } from '../sfx.js?v=20261019022349';
-import { tileBoard } from './tiles.js?v=20261019022349';
-import { speak, speakBtn } from '../voice.js?v=20261019022349';
-import * as D from '../data.js?v=20261019022349';
+import { h, ruby, shuffle } from '../util.js?v=20261019023757';
+import { play as sfx } from '../sfx.js?v=20261019023757';
+import { burst } from '../celebrate.js?v=20261019023757';
+import { tileBoard } from './tiles.js?v=20261019023757';
+import { speak, speakBtn } from '../voice.js?v=20261019023757';
+import * as D from '../data.js?v=20261019023757';
 
 const ROUNDS = 8;
 
@@ -49,15 +50,15 @@ export default async function narabe(root, { settings, saveBest }) {
         const target = pieces.map(p => p.t).join('');
         if (attempt === target) {
           const pts = tries ? 1 : 3; score += pts; scoreEl.textContent = score;
-          play('correct'); speak(s.jp);
+          sfx('correct'); speak(s.jp); burst(line, { count: 26 });
           fb.replaceChildren(h('p', tries ? 'Bien rattrapé. +1' : 'Parfait du premier coup. +3'), speakBtn(s.jp, { label: 'Réécouter la phrase', small: true }));
           finishRound();
         } else if (++tries >= 2) {
-          play('wrong'); speak(s.jp);
+          sfx('wrong'); speak(s.jp);
           fb.replaceChildren(h('p', 'La phrase était :'), h('p.correct-line', { lang: 'ja', html: ruby(target, true) }));
           finishRound();
         } else {
-          play('wrong');
+          sfx('wrong');
           let k = 0; while (chosen[k] && chosen[k].t === pieces[k].t) k++;
           fb.replaceChildren(h('p.small', k ? `Juste jusqu’au morceau ${k}. Essaie encore.` : 'Le premier morceau n’est pas le bon. Essaie encore.'));
           chosen.splice(k); render();

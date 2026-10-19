@@ -1,10 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019022349';
-import { speak, speakBtn } from './voice.js?v=20261019022349';
-import { pitchSVG } from './pitch.js?v=20261019022349';
-import { play } from './sfx.js?v=20261019022349';
-import * as D from './data.js?v=20261019022349';
-import * as S from './srs.js?v=20261019022349';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019023757';
+import { speak, speakBtn } from './voice.js?v=20261019023757';
+import { pitchSVG } from './pitch.js?v=20261019023757';
+import { play } from './sfx.js?v=20261019023757';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019023757';
+import * as D from './data.js?v=20261019023757';
+import * as S from './srs.js?v=20261019023757';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -97,6 +98,13 @@ async function resolve(key, last) {
   return { key, kind: 'vocab', v, lv, options: shuffle([mean, ...others.map(x => D.shortMeaning(x.m))]), answer: mean };
 }
 
+/** Question de vocabulaire hors révision (sens du mot, 4 choix pris dans `list`) */
+export function vocabPractice(v, list) {
+  const mean = D.shortMeaning(v.m);
+  const others = sample(list.filter(x => D.shortMeaning(x.m) !== mean && x.w !== v.w), 3);
+  return { key: null, kind: 'vocab', v, lv: v.lv, options: shuffle([mean, ...others.map(x => D.shortMeaning(x.m))]), answer: mean };
+}
+
 /** Questions d'entraînement libre à partir de phrases (sans effet sur les révisions) */
 export function practiceItems(sents, grammarById) {
   return shuffle(sents).map(s => ({ key: null, kind: 'cloze', s, g: grammarById.get(s.g), lv: s.lv, options: shuffle([s.a, ...s.d]), answer: s.a }));
@@ -107,7 +115,7 @@ export function practiceItems(sents, grammarById) {
  * mode 'srs' : `queue` = clés de cartes, les réponses sont notées.
  * mode 'practice' : `items` = questions prêtes, rien n'est enregistré.
  */
-export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone }) {
+export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone, extraActions = null }) {
   const list = mode === 'srs' ? [...queue] : [...items];
   const total = list.length;
   const retries = new Map();
@@ -216,6 +224,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   function answer(item, choice, buttons) {
     const right = choice === item.answer;
     play(right ? 'correct' : 'wrong');
+    if (right) burst(buttons.find(b => b.querySelector('.option-text').textContent === choice));
     seen++; if (right) ok++;
     buttons.forEach(b => {
       b.disabled = true;
@@ -286,18 +295,17 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
 
   function finish() {
     setKeys(null);
-    if (seen) play('fanfare');
     const rate = seen ? Math.round((ok / seen) * 100) : 0;
+    if (seen) celebrate({ ...verdict(ok / seen), detail: `${ok} / ${seen} bonnes réponses` });
     stage.replaceChildren(h('div.card.finish',
       h('div.finish-flower', { html: blossom(seen ? ok / seen : 0, 120, `${rate} % de bonnes réponses`) }),
       h('h2', seen ? 'Séance terminée' : 'Rien à réviser pour le moment'),
       seen ? h('p', `${total} carte${total > 1 ? 's' : ''}, ${rate} % de bonnes réponses du premier coup ou après reprise.`) : h('p', 'Reviens plus tard ou ajoute des leçons depuis la grammaire.'),
       missed.size ? h('p.small', `${missed.size} carte${missed.size > 1 ? 's' : ''} à retravailler : ${mode === 'srs' ? 'elles reviendront bientôt.' : 'refais un tour pour les fixer.'}`) : null,
-      h('div.actions',
+      h('div.actions', ...(extraActions || [
         h('a.btn.primary', { href: '#/' }, 'Retour à l’accueil'),
-        h('a.btn', { href: '#/jeux' }, 'Jouer un peu'))));
+        h('a.btn', { href: '#/jeux' }, 'Jouer un peu')]))));
     onDone && onDone({ ok, seen });
-    if (seen && rate >= 90) toast('満開！ Presque tout juste.');
   }
 
   next();

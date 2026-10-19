@@ -1,8 +1,9 @@
 // 助詞ダッシュ (Joshi Dash) : 60 secondes pour placer un maximum de particules.
-import { play } from '../sfx.js?v=20261019022349';
-import { h, shuffle, toast } from '../util.js?v=20261019022349';
-import * as D from '../data.js?v=20261019022349';
-import { sentenceHTML } from '../review.js?v=20261019022349';
+import { play as sfx } from '../sfx.js?v=20261019023757';
+import { burst } from '../celebrate.js?v=20261019023757';
+import { h, shuffle, toast } from '../util.js?v=20261019023757';
+import * as D from '../data.js?v=20261019023757';
+import { sentenceHTML } from '../review.js?v=20261019023757';
 
 const PARTICLES = new Set(['は', 'が', 'を', 'に', 'で', 'へ', 'と', 'も', 'の', 'か', 'や', 'よ', 'ね', 'から', 'まで', 'より', 'しか', 'だけ', 'でも', 'ほど', 'こそ', 'さえ', 'すら', 'など', 'ばかり', 'くらい', 'ごろ', 'でも']);
 const DURATION = 60;
@@ -43,7 +44,8 @@ export default async function joshi(root, { settings, saveBest }) {
 
     function pickIt(o) {
       answered++;
-      play(o === cur.a ? 'correct' : 'wrong', { gap: 0 });
+      sfx(o === cur.a ? 'correct' : 'wrong', { gap: 0 });
+      if (o === cur.a) burst(card, { count: 12 });
       if (o === cur.a) { good++; combo++; score += 1 + Math.floor(combo / 5); card.classList.remove('flash-ko'); card.classList.add('flash-ok'); }
       else { combo = 0; left = Math.max(0, left - 3); card.classList.remove('flash-ok'); card.classList.add('flash-ko'); }
       setTimeout(() => card.classList.remove('flash-ok', 'flash-ko'), 250);

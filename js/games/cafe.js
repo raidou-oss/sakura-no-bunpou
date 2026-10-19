@@ -1,9 +1,10 @@
 // コトバ珈琲 (Kotoba Kōhī) : un client étranger dicte sa commande en français,
 // tu la passes au barista en japonais, puis tu lis le montant annoncé en caisse.
-import { play } from '../sfx.js?v=20261019022349';
-import { tileBoard } from './tiles.js?v=20261019022349';
-import { speak } from '../voice.js?v=20261019022349';
-import { h, ruby, shuffle, pick, sample, toast } from '../util.js?v=20261019022349';
+import { play } from '../sfx.js?v=20261019023757';
+import { burst } from '../celebrate.js?v=20261019023757';
+import { tileBoard } from './tiles.js?v=20261019023757';
+import { speak } from '../voice.js?v=20261019023757';
+import { h, ruby, shuffle, pick, sample, toast } from '../util.js?v=20261019023757';
 
 const DRINKS = [
   { hot: 'ホットコーヒー', ice: 'アイスコーヒー', fr: ['café', 'cafés'], g: 'm', price: 380 },
@@ -198,7 +199,7 @@ export default function cafe(root, { settings, saveBest }) {
         clearInterval(timer);
         const bonus = Math.round(left * 2) + (tries === 0 ? 100 : 30);
         if (tries === 0) perfect++;
-        faceEl.innerHTML = face('happy'); play('correct'); speak('かしこまりました！');
+        faceEl.innerHTML = face('happy'); play('correct'); burst(answerZone, { count: 26 }); speak('かしこまりました！');
         feedback.replaceChildren(h('p.barista', { lang: 'ja' }, '「かしこまりました！」'), h('p.small', `Parfait. +${bonus}円 de pourboire.`));
         tips += bonus; showTips();
         setTimeout(() => checkout(), 900);

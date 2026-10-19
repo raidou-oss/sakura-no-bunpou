@@ -104,3 +104,9 @@ Après chaque modification du site : `python3 tools/bump_version.py` pour forcer
 - `js/sfx.js` : sons synthétisés en direct (Web Audio, aucun fichier) : curseur, validation, retour, balayage de transition, bonne / mauvaise réponse, fanfare, réaction reçue. Activables et réglables dans Réglages.
 - `js/games/tiles.js` : tuiles de phrase partagées par Narabe et Kotoba Kōhī. Toucher pour ajouter / retirer, glisser-déposer pour insérer n'importe où, flèches du clavier pour déplacer une tuile placée.
 - `js/daily.js` : panneau sous le menu (objectif de révisions du jour, série, mot du jour avec voix et accent) ; sur téléphone il s'affiche sur l'accueil.
+
+## Leçons, thème, félicitations
+
+- `js/lessons.js` : leçons guidées (`#/lecons/N5`) en trois modes : grammaire, vocabulaire, ou les deux mélangés (un point de grammaire puis quelques mots). Fin de leçon : quiz, ajout aux révisions, exercice de thème.
+- `js/games/theme.js` : thème libre. Chaque mot à lecture accepte le kanji ou les kana, hiragana et katakana sont équivalents, ponctuation ignorée ; sinon, différence caractère par caractère. Saisie en romaji possible (WanaKana 5.3.1, chargé à la demande).
+- `js/celebrate.js` : gerbe de pétales sur une bonne réponse, scène plein écran en fin de séance, de leçon ou de partie gagnée.

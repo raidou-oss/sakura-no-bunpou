@@ -1,7 +1,7 @@
 // 花びら (Hanabira) : des pétales portant des mots tombent ; attrape celui qui correspond au sens affiché.
-import { play } from '../sfx.js?v=20261019022349';
-import { h, ruby, shuffle, sample, pick, reducedMotion, toast } from '../util.js?v=20261019022349';
-import * as D from '../data.js?v=20261019022349';
+import { play as sfx } from '../sfx.js?v=20261019023757';
+import { h, ruby, shuffle, sample, pick, reducedMotion, toast } from '../util.js?v=20261019023757';
+import * as D from '../data.js?v=20261019023757';
 
 export default async function hanabira(root, { params, settings, saveBest }) {
   let lv = params.get('lv') || settings.vocabLevels[0] || 'N5';
@@ -61,7 +61,7 @@ export default async function hanabira(root, { params, settings, saveBest }) {
     function hit(p) {
       if (locked) return;
       if (p.w === target) {
-        locked = true; play('correct'); score += 10 + round; scoreEl.textContent = score;
+        locked = true; sfx('correct'); score += 10 + round; scoreEl.textContent = score;
         p.el.classList.add('caught');
         petals.forEach(q => q !== p && q.el.classList.add('gone'));
         speed = Math.min(150, speed + 4);
@@ -73,7 +73,7 @@ export default async function hanabira(root, { params, settings, saveBest }) {
     }
 
     function lose(msg) {
-      play('wrong'); lives--; livesEl.textContent = '♥'.repeat(Math.max(lives, 0)) + '♡'.repeat(3 - Math.max(lives, 0));
+      sfx('wrong'); lives--; livesEl.textContent = '♥'.repeat(Math.max(lives, 0)) + '♡'.repeat(3 - Math.max(lives, 0));
       prompt.append(h('span.small.miss', msg));
       if (lives <= 0) end();
     }
