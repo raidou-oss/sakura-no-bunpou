@@ -1,12 +1,12 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261019161418';
-import * as D from './data.js?v=20261019161418';
-import { wallpaperSVG } from './wallpaper.js?v=20261019161418';
-import * as C from './cloud.js?v=20261019161418';
-import { play } from './sfx.js?v=20261019161418';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019161418';
-import { GAMES } from './gamelist.js?v=20261019161418';
-import * as L from './links.js?v=20261019161418';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261019163603';
+import * as D from './data.js?v=20261019163603';
+import { wallpaperSVG } from './wallpaper.js?v=20261019163603';
+import * as C from './cloud.js?v=20261019163603';
+import { play } from './sfx.js?v=20261019163603';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019163603';
+import { GAMES } from './gamelist.js?v=20261019163603';
+import * as L from './links.js?v=20261019163603';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -414,6 +414,9 @@ export function mountOnline() {
     h('a.oc-head', { href: '#/confidents', onclick: () => document.body.classList.remove('online-open') },
       h('span.oc-kanji', { lang: 'ja' }, '絆'), h('span.oc-word', 'CONFIDENTS'), h('span.oc-go', { 'aria-hidden': 'true' }, '›')),
     confRows);
+  // Sur la page Confidents, c'est ce bouton (à droite) qui porte la sélection, comme l'onglet actif du menu
+  const markConf = () => { const on = /^#\/confidents/.test(location.hash); confBox.firstChild.classList.toggle('on', on); on ? confBox.firstChild.setAttribute('aria-current', 'page') : confBox.firstChild.removeAttribute('aria-current'); };
+  markConf(); window.addEventListener('hashchange', markConf);
   const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
   const refreshConf = async (fresh = false) => {
     if (!C.currentUser()) { confRows.replaceChildren(); return; }

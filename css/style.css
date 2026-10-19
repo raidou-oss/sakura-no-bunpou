@@ -1914,3 +1914,10 @@ html.reduce-motion .gauge-glow { animation: none !important; }
   .nav-indicator::before { box-shadow: var(--shade), 0 10px 30px -10px rgba(70, 217, 255, .7);
     animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite, p3-bgsweep 3.6s ease-in-out infinite; }
 }
+
+/* 絆 Bouton Confidents (panneau « En ligne ») : sélectionné quand on est sur la page, avec l'ombre mouvante */
+.oc-head.on { transform: skewX(-8deg) translateX(4px); background: var(--ink); color: var(--night); box-shadow: var(--shade);
+  animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite; }
+.oc-head.on .oc-go { color: var(--sakura); }
+html.reduce-motion .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sakura), -3px -3px 0 var(--cyan); }
+@media (prefers-reduced-motion: reduce) { .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sakura), -3px -3px 0 var(--cyan); } }
