@@ -1687,3 +1687,26 @@ a.glass:hover, .unit:hover, .lesson-card:hover, .member:hover, .game-tile:hover,
   clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); }
 .point-page .point-big { display: inline-block; transform: skewX(-6deg); text-shadow: 4px 4px 0 var(--sakura-deep), 8px 8px 0 rgba(70, 217, 255, .45); }
 html, body { overflow-x: clip; }
+
+/* --- Survol vivant : zoom, rotation 3D, reflet qui suit la souris ---------------------------- */
+.kana-cell, .lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card, .stat-chip, .tarot, .resume-chip, .point, .cf-row, .oc-row, .option, .word-tile {
+  transition: transform .35s var(--ease-out), filter .35s var(--ease-out), background .2s, box-shadow .25s, border-color .2s; }
+.tilting { position: relative; z-index: 3; transition: transform .08s linear, filter .12s linear, background .2s, box-shadow .25s, border-color .2s !important; will-change: transform; }
+.tilt-glare { position: absolute; inset: 0; z-index: 5; pointer-events: none; border-radius: inherit; opacity: 0; transition: opacity .25s;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, .26), rgba(255, 214, 232, .08) 32%, transparent 60%); mix-blend-mode: screen; }
+.tilting > .tilt-glare { opacity: 1; }
+.cf-row.tilting, .oc-row.tilting { z-index: 3; }
+
+/* --- Centrage : les blocs de largeur limitée se centrent dans la page ------------------------- */
+.session, .point-page, .game-intro, .dash, .narabe, .theme, .kana-grid, .empty, .error, .edit-form, .settings, .section-progress { margin-left: auto; margin-right: auto; }
+.kana-intro, .kana-tips { max-width: 900px; margin-left: auto; margin-right: auto; }
+.kana-block { max-width: 900px; margin-left: auto; margin-right: auto; }
+.kana-block h2 { justify-content: center; }
+.kana-intro { flex-wrap: wrap; justify-content: center; text-align: center; }
+.page-head .tabs, .main > .tabs, .lesson-controls, .main > .search, .main > .segmented { margin-left: auto; margin-right: auto; }
+.main > .tabs, .main > .lesson-controls { display: flex; justify-content: center; width: fit-content; max-width: 100%; }
+.main > .search { display: block; }
+.main > .section-note, .lesson-desc, .main > p.small { text-align: center; margin-left: auto; margin-right: auto; }
+.settings { max-width: 980px; }
+.section-progress { max-width: 980px; }
+.p3-head { text-align: left; }

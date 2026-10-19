@@ -1,10 +1,10 @@
 // 選択クイズ (Sentaku) : les anciennes questions à choix, en jeu. Trois vies, des séries qui rapportent.
-import { play as sfx } from '../sfx.js?v=20261019152041';
-import { burst } from '../celebrate.js?v=20261019152041';
-import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019152041';
-import * as D from '../data.js?v=20261019152041';
-import * as S from '../srs.js?v=20261019152041';
-import { sentenceHTML, clozeDisp, regChip, vocabPractice, highlightFr } from '../review.js?v=20261019152041';
+import { play as sfx } from '../sfx.js?v=20261019152944';
+import { burst } from '../celebrate.js?v=20261019152944';
+import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019152944';
+import * as D from '../data.js?v=20261019152944';
+import * as S from '../srs.js?v=20261019152944';
+import { sentenceHTML, clozeDisp, regChip, vocabPractice, highlightFr } from '../review.js?v=20261019152944';
 
 const LIVES = 3;
 const MODES = [['m', 'Les deux'], ['g', 'Grammaire'], ['v', 'Vocabulaire']];
