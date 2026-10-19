@@ -1,0 +1,165 @@
+# Phrases supplémentaires N2 (points qui n'avaient pas encore d'exemple). Même format que sentences_n5.txt.
+321 || それは|十分（じゅうぶん）|あり[得（う）る]|話（はなし）だ。 || C'est une histoire tout à fait possible. || 得ない;得た;得ず
+1079 || それは|許（ゆる）さ[ざる]|行為（こうい）だ。 || C'est un acte impardonnable. || ずに;ぬき;ねば
+333 || 旅行（りょこう）した[つもりで]、|お金（かね）を|貯金（ちょきん）した。 || J'ai mis de l'argent de côté en faisant comme si j'étais parti en voyage. || ばかりで;ところで;ために
+1087 || 彼（かれ）は|[なにやら]|楽（たの）しそうに|話（はな）している。 || Il raconte quelque chose avec l'air de bien s'amuser. || ちっとも;さっぱり;まったく
+351 || [確（たし）かに]|あなたの|言（い）う|とおりだ。 || C'est vrai, c'est exactement comme tu dis. || 却って;一旦;やがて
+676 || 雨（あめ）が|降（ふ）るかもしれないので、|[一応（いちおう）]|かさを|持（も）っていこう。 || Il risque de pleuvoir, alors prenons un parapluie au cas où. || 却って;未だに;とっくに
+763 || 宿題（しゅくだい）は|[一応（いちおう）]|終（お）わりました。 || J'ai plus ou moins fini mes devoirs. || 却って;未だに;とっくに
+527 || 犯人（はんにん）は|あの|男（おとこ）[に相違（そうい）ない]。 || Le coupable est sans aucun doute cet homme. || に違いがない;を相違ない;に相違する
+431 || 「明日（あした）は|暇（ひま）です。」|「[それなら]、|一緒（いっしょ）に|出（で）かけよう。」 || « Je suis libre demain. » « Dans ce cas, sortons ensemble. » || それでも;それなのに;しかしながら
+521 || 行（い）ける[ものなら]、|今（いま）すぐ|日本（にほん）へ|行（い）きたい。 || Si seulement je le pouvais, j'irais au Japon tout de suite. || ものの;ものを;ものか
+354 || この|仕事（しごと）は|あなた[に任（まか）せ]ます。 || Je vous confie ce travail. || を任せ;で任せ;が任せ
+662 || 経験（けいけん）を|[活（い）かして]|新（あたら）しい|仕事（しごと）を|始（はじ）めた。 || J'ai commencé un nouveau travail en mettant à profit mon expérience. || 活きて;活かされ;活かせず
+1078 || 話（はなし）の|内容（ないよう）は|[おおよそ]|理解（りかい）できた。 || J'ai à peu près compris le contenu de l'histoire. || ちっとも;さっぱり;まったく
+316 || 法律（ほうりつ）[上（じょう）]、|問題（もんだい）は|ない。 || Du point de vue légal, il n'y a pas de problème. || 下;中;前
+338 || 試験（しけん）は|思（おも）った[以上（いじょう）に]|難（むずか）しかった。 || L'examen était encore plus difficile que je ne le pensais. || 以下に;以外に;以内に
+429 || お忙（いそが）しい[中（なか）を]、|お越（こ）しいただき|ありがとうございます。 || Merci d'être venu malgré votre emploi du temps chargé. || 上を;下を;前を
+417 || この|部屋（へや）は|広（ひろ）い。|[その上（うえ）]、|家賃（やちん）も|安（やす）い。 || Cette pièce est spacieuse. En plus, le loyer n'est pas cher. || それなのに;しかしながら;それでも
+396 || 引（ひ）き受（う）けた[上（うえ）は]、|最後（さいご）まで|責任（せきにん）を|持（も）ちます。 || Maintenant que j'ai accepté, j'en assumerai la responsabilité jusqu'au bout. || 下は;中は;前は
+686 || 有名（ゆうめい）な|先生（せんせい）[の下（もと）で]|研究（けんきゅう）している。 || Je fais de la recherche sous la direction d'un professeur renommé. || の上で;の中で;の前で
+679 || 締（し）め切（き）りまで|[後（あと）]|三日（みっか）しか|ない。 || Il ne reste plus que trois jours avant la date limite. || 前;先;次
+410 || 約束（やくそく）した[手前（てまえ）]、|今（いま）さら|断（ことわ）れない。 || Vu que j'ai promis, je ne peux plus refuser maintenant. || 手先;手元;手間
+690 || 遺産（いさん）[を巡（めぐ）って]、|兄弟（きょうだい）が|争（あらそ）っている。 || Les frères se disputent au sujet de l'héritage. || にしたがって;にかけて;に応えて
+581 || 年（とし）を|とる[にしたがって]、|体力（たいりょく）が|落（お）ちる。 || Avec l'âge, la forme physique diminue. || を巡って;に応えて;を込めて
+528 || 本日（ほんじつ）は|祝日（しゅくじつ）[につき]、|休業（きゅうぎょう）いたします。 || En raison d'un jour férié, nous sommes fermés aujourd'hui. || につけ;に先立ち;に応えて
+551 || この|写真（しゃしん）を|見（み）る[につけ]、|故郷（こきょう）を|思（おも）い出（だ）す。 || Chaque fois que je regarde cette photo, je repense à mon pays natal. || につき;に先立ち;に応えて
+523 || 命（いのち）[にかかわる]|病気（びょうき）では|ありません。 || Ce n'est pas une maladie qui met la vie en danger. || にかけては;に先立ち;に応えて
+327 || 彼（かれ）は|夢（ゆめ）[に向（む）かって]|努力（どりょく）している。 || Il fait des efforts pour atteindre son rêve. || に反して;に応えて;に先立ち
+399 || 試験（しけん）の|結果（けっか）[が気（き）になる]。 || Je me fais du souci pour les résultats de l'examen. || を気になる;で気になる;へ気になる
+518 || 車（くるま）[に気（き）をつけて]|帰（かえ）ってね。 || Rentre bien, et fais attention aux voitures. || を気をつけて;で気をつけて;が気をつけて
+344 || 彼（かれ）は|雨（あめ）[も構（かま）わず]、|外（そと）で|走（はし）り続（つづ）けた。 || Sans se soucier de la pluie, il a continué à courir dehors. || を構わず;に構わず;で構わず
+552 || 日曜日（にちようび）[を除（のぞ）いて]、|毎日（まいにち）|営業（えいぎょう）しています。 || Nous sommes ouverts tous les jours sauf le dimanche. || に限って;に先立ち;に応えて
+430 || 急（いそ）いでいる|時（とき）[に限（かぎ）って]、|電車（でんしゃ）が|遅（おく）れる。 || C'est justement quand je suis pressé que le train est en retard. || を除いて;に限らず;に応えて
+504 || この|店（みせ）は|若者（わかもの）[に限（かぎ）らず]、|お年寄（としよ）りにも|人気（にんき）だ。 || Ce magasin est populaire non seulement chez les jeunes, mais aussi chez les personnes âgées. || に限って;を除いて;に先立ち
+566 || 薬（くすり）を|飲（の）んだが、|[なお]|熱（ねつ）が|下（さ）がらない。 || J'ai pris le médicament, mais la fièvre ne baisse toujours pas. || 却って;一旦;やがて
+567 || 参加費（さんかひ）は|無料（むりょう）です。|[なお]、|駐車場（ちゅうしゃじょう）は|ありません。 || La participation est gratuite. À noter qu'il n'y a pas de parking. || それなのに;それとも;それでも
+1090 || 空（そら）が|[次第（しだい）に]|明（あか）るくなってきた。 || Le ciel s'est éclairci peu à peu. || 未だに;とっくに;いきなり
+352 || 自分（じぶん）で|やってみ[てこそ]、|本当（ほんとう）の|難（むずか）しさが|わかる。 || Ce n'est qu'en essayant soi-même qu'on comprend la vraie difficulté. || てでも;ては;ても
+580 || 終電（しゅうでん）が|ないから、|歩（ある）いて|帰（かえ）る[よりしかたがない]。 || Il n'y a plus de dernier train, je n'ai pas d'autre choix que de rentrer à pied. || よりしかたがある;ばかりしかたがない;だけしかたがない
+402 || 気持（きも）ちは|わから[なくはない]。 || Ce n'est pas que je ne comprenne pas ce que tu ressens. || なくてはいけない;なくてもいい;ないではいられない
+347 || 実際（じっさい）に|会（あ）わ[ないことには]、|どんな|人（ひと）か|わからない。 || Tant qu'on ne l'a pas rencontré en personne, on ne peut pas savoir quel genre de personne c'est. || ないことはない;ないことにする;ないことがある
+418 || その|話（はなし）を|聞（き）いて、|笑（わら）わ[ないではいられなかった]。 || En entendant cette histoire, je n'ai pas pu m'empêcher de rire. || なくてもよかった;ないことにした;ないようにした
+548 || 約束（やくそく）は|守（まも）ら[ねばならない]。 || Il faut tenir ses promesses. || ねばなる;ねばよい;ねばすむ
+608 || 君（きみ）も|こっちへ|来（き）[たまえ]。 || Toi aussi, viens donc par ici. || なさいます;くださいませ;いたします
+681 || 三人（さんにん）[のうち]、|二人（ふたり）が|合格（ごうかく）した。 || Sur les trois personnes, deux ont réussi. || の上;の下;の前
+569 || 体（からだ）に|悪（わる）いと|知（し）り[つつも]、|たばこが|やめられない。 || Tout en sachant que c'est mauvais pour la santé, je n'arrive pas à arrêter de fumer. || ながらに;たまえ;っぱなし
+572 || お|降（お）りの[際（さい）に]は、|お忘（わす）れ物（もの）に|ご注意（ちゅうい）ください。 || En descendant, veillez à ne rien oublier. || 上に;中に;下に
+522 || 開会（かいかい）[にあたり]、|一言（ひとこと）|ごあいさつ|申（もう）し上（あ）げます。 || À l'occasion de l'ouverture, permettez-moi de dire quelques mots. || にかけて;に反し;を除き
+689 || 入院（にゅういん）[を契機（けいき）に]、|たばこを|やめた。 || J'ai arrêté de fumer à la suite de mon hospitalisation. || を除いて;を込めて;に反して
+510 || 出（で）かけようとした[ところに]、|電話（でんわ）が|かかってきた。 || Au moment où j'allais sortir, le téléphone a sonné. || ところが;ばかりに;ところを
+557 || 横（よこ）に|なる[か]|ならないかのうちに、|眠（ねむ）ってしまった。 || À peine allongé, je me suis endormi. || と;や;も
+670 || 帰（かえ）り[がけに]、|本屋（ほんや）に|寄（よ）った。 || En rentrant, je suis passé à la librairie. || がちに;ぎみに;っぽく
+695 || そんなに|ゆっくりし[ていては]、|間（ま）に|合（あ）わないよ。 || Si tu continues à traîner comme ça, tu ne seras pas à l'heure. || ていても;てばかり;てこそ
+413 || もう|少（すこ）しで|事故（じこ）に|なる[ところだった]。 || Il s'en est fallu de peu qu'il y ait un accident. || ところだ;ところで;ところに
+422 || 仕事（しごと）が|忙（いそが）しくて、|旅行（りょこう）[どころではない]。 || J'ai tellement de travail que les voyages, ce n'est pas le moment. || ところではない;ことではない;ものではない
+562 || そんなに|食（た）べ[ては]、|おなかを|こわすよ。 || Si tu manges autant, tu vas te rendre malade. || てでも;てこそ;つつ
+563 || 書（か）い[ては]|消（け）し、|書（か）いては|消（け）しを|繰（く）り返（かえ）した。 || J'ai écrit puis effacé, écrit puis effacé, encore et encore. || てこそ;てでも;つつ
+671 || これ[も又（また）]|人生（じんせい）だ。 || Ça aussi, c'est la vie. || を又;に又;が又
+555 || 調査（ちょうさ）[の結果（けっか）]、|原因（げんいん）が|わかった。 || À la suite de l'enquête, on a découvert la cause. || の手前;の際;のうち
+605 || 試合（しあい）[に先立（さきだ）ち]、|開会式（かいかいしき）が|行（おこな）われた。 || Une cérémonie d'ouverture a eu lieu avant le match. || につけ;に限らず;を除き
+539 || [はたして]|彼（かれ）は|本当（ほんとう）に|来（く）るのだろうか。 || Va-t-il vraiment venir, je me le demande. || いきなり;たちまち;とっくに
+540 || 苦労（くろう）した[甲斐（かい）があって]、|試験（しけん）に|合格（ごうかく）した。 || Mes efforts ont payé : j'ai réussi l'examen. || 甲斐をあって;甲斐にあって;甲斐でなくて
+612 || [やがて]|春（はる）が|来（く）るだろう。 || Le printemps finira bien par arriver. || とっくに;未だに;いきなり
+554 || 雨（あめ）が|降（ふ）っている。|[したがって]、|試合（しあい）は|中止（ちゅうし）だ。 || Il pleut. Par conséquent, le match est annulé. || それなのに;それとも;しかしながら
+603 || 留学（りゅうがく）を|[きっかけ]に、|料理（りょうり）を|始（はじ）めた。 || Mon séjour à l'étranger a été l'occasion de me mettre à la cuisine. || 甲斐;手前;際
+579 || 料理（りょうり）[にかけては]、|彼（かれ）に|かなう|人（ひと）は|いない。 || En matière de cuisine, personne ne lui arrive à la cheville. || にかかわって;に先立って;に応えては
+609 || 彼（かれ）は|[とっくに]|家（いえ）に|帰（かえ）った。 || Il est rentré chez lui depuis longtemps. || 未だに;やがて;いよいよ
+708 || あの|事件（じけん）の|犯人（はんにん）は|[未（いま）だに]|見（み）つかっていない。 || Le coupable de cette affaire n'a toujours pas été retrouvé. || とっくに;やがて;いきなり
+550 || 実際（じっさい）の|事件（じけん）[をもとに]|小説（しょうせつ）を|書（か）いた。 || J'ai écrit un roman inspiré d'une affaire réelle. || を込めて;を除いて;を巡って
+613 || [いつの間（ま）にか]|外（そと）は|暗（くら）くなっていた。 || Sans que je m'en rende compte, il faisait nuit dehors. || とっくに;未だに;一旦
+614 || [一旦（いったん）]|家（いえ）に|帰（かえ）ってから、|また|来（き）ます。 || Je rentre un moment chez moi, puis je reviens. || 未だに;とっくに;たちまち
+534 || この|仕事（しごと）は|今日中（きょうじゅう）には|終（お）わり[そうにない]。 || Ce travail ne semble pas près d'être fini aujourd'hui. || そうだった;らしかった;ようだった
+543 || 予想（よそう）[に反（はん）して]、|試験（しけん）は|簡単（かんたん）だった。 || Contrairement aux prévisions, l'examen était facile. || に応えて;に先立ち;をもとに
+322 || 注意（ちゅうい）したら、|[逆（ぎゃく）に]|怒（おこ）られた。 || Je lui ai fait une remarque et, à l'inverse, c'est moi qui me suis fait gronder. || 次第に;未だに;とっくに
+571 || 最後（さいご）まで|走（はし）り[抜（ぬ）いた]。 || J'ai couru jusqu'au bout. || 込んだ;上がった;合った
+602 || 今日（きょう）は|仕事（しごと）の|話（はなし）[抜（ぬ）きで]|楽（たの）しもう。 || Aujourd'hui, profitons sans parler boulot. || 込みで;上で;次第で
+520 || [いよいよ]|明日（あした）は|試験（しけん）だ。 || Ça y est, demain c'est l'examen. || 未だに;とっくに;一旦
+334 || 友（とも）だちが|車（くるま）で|送（おく）ってくれたので、|タクシーに|乗（の）ら[ずに済（す）んだ]。 || Un ami m'a raccompagné en voiture, je n'ai donc pas eu à prendre de taxi. || ずにいられた;ずにはおかなかった;ずじまいだった
+568 || ファンの|声（こえ）[に応（こた）えて]、|歌手（かしゅ）は|もう|一曲（いっきょく）|歌（うた）った。 || En réponse aux fans, le chanteur a chanté une chanson de plus. || に反して;を除いて;に先立って
+506 || コーヒーに|しますか、|[それとも]|紅茶（こうちゃ）に|しますか。 || Vous prendrez un café, ou bien un thé ? || それなのに;したがって;その上
+328 || 子（こ）ども[にしたら]、|大人（おとな）の|話（はなし）は|つまらないだろう。 || Pour un enfant, les conversations d'adultes doivent être ennuyeuses. || にかけては;に先立ち;に応えて
+329 || 行（い）く[にしても]|行（い）かない|にしても、|連絡（れんらく）は|ください。 || Que tu y ailles ou non, préviens-moi. || にとって;について;に対して
+400 || 私（わたし）[としては]、|その|案（あん）に|賛成（さんせい）です。 || Pour ma part, je suis d'accord avec cette proposition. || にしては;にとっては;にかけては
+341 || 今（いま）から|急（いそ）いだ[としても]、|間（ま）に|合（あ）わないだろう。 || Même si on se dépêche maintenant, on n'arrivera sans doute pas à temps. || としては;とすると;としたら
+350 || [それにしても]、|今日（きょう）は|暑（あつ）いですね。 || Quand même, il fait chaud aujourd'hui. || それなのに;それとも;その上
+657 || 知（し）ら[ぬ]|間（ま）に|時間（じかん）が|過（す）ぎた。 || Le temps a passé sans que je m'en aperçoive. || ねば;ずに;ざれ
+408 || 会場（かいじょう）[にて]|チケットを|販売（はんばい）いたします。 || Les billets seront vendus sur place. || にかけて;につけ;について
+348 || この|山（やま）に|登（のぼ）る[には]、|準備（じゅんび）が|必要（ひつよう）だ。 || Pour gravir cette montagne, il faut se préparer. || にしては;にとっては;にかけて
+319 || 仕事（しごと）が|[思（おも）うように]|進（すす）まない。 || Le travail n'avance pas comme je le voudrais. || 思うほど;思うまで;思うだけ
+426 || 雨（あめ）が|止（や）んだ[かと思（おも）ったら]、|また|降（ふ）り出（だ）した。 || À peine la pluie s'était-elle arrêtée qu'elle a recommencé. || かと言えば;かどうか;かもしれず
+1097 || ご意見（いけん）を|いただけれ[ばと思（おも）います]。 || Je vous serais reconnaissant de bien vouloir me donner votre avis. || ばいいです;ばかりです;ばだめです
+509 || 高（たか）ければ|いい[というものでもない]。 || Ce n'est pas parce que c'est cher que c'est forcément bien. || ということだ;というのだ;というわけだ
+541 || 事故（じこ）の|原因（げんいん）は|運転手（うんてんしゅ）の|不注意（ふちゅうい）だ[と考（かんが）えられる]。 || On peut considérer que l'accident est dû à l'inattention du conducteur. || を考えられる;に考えられる;で考えられる
+648 || コスト[という点（てん）から考（かんが）えると]、|この|案（あん）が|いい。 || Du point de vue du coût, cette proposition est la meilleure. || という点に考えると;という点で考えたら;という点を考えると
+345 || 電気（でんき）が|ついている[ということは]、|まだ|起（お）きているんだろう。 || Si la lumière est allumée, c'est qu'il est encore debout. || というものは;というのに;というより
+423 || そんな[ふうに]|言（い）わなくても|いいでしょう。 || Pas besoin de le dire de cette façon. || ふうで;ふうを;ふうが
+536 || 毎日（まいにち）|一時間（いちじかん）|勉強（べんきょう）する、|[という風（ふう）に]|決（き）めた。 || J'ai décidé d'étudier une heure par jour, comme ça. || という点で;というより;というのに
+420 || 困（こま）っている|人（ひと）を|助（たす）けるのが|友（とも）だち[というものだ]。 || Aider quelqu'un en difficulté, c'est ça, un ami. || というわけだ;ということだ;というものか
+323 || 子（こ）どもの|目（め）[から見（み）ると]、|大人（おとな）は|不思議（ふしぎ）だ。 || Vus avec des yeux d'enfant, les adultes sont étranges. || に見ると;で見ると;を見ると
+425 || 笑（わら）っている[ところを見（み）ると]、|いい|ことが|あったようだ。 || À voir son sourire, il a dû se passer quelque chose de bien. || ところに見ると;ところで見ると;ところが見ると
+424 || 名前（なまえ）[からして]、|強（つよ）そうな|チームだ。 || Rien qu'à son nom, c'est une équipe qui a l'air forte. || にして;をして;でして
+332 || [そういえば]、|田中（たなか）さんは|元気（げんき）かな。 || Au fait, je me demande comment va Tanaka. || それなのに;したがって;それとも
+532 || 少々（しょうしょう）|お待（ま）ち[願（ねが）います]。 || Veuillez patienter un instant. || 願わせます;願われます;願いません
+1092 || ちょっと|手伝（てつだ）って[頂戴（ちょうだい）]。 || Aide-moi un peu, s'il te plaît. || あげる;おく;しまう
+339 || 田中（たなか）さんは|来月（らいげつ）|引（ひ）っ越（こ）す[とか]。 || Il paraît que Tanaka déménage le mois prochain, ou quelque chose comme ça. || とも;ても;でも
+421 || みんなで|力（ちから）を|合（あ）わせて|頑張（がんば）ろう[ではないか]。 || Unissons nos forces et faisons de notre mieux ! || ではないだろう;ではなかった;ではない
+405 || この|計画（けいかく）は|少（すこ）し|無理（むり）がある[のではないだろうか]。 || Ce plan ne serait-il pas un peu irréaliste ? || のではないのだ;のではなかった;のではないことか
+433 || 毎日（まいにち）|遊（あそ）んでばかりいたら、|試験（しけん）に|落（お）ち[て当然（とうぜん）だ]。 || Si tu ne fais que t'amuser tous les jours, c'est normal que tu rates l'examen. || て当然でない;に当然だ;を当然だ
+685 || あんなに|練習（れんしゅう）したのだから、|勝（か）った[のも当然（とうぜん）だ]。 || Avec tout cet entraînement, pas étonnant qu'il ait gagné. || のを当然だ;のに当然だ;ので当然だ
+710 || [たった]|五分（ごふん）で|宿題（しゅくだい）を|終（お）わらせた。 || J'ai fini mes devoirs en seulement cinq minutes. || とっくに;未だに;やがて
+604 || 明日（あした）は|[おそらく]|雨（あめ）だろう。 || Demain, il pleuvra sans doute. || とっくに;いきなり;たちまち
+503 || あんな|店（みせ）、|二度（にど）と|行（い）く[ものか]。 || Ce magasin ? Jamais de la vie je n'y retournerai. || ものだ;ものの;ものなら
+691 || 道（みち）に|迷（まよ）った。|[おまけに]|雨（あめ）まで|降（ふ）ってきた。 || Je me suis perdu. Et pour couronner le tout, il s'est mis à pleuvoir. || それなのに;それとも;したがって
+325 || 会議（かいぎ）では|日本語（にほんご）を|使（つか）う[ことになっている]。 || Il est convenu qu'on parle japonais pendant les réunions. || ことにしている;ことがある;ことはない
+427 || 今日（きょう）は|勉強（べんきょう）する[気（き）]が|しない。 || Aujourd'hui, je n'ai pas envie d'étudier. || 心;顔;声
+559 || 彼女（かのじょ）は|寂（さび）し[げ]な|顔（かお）を|していた。 || Elle avait l'air triste. || さ;み;く
+342 || 時間（じかん）に|厳（きび）しい|彼（かれ）の[ことだから]、|もう|着（つ）いているだろう。 || Lui qui est si ponctuel, il doit déjà être arrivé. || ものだから;わけだから;ところだから
+415 || 道（みち）が|混（こ）んでいた[ものですから]、|遅（おく）れてしまいました。 || C'est que la route était embouteillée, du coup je suis en retard. || ことですから;わけですから;ところですから
+406 || 彼（かれ）の|演奏（えんそう）には|人（ひと）の|心（こころ）を|打（う）つ[ものがある]。 || Son interprétation a quelque chose qui touche le cœur. || ことがある;ところがある;わけがある
+641 || 最近（さいきん）の|若者（わかもの）は|本（ほん）を|読（よ）まない[傾向（けいこう）がある]。 || Les jeunes d'aujourd'hui ont tendance à ne pas lire. || 傾向をある;傾向にする;傾向でする
+1093 || 彼（かれ）の|勇気（ゆうき）は|尊敬（そんけい）[に値（あたい）する]。 || Son courage mérite le respect. || を値する;で値する;が値する
+419 || 給料（きゅうりょう）は|安（やす）いが、|仕事（しごと）が|ある[だけましだ]。 || Le salaire est bas, mais avoir un travail, c'est déjà ça. || ばかりましだ;しかましだ;ほどましだ
+694 || [幸（さいわ）い]、|けが人（にん）は|いなかった。 || Heureusement, il n'y a pas eu de blessés. || 却って;未だに;いきなり
+414 || こんな|ことで|泣（な）いている[ようでは]、|この|仕事（しごと）は|続（つづ）かないよ。 || Si tu pleures pour si peu, tu ne tiendras pas dans ce travail. || ようにも;ようなら;ようで
+502 || 行（い）く[ことは]|行（い）くが、|すぐ|帰（かえ）るよ。 || J'y vais, certes, mais je rentre tout de suite. || ものは;わけは;ところは
+505 || 雨（あめ）は|[更（さら）に]|強（つよ）くなった。 || La pluie est devenue encore plus forte. || 未だに;とっくに;一旦
+606 || 頑張（がんば）っても、|[精々（せいぜい）]|三位（さんい）だろう。 || Même en faisant de notre mieux, on finira troisièmes au mieux. || 未だに;とっくに;いきなり
+696 || 彼（かれ）の|声（こえ）が|[僅（わず）かに]|震（ふる）えていた。 || Sa voix tremblait légèrement. || 却って;未だに;とっくに
+1107 || 駅（えき）まで|歩（ある）いて|十分（じゅっぷん）[弱（じゃく）]です。 || La gare est à un peu moins de dix minutes à pied. || 強い;弱い;弱さ
+1108 || 参加者（さんかしゃ）は|百人（ひゃくにん）[強（きょう）]だった。 || Il y avait un peu plus de cent participants. || 強い;強さ;強く
+697 || 日本（にほん）[および]|韓国（かんこく）から|多（おお）くの|選手（せんしゅ）が|参加（さんか）した。 || De nombreux athlètes venus du Japon et de Corée ont participé. || それとも;したがって;それなのに
+698 || 新商品（しんしょうひん）は|[たちまち]|売（う）り切（き）れた。 || Le nouveau produit a été épuisé en un instant. || 未だに;とっくに;やがて
+500 || 彼（かれ）は|[いきなり]|部屋（へや）に|入（はい）ってきた。 || Il est entré dans la pièce sans prévenir. || 未だに;とっくに;やがて
+412 || 京都（きょうと）や|奈良（なら）[といった]|古（ふる）い|町（まち）が|好（す）きだ。 || J'aime les villes anciennes comme Kyoto ou Nara. || といっても;というより;というのに
+533 || 心（こころ）[を込（こ）めて]|手紙（てがみ）を|書（か）いた。 || J'ai écrit cette lettre avec tout mon cœur. || を除いて;を巡って;をもとに
+558 || 雨（あめ）[に加（くわ）えて]、|風（かぜ）も|強（つよ）くなってきた。 || En plus de la pluie, le vent s'est mis à souffler fort. || に反して;に応えて;に先立ち
+680 || 母（はは）には|[何（なに）から何（なに）まで]|お世話（せわ）に|なった。 || Ma mère s'est occupée de moi en tout point. || 何でも;何とか;何だか
+610 || 冗談（じょうだん）[は別（べつ）として]、|本当（ほんとう）の|話（はなし）を|しよう。 || Trêve de plaisanterie, parlons sérieusement. || を別として;に別として;で別として
+320 || 期待（きたい）していた[だけに]、|がっかりした。 || Justement parce que j'y croyais, j'ai été d'autant plus déçu. || だけは;だけで;だけしか
+398 || 結果（けっか）は|どうであれ、|やる[だけは]|やった。 || Quel que soit le résultat, j'ai fait tout ce que je pouvais. || だけに;だけで;だけしか
+709 || [何（なに）より]|健康（けんこう）が|大切（たいせつ）です。 || La santé importe plus que tout. || 何から;何でも;何とか
+407 || [何（なん）といっても]、|この|店（みせ）の|ラーメンが|いちばんだ。 || Quoi qu'on en dise, les ramen de ce restaurant sont les meilleurs. || 何とか;何だか;何でも
+597 || お茶（ちゃ）[か何（なに）か]|飲（の）みませんか。 || On boit un thé ou quelque chose ? || を何か;が何か;で何か
+353 || 試験（しけん）の|結果（けっか）が|心配（しんぱい）で[ならない]。 || Je suis terriblement inquiet pour les résultats de l'examen. || いけない;しまう;おく
+1101 || 会員（かいいん）[のみ]|入場（にゅうじょう）できます。 || Seuls les membres peuvent entrer. || のみならず;のもの;のみで
+601 || 彼（かれ）は|英語（えいご）[のみならず]、|フランス語（ご）も|話（はな）せる。 || Non seulement il parle anglais, mais aussi français. || のみで;のもの;のみを
+409 || 何度（なんど）も|説明（せつめい）した。|[それなのに]、|彼（かれ）は|まだ|わかっていない。 || Je lui ai expliqué plusieurs fois. Et pourtant, il ne comprend toujours pas. || それとも;したがって;その上
+564 || 彼（かれ）は|[いわゆる]|天才（てんさい）だ。 || C'est ce qu'on appelle un génie. || 未だに;とっくに;一旦
+326 || 彼女（かのじょ）は|歌（うた）[も]|うまければ、|ダンスも|上手（じょうず）だ。 || Elle chante bien, et elle danse bien aussi. || を;へ;で
+324 || それは|言（い）い訳（わけ）[でしかない]。 || Ce n'est rien d'autre qu'une excuse. || でしかある;でもない;ではある
+574 || [何（なに）しろ]|初（はじ）めてなので、|緊張（きんちょう）します。 || Après tout, c'est la première fois, alors je suis nerveux. || 何とか;何だか;何でも
+549 || 行（い）く[にしろ]|行（い）かないにしろ、|返事（へんじ）を|ください。 || Que tu y ailles ou non, donne-moi une réponse. || にとって;について;に対して
+1080 || 子（こ）ども[ならともかく]、|大人（おとな）が|そんな|ことを|するなんて。 || Passe encore pour un enfant, mais qu'un adulte fasse une chose pareille… || ならでは;ならまだしもか;ならば
+578 || 引（ひ）っ越（こ）しの|準備（じゅんび）[やら]|仕事（しごと）やらで、|忙（いそが）しい。 || Entre les préparatifs du déménagement, le travail et tout ça, je suis débordé. || とか;だけ;しか
+674 || 計画（けいかく）は|よかった。|[しかしながら]、|予算（よさん）が|足（た）りなかった。 || Le projet était bon. Cependant, le budget était insuffisant. || したがって;その上;それとも
+403 || 一度（いちど）|失敗（しっぱい）したからといって、|才能（さいのう）が|ない[ことにはならない]。 || Ce n'est pas parce qu'on a échoué une fois qu'on n'a pas de talent. || ことになる;ことにする;ことがある
+497 || さすが|プロの|料理人（りょうりにん）[だけのことはある]。 || C'est bien un cuisinier professionnel, pas étonnant. || だけしかない;だけにすぎない;だけではない
+516 || 人（ひと）の|悪口（わるぐち）を|言（い）って[はならない]。 || Il ne faut pas dire du mal des autres. || もならない;はなる;もなる
+498 || 明日（あした）は|試験（しけん）だから、|遊（あそ）んで[はいられない]。 || J'ai un examen demain, je ne peux pas me permettre de m'amuser. || もいられない;はいる;もいる
+693 || 忙（いそが）しくて、|[陸（ろく）に]|寝（ね）ていない。 || Je suis tellement occupé que je n'ai pas vraiment dormi. || 次第に;未だに;とっくに
+576 || 借金（しゃっきん）し[てでも]、|この|家（いえ）を|買（か）いたい。 || Même s'il faut emprunter, je veux acheter cette maison. || てこそ;ては;つつ
+511 || どんなに|遠（とお）く[とも]、|必（かなら）ず|行（い）きます。 || Si loin que ce soit, j'irai sans faute. || とか;とは;とに
+537 || 嫌（きら）いだ[というわけではない]が、|あまり|食（た）べない。 || Ce n'est pas que je déteste ça, mais je n'en mange pas beaucoup. || というところではない;というためではない;というばかりではない
+684 || 彼（かれ）が|怒（おこ）る[のももっともだ]。 || Il est bien normal qu'il se mette en colère. || のをもっともだ;のにもっともだ;のでもっともだ
+575 || いくら|頼（たの）まれ[たって]、|それは|できない。 || On aura beau me le demander, je ne peux pas faire ça. || たら;たり;たまえ

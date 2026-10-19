@@ -1036,3 +1036,13 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 .poke-reply { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
 .poke-reply:empty { display: none; }
 .poke-card .poke-actions { margin-top: 8px; }
+.lesson-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.segmented.small button { padding: 6px 13px; font-size: .92rem; }
+.seg-label { align-self: center; padding: 0 6px 0 10px; font-size: .78rem; color: var(--mist); }
+.lc-chain { margin-top: 2px; font-size: .74rem; color: var(--cyan); }
+.lc-todo { position: absolute; top: 10px; right: 12px; padding: 2px 9px; border-radius: 999px; font-size: .7rem; font-weight: 700; color: var(--night); background: var(--azure); }
+.lesson-card.seen { border-color: rgba(127, 168, 255, .45); }
+.lesson-phase { padding: 3px 12px; border-radius: 999px; font: 800 italic .85rem/1.4 var(--display); color: var(--night); background: var(--cyan); }
+.lesson-phase.quiz { background: var(--sakura); }
+.lesson-rule { color: var(--mist); }
+.lesson-wrap.quizzing > .lesson-head-bar { display: none; }

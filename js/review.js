@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019024951';
-import { speak, speakBtn } from './voice.js?v=20261019024951';
-import { pitchSVG } from './pitch.js?v=20261019024951';
-import { play } from './sfx.js?v=20261019024951';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019024951';
-import * as D from './data.js?v=20261019024951';
-import * as S from './srs.js?v=20261019024951';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019033652';
+import { speak, speakBtn } from './voice.js?v=20261019033652';
+import { pitchSVG } from './pitch.js?v=20261019033652';
+import { play } from './sfx.js?v=20261019033652';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019033652';
+import * as D from './data.js?v=20261019033652';
+import * as S from './srs.js?v=20261019033652';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -115,7 +115,7 @@ export function practiceItems(sents, grammarById) {
  * mode 'srs' : `queue` = clés de cartes, les réponses sont notées.
  * mode 'practice' : `items` = questions prêtes, rien n'est enregistré.
  */
-export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone, extraActions = null }) {
+export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone, extraActions = null, untilCorrect = false, celebrateEnd = true }) {
   const list = mode === 'srs' ? [...queue] : [...items];
   const total = list.length;
   const retries = new Map();
@@ -280,10 +280,10 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   function done(item, q) {
     if (mode === 'srs') S.grade(item.key, q);
     if (q < 3) {
-      missed.add(item.key || item.s?.id);
+      missed.add(item.key || item.s?.id || (item.v && `v:${item.v.w}`) || (item.g && `g:${item.g.id}`));
       const id = item.key || item.s?.id || item.v?.w;
       const n = retries.get(id) || 0;
-      if (n < 3) {
+      if (n < 3 || untilCorrect) {
         retries.set(id, n + 1);
         const pos = Math.min(list.length, idx + 4 + Math.floor(Math.random() * 3));
         list.splice(pos, 0, mode === 'srs' ? item.key : { ...item, options: shuffle(item.options) });
@@ -296,7 +296,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   function finish() {
     setKeys(null);
     const rate = seen ? Math.round((ok / seen) * 100) : 0;
-    if (seen) celebrate({ ...verdict(ok / seen), detail: `${ok} / ${seen} bonnes réponses` });
+    if (seen && celebrateEnd) celebrate({ ...verdict(ok / seen), detail: `${ok} / ${seen} bonnes réponses` });
     stage.replaceChildren(h('div.card.finish',
       h('div.finish-flower', { html: blossom(seen ? ok / seen : 0, 120, `${rate} % de bonnes réponses`) }),
       h('h2', seen ? 'Séance terminée' : 'Rien à réviser pour le moment'),
@@ -305,7 +305,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       h('div.actions', ...(extraActions || [
         h('a.btn.primary', { href: '#/' }, 'Retour à l’accueil'),
         h('a.btn', { href: '#/jeux' }, 'Jouer un peu')]))));
-    onDone && onDone({ ok, seen });
+    onDone && onDone({ ok, seen, missed: missed.size });
   }
 
   next();

@@ -1,7 +1,7 @@
 // 花びら (Hanabira) : des pétales portant des mots tombent ; attrape celui qui correspond au sens affiché.
-import { play as sfx } from '../sfx.js?v=20261019024951';
-import { h, ruby, shuffle, sample, pick, reducedMotion, toast } from '../util.js?v=20261019024951';
-import * as D from '../data.js?v=20261019024951';
+import { play as sfx } from '../sfx.js?v=20261019033652';
+import { h, ruby, shuffle, sample, pick, reducedMotion, toast } from '../util.js?v=20261019033652';
+import * as D from '../data.js?v=20261019033652';
 
 export default async function hanabira(root, { params, settings, saveBest }) {
   let lv = params.get('lv') || settings.vocabLevels[0] || 'N5';

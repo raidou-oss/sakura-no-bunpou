@@ -1,7 +1,7 @@
 // Effets sonores synthétisés en direct (Web Audio) : aucun fichier audio, rien à télécharger.
 // Inspirés de l'esprit des menus de Persona : bips de curseur cristallins, « shing » de validation,
 // balayages de vent pour les transitions, arpèges brillants pour les bonnes réponses.
-import * as S from './srs.js?v=20261019024951';
+import * as S from './srs.js?v=20261019033652';
 
 let ctx = null, master = null, verb = null, noiseBuf = null;
 const last = {};
@@ -119,7 +119,8 @@ export function play(name, { gap = 40 } = {}) {
 }
 
 // --- Branchement automatique sur l'interface --------------------------------------------
-const HOVER = '.nav-list a, .option:not(:disabled), .btn:not(:disabled), .game-tile, .units a, .levels a, .points a, .members a, .tile:not(:disabled), .speak-btn, .tabs a, .choice-row button';
+// Tout ce qui est cliquable déclenche le bip de curseur au survol (souris uniquement)
+const HOVER = 'a[href], button:not(:disabled), [role="tab"], label.check, summary, input[type="range"], select';
 let lastHover = null;
 document.addEventListener('pointerover', e => {
   if (e.pointerType !== 'mouse') return;

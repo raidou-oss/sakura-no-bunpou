@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle } from './util.js?v=20261019024951';
-import * as D from './data.js?v=20261019024951';
-import * as S from './srs.js?v=20261019024951';
-import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText } from './review.js?v=20261019024951';
-import { speakBtn, speak } from './voice.js?v=20261019024951';
-import { cardScore } from './level.js?v=20261019024951';
-import { play } from './sfx.js?v=20261019024951';
-import { celebrate } from './celebrate.js?v=20261019024951';
+import { h, ruby, kana, toast, store, shuffle } from './util.js?v=20261019033652';
+import * as D from './data.js?v=20261019033652';
+import * as S from './srs.js?v=20261019033652';
+import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText } from './review.js?v=20261019033652';
+import { speakBtn, speak } from './voice.js?v=20261019033652';
+import { cardScore } from './level.js?v=20261019033652';
+import { play } from './sfx.js?v=20261019033652';
+import { celebrate, verdict } from './celebrate.js?v=20261019033652';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -18,21 +18,41 @@ const KINDS = {
 const MODE_KEY = 'sakura.lessonMode.v1';
 const DONE_KEY = 'sakura.lessonsDone.v1';
 
-/** Structure d'un niveau : leçons de grammaire et unités de vocabulaire, appariées par rang */
+const CHUNK = 12;          // mots par leçon de vocabulaire
+const COUNT_KEY = 'sakura.lessonCount.v1';
+const SEEN_KEY = 'sakura.lessonsSeen.v1';
+export const COUNTS = [1, 2, 3, 5];
+
+/** Structure d'un niveau : leçons de grammaire, et unités de vocabulaire découpées en blocs de 12 mots */
 async function levelPlan(lv) {
   const [grammar, vocab] = await Promise.all([D.grammar(), D.vocab(lv)]);
   const gLessons = new Map();
   grammar.filter(g => g.lv === lv).forEach(g => { if (!gLessons.has(g.le)) gLessons.set(g.le, []); gLessons.get(g.le).push(g); });
-  const vUnits = new Map();
-  vocab.forEach(v => { if (!vUnits.has(v.unit)) vUnits.set(v.unit, []); vUnits.get(v.unit).push(v); });
-  return { g: [...gLessons.entries()].map(([le, items]) => ({ n: le, items })), v: [...vUnits.values()].map((items, i) => ({ n: i + 1, items })) };
+  const units = new Map();
+  vocab.forEach(v => { if (!units.has(v.unit)) units.set(v.unit, []); units.get(v.unit).push(v); });
+  const v = [];
+  [...units.entries()].forEach(([unit, words], ui) => {
+    const parts = Math.ceil(words.length / CHUNK), size = Math.ceil(words.length / parts);
+    for (let p = 0; p < parts; p++) v.push({ n: v.length + 1, unit, unitNth: ui + 1, part: p + 1, parts, items: words.slice(p * size, (p + 1) * size) });
+  });
+  const g = [...gLessons.entries()].map(([le, items]) => ({ n: le, items }));
+  return { g, v, gIndex: new Map(g.map((x, i) => [x.n, i])) };
 }
+
+/** Numéros de leçon disponibles pour un mode (grammaire : numéros de leçon ; vocabulaire et mixte : 1…N) */
+const lessonNumbers = (plan, kind) => kind === 'g' ? plan.g.map(x => x.n) : kind === 'v' ? plan.v.map(x => x.n) : plan.g.map((_, i) => i + 1);
 
 function lessonContent(plan, kind, n) {
   n = Number(n);
-  const g = kind !== 'v' ? (kind === 'm' ? plan.g[n - 1] : plan.g.find(x => x.n === n)) : null;
-  const v = kind !== 'g' ? plan.v[n - 1] : null;
-  return { g: g?.items || [], v: v?.items || [], gN: g?.n, vN: v?.n };
+  if (kind === 'g') { const g = plan.g.find(x => x.n === n); return { g: g?.items || [], v: [], gN: g?.n }; }
+  if (kind === 'v') { const v = plan.v[n - 1]; return { g: [], v: v?.items || [], vChunk: v }; }
+  const g = plan.g[n - 1], v = plan.v[n - 1];
+  return { g: g?.items || [], v: v?.items || [], gN: g?.n, vChunk: v };
+}
+
+function lessonTitle(plan, kind, n) {
+  if (kind === 'v') { const c = plan.v[Number(n) - 1]; return c ? `Unité ${c.unitNth}${c.parts > 1 ? ` · ${c.part}/${c.parts}` : ''}` : `Leçon ${n}`; }
+  return `Leçon ${kind === 'm' ? n : n}`;
 }
 
 const progressOf = items => {
@@ -41,34 +61,44 @@ const progressOf = items => {
   return items.reduce((a, it) => a + cardScore(cards[it.lv && it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`], now), 0) / items.length;
 };
 const isDone = (lv, kind, n) => !!store.get(DONE_KEY, {})[`${lv}:${kind}:${n}`];
+const isSeen = (lv, kind, n) => !!store.get(SEEN_KEY, {})[`${lv}:${kind}:${n}`];
+const mark = (key, lv, kind, ns) => { const m = store.get(key, {}); ns.forEach(n => { m[`${lv}:${kind}:${n}`] = Date.now(); }); store.set(key, m); };
 
 // --- Hub -------------------------------------------------------------------------------
 export async function lessonsHub(main, lv = 'N5') {
   lv = D.LEVELS.includes(lv) ? lv : 'N5';
   let mode = store.get(MODE_KEY, 'm');
+  let count = COUNTS.includes(store.get(COUNT_KEY, 1)) ? store.get(COUNT_KEY, 1) : 1;
   const plan = await levelPlan(lv);
   const grid = h('ul.lesson-grid');
   const seg = h('div.segmented', { role: 'tablist', 'aria-label': 'Type de leçon' });
+  const countSeg = h('div.segmented.small', { role: 'radiogroup', 'aria-label': 'Nombre de leçons par session' });
+  const desc = h('p.section-note.seg-desc');
 
   const render = (animate = false) => {
     seg.replaceChildren(...Object.entries(KINDS).map(([k, m]) => h('button', {
       type: 'button', role: 'tab', 'aria-selected': String(k === mode), class: k === mode ? 'active' : null,
-      onclick: () => { if (k === mode) return; mode = k; store.set(MODE_KEY, k); play('cursor'); render(true); },
+      onclick: () => { if (k === mode) return; mode = k; store.set(MODE_KEY, k); render(true); },
     }, h('span.seg-jp', { lang: 'ja' }, m.jp), m.label)));
-    const count = mode === 'g' ? plan.g.length : mode === 'v' ? plan.v.length : Math.max(plan.g.length, plan.v.length);
-    const list = mode === 'g' ? plan.g.map(x => x.n) : Array.from({ length: count }, (_, i) => i + 1);
-    grid.replaceChildren(...list.map((n, i) => {
+    countSeg.replaceChildren(h('span.seg-label', 'Par session'), ...COUNTS.map(c => h('button', {
+      type: 'button', role: 'radio', 'aria-checked': String(c === count), class: c === count ? 'active' : null,
+      onclick: () => { if (c === count) return; count = c; store.set(COUNT_KEY, c); render(true); },
+    }, c === 1 ? '1 leçon' : `${c} leçons`)));
+    desc.textContent = `${KINDS[mode].desc}${count > 1 ? ` Tu enchaînes ${count} leçons d'affilée, avec un seul quiz à la fin.` : ''} Une leçon est validée quand tu as réussi tous ses exercices.`;
+    const nums = lessonNumbers(plan, mode);
+    grid.replaceChildren(...nums.map((n, i) => {
       const c = lessonContent(plan, mode, n);
       const p = progressOf([...c.g, ...c.v]);
-      const done = isDone(lv, mode, n);
-      const title = mode === 'g' ? `Leçon ${n}` : mode === 'v' ? `Unité ${n}` : `Leçon ${n}`;
+      const done = isDone(lv, mode, n), seen = !done && isSeen(lv, mode, n);
       const sub = [c.g.length ? `${c.g.length} point${c.g.length > 1 ? 's' : ''}` : null, c.v.length ? `${c.v.length} mots` : null].filter(Boolean).join(' · ');
       const preview = [...c.g.slice(0, 3).map(g => g.t), ...c.v.slice(0, mode === 'm' ? 2 : 4).map(v => v.w)].join(' ・ ');
-      return h('li', { style: { '--i': i } }, h('a.lesson-card', { href: `#/lecon/${lv}/${mode}/${n}`, class: done ? 'lesson-card done' : 'lesson-card' },
-        h('span.lc-num', String(n).padStart(2, '0')),
-        h('span.lc-body', h('strong', title), h('span.lc-sub', sub), h('span.lc-preview', { lang: 'ja' }, preview)),
+      const last = nums[Math.min(nums.length - 1, i + count - 1)];
+      return h('li', { style: { '--i': i } }, h('a.lesson-card', { href: `#/lecon/${lv}/${mode}/${n}${count > 1 ? `?x=${count}` : ''}`, class: `lesson-card${done ? ' done' : ''}${seen ? ' seen' : ''}` },
+        h('span.lc-num', String(i + 1).padStart(2, '0')),
+        h('span.lc-body', h('strong', lessonTitle(plan, mode, n)), h('span.lc-sub', sub), h('span.lc-preview', { lang: 'ja' }, preview),
+          count > 1 && last !== n ? h('span.lc-chain', `→ jusqu'à : ${lessonTitle(plan, mode, last)}`) : null),
         h('span.lc-gauge', { title: `${Math.round(p * 100)} % maîtrisé` }, h('span', { style: { width: `${Math.round(p * 100)}%` } })),
-        done ? h('span.lc-done', { 'aria-label': 'Leçon terminée' }, '済') : null));
+        done ? h('span.lc-done', { 'aria-label': 'Leçon validée' }, '済') : seen ? h('span.lc-todo', 'Quiz à faire') : null));
     }));
     if (animate) { grid.classList.remove('regrid'); void grid.offsetWidth; grid.classList.add('regrid'); }
   };
@@ -77,16 +107,23 @@ export async function lessonsHub(main, lv = 'N5') {
     D.LEVELS.map(l => h('a', { href: `#/lecons/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, l)));
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja' }, '授業'), 'Leçons'),
-      h('p.section-note', 'Apprends pas à pas : grammaire, vocabulaire, ou les deux en même temps. Chaque leçon se termine par un quiz et un exercice de thème.')),
-    tabs, seg, h('p.section-note.seg-desc', KINDS[mode].desc), grid);
-  seg.addEventListener('click', () => { main.querySelector('.seg-desc').textContent = KINDS[mode].desc; });
+      h('p.section-note', 'Apprends pas à pas : grammaire, vocabulaire, ou les deux en même temps. Chaque leçon se termine par des exercices sur tout ce que tu as vu.')),
+    tabs, h('div.lesson-controls', seg, countSeg), desc, grid);
 }
 
 // --- Leçon ------------------------------------------------------------------------------
-export async function lessonPage(main, lv, kind, n, { refreshBadge } = {}) {
+export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {}) {
   if (!KINDS[kind]) { location.hash = '#/lecons'; return; }
   const plan = await levelPlan(lv);
-  const c = lessonContent(plan, kind, n);
+  // Lien depuis une unité de vocabulaire : on démarre à son premier bloc
+  if (kind === 'v' && params?.get('unit')) n = plan.v.find(x => x.unit === Number(params.get('unit')))?.n || n;
+  const nums = lessonNumbers(plan, kind);
+  const start = nums.indexOf(Number(n));
+  if (start < 0) { location.hash = `#/lecons/${lv}`; return; }
+  const count = Math.max(1, Math.min(5, Number(params?.get('x')) || 1));
+  const covered = nums.slice(start, start + count);
+  const parts = covered.map(x => lessonContent(plan, kind, x));
+  const c = { g: parts.flatMap(p => p.g), v: parts.flatMap(p => p.v), gN: parts.find(p => p.gN)?.gN };
   if (!c.g.length && !c.v.length) { location.hash = `#/lecons/${lv}`; return; }
   const furi = S.getSettings().furigana === 'always' || (S.getSettings().furigana === 'auto' && (lv === 'N5' || lv === 'N4'));
   const sentsByG = new Map(await Promise.all(c.g.map(async g => [g.id, await D.sentencesFor(g.id)])));
@@ -102,12 +139,15 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge } = {}) {
     c.g.forEach(g => steps.push({ g }));
     c.v.forEach(v => steps.push({ v }));
   }
-  const title = kind === 'v' ? `Unité ${n}` : `Leçon ${n}`;
+  const title = covered.length > 1 ? `${lessonTitle(plan, kind, covered[0])} → ${lessonTitle(plan, kind, covered[covered.length - 1])}` : lessonTitle(plan, kind, covered[0]);
+  const nextN = nums[start + covered.length];
+  const nextHref = nextN != null ? `#/lecon/${lv}/${kind}/${nextN}${count > 1 ? `?x=${count}` : ''}` : null;
   let i = 0, dir = 1, keyHandler = null;
   const bar = h('div.progress', h('span'));
   const counter = h('span.session-count');
   const stage = h('div.stage.lesson-stage');
   const dots = h('div.lesson-dots', { 'aria-hidden': 'true' });
+  const phase = h('span.lesson-phase', 'Découverte');
 
   function stepCard(st) {
     if (st.g) {
@@ -138,14 +178,14 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge } = {}) {
     const card = stepCard(st);
     card.classList.add(dir > 0 ? 'from-right' : 'from-left');
     const prev = h('button.btn', { disabled: i === 0, onclick: () => go(-1) }, 'Précédent');
-    const next = h('button.btn.primary', { onclick: () => go(1) }, i === steps.length - 1 ? 'Terminer la leçon' : 'Suivant');
+    const next = h('button.btn.primary', { onclick: () => go(1) }, i === steps.length - 1 ? 'Passer aux exercices' : 'Suivant');
     stage.replaceChildren(card, h('div.actions.lesson-nav', prev, next));
     play('card');
     if (S.getSettings().autoSpeak) setTimeout(() => speak(st.v ? kana(st.v.f || st.v.w) : (st.g.r || st.g.t)), 260);
   }
   function go(d) {
     if (i + d < 0) return;
-    if (i + d >= steps.length) return finish();
+    if (i + d >= steps.length) return quiz();
     dir = d; i += d; show();
   }
   function setKeys(fn) {
@@ -159,45 +199,60 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge } = {}) {
     if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
   });
 
-  async function finish() {
+  // Exercices : une question par point de grammaire et par mot, à réussir jusqu'au bout
+  async function quiz() {
     setKeys(null);
-    const done = store.get(DONE_KEY, {}); done[`${lv}:${kind}:${n}`] = Date.now(); store.set(DONE_KEY, done);
-    const keys = [...c.g.map(g => `g:${g.id}`), ...c.v.map(D.vocabKey)];
-    const missing = keys.filter(k => !S.getCard(k));
-    const nextN = kind === 'g' ? plan.g[plan.g.findIndex(x => x.n === Number(n)) + 1]?.n : Number(n) + 1;
-    const hasNext = kind === 'g' ? nextN != null : kind === 'v' ? Number(n) < plan.v.length : Number(n) < Math.max(plan.g.length, plan.v.length);
-    const quizItems = async () => {
-      const byId = new Map((await D.grammar()).map(g => [g.id, g]));
-      const sents = c.g.flatMap(g => sentsByG.get(g.id) || []);
-      const vocabAll = await D.vocab(lv);
-      return shuffle([...practiceItems(sents, byId).slice(0, 8), ...shuffle(c.v).slice(0, 8).map(v => vocabPractice(v, vocabAll))]);
-    };
-    const add = h('button.btn', { disabled: !missing.length, onclick: () => {
-      missing.forEach(S.addCard); add.disabled = true; add.textContent = 'Dans tes révisions ✓';
-      toast(`${missing.length} élément(s) ajouté(s) à tes révisions`); refreshBadge?.();
-    } }, missing.length ? `Ajouter à mes révisions (${missing.length})` : 'Déjà dans tes révisions ✓');
-    stage.replaceChildren(h('div.card.finish.lesson-finish',
-      h('p.kicker', `${title} · ${lv}`),
-      h('h2', 'Leçon terminée'),
-      h('p', `${c.g.length ? `${c.g.length} point${c.g.length > 1 ? 's' : ''} de grammaire` : ''}${c.g.length && c.v.length ? ' et ' : ''}${c.v.length ? `${c.v.length} mots` : ''} parcourus.`),
-      h('div.actions',
-        h('button.btn.primary', { onclick: async () => {
-          const items = await quizItems();
-          runSession(stage, { mode: 'practice', items, extraActions: [
-            h('a.btn.primary', { href: hasNext ? `#/lecon/${lv}/${kind}/${nextN}` : `#/lecons/${lv}` }, hasNext ? 'Leçon suivante' : 'Toutes les leçons'),
-            h('a.btn', { href: `#/lecons/${lv}` }, 'Retour aux leçons')] });
-        } }, 'Quiz de la leçon'),
-        add,
-        c.g.length ? h('a.btn', { href: `#/jeux/theme?lv=${lv}&le=${c.gN}` }, 'Thème : écris les phrases') : null,
-        hasNext ? h('a.btn.ghost', { href: `#/lecon/${lv}/${kind}/${nextN}` }, 'Leçon suivante') : null)));
-    celebrate({ title: '修了！', sub: `${title} terminée`, detail: `${steps.length} cartes parcourues`, tone: 'win' });
+    mark(SEEN_KEY, lv, kind, covered);
+    const grammarAll = await D.grammar();
+    const byId = new Map(grammarAll.map(g => [g.id, g]));
+    const vocabAll = await D.vocab(lv);
+    const items = [];
+    c.g.forEach(g => {
+      const sents = sentsByG.get(g.id) || [];
+      if (sents.length) items.push(practiceItems([sents[Math.floor(Math.random() * sents.length)]], byId)[0]);
+      else {
+        const others = grammarAll.filter(x => x.lv === g.lv && x.s !== g.s);
+        items.push({ key: null, kind: 'meaning', g, lv: g.lv, answer: g.s, options: shuffle([g.s, ...shuffle(others).slice(0, 3).map(x => x.s)]) });
+      }
+    });
+    c.v.forEach(v => items.push(vocabPractice(v, vocabAll)));
+    phase.textContent = 'Exercices';
+    phase.classList.add('quiz');
+    dots.replaceChildren(h('span.small.lesson-rule', `${items.length} exercices : chaque erreur revient jusqu'à ce qu'elle soit réussie.`));
+    runSession(stage, { mode: 'practice', items: shuffle(items), untilCorrect: true, celebrateEnd: false, onDone: ({ missed }) => { wrap.classList.remove('quizzing'); finish(missed, items.length); } });
+    wrap.classList.add('quizzing');
   }
 
+  function finish(missedCount, total) {
+    mark(DONE_KEY, lv, kind, covered);
+    const keys = [...c.g.map(g => `g:${g.id}`), ...c.v.map(D.vocabKey)];
+    const missing = keys.filter(k => !S.getCard(k));
+    const first = Math.max(0, total - missedCount);   // réussis du premier coup
+    const add = h('button.btn', { disabled: !missing.length, onclick: () => {
+      missing.forEach(S.addCard); add.disabled = true; add.textContent = 'Dans tes révisions ✓';
+      play('correct'); toast(`${missing.length} élément(s) ajouté(s) à tes révisions`); refreshBadge?.();
+    } }, missing.length ? `Ajouter à mes révisions (${missing.length})` : 'Déjà dans tes révisions ✓');
+    phase.textContent = 'Validée';
+    phase.classList.remove('quiz');
+    dots.replaceChildren();
+    stage.replaceChildren(h('div.card.finish.lesson-finish',
+      h('p.kicker', `${title} · ${lv}`),
+      h('h2', covered.length > 1 ? `${covered.length} leçons validées` : 'Leçon validée'),
+      h('p', `${total} exercice${total > 1 ? 's' : ''} réussi${total > 1 ? 's' : ''}, dont ${first} du premier coup.`),
+      h('div.actions',
+        nextHref ? h('a.btn.primary', { href: nextHref }, covered.length > 1 ? 'Leçons suivantes' : 'Leçon suivante') : h('a.btn.primary', { href: `#/lecons/${lv}` }, 'Toutes les leçons'),
+        add,
+        c.g.length && c.gN ? h('a.btn', { href: `#/jeux/theme?lv=${lv}&le=${c.gN}` }, 'Thème : écris les phrases') : null,
+        h('a.btn.ghost', { href: `#/lecons/${lv}` }, 'Retour aux leçons'))));
+    celebrate({ ...verdict(first / Math.max(1, total)), title: '修了！', sub: covered.length > 1 ? `${covered.length} leçons validées` : `${title} validée`, detail: `${first} / ${total} du premier coup` });
+  }
+
+  const wrap = h('div.session.lesson-wrap',
+    h('header.session-head.lesson-head-bar', h('a.session-quit', { href: `#/lecons/${lv}`, 'aria-label': 'Quitter la leçon' }, '×'), bar, counter),
+    h('header.lesson-title', h('h1', title), h('span.lesson-kind', { lang: 'ja' }, KINDS[kind].jp), phase, dots),
+    stage);
   main.replaceChildren(
     h('a.back', { href: `#/lecons/${lv}` }, `Leçons ${lv} · ${KINDS[kind].label}`),
-    h('div.session',
-      h('header.session-head', h('a.session-quit', { href: `#/lecons/${lv}`, 'aria-label': 'Quitter la leçon' }, '×'), bar, counter),
-      h('header.lesson-title', h('h1', title), h('span.lesson-kind', { lang: 'ja' }, KINDS[kind].jp), dots),
-      stage));
+    wrap);
   show();
 }

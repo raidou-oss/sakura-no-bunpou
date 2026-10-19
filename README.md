@@ -110,3 +110,9 @@ Après chaque modification du site : `python3 tools/bump_version.py` pour forcer
 - `js/lessons.js` : leçons guidées (`#/lecons/N5`) en trois modes : grammaire, vocabulaire, ou les deux mélangés (un point de grammaire puis quelques mots). Fin de leçon : quiz, ajout aux révisions, exercice de thème.
 - `js/games/theme.js` : thème libre. Chaque mot à lecture accepte le kanji ou les kana, hiragana et katakana sont équivalents, ponctuation ignorée ; sinon, différence caractère par caractère. Saisie en romaji possible (WanaKana 5.3.1, chargé à la demande).
 - `js/celebrate.js` : gerbe de pétales sur une bonne réponse, scène plein écran en fin de séance, de leçon ou de partie gagnée.
+
+## Phrases d'exemple
+
+Les phrases à trous sont dans `tools/sentences_*.txt` (les fichiers `sentences_z*` sont les ajouts : au moins une phrase pour chaque point du N5 au N1, deux pour le N5 et le N4). Après modification : `python3 tools/build_sentences.py` (régénère seulement `data/sentences.json` et vérifie le format, les distracteurs, les lectures et les doublons).
+
+Leçons : une leçon n'est validée qu'une fois tous ses exercices réussis (une erreur revient jusqu'à être corrigée). On peut enchaîner 1, 2, 3 ou 5 leçons par session. Les unités de vocabulaire sont découpées en leçons de 12 mots ; en mode « Les deux », la leçon n associe la leçon de grammaire n et le bloc de mots n.
