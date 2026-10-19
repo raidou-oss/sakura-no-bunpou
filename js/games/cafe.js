@@ -1,9 +1,9 @@
 // コトバ珈琲 (Kotoba Kōhī) : un client étranger dicte sa commande en français,
 // tu la passes au barista en japonais, puis tu lis le montant annoncé en caisse.
-import { play } from '../sfx.js?v=20261019160333';
-import { burst } from '../celebrate.js?v=20261019160333';
-import { tileBoard } from './tiles.js?v=20261019160333';
-import { h, ruby, shuffle, pick, sample, toast, jr } from '../util.js?v=20261019160333';
+import { play } from '../sfx.js?v=20261019160744';
+import { burst } from '../celebrate.js?v=20261019160744';
+import { tileBoard } from './tiles.js?v=20261019160744';
+import { h, ruby, shuffle, pick, sample, toast, jr } from '../util.js?v=20261019160744';
 
 const DRINKS = [
   { hot: 'ホットコーヒー', ice: 'アイスコーヒー', fr: ['café', 'cafés'], g: 'm', price: 380 },

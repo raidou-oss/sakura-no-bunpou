@@ -1872,3 +1872,45 @@ html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after 
   transition-duration: .001ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
 html.reduce-motion .petal-sky, html.reduce-motion .petal-rain, html.reduce-motion .tilt-glare, html.reduce-motion .ru-petals, html.reduce-motion .ru-streaks, html.reduce-motion .page-sweep { display: none !important; }
 html.reduce-motion .gauge-glow { animation: none !important; }
+
+/* ==========================================================================================
+   Ombres mouvantes seulement au survol (et sur l'onglet / la sélection active)
+   ========================================================================================== */
+/* Au repos : ombres fixes */
+.btn, .chip-btn, .resume-chip, .stat-chip, .lv-badge, .cf-ttl, .ru-title, .reg-chip, .score-glyph, .lc-tarot, .cf-maxtag, .lc-ongoing, .lr-card, .tarot,
+.lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card, .kana-cell, .point, .oc-row, .resume-ico, .oc-head, .lesson-title h1,
+.p3-head .ph-word, .cf-word, .p3-head h1 .jp-head, .cf-kanji { animation: none; }
+.btn.primary { box-shadow: 5px 5px 0 var(--sakura); }
+.btn:not(.primary) { box-shadow: none; }
+.chip-btn, .resume-chip, .stat-chip { box-shadow: none; }
+.lv-badge { box-shadow: 0 0 0 2px var(--night), 0 0 0 3.5px rgba(255, 255, 255, .9), 3px 4px 0 3px rgba(70, 217, 255, .55); }
+.lv-badge.inline { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .75), 2px 2px 0 rgba(70, 217, 255, .5); }
+.cf-ttl, .ru-title, .cf-maxtag, .lc-ongoing, .reg-chip, .score-glyph, .resume-ico { box-shadow: 3px 3px 0 rgba(255, 148, 203, .55); }
+.oc-head, .lesson-title h1 { box-shadow: 4px 4px 0 var(--sakura); }
+.p3-head .ph-word, .cf-word { box-shadow: 6px 6px 0 var(--cyan); }
+.tarot { box-shadow: 0 0 0 3px #F3F7FF, 0 0 0 6px var(--night), 10px 12px 0 6px rgba(70, 217, 255, .5), 0 30px 60px -20px rgba(0, 0, 0, .9); }
+.lc-tarot { box-shadow: 0 0 0 3px var(--night), 4px 5px 0 4px rgba(70, 217, 255, .45); }
+.lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card, .point { box-shadow: inset 5px 0 0 var(--azure); }
+.lesson-card.done { box-shadow: inset 5px 0 0 var(--sakura); }
+.lesson-card.ongoing { box-shadow: inset 5px 0 0 var(--cyan); }
+.kana-cell, .oc-row { box-shadow: none; }
+
+/* Au survol : l'ombre se met à bouger */
+:is(.btn:not(:disabled), .chip-btn:not(:disabled), .resume-chip, .stat-chip, .reg-chip, .oc-head, .tarot, .lc-tarot, .kana-cell:not(.empty), .oc-row,
+  .lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card, .point):hover {
+  animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite; }
+:is(.btn:not(:disabled), .chip-btn:not(:disabled), .resume-chip, .stat-chip, .reg-chip, .oc-head, .kana-cell:not(.empty), .oc-row):hover { box-shadow: var(--shade); }
+.tarot:hover { box-shadow: 0 0 0 3px #F3F7FF, 0 0 0 6px var(--night), calc(var(--sx) + 4px) calc(var(--sy) + 6px) 2px 6px rgba(70, 217, 255, .5), 0 30px 60px -20px rgba(0, 0, 0, .9); }
+.lc-tarot:hover { box-shadow: 0 0 0 3px var(--night), var(--sx) var(--sy) 1.5px 3px rgba(70, 217, 255, .45); }
+:is(.lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card, .point):hover { box-shadow: inset 9px 0 0 var(--sakura), var(--shade); }
+/* Lignes survolées en bandeau blanc : reflet + ombre mouvante (déjà défini), on garde */
+:is(.point, .online-row:not(:disabled), .oc-row, .option:not([disabled]), .resume-chip, .poke-chip):is(:hover, :focus-visible) {
+  animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite, p3-bgsweep 2.8s ease-in-out infinite; box-shadow: var(--shade); }
+
+/* L'onglet / la sélection active garde son ombre vivante en permanence */
+.tab.active, .segmented button.active, .tab-flip { box-shadow: var(--shade); animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite; }
+.cf-row.on { animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite, p3-bgsweep 2.8s ease-in-out infinite; }
+@media (min-width: 861px) {
+  .nav-indicator::before { box-shadow: var(--shade), 0 10px 30px -10px rgba(70, 217, 255, .7);
+    animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite, p3-bgsweep 3.6s ease-in-out infinite; }
+}
