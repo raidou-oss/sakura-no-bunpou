@@ -1929,3 +1929,8 @@ html.reduce-motion .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sa
 .sync-box[data-status="syncing"] .sync-dot, .sync-box[data-status="pending"] .sync-dot { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: gap-blink 1s ease-in-out infinite; }
 .sync-box[data-status="error"] .sync-dot, .sync-box[data-status="offline"] .sync-dot { background: var(--sakura); box-shadow: 0 0 8px var(--sakura); }
 .sync-txt { font-weight: 600; }
+
+/* RANK UP : tous les calques partagent la même case de la grille → la carte et le texte sont pile au centre de l'écran */
+.ru > * { grid-area: 1 / 1; }
+.ru-bars, .ru-streaks, .ru-petals { position: absolute; inset: 0; pointer-events: none; }
+.ru-skip { white-space: nowrap; text-align: center; }

@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261019224708';
+import { store, today, dayKey, DAY } from './util.js?v=20261020014523';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -263,7 +263,8 @@ export function mergeData(A, B) {
 export function mergeIn(remote) {
   const local = snapshot();
   const merged = mergeData(local, remote);
-  const j = JSON.stringify;
+  // Comparaison indépendante de l'ordre des clés (Supabase range les clés jsonb à sa façon)
+  const j = x => JSON.stringify(x, (k, v) => (isObj(v) ? Object.fromEntries(Object.keys(v).sort().map(key => [key, v[key]])) : v));
   const localChanged = j(merged.cards) !== j(local.cards) || j(merged.stats) !== j(local.stats) || j(merged.extra) !== j(local.extra) || j(merged.settings) !== j(local.settings);
   const remoteChanged = !remote || j(merged.cards) !== j(remote.cards) || j(merged.stats) !== j(remote.stats) || j(merged.extra) !== j(remote.extra || {}) || j(merged.settings) !== j(remote.settings);
   if (localChanged) replaceAll(merged);
