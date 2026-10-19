@@ -1,23 +1,24 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019143028';
-import * as D from './data.js?v=20261019143028';
-import * as S from './srs.js?v=20261019143028';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019143028';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019143028';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019143028';
-import * as C from './cloud.js?v=20261019143028';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019143028';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019143028';
-import { play, setVolume } from './sfx.js?v=20261019143028';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019143028';
-import { celebrate, verdict } from './celebrate.js?v=20261019143028';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019143028';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019143028';
-import { initGloss } from './gloss.js?v=20261019143028';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019143028';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019145238';
+import * as D from './data.js?v=20261019145238';
+import * as S from './srs.js?v=20261019145238';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019145238';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019145238';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019145238';
+import * as C from './cloud.js?v=20261019145238';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019145238';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019145238';
+import { play, setVolume } from './sfx.js?v=20261019145238';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019145238';
+import { celebrate, verdict } from './celebrate.js?v=20261019145238';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019145238';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019145238';
+import { initGloss } from './gloss.js?v=20261019145238';
+import { initLinks } from './links.js?v=20261019145238';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019145238';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019143028';
+import { GAMES } from './gamelist.js?v=20261019145238';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -579,5 +580,6 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
 })();
 
 initGloss();
+if (C.enabled) initLinks();
 // L'indication du bouton Kanji Dojo s'efface dès qu'on fait défiler la page
 addEventListener('scroll', () => document.body.classList.toggle('scrolled', scrollY > 30), { passive: true });

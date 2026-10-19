@@ -1,9 +1,9 @@
 // 仮名 : hiragana et katakana pour ceux qui partent de zéro. Tableaux à écouter + entraînement à la lecture.
-import { h, shuffle, jr, toast, toHira } from './util.js?v=20261019143028';
-import * as S from './srs.js?v=20261019143028';
-import { speak, speakBtn } from './voice.js?v=20261019143028';
-import { play } from './sfx.js?v=20261019143028';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019143028';
+import { h, shuffle, jr, toast, toHira } from './util.js?v=20261019145238';
+import * as S from './srs.js?v=20261019145238';
+import { speak, speakBtn } from './voice.js?v=20261019145238';
+import { play } from './sfx.js?v=20261019145238';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019145238';
 
 // Gojūon : [romaji des 5 colonnes a i u e o], null = case vide
 const BASE = [

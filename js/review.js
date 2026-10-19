@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019143028';
-import { speak, speakBtn } from './voice.js?v=20261019143028';
-import { pitchSVG } from './pitch.js?v=20261019143028';
-import { play } from './sfx.js?v=20261019143028';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019143028';
-import * as D from './data.js?v=20261019143028';
-import * as S from './srs.js?v=20261019143028';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019145238';
+import { speak, speakBtn } from './voice.js?v=20261019145238';
+import { pitchSVG } from './pitch.js?v=20261019145238';
+import { play } from './sfx.js?v=20261019145238';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019145238';
+import * as D from './data.js?v=20261019145238';
+import * as S from './srs.js?v=20261019145238';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -322,7 +322,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   const list = mode === 'srs' ? [...queue] : [...items];
   const total = list.length;
   const retries = new Map();
-  let idx = 0, ok = 0, seen = 0, lastSentence = null, keyHandler = null;
+  let idx = 0, ok = 0, seen = 0, lastSentence = null, keyHandler = null, askedAt = 0;
   const missed = new Set();
 
   const bar = h('div.progress', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': total, 'aria-label': 'Progression de la séance' }, h('span'));
@@ -393,6 +393,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   }
 
   function ask(item) {
+    askedAt = Date.now();
     const furi = showFuri(item.lv);
     let prompt;
     if (item.kind === 'cloze-type' || item.kind === 'vocab-type') return askTyped(item, furi);
@@ -528,6 +529,8 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     const furi = showFuri(item.lv);
     // Réponse complète
     const reveal = h('div.reveal');
+    // append() écrirait « null » pour un élément absent : on les ignore
+    reveal.append = (...xs) => Element.prototype.append.call(reveal, ...xs.filter(x => x != null && x !== false));
     if (input) {
       reveal.append(h('p.type-solution', right ? 'Bonne réponse : ' : 'La réponse : ', h('strong', { lang: 'ja', html: ruby(item.accept[0], true) }),
         item.accept.length > 1 && !right ? h('span.small', { lang: 'ja' }, ` (aussi accepté : ${item.accept.slice(1).map(plain).join('、')})`) : null));
@@ -567,27 +570,21 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
 
     const actions = h('div.actions');
     if (mode === 'srs') {
+      // Note automatique : raté → à revoir ; réussi avec aide ou erreur → difficile ;
+      // réussi seul → bien, ou facile si la réponse est venue vite
+      const secs = (Date.now() - (askedAt || Date.now())) / 1000;
+      const len = [...plain(String(item.accept?.[0] || item.answer || ''))].length;
+      const q = !right ? S.GRADES.AGAIN
+        : (typedInfo?.tries || typedInfo?.hints) ? S.GRADES.HARD
+        : secs < 5 + len * 0.8 ? S.GRADES.EASY : S.GRADES.GOOD;
+      const label = { [S.GRADES.AGAIN]: 'à revoir', [S.GRADES.HARD]: 'difficile', [S.GRADES.GOOD]: 'bien', [S.GRADES.EASY]: 'facile' }[q];
+      let note;
       if (right) {
-        const pv = S.previewIntervals(item.key);
-        const fmt = d => d === 1 ? '1 j' : d < 30 ? `${d} j` : `${Math.round(d / 30)} mois`;
-        const mk = (label, q, cls, n) => h(`button.btn.grade.${cls}`, { onclick: () => done(item, q), 'data-n': n },
-          h('span', label), h('small', fmt(pv[q])));
-        if (typedInfo?.tries || typedInfo?.hints) {
-          actions.append(mk('Difficile', S.GRADES.HARD, 'hard', 1));
-          setKeys(e => { if (e.key === 'Enter' || e.key === ' ' || e.key === '1') { e.preventDefault(); done(item, S.GRADES.HARD); } });
-        } else {
-        actions.append(mk('Difficile', S.GRADES.HARD, 'hard', 1), mk('Bien', S.GRADES.GOOD, 'good', 2), mk('Facile', S.GRADES.EASY, 'easy', 3));
-        setKeys(e => {
-          if (e.key === 'Enter' || e.key === ' ' || e.key === '2') { e.preventDefault(); done(item, S.GRADES.GOOD); }
-          if (e.key === '1') done(item, S.GRADES.HARD);
-          if (e.key === '3') done(item, S.GRADES.EASY);
-        });
-        }
-      } else {
-        actions.append(h('p.again-note', 'Cette carte revient un peu plus loin dans la séance.'),
-          h('button.btn.primary', { onclick: () => done(item, S.GRADES.AGAIN) }, 'Continuer'));
-        setKeys(e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(item, S.GRADES.AGAIN); } });
-      }
+        const d = S.previewIntervals(item.key)[q];
+        note = h('p.auto-grade', h('span', `Noté « ${label} »`), ` · prochaine révision dans ${d === 1 ? '1 jour' : d < 30 ? `${d} jours` : `${Math.round(d / 30)} mois`}`);
+      } else note = h('p.again-note', 'Cette carte revient un peu plus loin dans la séance.');
+      actions.append(note, h('button.btn.primary', { onclick: () => done(item, q) }, 'Continuer'));
+      setKeys(e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(item, q); } });
     } else {
       const q = !right ? 0 : (typedInfo?.tries || typedInfo?.hints) ? 3 : 4;
       actions.append(h('button.btn.primary', { onclick: () => done(item, q) }, 'Continuer'));

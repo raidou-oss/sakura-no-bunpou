@@ -1,11 +1,12 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby } from './util.js?v=20261019143028';
-import * as D from './data.js?v=20261019143028';
-import { wallpaperSVG } from './wallpaper.js?v=20261019143028';
-import * as C from './cloud.js?v=20261019143028';
-import { play } from './sfx.js?v=20261019143028';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019143028';
-import { GAMES } from './gamelist.js?v=20261019143028';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019145238';
+import * as D from './data.js?v=20261019145238';
+import { wallpaperSVG } from './wallpaper.js?v=20261019145238';
+import * as C from './cloud.js?v=20261019145238';
+import { play } from './sfx.js?v=20261019145238';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019145238';
+import { GAMES } from './gamelist.js?v=20261019145238';
+import * as L from './links.js?v=20261019145238';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -61,6 +62,28 @@ function levelBar(xp) {
       h('span.small', L.lv >= 99 ? 'Niveau maximum' : `${L.toNext} XP avant le niveau ${L.lv + 1}`)),
     h('div.gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': Math.round(L.pct * 100), 'aria-label': 'Progression du niveau' },
       h('span', { style: { width: `${Math.max(3, Math.round(L.pct * 100))}%` } })));
+}
+
+/** 絆 Liens de confident : tous les miens sur mon profil, notre lien sur le profil d'un autre */
+function linksSection(other) {
+  const box = h('section.glass.links-box',
+    h('h2', h('span.jp-head', { lang: 'ja', html: jr('絆') }), other ? `Ton lien avec ${other.username}` : 'Confidents'),
+    h('p.small.muted', L.LINK_HELP));
+  const list = h('div.link-grid', h('p.small', 'Chargement…'));
+  box.append(list);
+  (async () => {
+    if (other) {
+      const l = await L.linkWith(other.id, { fresh: true });
+      list.replaceChildren(l.xp ? L.linkCard(l, { name: other.username })
+        : h('p.small', `Pas encore de lien : envoie une réaction ou un poke à ${other.username} pour le commencer.`));
+      return;
+    }
+    const links = (await L.allLinks({ fresh: true })).slice(0, 12);
+    if (!links.length) { list.replaceChildren(h('p.small', 'Aucun lien pour l’instant. Envoie des réactions ou des pokes aux autres élèves : chaque échange rapproche.')); return; }
+    const names = await Promise.all(links.map(l => l.name ? l.name : C.getProfile(l.id).then(p => p?.username).catch(() => null)));
+    list.replaceChildren(...links.map((l, k) => L.linkCard(l, { name: names[k] })));
+  })().catch(() => list.replaceChildren(h('p.small', 'Liens indisponibles pour le moment.')));
+  return box;
 }
 
 /** Tableau des scores : record de chaque jeu, détail par niveau et par unité */
@@ -142,7 +165,8 @@ export async function profilePage(main, id) {
         chip(xp, 'XP'), chip(p.streak, p.streak > 1 ? 'jours d’affilée' : 'jour d’affilée'), chip(p.learned, 'cartes apprises')));
 
     const reactBox = h('section.glass.react-box');
-    main.replaceChildren(header, stats, scoresSection(isMe ? publicScores() : p.scores, { mine: isMe }), reactBox);
+    const linksBox = me ? linksSection(isMe ? null : p) : null;
+    main.replaceChildren(...[header, stats, scoresSection(isMe ? publicScores() : p.scores, { mine: isMe }), linksBox, reactBox].filter(Boolean));
 
     if (isMe) {
       const list = await C.reactionsFor(p.id).catch(() => []);

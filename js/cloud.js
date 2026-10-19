@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019143028';
-import * as S from './srs.js?v=20261019143028';
-import { computeRank, publicScores } from './level.js?v=20261019143028';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019145238';
+import * as S from './srs.js?v=20261019145238';
+import { computeRank, publicScores } from './level.js?v=20261019145238';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -172,7 +172,22 @@ export async function sendReaction(toUser, kind) {
   const c = await sb();
   const { error } = await c.from('reactions').insert({ from_user: session.user.id, to_user: toUser, kind });
   fail(error, 'Réaction non envoyée.');
+  emitInteraction({ other: toUser, type: 'reaction', out: true });
 }
+/** Toutes les réactions échangées avec moi (envoyées et reçues), pour les liens de confident */
+export async function myReactionPairs() {
+  if (!session) return [];
+  const c = await sb();
+  const me = session.user.id;
+  const [a, b] = await Promise.all([
+    c.from('reactions').select('from_user, to_user, kind, created_at').eq('from_user', me).limit(2000),
+    c.from('reactions').select('from_user, to_user, kind, created_at').eq('to_user', me).limit(2000)]);
+  return [...(a.data || []), ...(b.data || [])];
+}
+// Interactions (réactions, pokes) : écoutées par les liens de confident
+const interactionListeners = new Set();
+export const onInteraction = fn => { interactionListeners.add(fn); return () => interactionListeners.delete(fn); };
+function emitInteraction(e) { interactionListeners.forEach(fn => { try { fn(e); } catch {} }); }
 export async function reactionsFor(userId, limit = 30) {
   const c = await sb();
   const { data, error } = await c.from('reactions')
@@ -273,6 +288,7 @@ export async function sendPoke(to, { msg = '', kind = 'ask', about = null } = {}
   c.removeChannel(ch).catch(() => {});
   if (res !== 'ok') throw new Error('Envoi impossible pour le moment.');
   if (kind === 'ask') lastPoke.set(to, Date.now());
+  emitInteraction({ other: to, type: 'poke', out: true });
 }
 export const onlineUsers = () => online;
 
@@ -299,6 +315,7 @@ async function startLive() {
     .on('broadcast', { event: 'poke' }, ({ payload }) => {
       if (!payload || payload.to !== me || !payload.from) return;
       pokeListeners.forEach(fn => fn(payload));
+      emitInteraction({ other: payload.from, type: 'poke', out: false, name: payload.name, avatar_url: payload.avatar_url });
     })
     .subscribe();
   // Réactions reçues en direct
@@ -307,6 +324,7 @@ async function startLive() {
       const r = payload.new;
       const sender = online.find(u => u.id === r.from_user) || await getProfile(r.from_user).catch(() => null);
       reactionListeners.forEach(fn => fn({ ...r, sender }));
+      emitInteraction({ other: r.from_user, type: 'reaction', out: false, name: sender?.username, avatar_url: sender?.avatar_url });
     })
     .subscribe();
 }

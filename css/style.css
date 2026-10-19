@@ -1330,3 +1330,47 @@ body.portal-mode .petal-sky { display: none; }
 @keyframes gap-blink { 50% { opacity: .35; } }
 .theme-tip { margin: 6px 0 0; color: var(--sakura); font-weight: 700; font-size: .92rem; }
 .theme-hint a { color: var(--cyan); }
+
+/* Note automatique des révisions */
+.auto-grade { margin: 0 0 6px; color: var(--mist); font-size: .9rem; width: 100%; text-align: center; }
+.auto-grade span { color: var(--ok); font-weight: 700; }
+
+/* --- 絆 Liens de confident ---------------------------------------------------------------- */
+.links-box { padding: 22px; border-radius: var(--r-xl); margin-top: 18px; }
+.links-box h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.link-card { position: relative; display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: var(--r-l); background: rgba(5, 11, 38, .5); border: 1px solid var(--line); }
+.lc-tarot { flex: none; width: 62px; height: 92px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transform: rotate(-4deg);
+  background: linear-gradient(160deg, #13235F, #0A1640 60%, #2A1145); border: 2px solid rgba(255, 214, 232, .8); box-shadow: 0 0 0 3px var(--night), 4px 5px 0 4px rgba(70, 217, 255, .45); text-align: center; }
+.lc-arc { font: 400 .95rem/1.1 var(--jp-heavy); color: #fff; text-shadow: 0 0 10px rgba(255, 148, 203, .7); white-space: nowrap; order: 2; }
+.lc-roman { font: 800 italic 1.15rem/1 var(--display); color: var(--sakura); order: 1; }
+.lc-tarot small { order: 3; font-size: .5rem; color: var(--mist); line-height: 1.1; padding: 0 3px; }
+.lc-info { min-width: 0; flex: 1; }
+.lc-name { font: 800 italic 1.2rem/1.1 var(--display); color: var(--ink); text-decoration: none; }
+.lc-name:hover { color: var(--cyan); }
+.lc-title { margin: 3px 0 7px; font-weight: 700; color: var(--sakura); font-size: .92rem; }
+.lc-title small { color: var(--mist); font-weight: 500; }
+.lc-gauge span { background: linear-gradient(90deg, var(--sakura-deep), var(--sakura), #FFD6E8); }
+.lc-meta { margin: 6px 0 0; color: var(--mist); }
+.lc-edit { position: absolute; top: 8px; right: 10px; border: 0; background: none; color: var(--mist); font-size: 1rem; cursor: pointer; }
+.lc-edit:hover { color: var(--cyan); }
+.lc-form { display: grid; gap: 8px; width: 100%; }
+.lc-input, .lc-select { width: 100%; padding: 9px 12px; border-radius: var(--r-m); border: 1px solid var(--line-hi); background: rgba(3, 8, 28, .7); color: var(--ink); font: 500 .95rem var(--body); }
+/* Bannière de montée de rang */
+.link-rankup { position: fixed; left: 50%; top: 18%; z-index: 150; display: flex; align-items: center; gap: 20px; padding: 18px 30px 18px 20px; pointer-events: none;
+  transform: translateX(-50%) skewX(-8deg); background: linear-gradient(100deg, rgba(5, 11, 38, .96), rgba(42, 17, 69, .96)); border: 2px solid var(--sakura);
+  box-shadow: 8px 8px 0 rgba(70, 217, 255, .55), 0 30px 60px -20px rgba(0, 0, 0, .9); animation: lr-in .7s var(--ease-spring) both; }
+.link-rankup.out { animation: lr-out .5s var(--ease-snap) both; }
+@keyframes lr-in { from { opacity: 0; transform: translateX(-120%) skewX(-8deg); } }
+@keyframes lr-out { to { opacity: 0; transform: translateX(80%) skewX(-8deg); } }
+.lr-card { width: 64px; height: 96px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; transform: skewX(8deg) rotate(-6deg);
+  background: linear-gradient(160deg, #13235F, #2A1145); border: 2px solid #fff; animation: lr-flip .9s var(--ease-out) .2s both; }
+@keyframes lr-flip { from { transform: skewX(8deg) rotateY(180deg); } }
+.lr-arcana { font: 400 1.05rem/1 var(--jp-heavy); color: #fff; white-space: nowrap; order: 2; }
+.lr-roman { font: 800 italic 1.3rem/1 var(--display); color: var(--sakura); order: 1; }
+.lr-text { transform: skewX(8deg); }
+.lr-kicker { margin: 0; font: 800 italic .9rem var(--display); letter-spacing: .2em; color: var(--cyan); }
+.lr-name { margin: 2px 0; font: 800 italic 1.8rem/1 var(--display); color: #fff; }
+.lr-rank { margin: 0; font-weight: 800; color: var(--sakura); }
+.lr-sub { margin: 4px 0 0; font-size: .82rem; color: var(--mist); }
+@media (max-width: 560px) { .link-rankup { top: 12%; width: calc(100vw - 32px); padding: 14px; } .lr-name { font-size: 1.4rem; } }
