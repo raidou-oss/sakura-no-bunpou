@@ -1865,3 +1865,10 @@ li:nth-child(3n+2) > :is(.lesson-card, .unit, .game-tile, .member, .level, .poin
 }
 .option, .online-row, .poke-chip, .resume-chip { border-radius: 0; }
 .resume-ico { border-radius: 0; transform: skewX(-8deg); }
+
+/* --- Réglage « Réduire les animations » : tout s'arrête net ------------------------------------ */
+html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {
+  animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+html.reduce-motion .petal-sky, html.reduce-motion .petal-rain, html.reduce-motion .tilt-glare, html.reduce-motion .ru-petals, html.reduce-motion .ru-streaks, html.reduce-motion .page-sweep { display: none !important; }
+html.reduce-motion .gauge-glow { animation: none !important; }

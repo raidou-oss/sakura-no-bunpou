@@ -1,3 +1,4 @@
+import { reducedMotion } from './util.js?v=20261019160333';
 // Survol « vivant » : la tuile grossit un peu, pivote vers la souris, un reflet suit le pointeur et l'ombre part à l'opposé.
 const SELECTOR = [
   '.kana-cell:not(.empty)', '.lesson-card', '.unit', '.game-tile', '.member', '.level', '.score-card', '.link-card',
@@ -33,9 +34,9 @@ function apply() {
 }
 
 export function initTilt() {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse') return;
+    if (reducedMotion()) { if (cur) { reset(cur); cur = null; } return; }
     const el = e.target.closest?.(SELECTOR);
     if (el !== cur) {
       if (cur) reset(cur);

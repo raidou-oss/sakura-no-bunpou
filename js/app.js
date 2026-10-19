@@ -1,26 +1,26 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019160025';
-import * as D from './data.js?v=20261019160025';
-import * as S from './srs.js?v=20261019160025';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019160025';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019160025';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261019160025';
-import * as C from './cloud.js?v=20261019160025';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019160025';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019160025';
-import { play, setVolume } from './sfx.js?v=20261019160025';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019160025';
-import { celebrate, verdict } from './celebrate.js?v=20261019160025';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019160025';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019160025';
-import { initGloss } from './gloss.js?v=20261019160025';
-import { initLinks } from './links.js?v=20261019160025';
-import { confidentsPage } from './confidents.js?v=20261019160025';
-import { initTilt } from './tilt.js?v=20261019160025';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019160025';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019160333';
+import * as D from './data.js?v=20261019160333';
+import * as S from './srs.js?v=20261019160333';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019160333';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019160333';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261019160333';
+import * as C from './cloud.js?v=20261019160333';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019160333';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019160333';
+import { play, setVolume } from './sfx.js?v=20261019160333';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019160333';
+import { celebrate, verdict } from './celebrate.js?v=20261019160333';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019160333';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019160333';
+import { initGloss } from './gloss.js?v=20261019160333';
+import { initLinks } from './links.js?v=20261019160333';
+import { confidentsPage } from './confidents.js?v=20261019160333';
+import { initTilt } from './tilt.js?v=20261019160333';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019160333';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019160025';
+import { GAMES } from './gamelist.js?v=20261019160333';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -499,6 +499,8 @@ function settingsPage() {
       h('div.fields', num('newGrammar', 'Nouveaux points de grammaire par jour', 50), num('newVocab', 'Nouveaux mots par jour', 100)),
       h('h2', 'Affichage'), furi,
       h('div.checks',
+        h('label.check', h('input', { type: 'checkbox', checked: !!s.reduceMotion, onchange: e => { S.setSettings({ reduceMotion: e.target.checked }); applyMotion(); toast(e.target.checked ? 'Animations réduites' : 'Animations activées'); } }),
+          h('span', 'Réduire les animations : coupe les ombres mouvantes, reflets, rotations au survol, pétales et transitions (le réglage « réduire les animations » de ton appareil est aussi respecté)')),
         h('label.check', h('input', { type: 'checkbox', checked: s.gloss !== false, onchange: e => { S.setSettings({ gloss: e.target.checked }); toast('Réglage enregistré'); } }),
           h('span', 'Bulles d’explication : en passant la souris (ou en touchant) un mot d’une phrase japonaise, une bulle explique la particule, le mot, le verbe ou la forme grammaticale'))),
       h('h2', 'Style des phrases'),
@@ -606,3 +608,7 @@ function p3Heads(root = main) {
 }
 new MutationObserver(() => p3Heads()).observe(main, { childList: true, subtree: true });
 p3Heads();
+
+// --- Réduire les animations (réglage du site) ---------------------------------------------------
+function applyMotion() { document.documentElement.classList.toggle('reduce-motion', !!S.getSettings().reduceMotion); }
+applyMotion();

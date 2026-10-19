@@ -1,9 +1,9 @@
 // 絆 Liens de confident (façon Persona) : plus on échange avec quelqu'un (réactions, pokes), plus le lien monte.
 // Réactions : lues dans la base (visibles des deux côtés). Pokes : comptés de son côté, avec la progression du compte.
-import { h, jr, toast } from './util.js?v=20261019160025';
-import * as C from './cloud.js?v=20261019160025';
-import * as S from './srs.js?v=20261019160025';
-import { play } from './sfx.js?v=20261019160025';
+import { h, jr, toast, reducedMotion } from './util.js?v=20261019160333';
+import * as C from './cloud.js?v=20261019160333';
+import * as S from './srs.js?v=20261019160333';
+import { play } from './sfx.js?v=20261019160333';
 
 export const REACT_XP = 15;          // par réaction échangée (envoyée ou reçue)
 export const POKE_XP = 30;           // par poke : plus d'interaction, donc plus d'XP
@@ -93,7 +93,7 @@ export function rankUpBanner(info) {
   const { name, rank, title, arcana } = info;
   lastRankUp = info;
   document.querySelector('.ru')?.remove();
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced = reducedMotion();
   const from = Math.max(0, rank - 1);
   const num = h('span.ru-num', String(from));
   const petals = h('div.ru-petals', { 'aria-hidden': 'true' });

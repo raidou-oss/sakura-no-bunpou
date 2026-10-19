@@ -110,7 +110,8 @@ export function toast(msg) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
-export const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+/** Animations réduites : réglage du site (classe sur <html>) ou réglage de l'appareil */
+export const reducedMotion = () => document.documentElement.classList.contains('reduce-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /** Fleur de sakura en SVG ; `open` de 0 à 1 ouvre les pétales un par un */
 let blossomId = 0;
