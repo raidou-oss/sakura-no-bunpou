@@ -7,9 +7,9 @@
 3 || 田中（たなか）さん[は]|医者（いしゃ）です。 || Monsieur Tanaka est médecin. || を;に;へ
 4 || 私（わたし）[も]|学生（がくせい）です。 || Moi aussi, je suis étudiant. || を;へ;で
 4 || 猫（ねこ）が|好（す）きです。|犬（いぬ）[も]|好（す）きです。 || J'aime les chats. J'aime aussi les chiens. || を;へ;で
-5 || [これ]は|私（わたし）の|本（ほん）です。 || Ceci est mon livre. || どれ;どこ;だれ
+5 || [これ]は|私（わたし）の|本（ほん）です。 || Ceci (près de moi) est mon livre. || どれ;どこ;だれ
 11 || [それ]は|何（なん）ですか。 || Qu'est-ce que c'est, ça (près de toi) ? || どれ;ここ;だれ
-19 || [あれ]は|富士山（ふじさん）です。 || Ça, là-bas, c'est le mont Fuji. || どれ;あそこ;だれ
+19 || [あれ]は|富士山（ふじさん）です。 || Ça, là-bas (loin de nous deux), c'est le mont Fuji. || どれ;あそこ;だれ
 6 || これは|私（わたし）[の]|かばんです。 || C'est mon sac. || を;へ;で
 6 || 日本語（にほんご）[の]|先生（せんせい）は|やさしいです。 || Le professeur de japonais est gentil. || を;へ;が
 7 || 今日（きょう）は|天気（てんき）が[いい]です。 || Il fait beau aujourd'hui. || よく;よかった;いく
@@ -31,9 +31,9 @@
 888 || 今日（きょう）は|学校（がっこう）へ|[行（い）かない]。 || Aujourd'hui, je ne vais pas à l'école. || 行く;行った;行きない
 888 || お酒（さけ）は|[飲（の）みません]。 || Je ne bois pas d'alcool. || 飲みます;飲みました;飲むません
 15 || パン[と]|牛乳（ぎゅうにゅう）を|買（か）いました。 || J'ai acheté du pain et du lait. || を;で;へ
-14 || [ここ]は|私（わたし）の|部屋（へや）です。 || Ici, c'est ma chambre. || これ;この;どこ
-20 || [そこ]に|座（すわ）ってください。 || Asseyez-vous là, s'il vous plaît. || それ;その;どれ
-29 || 駅（えき）は|[あそこ]です。 || La gare est là-bas. || あれ;あの;どの
+14 || [ここ]は|私（わたし）の|部屋（へや）です。 || Ici (là où je suis), c'est ma chambre. || これ;この;どこ
+20 || [そこ]に|座（すわ）ってください。 || Asseyez-vous là (près de vous), s'il vous plaît. || それ;その;どれ
+29 || 駅（えき）は|[あそこ]です。 || La gare est là-bas (loin de nous deux). || あれ;あの;どの
 25 || 図書館（としょかん）[で]|本（ほん）を|読（よ）みます。 || Je lis des livres à la bibliothèque. || を;が;は
 25 || レストラン[で]|晩（ばん）ご飯（はん）を|食（た）べました。 || J'ai dîné au restaurant. || を;が;と
 32 || 七時（しちじ）[に]|起（お）きます。 || Je me lève à sept heures. || を;で;が
@@ -46,9 +46,9 @@
 13 || 時間（じかん）が|[あり]ますか。 || As-tu du temps ? || い;し;き
 23 || 庭（にわ）に|犬（いぬ）が|[い]ます。 || Il y a un chien dans le jardin. || あり;し;き
 23 || 私（わたし）には|兄（あに）が|二人（ふたり）[います]。 || J'ai deux grands frères. || あります;です;します
-30 || [この]|りんごは|甘（あま）いです。 || Cette pomme est sucrée. || これ;ここ;どの
-37 || [その]|かさは|だれのですか。 || À qui est ce parapluie ? || それ;そこ;どの
-47 || [あの]|建物（たてもの）は|病院（びょういん）です。 || Ce bâtiment là-bas est un hôpital. || あれ;あそこ;どの
+30 || [この]|りんごは|甘（あま）いです。 || Cette pomme (que je tiens) est sucrée. || これ;ここ;どの
+37 || [その]|かさは|だれのですか。 || À qui est ce parapluie (près de toi) ? || それ;そこ;どの
+47 || [あの]|建物（たてもの）は|病院（びょういん）です。 || Ce bâtiment là-bas (loin de nous deux) est un hôpital. || あれ;あそこ;どの
 17 || 頭（あたま）が|痛（いた）い[んです]。 || C'est que j'ai mal à la tête. || ません;ます;でした
 17 || どうして|遅（おく）れた[んです]か。 || Pourquoi es-tu arrivé en retard ? || ます;ません;でしょう
 1104 || どこへ|行（い）く[の]？ || Tu vas où ? || を;が;へ
@@ -101,7 +101,7 @@
 950 || 明日（あした）、|映画（えいが）を|[見（み）る]。 || Demain, je vais voir un film. || 見た;見て;見よ
 357 || これは|母（はは）が|[作（つく）った]|ケーキです。 || C'est un gâteau que ma mère a fait. || 作って;作りました;作ったの
 1103 || 私（わたし）[の]|作（つく）った|料理（りょうり）です。 || C'est un plat que j'ai préparé. || を;へ;で
-720 || この|かさは|だれ[の]ですか。 || À qui est ce parapluie ? || を;が;へ
+720 || この|かさは|だれ[の]ですか。 || À qui est ce parapluie (près de moi) ? || を;が;へ
 66 || ここで|たばこを|吸（す）う[な]。 || Ne fume pas ici ! || ね;よ;か
 43 || 千円（せんえん）[だけ]|あります。 || J'ai seulement mille yens. || まで;から;より
 712 || [どれ]が|あなたの|かばんですか。 || Lequel est ton sac ? || どの;どこ;だれ

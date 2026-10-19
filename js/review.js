@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019131128';
-import { speak, speakBtn } from './voice.js?v=20261019131128';
-import { pitchSVG } from './pitch.js?v=20261019131128';
-import { play } from './sfx.js?v=20261019131128';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019131128';
-import * as D from './data.js?v=20261019131128';
-import * as S from './srs.js?v=20261019131128';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019133039';
+import { speak, speakBtn } from './voice.js?v=20261019133039';
+import { pitchSVG } from './pitch.js?v=20261019133039';
+import { play } from './sfx.js?v=20261019133039';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019133039';
+import * as D from './data.js?v=20261019133039';
+import * as S from './srs.js?v=20261019133039';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -88,6 +88,22 @@ export function regSwitch(onChange) {
   return h('div.reg-switch', h('span.lbl', 'Style des phrases'), seg);
 }
 
+/** Nuances attendues dans la réponse : accompli, en cours, négatif, insistance (ん)… */
+export function nuanceChips(answer) {
+  const a = plain(String(answer || '')).replace(/[〜～]/g, '');
+  if (!a) return [];
+  const out = [];
+  const add = (label, title) => out.push(h('span.nuance-chip', { title }, label));
+  if (/ん(?:です|だ|でしょう|じゃ)|^のです|^んです|^の(?:だ|です)$/.test(a)) add('Insistance / explication (ん)', 'La phrase explique ou insiste : forme en 〜んです・〜のだ');
+  if (/(?:てい|でい|てる|でる)/.test(a)) add('En cours / état', 'Action en train de se faire, ou état qui dure : 〜ている');
+  else if (/(?:た|だ|ました|でした|かった)$/.test(a) && !/^(?:だ|ただ|また)$/.test(a)) add('Accompli (passé)', 'L’action est terminée : forme passée');
+  if (/(?:ない|ません|なかった|ず|ぬ)/.test(a) && !/ないで(?:ください)?$/.test(a)) add('Négatif', 'La réponse est à la forme négative');
+  if (/(?:ましょう|よう|おう)$/.test(a)) add('Volonté / invitation', '« Faisons… », « je vais… »');
+  if (/たい/.test(a)) add('Envie (〜たい)', 'Vouloir faire');
+  if (/(?:られ|させ)/.test(a)) add('Passif / causatif', 'Forme passive ou causative');
+  return out.slice(0, 3);
+}
+
 /** Pastille qui dit quel style de phrase est attendu (poli ou neutre) */
 export function regChip(s) {
   if (!s?.reg) return null;
@@ -149,7 +165,7 @@ async function resolve(key, last) {
     const sents = await D.sentencesFor(g.id);
     if (sents.length) {
       const pool = sents.length > 1 ? sents.filter(s => s.id !== last) : sents;
-      const s = pick(pool);
+      const s = pick((await D.easiest(pool, g.lv)).slice(0, 3));
       return { key, kind: 'cloze', g, s, lv: g.lv, options: shuffle([s.a, ...s.d]), answer: s.a, disp: clozeDisp(s) };
     }
     const others = (await D.grammar()).filter(x => x.lv === g.lv && x.s !== g.s);
@@ -237,7 +253,7 @@ export async function typedVocab(v) {
   const target = v.f || v.w;
   const pref = preferred();
   let ex = null, conj = null;
-  const list = shuffle(await D.vocabExamples(v)).map(([jp, fr, reg, alt]) => ({ ...inStyle({ jp, reg, alt }, pref), fr }));
+  const list = (await D.easiest(shuffle(await D.vocabExamples(v)), v.lv, e => e[0])).map(([jp, fr, reg, alt]) => ({ ...inStyle({ jp, reg, alt }, pref), fr }));
   for (const st of list) {
     const t = [target, v.w].find(x => x && st.text.includes(x));
     if (t) { ex = { jp: st.text.replace(t, `[${t}]`), fr: st.fr, reg: st.reg }; break; }
@@ -478,8 +494,10 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       prompt = [h('p.type-fr.solo', { html: `Écris le mot qui veut dire <mark class="fr-key">${D.shortMeaning(item.v.m).replace(/[&<>]/g, '')}</mark>` })];
     }
     const chip = item.kind === 'cloze-type' ? regChip(item.s) : item.ex?.reg ? regChip(item.ex) : null;
+    const nuances = item.kind === 'cloze-type' || item.conj ? nuanceChips(item.accept[0]) : [];
     stage.replaceChildren(h('div.card.question.typed.clean',
-      h('div.type-top', h('span.type-tag', item.kind === 'cloze-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : item.kind === 'meaning-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : `Vocabulaire · ${item.lv}`), chip),
+      h('div.type-top', h('span.type-tag', item.kind === 'cloze-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : item.kind === 'meaning-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : `Vocabulaire · ${item.lv}`),
+        h('span.type-chips', ...nuances, chip)),
       h('div.type-body', ...prompt),
       hintBox, fb, tools, bar));
     play('card');

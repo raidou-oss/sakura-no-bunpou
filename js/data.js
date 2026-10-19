@@ -3,7 +3,7 @@
 const cache = {};
 async function load(name) {
   if (!cache[name]) {
-    cache[name] = fetch(`data/${name}.json?v=20261019131128`).then(r => {
+    cache[name] = fetch(`data/${name}.json?v=20261019133039`).then(r => {
       if (!r.ok) throw new Error(`Impossible de charger ${name}.json`);
       return r.json();
     });
@@ -63,4 +63,29 @@ export function shortMeaning(m) {
   let out = parts[0];
   if (parts[1] && (out + parts[1]).length < 28) out += ', ' + parts[1];
   return out;
+}
+
+// --- Difficulté d'une phrase pour un niveau : kanji qu'on ne connaît pas encore à ce niveau ------------
+let kanjiLvP = null;
+/** kanji → indice du premier niveau (0 = N5) où il apparaît dans le vocabulaire */
+export function kanjiLevels() {
+  kanjiLvP = kanjiLvP || Promise.all(LEVELS.map(l => vocab(l).catch(() => []))).then(lists => {
+    const m = new Map();
+    lists.forEach((list, i) => list.forEach(v => { for (const ch of v.w) if (/[㐀-鿿々]/.test(ch) && !m.has(ch)) m.set(ch, i); }));
+    return m;
+  });
+  return kanjiLvP;
+}
+/** Nombre de kanji « au-dessus » du niveau dans la phrase (0 = abordable) */
+export async function hardness(text, lv) {
+  const m = await kanjiLevels();
+  const li = Math.max(0, LEVELS.indexOf(lv));
+  let n = 0;
+  for (const ch of String(text).replace(/（[^）]*）/g, '')) if (/[㐀-鿿]/.test(ch) && (m.get(ch) ?? 9) > li) n++;
+  return n;
+}
+/** Les phrases les plus abordables pour ce niveau (les plus faciles d'abord) */
+export async function easiest(sents, lv, getText = s => s.jp) {
+  const scored = await Promise.all(sents.map(async s => ({ s, h: await hardness(getText(s), lv) })));
+  return scored.sort((a, b) => a.h - b.h).map(x => x.s);
 }

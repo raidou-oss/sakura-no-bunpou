@@ -76,7 +76,7 @@
 1113 || この|かばんは|一万円（いちまんえん）|[し]ました。 || Ce sac a coûté dix mille yens. || なり;かかれ;あり
 119 || 三時間（さんじかん）[も]|待（ま）った。 || J'ai attendu trois heures entières ! || へ;か;の
 367 || 宿題（しゅくだい）は|[ほとんど]|終（お）わった。 || J'ai presque fini mes devoirs. || ぜんぜん;まだ;なかなか
-369 || [そんな]|こと、|言（い）わないで。 || Ne dis pas des choses pareilles. || それ;そこ;そう
+369 || [そんな]|こと、|言（い）わないで。 || Ne dis pas des choses pareilles (comme ce que tu viens de dire). || それ;そこ;そう
 652 || [各（かく）]|部屋（へや）に|エアコンが|あります。 || Il y a la clim dans chaque chambre. || 毎;何;次
 1106 || 東京（とうきょう）[の次（つぎ）に]|大（おお）きい|町（まち）は|どこですか。 || Quelle est la plus grande ville après Tokyo ? || の前に;の中で;のために
 382 || 二十歳（はたち）[以上（いじょう）]の|人（ひと）は|お酒（さけ）が|飲（の）めます。 || Les personnes de vingt ans et plus peuvent boire de l'alcool. || 以外;以来;以前

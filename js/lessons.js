@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019131128';
-import * as D from './data.js?v=20261019131128';
-import * as S from './srs.js?v=20261019131128';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019131128';
-import { speakBtn, speak } from './voice.js?v=20261019131128';
-import { itemScore } from './level.js?v=20261019131128';
-import { play } from './sfx.js?v=20261019131128';
-import { celebrate, verdict } from './celebrate.js?v=20261019131128';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019133039';
+import * as D from './data.js?v=20261019133039';
+import * as S from './srs.js?v=20261019133039';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019133039';
+import { speakBtn, speak } from './voice.js?v=20261019133039';
+import { itemScore } from './level.js?v=20261019133039';
+import { play } from './sfx.js?v=20261019133039';
+import { celebrate, verdict } from './celebrate.js?v=20261019133039';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -130,7 +130,8 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
   const c = { g: parts.flatMap(p => p.g), v: parts.flatMap(p => p.v), gN: parts.find(p => p.gN)?.gN };
   if (!c.g.length && !c.v.length) { location.hash = `#/lecons/${lv}`; return; }
   const furi = S.getSettings().furigana === 'always' || (S.getSettings().furigana === 'auto' && (lv === 'N5' || lv === 'N4'));
-  const sentsByG = new Map(await Promise.all(c.g.map(async g => [g.id, await D.sentencesFor(g.id)])));
+  // Phrases rangées de la plus abordable à la plus difficile pour le niveau de la leçon
+  const sentsByG = new Map(await Promise.all(c.g.map(async g => [g.id, await D.easiest(await D.sentencesFor(g.id), lv)])));
 
   // Étapes : en mode mixte, un point de grammaire puis quelques mots, en alternance
   const steps = [];
@@ -227,7 +228,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
       plan = [];
       c.g.forEach(g => {
         const sents = sentsByG.get(g.id) || [];
-        const sid = sents.length ? sents[Math.floor(Math.random() * sents.length)].id : null;
+        const sid = sents.length ? sents[Math.floor(Math.random() * Math.min(2, sents.length))].id : null;
         plan.push({ lid: `g:${g.id}`, sid });
       });
       c.v.forEach((v, k) => plan.push({ lid: `v${k}:${v.w}` }));

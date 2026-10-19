@@ -1,13 +1,13 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019131128';
-import * as D from '../data.js?v=20261019131128';
-import * as S from '../srs.js?v=20261019131128';
-import { play as sfx } from '../sfx.js?v=20261019131128';
-import { speakBtn } from '../voice.js?v=20261019131128';
-import { burst } from '../celebrate.js?v=20261019131128';
-import { regChip } from '../review.js?v=20261019131128';
+import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019133039';
+import * as D from '../data.js?v=20261019133039';
+import * as S from '../srs.js?v=20261019133039';
+import { play as sfx } from '../sfx.js?v=20261019133039';
+import { speakBtn } from '../voice.js?v=20261019133039';
+import { burst } from '../celebrate.js?v=20261019133039';
+import { regChip } from '../review.js?v=20261019133039';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
@@ -167,7 +167,7 @@ export default async function theme(root, { settings, saveBest, params }) {
       function next() { i++; round(); }
 
       stage.replaceChildren(h('div.card.theme',
-        h('div.kicker-row', h('p.kicker', `Thème · ${lv}${g ? ` · ${g.t}` : ''}`), regChip(s)),
+        h('div.kicker-row', h('p.kicker', `Thème · ${lv}`), regChip(s)),
         h('p.narabe-fr', s.fr),
         input, hint,
         h('div.actions.left', ok, hintBtn, skip),

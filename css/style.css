@@ -1307,3 +1307,22 @@ body.portal-mode .petal-sky { display: none; }
 .gl-base em { font-style: normal; color: var(--cyan); }
 .gl-text { margin: 6px 0 0; font-size: .9rem; line-height: 1.45; color: var(--pale); }
 @media (hover: hover) { p.jp, .type-sentence, .theme-answer .jp, .vx .jp { cursor: help; } }
+.type-chips { display: inline-flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.nuance-chip { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-size: .72rem; font-weight: 700; transform: skewX(-6deg);
+  border: 1px solid rgba(70, 217, 255, .5); background: rgba(70, 217, 255, .1); color: var(--pale); cursor: help; }
+
+/* Petite indication à côté du bouton Kanji Dojo */
+.brand-row { position: relative; }
+.dojo-note { position: absolute; left: calc(100% + 6px); top: 6px; display: flex; align-items: flex-start; gap: 4px; pointer-events: none; white-space: nowrap; color: var(--pale);
+  transition: opacity .3s, transform .3s var(--ease-out); animation: note-in .6s var(--ease-spring) .6s both; }
+.dojo-note svg { width: 44px; height: 24px; margin-top: 8px; color: var(--sakura); filter: drop-shadow(0 0 6px rgba(255, 148, 203, .5)); }
+.dojo-note b { display: block; font: 700 .86rem/1.2 var(--jp); color: #fff; }
+.dojo-note small { display: block; font: 700 italic .78rem/1.2 var(--display); color: var(--mist); letter-spacing: .02em; }
+@keyframes note-in { from { opacity: 0; transform: translateX(-8px); } }
+.dojo-btn:hover ~ .dojo-note, body.scrolled .dojo-note { opacity: 0; transform: translateX(-6px); }
+.main { padding-top: 76px; }
+@media (max-width: 860px) {
+  .dojo-note { position: fixed; left: auto; right: calc(max(14px, env(safe-area-inset-right, 0px)) + 46px); top: calc(14px + env(safe-area-inset-top, 0px)); z-index: 6; flex-direction: row-reverse; text-align: right; }
+  .dojo-note svg { transform: scaleX(-1); }
+  .main { padding-top: 64px; }
+}

@@ -1,9 +1,9 @@
 // 仮名 : hiragana et katakana pour ceux qui partent de zéro. Tableaux à écouter + entraînement à la lecture.
-import { h, shuffle, jr, toast, toHira } from './util.js?v=20261019131128';
-import * as S from './srs.js?v=20261019131128';
-import { speak, speakBtn } from './voice.js?v=20261019131128';
-import { play } from './sfx.js?v=20261019131128';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019131128';
+import { h, shuffle, jr, toast, toHira } from './util.js?v=20261019133039';
+import * as S from './srs.js?v=20261019133039';
+import { speak, speakBtn } from './voice.js?v=20261019133039';
+import { play } from './sfx.js?v=20261019133039';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019133039';
 
 // Gojūon : [romaji des 5 colonnes a i u e o], null = case vide
 const BASE = [
@@ -54,13 +54,15 @@ const ALT = { shi: ['si'], chi: ['ti'], tsu: ['tu'], fu: ['hu'], ji: ['zi', 'di'
   ja: ['zya', 'jya'], ju: ['zyu', 'jyu'], jo: ['zyo', 'jyo'] };
 const accepts = r => [r, ...(ALT[r] || [])];
 
-/** Maîtrise d'un kana d'après les exercices : 0 → 1 */
-function mastery(k) {
+/** Maîtrise d'un kana d'après les exercices : null (jamais vu), 'ko' (souvent raté), 'mid' (en cours), 'ok' (maîtrisé) */
+function level(k) {
   const g = S.practiceStats()[`k:${k}`];
-  if (!g) return null;
-  const acc = g.ok / Math.max(1, g.ok + g.ko);
-  return acc * Math.min(1, g.ok / 4);
+  if (!g || !(g.ok + g.ko)) return null;
+  const acc = g.ok / (g.ok + g.ko);
+  if (acc < 0.6) return 'ko';
+  return g.ok >= 3 && acc >= 0.8 ? 'ok' : 'mid';
 }
+const mastery = k => ({ ko: 0.2, mid: 0.5, ok: 1 })[level(k)] ?? null;
 const masteryCls = m => m == null ? '' : m >= 0.8 ? 'm-3' : m >= 0.45 ? 'm-2' : 'm-1';
 
 // --- Page : tableaux ---------------------------------------------------------------------
@@ -86,7 +88,7 @@ export function kanaPage(main, script = 'hira') {
     tabs,
     h('section.glass.kana-intro',
       h('div', h('strong', `${known} / ${all.length}`), h('span.small', ` ${SCRIPTS[script].label.toLowerCase()} maîtrisés`)),
-      h('div.kana-legend.small', h('i.m-1'), 'à revoir', h('i.m-2'), 'en cours', h('i.m-3'), 'maîtrisé'),
+      h('div.kana-legend.small', h('i.m-1'), 'souvent raté', h('i.m-2'), 'en cours', h('i.m-3'), 'maîtrisé (3 bonnes réponses)'),
       h('a.btn.primary', { href: `#/kana-quiz/${script}` }, 'S’entraîner à lire')),
     ...tables,
     h('section.glass.kana-tips',

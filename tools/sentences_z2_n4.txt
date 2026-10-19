@@ -81,7 +81,7 @@
 1113 || この|時計（とけい）は|十万円（じゅうまんえん）|[し]ました。 || Cette montre a coûté cent mille yens. || あり;なり;き
 119 || 昨日（きのう）は|十時間（じゅうじかん）[も]|寝（ね）た。 || Hier, j'ai dormi dix heures, carrément. || しか;より;へ
 367 || クラスの|[ほとんど]の|人（ひと）が|賛成（さんせい）した。 || Presque toute la classe était d'accord. || だんだん;とうとう;なるべく
-369 || [こんな]|大（おお）きな|魚（さかな）を|見（み）たのは|初（はじ）めてだ。 || C'est la première fois que je vois un poisson aussi gros. || これ;ここ;こう
+369 || [こんな]|大（おお）きな|魚（さかな）を|見（み）たのは|初（はじ）めてだ。 || C'est la première fois que je vois un poisson aussi gros (que celui-ci, devant moi). || これ;ここ;こう
 652 || [各（かく）]|クラスから|代表（だいひょう）を|一人（ひとり）|選（えら）びます。 || On choisit un représentant dans chaque classe. || 何;方;以
 1106 || 私（わたし）は|りんご[の次（つぎ）に]|みかんが|好（す）きだ。 || Après les pommes, ce sont les mandarines que je préfère. || の前に;の上に;の中に
 382 || 百人（ひゃくにん）[以上（いじょう）]の|人（ひと）が|集（あつ）まった。 || Plus de cent personnes se sont rassemblées. || 以下;以外;以内

@@ -1,7 +1,7 @@
 # Phrases supplémentaires N5 (une de plus par point). Même format que sentences_n5.txt.
-5 || [これ]は|日本（にほん）の|お茶（ちゃ）です。 || Ceci, c'est du thé japonais. || どこ;だれ;いつ
+5 || [これ]は|日本（にほん）の|お茶（ちゃ）です。 || Ceci (près de moi), c'est du thé japonais. || どこ;だれ;いつ
 11 || [それ]は|あなたの|かさですか。 || Ça (près de toi), c'est ton parapluie ? || どこ;いつ;だれ
-19 || [あれ]は|私（わたし）の|学校（がっこう）です。 || Ça, là-bas, c'est mon école. || どこ;だれ;いつ
+19 || [あれ]は|私（わたし）の|学校（がっこう）です。 || Ça, là-bas (loin de nous deux), c'est mon école. || どこ;だれ;いつ
 7 || この|かばんは|とても[いい]ですね。 || Ce sac est vraiment bien, hein. || よく;いく;よくて
 24 || 今日（きょう）は|とても|[寒（さむ）い]です。 || Il fait très froid aujourd'hui. || 寒く;寒さ;寒な
 28 || 田中（たなか）さんは|[元気（げんき）]です。 || Monsieur Tanaka est en forme. || 元気い;元気く;元気の
@@ -11,16 +11,16 @@
 1082 || 毎朝（まいあさ）|コーヒーを|飲（の）み[ます]。 || Je bois du café tous les matins. || です;だ;でした
 51 || 日曜日（にちようび）は|[起（お）きません]。 || Le dimanche, je ne me lève pas. || 起きます;起きました;起きない
 15 || 姉（あね）[と]|兄（あに）が|います。 || J'ai une grande sœur et un grand frère. || を;へ;で
-14 || [ここ]で|待（ま）っていてください。 || Attends ici, s'il te plaît. || だれ;いつ;なに
+14 || [ここ]で|待（ま）っていてください。 || Attends ici (là où je suis), s'il te plaît. || だれ;いつ;なに
 20 || [そこ]に|ある|本（ほん）を|取（と）ってください。 || Passe-moi le livre qui est là (près de toi). || だれ;いつ;なに
-29 || [あそこ]に|コンビニが|あります。 || Il y a une supérette là-bas. || だれ;いつ;なに
+29 || [あそこ]に|コンビニが|あります。 || Il y a une supérette là-bas (loin de nous deux). || だれ;いつ;なに
 33 || 電車（でんしゃ）[か]|バスで|行（い）きます。 || J'y vais en train ou en bus. || を;へ;が
 955 || 週末（しゅうまつ）は|家族（かぞく）[と]|出（で）かけます。 || Le week-end, je sors avec ma famille. || を;へ;が
 9 || 明日（あした）は|晴（は）れる[でしょう]。 || Demain, il fera sans doute beau. || ます;です;ません
 18 || 彼女（かのじょ）は|もう|家（いえ）に|着（つ）いた[だろう]。 || Elle doit être déjà arrivée chez elle, non ? || ましょう;ください;ません
-30 || [この]|電車（でんしゃ）は|東京（とうきょう）へ|行（い）きます。 || Ce train va à Tokyo. || これ;ここ;どれ
+30 || [この]|電車（でんしゃ）は|東京（とうきょう）へ|行（い）きます。 || Ce train (celui où l'on est) va à Tokyo. || これ;ここ;どれ
 37 || [その]|本（ほん）、|おもしろいですか。 || Ce livre (que tu as), il est intéressant ? || それ;そこ;どれ
-47 || [あの]|白（しろ）い|ビルは|銀行（ぎんこう）です。 || Ce bâtiment blanc, là-bas, est une banque. || あれ;あそこ;どれ
+47 || [あの]|白（しろ）い|ビルは|銀行（ぎんこう）です。 || Ce bâtiment blanc, là-bas (loin de nous deux), est une banque. || あれ;あそこ;どれ
 1104 || 何（なに）を|食（た）べてる[の]？ || Qu'est-ce que tu manges ? || を;へ;で
 16 || 本（ほん）を|読（よ）む[の]が|楽（たの）しいです。 || C'est agréable de lire des livres. || を;へ;で
 953 || [新（あたら）しい]|くつを|買（か）いました。 || J'ai acheté de nouvelles chaussures. || 新しく;新しな;新しの
