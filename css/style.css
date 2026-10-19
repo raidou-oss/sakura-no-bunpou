@@ -1767,3 +1767,56 @@ html, body { overflow-x: clip; }
 }
 .p3-head h1 .jp-head, .cf-kanji { animation: p3-kanji-shade 3s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .p3-head h1 .jp-head, .cf-kanji { animation: none; } }
+
+/* ==========================================================================================
+   Ombres vivantes, version douce : deux oscillations lentes (x et y) à des rythmes différents,
+   interpolées en continu (@property) → mouvement fluide, sans à-coups ; léger flou anti-crénelage
+   ========================================================================================== */
+@property --sx { syntax: '<length>'; inherits: false; initial-value: 6px; }
+@property --sy { syntax: '<length>'; inherits: false; initial-value: 6px; }
+@keyframes shade-x { 0%, 100% { --sx: 3px; } 50% { --sx: 9px; } }
+@keyframes shade-y { 0%, 100% { --sy: 8px; } 50% { --sy: 3px; } }
+:root { --shade-pink: rgba(255, 148, 203, .9); --shade-cyan: rgba(70, 217, 255, .4); }
+.p3-shade, .nav-indicator::before, .tab.active, .segmented button.active, .tab-flip, .oc-head, .lesson-title h1, .btn, .chip-btn:not(:disabled),
+.resume-chip, .stat-chip, .lv-badge, .cf-ttl, .ru-title, .tarot, .reg-chip, .score-glyph, .lc-tarot, .cf-maxtag, .lc-ongoing, .lr-card,
+.lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card, .kana-cell:not(.empty), .point, .oc-row, .resume-ico {
+  --shade: var(--sx) var(--sy) 1.5px var(--shade-pink), calc(var(--sx) * -.55) calc(var(--sy) * -.45) 1.5px var(--shade-cyan);
+  animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite;
+}
+/* Sélections et boutons : l'ombre entière bouge */
+.nav-indicator::before { box-shadow: var(--shade), 0 10px 30px -10px rgba(70, 217, 255, .7); animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite, p3-bgsweep 3.6s ease-in-out infinite; }
+.tab.active, .segmented button.active, .tab-flip, .oc-head, .lesson-title h1, .btn.primary, .resume-chip, .lv-badge, .cf-ttl, .ru-title, .reg-chip, .cf-maxtag, .lc-ongoing, .score-glyph, .resume-ico { box-shadow: var(--shade); }
+.btn:not(.primary) { --shade-pink: rgba(70, 217, 255, .55); --shade-cyan: rgba(255, 148, 203, .25); box-shadow: var(--shade); }
+.btn.primary:hover, .btn:not(.primary):hover { --shade-pink: var(--cyan); --shade-cyan: rgba(255, 148, 203, .5); box-shadow: var(--shade); animation: shade-x 1.6s ease-in-out infinite, shade-y 2.1s ease-in-out infinite; }
+.btn:disabled { animation: none; box-shadow: none; }
+.chip-btn:not(:disabled) { --shade-pink: rgba(70, 217, 255, .4); --shade-cyan: transparent; box-shadow: var(--shade); }
+.stat-chip { box-shadow: var(--shade); --shade-pink: rgba(255, 148, 203, .45); }
+.tarot, .lc-tarot, .lr-card { box-shadow: 0 0 0 3px #F3F7FF, 0 0 0 6px var(--night), calc(var(--sx) + 4px) calc(var(--sy) + 6px) 2px 6px rgba(70, 217, 255, .5), 0 30px 60px -20px rgba(0, 0, 0, .9); }
+.lc-tarot { box-shadow: 0 0 0 3px var(--night), var(--sx) var(--sy) 1.5px 3px rgba(70, 217, 255, .45); }
+/* Tuiles : barre d'accent + ombre douce qui respire ; plus marquée au survol */
+.lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card, .point, .oc-row {
+  --shade-pink: rgba(255, 148, 203, .28); --shade-cyan: rgba(70, 217, 255, .14);
+  box-shadow: inset 5px 0 0 var(--azure), var(--shade); }
+.lesson-card.done { box-shadow: inset 5px 0 0 var(--sakura), var(--shade); }
+.lesson-card.ongoing { box-shadow: inset 5px 0 0 var(--cyan), var(--shade); }
+.oc-row { box-shadow: var(--shade); }
+a.glass:hover, .unit:hover, .lesson-card:hover, .member:hover, .game-tile:hover, .level:hover, .point:hover, .score-card:hover, .link-card:hover {
+  --shade-pink: rgba(255, 148, 203, .6); --shade-cyan: rgba(70, 217, 255, .35); box-shadow: inset 9px 0 0 var(--sakura), var(--shade); }
+.kana-cell:not(.empty) { --shade-pink: rgba(255, 148, 203, .22); --shade-cyan: rgba(70, 217, 255, .1); box-shadow: var(--shade); }
+.kana-cell:not(.empty):hover { --shade-pink: rgba(255, 148, 203, .55); }
+/* Décalage de phase : les tuiles voisines ne respirent pas toutes en même temps */
+li:nth-child(3n+1) > :is(.lesson-card, .unit, .game-tile, .member, .level, .point) { animation-delay: -.8s, -1.9s; }
+li:nth-child(3n+2) > :is(.lesson-card, .unit, .game-tile, .member, .level, .point) { animation-delay: -1.7s, -3.1s; }
+.kana-cell:nth-child(2n) { animation-delay: -1.2s, -2.4s; }
+.kana-cell:nth-child(3n) { animation-delay: -2.1s, -.6s; }
+/* Les anciennes animations « par paliers » sont remplacées */
+.tab.active, .segmented button.active, .cf-row.on, .tab-flip, .oc-head, .lesson-title h1, .btn.primary:not(:disabled) { animation-name: shade-x, shade-y; animation-duration: 3.1s, 4.3s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+/* Le mot des titres : son ombre cyan suit le même mouvement (sans découpe) */
+.p3-head .ph-word, .cf-word { clip-path: none; transform: skewX(-6deg); --shade-pink: rgba(70, 217, 255, .95); --shade-cyan: rgba(255, 148, 203, .45); box-shadow: var(--shade);
+  animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .p3-shade, .nav-indicator::before, .tab.active, .segmented button.active, .tab-flip, .oc-head, .lesson-title h1, .btn, .chip-btn, .resume-chip, .stat-chip, .lv-badge, .cf-ttl,
+  .ru-title, .tarot, .reg-chip, .score-glyph, .lc-tarot, .cf-maxtag, .lc-ongoing, .lr-card, .lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card,
+  .kana-cell, .point, .oc-row, .resume-ico, .p3-head .ph-word, .cf-word { animation: none !important; }
+}
+@media (max-width: 860px) { .nav-indicator::before { animation: none; } }
