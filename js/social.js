@@ -1,24 +1,26 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby } from './util.js?v=20261019152944';
-import * as D from './data.js?v=20261019152944';
-import { wallpaperSVG } from './wallpaper.js?v=20261019152944';
-import * as C from './cloud.js?v=20261019152944';
-import { play } from './sfx.js?v=20261019152944';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019152944';
-import { GAMES } from './gamelist.js?v=20261019152944';
-import * as L from './links.js?v=20261019152944';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019154437';
+import * as D from './data.js?v=20261019154437';
+import { wallpaperSVG } from './wallpaper.js?v=20261019154437';
+import * as C from './cloud.js?v=20261019154437';
+import { play } from './sfx.js?v=20261019154437';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019154437';
+import { GAMES } from './gamelist.js?v=20261019154437';
+import * as L from './links.js?v=20261019154437';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
 
 /** Rang en kanji stylé + jauge vers le niveau suivant */
 /** Jauge simple réutilisable */
-export function gauge(value, label, { kind = '', mark = null } = {}) {
+export function gauge(value, label, { kind = '', mark = null, mastery = null } = {}) {
   const p = toPct(value);
+  const m = mastery == null ? null : Math.min(p, toPct(mastery));
   return h(`div.gauge-row${kind ? '.' + kind : ''}`,
-    h('div.gauge-label', h('span', label), h('strong', `${p} %`)),
+    h('div.gauge-label', h('span', label), h('strong', `${p} %`, m ? h('small.mastery-tag', { title: 'Maîtrise : éléments révisés à 21 jours ou plus, réussis au moins 4 fois d’affilée et facilement' }, ` · ${m} % maîtrisé`) : null)),
     h('div.gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': p, 'aria-label': label },
       h('span', { style: { width: `${Math.max(2, p)}%` } }),
+      m ? h('i.gauge-glow', { style: { width: `${m}%` } }) : null,
       mark != null ? h('i.gauge-mark', { style: { left: `${toPct(mark)}%` }, title: `Objectif ${toPct(mark)} %` }) : null));
 }
 
@@ -33,10 +35,11 @@ export function rankBlock(r, { compact = false } = {}) {
       h('span.rank-badge.kanji-pop', { lang: 'ja' }, rankLabel(r.rank).replace(' validé', '')),
       h('span.rank-text', h('strong', { html: jr(rankTitle(r.rank)) }), h('span', next ? `${p} % vers ${next}` : 'Tous les niveaux validés'))),
     h('div.gauge.main-gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': p, 'aria-label': `Avancement du rang ${rankLabel(r.rank)}` },
-      h('span', { style: { width: `${Math.max(3, p)}%` } })),
+      h('span', { style: { width: `${Math.max(3, p)}%` } }),
+      r.mastery ? h('i.gauge-glow', { style: { width: `${Math.min(p, toPct(r.mastery))}%` }, title: `${toPct(r.mastery)} % maîtrisé` }) : null),
     !compact && r.grammar != null && !done ? h('div.rank-split',
-      gauge(r.grammar, `Grammaire ${lv}`, { kind: 'g', mark: THRESHOLD.grammar }),
-      gauge(r.vocab, `Vocabulaire ${lv}`, { kind: 'v', mark: THRESHOLD.vocab })) : null);
+      gauge(r.grammar, `Grammaire ${lv}`, { kind: 'g', mark: THRESHOLD.grammar, mastery: r.gMastery }),
+      gauge(r.vocab, `Vocabulaire ${lv}`, { kind: 'v', mark: THRESHOLD.vocab, mastery: r.vMastery })) : null);
 }
 
 function avatar(p, size = 'm', { level = false } = {}) {

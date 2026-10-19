@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019152944';
-import { speak, speakBtn } from './voice.js?v=20261019152944';
-import { pitchSVG } from './pitch.js?v=20261019152944';
-import { play } from './sfx.js?v=20261019152944';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019152944';
-import * as D from './data.js?v=20261019152944';
-import * as S from './srs.js?v=20261019152944';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019154437';
+import { speak, speakBtn } from './voice.js?v=20261019154437';
+import { pitchSVG } from './pitch.js?v=20261019154437';
+import { play } from './sfx.js?v=20261019154437';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019154437';
+import * as D from './data.js?v=20261019154437';
+import * as S from './srs.js?v=20261019154437';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;

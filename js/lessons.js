@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019152944';
-import * as D from './data.js?v=20261019152944';
-import * as S from './srs.js?v=20261019152944';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019152944';
-import { speakBtn, speak } from './voice.js?v=20261019152944';
-import { itemScore } from './level.js?v=20261019152944';
-import { play } from './sfx.js?v=20261019152944';
-import { celebrate, verdict } from './celebrate.js?v=20261019152944';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019154437';
+import * as D from './data.js?v=20261019154437';
+import * as S from './srs.js?v=20261019154437';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019154437';
+import { speakBtn, speak } from './voice.js?v=20261019154437';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261019154437';
+import { play } from './sfx.js?v=20261019154437';
+import { celebrate, verdict } from './celebrate.js?v=20261019154437';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -55,11 +55,32 @@ function lessonTitle(plan, kind, n) {
   return `Leçon ${kind === 'm' ? n : n}`;
 }
 
+let covered = null;   // clés couvertes par des leçons validées (rempli au chargement du hub)
 const progressOf = items => {
   if (!items.length) return 0;
   const cards = S.allCards(), now = Date.now();
   const gm = S.practiceStats();
-  return items.reduce((a, it) => { const k = it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`; return a + itemScore(cards[k], gm[k], now); }, 0) / items.length;
+  return items.reduce((a, it) => { const k = it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`; return a + Math.max(itemScore(cards[k], gm[k], now), covered?.has(k) ? LESSON_CREDIT : 0); }, 0) / items.length;
+};
+/** Éléments (grammaire et vocabulaire) couverts par des leçons validées : Set de clés de cartes */
+export async function lessonCoveredKeys() {
+  const done = Object.keys(S.getExtra(DONE_KEY, {}) || {});
+  const out = new Set();
+  const plans = {};
+  for (const key of done) {
+    const [lv, kind, n] = key.split(':');
+    if (!D.LEVELS.includes(lv)) continue;
+    plans[lv] = plans[lv] || await levelPlan(lv);
+    const c = lessonContent(plans[lv], kind, Number(n));
+    c.g.forEach(g => out.add(`g:${g.id}`));
+    c.v.forEach(v => out.add(D.vocabKey(v)));
+  }
+  return out;
+}
+const masteryOfItems = items => {
+  if (!items.length) return 0;
+  const cards = S.allCards();
+  return items.filter(it => isMastered(cards[it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`])).length / items.length;
 };
 const isDone = (lv, kind, n) => !!S.getExtra(DONE_KEY, {})[`${lv}:${kind}:${n}`];
 const isSeen = (lv, kind, n) => !!S.getExtra(SEEN_KEY, {})[`${lv}:${kind}:${n}`];
@@ -71,6 +92,7 @@ export async function lessonsHub(main, lv = 'N5') {
   let mode = store.get(MODE_KEY, 'm');
   let count = COUNTS.includes(store.get(COUNT_KEY, 1)) ? store.get(COUNT_KEY, 1) : 1;
   const plan = await levelPlan(lv);
+  covered = await lessonCoveredKeys().catch(() => new Set());
   const grid = h('ul.lesson-grid');
   const seg = h('div.segmented', { role: 'tablist', 'aria-label': 'Type de leçon' });
   const countSeg = h('div.segmented.small', { role: 'radiogroup', 'aria-label': 'Nombre de leçons par session' });
@@ -90,6 +112,7 @@ export async function lessonsHub(main, lv = 'N5') {
     grid.replaceChildren(...nums.map((n, i) => {
       const c = lessonContent(plan, mode, n);
       const p = progressOf([...c.g, ...c.v]);
+      const mq = masteryOfItems([...c.g, ...c.v]);
       const done = isDone(lv, mode, n), seen = !done && isSeen(lv, mode, n);
       const st = (S.getExtra('lessonState', {}) || {})[`${lv}:${mode}:${n}:${count}`];
       const inProgress = st ? (st.phase === 'quiz' ? `En cours · exercices ${st.ok?.length || 0}/${st.plan?.length || 0}` : `En cours · étape ${(st.i || 0) + 1}/${st.n || '?'}`) : null;
@@ -101,7 +124,8 @@ export async function lessonsHub(main, lv = 'N5') {
         h('span.lc-body', h('strong', lessonTitle(plan, mode, n)), h('span.lc-sub', sub), h('span.lc-preview', { lang: 'ja', html: preview }),
           inProgress ? h('span.lc-ongoing', inProgress) : null,
           count > 1 && last !== n ? h('span.lc-chain', `→ jusqu'à : ${lessonTitle(plan, mode, last)}`) : null),
-        h('span.lc-gauge', { title: `${Math.round(p * 100)} % maîtrisé` }, h('span', { style: { width: `${Math.round(p * 100)}%` } })),
+        h('span.lc-gauge', { title: `${Math.round(p * 100)} % d’avancement · ${Math.round(mq * 100)} % de maîtrise` },
+          h('span', { style: { width: `${Math.round(p * 100)}%` } }), mq > 0 ? h('i.gauge-glow', { style: { width: `${Math.max(2, Math.round(mq * 100))}%` } }) : null),
         done ? h('span.lc-done', { 'aria-label': 'Leçon validée', html: jr('済') }) : seen ? h('span.lc-todo', 'Quiz à faire') : null));
     }));
     if (animate) { grid.classList.remove('regrid'); void grid.offsetWidth; grid.classList.add('regrid'); }

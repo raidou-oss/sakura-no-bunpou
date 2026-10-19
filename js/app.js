@@ -1,26 +1,26 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019152944';
-import * as D from './data.js?v=20261019152944';
-import * as S from './srs.js?v=20261019152944';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019152944';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019152944';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019152944';
-import * as C from './cloud.js?v=20261019152944';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019152944';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019152944';
-import { play, setVolume } from './sfx.js?v=20261019152944';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019152944';
-import { celebrate, verdict } from './celebrate.js?v=20261019152944';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019152944';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019152944';
-import { initGloss } from './gloss.js?v=20261019152944';
-import { initLinks } from './links.js?v=20261019152944';
-import { confidentsPage } from './confidents.js?v=20261019152944';
-import { initTilt } from './tilt.js?v=20261019152944';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019152944';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019154437';
+import * as D from './data.js?v=20261019154437';
+import * as S from './srs.js?v=20261019154437';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019154437';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019154437';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261019154437';
+import * as C from './cloud.js?v=20261019154437';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019154437';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019154437';
+import { play, setVolume } from './sfx.js?v=20261019154437';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019154437';
+import { celebrate, verdict } from './celebrate.js?v=20261019154437';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019154437';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019154437';
+import { initGloss } from './gloss.js?v=20261019154437';
+import { initLinks } from './links.js?v=20261019154437';
+import { confidentsPage } from './confidents.js?v=20261019154437';
+import { initTilt } from './tilt.js?v=20261019154437';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019154437';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019152944';
+import { GAMES } from './gamelist.js?v=20261019154437';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -255,9 +255,9 @@ async function grammarList(lv, params) {
   const counts = new Map();
   sents.forEach(s => counts.set(s.g, (counts.get(s.g) || 0) + 1));
   const furi = furiFor(lv);
-  const [lessonP, progress] = D.LEVELS.includes(lv) ? await Promise.all([lessonProgress(lv), progressByLevel()]) : [new Map(), null];
+  const [lessonP, progress, lessonM] = D.LEVELS.includes(lv) ? await Promise.all([lessonProgress(lv), progressByLevel(), lessonMastery(lv)]) : [new Map(), null, new Map()];
   const sectionGauge = progress ? h('section.section-progress.glass',
-    gauge(progress[lv].grammar, `Progression grammaire ${lv}`, { kind: 'g', mark: 0.55 }),
+    gauge(progress[lv].grammar, `Progression grammaire ${lv}`, { kind: 'g', mark: 0.55, mastery: progress[lv].gMastery }),
     h('p.small', `${progress[lv].gSeen} points vus sur ${progress[lv].gTotal} · ${progress[lv].gBloom} en fleur (révisés à 21 jours ou plus). Le trait marque l’objectif de 55 % pour valider le niveau.`)) : null;
 
   const tabs = h('div.tabs', { role: 'tablist', 'aria-label': 'Niveau' },
@@ -278,7 +278,7 @@ async function grammarList(lv, params) {
         h('header.lesson-head',
           h('h2', q ? D.LEVEL_NAMES[le] : `Leçon ${le}`), h('span.lesson-count', `${items.length} points`),
           !q && lessonP.has(le) ? h('span.lesson-gauge', { title: `Leçon ${le} : ${toPct(lessonP.get(le))} % maîtrisée` },
-            h('span.mini-gauge', h('span', { style: { width: `${toPct(lessonP.get(le))}%` } })), h('span.small', `${toPct(lessonP.get(le))} %`)) : null,
+            h('span.mini-gauge', h('span', { style: { width: `${toPct(lessonP.get(le))}%` } }), lessonM.get(le) ? h('i.gauge-glow', { style: { width: `${toPct(lessonM.get(le))}%` } }) : null), h('span.small', `${toPct(lessonP.get(le))} %`)) : null,
           !q && h('div.lesson-actions',
             D.LEVELS.includes(lv) && h('a.btn.small.primary', { href: `#/lecon/${lv}/g/${le}` }, 'Leçon'),
             withSent && h('a.btn.small', { href: `#/entrainement/${lv}/${le}` }, 'S’entraîner'),
@@ -364,14 +364,15 @@ async function vocabList(lv = 'N5') {
       h('p.section-note', `${list.length} mots en ${lv}, rangés par unité.`)),
     tabs,
     h('section.section-progress.glass',
-      gauge(progress[lv].vocab, `Progression vocabulaire ${lv}`, { kind: 'v', mark: 0.45 }),
+      gauge(progress[lv].vocab, `Progression vocabulaire ${lv}`, { kind: 'v', mark: 0.45, mastery: progress[lv].vMastery }),
       h('p.small', `${progress[lv].vSeen} mots vus sur ${progress[lv].vTotal} · ${progress[lv].vBloom} en fleur. Objectif 45 % pour valider le niveau.`)),
     h('ul.units', [...units].map(([u, words], i) => {
       const seen = words.filter(w => cards[D.vocabKey(w)]).length;
       return h('li', h('a.unit', { href: `#/vocabulaire/${lv}/${u}` },
         h('span.unit-n', `Unité ${i + 1}`),
         h('span.unit-sample', { lang: 'ja', html: words.slice(0, 4).map(w => ruby(w.f || w.w, true)).join('・') }),
-        h('span.unit-bar', { style: { '--v': seen / words.length } }),
+        h('span.unit-bar', { style: { '--v': seen / words.length } },
+          words.some(w => isMastered(cards[D.vocabKey(w)])) ? h('i.gauge-glow', { style: { width: `${toPct(words.filter(w => isMastered(cards[D.vocabKey(w)])).length / words.length)}%` } }) : null),
         h('span.small', `${seen}/${words.length}`)));
     })));
 }

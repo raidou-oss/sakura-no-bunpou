@@ -13,8 +13,8 @@
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261019152944';
-import * as S from './srs.js?v=20261019152944';
+import * as D from './data.js?v=20261019154437';
+import * as S from './srs.js?v=20261019154437';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };
@@ -45,6 +45,15 @@ export function practiceFactor(g, now = Date.now()) {
   return acc * volume * fresh;
 }
 export const PRACTICE_SHARE = 0.4;
+/** Une leçon validée compte comme une première rencontre réussie avec ses éléments */
+export const LESSON_CREDIT = 0.3;
+/** Élément maîtrisé : révisé à 21 jours ou plus, au moins 4 réussites d'affilée, et répondu facilement (bonne aisance) */
+export const isMastered = c => !!c && c.i >= MATURE && (c.r || 0) >= 4 && (c.e || 0) >= 2.3;
+let coveredP = null, coveredAt = 0;
+async function coveredKeys() {
+  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261019154437').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
+  return coveredP;
+}
 /** Score total d'un élément : révisions espacées + jeux / exercices */
 export function itemScore(c, g, now = Date.now()) {
   const s = cardScore(c, now);
@@ -56,21 +65,23 @@ export async function progressByLevel() {
   const [meta, grammar] = await Promise.all([D.meta(), D.grammar()]);
   const lvOf = new Map(grammar.map(g => [g.id, g.lv]));
   const acc = {};
-  for (const lv of RANK_NAMES) acc[lv] = { g: 0, v: 0, gSeen: 0, vSeen: 0, gBloom: 0, vBloom: 0 };
+  for (const lv of RANK_NAMES) acc[lv] = { g: 0, v: 0, gSeen: 0, vSeen: 0, gBloom: 0, vBloom: 0, gMaster: 0, vMaster: 0 };
   const now = Date.now();
   const cards = S.allCards(), gm = S.practiceStats();
-  for (const key of new Set([...Object.keys(cards), ...Object.keys(gm)])) {
+  const covered = await coveredKeys();
+  for (const key of new Set([...Object.keys(cards), ...Object.keys(gm), ...covered])) {
     let lv, kind;
     if (key.startsWith('g:')) { lv = lvOf.get(Number(key.slice(2))); kind = 'g'; }
     else if (key.startsWith('v:')) { lv = key.split(':')[1]; kind = 'v'; }
     const a = acc[lv];
     if (!a) continue;
     const c = cards[key];
-    const sc = itemScore(c, gm[key], now);
+    const sc = Math.max(itemScore(c, gm[key], now), covered.has(key) ? LESSON_CREDIT : 0);
     if (!sc) continue;
     a[kind] += sc;
     a[`${kind}Seen`]++;
     if (c && c.i >= MATURE) a[`${kind}Bloom`]++;
+    if (isMastered(c)) a[`${kind}Master`]++;
   }
   const out = {};
   for (const lv of RANK_NAMES) {
@@ -82,6 +93,9 @@ export async function progressByLevel() {
       gauge: WEIGHT.grammar * Math.min(1, grammarP / THRESHOLD.grammar) + WEIGHT.vocab * Math.min(1, vocabP / THRESHOLD.vocab),
       passed: grammarP >= THRESHOLD.grammar && vocabP >= THRESHOLD.vocab,
       gSeen: a.gSeen, vSeen: a.vSeen, gBloom: a.gBloom, vBloom: a.vBloom, gTotal: gT, vTotal: vT,
+      // Maîtrise : part des éléments connus « par cœur » (lueur sur les jauges)
+      gMastery: a.gMaster / gT, vMastery: a.vMaster / vT,
+      mastery: WEIGHT.grammar * (a.gMaster / gT) + WEIGHT.vocab * (a.vMaster / vT),
     };
   }
   return out;
@@ -92,11 +106,19 @@ export async function lessonProgress(lv) {
   const grammar = (await D.grammar()).filter(g => g.lv === lv);
   const cards = S.allCards(), gm = S.practiceStats(), now = Date.now();
   const sums = new Map(), counts = new Map();
+  const covered = await coveredKeys();
   for (const g of grammar) {
-    sums.set(g.le, (sums.get(g.le) || 0) + itemScore(cards[`g:${g.id}`], gm[`g:${g.id}`], now));
+    sums.set(g.le, (sums.get(g.le) || 0) + Math.max(itemScore(cards[`g:${g.id}`], gm[`g:${g.id}`], now), covered.has(`g:${g.id}`) ? LESSON_CREDIT : 0));
     counts.set(g.le, (counts.get(g.le) || 0) + 1);
   }
   return new Map([...sums].map(([le, s]) => [le, s / counts.get(le)]));
+}
+/** Maîtrise de la grammaire par leçon d'un niveau : Map(leçon → 0..1) */
+export async function lessonMastery(lv) {
+  const grammar = (await D.grammar()).filter(g => g.lv === lv);
+  const cards = S.allCards(), m = new Map(), n = new Map();
+  for (const g of grammar) { m.set(g.le, (m.get(g.le) || 0) + (isMastered(cards[`g:${g.id}`]) ? 1 : 0)); n.set(g.le, (n.get(g.le) || 0) + 1); }
+  return new Map([...m].map(([le, x]) => [le, x / n.get(le)]));
 }
 
 /** Compatibilité : fleurs du jardin (ouverture = progression combinée du niveau) */
@@ -127,6 +149,7 @@ export async function computeRank(progress) {
     rank, label: rankLabel(rank), level: lv,
     gauge: rank >= RANK_NAMES.length ? 1 : Math.min(1, cur.gauge),
     grammar: cur.grammar, vocab: cur.vocab,
+    mastery: cur.mastery, gMastery: cur.gMastery, vMastery: cur.vMastery,
     xp, learned, streak: S.streak(), progress,
   };
 }
