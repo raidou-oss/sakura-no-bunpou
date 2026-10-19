@@ -915,8 +915,11 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 .cel-band.b1 { top: calc(50% - 120px); background: var(--cyan); animation: cel-band-l .5s var(--ease-snap) .05s both; }
 .cel-band.b2 { top: calc(50% - 60px); background: linear-gradient(90deg, #FF94CB, #7FA8FF); height: 150px; animation: cel-band-r .5s var(--ease-snap) .12s both; }
 .cel-band.b3 { top: calc(50% + 72px); height: 18px; background: #fff; animation: cel-band-l .45s var(--ease-snap) .22s both; }
-.tone-record .cel-band.b1 { background: #FFD27A; }
-.tone-perfect .cel-band.b2 { background: linear-gradient(90deg, #FFD27A, #FF94CB 45%, #46D9FF); }
+.tone-record .cel-band.b1 { background: linear-gradient(90deg, #7B5CFF, #FF94CB); }
+.tone-record .cel-band.b2 { background: linear-gradient(90deg, #46D9FF, #7FA8FF 60%, #C9A7FF); }
+.tone-record .cel-sub { box-shadow: 6px 6px 0 #7B5CFF; }
+.tone-perfect .cel-band.b1 { background: linear-gradient(90deg, #46D9FF, #9EF5D5); }
+.tone-perfect .cel-band.b2 { background: linear-gradient(90deg, #FF94CB, #C9A7FF 45%, #46D9FF); }
 .tone-soft .cel-band.b1 { background: #7FA8FF; }
 @keyframes cel-band-l { from { transform: rotate(-12deg) translateX(-110%); } to { transform: rotate(-12deg) translateX(0); } }
 @keyframes cel-band-r { from { transform: rotate(-12deg) translateX(110%); } to { transform: rotate(-12deg) translateX(0); } }
@@ -1069,3 +1072,17 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 .vocab-ex.compact .fr { font-size: .8rem; }
 .vocab-table .vm { margin: 0; }
 .reveal .vocab-ex { text-align: left; }
+
+/* Bascule poli ⇄ neutre */
+.line-tools { display: flex; align-items: center; gap: 6px; flex: none; margin-top: 2px; }
+.reg-btn { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-width: 58px; height: 32px; padding: 0 9px; border-radius: 999px;
+  border: 1px solid rgba(255, 148, 203, .45); background: rgba(255, 148, 203, .08); color: var(--ink); cursor: pointer; line-height: 1;
+  transition: background .2s, transform .3s var(--ease-spring), box-shadow .3s; }
+.reg-btn span { font: 700 .74rem/1 var(--jp); }
+.reg-btn small { font-size: .56rem; color: var(--mist); margin-top: 2px; letter-spacing: .04em; text-transform: uppercase; }
+.reg-btn:hover { background: rgba(255, 148, 203, .2); transform: translateY(-1px) skewX(-6deg); box-shadow: 3px 3px 0 rgba(70, 217, 255, .5); }
+.reg-swap { animation: reg-swap .45s var(--ease-out); }
+@keyframes reg-swap { from { opacity: .2; transform: translateX(-8px) skewX(-6deg); filter: blur(2px); } to { opacity: 1; transform: none; filter: none; } }
+.word-audio .reg-btn { margin-left: 4px; }
+.side-ex .jp-line { gap: 6px; }
+.side-ex .line-tools { flex-direction: column; }

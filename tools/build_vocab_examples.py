@@ -3,6 +3,8 @@
 2) phrases de grammaire qui contiennent le mot avec la même lecture (repérées automatiquement).
 Usage : python3 tools/build_vocab_examples.py [--missing N5]  (liste les mots encore sans exemple)"""
 import glob, json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from register import convert   # variante poli ⇄ neutre
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KR = re.compile(r'([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）')
 K = re.compile(r'[㐀-鿿豈-﫿々〆ヶ〇]')
@@ -52,7 +54,9 @@ for vf in sorted(glob.glob(os.path.join(ROOT, 'data', 'vocab_n[1-5].json'))):
             for jp, fr, slv in pool:
                 if len(ex) >= MAX: break
                 if slv >= ORDER[lv] and needle in jp and [jp, fr] not in ex: ex.append([jp, fr])
-        if ex: out[key] = ex[:MAX]
+        if ex:
+            # 3e et 4e colonnes : style de la phrase ('p' poli / 'n' neutre) et sa variante dans l'autre style
+            out[key] = [e + list(convert(e[0]) or ()) for e in ex[:MAX]]
         else: missing.setdefault(lv, []).append(w)
 # Un fichier par niveau (chargé à la demande) : { mot: [[phrase, traduction], …] }
 for lv in ['N5', 'N4', 'N3', 'N2', 'N1']:

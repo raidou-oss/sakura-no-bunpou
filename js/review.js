@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019095843';
-import { speak, speakBtn } from './voice.js?v=20261019095843';
-import { pitchSVG } from './pitch.js?v=20261019095843';
-import { play } from './sfx.js?v=20261019095843';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019095843';
-import * as D from './data.js?v=20261019095843';
-import * as S from './srs.js?v=20261019095843';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019101534';
+import { speak, speakBtn } from './voice.js?v=20261019101534';
+import { pitchSVG } from './pitch.js?v=20261019101534';
+import { play } from './sfx.js?v=20261019101534';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019101534';
+import * as D from './data.js?v=20261019101534';
+import * as S from './srs.js?v=20261019101534';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -23,8 +23,8 @@ export function vocabExamplesEl(v, { max = 2, compact = false } = {}) {
   const box = h(`div.vocab-ex${compact ? '.compact' : ''}`);
   D.vocabExamples(v).then(list => {
     const furi = S.getSettings().furigana !== 'never';
-    box.replaceChildren(...list.slice(0, max).map(([jp, fr]) => h('div.vx',
-      h('div.jp-line', h('p.jp', { lang: 'ja', html: ruby(jp, furi) }), speakBtn(jp, { label: 'Écouter l’exemple', small: true })),
+    box.replaceChildren(...list.slice(0, max).map(([jp, fr, reg, alt]) => h('div.vx',
+      sentenceLine({ jp, reg, alt }, { furi }),
       h('p.fr', fr))));
   });
   return box;
@@ -36,6 +36,45 @@ export function gramAudio(g, { compact = false } = {}) {
   const show = S.getSettings().pitch !== false && g.p != null;
   return h('div.word-audio', speakBtn(r, { label: `Écouter ${g.t}` }), show ? h('span', { html: pitchSVG(r, g.p, { compact }) }) : null);
 }
+// --- Style des phrases : poli (です・ます) ⇄ neutre (forme simple) ---------------------------
+/** Texte (annoté) d'une phrase dans le style voulu : 'p' poli, 'n' neutre, sinon tel quel */
+function inStyle(s, style) {
+  if (!s.alt || !s.reg || !style || style === s.reg) return { text: s.jp, reg: s.reg };
+  return { text: s.alt, reg: style };
+}
+const preferred = () => ({ polite: 'p', plain: 'n' }[S.getSettings().register] || null);
+const filledHTML = (text, furi, cls = '') => ruby(text.replace(/\|/g, ''), furi)
+  .replace(/\[([^\]]+)\]/, (_, inner) => `<mark class="filled ${cls}">${inner}</mark>`);
+
+/** Bouton « です・ます ⇄ ふつう » qui bascule le texte affiché dans `el` (et ce que lit la voix) */
+export function regButton(s, el, { furi = true, cls = '', onSwitch } = {}) {
+  if (!s?.alt || !s.reg) return null;
+  let cur = inStyle(s, preferred()).reg;
+  const btn = h('button.reg-btn', { type: 'button' });
+  const paint = () => {
+    const t = inStyle(s, cur).text;
+    el.innerHTML = filledHTML(t, furi, cls);
+    el.dataset.say = plain(t);
+    btn.innerHTML = cur === 'p' ? '<span lang="ja">ふつう</span><small>neutre</small>' : '<span lang="ja">です・ます</span><small>poli</small>';
+    btn.title = cur === 'p' ? 'Voir la phrase en forme neutre (simple)' : 'Voir la phrase en forme polie (です・ます)';
+    btn.setAttribute('aria-label', btn.title);
+    el.classList.remove('reg-swap'); void el.offsetWidth; el.classList.add('reg-swap');
+    onSwitch?.(cur);
+  };
+  btn.onclick = e => { e.stopPropagation(); cur = cur === 'p' ? 'n' : 'p'; paint(); };
+  paint();
+  return btn;
+}
+
+/** Ligne de phrase d'exemple : texte (remplie), bascule poli/neutre, bouton d'écoute */
+export function sentenceLine(s, { furi = true, big = false } = {}) {
+  const p = h(`p.jp${big ? '.big' : ''}`, { lang: 'ja' });
+  const tag = h('span.reg-tag');
+  const btn = regButton(s, p, { furi, onSwitch: r => { tag.textContent = r === 'p' ? 'poli' : 'neutre'; } });
+  if (!btn) { p.innerHTML = filledHTML(s.jp, furi); p.dataset.say = plain(s.jp); }
+  return h('div.jp-line', p, h('div.line-tools', btn, speakBtn(() => p.dataset.say, { label: 'Écouter la phrase', small: true })));
+}
+
 /** Phrase avec bouton d'écoute */
 export const sentenceText = s => plain(s.jp);
 
@@ -185,7 +224,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
         gramAudio(item.g),
         h('p.gram-meaning', item.g.s),
         ex && h('div.example',
-          h('div.jp-line', h('p.jp', { lang: 'ja', html: sentenceHTML(ex, { fill: true, furi }) }), speakBtn(sentenceText(ex), { label: 'Écouter la phrase', small: true })),
+          sentenceLine(ex, { furi }),
           h('p.fr', ex.fr)));
     } else {
       const v = item.v;
@@ -254,8 +293,11 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     // Réponse complète
     const reveal = h('div.reveal');
     if (item.kind === 'cloze') {
-      card.querySelector('.jp.big').innerHTML = sentenceHTML(item.s, { fill: true, furi, cls: right ? 'ok' : 'ko' });
-      reveal.append(h('div.word-audio', speakBtn(sentenceText(item.s), { label: 'Réécouter la phrase' }), h('span.small', 'Écouter la phrase')),
+      const big = card.querySelector('.jp.big');
+      big.innerHTML = sentenceHTML(item.s, { fill: true, furi, cls: right ? 'ok' : 'ko' });
+      big.dataset.say = sentenceText(item.s);
+      reveal.append(h('div.word-audio', speakBtn(() => big.dataset.say, { label: 'Réécouter la phrase' }), h('span.small', 'Écouter la phrase'),
+          regButton(item.s, big, { furi, cls: right ? 'ok' : 'ko' })),
         h('a.gram-link', { href: `#/point/${item.g.id}` },
         h('span', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }), ' — ', item.g.s));
       if (S.getSettings().autoSpeak) speak(sentenceText(item.s));

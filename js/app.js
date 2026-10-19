@@ -1,26 +1,26 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019095843';
-import * as D from './data.js?v=20261019095843';
-import * as S from './srs.js?v=20261019095843';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl } from './review.js?v=20261019095843';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019095843';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019095843';
-import * as C from './cloud.js?v=20261019095843';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019095843';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019095843';
-import { play, setVolume } from './sfx.js?v=20261019095843';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019095843';
-import { celebrate, verdict } from './celebrate.js?v=20261019095843';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019095843';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019095843';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019101534';
+import * as D from './data.js?v=20261019101534';
+import * as S from './srs.js?v=20261019101534';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019101534';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019101534';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019101534';
+import * as C from './cloud.js?v=20261019101534';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019101534';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019101534';
+import { play, setVolume } from './sfx.js?v=20261019101534';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019101534';
+import { celebrate, verdict } from './celebrate.js?v=20261019101534';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019101534';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019101534';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019095843', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019095843', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019095843', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  theme: { file: './games/theme.js?v=20261019095843', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
-  narabe: { file: './games/narabe.js?v=20261019095843', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019101534', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019101534', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019101534', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  theme: { file: './games/theme.js?v=20261019101534', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
+  narabe: { file: './games/narabe.js?v=20261019101534', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -336,7 +336,7 @@ async function grammarPoint(id) {
       h('h2', 'Exemples'),
       sents.length
         ? h('ol.example-list', sents.map(s => h('li',
-            h('div.jp-line', h('p.jp', { lang: 'ja', html: sentenceHTML(s, { fill: true, furi }) }), speakBtn(sentenceText(s), { label: 'Écouter la phrase', small: true })),
+            sentenceLine(s, { furi }),
             h('p.fr', s.fr))))
         : h('p.section-note', 'Pas encore de phrase pour ce point : il sera révisé par son sens.')),
     h('nav.point-nav', { 'aria-label': 'Points voisins' },
@@ -483,6 +483,11 @@ function settingsPage() {
       levelBoxes('vocabLevels', 'Niveaux de vocabulaire à découvrir'),
       h('div.fields', num('newGrammar', 'Nouveaux points de grammaire par jour', 50), num('newVocab', 'Nouveaux mots par jour', 100)),
       h('h2', 'Affichage'), furi,
+      h('h2', 'Style des phrases'),
+      h('fieldset', h('legend', 'Phrases d’exemple'),
+        h('div.checks', [['orig', 'Telles quelles'], ['polite', 'Polies (です・ます)'], ['plain', 'Neutres (forme simple)']].map(([v, l]) =>
+          h('label.check', h('input', { type: 'radio', name: 'register', checked: (s.register || 'orig') === v, onchange: () => { S.setSettings({ register: v }); toast('Réglage enregistré'); } }), h('span', l)))),
+        h('p.small', 'Chaque phrase a aussi un bouton « です・ます ⇄ ふつう » pour basculer d’un style à l’autre.')),
       h('h2', 'Voix et prononciation'),
       voiceOK ? voiceSettings(s) : h('p.section-note', 'Ton navigateur ne propose pas de voix de synthèse.'),
       h('div.checks',

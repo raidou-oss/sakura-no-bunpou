@@ -2,6 +2,8 @@
 (sans toucher au vocabulaire ni à la grammaire, déjà traduits).
 Usage : python3 tools/build_sentences.py"""
 import glob, json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from register import convert   # variante poli ⇄ neutre
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 grammar = json.load(open(os.path.join(ROOT, 'data', 'grammar.json'), encoding='utf-8'))
@@ -90,6 +92,9 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'tools', 'sentences_*.txt'))):
         af, dfs = blanks[0] if '（' in blanks[0] else annotate(blanks[0]), [annotate(d) for d in dl]
         if af != answer: item['af'] = af
         if any(x != d for x, d in zip(dfs, dl)): item['df'] = dfs
+        r = convert(jp)
+        # pas de variante si la conversion touche la partie étudiée (le trou) : la phrase ne montrerait plus le point
+        if r and '[' in r[1]: item['reg'], item['alt'] = r
         sentences.append(item)
 if errors:
     print('\n'.join(errors)); sys.exit(1)
@@ -99,4 +104,4 @@ with open(os.path.join(ROOT, 'data', 'sentences.json'), 'w', encoding='utf-8') a
     json.dump(sentences, f, ensure_ascii=False, separators=(',', ':'))
 by = {}
 for s in sentences: by[s['lv']] = by.get(s['lv'], 0) + 1
-print(f'{len(sentences)} phrases {by}')
+print(f'{len(sentences)} phrases {by} ; variante poli/neutre : {sum(1 for s in sentences if "alt" in s)}')

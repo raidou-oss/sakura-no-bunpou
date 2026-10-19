@@ -1,13 +1,13 @@
 // Panneau « Aujourd'hui » de la barre latérale : remplit l'espace vide sous le menu avec ce qui
 // fait vraiment progresser : l'objectif de révisions du jour, la série, et un mot du jour
 // (voix, accent tonal, ajout aux révisions en un clic).
-import { h, ruby, kana, toast, jr } from './util.js?v=20261019095843';
-import * as D from './data.js?v=20261019095843';
-import * as S from './srs.js?v=20261019095843';
-import { countDue } from './review.js?v=20261019095843';
-import { speakBtn } from './voice.js?v=20261019095843';
-import { pitchSVG } from './pitch.js?v=20261019095843';
-import { play } from './sfx.js?v=20261019095843';
+import { h, ruby, kana, toast, jr } from './util.js?v=20261019101534';
+import * as D from './data.js?v=20261019101534';
+import * as S from './srs.js?v=20261019101534';
+import { countDue } from './review.js?v=20261019101534';
+import { speakBtn } from './voice.js?v=20261019101534';
+import { pitchSVG } from './pitch.js?v=20261019101534';
+import { play } from './sfx.js?v=20261019101534';
 
 const dayKey = () => new Date().toISOString().slice(0, 10);
 const hash = str => [...str].reduce((a, c) => (a * 33 + c.charCodeAt(0)) >>> 0, 5381);
@@ -73,7 +73,7 @@ export function mountDaily() {
 }
 
 // --- Colonne de droite, sous « En ligne » : point de grammaire du jour ------------
-import { sentenceHTML, sentenceText } from './review.js?v=20261019095843';
+import { sentenceHTML, sentenceText, sentenceLine } from './review.js?v=20261019101534';
 
 export async function grammarOfDay() {
   const levels = S.getSettings().grammarLevels?.length ? S.getSettings().grammarLevels : ['N5'];
@@ -97,8 +97,8 @@ export async function sideExtras() {
     h('a.side-point-title', { href: `#/point/${god.g.id}`, lang: 'ja', html: ruby(D.gramLabel(god.g), true) }),
     h('p.daily-m', god.g.s),
     god.ex && h('div.side-ex',
-      h('p.jp', { lang: 'ja', html: sentenceHTML(god.ex, { fill: true, furi }) }),
-      h('div.side-ex-row', speakBtn(sentenceText(god.ex), { label: 'Écouter l’exemple', small: true }), h('span.small', god.ex.fr))));
+      sentenceLine(god.ex, { furi }),
+      h('p.small', god.ex.fr)));
   return h('div.side-extra#side-extra', point);
 }
 

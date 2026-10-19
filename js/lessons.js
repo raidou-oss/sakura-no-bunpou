@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019095843';
-import * as D from './data.js?v=20261019095843';
-import * as S from './srs.js?v=20261019095843';
-import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl } from './review.js?v=20261019095843';
-import { speakBtn, speak } from './voice.js?v=20261019095843';
-import { cardScore } from './level.js?v=20261019095843';
-import { play } from './sfx.js?v=20261019095843';
-import { celebrate, verdict } from './celebrate.js?v=20261019095843';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019101534';
+import * as D from './data.js?v=20261019101534';
+import * as S from './srs.js?v=20261019101534';
+import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019101534';
+import { speakBtn, speak } from './voice.js?v=20261019101534';
+import { cardScore } from './level.js?v=20261019101534';
+import { play } from './sfx.js?v=20261019101534';
+import { celebrate, verdict } from './celebrate.js?v=20261019101534';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -158,7 +158,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
         gramAudio(g),
         h('p.point-sense', g.s),
         ex.length ? h('ol.example-list', ex.map(s => h('li',
-          h('div.jp-line', h('p.jp', { lang: 'ja', html: sentenceHTML(s, { fill: true, furi }) }), speakBtn(sentenceText(s), { label: 'Écouter la phrase', small: true })),
+          sentenceLine(s, { furi }),
           h('p.fr', s.fr)))) : h('p.section-note', 'Pas encore d’exemple pour ce point.'),
         h('a.small.lesson-more', { href: `#/point/${g.id}` }, 'Ouvrir la fiche du point'));
     }

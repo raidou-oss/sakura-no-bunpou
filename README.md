@@ -121,3 +121,7 @@ Leçons : une leçon n'est validée qu'une fois tous ses exercices réussis (une
 
 - `tools/vocab_examples_n*_*.txt` (mot || phrase || traduction) : phrases écrites pour le vocabulaire. Tous les mots N5 et N4 ont un exemple. `python3 tools/build_vocab_examples.py` génère `data/vocab_ex_n*.json` en complétant avec les phrases de grammaire du même niveau ou plus faciles qui contiennent le mot (même lecture), les plus courtes d'abord. `--missing N4` liste les mots encore sans exemple.
 - Furigana : réglage « Partout » par défaut. `tools/build_sentences.py` ajoute aussi les lectures aux réponses et aux distracteurs des phrases à trous (dictionnaire tiré des données déjà annotées, avec des règles pour les lectures qui dépendent du contexte).
+
+## Poli ⇄ neutre
+
+`tools/register.py` convertit la fin d'une phrase entre la forme polie (です・ます) et la forme neutre (forme simple), en gardant les furigana (verbes reconnus grâce au vocabulaire, adjectifs en い, copule, questions, particules finales). Les variantes sont ajoutées par `build_sentences.py` (champs `reg` et `alt`, seulement si le point étudié reste visible) et par `build_vocab_examples.py`. Chaque phrase affiche un bouton « です・ます ⇄ ふつう » ; le style par défaut se règle dans Réglages.
