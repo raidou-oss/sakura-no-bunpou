@@ -1820,3 +1820,48 @@ li:nth-child(3n+2) > :is(.lesson-card, .unit, .game-tile, .member, .level, .poin
   .kana-cell, .point, .oc-row, .resume-ico, .p3-head .ph-word, .cf-word { animation: none !important; }
 }
 @media (max-width: 860px) { .nav-indicator::before { animation: none; } }
+
+/* ==========================================================================================
+   Survol = sélection façon Persona : la ligne devient un bandeau blanc penché,
+   avec l'ombre rose vivante et le reflet qui balaie
+   ========================================================================================== */
+.point, .online-row, .oc-row, .option:not([disabled]), .resume-chip, .poke-chip, .check:has(input) {
+  transition: transform .3s var(--ease-spring), background-color .2s, color .2s; }
+:is(.point, .online-row:not(:disabled), .oc-row, .option:not([disabled]), .resume-chip, .poke-chip):is(:hover, :focus-visible) {
+  color: var(--night); border-color: transparent;
+  background: linear-gradient(100deg, transparent 35%, rgba(255, 148, 203, .38) 48%, rgba(70, 217, 255, .26) 55%, transparent 65%), var(--ink);
+  background-size: 260% 100%, auto;
+  transform: skewX(-7deg) translateX(6px);
+  --shade-pink: var(--sakura); --shade-cyan: rgba(70, 217, 255, .5);
+  box-shadow: var(--shade);
+  animation: shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite, p3-bgsweep 2.8s ease-in-out infinite;
+  outline: none; }
+/* Textes lisibles sur le blanc */
+.point:is(:hover, :focus-visible) .point-title, .point:is(:hover, :focus-visible) .point-title rt { color: var(--night); }
+.point:is(:hover, :focus-visible) .point-meaning { color: #3D4A7A; }
+.point:is(:hover, :focus-visible) .dot { box-shadow: 0 0 0 2px var(--night); }
+.online-row:is(:hover, :focus-visible) .online-name, .online-row:is(:hover, :focus-visible) .online-rank { color: var(--night); }
+.oc-row:is(:hover, :focus-visible) .oc-arc, .oc-row:is(:hover, :focus-visible) .oc-name { color: var(--night); }
+.oc-row:is(:hover, :focus-visible) .oc-rank { color: var(--sakura-deep); }
+.option:not([disabled]):is(:hover, :focus-visible) .option-text, .option:not([disabled]):is(:hover, :focus-visible) rt { color: var(--night); }
+.option:not([disabled]):is(:hover, :focus-visible) .option-key { background: var(--night); color: var(--ink); }
+.resume-chip:is(:hover, :focus-visible) small { color: #3D4A7A; }
+.resume-chip:is(:hover, :focus-visible) strong { color: var(--night); }
+/* Ligne de la page Confidents : la sélection garde le reflet */
+.cf-row.on { background: linear-gradient(100deg, transparent 35%, rgba(255, 148, 203, .38) 48%, rgba(70, 217, 255, .26) 55%, transparent 65%), var(--ink);
+  background-size: 260% 100%, auto; animation: p3-bgsweep 2.8s ease-in-out infinite; }
+.cf-row:not(.on):hover { background: linear-gradient(100deg, transparent 35%, rgba(255, 148, 203, .3) 48%, transparent 62%), rgba(243, 247, 255, .92); color: var(--night);
+  background-size: 260% 100%, auto; animation: p3-bgsweep 2.8s ease-in-out infinite; }
+.cf-row:not(.on):hover .cf-arcname { color: #4b5a86; }
+/* Tuiles survolées (avec la rotation 3D) : l'ombre vivante grandit et passe au rose franc */
+.tilting { --shade-pink: var(--sakura); --shade-cyan: rgba(70, 217, 255, .5);
+  animation: shade-x 1.9s ease-in-out infinite, shade-y 2.6s ease-in-out infinite !important; }
+.tilting:is(.lesson-card, .unit, .game-tile, .member, .level, .score-card, .link-card) {
+  box-shadow: inset 9px 0 0 var(--sakura), calc(var(--sx) * 1.6) calc(var(--sy) * 1.6) 2px var(--shade-pink), calc(var(--sx) * -.8) calc(var(--sy) * -.6) 2px var(--shade-cyan) !important; }
+.tilting.kana-cell { box-shadow: calc(var(--sx) * 1.4) calc(var(--sy) * 1.4) 2px var(--shade-pink), calc(var(--sx) * -.7) calc(var(--sy) * -.6) 2px var(--shade-cyan) !important;
+  border-color: var(--sakura); }
+@media (prefers-reduced-motion: reduce) {
+  :is(.point, .online-row, .oc-row, .option, .resume-chip, .poke-chip, .cf-row):hover { animation: none !important; }
+}
+.option, .online-row, .poke-chip, .resume-chip { border-radius: 0; }
+.resume-ico { border-radius: 0; transform: skewX(-8deg); }

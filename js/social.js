@@ -1,12 +1,12 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby } from './util.js?v=20261019155644';
-import * as D from './data.js?v=20261019155644';
-import { wallpaperSVG } from './wallpaper.js?v=20261019155644';
-import * as C from './cloud.js?v=20261019155644';
-import { play } from './sfx.js?v=20261019155644';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019155644';
-import { GAMES } from './gamelist.js?v=20261019155644';
-import * as L from './links.js?v=20261019155644';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019160025';
+import * as D from './data.js?v=20261019160025';
+import { wallpaperSVG } from './wallpaper.js?v=20261019160025';
+import * as C from './cloud.js?v=20261019160025';
+import { play } from './sfx.js?v=20261019160025';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019160025';
+import { GAMES } from './gamelist.js?v=20261019160025';
+import * as L from './links.js?v=20261019160025';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();

@@ -1,7 +1,7 @@
 // Survol « vivant » : la tuile grossit un peu, pivote vers la souris, un reflet suit le pointeur et l'ombre part à l'opposé.
 const SELECTOR = [
   '.kana-cell:not(.empty)', '.lesson-card', '.unit', '.game-tile', '.member', '.level', '.score-card', '.link-card',
-  '.stat-chip', '.tarot', '.resume-chip', '.point', '.cf-row', '.oc-row', '.option:not([disabled])', '.word-tile',
+  '.stat-chip', '.tarot', '.word-tile',
 ].join(',');
 const MAX = 9;            // degrés d'inclinaison au bord
 let cur = null, raf = 0, last = null;
@@ -26,7 +26,8 @@ function apply() {
   const zoom = 1 + 0.07 * k + 0.02;
   cur.style.transform = `perspective(800px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(${zoom.toFixed(3)})`;
   // Ombre à l'opposé de la lumière
-  cur.style.filter = `drop-shadow(${(-dx * 18).toFixed(1)}px ${(-dy * 18 + 6).toFixed(1)}px 0 rgba(255, 148, 203, .45)) drop-shadow(${(-dx * 30).toFixed(1)}px ${(-dy * 30 + 14).toFixed(1)}px 22px rgba(0, 0, 0, .55))`;
+  // Ombre portée sombre à l'opposé de la souris ; l'ombre rose, elle, reste l'ombre vivante animée en CSS
+  cur.style.filter = `drop-shadow(${(-dx * 26).toFixed(1)}px ${(-dy * 26 + 14).toFixed(1)}px 20px rgba(0, 0, 0, .55))`;
   cur.style.setProperty('--gx', `${(px * 100).toFixed(1)}%`);
   cur.style.setProperty('--gy', `${(py * 100).toFixed(1)}%`);
 }
