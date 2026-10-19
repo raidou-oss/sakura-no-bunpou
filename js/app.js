@@ -1,19 +1,20 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019015401';
-import * as D from './data.js?v=20261019015401';
-import * as S from './srs.js?v=20261019015401';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems } from './review.js?v=20261019015401';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019015401';
-import * as C from './cloud.js?v=20261019015401';
-import { wallpaperSVG } from './wallpaper.js?v=20261019015401';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019015401';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019020334';
+import * as D from './data.js?v=20261019020334';
+import * as S from './srs.js?v=20261019020334';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019020334';
+import { speakBtn, supported as voiceOK } from './voice.js?v=20261019020334';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019020334';
+import * as C from './cloud.js?v=20261019020334';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019020334';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019020334';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019015401', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019015401', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019015401', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  narabe: { file: './games/narabe.js?v=20261019015401', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019020334', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019020334', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019020334', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  narabe: { file: './games/narabe.js?v=20261019020334', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -44,11 +45,7 @@ async function route() {
   // Portail : tant qu'on n'est pas connecté, on ne voit que l'écran de connexion
   const locked = C.enabled && !C.currentUser() && !C.isRecovery();
   document.body.classList.toggle('portal-mode', locked);
-  // Fond façon affiche : version adoucie sur l'accueil (le portail a la sienne, en pleine intensité)
-  const isHome = !locked && /^#?\/?$/.test(location.hash.split('?')[0]);
-  if (isHome && !$('#home-wallpaper')) document.body.prepend(h('div.wallpaper-wrap.soft#home-wallpaper', { html: wallpaperSVG(), 'aria-hidden': 'true' }));
-  document.body.classList.toggle('wp-home', isHome);
-  if (locked) $('#home-wallpaper')?.remove();   // évite deux SVG avec les mêmes id de dégradés
+  setWallpaper(locked);
   if (locked) { main.classList.remove('wide'); portalPage(main); window.scrollTo(0, 0); return; }
   const path = decodeURIComponent(location.hash.replace(/^#/, '')) || '/';
   const [p, query] = path.split('?');
@@ -75,6 +72,24 @@ async function route() {
   location.hash = '#/';
 }
 window.addEventListener('hashchange', route);
+
+// Fond de page : celui du portail (voilé) sur l'accueil, un fond dédié par section ailleurs
+const WP_SECTION = { revision: 'revision', entrainement: 'revision', grammaire: 'grammaire', point: 'grammaire', vocabulaire: 'vocabulaire',
+  jeux: 'jeux', communaute: 'communaute', profil: 'profil', compte: 'profil', reglages: 'reglages' };
+function setWallpaper(locked) {
+  let wrap = $('#page-wallpaper');
+  if (locked) { wrap?.remove(); return; }       // le portail a le sien (mêmes id de dégradés)
+  const section = location.hash.replace(/^#\/?/, '').split(/[/?]/)[0];
+  const kind = section ? WP_SECTION[section] || 'reglages' : 'home';
+  if (!wrap) { wrap = h('div.wallpaper-wrap.soft#page-wallpaper', { 'aria-hidden': 'true' }); document.body.prepend(wrap); }
+  if (wrap.dataset.kind !== kind) {
+    wrap.dataset.kind = kind;
+    wrap.innerHTML = kind === 'home' ? wallpaperSVG() : sectionWallpaperSVG(kind);
+    wrap.classList.remove('fade-in'); void wrap.offsetWidth; wrap.classList.add('fade-in');
+  }
+  document.body.classList.toggle('wp-home', kind === 'home');
+  document.body.classList.add('wp-on');
+}
 
 async function refreshBadge() {
   const n = await countDue();
@@ -275,13 +290,14 @@ async function grammarPoint(id) {
   main.replaceChildren(h('article.point-page',
     h('a.back', { href: `#/grammaire/${g.lv}` }, `Grammaire ${D.LEVEL_NAMES[g.lv]} · leçon ${g.le}`),
     h('h1.point-big', { lang: 'ja', html: ruby(D.gramLabel(g), true) }),
+    gramAudio(g),
     h('p.point-sense', g.s),
     actionBox,
     h('section.examples',
       h('h2', 'Exemples'),
       sents.length
         ? h('ol.example-list', sents.map(s => h('li',
-            h('p.jp', { lang: 'ja', html: sentenceHTML(s, { fill: true, furi }) }),
+            h('div.jp-line', h('p.jp', { lang: 'ja', html: sentenceHTML(s, { fill: true, furi }) }), speakBtn(sentenceText(s), { label: 'Écouter la phrase', small: true })),
             h('p.fr', s.fr))))
         : h('p.section-note', 'Pas encore de phrase pour ce point : il sera révisé par son sens.')),
     h('nav.point-nav', { 'aria-label': 'Points voisins' },
@@ -334,7 +350,7 @@ async function vocabUnit(lv, unit) {
       h('thead', h('tr', h('th', { scope: 'col' }, 'Mot'), h('th', { scope: 'col' }, 'Sens'), h('th', { scope: 'col' }, h('span.sr', 'Statut')))),
       h('tbody', list.map(v => {
         const st = statusOf(D.vocabKey(v));
-        return h('tr', h('td.vw', { lang: 'ja', html: ruby(v.f || v.w, true) }), h('td', v.m),
+        return h('tr', h('td.vw', h('span', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v, { compact: true })), h('td', v.m),
           h('td', h('span', { class: `dot ${st.cls}`, title: st.label }, h('span.sr', st.label))));
       })))));
 }
@@ -400,6 +416,16 @@ function settingsPage() {
       levelBoxes('vocabLevels', 'Niveaux de vocabulaire à découvrir'),
       h('div.fields', num('newGrammar', 'Nouveaux points de grammaire par jour', 50), num('newVocab', 'Nouveaux mots par jour', 100)),
       h('h2', 'Affichage'), furi,
+      h('h2', 'Voix et prononciation'),
+      voiceOK ? h('fieldset', h('legend', 'Vitesse de la voix'),
+        h('div.checks', [[0.7, 'Lente'], [0.95, 'Normale'], [1.15, 'Rapide']].map(([v, l]) =>
+          h('label.check', h('input', { type: 'radio', name: 'rate', checked: Math.abs((s.voiceRate || .95) - v) < .01, onchange: () => { S.setSettings({ voiceRate: v }); toast('Réglage enregistré'); } }), h('span', l))),
+          speakBtn('こんにちは。桜の文法へようこそ。', { label: 'Tester la voix' })))
+        : h('p.section-note', 'Ton navigateur ne propose pas de voix de synthèse.'),
+      h('div.checks',
+        h('label.check', h('input', { type: 'checkbox', checked: s.autoSpeak !== false, onchange: e => { S.setSettings({ autoSpeak: e.target.checked }); toast('Réglage enregistré'); } }), h('span', 'Lire la réponse à voix haute en révision')),
+        h('label.check', h('input', { type: 'checkbox', checked: s.pitch !== false, onchange: e => { S.setSettings({ pitch: e.target.checked }); toast('Réglage enregistré'); } }), h('span', 'Afficher le schéma d’accent tonal'))),
+      h('p.section-note', 'Les voix sont celles de ton appareil (clic droit sur 🔊 pour écouter lentement). Accents tonals : données Kanjium, licence CC BY-SA 4.0.'),
       h('h2', 'Ta progression'),
       h('p.section-note', 'Elle est enregistrée dans ce navigateur. Exporte-la pour la garder ou la passer sur un autre appareil.'),
       h('div.actions.left',

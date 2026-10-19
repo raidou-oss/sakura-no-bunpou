@@ -89,3 +89,12 @@ On valide un niveau (N5 → N4 → … → N1) quand la grammaire atteint 55 % *
 La jauge du rang combine les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée à son objectif.
 
 Après chaque modification du site : `python3 tools/bump_version.py` pour forcer les navigateurs à recharger les fichiers.
+
+## Voix et accent tonal
+
+- **Voix** : `js/voice.js` utilise la synthèse vocale du navigateur (voix `ja-JP` de l'appareil). Bouton 🔊 sur les mots, les points de grammaire et les phrases ; clic droit pour écouter lentement. Vitesse et lecture automatique dans Réglages.
+- **Accent tonal** : `js/pitch.js` dessine le schéma haut/bas par more (平板, 頭高, 中高, 尾高). Les numéros d'accent viennent de [Kanjium](https://github.com/mifunetoshiro/kanjium) (licence CC BY-SA 4.0), extrait dans `tools/pitch_accents.tsv` et ajouté aux données par `python3 tools/add_pitch.py` (à relancer après `build_data.py`).
+
+## Fonds de page
+
+`js/wallpaper.js` : le fond du portail (repris en version voilée sur l'accueil) et un fond dédié par section (`sectionWallpaperSVG`) : orbites pour les révisions, papier 原稿用紙 pour la grammaire, cartes de mots pour le vocabulaire, lignes de vitesse pour les jeux, constellation pour la communauté, pleine lune et cadre pour le profil.

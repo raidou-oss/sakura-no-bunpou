@@ -1,12 +1,29 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast } from './util.js?v=20261019015401';
-import * as D from './data.js?v=20261019015401';
-import * as S from './srs.js?v=20261019015401';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019020334';
+import { speak, speakBtn } from './voice.js?v=20261019020334';
+import { pitchSVG } from './pitch.js?v=20261019020334';
+import * as D from './data.js?v=20261019020334';
+import * as S from './srs.js?v=20261019020334';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
   return f === 'always' || (f === 'auto' && (lv === 'N5' || lv === 'N4'));
 };
+
+/** Ligne « écouter + accent » d'un mot de vocabulaire */
+export function wordAudio(v, { compact = false } = {}) {
+  const r = kana(v.f || v.w);
+  const show = S.getSettings().pitch !== false && v.p != null;
+  return h('div.word-audio', speakBtn(r, { label: `Écouter ${v.w}` }), show ? h('span', { html: pitchSVG(r, v.p, { compact }) }) : null);
+}
+/** Ligne « écouter » d'un point de grammaire (+ accent si c'est un mot simple) */
+export function gramAudio(g, { compact = false } = {}) {
+  const r = g.r || plain(g.t).replace(/[〜～]/g, '');
+  const show = S.getSettings().pitch !== false && g.p != null;
+  return h('div.word-audio', speakBtn(r, { label: `Écouter ${g.t}` }), show ? h('span', { html: pitchSVG(r, g.p, { compact }) }) : null);
+}
+/** Phrase avec bouton d'écoute */
+export const sentenceText = s => plain(s.jp);
 
 /** Phrase avec trou → HTML ; `fill` remplace le trou par la réponse */
 export function sentenceHTML(s, { fill = false, furi = true, cls = '' } = {}) {
@@ -141,16 +158,19 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       body = h('div.intro',
         h('p.kicker', `Nouveau point · ${D.LEVEL_NAMES[item.lv]}`),
         h('h2.gram-title', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }),
+        gramAudio(item.g),
         h('p.gram-meaning', item.g.s),
         ex && h('div.example',
-          h('p.jp', { lang: 'ja', html: sentenceHTML(ex, { fill: true, furi }) }),
+          h('div.jp-line', h('p.jp', { lang: 'ja', html: sentenceHTML(ex, { fill: true, furi }) }), speakBtn(sentenceText(ex), { label: 'Écouter la phrase', small: true })),
           h('p.fr', ex.fr)));
     } else {
       const v = item.v;
       body = h('div.intro',
         h('p.kicker', `Nouveau mot · ${v.lv} · unité ${v.unit}`),
         h('p.word', { lang: 'ja', html: ruby(v.f || v.w, true) }),
+        wordAudio(v),
         h('p.gram-meaning', v.m));
+      if (S.getSettings().autoSpeak) setTimeout(() => speak(kana(v.f || v.w)), 250);
     }
     const go = h('button.btn.primary', { onclick: () => ask(item) }, 'Je teste');
     stage.replaceChildren(h('div.card.question', body, h('div.actions', go)));
@@ -206,13 +226,16 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     const reveal = h('div.reveal');
     if (item.kind === 'cloze') {
       card.querySelector('.jp.big').innerHTML = sentenceHTML(item.s, { fill: true, furi, cls: right ? 'ok' : 'ko' });
-      reveal.append(h('a.gram-link', { href: `#/point/${item.g.id}` },
+      reveal.append(h('div.word-audio', speakBtn(sentenceText(item.s), { label: 'Réécouter la phrase' }), h('span.small', 'Écouter la phrase')),
+        h('a.gram-link', { href: `#/point/${item.g.id}` },
         h('span', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }), ' — ', item.g.s));
+      if (S.getSettings().autoSpeak) speak(sentenceText(item.s));
     } else if (item.kind === 'meaning') {
-      reveal.append(h('p.small', `${item.g.t} : ${item.g.s}`));
+      reveal.append(h('p.small', `${item.g.t} : ${item.g.s}`), gramAudio(item.g, { compact: true }));
     } else {
       const v = item.v;
-      reveal.append(h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), h('p.small', v.m));
+      reveal.append(h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v), h('p.small', v.m));
+      if (S.getSettings().autoSpeak) speak(kana(v.f || v.w));
     }
 
     const actions = h('div.actions');

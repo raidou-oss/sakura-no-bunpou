@@ -697,10 +697,53 @@ body.portal-mode .portal .petal-rain { opacity: .7; }
 }
 
 /* Fond façon affiche sur l'accueil : même dessin que le portail, voilé pour garder le texte lisible */
-.wallpaper-wrap.soft { display: none; }
-body.wp-home .wallpaper-wrap.soft { display: block; }
+body.portal-mode .wallpaper-wrap.soft { display: none; }
+.wallpaper-wrap.fade-in { animation: wp-fade .6s ease both; }
+@keyframes wp-fade { from { opacity: 0; } to { opacity: 1; } }
+.wallpaper-wrap.soft:not([data-kind="home"]) .wallpaper { opacity: .7; }
+.wallpaper-wrap.soft:not([data-kind="home"])::after { background: linear-gradient(180deg, rgba(5, 11, 38, .3) 0%, rgba(5, 11, 38, .5) 60%, rgba(5, 11, 38, .75) 100%); }
 .wallpaper-wrap.soft .wallpaper { opacity: .55; }
 .wallpaper-wrap.soft::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 11, 38, .25) 0%, rgba(5, 11, 38, .55) 55%, rgba(5, 11, 38, .85) 100%); }
 body.wp-home .hero::before { display: none; }                 /* la lune est dans le fond */
 body.wp-home .today { background: rgba(7, 16, 52, .82); box-shadow: 12px 12px 0 rgba(3, 8, 28, .75), 0 30px 80px -20px rgba(0, 0, 0, .6); }
 @media (prefers-reduced-motion: reduce) { .wallpaper-wrap .wp-ribbon, .wallpaper-wrap .wp-ribbons, .wallpaper-wrap .wp-petals { animation: none !important; } }
+
+/* --- Voix et accent tonal ------------------------------------------------------------- */
+.speak-btn { flex: none; display: inline-grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50%; border: 1px solid rgba(70, 217, 255, .45); background: rgba(70, 217, 255, .1); color: var(--cyan); cursor: pointer; transition: transform .15s, background .2s, box-shadow .2s; }
+.speak-btn svg { width: 22px; height: 22px; }
+.speak-btn:hover { background: rgba(70, 217, 255, .2); box-shadow: 0 0 18px rgba(70, 217, 255, .35); }
+.speak-btn:active { transform: scale(.92); }
+.speak-btn:focus-visible { outline: 2px solid var(--sakura); outline-offset: 2px; }
+.speak-btn.small { width: 32px; height: 32px; }
+.speak-btn.small svg { width: 18px; height: 18px; }
+.speak-btn .wave { opacity: .55; }
+.speak-btn.playing { background: var(--bloom); color: #071034; border-color: transparent; }
+.speak-btn.playing .w1 { animation: wave 0.9s ease-in-out infinite; }
+.speak-btn.playing .w2 { animation: wave 0.9s ease-in-out .2s infinite; }
+@keyframes wave { 50% { opacity: 1; } }
+.word-audio { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 8px 0; }
+.intro .word-audio, .point-page > .word-audio { justify-content: flex-start; }
+.jp-line { display: flex; align-items: flex-start; gap: 10px; }
+.jp-line .jp { flex: 1; margin: 0; }
+.jp-line .speak-btn { margin-top: 2px; }
+
+.pitch { margin: 0; display: inline-flex; flex-direction: column; gap: 6px; padding: 10px 14px 6px; border-radius: var(--r-m); background: rgba(5, 11, 38, .55); border: 1px solid var(--line); }
+.pitch figcaption { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; font-size: .86rem; color: var(--mist); }
+.pitch figcaption strong { color: var(--ink); font: 700 italic .98rem/1 var(--display); }
+.pitch-tag { font-family: var(--jp-heavy); color: var(--sakura); font-size: .95rem; }
+.pitch-n { color: var(--cyan); font-weight: 700; }
+.pitch-desc { flex-basis: 100%; font-size: .8rem; }
+.pitch.compact { padding: 0; background: none; border: 0; display: inline-flex; vertical-align: middle; }
+.pitch-svg { display: block; overflow: visible; }
+.pitch-svg .pp-line { fill: none; stroke: var(--cyan); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.pitch-svg .pp-line.part { stroke-dasharray: 4 4; opacity: .6; }
+.pitch-svg .pp-dot { fill: #0A1B52; stroke: var(--cyan); stroke-width: 2; }
+.pitch-svg .pp-dot.hi { fill: var(--sakura); stroke: #fff; }
+.pitch-svg .pp-part { fill: none; stroke: var(--mist); stroke-width: 1.6; stroke-dasharray: 2 2; }
+.pitch-svg text { text-anchor: middle; fill: var(--pale); font-family: 'Zen Kaku Gothic New', sans-serif; }
+.pitch-svg .pp-ptxt { fill: var(--mist); opacity: .7; }
+.vocab-table td.vw { min-width: 9rem; }
+.vocab-table td.vw .word-audio { margin: 6px 0 0; gap: 8px; }
+.vocab-table td.vw .speak-btn { width: 30px; height: 30px; }
+.vocab-table td.vw .speak-btn svg { width: 16px; height: 16px; }
+.reveal .word-audio { justify-content: center; }

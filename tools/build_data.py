@@ -92,3 +92,7 @@ by_lv = {}
 for s in sentences:
     by_lv[s['lv']] = by_lv.get(s['lv'], 0) + 1
 print(f'{len(grammar)} points de grammaire, {len(sentences)} phrases {by_lv}, vocab {vocab_counts}')
+
+# Accent tonal (Kanjium, CC BY-SA 4.0) ajouté aux fichiers générés
+import subprocess
+subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'add_pitch.py')], check=True)

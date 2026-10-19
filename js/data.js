@@ -3,7 +3,7 @@
 const cache = {};
 async function load(name) {
   if (!cache[name]) {
-    cache[name] = fetch(`data/${name}.json?v=20261019015401`).then(r => {
+    cache[name] = fetch(`data/${name}.json?v=20261019020334`).then(r => {
       if (!r.ok) throw new Error(`Impossible de charger ${name}.json`);
       return r.json();
     });
@@ -40,12 +40,12 @@ export async function sentences() {
 }
 export async function sentencesFor(gid) { await sentences(); return sentByG.get(Number(gid)) || []; }
 
-/** Vocabulaire d'un niveau : [{unit, order, w, f, m, lv}] */
+/** Vocabulaire d'un niveau : [{unit, order, w, f, m, lv, p}] (p = accent tonal, null si inconnu) */
 const vocabObj = {};
 export async function vocab(lv) {
   if (!vocabObj[lv]) {
     const rows = await load(`vocab_${lv.toLowerCase()}`);
-    vocabObj[lv] = rows.map(([unit, order, w, f, m]) => ({ unit, order, w, f, m, lv }));
+    vocabObj[lv] = rows.map(([unit, order, w, f, m, p]) => ({ unit, order, w, f, m, lv, p }));
   }
   return vocabObj[lv];
 }
