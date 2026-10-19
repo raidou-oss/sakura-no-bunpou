@@ -13,8 +13,8 @@
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261019113147';
-import * as S from './srs.js?v=20261019113147';
+import * as D from './data.js?v=20261019123335';
+import * as S from './srs.js?v=20261019123335';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };
@@ -122,7 +122,7 @@ export async function computeRank(progress) {
   const gm = S.practiceStats();
   for (const [k, c] of Object.entries(S.allCards())) xp += Math.round(cardScore(c, now) * (k.startsWith('g:') ? 30 : 10));
   // XP de pratique : chaque élément réussi en jeu ou en exercice
-  for (const g of Object.values(gm)) xp += Math.min(20, g.ok * 2);
+  for (const [k, g] of Object.entries(gm)) xp += k.startsWith('k:') ? Math.min(6, g.ok) : Math.min(20, g.ok * 2);
   return {
     rank, label: rankLabel(rank), level: lv,
     gauge: rank >= RANK_NAMES.length ? 1 : Math.min(1, cur.gauge),
@@ -134,3 +134,26 @@ export async function computeRank(progress) {
 export const rankLabel = r => r >= RANK_NAMES.length ? 'N1 validé' : RANK_NAMES[r];
 export const rankTitle = r => RANK_TITLES[Math.min(r, RANK_TITLES.length - 1)];
 export const pct = x => Math.round(Math.max(0, Math.min(1, x || 0)) * 100);
+
+// --- Niveau du joueur (Lv) : vient de l'XP, comme dans un RPG -----------------------------
+// Lv n demande 12·(n−1)² XP : rapide au début, puis de plus en plus long. Plafond : 99.
+export function playerLevel(xp = 0) {
+  xp = Math.max(0, Number(xp) || 0);
+  const lv = Math.min(99, Math.floor(Math.sqrt(xp / 12)) + 1);
+  const a = 12 * (lv - 1) ** 2, b = 12 * lv ** 2;
+  return { lv, pct: lv >= 99 ? 1 : (xp - a) / (b - a), toNext: lv >= 99 ? 0 : b - xp };
+}
+
+/** Scores publics du joueur (affichés sur son profil) */
+export function publicScores() {
+  const gm = S.practiceStats();
+  let ok = 0, ko = 0;
+  Object.values(gm).forEach(g => { ok += g.ok || 0; ko += g.ko || 0; });
+  const kana = Object.entries(gm).filter(([k, g]) => k.startsWith('k:') && g.ok >= 3 && g.ok / Math.max(1, g.ok + g.ko) >= 0.8).length;
+  return {
+    games: S.getExtra('games', {}),
+    detail: S.getExtra('gameDetail', {}),
+    lessons: Object.keys(S.getExtra('lessonsDone', {})).length,
+    kana, ok, ko,
+  };
+}

@@ -1,28 +1,22 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019113147';
-import * as D from './data.js?v=20261019113147';
-import * as S from './srs.js?v=20261019113147';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019113147';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019113147';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019113147';
-import * as C from './cloud.js?v=20261019113147';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019113147';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019113147';
-import { play, setVolume } from './sfx.js?v=20261019113147';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019113147';
-import { celebrate, verdict } from './celebrate.js?v=20261019113147';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019113147';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019113147';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019123335';
+import * as D from './data.js?v=20261019123335';
+import * as S from './srs.js?v=20261019123335';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019123335';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019123335';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019123335';
+import * as C from './cloud.js?v=20261019123335';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019123335';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019123335';
+import { play, setVolume } from './sfx.js?v=20261019123335';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019123335';
+import { celebrate, verdict } from './celebrate.js?v=20261019123335';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019123335';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019123335';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019123335';
 
 const main = $('#main');
-const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019113147', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019113147', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019113147', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  theme: { file: './games/theme.js?v=20261019113147', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
-  choix: { file: './games/choix.js?v=20261019113147', glyph: '択', short: 'Le bon choix, le plus vite possible.', jp: '選択クイズ', name: 'Sentaku', desc: 'Quiz à choix : la bonne particule, la bonne forme, le bon sens. Trois erreurs et c’est fini.' },
-  narabe: { file: './games/narabe.js?v=20261019113147', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
-};
+import { GAMES } from './gamelist.js?v=20261019123335';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -45,6 +39,8 @@ const routes = [
   [/^\/communaute$/, () => communityPage(main)],
   [/^\/compte$/, () => accountPage(main)],
   [/^\/lecons(?:\/(N[1-5]))?$/, lv => lessonsHub(main, lv)],
+  [/^\/kana(?:\/(hira|kata))?$/, s => kanaPage(main, s)],
+  [/^\/kana-quiz(?:\/(hira|kata|both))?$/, s => kanaQuiz(main, s)],
   [/^\/lecon\/(N[1-5])\/([gvm])\/(\d+)$/, (lv, kind, n, params) => lessonPage(main, lv, kind, n, { refreshBadge, params })],
 ];
 
@@ -63,10 +59,10 @@ async function route() {
     const m = p.match(re);
     if (m) {
       const section = p.split('/')[1] || 'home';
-      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil', lecon: 'lecons' }[section] || section)));
+      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil', lecon: 'lecons', 'kana-quiz': 'kana' }[section] || section)));
       $$('.nav a').forEach(a => a.classList.contains('active') ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
       try {
-        const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定', lecons: '授業', lecon: '授業' }[section] || '桜';
+        const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定', lecons: '授業', lecon: '授業', kana: '仮名', 'kana-quiz': '仮名' }[section] || '桜';
         moveIndicator();
         // Changer de niveau dans une même section (onglets N5…N1) : pas de balayage, juste un fondu doux
         const LV_PAGE = /^\/(grammaire|vocabulaire|lecons)(?:\/(?:N[1-5]|kansai|extra))?$/;
@@ -94,7 +90,7 @@ window.addEventListener('hashchange', route);
 
 // Fond de page : celui du portail (voilé) sur l'accueil, un fond dédié par section ailleurs
 const WP_SECTION = { lecons: 'grammaire', lecon: 'grammaire', revision: 'revision', entrainement: 'revision', grammaire: 'grammaire', point: 'grammaire', vocabulaire: 'vocabulaire',
-  jeux: 'jeux', communaute: 'communaute', profil: 'profil', compte: 'profil', reglages: 'reglages' };
+  jeux: 'jeux', communaute: 'communaute', profil: 'profil', compte: 'profil', reglages: 'reglages', kana: 'vocabulaire', 'kana-quiz': 'vocabulaire' };
 function setWallpaper(locked) {
   let wrap = $('#page-wallpaper');
   if (locked) { wrap?.remove(); return; }       // le portail a le sien (mêmes id de dégradés)
@@ -145,7 +141,8 @@ async function resumeRow() {
     last ? chip(`#/point/${last.id}`, '続', `Reprendre · ${last.lv}`, last.t)
       : chip(`#/grammaire/${lv}`, '始', 'Commencer', `Grammaire ${lv}`),
     chip(`#/lecons/${lv}`, '授', 'Leçons guidées', `Grammaire + vocabulaire`),
-    chip(`#/jeux/${gk}`, g.glyph, 'Jeu du jour', g.name));
+    chip(`#/jeux/${gk}`, g.glyph, 'Jeu du jour', g.name),
+    chip('#/kana', '仮', 'Partir de zéro', 'Hiragana · Katakana'));
 }
 
 async function home() {
@@ -420,10 +417,18 @@ async function game(name, params) {
   if (!g) { location.hash = '#/jeux'; return; }
   main.classList.add('wide');
   const mod = await import(g.file);
-  await mod.default(main, { params, settings: S.getSettings(), saveBest: score => {
-    const best = S.getExtra('games', {});
+  await mod.default(main, { params, settings: S.getSettings(), saveBest: (score, variant = null) => {
+    const best = { ...S.getExtra('games', {}) };
     const isRecord = !best[name] || score > best[name];
-    if (isRecord) { best[name] = score; S.setExtra('games', best); }
+    if (isRecord) best[name] = score;
+    S.setExtra('games', best);
+    // Records détaillés (par niveau, par unité de Hanabira…) affichés sur le profil
+    if (variant) {
+      const det = { ...S.getExtra('gameDetail', {}) };
+      const g = { ...(det[name] || {}) };
+      if (!g[variant] || score > g[variant]) g[variant] = score;
+      det[name] = g; S.setExtra('gameDetail', det);
+    }
     S.recordGame();
     if (score > 0) celebrate({ ...verdict(1, { record: isRecord }), ...(isRecord ? {} : { title: '勝利！', sub: 'Partie gagnée !' }), detail: `Score : ${score}` });
     return isRecord;

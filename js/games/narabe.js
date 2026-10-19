@@ -1,11 +1,11 @@
 // 並べ替え (Narabe) : remettre les morceaux d'une phrase dans l'ordre.
-import { h, ruby, shuffle, jr } from '../util.js?v=20261019113147';
-import { play as sfx } from '../sfx.js?v=20261019113147';
-import { burst } from '../celebrate.js?v=20261019113147';
-import { tileBoard } from './tiles.js?v=20261019113147';
-import { speakBtn } from '../voice.js?v=20261019113147';
-import * as D from '../data.js?v=20261019113147';
-import * as S from '../srs.js?v=20261019113147';
+import { h, ruby, shuffle, jr } from '../util.js?v=20261019123335';
+import { play as sfx } from '../sfx.js?v=20261019123335';
+import { burst } from '../celebrate.js?v=20261019123335';
+import { tileBoard } from './tiles.js?v=20261019123335';
+import { speakBtn } from '../voice.js?v=20261019123335';
+import * as D from '../data.js?v=20261019123335';
+import * as S from '../srs.js?v=20261019123335';
 
 const ROUNDS = 8;
 
@@ -78,7 +78,7 @@ export default async function narabe(root, { settings, saveBest }) {
     }
 
     function end() {
-      const rec = saveBest(score);
+      const rec = saveBest(score, lv);
       root.replaceChildren(head(null), h('section.card.finish',
         h('h2', 'Bien joué'), h('p', `${score} points sur ${pool.length * 3}.`), rec ? h('p.small', 'Nouveau record !') : null,
         h('div.actions', h('button.btn.primary', { onclick: play }, 'Rejouer'), h('button.btn', { onclick: menu }, 'Changer de niveau'), h('a.btn', { href: '#/jeux' }, 'Autres jeux'))));

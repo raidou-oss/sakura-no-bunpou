@@ -72,7 +72,7 @@ Le site fonctionne sans comptes. Pour les activer, il faut un projet Supabase (g
 2. Dans le projet : **SQL Editor → New query**, colle tout le contenu de `supabase/schema.sql`, clique sur **Run**.
 3. **Authentication → URL Configuration** : mets `https://raidou-oss.github.io/sakura-no-bunpou/` dans *Site URL* et dans *Redirect URLs*.
 4. **Project Settings → API** : copie *Project URL* et la clé *anon public* (ou *publishable*) dans `js/config.js`.
-5. Exécute aussi, dans l'ordre, `supabase/migration_02_pseudo.sql` (connexion par identifiant) et `supabase/migration_03_live.sql` (réactions en direct, jauges).
+5. Exécute aussi, dans l'ordre, `supabase/migration_02_pseudo.sql` (connexion par identifiant), `supabase/migration_03_live.sql` (réactions en direct, jauges) et `supabase/migration_04_scores.sql` (scores des jeux sur les profils).
 
 Ce que ça active : inscription par e-mail, profil public (pseudo, bio, photo, bannière), rang N5 → N1 avec jauge,
 page Communauté classée par rang, réactions entre élèves (une de chaque type par jour), synchro de la progression entre appareils.

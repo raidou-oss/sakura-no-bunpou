@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019113147';
-import * as S from './srs.js?v=20261019113147';
-import { computeRank } from './level.js?v=20261019113147';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019123335';
+import * as S from './srs.js?v=20261019123335';
+import { computeRank, publicScores } from './level.js?v=20261019123335';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -234,8 +234,13 @@ export async function pushProgress() {
   await c.from('progress').upsert({ user_id: session.user.id, data: snap, updated_at: new Date().toISOString() });
   const r = await computeRank();
   const patch = { rank: r.rank, gauge: r.gauge, xp: r.xp, streak: r.streak, learned: r.learned, updated_at: new Date().toISOString() };
-  let res = await c.from('profiles').update({ ...patch, grammar_pct: r.grammar, vocab_pct: r.vocab }).eq('id', session.user.id).select().single();
-  if (res.error && /grammar_pct|vocab_pct|column/i.test(res.error.message)) res = await c.from('profiles').update(patch).eq('id', session.user.id).select().single();
+  // Les colonnes récentes (jauges, scores) peuvent manquer si une migration n'a pas été lancée : on retombe sur moins
+  const tries = [{ ...patch, grammar_pct: r.grammar, vocab_pct: r.vocab, scores: publicScores() }, { ...patch, grammar_pct: r.grammar, vocab_pct: r.vocab }, patch];
+  let res;
+  for (const t of tries) {
+    res = await c.from('profiles').update(t).eq('id', session.user.id).select().single();
+    if (!res.error || !/column|schema|scores|grammar_pct|vocab_pct/i.test(res.error.message)) break;
+  }
   if (res.data) { profile = res.data; trackPresence(); }
 }
 
@@ -273,7 +278,7 @@ export const onlineUsers = () => online;
 
 function presencePayload() {
   return { id: session.user.id, username: profile?.username || '…', avatar_url: profile?.avatar_url || null,
-    rank: profile?.rank ?? 0, gauge: profile?.gauge ?? 0, since: Date.now() };
+    rank: profile?.rank ?? 0, gauge: profile?.gauge ?? 0, xp: profile?.xp ?? 0, since: Date.now() };
 }
 function trackPresence() { if (presence && session) presence.track(presencePayload()).catch(() => {}); }
 

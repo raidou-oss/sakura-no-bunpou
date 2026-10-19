@@ -1,8 +1,8 @@
 // 花びら (Hanabira) : des pétales portant des mots tombent ; attrape celui qui correspond au sens affiché.
-import { play as sfx } from '../sfx.js?v=20261019113147';
-import { h, ruby, shuffle, sample, pick, reducedMotion, toast, jr, esc } from '../util.js?v=20261019113147';
-import * as D from '../data.js?v=20261019113147';
-import * as S from '../srs.js?v=20261019113147';
+import { play as sfx } from '../sfx.js?v=20261019123335';
+import { h, ruby, shuffle, sample, pick, reducedMotion, toast, jr, esc } from '../util.js?v=20261019123335';
+import * as D from '../data.js?v=20261019123335';
+import * as S from '../srs.js?v=20261019123335';
 
 export default async function hanabira(root, { params, settings, saveBest }) {
   let lv = params.get('lv') || settings.vocabLevels[0] || 'N5';
@@ -100,7 +100,7 @@ export default async function hanabira(root, { params, settings, saveBest }) {
 
     function end() {
       running = false; cancelAnimationFrame(raf); document.removeEventListener('keydown', keyFn);
-      const rec = saveBest(score);
+      const rec = saveBest(score, unit ? `${lv} · unité ${unit}` : lv);
       setTimeout(() => root.replaceChildren(head(null), h('section.card.finish',
         h('h2', 'Les pétales se sont posés'),
         h('p', `${score} points, ${round} pétale${round > 1 ? 's' : ''} lancé${round > 1 ? 's' : ''}.`),

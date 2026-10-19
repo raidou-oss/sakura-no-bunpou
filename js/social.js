@@ -1,10 +1,11 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby } from './util.js?v=20261019113147';
-import * as D from './data.js?v=20261019113147';
-import { wallpaperSVG } from './wallpaper.js?v=20261019113147';
-import * as C from './cloud.js?v=20261019113147';
-import { play } from './sfx.js?v=20261019113147';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019113147';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019123335';
+import * as D from './data.js?v=20261019123335';
+import { wallpaperSVG } from './wallpaper.js?v=20261019123335';
+import * as C from './cloud.js?v=20261019123335';
+import { play } from './sfx.js?v=20261019123335';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019123335';
+import { GAMES } from './gamelist.js?v=20261019123335';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -37,11 +38,57 @@ export function rankBlock(r, { compact = false } = {}) {
       gauge(r.vocab, `Vocabulaire ${lv}`, { kind: 'v', mark: THRESHOLD.vocab })) : null);
 }
 
-function avatar(p, size = 'm') {
+function avatar(p, size = 'm', { level = false } = {}) {
   const el = h(`span.avatar.${size}`);
   if (p?.avatar_url) el.append(h('img', { src: p.avatar_url, alt: '', loading: 'lazy' }));
   else el.append(h('span.avatar-initials', initials(p?.username)));
-  return el;
+  if (!level || p?.xp == null) return el;
+  return h(`span.av-wrap.${size}`, el, lvBadge(p.xp));
+}
+
+/** Pastille de niveau façon RPG, posée au-dessus de l'avatar */
+export function lvBadge(xp, { inline = false } = {}) {
+  const { lv } = playerLevel(xp);
+  return h(`span.lv-badge${inline ? '.inline' : ''}`, { title: `Niveau ${lv}`, 'aria-label': `Niveau ${lv}` },
+    h('small', 'Lv'), h('b', String(lv)));
+}
+
+/** Barre de niveau : Lv actuel et XP restante */
+function levelBar(xp) {
+  const L = playerLevel(xp);
+  return h('div.level-bar',
+    h('div.level-bar-top', h('span.lv-big', h('small', 'Lv'), h('b', String(L.lv))),
+      h('span.small', L.lv >= 99 ? 'Niveau maximum' : `${L.toNext} XP avant le niveau ${L.lv + 1}`)),
+    h('div.gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': Math.round(L.pct * 100), 'aria-label': 'Progression du niveau' },
+      h('span', { style: { width: `${Math.max(3, Math.round(L.pct * 100))}%` } })));
+}
+
+/** Tableau des scores : record de chaque jeu, détail par niveau et par unité */
+function scoresSection(sc, { mine = false } = {}) {
+  sc = sc || {};
+  const games = sc.games || {}, detail = sc.detail || {};
+  const played = Object.keys(GAMES).filter(k => games[k] != null);
+  const total = (sc.ok || 0) + (sc.ko || 0);
+  const box = h('section.glass.scores-box',
+    h('h2', h('span.jp-head', { lang: 'ja', html: jr('記録') }), 'Scores'),
+    h('div.stat-chips.score-chips',
+      chip(sc.lessons || 0, (sc.lessons || 0) > 1 ? 'leçons validées' : 'leçon validée'),
+      chip(total ? `${Math.round((sc.ok / total) * 100)} %` : '—', 'réussite aux exercices'),
+      chip(sc.kana || 0, 'kana maîtrisés')));
+  if (!played.length) {
+    box.append(h('p.small.muted', mine ? 'Joue à un mini-jeu pour afficher tes records ici.' : 'Pas encore de record.'));
+    return box;
+  }
+  box.append(h('ul.score-grid', played.map(k => {
+    const g = GAMES[k];
+    const rows = Object.entries(detail[k] || {}).sort((a, b) => a[0].localeCompare(b[0], 'fr', { numeric: true }));
+    return h('li.score-card',
+      h('div.score-head', h('span.score-glyph', { lang: 'ja', 'aria-hidden': 'true' }, g.glyph),
+        h('span.score-name', h('span.small', { lang: 'ja' }, g.jp), h('strong', g.name)),
+        h('span.score-best', h('small', 'Record'), h('b', String(games[k])))),
+      rows.length ? h('ul.score-detail', rows.slice(0, 12).map(([v, n]) => h('li', h('span', v), h('b', String(n))))) : null);
+  })));
+  return box;
 }
 
 /** Met à jour l'entrée « Profil » du menu (photo + réactions non lues) */
@@ -77,7 +124,7 @@ export async function profilePage(main, id) {
     const header = h('section.profile-head',
       h('div.banner', p.banner_url ? { style: { backgroundImage: `url("${p.banner_url}")` } } : null),
       h('div.profile-id',
-        avatar(p, 'xl'),
+        avatar({ ...p, xp: isMe ? (r.xp ?? p.xp) : p.xp }, 'xl', { level: true }),
         h('div.profile-name',
           h('h1', p.username),
           p.bio ? h('p.bio', p.bio) : (isMe ? h('p.bio.muted', 'Ajoute une petite bio dans « Modifier le profil ».') : null)),
@@ -88,13 +135,14 @@ export async function profilePage(main, id) {
              h('button.btn.small.ghost', { onclick: async () => { await C.signOut(); toast('Déconnecté'); location.hash = '#/'; } }, 'Se déconnecter')]
           : [h('a.btn.small.ghost', { href: '#/communaute' }, 'Communauté')])));
 
+    const xp = isMe ? r.xp : p.xp;
     const stats = h('section.profile-stats',
-      h('div.glass.rank-card', rankBlock(r)),
+      h('div.glass.rank-card', rankBlock(r), levelBar(xp)),
       h('div.stat-chips',
-        chip(p.xp, 'XP'), chip(p.streak, p.streak > 1 ? 'jours d’affilée' : 'jour d’affilée'), chip(p.learned, 'cartes apprises')));
+        chip(xp, 'XP'), chip(p.streak, p.streak > 1 ? 'jours d’affilée' : 'jour d’affilée'), chip(p.learned, 'cartes apprises')));
 
     const reactBox = h('section.glass.react-box');
-    main.replaceChildren(header, stats, reactBox);
+    main.replaceChildren(header, stats, scoresSection(isMe ? publicScores() : p.scores, { mine: isMe }), reactBox);
 
     if (isMe) {
       const list = await C.reactionsFor(p.id).catch(() => []);
@@ -130,8 +178,9 @@ async function localProfile(main) {
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('自分') }), 'Mon profil')),
     h('section.profile-stats',
-      h('div.glass.rank-card', rankBlock(r)),
+      h('div.glass.rank-card', rankBlock(r), levelBar(r.xp)),
       h('div.stat-chips', chip(r.xp, 'XP'), chip(r.streak, r.streak > 1 ? 'jours d’affilée' : 'jour d’affilée'), chip(r.learned, 'cartes apprises'))),
+    scoresSection(publicScores(), { mine: true }),
     h('section.glass.react-box',
       C.enabled
         ? [h('h2', 'Crée ton compte'),
@@ -193,7 +242,7 @@ export async function communityPage(main) {
     const list = await C.listProfiles(search.value.trim());
     const me = C.currentUser()?.id;
     grid.replaceChildren(...(list.length ? list.map(p => h('li', h('a.member.glass', { href: `#/profil/${p.id}` },
-      avatar(p, 'l'),
+      avatar(p, 'l', { level: true }),
       h('span.member-name', p.username, p.id === me ? h('span.you', 'toi') : null),
       rankBlock({ rank: p.rank, gauge: p.gauge }, { compact: true }),
       h('span.small', `${p.xp} XP · ${p.learned} cartes`))))
@@ -387,6 +436,7 @@ export function mountOnline() {
         const item = h('li.online-item', { class: open ? 'online-item open' : 'online-item' });
         const row = h('button.online-row', { type: 'button', disabled: isMe, onclick: () => { openId = open ? null : u.id; pokeOpen = null; render(C.onlineUsers()); } },
           avatar(u, 's'),
+          u.xp != null ? lvBadge(u.xp, { inline: true }) : null,
           h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil', html: jr('先輩') }) : null),
           h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank || 0).replace(' validé', '')));
         item.append(row);
