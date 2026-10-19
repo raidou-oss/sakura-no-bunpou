@@ -1206,3 +1206,33 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 .type-answer.shake { animation: shake .4s; }
 @keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
 @media (max-width: 560px) { .kana-grid { gap: 5px; } .kana-rom { font-size: .68rem; } }
+
+/* --- Bouton Kanji Dojo, à côté du logo -------------------------------------------------- */
+.brand-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-right: 4px; }
+.brand-row .brand { min-width: 0; }
+.dojo-btn { position: relative; flex: none; display: grid; place-items: center; width: 38px; height: 38px; margin-top: 8px; border-radius: 11px; text-decoration: none;
+  transform: rotate(-7deg); background: linear-gradient(var(--night), var(--night)) padding-box, linear-gradient(135deg, var(--cyan), var(--azure) 45%, var(--sakura)) border-box;
+  border: 2px solid transparent; box-shadow: 3px 3px 0 rgba(255, 148, 203, .45), 0 0 16px -4px rgba(70, 217, 255, .6);
+  transition: transform .35s var(--ease-spring), box-shadow .3s; }
+.dojo-kanji { font: 400 1.15rem/1 var(--jp-heavy); background: linear-gradient(135deg, #fff 20%, var(--sakura)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.dojo-btn::after { content: ''; position: absolute; top: -3px; right: -3px; width: 8px; height: 8px; border-radius: 50%; background: var(--sakura); box-shadow: 0 0 8px var(--sakura); animation: dojo-ping 2.4s ease-out infinite; }
+@keyframes dojo-ping { 0%, 70% { box-shadow: 0 0 0 0 rgba(255, 148, 203, .7); } 100% { box-shadow: 0 0 0 9px rgba(255, 148, 203, 0); } }
+.dojo-btn:hover, .dojo-btn:focus-visible { transform: rotate(0) scale(1.08); box-shadow: 5px 5px 0 rgba(255, 148, 203, .6), 0 0 22px -2px rgba(70, 217, 255, .8); }
+/* Étiquette qui sort sur le côté au survol, sans toucher au logo */
+.dojo-flag { position: absolute; left: calc(100% + 12px); top: 50%; display: flex; align-items: center; gap: 8px; padding: 7px 14px 7px 12px; white-space: nowrap; z-index: 20;
+  border-radius: 4px 14px 14px 4px; background: var(--ink); color: var(--night); pointer-events: none;
+  transform: translate(-10px, -50%) skewX(-10deg) rotate(7deg); opacity: 0; transition: opacity .2s, transform .35s var(--ease-spring);
+  box-shadow: 4px 4px 0 var(--sakura); }
+.dojo-flag small { font: 700 .66rem/1 var(--jp); color: var(--sakura-deep); }
+.dojo-flag b { font: 800 italic 1.05rem/1 var(--display); }
+.dojo-flag i { font-style: normal; font-weight: 800; color: var(--sakura-deep); }
+.dojo-btn:hover .dojo-flag, .dojo-btn:focus-visible .dojo-flag { opacity: 1; transform: translate(0, -50%) skewX(-10deg) rotate(7deg); }
+@media (max-width: 860px) {
+  /* Pas de logo sur mobile : le bouton se pose en haut à droite de la page */
+  .brand-row { display: contents; }
+  .dojo-btn { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); margin: 0; width: 40px; height: 40px; z-index: 6; }
+  .dojo-flag { left: auto; right: calc(100% + 10px); border-radius: 14px 4px 4px 14px; box-shadow: -4px 4px 0 var(--sakura); }
+}
+.brand-row .brand { flex: 0 1 auto; gap: 10px; padding-right: 0; }
+.brand-row .brand-name { white-space: nowrap; }
+@media (min-width: 861px) { .dojo-btn { width: 34px; height: 34px; border-radius: 10px; } .dojo-kanji { font-size: 1rem; } }

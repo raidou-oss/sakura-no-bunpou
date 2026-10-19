@@ -10,16 +10,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261019123335">
+  <link rel="stylesheet" href="css/style.css?v=20261019124428">
 </head>
 <body>
   <a class="skip" href="#main">Aller au contenu</a>
   <div class="shell">
     <nav class="nav" aria-label="Navigation principale">
-      <a class="brand" href="#/" aria-label="桜の文法, accueil">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name" aria-hidden="true"><ruby>桜<rt>さくら</rt></ruby>の<ruby>文法<rt>ぶんぽう</rt></ruby></span>
-      </a>
+      <div class="brand-row">
+        <a class="brand" href="#/" aria-label="桜の文法, accueil">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name" aria-hidden="true"><ruby>桜<rt>さくら</rt></ruby>の<ruby>文法<rt>ぶんぽう</rt></ruby></span>
+        </a>
+        <a class="dojo-btn" href="https://elpharaa.github.io/kanji-d-j-/" target="_blank" rel="noopener" aria-label="Kanji Dojo : apprendre les kanji et leur vocabulaire (nouvel onglet)">
+          <span class="dojo-kanji" aria-hidden="true">漢</span>
+          <span class="dojo-flag" aria-hidden="true"><small>漢字道場</small><b>Kanji Dojo</b><i>↗</i></span>
+        </a>
+      </div>
       <ul class="nav-list">
         <li><a href="#/" data-nav="home"><span class="nav-jp" aria-hidden="true"><ruby>庭<rt>にわ</rt></ruby></span><span class="nav-fr">Accueil</span></a></li>
         <li><a href="#/revision" data-nav="revision"><span class="nav-jp" aria-hidden="true"><ruby>復習<rt>ふくしゅう</rt></ruby></span><span class="nav-fr">Révisions</span><span class="nav-badge" id="due-badge" hidden></span></a></li>
@@ -38,6 +44,6 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261019123335"></script>
+  <script type="module" src="js/app.js?v=20261019124428"></script>
 </body>
 </html>

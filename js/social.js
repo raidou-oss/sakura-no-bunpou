@@ -1,11 +1,11 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby } from './util.js?v=20261019123335';
-import * as D from './data.js?v=20261019123335';
-import { wallpaperSVG } from './wallpaper.js?v=20261019123335';
-import * as C from './cloud.js?v=20261019123335';
-import { play } from './sfx.js?v=20261019123335';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019123335';
-import { GAMES } from './gamelist.js?v=20261019123335';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019124428';
+import * as D from './data.js?v=20261019124428';
+import { wallpaperSVG } from './wallpaper.js?v=20261019124428';
+import * as C from './cloud.js?v=20261019124428';
+import { play } from './sfx.js?v=20261019124428';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019124428';
+import { GAMES } from './gamelist.js?v=20261019124428';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
