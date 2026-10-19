@@ -1730,3 +1730,40 @@ html, body { overflow-x: clip; }
 .mastery-tag { color: #FFE3F1; font-weight: 700; text-shadow: 0 0 8px rgba(255, 148, 203, .9); }
 .unit-bar { display: block; }
 @media (prefers-reduced-motion: reduce) { .gauge-glow { animation: none; } }
+
+/* --- Ombres vivantes sur les sélections (façon menus de Persona) ------------------------------ */
+@keyframes p3-shade {
+  0%   { box-shadow: 6px 6px 0 var(--sakura), -3px -3px 0 rgba(70, 217, 255, 0); }
+  20%  { box-shadow: 10px 4px 0 var(--sakura), -4px 2px 0 rgba(70, 217, 255, .55); }
+  40%  { box-shadow: 4px 9px 0 var(--sakura-deep), 3px -4px 0 rgba(70, 217, 255, .35); }
+  60%  { box-shadow: 11px 8px 0 var(--sakura), -5px -2px 0 rgba(70, 217, 255, .6); }
+  80%  { box-shadow: 5px 5px 0 #FFB3DA, 2px 4px 0 rgba(70, 217, 255, .3); }
+  100% { box-shadow: 6px 6px 0 var(--sakura), -3px -3px 0 rgba(70, 217, 255, 0); }
+}
+@keyframes p3-shade-sm {
+  0%, 100% { box-shadow: 4px 4px 0 var(--sakura); }
+  30% { box-shadow: 7px 3px 0 var(--sakura), -3px 1px 0 rgba(70, 217, 255, .5); }
+  60% { box-shadow: 3px 6px 0 var(--sakura-deep), 2px -3px 0 rgba(70, 217, 255, .35); }
+}
+/* Reflet qui balaie la sélection */
+@keyframes p3-sweep { 0% { transform: translateX(-120%) skewX(-20deg); } 55%, 100% { transform: translateX(260%) skewX(-20deg); } }
+@keyframes p3-bgsweep { 0% { background-position: 160% 0, 0 0; } 60%, 100% { background-position: -60% 0, 0 0; } }
+@media (min-width: 861px) {
+  .nav-indicator::before { background: linear-gradient(100deg, transparent 35%, rgba(255, 148, 203, .4) 48%, rgba(70, 217, 255, .25) 55%, transparent 65%), var(--ink);
+    background-size: 260% 100%, auto; animation: p3-shade 1.8s ease-in-out infinite, p3-bgsweep 2.8s ease-in-out infinite; }
+}
+.tab.active, .segmented button.active, .cf-row.on, .tab-flip { animation: p3-shade-sm 1.7s ease-in-out infinite; }
+.oc-head, .lesson-title h1 { animation: p3-shade-sm 2.2s ease-in-out infinite; }
+.btn.primary:not(:disabled) { animation: p3-shade-sm 2s ease-in-out infinite; }
+.btn.primary:hover { animation: none; }
+.cf-row.on { animation: p3-shade-sm 1.7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-indicator::before, .nav-indicator::after, .tab.active, .segmented button.active, .cf-row.on, .tab-flip, .oc-head, .lesson-title h1, .btn.primary { animation: none !important; }
+}
+@keyframes p3-kanji-shade {
+  0%, 100% { text-shadow: 4px 4px 0 var(--sakura-deep), 8px 8px 0 rgba(70, 217, 255, .5); }
+  33% { text-shadow: 6px 3px 0 var(--sakura-deep), 3px 9px 0 rgba(70, 217, 255, .55); }
+  66% { text-shadow: 3px 6px 0 var(--sakura), 10px 5px 0 rgba(70, 217, 255, .45); }
+}
+.p3-head h1 .jp-head, .cf-kanji { animation: p3-kanji-shade 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .p3-head h1 .jp-head, .cf-kanji { animation: none; } }
