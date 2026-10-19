@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261019101534';
+import { store, today, dayKey, DAY } from './util.js?v=20261019105841';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -30,6 +30,15 @@ let settings = { ...DEFAULT_SETTINGS, ...store.get(K_SETTINGS, {}) };
 if (!settings.furiV2) { if (settings.furigana === 'auto') settings.furigana = 'always'; settings.furiV2 = true; store.set(K_SETTINGS, settings); }
 let stats = store.get(K_STATS, { days: {} });
 
+// Données annexes liées au compte : records des jeux, leçons validées / en cours, maîtrise gagnée en jeu…
+const K_EXTRA = 'sakura.extra.v1';
+let extra = store.get(K_EXTRA, null);
+if (!extra) {
+  extra = { games: store.get('sakura.games.v1', {}), lessonsDone: store.get('sakura.lessonsDone.v1', {}),
+    lessonsSeen: store.get('sakura.lessonsSeen.v1', {}), last: store.get('sakura.last.v1', null), lessonState: {}, gm: {} };
+  store.set(K_EXTRA, extra);
+}
+
 const K_UPDATED = 'sakura.updated.v1';
 const listeners = new Set();
 /** Prévient les abonnés (synchro en ligne) qu'une donnée a changé */
@@ -37,6 +46,25 @@ export const onChange = fn => { listeners.add(fn); return () => listeners.delete
 let silent = false;
 const touch = () => { if (silent) return; store.set(K_UPDATED, Date.now()); listeners.forEach(fn => fn()); };
 export const lastUpdated = () => store.get(K_UPDATED, 0);
+export const getExtra = (k, d) => extra[k] ?? d;
+export function setExtra(k, v) { extra[k] = v; store.set(K_EXTRA, extra); touch(); }
+
+/**
+ * Résultat d'un élément travaillé hors révisions (jeux, entraînement, exercices de leçon).
+ * Sert à l'algorithme de progression : un mot bien réussi à Hanabira compte pour sa maîtrise.
+ */
+let gmTimer = null;
+export function recordPractice(key, right) {
+  if (!key) return;
+  const gm = extra.gm || (extra.gm = {});
+  const g = gm[key] || { ok: 0, ko: 0, t: 0 };
+  if (right) g.ok++; else g.ko++;
+  g.t = Date.now();
+  gm[key] = g;
+  clearTimeout(gmTimer);
+  gmTimer = setTimeout(() => { store.set(K_EXTRA, extra); touch(); }, 400);
+}
+export const practiceStats = () => extra.gm || {};
 const save = () => { store.set(K_CARDS, cards); touch(); };
 const saveStats = () => { store.set(K_STATS, stats); touch(); };
 
@@ -145,25 +173,27 @@ export function lastDays(n = 7) {
 
 // --- Sauvegarde / import -----------------------------------------------------
 export function exportAll() {
-  return JSON.stringify({ app: 'sakura-no-bunpou', v: 1, cards, settings, stats }, null, 1);
+  return JSON.stringify({ app: 'sakura-no-bunpou', v: 1, cards, settings, stats, extra }, null, 1);
 }
 export function importAll(text) {
   const data = JSON.parse(text);
   if (data.app !== 'sakura-no-bunpou') throw new Error('Ce fichier ne vient pas de 桜の文法.');
   cards = data.cards || {}; settings = { ...DEFAULT_SETTINGS, ...data.settings }; stats = data.stats || { days: {} };
+  if (data.extra) { extra = { lessonState: {}, gm: {}, ...data.extra }; store.set(K_EXTRA, extra); }
   save(); store.set(K_SETTINGS, settings); saveStats();
 }
 /** Instantané complet pour la synchro en ligne */
-export const snapshot = () => ({ cards, settings, stats, updated: lastUpdated() });
+export const snapshot = () => ({ cards, settings, stats, extra, updated: lastUpdated() });
 /** Remplace la progression locale par celle du compte (sans redéclencher de synchro) */
 export function replaceAll(data) {
   silent = true;
   cards = data.cards || {}; settings = { ...DEFAULT_SETTINGS, ...(data.settings || {}) }; stats = data.stats || { days: {} };
-  store.set(K_CARDS, cards); store.set(K_SETTINGS, settings); store.set(K_STATS, stats);
+  extra = { lessonState: {}, gm: {}, ...(data.extra || {}) };
+  store.set(K_CARDS, cards); store.set(K_SETTINGS, settings); store.set(K_STATS, stats); store.set(K_EXTRA, extra);
   store.set(K_UPDATED, data.updated || Date.now());
   silent = false;
 }
 
 export function resetAll() {
-  cards = {}; stats = { days: {} }; save(); saveStats();
+  cards = {}; stats = { days: {} }; extra = { games: {}, lessonsDone: {}, lessonsSeen: {}, last: null, lessonState: {}, gm: {} }; store.set(K_EXTRA, extra); save(); saveStats();
 }

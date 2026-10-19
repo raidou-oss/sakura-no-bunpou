@@ -94,7 +94,9 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'tools', 'sentences_*.txt'))):
         if any(x != d for x, d in zip(dfs, dl)): item['df'] = dfs
         r = convert(jp)
         # pas de variante si la conversion touche la partie étudiée (le trou) : la phrase ne montrerait plus le point
-        if r and '[' in r[1]: item['reg'], item['alt'] = r
+        if r:
+            item['reg'] = r[0]
+            if '[' in r[1]: item['alt'] = r[1]
         sentences.append(item)
 if errors:
     print('\n'.join(errors)); sys.exit(1)

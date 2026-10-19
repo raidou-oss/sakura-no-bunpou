@@ -1,26 +1,26 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019101534';
-import * as D from './data.js?v=20261019101534';
-import * as S from './srs.js?v=20261019101534';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019101534';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019101534';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019101534';
-import * as C from './cloud.js?v=20261019101534';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019101534';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019101534';
-import { play, setVolume } from './sfx.js?v=20261019101534';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019101534';
-import { celebrate, verdict } from './celebrate.js?v=20261019101534';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019101534';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019101534';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019105841';
+import * as D from './data.js?v=20261019105841';
+import * as S from './srs.js?v=20261019105841';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019105841';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019105841';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019105841';
+import * as C from './cloud.js?v=20261019105841';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019105841';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019105841';
+import { play, setVolume } from './sfx.js?v=20261019105841';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019105841';
+import { celebrate, verdict } from './celebrate.js?v=20261019105841';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019105841';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019105841';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019101534', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019101534', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019101534', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  theme: { file: './games/theme.js?v=20261019101534', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
-  narabe: { file: './games/narabe.js?v=20261019101534', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019105841', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019105841', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019105841', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  theme: { file: './games/theme.js?v=20261019105841', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
+  narabe: { file: './games/narabe.js?v=20261019105841', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -135,7 +135,7 @@ function petalsLayer(n = 14) {
 
 // Raccourcis de l'accueil : reprendre là où on s'est arrêté, plus deux portes d'entrée utiles
 async function resumeRow() {
-  const last = store.get('sakura.last.v1', null);
+  const last = S.getExtra('last', null);
   const chip = (href, ico, small, strong) => h('a.resume-chip', { href }, h('span.resume-ico', { lang: 'ja', 'aria-hidden': 'true' }, ico), h('span', h('small', small), h('strong', { lang: /[぀-ヿ一-鿿]/.test(strong) ? 'ja' : null }, strong)));
   const lv = S.getSettings().grammarLevels[0] || 'N5';
   const games = Object.entries(GAMES);
@@ -299,6 +299,7 @@ async function grammarList(lv, params) {
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('文法') }), 'Grammaire'),
       h('p.section-note', `${grammar.length} points du N5 au N1. Ajoute une leçon à tes révisions ou ouvre un point pour voir ses exemples.`)),
+    regSwitch(() => toast('Les exemples et exercices suivront ce style')),
     tabs, ...(sectionGauge ? [sectionGauge] : []), search, listEl);
 }
 
@@ -308,7 +309,7 @@ async function grammarPoint(id) {
   if (!g) throw new Error('Ce point de grammaire n’existe pas.');
   const sents = await D.sentencesFor(g.id);
   const key = `g:${g.id}`;
-  store.set('sakura.last.v1', { id: g.id, t: g.t, lv: D.LEVEL_NAMES[g.lv] });
+  S.setExtra('last', { id: g.id, t: g.t, lv: D.LEVEL_NAMES[g.lv] });
   const furi = furiFor(g.lv);
   const sameLv = grammar.filter(x => x.lv === g.lv);
   const pos = sameLv.indexOf(g);
@@ -326,6 +327,11 @@ async function grammarPoint(id) {
   };
   renderActions();
 
+  const exBox = h('div.examples-body');
+  const renderEx = () => exBox.replaceChildren(sents.length
+    ? h('ol.example-list', sents.map(s => h('li', sentenceLine(s, { furi }), h('p.fr', s.fr))))
+    : h('p.section-note', 'Pas encore de phrase pour ce point : il sera révisé par son sens.'));
+  renderEx();
   main.replaceChildren(h('article.point-page',
     h('a.back', { href: `#/grammaire/${g.lv}` }, `Grammaire ${D.LEVEL_NAMES[g.lv]} · leçon ${g.le}`),
     h('h1.point-big', { lang: 'ja', html: ruby(D.gramLabel(g), true) }),
@@ -334,11 +340,8 @@ async function grammarPoint(id) {
     actionBox,
     h('section.examples',
       h('h2', 'Exemples'),
-      sents.length
-        ? h('ol.example-list', sents.map(s => h('li',
-            sentenceLine(s, { furi }),
-            h('p.fr', s.fr))))
-        : h('p.section-note', 'Pas encore de phrase pour ce point : il sera révisé par son sens.')),
+      sents.length ? regSwitch(renderEx) : null,
+      exBox),
     h('nav.point-nav', { 'aria-label': 'Points voisins' },
       prev ? h('a', { href: `#/point/${prev.id}`, rel: 'prev' }, h('small', 'Précédent'), h('span', { lang: 'ja', html: ruby(D.gramLabel(prev), true) })) : h('span'),
       next ? h('a', { href: `#/point/${next.id}`, rel: 'next' }, h('small', 'Suivant'), h('span', { lang: 'ja', html: ruby(D.gramLabel(next), true) })) : h('span'))));
@@ -396,7 +399,7 @@ async function vocabUnit(lv, unit) {
 
 // --- Jeux ---------------------------------------------------------------------
 function gamesHub() {
-  const best = store.get('sakura.games.v1', {});
+  const best = S.getExtra('games', {});
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('遊び') }), 'Jeux'),
       h('p.section-note', 'Pour apprendre sans en avoir l’air. Les jeux ne touchent pas à ton planning de révision.')),
@@ -417,9 +420,9 @@ async function game(name, params) {
   main.classList.add('wide');
   const mod = await import(g.file);
   await mod.default(main, { params, settings: S.getSettings(), saveBest: score => {
-    const best = store.get('sakura.games.v1', {});
+    const best = S.getExtra('games', {});
     const isRecord = !best[name] || score > best[name];
-    if (isRecord) { best[name] = score; store.set('sakura.games.v1', best); }
+    if (isRecord) { best[name] = score; S.setExtra('games', best); }
     S.recordGame();
     if (score > 0) celebrate({ ...verdict(1, { record: isRecord }), ...(isRecord ? {} : { title: '勝利！', sub: 'Partie gagnée !' }), detail: `Score : ${score}` });
     return isRecord;

@@ -50,6 +50,30 @@ export const jr = text => {
   return esc(text).replace(DECOR_RE, m => `<ruby>${m}<rt>${DECOR[m]}</rt></ruby>`);
 };
 
+// --- Réponses écrites : kanji ou kana au choix, hiragana = katakana, ponctuation ignorée ---------
+const PUNCT = /[\s　。、．，,.!！?？「」『』（）()・…〜～ー-]/g;
+export const toHira = s => s.replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
+export const normJa = s => toHira(String(s).normalize('NFKC').replace(PUNCT, ''));
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+/** Expression régulière qui accepte une réponse annotée (漢字（かんじ）…) écrite en kanji OU en kana */
+export function answerRegex(annotated) {
+  const src = String(annotated).replace(/[[\]|]/g, '');
+  let re = '', last = 0;
+  for (const m of src.matchAll(new RegExp(KANJI_READING.source, 'g'))) {
+    re += reEsc(normJa(src.slice(last, m.index)));
+    re += `(?:${reEsc(normJa(m[1]))}|${reEsc(normJa(m[2]))})`;
+    last = m.index + m[0].length;
+  }
+  re += reEsc(normJa(src.slice(last)));
+  return new RegExp(`^${re}$`);
+}
+let wanakanaP = null;
+/** Saisie en romaji → kana (WanaKana, chargé à la demande ; sans effet s'il n'est pas joignable) */
+export function bindRomaji(input) {
+  wanakanaP = wanakanaP || import('https://cdn.jsdelivr.net/npm/wanakana@5.3.1/+esm').catch(() => null);
+  wanakanaP.then(w => w?.bind?.(input, { IMEMode: true }));
+}
+
 /** Texte brut sans lecture ni balises de phrase */
 export const plain = text => text.replace(KANJI_READING, '$1').replace(/[[\]|]/g, '');
 

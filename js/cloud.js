@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019101534';
-import * as S from './srs.js?v=20261019101534';
-import { computeRank } from './level.js?v=20261019101534';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019105841';
+import * as S from './srs.js?v=20261019105841';
+import { computeRank } from './level.js?v=20261019105841';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -201,9 +201,21 @@ export async function markSeen() {
 }
 
 // --- Synchro de la progression ------------------------------------------------------------
+// La progression stockée dans ce navigateur appartient à un compte : si quelqu'un d'autre se
+// connecte, on charge SA progression (ou on repart de zéro) au lieu de lui donner celle du précédent.
+const K_OWNER = 'sakura.owner.v1';
 async function pullProgress() {
   const c = await sb();
-  const { data } = await c.from('progress').select('data, updated_at').eq('user_id', session.user.id).maybeSingle();
+  const me = session.user.id;
+  const owner = localStorage.getItem(K_OWNER);
+  const { data } = await c.from('progress').select('data, updated_at').eq('user_id', me).maybeSingle();
+  if (owner && owner !== me) {
+    S.replaceAll(data ? data.data : { cards: {}, settings: S.getSettings(), stats: { days: {} }, extra: {}, updated: 1 });
+    localStorage.setItem(K_OWNER, me);
+    if (!data) await pushProgress();
+    return;
+  }
+  localStorage.setItem(K_OWNER, me);
   const local = S.snapshot();
   const remoteTime = data ? data.data.updated || Date.parse(data.updated_at) : 0;
   if (data && remoteTime > (local.updated || 0)) S.replaceAll(data.data);

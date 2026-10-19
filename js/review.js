@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019101534';
-import { speak, speakBtn } from './voice.js?v=20261019101534';
-import { pitchSVG } from './pitch.js?v=20261019101534';
-import { play } from './sfx.js?v=20261019101534';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019101534';
-import * as D from './data.js?v=20261019101534';
-import * as S from './srs.js?v=20261019101534';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019105841';
+import { speak, speakBtn } from './voice.js?v=20261019105841';
+import { pitchSVG } from './pitch.js?v=20261019105841';
+import { play } from './sfx.js?v=20261019105841';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019105841';
+import * as D from './data.js?v=20261019105841';
+import * as S from './srs.js?v=20261019105841';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -73,6 +73,26 @@ export function sentenceLine(s, { furi = true, big = false } = {}) {
   const btn = regButton(s, p, { furi, onSwitch: r => { tag.textContent = r === 'p' ? 'poli' : 'neutre'; } });
   if (!btn) { p.innerHTML = filledHTML(s.jp, furi); p.dataset.say = plain(s.jp); }
   return h('div.jp-line', p, h('div.line-tools', btn, speakBtn(() => p.dataset.say, { label: 'Écouter la phrase', small: true })));
+}
+
+/** Bascule globale du style des phrases : telles quelles / polies / neutres */
+export function regSwitch(onChange) {
+  const opts = [['orig', 'Telles quelles'], ['polite', 'Polies (です・ます)'], ['plain', 'Neutres (ふつう)']];
+  const seg = h('div.seg', { role: 'radiogroup', 'aria-label': 'Style des phrases' });
+  const paint = () => {
+    const cur = S.getSettings().register || 'orig';
+    seg.replaceChildren(...opts.map(([v, l]) => h('button', { type: 'button', role: 'radio', 'aria-checked': String(v === cur), class: v === cur ? 'active' : null,
+      onclick: () => { if (v === cur) return; S.setSettings({ register: v }); play('select'); paint(); onChange?.(v); } }, l)));
+  };
+  paint();
+  return h('div.reg-switch', h('span.lbl', 'Style des phrases'), seg);
+}
+
+/** Pastille qui dit quel style de phrase est attendu (poli ou neutre) */
+export function regChip(s) {
+  if (!s?.reg) return null;
+  return h(`span.reg-chip.${s.reg === 'p' ? 'polite' : 'plain'}`, { title: s.reg === 'p' ? 'Réponds en forme polie (です・ます)' : 'Réponds en forme neutre (forme simple)' },
+    h('span', { lang: 'ja' }, s.reg === 'p' ? 'です・ます' : 'ふつう'), s.reg === 'p' ? 'Forme polie' : 'Forme neutre');
 }
 
 /** Phrase avec bouton d'écoute */
@@ -159,6 +179,29 @@ export function vocabPractice(v, list) {
   return { key: null, kind: 'vocab', v, lv: v.lv, options: shuffle([mean, ...others.map(x => D.shortMeaning(x.m))]), answer: mean };
 }
 
+/** Phrase à trou à écrire soi-même (dans le style préféré si la variante existe) */
+export function typedCloze(s, g) {
+  const st = inStyle(s, preferred());
+  const shown = { ...s, jp: st.text, reg: st.reg };
+  const inner = (st.text.match(/\[([^\]]+)\]/) || [])[1] || s.af || s.a;
+  return { key: null, kind: 'cloze-type', s: shown, g, lv: s.lv, accept: [inner, s.af || s.a].filter((x, i, l) => l.indexOf(x) === i) };
+}
+
+/** Mot de vocabulaire à écrire : retiré d'une phrase d'exemple, sinon à partir du sens */
+export async function typedVocab(v) {
+  const target = v.f || v.w;
+  const pref = preferred();
+  let ex = null;
+  for (const [jp, fr, reg, alt] of shuffle(await D.vocabExamples(v))) {
+    const st = inStyle({ jp, reg, alt }, pref);
+    for (const t of [target, v.w]) {
+      if (t && st.text.includes(t)) { ex = { jp: st.text.replace(t, `[${t}]`), fr, reg: st.reg }; break; }
+    }
+    if (ex) break;
+  }
+  return { key: null, kind: 'vocab-type', v, lv: v.lv, ex, accept: [target] };
+}
+
 /** Questions d'entraînement libre à partir de phrases (sans effet sur les révisions) */
 export function practiceItems(sents, grammarById) {
   return shuffle(sents).map(s => ({ key: null, kind: 'cloze', s, g: grammarById.get(s.g), lv: s.lv, options: shuffle([s.a, ...s.d]), answer: s.a, disp: clozeDisp(s) }));
@@ -169,7 +212,7 @@ export function practiceItems(sents, grammarById) {
  * mode 'srs' : `queue` = clés de cartes, les réponses sont notées.
  * mode 'practice' : `items` = questions prêtes, rien n'est enregistré.
  */
-export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone, extraActions = null, untilCorrect = false, celebrateEnd = true }) {
+export async function runSession(root, { mode = 'srs', queue = [], items = [], title = 'Révisions', onDone, onAnswer, extraActions = null, untilCorrect = false, celebrateEnd = true }) {
   const list = mode === 'srs' ? [...queue] : [...items];
   const total = list.length;
   const retries = new Map();
@@ -245,9 +288,10 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   function ask(item) {
     const furi = showFuri(item.lv);
     let prompt;
+    if (item.kind === 'cloze-type' || item.kind === 'vocab-type') return askTyped(item, furi);
     if (item.kind === 'cloze') {
       prompt = [
-        h('p.kicker', `Complète la phrase · ${D.LEVEL_NAMES[item.lv]}`),
+        h('div.kicker-row', h('p.kicker', `Complète la phrase · ${D.LEVEL_NAMES[item.lv]}`), regChip(item.s)),
         h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.s, { furi }) }),
         h('p.fr', item.s.fr)];
     } else if (item.kind === 'meaning') {
@@ -277,12 +321,52 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     });
   }
 
-  function answer(item, choice, buttons) {
-    const right = choice === item.answer;
+  // Exercice écrit : on tape le mot / la particule / la forme qui manque (kanji ou kana)
+  function askTyped(item, furi) {
+    const input = h('input.type-answer', { type: 'text', lang: 'ja', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      placeholder: 'Écris ta réponse en japonais (kana ou kanji)…', 'aria-label': 'Ta réponse' });
+    let romaji = false; try { romaji = localStorage.getItem('sakura.theme.romaji') === '1'; } catch {}
+    if (romaji) bindRomaji(input);
+    const romajiBox = h('label.check.small', h('input', { type: 'checkbox', checked: romaji, onchange: e => {
+      try { localStorage.setItem('sakura.theme.romaji', e.target.checked ? '1' : '0'); } catch {}
+      if (e.target.checked) bindRomaji(input); else toast('Romaji désactivé à la prochaine question');
+      input.focus(); } }), h('span', 'Taper en romaji'));
+    const send = h('button.btn.primary', { type: 'button', onclick: () => check() }, 'Valider');
+    const check = () => {
+      const v = input.value.trim();
+      if (!v) { input.focus(); return; }
+      const right = item.accept.some(a => answerRegex(a).test(normJa(v)));
+      input.readOnly = true; send.remove();
+      answer(item, v, null, right, input);
+    };
+    input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing && !input.readOnly) { e.preventDefault(); e.stopPropagation(); check(); } });
+    let prompt;
+    if (item.kind === 'cloze-type') {
+      prompt = [
+        h('div.kicker-row', h('p.kicker', `Écris ce qui manque · ${D.LEVEL_NAMES[item.lv]}`), regChip(item.s)),
+        h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.s, { furi }) }),
+        h('p.fr', item.s.fr),
+        h('p.small.type-hint', 'Indice : ', h('span', item.g.s))];
+    } else {
+      prompt = [
+        h('div.kicker-row', h('p.kicker', `Écris le mot · ${item.lv}`), item.ex?.reg ? regChip(item.ex) : null),
+        h('p.word-fr', D.shortMeaning(item.v.m)),
+        item.ex ? h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.ex, { furi }) }) : null,
+        item.ex ? h('p.fr', item.ex.fr) : null];
+    }
+    stage.replaceChildren(h('div.card.question.typed', ...prompt, h('div.type-row', input, send), romajiBox));
+    play('card');
+    setKeys(null);
+    setTimeout(() => input.focus(), 60);
+  }
+
+  function answer(item, choice, buttons, forced = null, input = null) {
+    const right = forced ?? choice === item.answer;
     play(right ? 'correct' : 'wrong');
-    if (right) burst(buttons.find(b => b.dataset.v === choice));
+    if (right) burst(input || buttons.find(b => b.dataset.v === choice));
+    if (input) input.classList.add(right ? 'ok' : 'ko');
     seen++; if (right) ok++;
-    buttons.forEach(b => {
+    (buttons || []).forEach(b => {
       b.disabled = true;
       const t = b.dataset.v;
       if (t === item.answer) b.classList.add('correct');
@@ -292,7 +376,13 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     const furi = showFuri(item.lv);
     // Réponse complète
     const reveal = h('div.reveal');
-    if (item.kind === 'cloze') {
+    if (input) reveal.append(h('p.type-solution', right ? 'Bonne réponse : ' : 'La réponse était : ', h('strong', { lang: 'ja', html: ruby(item.accept[0], true) })));
+    if (item.kind === 'vocab-type') {
+      const v = item.v;
+      const big = card.querySelector('.jp.big');
+      if (big && item.ex) big.innerHTML = sentenceHTML(item.ex, { fill: true, furi, cls: right ? 'ok' : 'ko' });
+      reveal.append(wordAudio(v), h('p.small', v.m));
+    } else if (item.kind === 'cloze' || item.kind === 'cloze-type') {
       const big = card.querySelector('.jp.big');
       big.innerHTML = sentenceHTML(item.s, { fill: true, furi, cls: right ? 'ok' : 'ko' });
       big.dataset.say = sentenceText(item.s);
@@ -337,7 +427,9 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   }
 
   function done(item, q) {
+    onAnswer?.(item, q >= 3);
     if (mode === 'srs') S.grade(item.key, q);
+    else S.recordPractice(item.g ? `g:${item.g.id}` : item.v ? D.vocabKey(item.v) : null, q >= 3);
     if (q < 3) {
       missed.add(item.key || item.s?.id || (item.v && `v:${item.v.w}`) || (item.g && `g:${item.g.id}`));
       const id = item.key || item.s?.id || item.v?.w;
@@ -345,7 +437,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       if (n < 3 || untilCorrect) {
         retries.set(id, n + 1);
         const pos = Math.min(list.length, idx + 4 + Math.floor(Math.random() * 3));
-        list.splice(pos, 0, mode === 'srs' ? item.key : { ...item, options: shuffle(item.options) });
+        list.splice(pos, 0, mode === 'srs' ? item.key : { ...item, options: item.options ? shuffle(item.options) : undefined });
       }
     }
     idx++;

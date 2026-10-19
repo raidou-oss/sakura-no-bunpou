@@ -1,9 +1,10 @@
 // 助詞ダッシュ (Joshi Dash) : 60 secondes pour placer un maximum de particules.
-import { play as sfx } from '../sfx.js?v=20261019101534';
-import { burst } from '../celebrate.js?v=20261019101534';
-import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019101534';
-import * as D from '../data.js?v=20261019101534';
-import { sentenceHTML, clozeDisp } from '../review.js?v=20261019101534';
+import { play as sfx } from '../sfx.js?v=20261019105841';
+import { burst } from '../celebrate.js?v=20261019105841';
+import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019105841';
+import * as D from '../data.js?v=20261019105841';
+import * as S from '../srs.js?v=20261019105841';
+import { sentenceHTML, clozeDisp, regChip } from '../review.js?v=20261019105841';
 
 const PARTICLES = new Set(['は', 'が', 'を', 'に', 'で', 'へ', 'と', 'も', 'の', 'か', 'や', 'よ', 'ね', 'から', 'まで', 'より', 'しか', 'だけ', 'でも', 'ほど', 'こそ', 'さえ', 'すら', 'など', 'ばかり', 'くらい', 'ごろ', 'でも']);
 const DURATION = 60;
@@ -36,6 +37,7 @@ export default async function joshi(root, { settings, saveBest }) {
       cur = queue.pop();
       const furi = settings.furigana === 'always' || (settings.furigana === 'auto' && (cur.lv === 'N5' || cur.lv === 'N4'));
       card.replaceChildren(
+        cur.reg ? h('div.kicker-row.dash-reg', regChip(cur)) : null,
         h('p.jp.big', { lang: 'ja', html: sentenceHTML(cur, { furi }) }),
         h('p.fr', cur.fr),
         h('div.options.four', shuffle([cur.a, ...cur.d]).map((o, i) => h('button.option', { lang: 'ja', onclick: () => pickIt(o) },
@@ -45,6 +47,7 @@ export default async function joshi(root, { settings, saveBest }) {
     function pickIt(o) {
       answered++;
       sfx(o === cur.a ? 'correct' : 'wrong', { gap: 0 });
+      S.recordPractice(`g:${cur.g}`, o === cur.a);
       if (o === cur.a) burst(card, { count: 12 });
       if (o === cur.a) { good++; combo++; score += 1 + Math.floor(combo / 5); card.classList.remove('flash-ko'); card.classList.add('flash-ok'); }
       else { combo = 0; left = Math.max(0, left - 3); card.classList.remove('flash-ok'); card.classList.add('flash-ko'); }

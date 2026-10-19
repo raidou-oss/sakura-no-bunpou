@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019101534';
-import * as D from './data.js?v=20261019101534';
-import * as S from './srs.js?v=20261019101534';
-import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019101534';
-import { speakBtn, speak } from './voice.js?v=20261019101534';
-import { cardScore } from './level.js?v=20261019101534';
-import { play } from './sfx.js?v=20261019101534';
-import { celebrate, verdict } from './celebrate.js?v=20261019101534';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261019105841';
+import * as D from './data.js?v=20261019105841';
+import * as S from './srs.js?v=20261019105841';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261019105841';
+import { speakBtn, speak } from './voice.js?v=20261019105841';
+import { itemScore } from './level.js?v=20261019105841';
+import { play } from './sfx.js?v=20261019105841';
+import { celebrate, verdict } from './celebrate.js?v=20261019105841';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -16,11 +16,11 @@ const KINDS = {
   m: { label: 'Les deux', jp: '両方', desc: 'Une leçon de grammaire et une unité de mots, mélangées.' },
 };
 const MODE_KEY = 'sakura.lessonMode.v1';
-const DONE_KEY = 'sakura.lessonsDone.v1';
+const DONE_KEY = 'lessonsDone';   // stockés avec la progression du compte (S.getExtra)
 
 const CHUNK = 12;          // mots par leçon de vocabulaire
 const COUNT_KEY = 'sakura.lessonCount.v1';
-const SEEN_KEY = 'sakura.lessonsSeen.v1';
+const SEEN_KEY = 'lessonsSeen';
 export const COUNTS = [1, 2, 3, 5];
 
 /** Structure d'un niveau : leçons de grammaire, et unités de vocabulaire découpées en blocs de 12 mots */
@@ -58,11 +58,12 @@ function lessonTitle(plan, kind, n) {
 const progressOf = items => {
   if (!items.length) return 0;
   const cards = S.allCards(), now = Date.now();
-  return items.reduce((a, it) => a + cardScore(cards[it.lv && it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`], now), 0) / items.length;
+  const gm = S.practiceStats();
+  return items.reduce((a, it) => { const k = it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`; return a + itemScore(cards[k], gm[k], now); }, 0) / items.length;
 };
-const isDone = (lv, kind, n) => !!store.get(DONE_KEY, {})[`${lv}:${kind}:${n}`];
-const isSeen = (lv, kind, n) => !!store.get(SEEN_KEY, {})[`${lv}:${kind}:${n}`];
-const mark = (key, lv, kind, ns) => { const m = store.get(key, {}); ns.forEach(n => { m[`${lv}:${kind}:${n}`] = Date.now(); }); store.set(key, m); };
+const isDone = (lv, kind, n) => !!S.getExtra(DONE_KEY, {})[`${lv}:${kind}:${n}`];
+const isSeen = (lv, kind, n) => !!S.getExtra(SEEN_KEY, {})[`${lv}:${kind}:${n}`];
+const mark = (key, lv, kind, ns) => { const m = { ...S.getExtra(key, {}) }; ns.forEach(n => { m[`${lv}:${kind}:${n}`] = Date.now(); }); S.setExtra(key, m); };
 
 // --- Hub -------------------------------------------------------------------------------
 export async function lessonsHub(main, lv = 'N5') {
@@ -90,12 +91,15 @@ export async function lessonsHub(main, lv = 'N5') {
       const c = lessonContent(plan, mode, n);
       const p = progressOf([...c.g, ...c.v]);
       const done = isDone(lv, mode, n), seen = !done && isSeen(lv, mode, n);
+      const st = (S.getExtra('lessonState', {}) || {})[`${lv}:${mode}:${n}:${count}`];
+      const inProgress = st ? (st.phase === 'quiz' ? `En cours · exercices ${st.ok?.length || 0}/${st.plan?.length || 0}` : `En cours · étape ${(st.i || 0) + 1}/${st.n || '?'}`) : null;
       const sub = [c.g.length ? `${c.g.length} point${c.g.length > 1 ? 's' : ''}` : null, c.v.length ? `${c.v.length} mots` : null].filter(Boolean).join(' · ');
       const preview = [...c.g.slice(0, 3).map(g => ruby(D.gramLabel(g), true)), ...c.v.slice(0, mode === 'm' ? 2 : 4).map(v => ruby(v.f || v.w, true))].join(' ・ ');
       const last = nums[Math.min(nums.length - 1, i + count - 1)];
-      return h('li', { style: { '--i': i } }, h('a.lesson-card', { href: `#/lecon/${lv}/${mode}/${n}${count > 1 ? `?x=${count}` : ''}`, class: `lesson-card${done ? ' done' : ''}${seen ? ' seen' : ''}` },
+      return h('li', { style: { '--i': i } }, h('a.lesson-card', { href: `#/lecon/${lv}/${mode}/${n}${count > 1 ? `?x=${count}` : ''}`, class: `lesson-card${done ? ' done' : ''}${seen ? ' seen' : ''}${inProgress ? ' ongoing' : ''}` },
         h('span.lc-num', String(i + 1).padStart(2, '0')),
         h('span.lc-body', h('strong', lessonTitle(plan, mode, n)), h('span.lc-sub', sub), h('span.lc-preview', { lang: 'ja', html: preview }),
+          inProgress ? h('span.lc-ongoing', inProgress) : null,
           count > 1 && last !== n ? h('span.lc-chain', `→ jusqu'à : ${lessonTitle(plan, mode, last)}`) : null),
         h('span.lc-gauge', { title: `${Math.round(p * 100)} % maîtrisé` }, h('span', { style: { width: `${Math.round(p * 100)}%` } })),
         done ? h('span.lc-done', { 'aria-label': 'Leçon validée', html: jr('済') }) : seen ? h('span.lc-todo', 'Quiz à faire') : null));
@@ -142,7 +146,15 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
   const title = covered.length > 1 ? `${lessonTitle(plan, kind, covered[0])} → ${lessonTitle(plan, kind, covered[covered.length - 1])}` : lessonTitle(plan, kind, covered[0]);
   const nextN = nums[start + covered.length];
   const nextHref = nextN != null ? `#/lecon/${lv}/${kind}/${nextN}${count > 1 ? `?x=${count}` : ''}` : null;
-  let i = 0, dir = 1, keyHandler = null;
+  // État sauvegardé (lié au compte) : on reprend là où on s'était arrêté
+  const STATE_KEY = `${lv}:${kind}:${covered[0]}:${count}`;
+  const saved = (S.getExtra('lessonState', {}) || {})[STATE_KEY] || null;
+  const saveState = st => {
+    const all = { ...(S.getExtra('lessonState', {}) || {}) };
+    if (st) all[STATE_KEY] = { ...st, n: steps.length, t: Date.now() }; else delete all[STATE_KEY];
+    S.setExtra('lessonState', all);
+  };
+  let i = saved?.phase === 'browse' ? Math.min(saved.i || 0, steps.length - 1) : 0, dir = 1, keyHandler = null;
   const bar = h('div.progress', h('span'));
   const counter = h('span.session-count');
   const stage = h('div.stage.lesson-stage');
@@ -182,6 +194,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
     const next = h('button.btn.primary', { onclick: () => go(1) }, i === steps.length - 1 ? 'Passer aux exercices' : 'Suivant');
     stage.replaceChildren(card, h('div.actions.lesson-nav', prev, next));
     play('card');
+    if (i > 0 || saved) saveState({ phase: 'browse', i });
     if (S.getSettings().autoSpeak) setTimeout(() => speak(st.v ? kana(st.v.f || st.v.w) : (st.g.r || st.g.t)), 260);
   }
   function go(d) {
@@ -201,30 +214,66 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
   });
 
   // Exercices : une question par point de grammaire et par mot, à réussir jusqu'au bout
-  async function quiz() {
+  // Exercices : QCM et réponses à écrire, mélangés. Les questions réussies sont mémorisées.
+  async function quiz(resume = null) {
     setKeys(null);
     mark(SEEN_KEY, lv, kind, covered);
     const grammarAll = await D.grammar();
     const byId = new Map(grammarAll.map(g => [g.id, g]));
     const vocabAll = await D.vocab(lv);
+    // Plan des questions : gardé tel quel à la reprise
+    let plan = resume?.plan;
+    if (!plan) {
+      plan = [];
+      c.g.forEach(g => {
+        const sents = sentsByG.get(g.id) || [];
+        const sid = sents.length ? sents[Math.floor(Math.random() * sents.length)].id : null;
+        plan.push({ lid: `g:${g.id}`, sid, type: sid && Math.random() < 0.5 });
+      });
+      c.v.forEach((v, k) => plan.push({ lid: `v${k}:${v.w}`, type: Math.random() < 0.4 }));
+      plan = shuffle(plan);
+    }
+    const okSet = new Set(resume?.ok || []);
+    const total = plan.length;
+    const state = () => ({ phase: 'quiz', i: steps.length - 1, plan, ok: [...okSet] });
+    saveState(state());
     const items = [];
-    c.g.forEach(g => {
-      const sents = sentsByG.get(g.id) || [];
-      if (sents.length) items.push(practiceItems([sents[Math.floor(Math.random() * sents.length)]], byId)[0]);
-      else {
-        const others = grammarAll.filter(x => x.lv === g.lv && x.s !== g.s);
-        items.push({ key: null, kind: 'meaning', g, lv: g.lv, answer: g.s, options: shuffle([g.s, ...shuffle(others).slice(0, 3).map(x => x.s)]) });
+    for (const p of plan) {
+      if (okSet.has(p.lid)) continue;
+      let it;
+      if (p.lid.startsWith('g:')) {
+        const g = byId.get(Number(p.lid.slice(2))) || c.g.find(x => `g:${x.id}` === p.lid);
+        const sent = (sentsByG.get(g.id) || []).find(x => x.id === p.sid);
+        if (sent && p.type) it = typedCloze(sent, g);
+        else if (sent) it = practiceItems([sent], byId)[0];
+        else {
+          const others = grammarAll.filter(x => x.lv === g.lv && x.s !== g.s);
+          it = { key: null, kind: 'meaning', g, lv: g.lv, answer: g.s, options: shuffle([g.s, ...shuffle(others).slice(0, 3).map(x => x.s)]) };
+        }
+      } else {
+        const v = c.v.find((x, k) => `v${k}:${x.w}` === p.lid);
+        if (!v) continue;
+        it = p.type ? await typedVocab(v) : vocabPractice(v, vocabAll);
       }
-    });
-    c.v.forEach(v => items.push(vocabPractice(v, vocabAll)));
+      it.lid = p.lid;
+      items.push(it);
+    }
     phase.textContent = 'Exercices';
     phase.classList.add('quiz');
-    dots.replaceChildren(h('span.small.lesson-rule', `${items.length} exercices : chaque erreur revient jusqu'à ce qu'elle soit réussie.`));
-    runSession(stage, { mode: 'practice', items: shuffle(items), untilCorrect: true, celebrateEnd: false, onDone: ({ missed }) => { wrap.classList.remove('quizzing'); finish(missed, items.length); } });
+    const typed = items.filter(x => x.kind.endsWith('-type')).length;
+    dots.replaceChildren(h('span.small.lesson-rule', okSet.size
+      ? `Reprise : ${okSet.size} exercice${okSet.size > 1 ? 's' : ''} sur ${total} déjà réussi${okSet.size > 1 ? 's' : ''}, il en reste ${items.length}${typed ? ` (dont ${typed} à écrire)` : ''}.`
+      : `${total} exercices${typed ? `, dont ${typed} à écrire` : ''} : chaque erreur revient jusqu'à ce qu'elle soit réussie.`));
+    if (!items.length) return finish(0, total);
+    const ordered = resume ? items : shuffle(items);
+    runSession(stage, { mode: 'practice', items: ordered, untilCorrect: true, celebrateEnd: false,
+      onAnswer: (item, right) => { if (right && item.lid) { okSet.add(item.lid); saveState(state()); } },
+      onDone: ({ missed }) => { wrap.classList.remove('quizzing'); finish(missed, total); } });
     wrap.classList.add('quizzing');
   }
 
   function finish(missedCount, total) {
+    saveState(null);
     mark(DONE_KEY, lv, kind, covered);
     const keys = [...c.g.map(g => `g:${g.id}`), ...c.v.map(D.vocabKey)];
     const missing = keys.filter(k => !S.getCard(k));
@@ -255,5 +304,6 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
   main.replaceChildren(
     h('a.back', { href: `#/lecons/${lv}` }, `Leçons ${lv} · ${KINDS[kind].label}`),
     wrap);
-  show();
+  if (saved?.phase === 'quiz' && saved.plan) quiz(saved);
+  else show();
 }

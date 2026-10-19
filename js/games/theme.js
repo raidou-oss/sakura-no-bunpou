@@ -1,11 +1,13 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019101534';
-import * as D from '../data.js?v=20261019101534';
-import { play as sfx } from '../sfx.js?v=20261019101534';
-import { speakBtn } from '../voice.js?v=20261019101534';
-import { burst } from '../celebrate.js?v=20261019101534';
+import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019105841';
+import * as D from '../data.js?v=20261019105841';
+import * as S from '../srs.js?v=20261019105841';
+import { play as sfx } from '../sfx.js?v=20261019105841';
+import { speakBtn } from '../voice.js?v=20261019105841';
+import { burst } from '../celebrate.js?v=20261019105841';
+import { regChip } from '../review.js?v=20261019105841';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
@@ -88,8 +90,13 @@ export default async function theme(root, { settings, saveBest, params }) {
     function round() {
       if (i >= pool.length) return end();
       roundEl.textContent = `${i + 1}/${pool.length}`;
-      const s = pool[i], g = byId.get(s.g);
-      const re = answerRegex(s.jp);
+      const s0 = pool[i], g = byId.get(s0.g);
+      // Style demandé : celui des réglages s'il existe une variante, sinon celui de la phrase
+      const pref = { polite: 'p', plain: 'n' }[S.getSettings().register];
+      const swap = !!(pref && s0.alt && s0.reg && pref !== s0.reg);
+      const s = swap ? { ...s0, jp: s0.alt, reg: pref } : s0;
+      const other = s0.alt ? (swap ? s0.jp : s0.alt) : null;
+      const re = answerRegex(s.jp), reOther = other ? answerRegex(other) : null;
       const kanjiT = norm(plain(s.jp)), kanaT = norm(kana(s.jp.replace(/[[\]|]/g, '')));
       let tries = 0, hintLevel = 0, closed = false;
       const input = h('textarea.theme-input', { lang: 'ja', rows: 2, placeholder: romaji ? 'Tape en romaji : kinou sushi wo tabeta…' : 'Écris la phrase en japonais…', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', 'aria-label': 'Ta phrase en japonais' });
@@ -115,7 +122,17 @@ export default async function theme(root, { settings, saveBest, params }) {
         const raw = input.value.trim();
         if (!raw) { input.focus(); return; }
         const v = norm(wk?.toKana ? wk.toKana(raw, { IMEMode: true }) : raw);
+        const otherStyle = !re.test(v) && reOther?.test(v);
+        if (otherStyle) {
+          S.recordPractice(`g:${s.g}`, true);
+          score += 2; scoreEl.textContent = score;
+          sfx('correct'); burst(input, { count: 16 });
+          fb.replaceChildren(h('p.theme-ok', 'Juste ! +2'),
+            h('p.small', `Ta phrase est correcte, mais en forme ${s.reg === 'p' ? 'neutre' : 'polie'} : on demandait la forme ${s.reg === 'p' ? 'polie (です・ます)' : 'neutre (forme simple)'}.`), answerLine());
+          return close();
+        }
         if (re.test(v)) {
+          S.recordPractice(`g:${s.g}`, true);
           const pts = Math.max(1, (tries ? 2 : 3) - (hintLevel ? 1 : 0)); score += pts; scoreEl.textContent = score;
           sfx('correct'); burst(input, { count: 28 });
           fb.replaceChildren(h('p.theme-ok', tries ? `Bien corrigé ! +${pts}` : `Parfait ! +${pts}`), answerLine());
@@ -128,6 +145,7 @@ export default async function theme(root, { settings, saveBest, params }) {
         sfx('wrong');
         const view = h('p.theme-diff', { lang: 'ja' }, ...best.ops.map(o => h(`span.d-${o.op}`, o.ch)));
         if (tries >= 3) {
+          S.recordPractice(`g:${s.g}`, best.ratio >= .9);
           const near = best.ratio >= .9;
           if (near) { score += 1; scoreEl.textContent = score; }
           fb.replaceChildren(h('p', near ? 'Presque ! +1 pour l’effort.' : 'Voici la bonne réponse :'), view, answerLine());
@@ -149,7 +167,7 @@ export default async function theme(root, { settings, saveBest, params }) {
       function next() { i++; round(); }
 
       stage.replaceChildren(h('div.card.theme',
-        h('p.kicker', `Thème · ${lv}${g ? ` · ${g.t}` : ''}`),
+        h('div.kicker-row', h('p.kicker', `Thème · ${lv}${g ? ` · ${g.t}` : ''}`), regChip(s)),
         h('p.narabe-fr', s.fr),
         input, hint,
         h('div.actions.left', ok, hintBtn, skip),

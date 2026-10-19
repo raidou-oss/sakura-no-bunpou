@@ -5,13 +5,16 @@
 //      une carte revue à 21 jours ou plus est considérée « en fleur » ;
 //    - pénalité pour les oublis répétés (la carte est fragile) ;
 //    - érosion si la révision est en retard (on oublie ce qu'on ne revoit pas).
+// 1 bis. Les jeux et exercices comptent aussi : chaque élément réussi à Hanabira, Joshi Dash,
+//    Narabe, au Thème, en entraînement ou dans les exercices de leçon ajoute une maîtrise « pratique »
+//    (précision × volume, qui s'estompe sans pratique) : jusqu'à 40 % de ce qui manque à la carte.
 // 2. Par niveau JLPT, la progression grammaire et la progression vocabulaire sont la moyenne
 //    des scores sur TOUS les éléments du niveau (un élément jamais vu compte 0).
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261019101534';
-import * as S from './srs.js?v=20261019101534';
+import * as D from './data.js?v=20261019105841';
+import * as S from './srs.js?v=20261019105841';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };
@@ -33,6 +36,21 @@ export function cardScore(c, now = Date.now()) {
   return score;
 }
 
+/** Maîtrise pratique (0 → 1) tirée des jeux / exercices : précision lissée × volume × fraîcheur */
+export function practiceFactor(g, now = Date.now()) {
+  if (!g || !g.ok) return 0;
+  const acc = (g.ok + 0.5) / (g.ok + g.ko + 1);
+  const volume = Math.min(1, g.ok / 6);
+  const fresh = Math.exp(-Math.max(0, (now - g.t) / DAY) / 45);
+  return acc * volume * fresh;
+}
+export const PRACTICE_SHARE = 0.4;
+/** Score total d'un élément : révisions espacées + jeux / exercices */
+export function itemScore(c, g, now = Date.now()) {
+  const s = cardScore(c, now);
+  return s + (1 - s) * PRACTICE_SHARE * practiceFactor(g, now);
+}
+
 /** Progression de tous les niveaux : { N5: { grammar, vocab, combined, gSeen, vSeen, gBloom, vBloom, gTotal, vTotal } } */
 export async function progressByLevel() {
   const [meta, grammar] = await Promise.all([D.meta(), D.grammar()]);
@@ -40,15 +58,19 @@ export async function progressByLevel() {
   const acc = {};
   for (const lv of RANK_NAMES) acc[lv] = { g: 0, v: 0, gSeen: 0, vSeen: 0, gBloom: 0, vBloom: 0 };
   const now = Date.now();
-  for (const [key, c] of Object.entries(S.allCards())) {
+  const cards = S.allCards(), gm = S.practiceStats();
+  for (const key of new Set([...Object.keys(cards), ...Object.keys(gm)])) {
     let lv, kind;
     if (key.startsWith('g:')) { lv = lvOf.get(Number(key.slice(2))); kind = 'g'; }
-    else { lv = key.split(':')[1]; kind = 'v'; }
+    else if (key.startsWith('v:')) { lv = key.split(':')[1]; kind = 'v'; }
     const a = acc[lv];
-    if (!a || !c.s) continue;
-    a[kind] += cardScore(c, now);
+    if (!a) continue;
+    const c = cards[key];
+    const sc = itemScore(c, gm[key], now);
+    if (!sc) continue;
+    a[kind] += sc;
     a[`${kind}Seen`]++;
-    if (c.i >= MATURE) a[`${kind}Bloom`]++;
+    if (c && c.i >= MATURE) a[`${kind}Bloom`]++;
   }
   const out = {};
   for (const lv of RANK_NAMES) {
@@ -68,10 +90,10 @@ export async function progressByLevel() {
 /** Progression grammaire par leçon d'un niveau : Map(leçon → 0..1) */
 export async function lessonProgress(lv) {
   const grammar = (await D.grammar()).filter(g => g.lv === lv);
-  const cards = S.allCards(), now = Date.now();
+  const cards = S.allCards(), gm = S.practiceStats(), now = Date.now();
   const sums = new Map(), counts = new Map();
   for (const g of grammar) {
-    sums.set(g.le, (sums.get(g.le) || 0) + cardScore(cards[`g:${g.id}`], now));
+    sums.set(g.le, (sums.get(g.le) || 0) + itemScore(cards[`g:${g.id}`], gm[`g:${g.id}`], now));
     counts.set(g.le, (counts.get(g.le) || 0) + 1);
   }
   return new Map([...sums].map(([le, s]) => [le, s / counts.get(le)]));
@@ -97,7 +119,10 @@ export async function computeRank(progress) {
   const answers = Object.values(S.allStats().days || {}).reduce((a, d) => a + (d.ok || 0), 0);
   // XP : maîtrise réelle (grammaire comptée triple) + bonnes réponses
   let xp = answers;
+  const gm = S.practiceStats();
   for (const [k, c] of Object.entries(S.allCards())) xp += Math.round(cardScore(c, now) * (k.startsWith('g:') ? 30 : 10));
+  // XP de pratique : chaque élément réussi en jeu ou en exercice
+  for (const g of Object.values(gm)) xp += Math.min(20, g.ok * 2);
   return {
     rank, label: rankLabel(rank), level: lv,
     gauge: rank >= RANK_NAMES.length ? 1 : Math.min(1, cur.gauge),
