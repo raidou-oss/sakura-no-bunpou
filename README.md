@@ -73,6 +73,10 @@ Le site fonctionne sans comptes. Pour les activer, il faut un projet Supabase (g
 3. **Authentication → URL Configuration** : mets `https://raidou-oss.github.io/sakura-no-bunpou/` dans *Site URL* et dans *Redirect URLs*.
 4. **Project Settings → API** : copie *Project URL* et la clé *anon public* (ou *publishable*) dans `js/config.js`.
 5. Exécute aussi, dans l'ordre, `supabase/migration_02_pseudo.sql` (connexion par identifiant), `supabase/migration_03_live.sql` (réactions en direct, jauges) et `supabase/migration_04_scores.sql` (scores des jeux sur les profils).
+6. **Inscriptions sans e-mail** (conseillé) : le service d'e-mails gratuit de Supabase n'envoie que quelques e-mails par heure,
+   donc plusieurs inscriptions d'affilée bloquent (« trop d'e-mails »). Dans **Authentication → Sign In / Providers → Email**,
+   désactive **Confirm email**, enregistre, puis lance `supabase/migration_05_sans_confirmation.sql` pour débloquer les comptes déjà créés.
+   L'e-mail ne sert plus alors qu'à récupérer un mot de passe oublié.
 
 Ce que ça active : inscription par e-mail, profil public (pseudo, bio, photo, bannière), rang N5 → N1 avec jauge,
 page Communauté classée par rang, réactions entre élèves (une de chaque type par jour), synchro de la progression entre appareils.

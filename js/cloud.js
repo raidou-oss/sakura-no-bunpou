@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019214709';
-import * as S from './srs.js?v=20261019214709';
-import { computeRank, publicScores } from './level.js?v=20261019214709';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019224708';
+import * as S from './srs.js?v=20261019224708';
+import { computeRank, publicScores } from './level.js?v=20261019224708';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -36,7 +36,7 @@ const fail = (error, fallback) => {
   if (!error) return;
   const m = error.message || '';
   if (/Invalid login credentials/i.test(m)) throw new Error('Identifiant ou mot de passe incorrect.');
-  if (/rate limit|too many|security purposes/i.test(m)) throw new Error('Trop d’e-mails envoyés d’un coup. Réessaie dans quelques minutes.');
+  if (/rate limit|too many|security purposes/i.test(m)) throw new Error('Le site a atteint sa limite d’e-mails pour l’instant (le service gratuit n’en envoie que quelques-uns par heure). Réessaie un peu plus tard, ou demande à l’administrateur du site de désactiver la confirmation par e-mail.');
   if (/Email not confirmed/i.test(m)) throw new Error('Confirme d’abord ton adresse : un e-mail t’a été envoyé.');
   if (/already registered|already exists/i.test(m)) throw new Error('Un compte existe déjà avec cet e-mail.');
   if (/duplicate key.*username|profiles_username/i.test(m)) throw new Error('Ce pseudo est déjà pris.');
