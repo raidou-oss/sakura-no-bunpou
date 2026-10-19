@@ -71,7 +71,7 @@
 思う || 明日（あした）は晴（は）れると思（おも）います。 || Je pense qu'il fera beau demain.
 ちょっと || ちょっと待（ま）ってください。 || Attendez un instant, s'il vous plaît.
 じゃあ || じゃあ、また明日（あした）ね。 || Bon, à demain alors.
-こんな || こんな大（おお）きい魚（さかな）は初（はじ）めて見（み）ました。 || C'est la première fois que je vois un poisson aussi gros.
+こんな || こんな大（おお）きい魚（さかな）は初（はじ）めて見（み）ました。 || C'est la première fois que je vois un poisson aussi gros (proche du locuteur).
 話 || 祖父（そふ）の昔（むかし）の話（はなし）はおもしろいです。 || Les histoires d'autrefois de mon grand-père sont intéressantes.
 力 || 兄（あに）は力（ちから）が強（つよ）いです。 || Mon grand frère est très fort.
 考える || よく考（かんが）えてから答（こた）えてください。 || Réfléchissez bien avant de répondre.

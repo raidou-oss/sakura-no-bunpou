@@ -13,10 +13,10 @@
 可愛い || この猫（ねこ）はとても可愛（かわい）いです。 || Ce chat est très mignon.
 火曜日 || 火曜日（かようび）にテストがあります。 || Il y a un examen mardi.
 パン || 朝（あさ）はいつもパンを食（た）べます。 || Le matin, je mange toujours du pain.
-これ || これは私（わたし）のかばんです。 || Ceci est mon sac.
+これ || これは私（わたし）のかばんです。 || Ceci (proche du locuteur) est mon sac.
 寿司 || 日本（にほん）で美味（おい）しい寿司（すし）を食（た）べました。 || Au Japon, j'ai mangé de délicieux sushis.
 丸い || 月（つき）が丸（まる）くてきれいです。 || La lune est ronde et belle.
-それ || それは何（なん）ですか。 || Qu'est-ce que c'est, ça ?
+それ || それは何（なん）ですか。 || Qu'est-ce que c'est, ça (proche de l'interlocuteur) ?
 お皿 || お皿（さら）を洗（あら）ってください。 || Lave les assiettes, s'il te plaît.
 帽子 || 暑（あつ）いから帽子（ぼうし）をかぶりましょう。 || Il fait chaud, mettons un chapeau.
 椅子 || この椅子（いす）に座（すわ）ってください。 || Asseyez-vous sur cette chaise.
@@ -26,10 +26,10 @@
 女の子 || 公園（こうえん）で女（おんな）の子（こ）が遊（あそ）んでいます。 || Une petite fille joue au parc.
 面白い || この本（ほん）はとても面白（おもしろ）いです。 || Ce livre est très intéressant.
 美味しい || このケーキは美味（おい）しいです。 || Ce gâteau est délicieux.
-その || その本（ほん）を見（み）せてください。 || Montrez-moi ce livre, s'il vous plaît.
+その || その本（ほん）を見（み）せてください。 || Montrez-moi ce livre (proche de l'interlocuteur), s'il vous plaît.
 アパート || 私（わたし）は小（ちい）さいアパートに住（す）んでいます。 || J'habite dans un petit appartement.
 今週 || 今週（こんしゅう）は雨（あめ）が多（おお）いです。 || Il pleut beaucoup cette semaine.
-この || このりんごは甘（あま）いです。 || Cette pomme est sucrée.
+この || このりんごは甘（あま）いです。 || Cette pomme (proche du locuteur) est sucrée.
 鞄 || 鞄（かばん）の中（なか）に本（ほん）があります。 || Il y a un livre dans le sac.
 女の人 || あの女（おんな）の人（ひと）は先生（せんせい）です。 || Cette femme-là est professeure.
 辛い || このカレーは少（すこ）し辛（から）いです。 || Ce curry est un peu épicé.
@@ -44,9 +44,9 @@
 ホラー || 私（わたし）はホラー映画（えいが）が苦手（にがて）です。 || Je n'aime pas trop les films d'horreur.
 大学生 || 兄（あに）は大学生（だいがくせい）です。 || Mon grand frère est étudiant à l'université.
 映画館 || 映画館（えいがかん）は駅（えき）の前（まえ）にあります。 || Le cinéma est devant la gare.
-ここ || ここは私（わたし）の学校（がっこう）です。 || C'est ici mon école.
+ここ || ここは私（わたし）の学校（がっこう）です。 || Ici (proche du locuteur), c'est mon école.
 食べ物 || 好（す）きな食（た）べ物（もの）は何（なん）ですか。 || Quel est ton plat préféré ?
-そこ || そこに座（すわ）ってください。 || Asseyez-vous là, s'il vous plaît.
+そこ || そこに座（すわ）ってください。 || Asseyez-vous là (proche de l'interlocuteur), s'il vous plaît.
 文法 || 日本語（にほんご）の文法（ぶんぽう）は少（すこ）し難（むずか）しいです。 || La grammaire japonaise est un peu difficile.
 曲がる || 次（つぎ）の角（かど）を右（みぎ）に曲（ま）がってください。 || Tournez à droite au prochain coin de rue.
 置く || 鍵（かぎ）は机（つくえ）の上（うえ）に置（お）きました。 || J'ai posé les clés sur le bureau.
@@ -59,7 +59,7 @@
 動物 || どんな動物（どうぶつ）が好（す）きですか。 || Quels animaux aimes-tu ?
 橋 || この橋（はし）を渡（わた）ると駅（えき）です。 || En traversant ce pont, on arrive à la gare.
 番号 || 電話番号（でんわばんごう）を教（おし）えてください。 || Donnez-moi votre numéro de téléphone, s'il vous plaît.
-あの || あの山（やま）はとても高（たか）いです。 || Cette montagne là-bas est très haute.
+あの || あの山（やま）はとても高（たか）いです。 || Cette montagne là-bas (éloigné des deux) est très haute.
 開く || 銀行（ぎんこう）は九時（くじ）に開（あ）きます。 || La banque ouvre à neuf heures.
 鼻 || 象（ぞう）の鼻（はな）は長（なが）いです。 || La trompe de l'éléphant est longue.
 動物園 || 日曜日（にちようび）に動物園（どうぶつえん）へ行（い）きました。 || Dimanche, je suis allé au zoo.
@@ -154,7 +154,7 @@
 あのー || あのー、すみません。駅（えき）はどこですか。 || Euh, excusez-moi. Où est la gare ?
 でも || 疲（つか）れました。でも、楽（たの）しかったです。 || Je suis fatigué. Mais c'était amusant.
 事 || 日本（にほん）の事（こと）をもっと知（し）りたいです。 || Je veux en savoir plus sur le Japon.
-あれ || あれは何（なん）の建物（たてもの）ですか。 || Qu'est-ce que c'est que ce bâtiment, là-bas ?
+あれ || あれは何（なん）の建物（たてもの）ですか。 || Qu'est-ce que c'est que ce bâtiment, là-bas (éloigné des deux) ?
 時 || 子供（こども）の時（とき）、よく川（かわ）で泳（およ）ぎました。 || Quand j'étais enfant, je nageais souvent dans la rivière.
 様 || 山田（やまだ）様（さま）、お待（ま）たせしました。 || Monsieur Yamada, désolé de vous avoir fait attendre.
 年 || 新（あたら）しい年（とし）が始（はじ）まりました。 || Une nouvelle année a commencé.
@@ -248,7 +248,7 @@
 北 || 北海道（ほっかいどう）は日本（にほん）の北（きた）にあります。 || Hokkaidō se trouve au nord du Japon.
 警察官 || 警察官（けいさつかん）に道（みち）を聞（き）きました。 || J'ai demandé le chemin à un policier.
 スイッチ || このスイッチを押（お）すと電気（でんき）がつきます。 || Si on appuie sur cet interrupteur, la lumière s'allume.
-そちら || そちらの席（せき）へどうぞ。 || Prenez donc ce siège-là.
+そちら || そちらの席（せき）へどうぞ。 || Prenez donc ce siège-là (proche de l'interlocuteur).
 看護師 || 姉（あね）は病院（びょういん）で看護師（かんごし）をしています。 || Ma grande sœur est infirmière à l'hôpital.
 自然 || この村（むら）は自然（しぜん）がきれいです。 || La nature est belle dans ce village.
 紫 || 紫（むらさき）の花（はな）が好（す）きです。 || J'aime les fleurs violettes.

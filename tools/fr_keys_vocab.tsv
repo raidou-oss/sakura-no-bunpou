@@ -18,7 +18,7 @@ N5:晩	晩ご飯にピザを食べました。	dîner
 N5:何	何か飲みますか。	quelque chose
 N5:何	何を食べてるの？	Qu'est-ce que
 N5:丸い	正しい答えに丸をつけてください。	!
-N5:それ	それは何ですか。	ça
+N5:それ	それは何ですか。	ça (proche de l'interlocuteur)
 N5:エアコン	暑いので、エアコンをつけました。	la clim
 N5:帽子	寒いので帽子を被ります。	un bonnet
 N5:お金	レジでお金を払います。	Je paie
@@ -154,7 +154,7 @@ N5:来る	彼も来るだろう。	Il viendra
 N5:来る	「明日来る？」「うん、行くよ。」	Tu viens
 N5:事	日本の事をもっと知りたいです。	sur le Japon
 N5:事	今日は何かいい事がありましたか。	quelque chose de bien
-N5:こんな	こんな大きい魚は初めて見ました。	aussi gros
+N5:こんな	こんな大きい魚は初めて見ました。	aussi gros (proche du locuteur)
 N5:時	子供の時、よく川で泳ぎました。	Quand
 N5:中	鞄の中に本があります。	dans le sac
 N5:中	森の中を散歩しました。	dans la forêt
@@ -1166,3 +1166,13 @@ N1:進み	地球の温暖化が進みつつある。	!
 N1:比べ	去年に比べて、今年は雪が多い。	!
 N1:合わせて	詳しいことは電話でお問い合わせください。	!
 N1:来い	明日は来なくてもいいですよ。	!
+N5:これ	これは私のかばんです。	Ceci (proche du locuteur)
+N5:その	その本を見せてください。	ce livre (proche de l'interlocuteur)
+N5:この	このりんごは甘いです。	Cette pomme (proche du locuteur)
+N5:ここ	ここは私の学校です。	Ici (proche du locuteur)
+N5:そこ	そこに座ってください。	là (proche de l'interlocuteur)
+N5:あの	あの山はとても高いです。	Cette montagne là-bas (éloigné des deux)
+N5:あれ	あれは何の建物ですか。	ce bâtiment, là-bas (éloigné des deux)
+N5:そちら	そちらの席へどうぞ。	ce siège-là (proche de l'interlocuteur)
+N5:あそこ	駅はあそこです。	là-bas (éloigné des deux)
+N5:あそこ	あそこにコンビニがあります。	là-bas (éloigné des deux)

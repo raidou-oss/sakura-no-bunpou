@@ -110,7 +110,7 @@
 89,2009,とか,とか,"et ainsi de suite, tel que, quelque chose comme, un (certain), on dit que ..., ou autre",N4
 89,2010,韓国,韓国（かんこく）,"Corée du Sud, République de Corée, Empire coréen",N4
 89,2011,味噌,味噌（みそ）,"miso (condiment à base de soja fermenté), moment clé, personne faible",N4
-89,2012,ああ,ああ,"comme ça (loin du locuteur et de l'interlocuteur), ainsi",N4
+89,2012,ああ,ああ,"comme ça (éloigné des deux), ainsi",N4
 89,2013,人形,人形（にんぎょう）,"poupée, marionnette",N4
 89,2014,ハイキング,ハイキング,randonnée,N4
 89,2015,履歴書,履歴書（りれきしょ）,"curriculum vitae, CV",N4
@@ -186,8 +186,8 @@
 90,3035,ハンドバッグ,ハンドバッグ,"sac à main, pochette",N4
 90,3036,売り切れ,売（う）り切（き）れ,"épuisé, complet",N4
 90,3037,大体,大体（だいたい）,"grandes lignes, essentiel, général, dans l'ensemble, approximativement, pour commencer",N4
-90,3038,あんな,あんな,"un tel (loin du locuteur et de l'interlocuteur ou inconnu des deux), comme ça, ce genre de",N4
-90,3039,そんな,そんな,"tel (actions ou idées de l'interlocuteur), pareil, ce genre de",N4
+90,3038,あんな,あんな,"un tel, comme ça (éloigné des deux, ou connu des deux), ce genre de",N4
+90,3039,そんな,そんな,"tel, pareil (proche de l'interlocuteur : ses actions ou ses idées), ce genre de",N4
 90,3040,技術,技術（ぎじゅつ）,"art, artisanat, technique, technologie, ingénierie, compétence",N4
 90,3041,珍しい,珍（めずら）しい,"inhabituel, rare, insolite, nouveau, original, beau (par ex. cadeau)",N4
 90,3042,電池,電池（でんち）,"pile, batterie",N4
@@ -266,7 +266,7 @@
 92,5015,なさる,なさる,faire,N4
 92,5016,いらっしゃる,いらっしゃる,"venir, aller, être (quelque part), être en train de (faire)",N4
 92,5017,校長,校長（こうちょう）,"directeur, proviseur, principal",N4
-92,5018,あちら,あちら,"par là, là-bas, celui-là, cette personne là, pays étranger (surtout occidental)",N4
+92,5018,あちら,あちら,"par là-bas (éloigné des deux), celui-là, cette personne-là, pays étranger (surtout occidental)",N4
 92,5019,お子さん,お子（こ）さん,enfant,N4
 92,5020,任せる,任（まか）せる,"confier (une tâche) à quelqu'un, s'en remettre à, laisser suivre son cours naturel, compter sur",N4
 92,5021,募集,募集（ぼしゅう）,"recrutement, embauche, invitation, collecte (de fonds, dons...), sollicitation",N4

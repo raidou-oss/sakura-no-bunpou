@@ -30,7 +30,7 @@
 居る || 教室（きょうしつ）に学生（がくせい）が居（い）ます。 || Il y a des étudiants dans la salle.
 夕方 || 夕方（ゆうがた）に散歩（さんぽ）します。 || Je me promène en fin d'après-midi.
 湖 || 湖（みずうみ）でボートに乗（の）りました。 || J'ai fait de la barque sur le lac.
-出口 || 出口（でぐち）はあちらです。 || La sortie est par là.
+出口 || 出口（でぐち）はあちらです。 || La sortie est par là-bas (éloigné des deux).
 ページ || 教科書（きょうかしょ）の十（じゅう）ページを開（ひら）いてください。 || Ouvrez votre manuel à la page dix.
 ゴールド || 彼（かれ）はゴールドの時計（とけい）をしています。 || Il porte une montre dorée.
 シリーズ || このシリーズの本（ほん）を全部（ぜんぶ）読（よ）みました。 || J'ai lu tous les livres de cette série.
@@ -164,7 +164,7 @@ Tシャツ || 夏（なつ）はTシャツで過（す）ごします。 || En �
 八百屋 || 八百屋（やおや）で野菜（やさい）を買（か）いました。 || J'ai acheté des légumes chez le marchand de légumes.
 レジ || レジでお金（かね）を払（はら）います。 || Je paie à la caisse.
 グレー || グレーのコートが欲（ほ）しいです。 || Je voudrais un manteau gris.
-入口 || 入口（いりぐち）はこちらです。 || L'entrée est par ici.
+入口 || 入口（いりぐち）はこちらです。 || L'entrée est par ici (proche du locuteur).
 飴 || 子供（こども）に飴（あめ）をあげました。 || J'ai donné un bonbon à l'enfant.
 水色 || 水色（みずいろ）のシャツが似合（にあ）いますね。 || La chemise bleu ciel te va bien.
 ご馳走 || 先輩（せんぱい）が晩（ばん）ご飯（はん）をご馳走（ちそう）してくれました。 || Mon aîné m'a offert le dîner.
