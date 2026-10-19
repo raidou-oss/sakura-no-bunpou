@@ -1,22 +1,23 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019130103';
-import * as D from './data.js?v=20261019130103';
-import * as S from './srs.js?v=20261019130103';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019130103';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019130103';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019130103';
-import * as C from './cloud.js?v=20261019130103';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019130103';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019130103';
-import { play, setVolume } from './sfx.js?v=20261019130103';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019130103';
-import { celebrate, verdict } from './celebrate.js?v=20261019130103';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019130103';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261019130103';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019130103';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261019131128';
+import * as D from './data.js?v=20261019131128';
+import * as S from './srs.js?v=20261019131128';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261019131128';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261019131128';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019131128';
+import * as C from './cloud.js?v=20261019131128';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019131128';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019131128';
+import { play, setVolume } from './sfx.js?v=20261019131128';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019131128';
+import { celebrate, verdict } from './celebrate.js?v=20261019131128';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019131128';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261019131128';
+import { initGloss } from './gloss.js?v=20261019131128';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019131128';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261019130103';
+import { GAMES } from './gamelist.js?v=20261019131128';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -492,6 +493,9 @@ function settingsPage() {
       levelBoxes('vocabLevels', 'Niveaux de vocabulaire à découvrir'),
       h('div.fields', num('newGrammar', 'Nouveaux points de grammaire par jour', 50), num('newVocab', 'Nouveaux mots par jour', 100)),
       h('h2', 'Affichage'), furi,
+      h('div.checks',
+        h('label.check', h('input', { type: 'checkbox', checked: s.gloss !== false, onchange: e => { S.setSettings({ gloss: e.target.checked }); toast('Réglage enregistré'); } }),
+          h('span', 'Bulles d’explication : en passant la souris (ou en touchant) un mot d’une phrase japonaise, une bulle explique la particule, le mot, le verbe ou la forme grammaticale'))),
       h('h2', 'Style des phrases'),
       h('fieldset', h('legend', 'Phrases d’exemple'),
         h('div.checks', [['orig', 'Telles quelles'], ['polite', 'Polies (です・ます)'], ['plain', 'Neutres (forme simple)']].map(([v, l]) =>
@@ -573,3 +577,5 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
   }
   document.body.append(sky);
 })();
+
+initGloss();
