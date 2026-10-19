@@ -884,8 +884,8 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 
 /* --- Colonne de droite : point du jour + classement sous « En ligne » ----------------------- */
 @media (min-width: 1280px) { body.has-online:not(.portal-mode) .online-panel { height: calc(100vh - 28px); } }
-.online-list { flex: none; max-height: 38vh; }
-.side-extra { margin-top: auto; display: flex; flex-direction: column; gap: 10px; min-height: 0; overflow-y: auto; padding-top: 10px; scrollbar-width: thin; }
+.online-list { flex: 0 1 auto; min-height: 120px; max-height: none; }
+.side-extra { margin-top: auto; flex: none; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding-top: 10px; scrollbar-width: thin; }
 .side-card { padding: 12px 14px; border-radius: var(--r-m); background: rgba(5, 11, 38, .5); border: 1px solid var(--line); }
 .side-point { background: linear-gradient(160deg, rgba(127, 168, 255, .14), rgba(5, 11, 38, .55) 70%); border-color: rgba(127, 168, 255, .32); }
 .side-point-title { display: inline-block; margin: 0 0 2px; font: 700 1.35rem/1.5 var(--jp); color: var(--ink); text-decoration: none; transition: color .2s, transform .3s var(--ease-spring); }
@@ -895,16 +895,6 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 .side-ex .jp { margin: 0 0 6px; font-size: .98rem; line-height: 1.8; }
 .side-ex-row { display: flex; align-items: flex-start; gap: 8px; }
 .side-ex-row .small { line-height: 1.35; }
-.board { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-direction: column; gap: 2px; }
-.board li { display: grid; grid-template-columns: 22px 1fr auto auto; align-items: center; gap: 8px; padding: 5px 6px; border-radius: 10px; font-size: .86rem; }
-.board li.me { background: rgba(255, 148, 203, .12); box-shadow: inset 0 0 0 1px rgba(255, 148, 203, .35); }
-.board-pos { font: 800 italic 1rem/1 var(--display); color: var(--mist); text-align: center; }
-.board li:nth-child(1) .board-pos { color: #FFD27A; } .board li:nth-child(2) .board-pos { color: #DDF5FF; } .board li:nth-child(3) .board-pos { color: #FFB38A; }
-.board-name { color: var(--ink); font-weight: 600; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.board-name:hover { color: var(--cyan); }
-.board-rank { font-family: var(--jp-heavy); font-size: .76rem; color: var(--sakura); }
-.board-xp { font-size: .74rem; color: var(--mist); }
-@media (max-height: 760px) { .side-board { display: none; } }
 
 /* --- Félicitations ------------------------------------------------------------------------ */
 .burst { position: fixed; z-index: 96; width: 0; height: 0; pointer-events: none; }
@@ -1010,3 +1000,39 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
 .theme-answer { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: var(--r-m); background: rgba(99, 240, 195, .08); border: 1px solid rgba(99, 240, 195, .3); }
 .theme-answer .jp { margin: 0; font-size: 1.25rem; flex: 1; }
 @media (max-width: 860px) { .lesson-dots { gap: 3px; } .lesson-dots i { width: 7px; height: 5px; } .lesson-dots i.on { width: 16px; } }
+
+/* --- En ligne : groupes par niveau et pokes --------------------------------------------------- */
+.online-group { display: flex; align-items: center; gap: 8px; margin: 8px 4px 2px; padding: 0 6px; font: 400 .82rem/1.6 var(--jp-heavy); color: var(--sakura); }
+.online-group::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(255, 148, 203, .4), transparent); }
+.online-group small { order: 2; font: 700 .7rem/1 var(--body); color: var(--mist); }
+.online-group:first-child { margin-top: 0; }
+.can-help { padding: 1px 6px; border-radius: 999px; font: 700 .66rem/1.5 var(--jp); color: var(--night); background: linear-gradient(120deg, #9EF5D5, var(--cyan)); }
+.poke-btn { flex-basis: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(70, 217, 255, .5); background: rgba(70, 217, 255, .1); color: var(--ink); font: 700 .84rem/1 var(--body); cursor: pointer; transition: background .2s, transform .3s var(--ease-spring), box-shadow .3s; }
+.poke-btn:hover, .poke-btn.on { background: var(--ink); color: var(--night); box-shadow: 4px 4px 0 var(--sakura); transform: skewX(-5deg); }
+.poke-btn span { display: inline-block; transition: transform .3s var(--ease-spring); }
+.poke-btn:hover span { transform: translateX(3px) rotate(-12deg); }
+.poke-form { flex-basis: 100%; display: flex; flex-direction: column; gap: 8px; animation: p-in .4s var(--ease-out) both; }
+.poke-suggest { display: flex; flex-wrap: wrap; gap: 5px; }
+.poke-chip { padding: 5px 9px; border-radius: 999px; border: 1px solid var(--line-hi); background: rgba(5, 11, 38, .5); color: var(--pale); font-size: .74rem; cursor: pointer; text-align: left; transition: border-color .2s, color .2s; }
+.poke-chip:hover { border-color: var(--sakura); color: var(--ink); }
+.poke-input { width: 100%; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--line-hi); background: rgba(5, 11, 38, .65); color: var(--ink); font: inherit; font-size: .88rem; resize: vertical; }
+.poke-input:focus { outline: none; border-color: var(--cyan); }
+.poke-about { margin: 0; }
+.poke-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+
+.poke-stack { position: fixed; z-index: 85; top: 16px; left: 50%; transform: translateX(-50%); width: min(400px, calc(100vw - 24px)); display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+.poke-card { pointer-events: auto; padding: 14px 16px; border-radius: var(--r-l); background: rgba(7, 16, 52, .97); border: 1px solid rgba(70, 217, 255, .45);
+  box-shadow: 10px 10px 0 rgba(255, 148, 203, .55), 0 24px 60px -16px rgba(0, 0, 0, .8); animation: poke-in .55s var(--ease-spring) both; }
+.poke-card.leaving { animation: poke-out .3s var(--ease-snap) forwards; }
+@keyframes poke-in { 0% { opacity: 0; transform: translateY(-40px) rotate(-4deg) scale(.9); } 55% { transform: translateY(4px) rotate(1.5deg); } 75% { transform: rotate(-1deg); } 100% { opacity: 1; transform: none; } }
+@keyframes poke-out { to { opacity: 0; transform: translateY(-24px) scale(.96); } }
+.poke-head { display: flex; align-items: center; gap: 10px; }
+.poke-head > div { flex: 1; min-width: 0; }
+.poke-title { margin: 0; font: 400 1.35rem/1.1 var(--jp-heavy); color: #fff; filter: drop-shadow(2px 2px 0 var(--sakura)); }
+.poke-who { margin: 2px 0 0; font-size: .86rem; color: var(--pale); }
+.poke-x { width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(127, 168, 255, .14); color: var(--ink); font-size: 1.2rem; line-height: 1; cursor: pointer; }
+.poke-msg { margin: 10px 0 6px; padding: 8px 12px; border-left: 3px solid var(--cyan); border-radius: 0 10px 10px 0; background: rgba(70, 217, 255, .08); color: var(--ink); font-style: italic; }
+.poke-point { display: inline-block; margin: 2px 0 6px; color: var(--cyan); font-size: .86rem; }
+.poke-reply { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.poke-reply:empty { display: none; }
+.poke-card .poke-actions { margin-top: 8px; }

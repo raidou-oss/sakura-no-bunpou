@@ -1,26 +1,26 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019023757';
-import * as D from './data.js?v=20261019023757';
-import * as S from './srs.js?v=20261019023757';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019023757';
-import { speakBtn, supported as voiceOK } from './voice.js?v=20261019023757';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019023757';
-import * as C from './cloud.js?v=20261019023757';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019023757';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019023757';
-import { play, setVolume } from './sfx.js?v=20261019023757';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019023757';
-import { celebrate, verdict } from './celebrate.js?v=20261019023757';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261019023757';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019023757';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019024951';
+import * as D from './data.js?v=20261019024951';
+import * as S from './srs.js?v=20261019024951';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019024951';
+import { speakBtn, supported as voiceOK } from './voice.js?v=20261019024951';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019024951';
+import * as C from './cloud.js?v=20261019024951';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019024951';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019024951';
+import { play, setVolume } from './sfx.js?v=20261019024951';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261019024951';
+import { celebrate, verdict } from './celebrate.js?v=20261019024951';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261019024951';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019024951';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019023757', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019023757', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019023757', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  theme: { file: './games/theme.js?v=20261019023757', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
-  narabe: { file: './games/narabe.js?v=20261019023757', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019024951', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019024951', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019024951', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  theme: { file: './games/theme.js?v=20261019024951', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
+  narabe: { file: './games/narabe.js?v=20261019024951', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {

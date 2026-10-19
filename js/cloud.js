@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019023757';
-import * as S from './srs.js?v=20261019023757';
-import { computeRank } from './level.js?v=20261019023757';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261019024951';
+import * as S from './srs.js?v=20261019024951';
+import { computeRank } from './level.js?v=20261019024951';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -232,6 +232,31 @@ let presence = null, reactChannel = null, online = [];
 const onlineListeners = new Set(), reactionListeners = new Set();
 export const onOnline = fn => { onlineListeners.add(fn); fn(online); return () => onlineListeners.delete(fn); };
 export const onReaction = fn => { reactionListeners.add(fn); return () => reactionListeners.delete(fn); };
+const pokeListeners = new Set();
+let pokeChannel = null;
+export const onPoke = fn => { pokeListeners.add(fn); return () => pokeListeners.delete(fn); };
+const lastPoke = new Map();
+export const POKE_COOLDOWN = 45000;
+export const pokeWait = to => Math.max(0, POKE_COOLDOWN - (Date.now() - (lastPoke.get(to) || 0)));
+
+/** Poke : demande de conseil (ou réponse) envoyée en direct à un élève connecté */
+export async function sendPoke(to, { msg = '', kind = 'ask', about = null } = {}) {
+  if (!session) throw new Error('Connecte-toi pour envoyer un poke.');
+  if (kind === 'ask' && pokeWait(to) > 0) throw new Error(`Patiente encore ${Math.ceil(pokeWait(to) / 1000)} s avant de le relancer.`);
+  const c = await sb();
+  const ch = c.channel(`sakura-poke-${to}`, { config: { broadcast: { ack: true } } });
+  await new Promise((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error('Envoi impossible pour le moment.')), 6000);
+    ch.subscribe(status => { if (status === 'SUBSCRIBED') { clearTimeout(t); resolve(); } else if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') { clearTimeout(t); reject(new Error('Envoi impossible pour le moment.')); } });
+  });
+  const me = profile || {};
+  const res = await ch.send({ type: 'broadcast', event: 'poke', payload: {
+    to, from: session.user.id, name: me.username || 'Quelqu’un', avatar_url: me.avatar_url || null, rank: me.rank || 0,
+    msg: String(msg).slice(0, 160), kind, about, at: Date.now() } });
+  c.removeChannel(ch).catch(() => {});
+  if (res !== 'ok') throw new Error('Envoi impossible pour le moment.');
+  if (kind === 'ask') lastPoke.set(to, Date.now());
+}
 export const onlineUsers = () => online;
 
 function presencePayload() {
@@ -248,10 +273,17 @@ async function startLive() {
   presence.on('presence', { event: 'sync' }, () => {
     const state = presence.presenceState();
     online = Object.values(state).map(metas => metas[metas.length - 1]).filter(Boolean)
-      .sort((a, b) => (a.id === me ? -1 : b.id === me ? 1 : (b.rank - a.rank) || (b.gauge - a.gauge)));
+      .sort((a, b) => (a.rank - b.rank) || (a.gauge - b.gauge) || String(a.username).localeCompare(String(b.username)));   // du N5 au N1
     onlineListeners.forEach(fn => fn(online));
   });
   presence.subscribe(status => { if (status === 'SUBSCRIBED') trackPresence(); });
+  // Pokes (demandes de conseil) : messages éphémères en direct, sans base de données
+  pokeChannel = c.channel(`sakura-poke-${me}`, { config: { broadcast: { self: false } } })
+    .on('broadcast', { event: 'poke' }, ({ payload }) => {
+      if (!payload || payload.to !== me || !payload.from) return;
+      pokeListeners.forEach(fn => fn(payload));
+    })
+    .subscribe();
   // Réactions reçues en direct
   reactChannel = c.channel(`sakura-react-${me}`)
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'reactions', filter: `to_user=eq.${me}` }, async payload => {
@@ -266,6 +298,7 @@ async function stopLive() {
   if (!c) return;
   if (presence) { await c.removeChannel(presence).catch(() => {}); presence = null; }
   if (reactChannel) { await c.removeChannel(reactChannel).catch(() => {}); reactChannel = null; }
+  if (pokeChannel) { await c.removeChannel(pokeChannel).catch(() => {}); pokeChannel = null; }
   online = []; onlineListeners.forEach(fn => fn(online));
 }
 // Envoi immédiat quand on quitte la page

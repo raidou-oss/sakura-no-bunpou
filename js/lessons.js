@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle } from './util.js?v=20261019023757';
-import * as D from './data.js?v=20261019023757';
-import * as S from './srs.js?v=20261019023757';
-import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText } from './review.js?v=20261019023757';
-import { speakBtn, speak } from './voice.js?v=20261019023757';
-import { cardScore } from './level.js?v=20261019023757';
-import { play } from './sfx.js?v=20261019023757';
-import { celebrate } from './celebrate.js?v=20261019023757';
+import { h, ruby, kana, toast, store, shuffle } from './util.js?v=20261019024951';
+import * as D from './data.js?v=20261019024951';
+import * as S from './srs.js?v=20261019024951';
+import { runSession, practiceItems, vocabPractice, wordAudio, gramAudio, sentenceHTML, sentenceText } from './review.js?v=20261019024951';
+import { speakBtn, speak } from './voice.js?v=20261019024951';
+import { cardScore } from './level.js?v=20261019024951';
+import { play } from './sfx.js?v=20261019024951';
+import { celebrate } from './celebrate.js?v=20261019024951';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },

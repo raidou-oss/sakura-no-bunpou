@@ -1,13 +1,13 @@
 // Panneau « Aujourd'hui » de la barre latérale : remplit l'espace vide sous le menu avec ce qui
 // fait vraiment progresser : l'objectif de révisions du jour, la série, et un mot du jour
 // (voix, accent tonal, ajout aux révisions en un clic).
-import { h, ruby, kana, toast } from './util.js?v=20261019023757';
-import * as D from './data.js?v=20261019023757';
-import * as S from './srs.js?v=20261019023757';
-import { countDue } from './review.js?v=20261019023757';
-import { speakBtn } from './voice.js?v=20261019023757';
-import { pitchSVG } from './pitch.js?v=20261019023757';
-import { play } from './sfx.js?v=20261019023757';
+import { h, ruby, kana, toast } from './util.js?v=20261019024951';
+import * as D from './data.js?v=20261019024951';
+import * as S from './srs.js?v=20261019024951';
+import { countDue } from './review.js?v=20261019024951';
+import { speakBtn } from './voice.js?v=20261019024951';
+import { pitchSVG } from './pitch.js?v=20261019024951';
+import { play } from './sfx.js?v=20261019024951';
 
 const dayKey = () => new Date().toISOString().slice(0, 10);
 const hash = str => [...str].reduce((a, c) => (a * 33 + c.charCodeAt(0)) >>> 0, 5381);
@@ -72,10 +72,8 @@ export function mountDaily() {
   }, 30);
 }
 
-// --- Colonne de droite, sous « En ligne » : point de grammaire du jour + classement ------------
-import * as C from './cloud.js?v=20261019023757';
-import { sentenceHTML, sentenceText } from './review.js?v=20261019023757';
-import { rankLabel } from './level.js?v=20261019023757';
+// --- Colonne de droite, sous « En ligne » : point de grammaire du jour ------------
+import { sentenceHTML, sentenceText } from './review.js?v=20261019024951';
 
 export async function grammarOfDay() {
   const levels = S.getSettings().grammarLevels?.length ? S.getSettings().grammarLevels : ['N5'];
@@ -91,18 +89,9 @@ export async function grammarOfDay() {
   return { g: pick, ex: (await D.sentencesFor(pick.id))[0] };
 }
 
-let board = { at: 0, rows: [] };
-async function leaderboard() {
-  if (!C.enabled || !C.currentUser()) return [];
-  if (Date.now() - board.at < 120000) return board.rows;
-  try { board = { at: Date.now(), rows: (await C.listProfiles()).slice(0, 5) }; } catch { /* hors ligne : on garde l'ancien */ }
-  return board.rows;
-}
-
 export async function sideExtras() {
-  const [god, rows] = await Promise.all([grammarOfDay(), leaderboard()]);
+  const god = await grammarOfDay();
   const furi = S.getSettings().furigana !== 'never';
-  const me = C.currentUser()?.id;
   const point = god && h('section.side-card.side-point',
     h('p.daily-label', h('span', { lang: 'ja' }, '今日の文法'), ' Point du jour'),
     h('a.side-point-title', { href: `#/point/${god.g.id}`, lang: 'ja', html: ruby(D.gramLabel(god.g), true) }),
@@ -110,15 +99,7 @@ export async function sideExtras() {
     god.ex && h('div.side-ex',
       h('p.jp', { lang: 'ja', html: sentenceHTML(god.ex, { fill: true, furi }) }),
       h('div.side-ex-row', speakBtn(sentenceText(god.ex), { label: 'Écouter l’exemple', small: true }), h('span.small', god.ex.fr))));
-  const top = rows.length ? h('section.side-card.side-board',
-    h('p.daily-label', h('span', { lang: 'ja' }, '番付'), ' Classement'),
-    h('ol.board', rows.map((u, i) => h('li', { class: u.id === me ? 'me' : null },
-      h('span.board-pos', i + 1),
-      h('a.board-name', { href: `#/profil/${u.id}` }, u.username),
-      h('span.board-rank', { lang: 'ja' }, rankLabel(u.rank || 0).replace(' validé', '')),
-      h('span.board-xp', `${u.xp || 0} XP`)))),
-    h('a.daily-cta', { href: '#/communaute' }, 'Toute la communauté')) : null;
-  return h('div.side-extra#side-extra', point, top);
+  return h('div.side-extra#side-extra', point);
 }
 
 let sidePending = null;

@@ -1,9 +1,10 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast } from './util.js?v=20261019023757';
-import { wallpaperSVG } from './wallpaper.js?v=20261019023757';
-import * as C from './cloud.js?v=20261019023757';
-import { play } from './sfx.js?v=20261019023757';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019023757';
+import { h, $, toast } from './util.js?v=20261019024951';
+import * as D from './data.js?v=20261019024951';
+import { wallpaperSVG } from './wallpaper.js?v=20261019024951';
+import * as C from './cloud.js?v=20261019024951';
+import { play } from './sfx.js?v=20261019024951';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct } from './level.js?v=20261019024951';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -336,7 +337,7 @@ export function mountOnline() {
       h('span.live-dot', { 'aria-hidden': 'true' }),
       h('h2', 'En ligne'), count,
       h('button.online-close', { type: 'button', 'aria-label': 'Fermer', onclick: () => document.body.classList.remove('online-open') }, '×')),
-    h('p.online-hint.small', 'Touche un élève pour lui envoyer une réaction.'),
+    h('p.online-hint.small', 'Classés du N5 au N1. Touche un élève pour une réaction ou un poke (先輩 = plus avancé que toi).'),
     list);
   const fab = h('button.online-fab', { type: 'button', onclick: () => document.body.classList.toggle('online-open'), 'aria-label': 'Voir les élèves connectés' },
     h('span.live-dot', { 'aria-hidden': 'true' }), h('span.online-fab-n', '0'));
@@ -344,34 +345,111 @@ export function mountOnline() {
   document.body.append(fab);
   let openId = null;
 
+  let pokeOpen = null;
+  const SUGGEST = ['Tu as un conseil pour bien réviser ?', 'Comment tu retiens les kanji ?', 'Tu peux m’expliquer ce point ?', 'Comment tu as passé ce niveau ?'];
+  const currentPoint = () => { const m = location.hash.match(/^#\/point\/(\d+)/); return m ? Number(m[1]) : null; };
+
+  function pokeForm(u) {
+    const about = currentPoint();
+    const ta = h('textarea.poke-input', { rows: 2, maxlength: 160, placeholder: 'Ta question (facultatif)…', 'aria-label': `Question pour ${u.username}` });
+    const send = h('button.btn.small.primary', { type: 'button', onclick: async () => {
+      send.disabled = true;
+      try {
+        await C.sendPoke(u.id, { msg: ta.value.trim(), about });
+        play('select'); toast(`👉 Poke envoyé à ${u.username}`);
+        pokeOpen = null; render(C.onlineUsers());
+      } catch (err) { toast(err.message); send.disabled = false; }
+    } }, 'Envoyer le poke');
+    const wait = C.pokeWait(u.id);
+    if (wait) { send.disabled = true; send.textContent = `Patiente ${Math.ceil(wait / 1000)} s`; setTimeout(() => { if (pokeOpen === u.id) render(C.onlineUsers()); }, wait + 50); }
+    return h('div.poke-form',
+      h('div.poke-suggest', SUGGEST.map(t => h('button.poke-chip', { type: 'button', onclick: () => { ta.value = t; ta.focus(); play('cursor'); } }, t))),
+      about ? h('p.small.poke-about', '📎 Le point que tu regardes sera joint à ta question.') : null,
+      ta, h('div.poke-actions', send));
+  }
+
   const render = users => {
     const me = C.currentUser()?.id;
     count.textContent = users.length;
     fab.querySelector('.online-fab-n').textContent = users.length;
     document.body.classList.toggle('has-online', Boolean(me));
     if (!users.length) { list.replaceChildren(h('li.online-empty.small', 'Personne d’autre pour l’instant.')); return; }
-    list.replaceChildren(...users.map(u => {
-      const isMe = u.id === me;
-      const item = h('li.online-item', { class: openId === u.id ? 'online-item open' : 'online-item' });
-      const row = h('button.online-row', { type: 'button', disabled: isMe, onclick: () => { openId = openId === u.id ? null : u.id; render(C.onlineUsers()); } },
-        avatar(u, 's'),
-        h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null),
-        h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank).replace(' validé', '')));
-      item.append(row);
-      if (openId === u.id && !isMe) {
-        item.append(h('div.online-stamps',
-          ...Object.entries(C.REACTIONS).map(([k, v]) => h('button.mini-stamp', {
-            type: 'button', title: `${v.jp} · ${v.fr}`, 'aria-label': `Envoyer ${v.fr} à ${u.username}`,
-            onclick: async e => {
-              const btn = e.currentTarget; btn.disabled = true;
-              try { await C.sendReaction(u.id, k); btn.classList.add('sent'); toast(`${v.icon} ${v.jp} envoyé à ${u.username}`); }
-              catch (err) { toast(err.message); btn.disabled = false; }
-            } }, h('span', { 'aria-hidden': 'true' }, v.icon))),
-          h('a.online-profile.small', { href: `#/profil/${u.id}`, onclick: () => document.body.classList.remove('online-open') }, 'Voir le profil')));
-      }
-      return item;
-    }));
+    const myRank = users.find(u => u.id === me)?.rank ?? 0;
+    // Groupes par niveau, du N5 (débutants) au N1
+    const groups = new Map();
+    users.forEach(u => { const k = Math.min(u.rank || 0, RANK_NAMES.length); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(u); });
+    const rows = [];
+    [...groups.keys()].sort((a, b) => a - b).forEach(k => {
+      rows.push(h('li.online-group', h('span', { lang: 'ja' }, rankLabel(k).replace(' validé', ' ✓')), h('small', `${groups.get(k).length}`)));
+      groups.get(k).forEach(u => {
+        const isMe = u.id === me;
+        const open = openId === u.id;
+        const item = h('li.online-item', { class: open ? 'online-item open' : 'online-item' });
+        const row = h('button.online-row', { type: 'button', disabled: isMe, onclick: () => { openId = open ? null : u.id; pokeOpen = null; render(C.onlineUsers()); } },
+          avatar(u, 's'),
+          h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil' }, '先輩') : null),
+          h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank || 0).replace(' validé', '')));
+        item.append(row);
+        if (open && !isMe) {
+          item.append(h('div.online-stamps',
+            h('button.poke-btn', { type: 'button', class: pokeOpen === u.id ? 'poke-btn on' : 'poke-btn', onclick: () => { pokeOpen = pokeOpen === u.id ? null : u.id; play('cursor'); render(C.onlineUsers()); } },
+              h('span', { 'aria-hidden': 'true' }, '👉'), 'Poke · demander conseil'),
+            ...Object.entries(C.REACTIONS).map(([k, v]) => h('button.mini-stamp', {
+              type: 'button', title: `${v.jp} · ${v.fr}`, 'aria-label': `Envoyer ${v.fr} à ${u.username}`,
+              onclick: async e => {
+                const btn = e.currentTarget; btn.disabled = true;
+                try { await C.sendReaction(u.id, k); btn.classList.add('sent'); toast(`${v.icon} ${v.jp} envoyé à ${u.username}`); }
+                catch (err) { toast(err.message); btn.disabled = false; }
+              } }, h('span', { 'aria-hidden': 'true' }, v.icon))),
+            pokeOpen === u.id ? pokeForm(u) : null,
+            h('a.online-profile.small', { href: `#/profil/${u.id}`, onclick: () => document.body.classList.remove('online-open') }, 'Voir le profil')));
+        }
+        rows.push(item);
+      });
+    });
+    // Une mise à jour de présence ne doit pas effacer une question en cours d'écriture
+    const oldTa = list.querySelector('.poke-input'), draft = oldTa?.value, hadFocus = oldTa && document.activeElement === oldTa;
+    list.replaceChildren(...rows);
+    const ta = list.querySelector('.poke-input');
+    if (ta) { if (draft) ta.value = draft; if (hadFocus || !oldTa) ta.focus({ preventScroll: true }); }
   };
+
+  // Pokes reçus : une carte qui reste jusqu'à ce qu'on réponde ou la ferme
+  const stack = h('div.poke-stack', { 'aria-live': 'polite' });
+  document.body.append(stack);
+  C.onPoke(async p => {
+    play('ping');
+    navigator.vibrate?.([30, 60, 30]);
+    const g = p.about ? await D.grammarById(p.about).catch(() => null) : null;
+    const replyBox = h('div.poke-reply');
+    const close = () => { card.classList.add('leaving'); setTimeout(() => card.remove(), 300); };
+    const isReply = p.kind === 'reply';
+    const card = h('section.poke-card', { role: 'alert' },
+      h('header.poke-head', avatar({ id: p.from, username: p.name, avatar_url: p.avatar_url }, 's'),
+        h('div', h('p.poke-title', { lang: 'ja' }, isReply ? 'お返事！' : 'つんつん！'),
+          h('p.poke-who', h('strong', p.name), ` (${rankLabel(p.rank || 0).replace(' validé', '')}) `, isReply ? 'te répond' : 'te demande conseil')),
+        h('button.poke-x', { type: 'button', 'aria-label': 'Fermer', onclick: close }, '×')),
+      p.msg ? h('blockquote.poke-msg', p.msg) : null,
+      g ? h('a.poke-point', { href: `#/point/${g.id}`, onclick: close }, h('span', { lang: 'ja' }, g.t), ` · ${g.s}`) : null,
+      replyBox,
+      h('div.poke-actions',
+        h('button.btn.small.primary', { type: 'button', onclick: e => {
+          e.currentTarget.remove();
+          const ta = h('textarea.poke-input', { rows: 2, maxlength: 160, placeholder: isReply ? 'Ta réponse…' : 'Ton conseil…' });
+          const send = h('button.btn.small.primary', { type: 'button', onclick: async () => {
+            if (!ta.value.trim()) { ta.focus(); return; }
+            send.disabled = true;
+            try { await C.sendPoke(p.from, { msg: ta.value.trim(), kind: 'reply', about: p.about }); play('select'); toast(`Réponse envoyée à ${p.name}`); close(); }
+            catch (err) { toast(err.message); send.disabled = false; }
+          } }, 'Envoyer');
+          replyBox.replaceChildren(ta, send); ta.focus();
+        } }, 'Répondre'),
+        h('a.btn.small', { href: `#/profil/${p.from}`, onclick: close }, 'Profil'),
+        h('button.btn.small.ghost', { type: 'button', onclick: close }, 'Plus tard')));
+    stack.prepend(card);
+    [...stack.children].slice(3).forEach(c => c.remove());
+  });
+
   C.onOnline(render);
   C.onAuth(() => render(C.onlineUsers()));
   C.onReaction(r => {
