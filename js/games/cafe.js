@@ -1,6 +1,9 @@
 // コトバ珈琲 (Kotoba Kōhī) : un client étranger dicte sa commande en français,
 // tu la passes au barista en japonais, puis tu lis le montant annoncé en caisse.
-import { h, ruby, shuffle, pick, sample, toast } from '../util.js?v=20261019021305';
+import { play } from '../sfx.js?v=20261019022349';
+import { tileBoard } from './tiles.js?v=20261019022349';
+import { speak } from '../voice.js?v=20261019022349';
+import { h, ruby, shuffle, pick, sample, toast } from '../util.js?v=20261019022349';
 
 const DRINKS = [
   { hot: 'ホットコーヒー', ice: 'アイスコーヒー', fr: ['café', 'cafés'], g: 'm', price: 380 },
@@ -185,17 +188,9 @@ export default function cafe(root, { settings, saveBest }) {
     const clearBtn = h('button.btn', { onclick: () => { chosen.length = 0; render(); } }, 'Effacer');
 
     const tiles = order.pool.map((t, i) => ({ t, i }));
-    function render() {
-      answerZone.replaceChildren(...(chosen.length ? chosen.map((tile, k) => h('button.tile.placed', {
-        lang: 'ja', html: ruby(tile.t, furi), 'aria-label': `Retirer ${tile.t.replace(/（[^）]*）/g, '')}`,
-        onclick: () => { chosen.splice(k, 1); render(); },
-      })) : [h('span.order-placeholder', 'Touche les tuiles pour composer la phrase…')]));
-      poolZone.replaceChildren(...tiles.map(tile => h('button.tile', {
-        lang: 'ja', html: ruby(tile.t, furi), disabled: chosen.includes(tile),
-        onclick: () => { chosen.push(tile); render(); },
-      })));
-      sendBtn.disabled = !chosen.length;
-    }
+    const render = tileBoard({ line: answerZone, tray: poolZone, items: tiles, chosen, html: tile => ruby(tile.t, furi),
+      text: tile => tile.t.replace(/（[^）]*）/g, ''), placeholder: 'Touche ou fais glisser les tuiles pour composer la phrase…',
+      onChange: () => { sendBtn.disabled = !chosen.length; } });
 
     function check() {
       const attempt = chosen.map(c => c.t).join('|');
@@ -203,7 +198,7 @@ export default function cafe(root, { settings, saveBest }) {
         clearInterval(timer);
         const bonus = Math.round(left * 2) + (tries === 0 ? 100 : 30);
         if (tries === 0) perfect++;
-        faceEl.innerHTML = face('happy');
+        faceEl.innerHTML = face('happy'); play('correct'); speak('かしこまりました！');
         feedback.replaceChildren(h('p.barista', { lang: 'ja' }, '「かしこまりました！」'), h('p.small', `Parfait. +${bonus}円 de pourboire.`));
         tips += bonus; showTips();
         setTimeout(() => checkout(), 900);
@@ -219,7 +214,7 @@ export default function cafe(root, { settings, saveBest }) {
           k = Math.max(k, p);
         }
         if (tries >= 2) return fail();
-        faceEl.innerHTML = face('sad');
+        faceEl.innerHTML = face('sad'); play('wrong'); speak('すみません、もう一度お願いします。');
         feedback.replaceChildren(h('p.barista', { lang: 'ja' }, '「すみません、もう一度お願いします。」'),
           h('p.small', k < chosen.length ? `Le barista n’a pas compris à partir de la tuile ${k + 1}. Corrige et renvoie.` : 'Il manque quelque chose à la fin de ta phrase.'));
         chosen.splice(k);
@@ -229,7 +224,7 @@ export default function cafe(root, { settings, saveBest }) {
 
     function fail(timeout = false) {
       clearInterval(timer);
-      faceEl.innerHTML = face('sad');
+      faceEl.innerHTML = face('sad'); play('wrong');
       feedback.replaceChildren(
         h('p', timeout ? `${order.cust[0]} s’impatiente et repart. La bonne commande était :` : 'Le client repart un peu déçu. La bonne commande était :'),
         h('p.correct-line', { lang: 'ja', html: order.canonical.map(t => ruby(t, true)).join(' ') }),
@@ -253,6 +248,7 @@ export default function cafe(root, { settings, saveBest }) {
       const res = h('div.cafe-feedback');
       const buttons = opts.map(v => h('button.option', { onclick: () => {
         buttons.forEach(b => b.disabled = true);
+        play(v === order.total ? 'correct' : 'wrong');
         if (v === order.total) { tips += 50; showTips(); res.replaceChildren(h('p', `Exact ! ${n.reading}えん, soit ${order.total} ¥. +50円.`)); }
         else res.replaceChildren(h('p', `Raté : c’était ${order.total} ¥ (${n.reading}えん).`));
         buttons.find(b => Number(b.dataset.v) === order.total).classList.add('correct');

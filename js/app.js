@@ -1,21 +1,23 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019021305';
-import * as D from './data.js?v=20261019021305';
-import * as S from './srs.js?v=20261019021305';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019021305';
-import { speakBtn, supported as voiceOK } from './voice.js?v=20261019021305';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019021305';
-import * as C from './cloud.js?v=20261019021305';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019021305';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261019021305';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019021305';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack } from './util.js?v=20261019022349';
+import * as D from './data.js?v=20261019022349';
+import * as S from './srs.js?v=20261019022349';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText } from './review.js?v=20261019022349';
+import { speakBtn, supported as voiceOK } from './voice.js?v=20261019022349';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, progressByLevel, pct as toPct } from './level.js?v=20261019022349';
+import * as C from './cloud.js?v=20261019022349';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261019022349';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261019022349';
+import { play, setVolume } from './sfx.js?v=20261019022349';
+import { mountDaily, dailyPanel } from './daily.js?v=20261019022349';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261019022349';
 
 const main = $('#main');
 const GAMES = {
-  cafe: { file: './games/cafe.js?v=20261019021305', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261019021305', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261019021305', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  narabe: { file: './games/narabe.js?v=20261019021305', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  cafe: { file: './games/cafe.js?v=20261019022349', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261019022349', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261019022349', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  narabe: { file: './games/narabe.js?v=20261019022349', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };
 
 const furiFor = lv => {
@@ -103,6 +105,7 @@ async function refreshBadge() {
   const b = $('#due-badge');
   b.hidden = n === 0; b.textContent = n > 99 ? '99+' : n;
   navAccount();
+  mountDaily();
   requestAnimationFrame(moveIndicator);
 }
 
@@ -120,6 +123,20 @@ function petalsLayer(n = 14) {
   return layer;
 }
 
+// Raccourcis de l'accueil : reprendre là où on s'est arrêté, plus deux portes d'entrée utiles
+async function resumeRow() {
+  const last = store.get('sakura.last.v1', null);
+  const chip = (href, ico, small, strong) => h('a.resume-chip', { href }, h('span.resume-ico', { lang: 'ja', 'aria-hidden': 'true' }, ico), h('span', h('small', small), h('strong', { lang: /[぀-ヿ一-鿿]/.test(strong) ? 'ja' : null }, strong)));
+  const lv = S.getSettings().grammarLevels[0] || 'N5';
+  const games = Object.entries(GAMES);
+  const [gk, g] = games[new Date().getDate() % games.length];
+  return h('div.resume',
+    last ? chip(`#/point/${last.id}`, '続', `Reprendre · ${last.lv}`, last.t)
+      : chip(`#/grammaire/${lv}`, '始', 'Commencer', `Grammaire ${lv}`),
+    chip(`#/entrainement/${lv}`, '練', 'Entraînement libre', `Phrases ${lv}`),
+    chip(`#/jeux/${gk}`, g.glyph, 'Jeu du jour', g.name));
+}
+
 async function home() {
   const [{ queue, dueCount }, mastery] = await Promise.all([buildSrsQueue(), levelMastery()]);
   const rank = await computeRank(mastery);
@@ -134,7 +151,8 @@ async function home() {
     petalsLayer(),
     h('div.hero-copy',
       h('h1.hero-title', { lang: 'ja', 'aria-label': '桜の文法', html: '<span>桜</span><span>の</span><span>文法</span>' }),
-      h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.')),
+      h('p.hero-lead', 'La grammaire japonaise du N5 au N1, une phrase à la fois.'),
+      await resumeRow()),
     h('div.today.glass',
       rankBlock(rank),
       h('p.today-title', 'Aujourd’hui'),
@@ -174,7 +192,8 @@ async function home() {
           h('span.game-tile-desc', k === 'cafe' ? gm.desc : gm.short)),
         h('span.play-chip', 'Jouer'))))));
 
-  main.replaceChildren(hero, garden, games);
+  // Sur téléphone, la barre latérale n'existe pas : le panneau du jour se place sous l'en-tête
+  main.replaceChildren(hero, h('div.daily-mobile', await dailyPanel({ compact: true })), garden, games);
 }
 
 // --- Révisions -----------------------------------------------------------------
@@ -278,6 +297,7 @@ async function grammarPoint(id) {
   if (!g) throw new Error('Ce point de grammaire n’existe pas.');
   const sents = await D.sentencesFor(g.id);
   const key = `g:${g.id}`;
+  store.set('sakura.last.v1', { id: g.id, t: g.t, lv: D.LEVEL_NAMES[g.lv] });
   const furi = furiFor(g.lv);
   const sameLv = grammar.filter(x => x.lv === g.lv);
   const pos = sameLv.indexOf(g);
@@ -390,6 +410,7 @@ async function game(name, params) {
     const isRecord = !best[name] || score > best[name];
     if (isRecord) { best[name] = score; store.set('sakura.games.v1', best); }
     S.recordGame();
+    play('fanfare');
     return isRecord;
   } });
 }
@@ -433,6 +454,11 @@ function settingsPage() {
       h('div.checks',
         h('label.check', h('input', { type: 'checkbox', checked: s.autoSpeak !== false, onchange: e => { S.setSettings({ autoSpeak: e.target.checked }); toast('Réglage enregistré'); } }), h('span', 'Lire la réponse à voix haute en révision')),
         h('label.check', h('input', { type: 'checkbox', checked: s.pitch !== false, onchange: e => { S.setSettings({ pitch: e.target.checked }); toast('Réglage enregistré'); } }), h('span', 'Afficher le schéma d’accent tonal'))),
+      h('h2', 'Effets sonores'),
+      h('div.checks',
+        h('label.check', h('input', { type: 'checkbox', checked: s.sound !== false, onchange: e => { S.setSettings({ sound: e.target.checked }); if (e.target.checked) play('select'); } }), h('span', 'Sons de l’interface et des jeux'))),
+      h('label.field.range', h('span', 'Volume'),
+        h('input', { type: 'range', min: 0, max: 1, step: .05, value: s.sfxVolume ?? .6, oninput: e => { S.setSettings({ sfxVolume: Number(e.target.value) }); setVolume(); play('cursor', { gap: 90 }); } })),
       h('p.section-note', 'Les voix sont celles de ton appareil (clic droit sur 🔊 pour écouter lentement). Accents tonals : données Kanjium, licence CC BY-SA 4.0.'),
       h('h2', 'Ta progression'),
       h('p.section-note', 'Elle est enregistrée dans ce navigateur. Exporte-la pour la garder ou la passer sur un autre appareil.'),

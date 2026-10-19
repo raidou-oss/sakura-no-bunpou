@@ -786,7 +786,7 @@ body.wp-home .today { background: rgba(7, 16, 52, .82); box-shadow: 12px 12px 0 
 .nav-indicator.instant { transition: none; }
 .nav-indicator.pop { animation: ind-pop .55s var(--ease-out); }
 @keyframes ind-pop { 0% { filter: brightness(1.6); } 35% { scale: 1.06 .9; } 100% { filter: none; scale: 1; } }
-.nav-list li { position: relative; z-index: 1; }
+.nav-list li:not(.nav-indicator) { position: relative; z-index: 1; }
 .nav-list a.active { background: transparent; box-shadow: none; transition: color .25s .1s; }
 .nav-list a { transition: color .2s, background .2s, transform .35s var(--ease-spring); }
 .nav-list a:not(.active):hover { transform: translateX(6px) skewX(-6deg); }
@@ -811,3 +811,62 @@ body.wp-home .today { background: rgba(7, 16, 52, .82); box-shadow: 12px 12px 0 
   .entering .stagger, .stage > .card, .options .option, .reveal, .nav-indicator.pop, .nav-list a.active .nav-fr { animation: none !important; }
   .nav-indicator { transition: none; }
 }
+
+/* --- Glisser-déposer des tuiles ------------------------------------------------------- */
+.order-line .tile, .tile-pool .tile { touch-action: none; user-select: none; -webkit-user-select: none; }
+.tile.dragging { opacity: .25; transform: scale(.94); }
+.tile-ghost { position: fixed; z-index: 95; margin: 0; pointer-events: none; transition: none !important;
+  box-shadow: 10px 10px 0 rgba(3, 8, 28, .85), 0 18px 40px -10px rgba(70, 217, 255, .8) !important; border-color: var(--cyan) !important; }
+body.is-dragging, body.is-dragging * { cursor: grabbing !important; }
+.order-line { transition: border-color .2s, background .2s, box-shadow .2s; }
+.order-line.drop-over { border-color: var(--sakura); border-style: solid; background: rgba(255, 148, 203, .08); box-shadow: inset 0 0 0 1px rgba(255, 148, 203, .3), 0 0 30px -10px rgba(255, 148, 203, .6); }
+.drop-caret { align-self: stretch; width: 4px; min-height: 44px; border-radius: 4px; background: var(--bloom); box-shadow: 0 0 14px rgba(70, 217, 255, .9); transform: skewX(-12deg); animation: caret-in .2s var(--ease-out); }
+@keyframes caret-in { from { transform: skewX(-12deg) scaleY(.2); opacity: 0; } }
+.tile.just-dropped { animation: tile-land .4s var(--ease-spring); }
+@keyframes tile-land { from { transform: translateY(-10px) scale(1.12) rotate(-3deg); } }
+.tile { cursor: grab; }
+.tile:disabled { cursor: default; }
+.field.range { display: flex; align-items: center; gap: 14px; margin: 10px 0 4px; }
+.field.range input { flex: 1; max-width: 280px; accent-color: var(--sakura); }
+
+/* --- Panneau du jour (barre latérale) ---------------------------------------------------- */
+.daily { margin-top: auto; display: flex; flex-direction: column; gap: 10px; padding: 0 2px; }
+.nav { gap: 26px; }
+.daily-goal { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: var(--r-m); background: rgba(5, 11, 38, .5); border: 1px solid var(--line); }
+.daily-ring { --p: 0; flex: none; position: relative; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  background: conic-gradient(var(--cyan), var(--sakura) calc(var(--p) * 1%), rgba(127, 168, 255, .15) 0); }
+.daily-ring::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: #0A1640; }
+.daily-ring span { position: relative; font: 800 italic .82rem/1 var(--display); color: var(--ink); }
+.daily-goal-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: .78rem; color: var(--mist); }
+.daily-goal-text strong { font: 800 italic .95rem/1.1 var(--display); color: var(--ink); }
+.daily-cta { margin-top: 4px; font-weight: 700; color: var(--cyan); text-decoration: none; }
+.daily-cta:hover { text-decoration: underline; }
+.daily-word { position: relative; padding: 12px 14px 12px; border-radius: var(--r-m); overflow: hidden;
+  background: linear-gradient(150deg, rgba(255, 148, 203, .14), rgba(70, 217, 255, .08) 60%, rgba(5, 11, 38, .5)); border: 1px solid rgba(255, 148, 203, .3); }
+.daily-word::after { content: "言"; position: absolute; right: -6px; bottom: -22px; font: 400 5.4rem/1 var(--jp-heavy); color: rgba(255, 255, 255, .05); pointer-events: none; }
+.daily-label { margin: 0 0 10px; font-size: .72rem; letter-spacing: .04em; color: var(--mist); text-transform: uppercase; }
+.daily-label span { color: var(--sakura); font-weight: 700; text-transform: none; }
+.daily-w { margin: 0; font: 700 1.55rem/1.45 var(--jp); color: var(--ink); }
+.daily-w rt { font-size: .42em; }
+.daily-m { margin: 0 0 6px; font-size: .86rem; color: var(--pale); line-height: 1.3; }
+.daily-audio { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.daily-add { width: 100%; padding: 8px 10px; border-radius: 999px; border: 1px solid var(--line-hi); background: rgba(255, 255, 255, .06); color: var(--ink); font: 700 .8rem/1 var(--body); cursor: pointer; transition: background .2s, transform .3s var(--ease-spring); }
+.daily-add:hover:not(:disabled) { background: var(--ink); color: var(--night); transform: translateY(-1px); }
+.daily-add:disabled { opacity: .7; cursor: default; border-color: rgba(99, 240, 195, .5); color: #9EF5D5; }
+.daily-mobile { display: none; }
+@media (max-height: 820px) { .nav .daily-word { display: none; } }
+@media (max-height: 640px) { .nav .daily { display: none; } }
+@media (max-width: 860px) {
+  .nav .daily { display: none; }
+  .daily-mobile { display: block; margin: -36px 0 34px; }
+  .daily.compact { display: grid; grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* Accueil : raccourcis « reprendre » sous le slogan */
+.resume { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.resume-chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 999px; text-decoration: none; color: var(--ink);
+  background: rgba(7, 16, 52, .72); border: 1px solid var(--line-hi); box-shadow: 6px 6px 0 rgba(3, 8, 28, .7); transition: transform .3s var(--ease-spring), border-color .2s, box-shadow .3s; }
+.resume-chip:hover { transform: translate(-2px, -2px) skewX(-4deg); border-color: var(--cyan); box-shadow: 8px 8px 0 rgba(70, 217, 255, .45); }
+.resume-ico { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--bloom); color: var(--night); font: 700 1rem/1 var(--jp); }
+.resume-chip small { display: block; font-size: .72rem; color: var(--mist); }
+.resume-chip strong { font: 800 italic 1rem/1.15 var(--display); }

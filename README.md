@@ -98,3 +98,9 @@ Après chaque modification du site : `python3 tools/bump_version.py` pour forcer
 ## Fonds de page
 
 `js/wallpaper.js` : le fond du portail (repris en version voilée sur l'accueil) et un fond dédié par section (`sectionWallpaperSVG`) : orbites pour les révisions, papier 原稿用紙 pour la grammaire, cartes de mots pour le vocabulaire, lignes de vitesse pour les jeux, constellation pour la communauté, pleine lune et cadre pour le profil.
+
+## Effets sonores, glisser-déposer, panneau du jour
+
+- `js/sfx.js` : sons synthétisés en direct (Web Audio, aucun fichier) : curseur, validation, retour, balayage de transition, bonne / mauvaise réponse, fanfare, réaction reçue. Activables et réglables dans Réglages.
+- `js/games/tiles.js` : tuiles de phrase partagées par Narabe et Kotoba Kōhī. Toucher pour ajouter / retirer, glisser-déposer pour insérer n'importe où, flèches du clavier pour déplacer une tuile placée.
+- `js/daily.js` : panneau sous le menu (objectif de révisions du jour, série, mot du jour avec voix et accent) ; sur téléphone il s'affiche sur l'accueil.

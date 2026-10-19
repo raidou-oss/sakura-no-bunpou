@@ -1,9 +1,10 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019021305';
-import { speak, speakBtn } from './voice.js?v=20261019021305';
-import { pitchSVG } from './pitch.js?v=20261019021305';
-import * as D from './data.js?v=20261019021305';
-import * as S from './srs.js?v=20261019021305';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana } from './util.js?v=20261019022349';
+import { speak, speakBtn } from './voice.js?v=20261019022349';
+import { pitchSVG } from './pitch.js?v=20261019022349';
+import { play } from './sfx.js?v=20261019022349';
+import * as D from './data.js?v=20261019022349';
+import * as S from './srs.js?v=20261019022349';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -205,6 +206,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       onclick: () => answer(item, o, buttons),
     }, h('span.option-key', { 'aria-hidden': 'true' }, i + 1), h('span.option-text', o)));
     stage.replaceChildren(h('div.card.question', ...prompt, h('div.options', buttons)));
+    play('card');
     setKeys(e => {
       const n = Number(e.key);
       if (n >= 1 && n <= buttons.length) { e.preventDefault(); buttons[n - 1].click(); }
@@ -213,6 +215,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
 
   function answer(item, choice, buttons) {
     const right = choice === item.answer;
+    play(right ? 'correct' : 'wrong');
     seen++; if (right) ok++;
     buttons.forEach(b => {
       b.disabled = true;
@@ -283,6 +286,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
 
   function finish() {
     setKeys(null);
+    if (seen) play('fanfare');
     const rate = seen ? Math.round((ok / seen) * 100) : 0;
     stage.replaceChildren(h('div.card.finish',
       h('div.finish-flower', { html: blossom(seen ? ok / seen : 0, 120, `${rate} % de bonnes réponses`) }),

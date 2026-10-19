@@ -1,6 +1,9 @@
 // 並べ替え (Narabe) : remettre les morceaux d'une phrase dans l'ordre.
-import { h, ruby, shuffle } from '../util.js?v=20261019021305';
-import * as D from '../data.js?v=20261019021305';
+import { h, ruby, shuffle } from '../util.js?v=20261019022349';
+import { play } from '../sfx.js?v=20261019022349';
+import { tileBoard } from './tiles.js?v=20261019022349';
+import { speak, speakBtn } from '../voice.js?v=20261019022349';
+import * as D from '../data.js?v=20261019022349';
 
 const ROUNDS = 8;
 
@@ -12,7 +15,7 @@ export default async function narabe(root, { settings, saveBest }) {
   function menu() {
     const counts = Object.fromEntries(D.LEVELS.map(l => [l, sents.filter(s => s.lv === l).length]));
     root.replaceChildren(head(null), h('section.card.game-intro',
-      h('p', `Lis la traduction, puis touche les morceaux dans l’ordre pour reconstruire la phrase japonaise. ${ROUNDS} phrases par partie.`),
+      h('p', `Lis la traduction, puis touche les morceaux ou fais-les glisser où tu veux dans la phrase pour la reconstruire. Tu peux les réordonner à tout moment. ${ROUNDS} phrases par partie.`),
       h('p', h('strong', 'Niveau')),
       h('div.choice-row', D.LEVELS.filter(l => counts[l] >= ROUNDS).map(l => h('button.btn.small', { 'aria-pressed': String(l === lv), onclick: e => {
         lv = l; e.target.parentNode.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b === e.target)));
@@ -39,23 +42,22 @@ export default async function narabe(root, { settings, saveBest }) {
       let tries = 0;
       const line = h('div.order-line'), tray = h('div.tile-pool'), fb = h('div.cafe-feedback', { 'aria-live': 'polite' });
       const ok = h('button.btn.primary', { onclick: check }, 'Valider');
-      const render = () => {
-        line.replaceChildren(...(chosen.length ? chosen.map((p, k) => h('button.tile.placed', { lang: 'ja', html: ruby(p.t, furi), onclick: () => { chosen.splice(k, 1); render(); } }))
-          : [h('span.order-placeholder', 'Touche les morceaux dans l’ordre…')]));
-        tray.replaceChildren(...order.map(p => h('button.tile', { lang: 'ja', html: ruby(p.t, furi), disabled: chosen.includes(p), onclick: () => { chosen.push(p); render(); } })));
-        ok.disabled = chosen.length !== pieces.length;
-      };
+      const render = tileBoard({ line, tray, items: order, chosen, html: p => ruby(p.t, furi), text: p => p.t,
+        placeholder: 'Touche ou fais glisser les morceaux ici…', onChange: () => { ok.disabled = chosen.length !== pieces.length; } });
       function check() {
         const attempt = chosen.map(p => p.t).join('');
         const target = pieces.map(p => p.t).join('');
         if (attempt === target) {
           const pts = tries ? 1 : 3; score += pts; scoreEl.textContent = score;
-          fb.replaceChildren(h('p', tries ? 'Bien rattrapé. +1' : 'Parfait du premier coup. +3'));
+          play('correct'); speak(s.jp);
+          fb.replaceChildren(h('p', tries ? 'Bien rattrapé. +1' : 'Parfait du premier coup. +3'), speakBtn(s.jp, { label: 'Réécouter la phrase', small: true }));
           finishRound();
         } else if (++tries >= 2) {
+          play('wrong'); speak(s.jp);
           fb.replaceChildren(h('p', 'La phrase était :'), h('p.correct-line', { lang: 'ja', html: ruby(target, true) }));
           finishRound();
         } else {
+          play('wrong');
           let k = 0; while (chosen[k] && chosen[k].t === pieces[k].t) k++;
           fb.replaceChildren(h('p.small', k ? `Juste jusqu’au morceau ${k}. Essaie encore.` : 'Le premier morceau n’est pas le bon. Essaie encore.'));
           chosen.splice(k); render();
