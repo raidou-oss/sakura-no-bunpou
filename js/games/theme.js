@@ -1,13 +1,13 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019140954';
-import * as D from '../data.js?v=20261019140954';
-import * as S from '../srs.js?v=20261019140954';
-import { play as sfx } from '../sfx.js?v=20261019140954';
-import { speakBtn } from '../voice.js?v=20261019140954';
-import { burst } from '../celebrate.js?v=20261019140954';
-import { regChip } from '../review.js?v=20261019140954';
+import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261019143028';
+import * as D from '../data.js?v=20261019143028';
+import * as S from '../srs.js?v=20261019143028';
+import { play as sfx } from '../sfx.js?v=20261019143028';
+import { speakBtn } from '../voice.js?v=20261019143028';
+import { burst } from '../celebrate.js?v=20261019143028';
+import { regChip } from '../review.js?v=20261019143028';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
@@ -108,13 +108,27 @@ export default async function theme(root, { settings, saveBest, params }) {
       const skip = h('button.btn.ghost', { onclick: () => reveal(false) }, 'Voir la réponse');
       input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); closed ? next() : check(); } });
 
+      // Indices : ils aident à trouver, sans jamais donner la phrase
+      let lastPrefix = null;
       function showHint() {
         hintLevel++;
         sfx('cursor');
-        const parts = s.jp.replace(/[[\]]/g, '').split('|');
-        const lines = [h('p', 'Point à utiliser : ', h('strong', { lang: 'ja', html: ruby(s.af || s.a, true) }), g ? ` (${g.s})` : '')];
-        if (hintLevel >= 2) lines.push(h('p', 'Début : ', h('span', { lang: 'ja', html: ruby(parts[0], true) }), ' …'));
-        if (hintLevel >= 3) lines.push(h('p', 'Morceaux : ', h('span', { lang: 'ja', html: shuffle(parts).map(p => ruby(p, true)).join(' ／ ') })));
+        const style = s.reg === 'p' ? 'forme polie (です・ます)' : s.reg === 'n' ? 'forme neutre (forme simple)' : null;
+        const lines = [h('p', h('strong', 'Idée à exprimer : '), g ? `« ${g.s} »` : 'relis bien la phrase française', style ? ` · ${style}` : '')];
+        // Construction générale (ex. « Verbe + たことがある ») seulement si c'est un modèle, pas un mot qui serait la réponse
+        if (hintLevel >= 2 && g) {
+          const label = D.gramLabel(g);
+          const pattern = /[〜～+＋A-Za-zÀ-ÿ]/.test(label);
+          lines.push(pattern
+            ? h('p', h('strong', 'Construction à utiliser : '), h('span', { lang: 'ja', html: ruby(label, true) }), ' — ', h('a', { href: `#/point/${g.id}`, target: '_blank', rel: 'noopener' }, 'revoir la fiche'))
+            : h('p', h('strong', 'Pour t’aider : '), `relis la fiche du point qui veut dire « ${g.s} » (sans regarder la phrase) : `, h('a', { href: `#/point/${g.id}`, target: '_blank', rel: 'noopener' }, 'ouvrir la fiche')));
+        }
+        if (hintLevel >= 3) {
+          const n = s.jp.split('|').length;
+          lines.push(lastPrefix
+            ? h('p', h('strong', 'Où ça coince : '), 'ta dernière phrase est juste jusqu’à « ', h('span', { lang: 'ja' }, lastPrefix), ' », c’est la suite qu’il faut revoir.')
+            : h('p', h('strong', 'Structure : '), `la phrase se découpe en ${n} morceaux. Écris-en une version, je te dirai où ça coince.`));
+        }
         hint.replaceChildren(...lines);
         if (hintLevel >= 3) hintBtn.disabled = true;
       }
@@ -139,26 +153,45 @@ export default async function theme(root, { settings, saveBest, params }) {
           return close();
         }
         tries++;
-        // On compare à la version (kanji ou kana) la plus proche de ce que l'élève a écrit
+        // On compare à la version (kanji ou kana) la plus proche, mais on ne montre que TA phrase :
+        // en vert ce qui est juste, barré ce qui ne va pas, ▢ là où il manque quelque chose (sans dire quoi)
         const a = diff(v, kanjiT), b = diff(v, kanaT);
         const best = a.ratio >= b.ratio ? a : b;
         sfx('wrong');
-        const view = h('p.theme-diff', { lang: 'ja' }, ...best.ops.map(o => h(`span.d-${o.op}`, o.ch)));
-        if (tries >= 3) {
-          S.recordPractice(`g:${s.g}`, best.ratio >= .9);
-          const near = best.ratio >= .9;
-          if (near) { score += 1; scoreEl.textContent = score; }
-          fb.replaceChildren(h('p', near ? 'Presque ! +1 pour l’effort.' : 'Voici la bonne réponse :'), view, answerLine());
-          return close();
+        const view = h('p.theme-diff', { lang: 'ja' });
+        let prev = null;
+        for (const o of best.ops) {
+          if (o.op === 'miss') { if (prev !== 'miss') view.append(h('span.d-gap', { title: 'Il manque quelque chose ici' }, '▢')); }
+          else view.append(h(`span.d-${o.op === 'ok' ? 'ok' : 'extra'}`, o.ch));
+          prev = o.op;
         }
-        fb.replaceChildren(h('p', `Pas tout à fait (${Math.round(best.ratio * 100)} % de ressemblance). En vert ce qui est juste, en rose ce qui manque, barré ce qui est en trop.`), view,
-          h('p.small', tries === 2 ? 'Dernier essai !' : 'Corrige et valide à nouveau.'));
+        const firstBad = best.ops.findIndex(o => o.op !== 'ok');
+        lastPrefix = firstBad > 0 ? best.ops.slice(0, firstBad).filter(o => o.op === 'ok').map(o => o.ch).join('') : null;
+        const onlyEnd = firstBad >= 0 && best.ops.slice(firstBad).every(o => o.op === 'miss');
+        const tips = [];
+        if (onlyEnd) tips.push('Le début est juste : il manque quelque chose à la fin.');
+        const polite = /(?:です|ます|でした|ました|ません|ましょう)/.test(v);
+        if (s.reg === 'p' && !polite) tips.push('On demande la forme polie (です・ます).');
+        if (s.reg === 'n' && polite) tips.push('On demande la forme neutre, sans です・ます.');
+        fb.replaceChildren(h('p', `Pas tout à fait (${Math.round(best.ratio * 100)} % de ressemblance). En vert ce qui est juste, barré ce qui ne va pas, ▢ là où il manque quelque chose.`), view,
+          ...tips.map(t => h('p.theme-tip', t)),
+          h('p.small', tries >= 3 ? 'Prends un indice, ou clique sur « Voir la réponse » (la phrase sera à revoir).' : 'Corrige et valide à nouveau.'));
         input.focus();
       }
       function answerLine() {
         return h('div.theme-answer', h('p.jp', { lang: 'ja', html: ruby(s.jp.replace(/[[\]|]/g, ''), true) }), speakBtn(plain(s.jp), { label: 'Écouter la phrase', small: true }));
       }
-      function reveal() { tries = 3; sfx('back'); fb.replaceChildren(h('p', 'La phrase était :'), answerLine()); close(); }
+      // Réponse consultée : on montre la phrase et l'explication, et le point part dans les révisions « à revoir »
+      function reveal() {
+        sfx('back');
+        const k = `g:${s.g}`;
+        S.recordPractice(k, false);
+        if (S.getCard(k)) S.grade(k, S.GRADES.AGAIN); else S.addCard(k);
+        fb.replaceChildren(h('p', 'La phrase était :'), answerLine(),
+          g ? h('p.small', 'Explication : ', h('span', { lang: 'ja', html: ruby(D.gramLabel(g), true) }), ` — ${g.s}. `, h('a', { href: `#/point/${g.id}` }, 'Voir la fiche')) : null,
+          h('p.again-note', 'Réponse consultée : ce point est ajouté à tes révisions comme « à revoir ».'));
+        close();
+      }
       function close() {
         closed = true; input.readOnly = true; ok.remove(); hintBtn.remove(); skip.remove();
         const nx = h('button.btn.primary', { onclick: next }, i + 1 >= pool.length ? 'Voir le score' : 'Phrase suivante');

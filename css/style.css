@@ -1326,3 +1326,7 @@ body.portal-mode .petal-sky { display: none; }
   .dojo-note svg { transform: scaleX(-1); }
   .main { padding-top: 64px; }
 }
+.theme-diff .d-gap { display: inline-block; color: var(--sakura); margin: 0 2px; animation: gap-blink 1.2s ease-in-out infinite; }
+@keyframes gap-blink { 50% { opacity: .35; } }
+.theme-tip { margin: 6px 0 0; color: var(--sakura); font-weight: 700; font-size: .92rem; }
+.theme-hint a { color: var(--cyan); }
