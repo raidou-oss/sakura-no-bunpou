@@ -1,9 +1,9 @@
 // 絆 Liens de confident (façon Persona) : plus on échange avec quelqu'un (réactions, pokes), plus le lien monte.
 // Réactions : lues dans la base (visibles des deux côtés). Pokes : comptés de son côté, avec la progression du compte.
-import { h, jr, toast } from './util.js?v=20261019145238';
-import * as C from './cloud.js?v=20261019145238';
-import * as S from './srs.js?v=20261019145238';
-import { play } from './sfx.js?v=20261019145238';
+import { h, jr, toast } from './util.js?v=20261019150232';
+import * as C from './cloud.js?v=20261019150232';
+import * as S from './srs.js?v=20261019150232';
+import { play } from './sfx.js?v=20261019150232';
 
 export const REACT_XP = 15;          // par réaction échangée (envoyée ou reçue)
 export const POKE_XP = 30;           // par poke : plus d'interaction, donc plus d'XP
@@ -74,19 +74,60 @@ export async function linkWith(id, opts) {
   return (await allLinks(opts)).find(l => l.id === id) || { id, xp: 0, reactions: 0, pokes: 0, ...rankOf(0) };
 }
 
-// --- Montée de rang : bannière façon Persona -----------------------------------------------
-export function rankUpBanner({ name, rank, title, arcana }) {
-  play('fanfare');
-  const el = h('div.link-rankup', { role: 'status' },
-    h('div.lr-card', h('span.lr-arcana', { lang: 'ja' }, arcana[0]), h('span.lr-roman', ROMAN[rank])),
-    h('div.lr-text',
-      h('p.lr-kicker', { lang: 'ja', html: jr('絆') }, ' RANK UP'),
-      h('p.lr-name', name || 'Ton confident'),
-      h('p.lr-rank', `Rang ${rank}${rank >= MAX_RANK ? ' · MAX' : ''} — ${title}`),
-      h('p.lr-sub', `Arcane ${arcana[1]} · Ton lien s’approfondit…`)));
+// --- Montée de rang : grande séquence façon Persona 3 --------------------------------------------
+/** Carte de tarot dessinée en CSS */
+export function tarotCard({ arcana, rank, name, size = 'm' }) {
+  return h(`div.tarot.${size}`,
+    h('span.tarot-frame'),
+    h('span.tarot-roman', ROMAN[rank] || '0'),
+    h('span.tarot-sun', { 'aria-hidden': 'true' }),
+    h('span.tarot-kanji', { lang: 'ja' }, arcana[0]),
+    h('span.tarot-name', arcana[1]),
+    name ? h('span.tarot-who', name) : null);
+}
+
+let lastRankUp = null;
+export const replayRankUp = () => lastRankUp && rankUpBanner(lastRankUp);
+export function rankUpBanner(info) {
+  const { name, rank, title, arcana } = info;
+  lastRankUp = info;
+  document.querySelector('.ru')?.remove();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const from = Math.max(0, rank - 1);
+  const num = h('span.ru-num', String(from));
+  const petals = h('div.ru-petals', { 'aria-hidden': 'true' });
+  if (!reduced) for (let k = 0; k < 36; k++) petals.append(h('i', { style: {
+    '--x': `${Math.random() * 100}vw`, '--d': `${1.4 + Math.random() * 1.6}s`, '--w': `${Math.random() * 1.4}s`,
+    '--r': `${Math.random() * 720 - 360}deg`, '--s': `${7 + Math.random() * 10}px`, '--dx': `${Math.random() * 160 - 80}px` } }));
+  const el = h('div.ru', { role: 'dialog', 'aria-label': `Rang ${rank} atteint avec ${name || 'ton confident'}`, tabindex: '-1' },
+    h('div.ru-flash'),
+    h('div.ru-bars', h('i.b1'), h('i.b2'), h('i.b3'), h('i.b4')),
+    h('div.ru-bigkanji', { lang: 'ja', 'aria-hidden': 'true' }, '絆'),
+    h('div.ru-rays', { 'aria-hidden': 'true' }),
+    h('div.ru-ring', { 'aria-hidden': 'true' }, h('span', 'SOCIAL LINK · RANK UP · 絆 · SOCIAL LINK · RANK UP · 絆 · ')),
+    h('div.ru-streaks', { 'aria-hidden': 'true' }, ...Array.from({ length: 7 }, (_, k) => h('i', { style: { '--k': k } }))),
+    petals,
+    h('div.ru-stage',
+      h('div.ru-cardwrap', tarotCard({ arcana, rank, name, size: 'xl' })),
+      h('div.ru-text',
+        h('p.ru-kicker', h('span', { lang: 'ja' }, 'コミュ'), ' · ', arcana[1].toUpperCase()),
+        h('p.ru-rankup', h('span', 'RANK'), h('span', 'UP!')),
+        h('p.ru-rankline', h('span.ru-label', 'RANK'), num, rank >= MAX_RANK ? h('span.ru-max', 'MAX') : null),
+        h('p.ru-name', name || 'Ton confident'),
+        h('p.ru-title', title),
+        h('p.ru-sub', rank >= MAX_RANK ? 'Votre lien est désormais indéfectible.' : 'Ton lien s’est approfondi…'))),
+    h('p.ru-skip', 'Touche pour continuer'));
+  const close = () => { if (el.classList.contains('out')) return; el.classList.add('out'); setTimeout(() => el.remove(), 600); };
+  el.addEventListener('click', close);
+  el.addEventListener('keydown', e => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') close(); });
   document.body.append(el);
-  setTimeout(() => el.classList.add('out'), 3600);
-  setTimeout(() => el.remove(), 4200);
+  el.focus({ preventScroll: true });
+  // Bande-son et compteur
+  play('whoosh');
+  setTimeout(() => play('slash'), 420);
+  setTimeout(() => { play('fanfare'); num.textContent = String(rank); num.classList.add('bump'); el.classList.add('shake'); }, reduced ? 100 : 1500);
+  setTimeout(() => play('ping'), 2300);
+  setTimeout(close, 7500);
 }
 
 /** À brancher une fois : chaque réaction / poke fait progresser le lien, avec bannière si le rang monte */

@@ -1,12 +1,12 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby } from './util.js?v=20261019145238';
-import * as D from './data.js?v=20261019145238';
-import { wallpaperSVG } from './wallpaper.js?v=20261019145238';
-import * as C from './cloud.js?v=20261019145238';
-import { play } from './sfx.js?v=20261019145238';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019145238';
-import { GAMES } from './gamelist.js?v=20261019145238';
-import * as L from './links.js?v=20261019145238';
+import { h, $, toast, jr, ruby } from './util.js?v=20261019150232';
+import * as D from './data.js?v=20261019150232';
+import { wallpaperSVG } from './wallpaper.js?v=20261019150232';
+import * as C from './cloud.js?v=20261019150232';
+import { play } from './sfx.js?v=20261019150232';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261019150232';
+import { GAMES } from './gamelist.js?v=20261019150232';
+import * as L from './links.js?v=20261019150232';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -68,7 +68,7 @@ function levelBar(xp) {
 function linksSection(other) {
   const box = h('section.glass.links-box',
     h('h2', h('span.jp-head', { lang: 'ja', html: jr('絆') }), other ? `Ton lien avec ${other.username}` : 'Confidents'),
-    h('p.small.muted', L.LINK_HELP));
+    h('p.small.muted', L.LINK_HELP, ' ', h('a', { href: '#/confidents' }, 'Ouvrir la page Confidents →')));
   const list = h('div.link-grid', h('p.small', 'Chargement…'));
   box.append(list);
   (async () => {
@@ -254,7 +254,7 @@ function editProfile(main, p, rerender) {
 // --- Communauté -------------------------------------------------------------------------
 export async function communityPage(main) {
   const head = h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('仲間') }), 'Communauté'),
-    h('p.section-note', 'Les élèves de 桜の文法, classés par rang. Ouvre un profil pour lui envoyer une réaction.'));
+    h('p.section-note', 'Les élèves de 桜の文法, classés par rang. Ouvre un profil pour lui envoyer une réaction. ', h('a', { href: '#/confidents' }, '絆 Mes confidents →')));
   if (!C.enabled) {
     main.replaceChildren(head, h('div.card.empty', h('h2', 'Comptes pas encore activés'), h('p', 'La communauté apparaîtra dès que les comptes seront activés sur ce site.')));
     return;
