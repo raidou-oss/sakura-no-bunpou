@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019133039';
-import { speak, speakBtn } from './voice.js?v=20261019133039';
-import { pitchSVG } from './pitch.js?v=20261019133039';
-import { play } from './sfx.js?v=20261019133039';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261019133039';
-import * as D from './data.js?v=20261019133039';
-import * as S from './srs.js?v=20261019133039';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261019140954';
+import { speak, speakBtn } from './voice.js?v=20261019140954';
+import { pitchSVG } from './pitch.js?v=20261019140954';
+import { play } from './sfx.js?v=20261019140954';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261019140954';
+import * as D from './data.js?v=20261019140954';
+import * as S from './srs.js?v=20261019140954';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -253,14 +253,14 @@ export async function typedVocab(v) {
   const target = v.f || v.w;
   const pref = preferred();
   let ex = null, conj = null;
-  const list = (await D.easiest(shuffle(await D.vocabExamples(v)), v.lv, e => e[0])).map(([jp, fr, reg, alt]) => ({ ...inStyle({ jp, reg, alt }, pref), fr }));
+  const list = (await D.easiest(shuffle(await D.vocabExamples(v)), v.lv, e => e[0])).map(([jp, fr, reg, alt, fk]) => ({ ...inStyle({ jp, reg, alt }, pref), fr, fk }));
   for (const st of list) {
     const t = [target, v.w].find(x => x && st.text.includes(x));
-    if (t) { ex = { jp: st.text.replace(t, `[${t}]`), fr: st.fr, reg: st.reg }; break; }
+    if (t) { ex = { jp: st.text.replace(t, `[${t}]`), fr: st.fr, fk: st.fk, reg: st.reg }; break; }
   }
   if (!ex) for (const st of list) {
     const m = conjugated(st.text, target) || (v.f && conjugated(st.text, v.w));
-    if (m) { conj = m.surface; ex = { jp: st.text.slice(0, m.index) + `[${m.surface}]` + st.text.slice(m.index + m.surface.length), fr: st.fr, reg: st.reg }; break; }
+    if (m) { conj = m.surface; ex = { jp: st.text.slice(0, m.index) + `[${m.surface}]` + st.text.slice(m.index + m.surface.length), fr: st.fr, fk: st.fk, reg: st.reg }; break; }
   }
   return { key: null, kind: 'vocab-type', v, lv: v.lv, ex, conj, accept: [conj || target] };
 }
@@ -268,8 +268,13 @@ export async function typedVocab(v) {
 /** Met en valeur, dans la traduction, le mot français qui correspond au sens du mot japonais */
 const deacc = s => [...s].map(c => c.normalize('NFD')[0]).join('').toLowerCase();
 const STOP = new Set(['les', 'des', 'une', 'pour', 'avec', 'dans', 'sur', 'qui', 'que', 'est', 'etre', 'avoir', 'faire', 'quelque', 'chose', 'quelqu', 'chez']);
-export function highlightFr(fr, meaning) {
+export function highlightFr(fr, meaning, key = null) {
   const esc = t => t.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  // Passage indiqué dans les données : c'est lui qu'on surligne
+  if (key && fr.includes(key)) {
+    const i = fr.indexOf(key);
+    return `${esc(fr.slice(0, i))}<mark class="fr-key">${esc(key)}</mark>${esc(fr.slice(i + key.length))}`;
+  }
   if (!meaning) return esc(fr);
   const words = String(meaning).replace(/\([^)]*\)/g, ' ').split(/[,;/]/)
     .flatMap(alt => alt.trim().split(/[\s'’-]+/)).map(w => deacc(w).replace(/[^a-z]/g, ''))
@@ -395,7 +400,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       prompt = [
         h('div.kicker-row', h('p.kicker', `Complète la phrase · ${D.LEVEL_NAMES[item.lv]}`), regChip(item.s)),
         h('p.jp.big', { lang: 'ja', html: sentenceHTML(item.s, { furi }) }),
-        h('p.fr', item.s.fr)];
+        h('p.fr', { html: highlightFr(item.s.fr, null, item.s.fk) })];
     } else if (item.kind === 'meaning') {
       prompt = [
         h('p.kicker', `Que veut dire ce point ? · ${D.LEVEL_NAMES[item.lv]}`),
@@ -483,13 +488,13 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     if (item.kind === 'cloze-type') {
       prompt = [
         h('p.jp.big.type-sentence', { lang: 'ja', html: sentenceHTML(item.s, { furi }) }),
-        h('p.fr.type-fr', item.s.fr)];
+        h('p.fr.type-fr', { html: highlightFr(item.s.fr, null, item.s.fk) })];
     } else if (item.kind === 'meaning-type') {
       prompt = [h('p.type-fr.solo', { html: `Écris le point de grammaire qui veut dire <mark class="fr-key">${item.g.s.replace(/[&<>]/g, '')}</mark>` })];
     } else if (item.ex) {
       prompt = [
         h('p.jp.big.type-sentence', { lang: 'ja', html: sentenceHTML(item.ex, { furi }) }),
-        h('p.fr.type-fr', { html: highlightFr(item.ex.fr, item.v.m) })];
+        h('p.fr.type-fr', { html: highlightFr(item.ex.fr, item.v.m, item.ex.fk) })];
     } else {
       prompt = [h('p.type-fr.solo', { html: `Écris le mot qui veut dire <mark class="fr-key">${D.shortMeaning(item.v.m).replace(/[&<>]/g, '')}</mark>` })];
     }

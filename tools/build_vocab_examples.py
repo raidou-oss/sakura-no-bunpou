@@ -38,25 +38,41 @@ for key, exs in written.items():
         pool.append((jp, fr, ORDER[key.split(':')[0]]))
 pool.sort(key=lambda x: len(x[0]))
 
+# Passage de la traduction à surligner (ou « ! » : exemple écarté, il n'emploie pas vraiment le mot)
+FR_KEYS = {}
+for _l in open(os.path.join(ROOT, 'tools', 'fr_keys_vocab.tsv'), encoding='utf-8'):
+    if _l.startswith('#') or _l.count('\t') != 2: continue
+    _k, _j, _v = _l.rstrip('\n').split('\t')
+    FR_KEYS[(_k, _j)] = _v
+plainjp = lambda jp: re.sub(r'（[^）]*）', '', jp)
+# Mots dont la recherche automatique donne de faux exemples (au moins deux écartés) : seulement les exemples écrits à la main
+from collections import Counter as _C
+BANNED = _C(k for (k, _j), v in FR_KEYS.items() if v == '!')
 out, missing = {}, {}
 for vf in sorted(glob.glob(os.path.join(ROOT, 'data', 'vocab_n[1-5].json'))):
     lv = re.search(r'vocab_(n\d)', vf).group(1).upper()
     for row in json.load(open(vf, encoding='utf-8')):
         w, f = row[2], row[3] or row[2]
         key = f'{lv}:{w}'
-        ex = list(written.get(key, []))
+        ex = [e for e in written.get(key, []) if FR_KEYS.get((key, plainjp(e[0]))) != '!']
         # Forme recherchée : le mot annoté (même lecture) ; pour un verbe/adjectif, sans sa dernière syllabe
         needle = f
         if K.search(w) and len(w) > 1 and not K.search(w[-1]) and needle.endswith(w[-1]):
             needle = needle[:-1]
         if not K.search(w) and len(w) < 3: needle = None
+        if BANNED[key] >= 2: needle = None
         if needle:
             for jp, fr, slv in pool:
                 if len(ex) >= MAX: break
-                if slv >= ORDER[lv] and needle in jp and [jp, fr] not in ex: ex.append([jp, fr])
+                if slv >= ORDER[lv] and needle in jp and [jp, fr] not in ex and FR_KEYS.get((key, plainjp(jp))) != '!': ex.append([jp, fr])
         if ex:
             # 3e et 4e colonnes : style de la phrase ('p' poli / 'n' neutre) et sa variante dans l'autre style
-            out[key] = [e + list(convert(e[0]) or ()) for e in ex[:MAX]]
+            # 5e colonne : passage de la traduction qui correspond au mot (surligné en rose dans les exercices)
+            def row_of(e):
+                r = list(convert(e[0]) or (None, None))
+                fk = FR_KEYS.get((key, plainjp(e[0])))
+                return e + r + ([fk] if fk and fk in e[1] else [])
+            out[key] = [row_of(e) for e in ex[:MAX]]
         else: missing.setdefault(lv, []).append(w)
 # Un fichier par niveau (chargé à la demande) : { mot: [[phrase, traduction], …] }
 for lv in ['N5', 'N4', 'N3', 'N2', 'N1']:

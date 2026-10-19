@@ -7,6 +7,13 @@ from register import convert   # variante poli ⇄ neutre
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 grammar = json.load(open(os.path.join(ROOT, 'data', 'grammar.json'), encoding='utf-8'))
+FR_KEYS = {}
+_fk = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fr_keys_grammar.tsv')
+if os.path.exists(_fk):
+    for _l in open(_fk, encoding='utf-8'):
+        if _l.startswith('#') or '\t' not in _l: continue
+        _j, _k = _l.rstrip('\n').split('\t', 1)
+        FR_KEYS[_j] = _k
 KR = re.compile(r'([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）')
 KANJI = re.compile(r'[㐀-鿿豈-﫿々〆ヶ〇]+')
 
@@ -97,6 +104,10 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'tools', 'sentences_*.txt'))):
         if r:
             item['reg'] = r[0]
             if '[' in r[1]: item['alt'] = r[1]
+        # Passage de la traduction qui correspond au trou (surligné en rose dans les exercices)
+        fk = FR_KEYS.get(jp)
+        if fk and fk in fr: item['fk'] = fk
+        elif fk: errors.append(f'clé française introuvable dans la traduction : {jp} → {fk}')
         sentences.append(item)
 if errors:
     print('\n'.join(errors)); sys.exit(1)

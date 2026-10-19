@@ -1,10 +1,10 @@
 // 選択クイズ (Sentaku) : les anciennes questions à choix, en jeu. Trois vies, des séries qui rapportent.
-import { play as sfx } from '../sfx.js?v=20261019133039';
-import { burst } from '../celebrate.js?v=20261019133039';
-import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019133039';
-import * as D from '../data.js?v=20261019133039';
-import * as S from '../srs.js?v=20261019133039';
-import { sentenceHTML, clozeDisp, regChip, vocabPractice } from '../review.js?v=20261019133039';
+import { play as sfx } from '../sfx.js?v=20261019140954';
+import { burst } from '../celebrate.js?v=20261019140954';
+import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019140954';
+import * as D from '../data.js?v=20261019140954';
+import * as S from '../srs.js?v=20261019140954';
+import { sentenceHTML, clozeDisp, regChip, vocabPractice, highlightFr } from '../review.js?v=20261019140954';
 
 const LIVES = 3;
 const MODES = [['m', 'Les deux'], ['g', 'Grammaire'], ['v', 'Vocabulaire']];
@@ -58,7 +58,7 @@ export default async function choix(root, { settings, saveBest }) {
         card.replaceChildren(
           h('div.kicker-row', h('p.kicker', `Complète · ${lv}`), regChip(s)),
           h('p.jp.big', { lang: 'ja', html: sentenceHTML(s, { furi }) }),
-          h('p.fr', s.fr),
+          h('p.fr', { html: highlightFr(s.fr, null, s.fk) }),
           h('div.options.four', shuffle([s.a, ...s.d]).map((o, i) => h('button.option', { lang: 'ja', 'data-v': o, onclick: () => pickIt(o) },
             h('span.option-key', i + 1), h('span.option-text', { html: ruby(disp[o] || o, furi) })))));
       } else {

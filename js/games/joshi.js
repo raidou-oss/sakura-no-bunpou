@@ -1,10 +1,10 @@
 // 助詞ダッシュ (Joshi Dash) : 60 secondes pour placer un maximum de particules.
-import { play as sfx } from '../sfx.js?v=20261019133039';
-import { burst } from '../celebrate.js?v=20261019133039';
-import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019133039';
-import * as D from '../data.js?v=20261019133039';
-import * as S from '../srs.js?v=20261019133039';
-import { sentenceHTML, clozeDisp, regChip } from '../review.js?v=20261019133039';
+import { play as sfx } from '../sfx.js?v=20261019140954';
+import { burst } from '../celebrate.js?v=20261019140954';
+import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261019140954';
+import * as D from '../data.js?v=20261019140954';
+import * as S from '../srs.js?v=20261019140954';
+import { sentenceHTML, clozeDisp, regChip, highlightFr } from '../review.js?v=20261019140954';
 
 const PARTICLES = new Set(['は', 'が', 'を', 'に', 'で', 'へ', 'と', 'も', 'の', 'か', 'や', 'よ', 'ね', 'から', 'まで', 'より', 'しか', 'だけ', 'でも', 'ほど', 'こそ', 'さえ', 'すら', 'など', 'ばかり', 'くらい', 'ごろ', 'でも']);
 const DURATION = 60;
@@ -39,7 +39,7 @@ export default async function joshi(root, { settings, saveBest }) {
       card.replaceChildren(
         cur.reg ? h('div.kicker-row.dash-reg', regChip(cur)) : null,
         h('p.jp.big', { lang: 'ja', html: sentenceHTML(cur, { furi }) }),
-        h('p.fr', cur.fr),
+        h('p.fr', { html: highlightFr(cur.fr, null, cur.fk) }),
         h('div.options.four', shuffle([cur.a, ...cur.d]).map((o, i) => h('button.option', { lang: 'ja', onclick: () => pickIt(o) },
           h('span.option-key', i + 1), h('span.option-text', { html: ruby(clozeDisp(cur)[o] || o, true) })))));
     }
