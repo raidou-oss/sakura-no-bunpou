@@ -2,21 +2,29 @@
 //  · chaque clic sur un élément interactif frappe : onde de choc + étincelles au point touché, petit écrasement ;
 //  · à chaque page, le kanji du titre s'imprime (onde + étincelles), les jauges se remplissent, les nombres défilent ;
 //  · une bonne réponse dans un jeu déclenche l'impact des leçons.
-import { hitFx, reducedMotion } from './util.js?v=20261020223621';
+import { hitFx, reducedMotion } from './util.js?v=20261020223947';
+import { play } from './sfx.js?v=20261020223947';
 
 const TAP = '.btn, .tab, .segmented button, .lesson-card, .nav-list a, .game-tile, .unit, .member, .option, .chip-btn, .link-card, .level, .point, .oc-row, .online-row, .resume-chip, .tile, .kana-cell, .cf-row, .lc-tarot, button.dash-choice, .choice, .answer-btn';
 const lite = () => document.documentElement.classList.contains('lite');
 
 function tap(x, y, el) {
   if (reducedMotion()) return;
+  // Exactement l'onde de choc des leçons : deux ondes (sakura puis cyan) + 12 étincelles
   const layer = document.createElement('span');
   layer.className = 'fx-tap';
   layer.style.left = `${x}px`; layer.style.top = `${y}px`;
-  const n = lite() ? 5 : 8;
-  layer.innerHTML = '<i class="fx-wave"></i>' + Array.from({ length: n }, (_, i) => `<i class="fx-spark" style="--a:${i * (360 / n) + Math.random() * 20}deg"></i>`).join('');
+  layer.innerHTML = '<i class="fx-wave"></i><i class="fx-wave c"></i>' +
+    Array.from({ length: 12 }, (_, i) => `<i class="fx-spark" style="--a:${i * 30 + Math.random() * 14}deg"></i>`).join('');
   document.body.append(layer);
-  setTimeout(() => layer.remove(), 650);
-  if (el) { el.classList.remove('dyn-press'); void el.offsetWidth; el.classList.add('dyn-press'); setTimeout(() => el.classList.remove('dyn-press'), 320); }
+  setTimeout(() => layer.remove(), 900);
+  // On sent le clic : écrasement puis rebond, éclair blanc, petit son et vibration (mobile)
+  if (el) {
+    el.classList.remove('dyn-press'); void el.offsetWidth; el.classList.add('dyn-press');
+    clearTimeout(el._dynT); el._dynT = setTimeout(() => el.classList.remove('dyn-press'), 420);
+  }
+  play('cursor', { gap: 60 });
+  try { navigator.vibrate?.(12); } catch {}
 }
 
 let lastTarget = null;

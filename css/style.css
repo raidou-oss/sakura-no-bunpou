@@ -2632,13 +2632,12 @@ html.lite .level, html.lite .score-card, html.lite .link-card, html.lite .kana-c
 
 /* ===== Dynamique globale (dyn.js) ===== */
 .fx-tap { position: fixed; z-index: 400; width: 0; height: 0; pointer-events: none; }
-.fx-tap .fx-wave { animation-duration: .5s; }
-.fx-tap .fx-spark { height: 12px; animation-duration: .45s; }
-.fx-tap .fx-spark:nth-child(odd) { box-shadow: 0 0 8px var(--cyan); }
-@keyframes fx-spark-tap { to { transform: rotate(var(--a)) translateY(-46px); opacity: 0; } }
-.fx-tap .fx-spark { animation-name: fx-spark-tap; }
-.dyn-press { animation: dyn-press .3s cubic-bezier(.3, 1.6, .5, 1) !important; }
-@keyframes dyn-press { 0% { scale: 1; } 30% { scale: .94; filter: brightness(1.35); } 100% { scale: 1; } }
+.dyn-press { animation: dyn-press .42s cubic-bezier(.3, 1.8, .45, 1) !important; }
+@keyframes dyn-press {
+  0% { scale: 1; filter: brightness(1); }
+  18% { scale: .9; filter: brightness(1.8) saturate(1.3); }
+  55% { scale: 1.06; filter: brightness(1.15); }
+  100% { scale: 1; filter: brightness(1); } }
 /* Le kanji du titre s'imprime */
 .jp-head.dyn-land { display: inline-block; animation: dyn-land .55s cubic-bezier(.2, 1.5, .4, 1) .12s both; }
 @keyframes dyn-land { 0% { opacity: 0; transform: scale(2.4) rotate(-10deg); filter: blur(8px) brightness(2); }
