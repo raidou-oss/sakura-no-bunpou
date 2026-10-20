@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261020174522">
+  <link rel="stylesheet" href="css/style.css?v=20261020180949">
 </head>
 <body>
   <!-- 文 Écran de chargement dans la DA du site : une phrase dont la particule se met en place, façon Persona -->
@@ -29,6 +29,8 @@
       @keyframes bt-band { to { transform: rotate(-4deg) translateY(14px); } }
       .bt-bgword { position: absolute; right: -2vw; bottom: -6vh; font: 900 italic min(30vw, 34vh)/1 'Barlow Condensed', sans-serif; color: transparent; -webkit-text-stroke: 2px rgba(127, 168, 255, .07); letter-spacing: -.02em; pointer-events: none; white-space: nowrap; }
       .bt-bgk { position: absolute; left: -3vw; top: 4vh; font: 400 min(40vw, 46vh)/1 'Dela Gothic One', serif; color: transparent; -webkit-text-stroke: 2px rgba(255, 148, 203, .07); pointer-events: none; }
+      #boot > * { grid-area: 1 / 1; }
+      .bt-petals { position: absolute; inset: 0; pointer-events: none; }
       .bt-petals i { position: absolute; top: -20px; left: var(--x); width: var(--s); height: calc(var(--s) * .78); border-radius: 80% 0 80% 0; background: linear-gradient(135deg, #FFD6E8, #FF94CB); opacity: .75; animation: bt-fall var(--d) linear var(--w) infinite; }
       @keyframes bt-fall { to { transform: translate(var(--dx), 110vh) rotate(var(--r)); } }
       .bt-card { position: relative; z-index: 2; width: min(92vw, 720px); display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
@@ -174,6 +176,6 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261020174522"></script>
+  <script type="module" src="js/app.js?v=20261020180949"></script>
 </body>
 </html>
