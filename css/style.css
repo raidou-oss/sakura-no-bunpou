@@ -2288,3 +2288,91 @@ html.reduce-motion .fx-layer { display: none; }
 .st-wrap > .st-field.ok, .st-wrap > .st-field.ko { -webkit-text-fill-color: currentColor; }
 .st-wrap > .st-field.ok { color: var(--ok) !important; } .st-wrap > .st-field.ko { color: var(--ko) !important; }
 .st-wrap > .st-field::placeholder { -webkit-text-fill-color: rgba(255, 255, 255, .25); }
+
+/* ===== Aura « vraie » sur la photo de profil (tailles l / xl) : plusieurs couches ===== */
+.aura-big > .aura-flames { display: none; }
+.aura-back, .aura-front { position: absolute; inset: -48%; pointer-events: none; border-radius: 50%; }
+.aura-back { z-index: 0; }
+.aura-front { z-index: 2; }
+.aura-back > i, .aura-front > i { position: absolute; inset: 0; display: block; }
+.aura-fire svg, .aura-sparks svg { width: 100%; height: 100%; overflow: visible; display: block; }
+/* Halo qui respire */
+.aura-glow { border-radius: 50%; background: radial-gradient(circle, var(--ag1, rgba(70, 217, 255, .55)) 22%, var(--ag2, rgba(47, 107, 255, .22)) 42%, transparent 66%);
+  animation: aura-glow 2.6s ease-in-out infinite; }
+@keyframes aura-glow { 50% { transform: scale(1.08); opacity: .75; } }
+.aura-3 .aura-glow { --ag1: rgba(255, 148, 203, .5); --ag2: rgba(70, 217, 255, .25); }
+.aura-4 .aura-glow { --ag1: rgba(184, 243, 255, .65); --ag2: rgba(255, 148, 203, .3); }
+.aura-5 .aura-glow { --ag1: rgba(255, 216, 107, .65); --ag2: rgba(255, 148, 203, .32); }
+/* Feu : la silhouette ondule, les deux couches battent à des rythmes différents */
+.aura-fire { mix-blend-mode: screen; }
+.aura-fire .fo { transform-origin: 0 40px; animation: aura-fire-o 1.7s ease-in-out infinite; opacity: .9; }
+.aura-fire .fi { transform-origin: 0 40px; animation: aura-fire-i 1.15s ease-in-out infinite; }
+@keyframes aura-fire-o { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.04, 1.1); } }
+@keyframes aura-fire-i { 0%, 100% { transform: scale(.98, 1.02); } 50% { transform: scale(1.03, 1.12); } }
+.aura-2 .aura-fire { filter: drop-shadow(0 0 6px rgba(70, 217, 255, .9)); }
+.aura-3 .aura-fire, .aura-4 .aura-fire { filter: drop-shadow(0 0 8px rgba(255, 148, 203, .8)); }
+.aura-5 .aura-fire { filter: drop-shadow(0 0 10px rgba(255, 216, 107, .9)); }
+.aura-4 .aura-back, .aura-4 .aura-front { inset: -56%; }
+.aura-5 .aura-back, .aura-5 .aura-front { inset: -62%; }
+/* Rayons (Légende) */
+.aura-rays { border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(255, 216, 107, .55) 0deg 4deg, transparent 4deg 18deg);
+  -webkit-mask: radial-gradient(circle, transparent 30%, #000 36%, transparent 70%); mask: radial-gradient(circle, transparent 30%, #000 36%, transparent 70%);
+  animation: aura-rays 14s linear infinite; }
+@keyframes aura-rays { to { transform: rotate(360deg); } }
+/* Braises et pétales */
+.aura-embers { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.av-wrap.m > .aura-embers { inset: -30%; }
+.aura-embers i { position: absolute; left: var(--x); top: var(--y); width: 5px; height: 5px; margin: -2.5px; border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 30%, #B8F3FF 45%, rgba(70, 217, 255, 0) 72%); box-shadow: 0 0 6px #46D9FF;
+  opacity: 0; animation: aura-ember var(--d) ease-out infinite; animation-delay: var(--w); }
+.aura-3 .aura-embers i:nth-child(even) { box-shadow: 0 0 6px #FF94CB; background: radial-gradient(circle, #fff 0 30%, #FFD6E8 45%, rgba(255, 148, 203, 0) 72%); }
+.aura-5 .aura-embers i { box-shadow: 0 0 7px #FFD86B; background: radial-gradient(circle, #fff 0 30%, #FFF4C8 45%, rgba(255, 216, 107, 0) 72%); }
+.aura-embers i.petal { width: 8px; height: 6px; border-radius: 80% 0 80% 0; background: linear-gradient(135deg, #FFF0F7, #FF94CB); box-shadow: 0 0 5px rgba(255, 148, 203, .8); }
+@keyframes aura-ember {
+  0% { opacity: 0; transform: translate(0, 0) scale(var(--s)) rotate(0deg); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), -95px) scale(calc(var(--s) * .4)) rotate(var(--r)); } }
+.av-wrap.l .aura-embers i, .av-wrap.m .aura-embers i { animation-name: aura-ember-s; }
+@keyframes aura-ember-s {
+  0% { opacity: 0; transform: translate(0, 0) scale(var(--s)); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(var(--dx) * .5), -48px) scale(calc(var(--s) * .4)) rotate(var(--r)); } }
+/* Anneau incliné + kanji en orbite (Brasier céleste, Légende) */
+.orbit-ring { position: absolute; inset: 22% 6%; border-radius: 50%; border: 2px solid rgba(184, 243, 255, .7);
+  box-shadow: 0 0 10px rgba(70, 217, 255, .7), inset 0 0 8px rgba(70, 217, 255, .5); transform: rotate(-12deg) scaleY(.32); }
+.aura-5 .orbit-ring { border-color: rgba(255, 228, 150, .85); box-shadow: 0 0 12px rgba(255, 216, 107, .8), inset 0 0 8px rgba(255, 148, 203, .5); }
+.orbit-holder { position: absolute; inset: 0; }
+.aura-back .orbit-holder .orbit-ring { inset: calc(22% + 0px) 6%; }
+.aura-orbit { position: absolute; inset: -48%; pointer-events: none; transform: rotate(-12deg); }
+.aura-4 .aura-orbit { inset: -56%; } .aura-5 .aura-orbit { inset: -62%; }
+.aura-4 .aura-back .orbit-ring, .aura-5 .aura-back .orbit-ring { transform: rotate(-12deg) scaleY(.32); }
+.aura-orbit .orbit-ring.front { z-index: 3; transform: scaleY(.32); clip-path: inset(50% 0 0 0); }
+.og { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 3;
+  animation: og-x 5s infinite, og-z 5s steps(1) infinite; animation-delay: calc(var(--k) * -1.25s); }
+.og b { position: absolute; display: block; width: 1.4em; height: 1.4em; margin: -.7em; text-align: center;
+  font: 900 .85rem/1.4em var(--jp, sans-serif); color: #E6FBFF; text-shadow: 0 0 5px #46D9FF, 0 0 12px #46D9FF;
+  animation: og-y 5s infinite; animation-delay: inherit; }
+.av-wrap.xl .og b { font-size: 1.15rem; }
+.aura-5 .og b { color: #FFF4C8; text-shadow: 0 0 5px #FFD86B, 0 0 12px #FF94CB; }
+/* Ellipse : x = cos, y = sin (rayon horizontal ≈ 44 % de l'aura, vertical ≈ 14 %) */
+@keyframes og-x {
+  0% { transform: translateX(var(--orx, 44cqw)); animation-timing-function: cubic-bezier(.36, 0, .64, 1); }
+  50% { transform: translateX(calc(var(--orx, 44cqw) * -1)); animation-timing-function: cubic-bezier(.36, 0, .64, 1); }
+  100% { transform: translateX(var(--orx, 44cqw)); } }
+@keyframes og-y {
+  0% { transform: translateY(0) scale(1); animation-timing-function: cubic-bezier(.33, .66, .66, 1); }
+  25% { transform: translateY(var(--ory, 14cqw)) scale(1.25); opacity: 1; animation-timing-function: cubic-bezier(.33, 0, .66, .33); }
+  50% { transform: translateY(0) scale(1); animation-timing-function: cubic-bezier(.33, .66, .66, 1); }
+  75% { transform: translateY(calc(var(--ory, 14cqw) * -1)) scale(.72); opacity: .45; animation-timing-function: cubic-bezier(.33, 0, .66, .33); }
+  100% { transform: translateY(0) scale(1); } }
+@keyframes og-z { 0% { z-index: 3; } 50% { z-index: 0; } }
+.aura-orbit { container-type: inline-size; }
+/* Arcs électriques */
+.aura-sparks polyline { fill: none; stroke: #E6FBFF; stroke-width: 1.6; stroke-linejoin: round; filter: drop-shadow(0 0 3px #46D9FF) drop-shadow(0 0 6px #46D9FF);
+  opacity: 0; animation: aura-zap 2.2s steps(1) infinite; animation-delay: calc(var(--k) * -.55s); }
+.aura-5 .aura-sparks polyline { stroke: #FFF4C8; filter: drop-shadow(0 0 3px #FFD86B) drop-shadow(0 0 6px #FF94CB); }
+@keyframes aura-zap { 0% { opacity: 0; } 6% { opacity: 1; } 9% { opacity: .2; } 12% { opacity: 1; } 16%, 100% { opacity: 0; } }
+html.reduce-motion .aura-back *, html.reduce-motion .aura-front *, html.reduce-motion .aura-embers i { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .aura-back *, .aura-front *, .aura-embers i { animation: none !important; } }
+html.reduce-motion .aura-embers, html.reduce-motion .aura-sparks { display: none; }
+.av-wrap.aura-big { z-index: 4; }
