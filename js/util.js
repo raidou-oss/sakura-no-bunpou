@@ -165,6 +165,7 @@ export const stack = text => [...text].map(c => `<span>${esc(c)}</span>`).join('
  */
 export function hitFx(target, { card = null, stamp = null, pop = true } = {}) {
   if (!target || reducedMotion()) return;
+  window.__lastHit = performance.now();
   // Les effets suivent l'élément (même s'il bouge pendant l'animation) : on les pose dedans, centrés
   const host = /^(INPUT|TEXTAREA)$/.test(target.tagName) ? target.parentElement : target;
   if (getComputedStyle(host).position === 'static') host.style.position = 'relative';

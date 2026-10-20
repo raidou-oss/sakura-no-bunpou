@@ -1,7 +1,7 @@
 // Effets sonores synthétisés en direct (Web Audio) : aucun fichier audio, rien à télécharger.
 // Inspirés de l'esprit des menus de Persona : bips de curseur cristallins, « shing » de validation,
 // balayages de vent pour les transitions, arpèges brillants pour les bonnes réponses.
-import * as S from './srs.js?v=20261020222822';
+import * as S from './srs.js?v=20261020223621';
 
 let ctx = null, master = null, verb = null, noiseBuf = null;
 const last = {};
@@ -110,6 +110,7 @@ const SOUNDS = {
 
 /** Joue un son par son nom ; `gap` évite les rafales du même son */
 export function play(name, { gap = 40 } = {}) {
+  if (name === 'correct') setTimeout(() => dispatchEvent(new CustomEvent('sakura:sfx', { detail: name })), 30);
   if (!enabled() || !SOUNDS[name]) return;
   if (!setup() || ctx.state !== 'running') { ctx?.resume?.(); if (!ctx || ctx.state !== 'running') return; }
   const now = performance.now();

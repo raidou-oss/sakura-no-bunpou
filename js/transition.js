@@ -1,8 +1,8 @@
 // Transitions façon menu Persona : bandes diagonales qui balaient l'écran entre deux pages,
 // éléments qui entrent en glissant (légèrement penchés, en cascade) et sélecteur de menu qui
 // saute d'un onglet à l'autre avec un petit rebond.
-import { reducedMotion } from './util.js?v=20261020222822';
-import { play } from './sfx.js?v=20261020222822';
+import { reducedMotion } from './util.js?v=20261020223621';
+import { play } from './sfx.js?v=20261020223621';
 
 const STAGGER = 'main > *, .levels > li, .game-grid > li, .units > li, .points > li, .members > li, .react-list > li, .example-list > li, .portal-points > li, tbody > tr';
 const MAX_STAGGER = 18;
@@ -102,6 +102,7 @@ export function enter(root = document.getElementById('main')) {
     el.classList.add('stagger');
   });
   root.classList.add('entering');
+  setTimeout(() => dispatchEvent(new CustomEvent('sakura:enter')), 30);
   clearTimeout(root._enterT);
   root._enterT = setTimeout(() => root.classList.remove('entering'), 1600);
 }

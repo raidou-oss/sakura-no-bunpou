@@ -2548,3 +2548,105 @@ html.lite .p3-shade, html.lite .nav-indicator::before, html.lite .tab.active, ht
 html.lite .resume-chip, html.lite .stat-chip, html.lite .lv-badge, html.lite .cf-ttl, html.lite .reg-chip, html.lite .score-glyph, html.lite .lc-tarot,
 html.lite .cf-maxtag, html.lite .lc-ongoing, html.lite .lr-card, html.lite .lesson-card, html.lite .unit, html.lite .game-tile, html.lite .member,
 html.lite .level, html.lite .score-card, html.lite .link-card, html.lite .kana-cell, html.lite .point, html.lite .oc-row, html.lite .resume-ico { animation: none; }
+
+/* ===== Performance des séquences plein écran ===== */
+.ru { contain: strict; }
+.ru-rays { width: 150vmax; height: 150vmax; }
+.ru-waves i { will-change: transform, opacity; box-shadow: 0 0 16px var(--cyan); }
+.ru-petals i { will-change: transform; }
+.ru-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+
+/* ===== LEVEL UP v2 : particule qui se plante, 昇 imprimé, compteur à rouleau, jauge à étincelles ===== */
+.ru.lu2 { background: transparent; animation: none; }
+.ru.lu2.out { animation: ru-out .55s var(--ease-snap) both; }
+.lu2-bg { position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at 50% 42%, rgba(40, 30, 120, .97), rgba(5, 11, 38, .99) 70%); animation: ru-bgin .35s ease-out .7s forwards; }
+.ru.lu2 .ru-flash { opacity: 0; animation: lu2-flash .5s ease-out .8s forwards; z-index: 7; }
+@keyframes lu2-flash { 0% { opacity: .85; } 100% { opacity: 0; } }
+.ru.lu2 .ru-letterbox i { animation-duration: 1.5s; }
+.ru.lu2 .ru-bars .b1 { animation-delay: .85s; background: var(--sakura); } .ru.lu2 .ru-bars .b2 { animation-delay: .93s; background: var(--cyan); }
+.ru.lu2 .ru-bars .b3 { animation-delay: 1.01s; } .ru.lu2 .ru-bars .b4 { animation-delay: 1.09s; }
+.ru.lu2 .ru-rays { animation: ru-rays-in .8s ease-out 1.1s both, ru-rays-spin 30s linear infinite; }
+.ru.lu2 .ru-ring { animation: ru-ring-in .9s var(--ease-spring) 1.2s both, ru-ring-spin 20s linear infinite; }
+.ru.lu2 .ru-petals i { animation-delay: var(--w); }
+.ru.lu2 .ru-waves i { left: 50%; top: 42%; }
+/* La particule */
+.lu2-orb { position: fixed; left: 0; top: 0; width: 26px; height: 26px; margin: -13px; border-radius: 50%; z-index: 6; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle, #fff 0 25%, #B8F3FF 40%, rgba(70, 217, 255, .5) 60%, transparent 72%); box-shadow: 0 0 24px 8px rgba(70, 217, 255, .6), 0 0 50px 14px rgba(255, 148, 203, .35);
+  animation: lu2-orb-vis .8s linear .12s both; will-change: transform; }
+@keyframes lu2-orb-vis { 0% { opacity: 0; } 10%, 92% { opacity: 1; } 100% { opacity: 0; } }
+/* 昇 imprimé au point d'impact */
+.lu2-stamp { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); z-index: 1; pointer-events: none;
+  font: 400 min(62vh, 56vw)/1 var(--jp-heavy); color: transparent; -webkit-text-stroke: 3px rgba(255, 148, 203, .3);
+  text-shadow: 0 0 60px rgba(70, 217, 255, .25); opacity: 0; }
+.ru.lu2.lit .lu2-stamp { animation: lu2-stamp .7s cubic-bezier(.2, 1.4, .4, 1) both; }
+@keyframes lu2-stamp { 0% { opacity: 0; transform: translate(-50%, -50%) scale(2.6) rotate(-14deg); filter: blur(10px); }
+  45% { opacity: 1; transform: translate(-50%, -50%) scale(.94) rotate(-3deg); filter: none; -webkit-text-stroke-color: #fff; }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(-5deg); } }
+/* Hexagones qui tournent derrière */
+.lu2-hex { position: absolute; left: 50%; top: 42%; width: 0; height: 0; pointer-events: none; z-index: 1; }
+.lu2-hex .hx { position: absolute; left: 0; top: 0; width: 46vmin; height: 46vmin; translate: -50% -50%; overflow: visible; opacity: 0; will-change: transform; }
+.lu2-hex .hx2 { width: 64vmin; height: 64vmin; } .lu2-hex .hx3 { width: 84vmin; height: 84vmin; }
+.lu2-hex polygon { fill: none; stroke: rgba(70, 217, 255, .55); stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+.lu2-hex polygon.in { stroke: rgba(255, 148, 203, .35); stroke-dasharray: 6 8; }
+.lu2-hex .hx2 polygon { stroke: rgba(255, 148, 203, .45); } .lu2-hex .hx3 polygon { stroke: rgba(184, 243, 255, .25); }
+.ru.lu2.lit .lu2-hex .hx { animation: lu2-hex-in .8s var(--ease-spring) both, lu2-hex-spin 18s linear infinite; }
+.ru.lu2.lit .lu2-hex .hx2 { animation-delay: .08s, 0s; animation-direction: normal, reverse; }
+.ru.lu2.lit .lu2-hex .hx3 { animation-delay: .16s, 0s; }
+@keyframes lu2-hex-in { from { opacity: 0; transform: scale(.2) rotate(-60deg); } to { opacity: 1; } }
+@keyframes lu2-hex-spin { to { rotate: 360deg; } }
+/* Texte */
+.lu2-stage { margin-top: -2vh; }
+.ru.lu2 .ru-kicker { animation-delay: 1.05s; }
+.ru.lu2 .lu-word { animation: ru-glitch 3s steps(1) 2.2s infinite; }
+.ru.lu2 .lu-word span:first-child { animation-delay: 1.1s !important; }
+.ru.lu2 .lu-word span:last-child { animation-delay: 1.25s !important; }
+.lu2-lv { display: flex; align-items: center; gap: 14px; margin: 16px 0 6px; transform: skewX(-10deg); animation: ru-slide .45s var(--ease-out) both 1.35s; }
+.lu2-window { display: inline-block; height: clamp(4.4rem, 12vw, 6.5rem); overflow: hidden; padding: 0 .12em; position: relative;
+  -webkit-mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent); }
+.lu2-reel { display: flex; flex-direction: column; transition: transform .85s cubic-bezier(.2, .9, .2, 1.08); will-change: transform; }
+.lu2-reel b { display: block; height: clamp(4.4rem, 12vw, 6.5rem); font: 900 italic clamp(4.4rem, 12vw, 6.5rem)/1 var(--display); color: #fff; text-align: center;
+  text-shadow: 5px 5px 0 var(--sakura-deep), 10px 10px 0 rgba(70, 217, 255, .55); }
+.ru.lu2.counted .lu2-window { animation: ru-bump .6s var(--ease-spring); -webkit-mask: none; mask: none; }
+.ru.lu2.counted .lu2-reel b:last-child { color: #FFF0F7; text-shadow: 5px 5px 0 var(--sakura-deep), 10px 10px 0 rgba(70, 217, 255, .55), 0 0 34px rgba(255, 148, 203, .9); }
+.lu2-bar { position: relative; width: min(78vw, 480px); height: 14px; margin: 10px 0 6px; background: rgba(255, 255, 255, .1); transform: skewX(-20deg);
+  box-shadow: inset 0 0 0 1px rgba(184, 243, 255, .25); animation: ru-slide .5s var(--ease-out) both 1.6s; }
+.lu2-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(90deg, var(--cyan), #B8F3FF 60%, var(--sakura)); box-shadow: 0 0 14px rgba(255, 148, 203, .8); }
+.lu2-head { position: absolute; top: 50%; left: 0; width: 8px; height: 26px; margin: -13px 0 0 -4px; background: #fff; box-shadow: 0 0 12px #fff, 0 0 24px var(--sakura); opacity: 0; }
+.ru.lu2.lit .lu2-head { opacity: 1; }
+.ru.lu2.filled .lu2-head { animation: lu2-head-out .4s ease-out forwards; }
+@keyframes lu2-head-out { to { opacity: 0; transform: scaleY(2.2); } }
+.ru.lu2 .lu-next { animation-delay: 1.8s; }
+.lu2-stat { display: flex; align-items: center; gap: 10px; margin: 16px 0 0; padding: 6px 16px; transform: skewX(-10deg); background: #F3F7FF; color: var(--night);
+  font: 900 italic 1.05rem var(--display); box-shadow: 5px 5px 0 var(--sakura), -3px -3px 0 rgba(70, 217, 255, .5); animation: ru-slide .5s var(--ease-out) both 3.1s; }
+.lu2-sk { font: 400 1.15rem var(--jp-heavy); font-style: normal; }
+.lu2-pips { display: inline-flex; gap: 5px; }
+.lu2-pips i { width: 12px; height: 12px; transform: rotate(45deg); border: 2px solid var(--night); background: transparent; }
+.lu2-pips i.on { background: var(--night); }
+.lu2-pips i.next { border-color: var(--sakura-deep); }
+.lu2-pips i.lit { background: var(--sakura); border-color: var(--sakura-deep); animation: ru-pip-lit .6s var(--ease-spring) both; box-shadow: 0 0 12px var(--sakura); }
+.lu2-stat b { color: var(--sakura-deep); }
+.ru.lu2 .ru-sub { animation-delay: 3.4s; }
+.ru.lu2 .ru-skip { animation-delay: 3.8s; z-index: 7; }
+@media (prefers-reduced-motion: reduce) { .lu2-orb, .lu2-hex { display: none; } .lu2-bg { opacity: 1; } }
+
+/* ===== Dynamique globale (dyn.js) ===== */
+.fx-tap { position: fixed; z-index: 400; width: 0; height: 0; pointer-events: none; }
+.fx-tap .fx-wave { animation-duration: .5s; }
+.fx-tap .fx-spark { height: 12px; animation-duration: .45s; }
+.fx-tap .fx-spark:nth-child(odd) { box-shadow: 0 0 8px var(--cyan); }
+@keyframes fx-spark-tap { to { transform: rotate(var(--a)) translateY(-46px); opacity: 0; } }
+.fx-tap .fx-spark { animation-name: fx-spark-tap; }
+.dyn-press { animation: dyn-press .3s cubic-bezier(.3, 1.6, .5, 1) !important; }
+@keyframes dyn-press { 0% { scale: 1; } 30% { scale: .94; filter: brightness(1.35); } 100% { scale: 1; } }
+/* Le kanji du titre s'imprime */
+.jp-head.dyn-land { display: inline-block; animation: dyn-land .55s cubic-bezier(.2, 1.5, .4, 1) .12s both; }
+@keyframes dyn-land { 0% { opacity: 0; transform: scale(2.4) rotate(-10deg); filter: blur(8px) brightness(2); }
+  55% { opacity: 1; transform: scale(.92) rotate(2deg); filter: none; } 100% { transform: none; } }
+/* Survol : les cartes se soulèvent et s'illuminent (propriété « translate » : se cumule avec leurs inclinaisons) */
+@media (hover: hover) {
+  .lesson-card, .game-tile, .unit, .member, .link-card, .level, .point { transition: translate .22s cubic-bezier(.3, 1.5, .5, 1), filter .22s; }
+  .lesson-card:hover, .game-tile:hover, .unit:hover, .member:hover, .link-card:hover, .level:hover, .point:hover { translate: 0 -4px; filter: brightness(1.12) drop-shadow(0 10px 18px rgba(70, 217, 255, .25)); }
+}
+.dyn-counted { animation: ru-bump .5s var(--ease-spring); display: inline-block; }
+html.lite .lesson-card:hover, html.lite .game-tile:hover, html.lite .unit:hover { filter: none; }

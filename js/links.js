@@ -1,9 +1,10 @@
 // 絆 Liens de confident (façon Persona) : plus on échange avec quelqu'un (réactions, pokes), plus le lien monte.
 // Réactions : lues dans la base (visibles des deux côtés). Pokes : comptés de son côté, avec la progression du compte.
-import { h, jr, toast, reducedMotion } from './util.js?v=20261020222822';
-import * as C from './cloud.js?v=20261020222822';
-import * as S from './srs.js?v=20261020222822';
-import { play } from './sfx.js?v=20261020222822';
+import { h, jr, toast, reducedMotion } from './util.js?v=20261020223621';
+import * as C from './cloud.js?v=20261020223621';
+import * as S from './srs.js?v=20261020223621';
+import { play } from './sfx.js?v=20261020223621';
+import { fxLayer } from './fx.js?v=20261020223621';
 
 export const REACT_XP = 15;          // par réaction échangée (envoyée ou reçue)
 export const POKE_XP = 30;           // par poke : plus d'interaction, donc plus d'XP
@@ -109,7 +110,6 @@ export function rankUpBanner(info) {
   const card = tarotCard({ arcana, rank, name, size: 'xl' });
   card.append(h('i.ru-holo', { 'aria-hidden': 'true' }));
   const pips = h('div.ru-pips', { 'aria-hidden': 'true' }, ...Array.from({ length: MAX_RANK }, (_, k) => h('i', { class: k < from ? 'on' : k === rank - 1 ? 'next' : null, style: { '--k': k } })));
-  const fx = h('canvas.ru-fx', { 'aria-hidden': 'true' });
   const el = h('div.ru.cf', { role: 'dialog', 'aria-label': `Rang ${rank} atteint avec ${name || 'ton confident'}`, tabindex: '-1', style: { '--t0': `${T0}s` } },
     h('div.ru-freeze'),
     h('div.ru-scan', { 'aria-hidden': 'true' }),
@@ -121,7 +121,6 @@ export function rankUpBanner(info) {
     h('div.ru-streaks', { 'aria-hidden': 'true' }, ...Array.from({ length: 7 }, (_, k) => h('i', { style: { '--k': k } }))),
     petals,
     h('div.ru-waves', { 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
-    fx,
     h('div.ru-stage',
       h('div.ru-cardwrap', h('div.ru-float', card)),
       h('div.ru-text',
@@ -136,56 +135,16 @@ export function rankUpBanner(info) {
     h('div.ru-letterbox', { 'aria-hidden': 'true' }, h('i.top'), h('i.bot')),
     h('p.ru-skip', 'Touche pour continuer'));
   let alive = true;
-  const close = () => { if (el.classList.contains('out')) return; el.classList.add('out'); setTimeout(() => { alive = false; el.remove(); }, 600); };
+  const close = () => { if (el.classList.contains('out')) return; el.classList.add('out'); setTimeout(() => { alive = false; fx?.stop(); el.remove(); }, 600); };
   el.addEventListener('click', close);
   el.addEventListener('keydown', e => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); close(); } });
   document.body.append(el);
   el.focus({ preventScroll: true });
 
-  // --- Effets en particules : éclats à l'impact de la carte, braises qui montent ---------------
-  const g = fx.getContext('2d');
-  const dpr = Math.min(2, devicePixelRatio || 1);
-  const size = () => { fx.width = innerWidth * dpr; fx.height = innerHeight * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); };
-  size();
-  const parts = [];
-  const COLS = ['#46D9FF', '#FF94CB', '#FFFFFF', '#B8F3FF', '#FF4FA3'];
-  const burst = (x, y, n, power = 1) => {
-    for (let k = 0; k < n; k++) {
-      const a = Math.random() * Math.PI * 2, v = (250 + Math.random() * 650) * power;
-      parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120 * power, life: 0, max: .8 + Math.random() * .9,
-        s: (4 + Math.random() * 12) * power, rot: Math.random() * 6, vr: (Math.random() - .5) * 18, c: COLS[(Math.random() * COLS.length) | 0], shard: Math.random() < .7 });
-    }
-  };
+  // --- Particules (sprites pré-dessinés, sans flou recalculé : fluide même pendant les éclats) ---
+  const fx = reduced ? null : fxLayer(el, { cls: 'ru-fx' });
+  const burst = (x, y, n, power) => fx?.burst(x, y, n, power);
   const center = elx => { const r = elx.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
-  let lastT = 0, emberAcc = 0;
-  const tick = now => {
-    if (!alive) return;
-    const dt = Math.min(.05, (now - (lastT || now)) / 1000); lastT = now;
-    if (el.classList.contains('lit')) {
-      emberAcc += dt * 26;
-      while (emberAcc > 1) { emberAcc--; parts.push({ x: Math.random() * innerWidth, y: innerHeight + 10, vx: (Math.random() - .5) * 30, vy: -(60 + Math.random() * 120), life: 0, max: 3 + Math.random() * 3, s: 1.5 + Math.random() * 2.5, ember: true, c: Math.random() < .5 ? '#46D9FF' : '#FF94CB' }); }
-    }
-    g.clearRect(0, 0, innerWidth, innerHeight);
-    g.globalCompositeOperation = 'lighter';
-    for (let i = parts.length - 1; i >= 0; i--) {
-      const p = parts[i]; p.life += dt;
-      if (p.life >= p.max) { parts.splice(i, 1); continue; }
-      const q = p.life / p.max;
-      if (!p.ember) { p.vx *= 1 - 2.2 * dt; p.vy = p.vy * (1 - 2.2 * dt) + 420 * dt; p.rot += p.vr * dt; }
-      else p.vx += Math.sin(now / 400 + i) * 8 * dt;
-      p.x += p.vx * dt; p.y += p.vy * dt;
-      g.globalAlpha = (1 - q) * (p.ember ? .8 : 1);
-      g.fillStyle = p.c; g.shadowColor = p.c; g.shadowBlur = p.ember ? 8 : 14;
-      if (p.shard) {
-        g.save(); g.translate(p.x, p.y); g.rotate(p.rot);
-        g.beginPath(); g.moveTo(0, -p.s); g.lineTo(p.s * .45, p.s * .6); g.lineTo(-p.s * .5, p.s * .3); g.closePath(); g.fill(); g.restore();
-      } else { g.beginPath(); g.arc(p.x, p.y, p.ember ? p.s : p.s * .35, 0, Math.PI * 2); g.fill(); }
-    }
-    g.globalAlpha = 1; g.shadowBlur = 0;
-    requestAnimationFrame(tick);
-  };
-  if (!reduced) requestAnimationFrame(tick);
-  addEventListener('resize', size);
 
   // --- Bande-son et temps forts ---------------------------------------------------------------
   const at = (s, fn) => setTimeout(() => alive && fn(), s * 1000);
@@ -198,7 +157,9 @@ export function rankUpBanner(info) {
   at(T0 + .92, () => {                                             // la carte se plante : impact
     el.classList.add('impact', 'lit');
     play('slash');
-    const [x, y] = center(card); burst(x, y, 110, 1);
+    const [x, y] = center(card); burst(x, y, 90, 1);
+    fx?.embers(18);
+    el.querySelector('.ru-freeze')?.remove();          // plus besoin du flou de fond : la scène est opaque
     setTimeout(() => el.classList.remove('impact'), 500);
   });
   at(T0 + 1.6, () => {                                             // le rang monte
