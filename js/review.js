@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle } from './util.js?v=20261020161030';
-import { speak, speakBtn } from './voice.js?v=20261020161030';
-import { pitchSVG } from './pitch.js?v=20261020161030';
-import { play } from './sfx.js?v=20261020161030';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261020161030';
-import * as D from './data.js?v=20261020161030';
-import * as S from './srs.js?v=20261020161030';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion } from './util.js?v=20261020164831';
+import { speak, speakBtn } from './voice.js?v=20261020164831';
+import { pitchSVG } from './pitch.js?v=20261020164831';
+import { play } from './sfx.js?v=20261020164831';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261020164831';
+import * as D from './data.js?v=20261020164831';
+import * as S from './srs.js?v=20261020164831';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -301,7 +301,14 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   const list = mode === 'srs' ? [...queue] : [...items];
   const total = list.length;
   const retries = new Map();
-  let idx = 0, ok = 0, seen = 0, lastSentence = null, keyHandler = null, askedAt = 0;
+  let idx = 0, ok = 0, seen = 0, lastSentence = null, keyHandler = null, askedAt = 0, combo = 0, qNum = 0;
+  // Compteur de combo (réussites du premier coup d'affilée), affiché dans le coin de la carte
+  const comboEl = h('span.type-combo', { 'aria-live': 'polite' });
+  const paintCombo = () => {
+    comboEl.classList.toggle('on', combo >= 2);
+    comboEl.replaceChildren(...(combo >= 2 ? [h('b', `×${combo}`), h('small', 'COMBO')] : []));
+    if (combo >= 2) { comboEl.classList.remove('pop'); void comboEl.offsetWidth; comboEl.classList.add('pop'); }
+  };
   const missed = new Set();
 
   const bar = h('div.progress', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': total, 'aria-label': 'Progression de la séance' }, h('span'));
@@ -447,6 +454,17 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     const tools = h('div.type-tools', hintBtn, giveUp, romajiBox);
     function finishTyped(right, gaveUp = false) {
       input.readOnly = true; bar.classList.add('done'); tools.remove(); fb.remove();
+      // Bandeau « 正解 » / « ミス » façon Persona + combo des réussites du premier coup
+      const clean = right && !tries && !hints;
+      combo = clean ? combo + 1 : 0;
+      const card = stage.querySelector('.question.typed');
+      if (card) {
+        card.classList.add(right ? 'hit' : 'missed');
+        card.append(h(`div.slash-banner.${right ? 'ok' : 'ko'}`, { 'aria-hidden': 'true' },
+          h('b', { lang: 'ja' }, right ? (clean ? '正解' : 'OK') : '答え'),
+          h('span', right ? (clean ? (combo >= 3 ? `COMBO ×${combo}` : 'CORRECT!') : 'BIEN JOUÉ') : 'À REVOIR')));
+        paintCombo();
+      }
       answer(item, input.value.trim(), null, right, input, { gaveUp, tries, hints });
     }
     const check = () => {
@@ -456,11 +474,28 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       tries++;
       play('wrong');
       bar.classList.remove('shake'); void bar.offsetWidth; bar.classList.add('shake');
+      const cardEl = stage.querySelector('.question.typed');
+      if (cardEl) { cardEl.classList.remove('glitch'); void cardEl.offsetWidth; cardEl.classList.add('glitch'); }
+      if (combo) { combo = 0; paintCombo(); }
       fb.textContent = tries === 1 ? 'Pas tout à fait : vérifie l’orthographe (ー, っ, petits kana, katakana…) et réessaie.'
         : `Toujours pas (${tries} essais). Prends un indice, ou regarde la réponse : la question sera à revoir.`;
       input.select();
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing && !input.readOnly) { e.preventDefault(); e.stopPropagation(); check(); } });
+    // Frappe : la barre s'illumine, une petite étincelle part à chaque caractère
+    const counter = h('span.bar-count', { 'aria-hidden': 'true' });
+    input.addEventListener('input', () => {
+      if (input.readOnly) return;
+      const n = [...input.value].length;
+      bar.classList.toggle('typing', n > 0);
+      counter.textContent = n ? String(n) : '';
+      bar.classList.remove('key'); void bar.offsetWidth; bar.classList.add('key');
+      if (!reducedMotion()) {
+        const sp = h('i.key-spark', { style: { left: `${30 + Math.random() * 40}%`, '--dx': `${Math.random() * 60 - 30}px` } });
+        bar.append(sp); setTimeout(() => sp.remove(), 650);
+      }
+    });
+    bar.append(counter);
     let prompt;
     if (item.kind === 'cloze-type') {
       prompt = [
@@ -477,7 +512,12 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     }
     const chip = item.kind === 'cloze-type' ? regChip(item.s) : item.ex?.reg ? regChip(item.ex) : null;
     const nuances = item.kind === 'cloze-type' || item.conj ? nuanceChips(item.accept[0]) : [];
-    stage.replaceChildren(h('div.card.question.typed.clean',
+    qNum++;
+    const wm = item.kind === 'cloze-type' || item.kind === 'meaning-type' ? '文' : '語';
+    stage.replaceChildren(h('div.card.question.typed.clean.p3q',
+      h('span.type-wm', { lang: 'ja', 'aria-hidden': 'true' }, wm),
+      h('span.type-qno', { 'aria-hidden': 'true' }, h('small', 'Q'), String(qNum).padStart(2, '0')),
+      comboEl,
       h('div.type-top', h('span.type-tag', item.kind === 'cloze-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : item.kind === 'meaning-type' ? `Grammaire · ${D.LEVEL_NAMES[item.lv]}` : `Vocabulaire · ${item.lv}`),
         h('span.type-chips', ...nuances, chip)),
       h('div.type-body', ...prompt),

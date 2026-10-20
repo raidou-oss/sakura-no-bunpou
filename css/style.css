@@ -2147,3 +2147,105 @@ html.reduce-motion .flame svg, html.reduce-motion .flame .fl-in, html.reduce-mot
 .online-name .on-n { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .online-name .you { flex: none; }
 .online-row { min-width: 0; }
+
+/* ======================================================================
+   問 Exercices écrits façon Persona : plus vivants, même DA
+   ====================================================================== */
+.question.typed.p3q { position: relative; overflow: hidden; isolation: isolate;
+  background:
+    repeating-linear-gradient(-58deg, rgba(127, 168, 255, .045) 0 2px, transparent 2px 14px),
+    radial-gradient(80% 60% at 0% 0%, rgba(70, 217, 255, .13), transparent 60%),
+    radial-gradient(70% 60% at 100% 100%, rgba(255, 148, 203, .14), transparent 60%),
+    linear-gradient(160deg, rgba(14, 24, 72, .92), rgba(24, 14, 58, .92));
+  animation: q-in .5s var(--ease-out) both; }
+@keyframes q-in { from { opacity: 0; transform: translateX(40px) skewX(-6deg); clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); } 60% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } to { opacity: 1; transform: none; } }
+/* bande diagonale qui traverse le haut de la carte */
+.question.typed.p3q::before { content: ''; position: absolute; z-index: -1; left: -10%; top: 46px; width: 120%; height: 64px;
+  background: linear-gradient(90deg, transparent, rgba(255, 148, 203, .16) 20%, rgba(70, 217, 255, .16) 80%, transparent);
+  transform: rotate(-4deg); animation: q-band 6s ease-in-out infinite alternate; }
+@keyframes q-band { to { transform: rotate(-2deg) translateY(10px); } }
+/* coins façon viseur */
+.question.typed.p3q::after { content: ''; position: absolute; inset: 10px; pointer-events: none; z-index: 2;
+  background:
+    linear-gradient(var(--sakura), var(--sakura)) left top / 26px 3px no-repeat, linear-gradient(var(--sakura), var(--sakura)) left top / 3px 26px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 26px 3px no-repeat, linear-gradient(var(--cyan), var(--cyan)) right bottom / 3px 26px no-repeat; }
+/* grand kanji en filigrane */
+.type-wm { position: absolute; z-index: -1; right: -2%; bottom: -14%; font: 400 clamp(12rem, 30vw, 20rem)/1 var(--jp-heavy); color: transparent;
+  -webkit-text-stroke: 2px rgba(127, 168, 255, .08); pointer-events: none; transform: rotate(-8deg); }
+/* numéro de question */
+.type-qno { position: absolute; left: 22px; bottom: 16px; z-index: 1; font: 900 italic 2.4rem/1 var(--display); color: rgba(255, 255, 255, .07); letter-spacing: -.02em; }
+.type-qno small { font-size: .45em; margin-right: 2px; }
+/* étiquette en plaque blanche inclinée */
+.p3q .type-tag { display: inline-block; padding: 5px 12px 4px; background: var(--ink); color: var(--night); font: 900 italic .78rem/1 var(--display); letter-spacing: .14em;
+  transform: skewX(-12deg); box-shadow: 4px 4px 0 var(--sakura); }
+/* combo */
+.type-combo { position: absolute; top: 58px; right: 22px; z-index: 3; display: flex; flex-direction: column; align-items: flex-end; line-height: .9; transform: skewX(-10deg); opacity: 0; transition: opacity .3s; }
+.type-combo.on { opacity: 1; }
+.type-combo b { font: 900 italic 2.1rem var(--display); color: #fff; text-shadow: 3px 3px 0 var(--sakura-deep), 6px 6px 0 rgba(70, 217, 255, .5); }
+.type-combo small { font: 900 italic .7rem var(--display); letter-spacing: .3em; color: var(--cyan); }
+.type-combo.pop { animation: combo-pop .5s var(--ease-spring); }
+@keyframes combo-pop { 0% { transform: skewX(-10deg) scale(1.8) rotate(-8deg); } 100% { transform: skewX(-10deg) scale(1); } }
+/* la phrase : relief rose/cyan, trou qui pulse */
+.p3q .type-sentence { color: #fff; text-shadow: 2px 2px 0 rgba(255, 79, 163, .45), -1px -1px 0 rgba(70, 217, 255, .35); animation: q-text .6s var(--ease-out) .12s both; }
+@keyframes q-text { from { opacity: 0; letter-spacing: .25em; filter: blur(6px); } }
+.p3q .type-sentence .blank { position: relative; border-bottom: 0; height: .95em; vertical-align: -.12em; min-width: 3.4em;
+  background: linear-gradient(90deg, rgba(70, 217, 255, .18), rgba(255, 148, 203, .22)); transform: skewX(-12deg);
+  box-shadow: inset 0 -3px 0 var(--sakura); animation: blank-glow 1.6s ease-in-out infinite; }
+@keyframes blank-glow { 50% { box-shadow: inset 0 -3px 0 var(--cyan), 0 0 18px rgba(70, 217, 255, .45); } }
+.p3q .type-fr { animation: q-text .6s var(--ease-out) .22s both; }
+.p3q .type-fr .fr-key, .p3q .type-fr mark { background: linear-gradient(transparent 55%, rgba(255, 79, 163, .35) 55%); color: var(--sakura); padding: 0 2px; }
+/* barre de réponse : inclinée, bordure lumineuse animée, réagit à la frappe */
+.p3q .answer-bar { position: relative; overflow: visible; transform: skewX(-8deg); clip-path: none; border-radius: 0; border: 0;
+  background: linear-gradient(rgba(5, 9, 32, .95), rgba(5, 9, 32, .95)) padding-box,
+    conic-gradient(from var(--bar-a, 0deg), var(--sakura), var(--cyan), #2F6BFF, var(--sakura)) border-box;
+  border: 2px solid transparent; box-shadow: 6px 6px 0 rgba(255, 79, 163, .35); transition: box-shadow .25s, transform .25s var(--ease-spring); }
+.p3q .answer-bar > * { transform: skewX(8deg); }
+@property --bar-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.p3q .answer-bar:focus-within { animation: bar-spin 4s linear infinite; box-shadow: 8px 8px 0 rgba(255, 79, 163, .45), 0 0 26px rgba(70, 217, 255, .35); }
+@keyframes bar-spin { to { --bar-a: 360deg; } }
+.p3q .answer-bar.typing { transform: skewX(-8deg) scale(1.02); }
+.p3q .answer-bar::after { content: ''; position: absolute; inset: -2px; pointer-events: none; opacity: 0; box-shadow: 0 0 34px rgba(255, 148, 203, .75), inset 0 0 18px rgba(255, 148, 203, .35); }
+.p3q .answer-bar.key::after { animation: bar-key .22s ease-out; }
+@keyframes bar-key { 40% { opacity: 1; } }
+.p3q .answer-bar .type-answer { color: #fff; font: 700 1.45rem var(--jp); caret-color: var(--sakura); letter-spacing: .04em; }
+.p3q .answer-bar .type-answer::placeholder { color: rgba(255, 255, 255, .22); font-weight: 900; letter-spacing: .3em; }
+.bar-count { position: absolute; right: 54px; top: -12px; padding: 1px 7px; background: var(--sakura); color: var(--night); font: 900 italic .7rem var(--display); transform: skewX(-10deg) !important; }
+.bar-count:empty { display: none; }
+.key-spark { position: absolute; top: 4px; width: 6px; height: 6px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px var(--sakura), 0 0 4px #fff; pointer-events: none;
+  transform: none !important; animation: key-spark .6s ease-out forwards; }
+@keyframes key-spark { to { translate: var(--dx) -46px; opacity: 0; scale: .3; } }
+.p3q .answer-bar .bar-btn { background: rgba(255, 255, 255, .06); }
+.p3q .answer-bar .bar-btn.send { background: var(--sakura); color: var(--night); }
+.p3q .answer-bar.typing .bar-btn.send { animation: send-ready 1s ease-in-out infinite; }
+@keyframes send-ready { 50% { box-shadow: 0 0 0 4px rgba(255, 148, 203, .35); } }
+.p3q .answer-bar.done { animation: none; }
+.p3q.hit .answer-bar { background: linear-gradient(rgba(5, 9, 32, .95), rgba(5, 9, 32, .95)) padding-box, linear-gradient(90deg, #5ee6a8, var(--cyan)) border-box; box-shadow: 6px 6px 0 rgba(94, 230, 168, .4); }
+.p3q.missed .answer-bar { background: linear-gradient(rgba(5, 9, 32, .95), rgba(5, 9, 32, .95)) padding-box, linear-gradient(90deg, var(--ko), var(--sakura)) border-box; }
+/* outils (indice, réponse, clavier) en plaques inclinées */
+.p3q .type-tools .chip-btn { font-style: italic; font-weight: 900; letter-spacing: .03em; }
+/* erreur : petit glitch rose/cyan */
+.p3q.glitch .type-body { animation: q-glitch .35s steps(2) 1; }
+@keyframes q-glitch { 0% { transform: translate(0); text-shadow: none; } 25% { transform: translate(-4px, 1px); filter: drop-shadow(3px 0 0 rgba(255, 79, 163, .8)) drop-shadow(-3px 0 0 rgba(70, 217, 255, .8)); } 50% { transform: translate(3px, -1px); } 75% { transform: translate(-2px, 0); } 100% { transform: none; filter: none; } }
+/* bandeau 正解 / 答え qui traverse la carte */
+.slash-banner { position: absolute; left: -8%; right: -8%; top: 30%; z-index: 4; display: flex; align-items: baseline; justify-content: center; gap: 16px;
+  padding: 8px 0; transform: rotate(-6deg); pointer-events: none; animation: slash 1.25s var(--ease-out) forwards; }
+.slash-banner.ok { background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .95) 12%, rgba(255, 255, 255, .95) 88%, transparent); color: var(--night); }
+.slash-banner.ko { background: linear-gradient(90deg, transparent, rgba(255, 79, 163, .92) 12%, rgba(255, 79, 163, .92) 88%, transparent); color: #fff; }
+.slash-banner b { font: 400 clamp(2.2rem, 7vw, 3.6rem)/1 var(--jp-heavy); }
+.slash-banner.ok b { color: var(--sakura-deep); text-shadow: 3px 3px 0 rgba(70, 217, 255, .6); }
+.slash-banner span { font: 900 italic clamp(1.2rem, 4vw, 2rem)/1 var(--display); letter-spacing: .06em; }
+@keyframes slash { 0% { clip-path: inset(0 100% 0 0); opacity: 1; } 22% { clip-path: inset(0 0 0 0); } 70% { clip-path: inset(0 0 0 0); opacity: 1; } 100% { clip-path: inset(0 0 0 100%); opacity: 0; } }
+/* révélation : la bonne réponse sur une plaque blanche */
+.p3q .type-solution { display: inline-flex; align-items: baseline; gap: 10px; padding: 6px 16px; transform: skewX(-10deg); background: rgba(255, 255, 255, .06); border-left: 4px solid var(--sakura); }
+.p3q.hit .type-solution { border-left-color: #5ee6a8; }
+.p3q .type-solution strong { font-size: 1.6rem; }
+.p3q .reveal { animation: q-text .5s var(--ease-out) .35s both; }
+/* barre de progression des leçons/révisions : plus épaisse, inclinée, tête lumineuse */
+.session-head .progress { height: 12px; border-radius: 0; transform: skewX(-20deg); background: rgba(127, 168, 255, .14); overflow: visible; }
+.session-head .progress span { position: relative; border-radius: 0; background: linear-gradient(90deg, #2F6BFF, var(--cyan), var(--sakura)); }
+.session-head .progress span::after { content: ''; position: absolute; right: -3px; top: -4px; bottom: -4px; width: 6px; background: #fff; box-shadow: 0 0 12px #fff, 0 0 22px var(--sakura); }
+.session-count { font: 900 italic .9rem var(--display); color: var(--pale); }
+html.reduce-motion .p3q, html.reduce-motion .p3q *, html.reduce-motion .p3q::before { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .p3q, .p3q *, .p3q::before { animation: none !important; } }
+@media (max-width: 560px) { .type-qno { display: none; } .type-combo { top: 50px; right: 14px; } .type-combo b { font-size: 1.6rem; } }
+.answer-bar.done .bar-count, .answer-bar.done .key-spark { display: none; }
