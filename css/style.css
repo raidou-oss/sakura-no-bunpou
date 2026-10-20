@@ -3041,3 +3041,7 @@ html.reduce-motion .p3-head .ph-slash, html.reduce-motion .ph-l { animation: non
 @keyframes sl-kanji-pop { 50% { transform: scale(1.3) rotate(-8deg); } }
 .sl-pick-list li:hover em, .sl-pick-list li.hi em { text-shadow: 2px 2px 0 var(--sakura); }
 .sl-left:has(.sl-pick.open) { z-index: 9; }
+/* HUD calendrier un peu plus grand */
+.p3-head:has(.hud-date) { padding-top: 62px; }
+.hud-date { transform: rotate(-5deg) scale(1.05); }
+@media (max-width: 860px) { .hud-date { transform: rotate(-5deg) scale(.8); } .p3-head:has(.hud-date) { padding-top: 46px; } }
