@@ -1,6 +1,6 @@
 // 炎 Séries (jours d'affilée) : flammes bleues et auras autour de l'avatar selon la série.
-import { h, dayKey, DAY } from './util.js?v=20261020173449';
-import * as S from './srs.js?v=20261020173449';
+import { h, dayKey, DAY } from './util.js?v=20261020174522';
+import * as S from './srs.js?v=20261020174522';
 
 /** Paliers d'aura : plus la série est longue, plus l'aura est intense */
 export const AURAS = [
