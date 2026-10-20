@@ -1,8 +1,8 @@
 // Transitions façon menu Persona : bandes diagonales qui balaient l'écran entre deux pages,
 // éléments qui entrent en glissant (légèrement penchés, en cascade) et sélecteur de menu qui
 // saute d'un onglet à l'autre avec un petit rebond.
-import { reducedMotion } from './util.js?v=20261020182335';
-import { play } from './sfx.js?v=20261020182335';
+import { reducedMotion } from './util.js?v=20261020182524';
+import { play } from './sfx.js?v=20261020182524';
 
 const STAGGER = 'main > *, .levels > li, .game-grid > li, .units > li, .points > li, .members > li, .react-list > li, .example-list > li, .portal-points > li, tbody > tr';
 const MAX_STAGGER = 18;
@@ -41,6 +41,24 @@ export async function sweep(render, { label = '', section = '', soft = false } =
   play('slash');
   await wait(560);
   o.classList.remove('out');
+}
+
+/** Sortie de l'écran de chargement : même balayage que les changements de page (au-dessus du chargement) */
+export async function bootSweep(removeBoot, label = '桜') {
+  if (reducedMotion()) { removeBoot(); enter(); return; }
+  const o = bands();
+  o.classList.add('boot-sweep');
+  o.querySelector('.sweep-kanji').textContent = label;
+  o.classList.remove('out'); void o.offsetWidth;
+  o.classList.add('in');
+  play('whoosh');
+  await wait(320);
+  removeBoot();
+  enter();
+  o.classList.replace('in', 'out');
+  play('slash');
+  await wait(560);
+  o.classList.remove('out', 'boot-sweep');
 }
 
 /** Changement de niveau : le contenu glisse en fondu, la pastille d'onglet saute vers le nouveau niveau */

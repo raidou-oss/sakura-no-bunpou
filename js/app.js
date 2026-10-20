@@ -1,28 +1,28 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020182335';
-import * as D from './data.js?v=20261020182335';
-import * as S from './srs.js?v=20261020182335';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020182335';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020182335';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020182335';
-import * as C from './cloud.js?v=20261020182335';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020182335';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261020182335';
-import { play, setVolume } from './sfx.js?v=20261020182335';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020182335';
-import { celebrate, verdict } from './celebrate.js?v=20261020182335';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261020182335';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261020182335';
-import { initGloss } from './gloss.js?v=20261020182335';
-import { initLinks } from './links.js?v=20261020182335';
-import { streakBadge, weekStrip } from './aura.js?v=20261020182335';
-import { initLevelUp } from './levelup.js?v=20261020182335';
-import { confidentsPage } from './confidents.js?v=20261020182335';
-import { initTilt } from './tilt.js?v=20261020182335';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020182335';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020182524';
+import * as D from './data.js?v=20261020182524';
+import * as S from './srs.js?v=20261020182524';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020182524';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020182524';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020182524';
+import * as C from './cloud.js?v=20261020182524';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020182524';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261020182524';
+import { play, setVolume } from './sfx.js?v=20261020182524';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020182524';
+import { celebrate, verdict } from './celebrate.js?v=20261020182524';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261020182524';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261020182524';
+import { initGloss } from './gloss.js?v=20261020182524';
+import { initLinks } from './links.js?v=20261020182524';
+import { streakBadge, weekStrip } from './aura.js?v=20261020182524';
+import { initLevelUp } from './levelup.js?v=20261020182524';
+import { confidentsPage } from './confidents.js?v=20261020182524';
+import { initTilt } from './tilt.js?v=20261020182524';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020182524';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261020182335';
+import { GAMES } from './gamelist.js?v=20261020182524';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -565,7 +565,7 @@ C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => {
   booted = true;
   mountOnline();
   if (/access_token|error_description/.test(location.hash) && !C.isRecovery()) location.hash = '#/';
-  navAccount(); Promise.resolve(route()).finally(() => window.__bootDone?.());
+  navAccount(); Promise.resolve(route()).finally(() => window.__bootDone?.(bootSweep));
 });
 
 // --- Mise à jour automatique : si une nouvelle version est en ligne, on recharge (une fois) -------------

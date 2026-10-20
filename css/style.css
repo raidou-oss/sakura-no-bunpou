@@ -2249,3 +2249,5 @@ html.reduce-motion .p3q, html.reduce-motion .p3q *, html.reduce-motion .p3q::bef
 @media (prefers-reduced-motion: reduce) { .p3q, .p3q *, .p3q::before { animation: none !important; } }
 @media (max-width: 560px) { .type-qno { display: none; } .type-combo { top: 50px; right: 14px; } .type-combo b { font-size: 1.6rem; } }
 .answer-bar.done .bar-count, .answer-bar.done .key-spark { display: none; }
+/* La transition de page sert aussi à sortir de l'écran de chargement : elle passe au-dessus */
+.page-sweep.boot-sweep { z-index: 10001; }

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261020182335">
+  <link rel="stylesheet" href="css/style.css?v=20261020182524">
 </head>
 <body>
   <!-- 文 Écran de chargement façon Persona, thème grammaire : volets, titre glitché, particule qui se place avec onde de choc -->
@@ -130,15 +130,6 @@
       .bt-pct { min-width: 3.4em; font: 900 italic 2rem/1 'Barlow Condensed', sans-serif; color: #fff; text-shadow: 3px 3px 0 #FF4FA3; text-align: left; }
       .bt-status { font: 800 italic .8rem 'Barlow Condensed', sans-serif; letter-spacing: .32em; color: #46D9FF; animation: bt-in .5s ease 1.6s both; }
       .bt-status span { color: #fff; } .bt-status em { font-style: inherit; }
-      /* sortie : la carte part en biais, puis des volets balayent l'écran */
-      #boot.gone .bt-card { transform: translateX(-120vw) skewX(-20deg); transition: transform .55s cubic-bezier(.7,0,.3,1); }
-      #boot.gone .bt-out i { animation: bt-outwipe .7s cubic-bezier(.7,0,.3,1) forwards; }
-      .bt-out { position: absolute; inset: -30%; z-index: 30; pointer-events: none; }
-      .bt-out i { position: absolute; left: 0; right: 0; height: 26%; transform: skewY(-8deg) translateX(-120%); }
-      .bt-out i:nth-child(1) { top: 8%; background: #2F6BFF; } .bt-out i:nth-child(2) { top: 32%; background: #46D9FF; animation-delay: .05s !important; } .bt-out i:nth-child(3) { top: 56%; background: #F4F7FF; animation-delay: .1s !important; } .bt-out i:nth-child(4) { top: 80%; background: #FF4FA3; animation-delay: .15s !important; }
-      @keyframes bt-outwipe { 0% { transform: skewY(-8deg) translateX(-120%); } 50% { transform: skewY(-8deg) translateX(0); } 100% { transform: skewY(-8deg) translateX(120%); } }
-      #boot.gone .bt-bgall { opacity: 0; transition: opacity .2s ease .35s; }
-      #boot.gone { background: transparent; transition: background 0s .35s; }
       @media (max-width: 520px) { .bt-long { display: none; } .bt-jpline { font-size: 1.45rem; } .bt-q { padding: 20px 12px 14px; } .bt-hud { display: none; } .bt-pct { font-size: 1.5rem; } }
       @media (prefers-reduced-motion: reduce) { #boot *, #boot { animation: none !important; } .bt-shut { display: none; } }
     </style>
@@ -174,7 +165,6 @@
     </div>
     <div class="bt-shut" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <div class="bt-flash" aria-hidden="true"></div>
-    <div class="bt-out" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   </div>
   <script>
   (() => {
@@ -235,12 +225,17 @@
       bar.style.width = p + '%'; pct.textContent = Math.round(p) + '%'; hudn.textContent = String(Math.round(p)).padStart(3, '0');
     }, 110);
     const start = Date.now();
-    window.__bootDone = () => {
+    window.__bootDone = (siteSweep) => {
       if (done) return; done = true;
       const wait = Math.max(0, 3400 - (Date.now() - start));   // ouverture + au moins une particule placée
       setTimeout(() => {
         bar.style.width = '100%'; pct.textContent = '100%'; hudn.textContent = '100';
-        setTimeout(() => { boot.classList.add('gone'); timers.forEach(clearTimeout); clearInterval(tick); setTimeout(() => boot.remove(), 800); }, 380);
+        setTimeout(() => {
+          timers.forEach(clearTimeout); clearInterval(tick);
+          // Sortie avec la transition des pages du site (bandes diagonales + kanji)
+          if (typeof siteSweep === 'function') siteSweep(() => boot.remove(), '桜');
+          else { boot.style.transition = 'opacity .5s'; boot.style.opacity = '0'; setTimeout(() => boot.remove(), 520); }
+        }, 380);
       }, wait);
     };
     setTimeout(() => window.__bootDone(), 12000);
@@ -281,6 +276,6 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261020182335"></script>
+  <script type="module" src="js/app.js?v=20261020182524"></script>
 </body>
 </html>
