@@ -158,3 +158,83 @@ export function blossom(open = 1, size = 64, label = '') {
 
 /** Texte vertical robuste : un caractère par ligne (évite les soucis de writing-mode) */
 export const stack = text => [...text].map(c => `<span>${esc(c)}</span>`).join('');
+
+/**
+ * 正 Effet « particule qui se place » (comme sur l'écran de chargement) :
+ * onde de choc rose/cyan, étincelles, petit rebond de l'élément et tampon dans le coin de la carte.
+ */
+export function hitFx(target, { card = null, stamp = null, pop = true } = {}) {
+  if (!target || reducedMotion()) return;
+  // Les effets suivent l'élément (même s'il bouge pendant l'animation) : on les pose dedans, centrés
+  const host = /^(INPUT|TEXTAREA)$/.test(target.tagName) ? target.parentElement : target;
+  if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+  const layer = document.createElement('span');
+  layer.className = 'fx-layer';
+  layer.innerHTML = '<i class="fx-wave"></i><i class="fx-wave c"></i>' +
+    Array.from({ length: 12 }, (_, i) => `<i class="fx-spark" style="--a:${i * 30 + Math.random() * 14}deg"></i>`).join('');
+  host.append(layer);
+  setTimeout(() => layer.remove(), 900);
+  if (pop) { target.classList.remove('fx-pop'); void target.offsetWidth; target.classList.add('fx-pop'); }
+  if (card) {
+    if (getComputedStyle(card).position === 'static') card.style.position = 'relative';
+    card.classList.remove('fx-shake'); void card.offsetWidth; card.classList.add('fx-shake');
+    if (stamp) {
+      card.querySelector('.fx-stamp')?.remove();
+      const st = document.createElement('span');
+      st.className = 'fx-stamp'; st.textContent = stamp;
+      card.append(st);
+    }
+  }
+}
+export const HIT_WORDS = ['HIT!', 'NICE!', 'GOOD!', '正解!', 'GREAT!'];
+
+/**
+ * ✍ Saisie « douce » : le texte tapé apparaît caractère par caractère (fondu, léger glissé, flou qui se resserre).
+ * Le vrai champ reste dessous (curseur, sélection, clavier japonais) ; un calque identique affiche le texte animé.
+ */
+export function smoothType(field) {
+  if (!field || field.dataset.smooth) return;
+  const attach = () => {
+    if (!field.parentNode) return requestAnimationFrame(attach);
+    field.dataset.smooth = '1';
+    const wrap = document.createElement('span');
+    wrap.className = `st-wrap${field.tagName === 'TEXTAREA' ? ' st-area' : ''}`;
+    const mirror = document.createElement('span');
+    mirror.className = 'st-mirror';
+    mirror.setAttribute('aria-hidden', 'true');
+    field.replaceWith(wrap);
+    wrap.append(field, mirror);
+    field.classList.add('st-field');
+    let prev = '', styled = false;
+    const copy = () => {
+      if (!field.isConnected) return;
+      const c = getComputedStyle(field);
+      for (const k of ['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'letterSpacing', 'lineHeight', 'textAlign', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'wordSpacing', 'textIndent'])
+        mirror.style[k] = c[k];
+      mirror.style.borderStyle = 'solid'; mirror.style.borderColor = 'transparent';
+      mirror.style.borderWidth = c.borderWidth;
+      styled = true;
+    };
+    const render = () => {
+      if (!styled) copy();
+      const v = field.value;
+      let i = 0; while (i < prev.length && i < v.length && prev[i] === v[i]) i++;
+      const chars = [...v];
+      const keep = [...v.slice(0, i)].length;
+      mirror.replaceChildren(...chars.map((ch, k) => {
+        const s = document.createElement('span');
+        s.textContent = ch;
+        if (k >= keep && !reducedMotion()) { s.className = 'st-new'; s.style.animationDelay = `${Math.min(6, k - keep) * 22}ms`; }
+        return s;
+      }));
+      if (field.tagName === 'TEXTAREA') mirror.scrollTop = field.scrollTop; else mirror.scrollLeft = field.scrollLeft;
+      prev = v;
+    };
+    field.addEventListener('input', render);
+    field.addEventListener('scroll', () => { mirror.scrollTop = field.scrollTop; mirror.scrollLeft = field.scrollLeft; });
+    field.addEventListener('focus', copy);
+    window.addEventListener('resize', () => { styled = false; });
+    render();
+  };
+  attach();
+}

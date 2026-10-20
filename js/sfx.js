@@ -1,7 +1,7 @@
 // Effets sonores synthétisés en direct (Web Audio) : aucun fichier audio, rien à télécharger.
 // Inspirés de l'esprit des menus de Persona : bips de curseur cristallins, « shing » de validation,
 // balayages de vent pour les transitions, arpèges brillants pour les bonnes réponses.
-import * as S from './srs.js?v=20261020182524';
+import * as S from './srs.js?v=20261020183709';
 
 let ctx = null, master = null, verb = null, noiseBuf = null;
 const last = {};

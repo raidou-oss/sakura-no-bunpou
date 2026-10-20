@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion } from './util.js?v=20261020182524';
-import { speak, speakBtn } from './voice.js?v=20261020182524';
-import { pitchSVG } from './pitch.js?v=20261020182524';
-import { play } from './sfx.js?v=20261020182524';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261020182524';
-import * as D from './data.js?v=20261020182524';
-import * as S from './srs.js?v=20261020182524';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261020183709';
+import { speak, speakBtn } from './voice.js?v=20261020183709';
+import { pitchSVG } from './pitch.js?v=20261020183709';
+import { play } from './sfx.js?v=20261020183709';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261020183709';
+import * as D from './data.js?v=20261020183709';
+import * as S from './srs.js?v=20261020183709';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -451,6 +451,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     const send = h('button.bar-btn.send', { type: 'button', 'aria-label': 'Valider', onclick: () => check(),
       html: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 4.5l17 7.5-17 7.5 3-7.5z M6.5 12h7" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>' });
     const bar = h('div.answer-bar', listen, input, send);
+    smoothType(input);
     const tools = h('div.type-tools', hintBtn, giveUp, romajiBox);
     function finishTyped(right, gaveUp = false) {
       input.readOnly = true; bar.classList.add('done'); tools.remove(); fb.remove();
@@ -460,7 +461,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       const card = stage.querySelector('.question.typed');
       if (card) {
         card.classList.add(right ? 'hit' : 'missed');
-        card.append(h(`div.slash-banner.${right ? 'ok' : 'ko'}`, { 'aria-hidden': 'true' },
+        if (!right) card.append(h(`div.slash-banner.${right ? 'ok' : 'ko'}`, { 'aria-hidden': 'true' },
           h('b', { lang: 'ja' }, right ? (clean ? '正解' : 'OK') : '答え'),
           h('span', right ? (clean ? (combo >= 3 ? `COMBO ×${combo}` : 'CORRECT!') : 'BIEN JOUÉ') : 'À REVOIR')));
         paintCombo();
@@ -532,7 +533,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     const gaveUp = !!typedInfo?.gaveUp;
     if (gaveUp) { input.value = ''; input.placeholder = ''; item = { ...item, gaveUp: true }; }
     play(right ? 'correct' : gaveUp ? 'back' : 'wrong');
-    if (right) burst(input || buttons.find(b => b.dataset.v === choice));
+    if (right && !input) burst(buttons.find(b => b.dataset.v === choice));
     if (input) input.classList.add(right ? 'ok' : 'ko');
     seen++; if (right) ok++;
     (buttons || []).forEach(b => {
@@ -609,6 +610,8 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     card.append(reveal, actions);
     actions.querySelector('button')?.focus({ preventScroll: true });
     card.classList.add(right ? 'is-right' : 'is-wrong');
+    // Le mot se place dans la phrase comme une particule sur l'écran de chargement
+    if (right) requestAnimationFrame(() => hitFx(card.querySelector('.jp.big mark.filled') || input?.closest('.answer-bar') || card, { card, stamp: pick(HIT_WORDS) }));
   }
 
   function done(item, q) {

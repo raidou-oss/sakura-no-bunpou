@@ -2251,3 +2251,39 @@ html.reduce-motion .p3q, html.reduce-motion .p3q *, html.reduce-motion .p3q::bef
 .answer-bar.done .bar-count, .answer-bar.done .key-spark { display: none; }
 /* La transition de page sert aussi à sortir de l'écran de chargement : elle passe au-dessus */
 .page-sweep.boot-sweep { z-index: 10001; }
+/* Ouverture de l'écran de chargement : les bandes de transition sont déjà en place, puis s'écartent */
+.page-sweep.boot-open { visibility: visible; z-index: 10001; }
+.page-sweep.boot-open:not(.out) i { transform: translateX(0) skewX(-18deg); }
+.page-sweep.boot-open:not(.out) .sweep-kanji { opacity: 1; transform: translate(-50%, -50%) rotate(-6deg) scale(1); animation: boot-kanji .5s var(--ease-out) both; }
+@keyframes boot-kanji { from { opacity: 0; transform: translate(-80%, -50%) rotate(-6deg) scale(.9); } }
+
+/* 正 Effet « particule qui se place » */
+.fx-layer { position: absolute; left: 50%; top: 50%; z-index: 5; width: 0; height: 0; pointer-events: none; }
+.fx-wave { position: absolute; left: -12px; top: -12px; width: 24px; height: 24px; border: 3px solid var(--sakura); border-radius: 50%; animation: fx-wave .7s ease-out forwards; }
+.fx-wave.c { border-color: var(--cyan); animation-delay: .08s; }
+@keyframes fx-wave { from { transform: scale(.4); opacity: 1; } to { transform: scale(9); opacity: 0; border-width: 1px; } }
+.fx-spark { position: absolute; left: -2px; top: -8px; width: 4px; height: 16px; background: #fff; border-radius: 2px; box-shadow: 0 0 8px var(--sakura);
+  transform: rotate(var(--a)) translateY(0); animation: fx-spark .6s ease-out forwards; }
+@keyframes fx-spark { to { transform: rotate(var(--a)) translateY(-80px); opacity: 0; } }
+.fx-pop { animation: fx-pop .5s cubic-bezier(.2,1.7,.4,1); }
+@keyframes fx-pop { 0% { transform: scale(1.7) rotate(-6deg); } 100% { transform: none; } }
+mark.filled.fx-pop { display: inline-block; background: #F4F7FF; color: var(--night) !important; box-shadow: 4px 4px 0 var(--sakura), 0 0 22px rgba(255, 148, 203, .6); padding: 0 .15em; transform-origin: center; }
+.fx-shake { animation: fx-shake .3s !important; }
+@keyframes fx-shake { 25% { translate: -4px 2px; } 50% { translate: 4px -2px; } 75% { translate: -2px 1px; } }
+.fx-stamp { position: absolute; right: 18px; top: 52px; z-index: 6; padding: 3px 11px; background: var(--sakura-deep, #FF4FA3); color: #fff; font: 900 italic 1.05rem/1 var(--display); letter-spacing: .1em;
+  box-shadow: 3px 3px 0 var(--night); transform: rotate(8deg) scale(0); animation: fx-stamp .45s cubic-bezier(.2,1.8,.4,1) forwards; pointer-events: none; }
+@keyframes fx-stamp { to { transform: rotate(8deg) scale(1); } }
+html.reduce-motion .fx-layer { display: none; }
+
+/* ✍ Saisie douce : calque animé au-dessus du vrai champ */
+.st-wrap { position: relative; display: block; flex: 1; min-width: 0; }
+.st-wrap > .st-field { width: 100%; color: transparent !important; -webkit-text-fill-color: transparent; caret-color: var(--sakura); }
+.st-mirror { position: absolute; inset: 0; overflow: hidden; pointer-events: none; white-space: pre; color: #fff; display: flex; align-items: center; justify-content: center; }
+.st-area .st-mirror { display: block; white-space: pre-wrap; overflow-wrap: break-word; color: var(--ink); }
+.st-mirror span { display: inline-block; white-space: pre; }
+.st-mirror .st-new { animation: st-in .32s cubic-bezier(.2,.9,.25,1) both; }
+@keyframes st-in { from { opacity: 0; transform: translateY(.45em) scale(.7); filter: blur(5px); color: var(--sakura); text-shadow: 0 0 14px var(--sakura); } 60% { color: #fff; } }
+.st-wrap:has(.st-field.ok) .st-mirror, .st-wrap:has(.st-field.ko) .st-mirror { display: none; }
+.st-wrap > .st-field.ok, .st-wrap > .st-field.ko { -webkit-text-fill-color: currentColor; }
+.st-wrap > .st-field.ok { color: var(--ok) !important; } .st-wrap > .st-field.ko { color: var(--ko) !important; }
+.st-wrap > .st-field::placeholder { -webkit-text-fill-color: rgba(255, 255, 255, .25); }

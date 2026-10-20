@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261020182524">
+  <link rel="stylesheet" href="css/style.css?v=20261020183709">
 </head>
 <body>
   <!-- 文 Écran de chargement façon Persona, thème grammaire : volets, titre glitché, particule qui se place avec onde de choc -->
@@ -20,17 +20,6 @@
         background: radial-gradient(70% 60% at 15% 10%, rgba(70, 217, 255, .16), transparent 60%), radial-gradient(70% 60% at 90% 100%, rgba(255, 148, 203, .18), transparent 60%), #040A22; }
       #boot > * { grid-area: 1 / 1; }
       #boot * { box-sizing: border-box; }
-      /* --- ouverture : volets inclinés qui claquent puis s'écartent --- */
-      .bt-shut { position: absolute; inset: -30%; z-index: 20; pointer-events: none; }
-      .bt-shut i { position: absolute; left: 0; right: 0; height: 26%; transform: skewY(-8deg) translateX(-110%); animation: bt-shutin .55s cubic-bezier(.7,0,.3,1) forwards, bt-shutout .6s cubic-bezier(.7,0,.3,1) forwards; }
-      .bt-shut i:nth-child(1) { top: 8%; background: #FF4FA3; animation-delay: 0s, .7s; }
-      .bt-shut i:nth-child(2) { top: 32%; background: #F4F7FF; animation-delay: .06s, .76s; }
-      .bt-shut i:nth-child(3) { top: 56%; background: #46D9FF; animation-delay: .12s, .82s; }
-      .bt-shut i:nth-child(4) { top: 80%; background: #2F6BFF; animation-delay: .18s, .88s; }
-      @keyframes bt-shutin { to { transform: skewY(-8deg) translateX(0); } }
-      @keyframes bt-shutout { from { transform: skewY(-8deg) translateX(0); } to { transform: skewY(-8deg) translateX(115%); } }
-      .bt-flash { position: absolute; inset: 0; z-index: 19; background: #fff; opacity: 0; pointer-events: none; animation: bt-flash .5s ease-out .78s; }
-      @keyframes bt-flash { 0% { opacity: .85; } 100% { opacity: 0; } }
       /* --- fond --- */
       .bt-stripes { position: absolute; inset: -20%; background: repeating-linear-gradient(-58deg, rgba(127, 168, 255, .055) 0 2px, transparent 2px 22px); animation: bt-slide 5s linear infinite; pointer-events: none; }
       @keyframes bt-slide { to { transform: translateX(44px); } }
@@ -131,7 +120,7 @@
       .bt-status { font: 800 italic .8rem 'Barlow Condensed', sans-serif; letter-spacing: .32em; color: #46D9FF; animation: bt-in .5s ease 1.6s both; }
       .bt-status span { color: #fff; } .bt-status em { font-style: inherit; }
       @media (max-width: 520px) { .bt-long { display: none; } .bt-jpline { font-size: 1.45rem; } .bt-q { padding: 20px 12px 14px; } .bt-hud { display: none; } .bt-pct { font-size: 1.5rem; } }
-      @media (prefers-reduced-motion: reduce) { #boot *, #boot { animation: none !important; } .bt-shut { display: none; } }
+      @media (prefers-reduced-motion: reduce) { #boot *, #boot { animation: none !important; } .boot-open { display: none; } }
     </style>
     <div class="bt-bgall" aria-hidden="true" style="position:absolute;inset:0;display:grid;place-items:center">
       <div class="bt-stripes"></div>
@@ -163,13 +152,16 @@
       <div class="bt-load"><div class="bt-bar"><i></i><u></u></div><span class="bt-pct">0%</span></div>
       <div class="bt-status"><span lang="ja">読込中</span> · CHARGEMENT<em class="bt-long"> DE TA GRAMMAIRE</em></div>
     </div>
-    <div class="bt-shut" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-    <div class="bt-flash" aria-hidden="true"></div>
+    <div class="page-sweep boot-open" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><span class="sweep-kanji" lang="ja">桜</span></div>
   </div>
   <script>
   (() => {
     const boot = document.getElementById('boot');
     if (!boot) return;
+    // Ouverture : la même transition que les changements de page du site (bandes + 桜) qui s'écarte
+    const open = boot.querySelector('.boot-open');
+    setTimeout(() => open.classList.add('out'), 520);
+    setTimeout(() => open.remove(), 1200);
     const Q = [
       ['N5', '私', 'は', '学生です。', '<mark>Moi</mark>, je suis étudiant.', '<b>は</b> pose le thème de la phrase'],
       ['N5', '猫', 'が', '魚を食べた。', '<mark>Le chat</mark> a mangé le poisson.', '<b>が</b> marque le sujet de l’action'],
@@ -276,6 +268,6 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261020182524"></script>
+  <script type="module" src="js/app.js?v=20261020183709"></script>
 </body>
 </html>

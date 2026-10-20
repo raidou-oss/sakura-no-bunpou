@@ -1,13 +1,13 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261020182524';
-import * as D from '../data.js?v=20261020182524';
-import * as S from '../srs.js?v=20261020182524';
-import { play as sfx } from '../sfx.js?v=20261020182524';
-import { speakBtn } from '../voice.js?v=20261020182524';
-import { burst } from '../celebrate.js?v=20261020182524';
-import { regChip } from '../review.js?v=20261020182524';
+import { h, ruby, shuffle, kana, plain, jr, hitFx, HIT_WORDS, smoothType } from '../util.js?v=20261020183709';
+import * as D from '../data.js?v=20261020183709';
+import * as S from '../srs.js?v=20261020183709';
+import { play as sfx } from '../sfx.js?v=20261020183709';
+import { speakBtn } from '../voice.js?v=20261020183709';
+import { burst } from '../celebrate.js?v=20261020183709';
+import { regChip } from '../review.js?v=20261020183709';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
@@ -101,6 +101,7 @@ export default async function theme(root, { settings, saveBest, params }) {
       let tries = 0, hintLevel = 0, closed = false;
       const input = h('textarea.theme-input', { lang: 'ja', rows: 2, placeholder: romaji ? 'Tape en romaji : kinou sushi wo tabeta…' : 'Écris la phrase en japonais…', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', 'aria-label': 'Ta phrase en japonais' });
       if (wk && wk.bind) wk.bind(input, { IMEMode: true });
+      smoothType(input);
       const fb = h('div.theme-feedback', { 'aria-live': 'polite' });
       const hint = h('div.theme-hint');
       const ok = h('button.btn.primary', { onclick: check }, 'Valider');
@@ -143,6 +144,7 @@ export default async function theme(root, { settings, saveBest, params }) {
           sfx('correct'); burst(input, { count: 16 });
           fb.replaceChildren(h('p.theme-ok', 'Juste ! +2'),
             h('p.small', `Ta phrase est correcte, mais en forme ${s.reg === 'p' ? 'neutre' : 'polie'} : on demandait la forme ${s.reg === 'p' ? 'polie (です・ます)' : 'neutre (forme simple)'}.`), answerLine());
+          hitFx(input, { card: input.closest('.card'), stamp: 'OK!', pop: false });
           return close();
         }
         if (re.test(v)) {
@@ -150,6 +152,7 @@ export default async function theme(root, { settings, saveBest, params }) {
           const pts = Math.max(1, (tries ? 2 : 3) - (hintLevel ? 1 : 0)); score += pts; scoreEl.textContent = score;
           sfx('correct'); burst(input, { count: 28 });
           fb.replaceChildren(h('p.theme-ok', tries ? `Bien corrigé ! +${pts}` : `Parfait ! +${pts}`), answerLine());
+          hitFx(input, { card: input.closest('.card'), stamp: tries ? 'NICE!' : HIT_WORDS[(Math.random() * HIT_WORDS.length) | 0], pop: false });
           return close();
         }
         tries++;
