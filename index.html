@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261020181342">
+  <link rel="stylesheet" href="css/style.css?v=20261020181939">
 </head>
 <body>
   <!-- 文 Écran de chargement façon Persona, thème grammaire : volets, titre glitché, particule qui se place avec onde de choc -->
@@ -130,15 +130,27 @@
       .bt-pct { min-width: 3.4em; font: 900 italic 2rem/1 'Barlow Condensed', sans-serif; color: #fff; text-shadow: 3px 3px 0 #FF4FA3; text-align: left; }
       .bt-status { font: 800 italic .8rem 'Barlow Condensed', sans-serif; letter-spacing: .32em; color: #46D9FF; animation: bt-in .5s ease 1.6s both; }
       .bt-status span { color: #fff; } .bt-status em { font-style: inherit; }
-      /* sortie : la carte part en biais, puis des volets balayent l'écran */
-      #boot.gone .bt-card { transform: translateX(-120vw) skewX(-20deg); transition: transform .55s cubic-bezier(.7,0,.3,1); }
-      #boot.gone .bt-out i { animation: bt-outwipe .7s cubic-bezier(.7,0,.3,1) forwards; }
-      .bt-out { position: absolute; inset: -30%; z-index: 30; pointer-events: none; }
-      .bt-out i { position: absolute; left: 0; right: 0; height: 26%; transform: skewY(-8deg) translateX(-120%); }
-      .bt-out i:nth-child(1) { top: 8%; background: #2F6BFF; } .bt-out i:nth-child(2) { top: 32%; background: #46D9FF; animation-delay: .05s !important; } .bt-out i:nth-child(3) { top: 56%; background: #F4F7FF; animation-delay: .1s !important; } .bt-out i:nth-child(4) { top: 80%; background: #FF4FA3; animation-delay: .15s !important; }
-      @keyframes bt-outwipe { 0% { transform: skewY(-8deg) translateX(-120%); } 50% { transform: skewY(-8deg) translateX(0); } 100% { transform: skewY(-8deg) translateX(120%); } }
-      #boot.gone .bt-bgall { opacity: 0; transition: opacity .2s ease .35s; }
-      #boot.gone { background: transparent; transition: background 0s .35s; }
+      /* sortie : une tempête de pétales de sakura traverse l'écran et emporte le chargement */
+      .bt-storm { position: absolute; inset: 0; z-index: 30; pointer-events: none; overflow: hidden; }
+      .bt-storm i { position: absolute; left: 0; top: var(--y); width: var(--s); height: var(--s); opacity: 0;
+        background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-16 -22 32 46'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23FFF3F8'/%3E%3Cstop offset='.55' stop-color='%23FFB8D9'/%3E%3Cstop offset='1' stop-color='%23FF6FB1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M-4 -19 L0 -12 L4 -19 C12 -17 16 -6 12 6 C9 14 3 20 0 23 C-3 20 -9 14 -12 6 C-16 -6 -12 -17 -4 -19 Z' fill='url(%23g)'/%3E%3Cpath d='M0 -10 C1 0 0 10 0 20' stroke='%23FF4FA3' stroke-opacity='.35' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+        filter: drop-shadow(0 4px 6px rgba(255, 79, 163, .35)); will-change: transform; }
+      @keyframes bt-blow {
+        0% { opacity: 0; transform: translate(-18vw, 0) rotate3d(1, .4, .2, 0deg) scale(.6); }
+        8% { opacity: 1; }
+        25% { transform: translate(17vw, calc(var(--dy) * .25 - 3vh)) rotate3d(1, .4, .2, calc(var(--r) * .25)) scale(1); }
+        50% { transform: translate(52vw, calc(var(--dy) * .5 + 3vh)) rotate3d(1, .4, .2, calc(var(--r) * .5)) scale(1.1); }
+        75% { transform: translate(87vw, calc(var(--dy) * .75 - 2vh)) rotate3d(1, .4, .2, calc(var(--r) * .75)) scale(1); }
+        85% { opacity: 1; }
+        100% { opacity: 0; transform: translate(122vw, var(--dy)) rotate3d(1, .4, .2, var(--r)) scale(.9); } }
+      .bt-bloom { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(80% 70% at 50% 50%, rgba(255, 214, 232, .45), rgba(255, 148, 203, .16) 50%, transparent 75%); animation: bt-bloom 2s ease .3s forwards; }
+      @keyframes bt-bloom { 35% { opacity: 1; } 100% { opacity: 0; } }
+      .bt-storm.go i { animation: bt-blow var(--d) cubic-bezier(.35,.1,.45,1) var(--w) forwards; }
+      .bt-storm { position: fixed; z-index: 10000; }
+      /* le chargement s'efface derrière le front de pétales, de gauche à droite */
+      #boot.gone { pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent 0 34%, #000 52%); mask-image: linear-gradient(90deg, transparent 0 34%, #000 52%);
+        -webkit-mask-size: 300% 100%; mask-size: 300% 100%; -webkit-mask-position: 100% 0; mask-position: 100% 0; animation: bt-reveal 1.8s cubic-bezier(.45,.05,.55,.95) .35s forwards; }
+      @keyframes bt-reveal { to { -webkit-mask-position: 0% 0; mask-position: 0% 0; } }
       @media (max-width: 520px) { .bt-long { display: none; } .bt-jpline { font-size: 1.45rem; } .bt-q { padding: 20px 12px 14px; } .bt-hud { display: none; } .bt-pct { font-size: 1.5rem; } }
       @media (prefers-reduced-motion: reduce) { #boot *, #boot { animation: none !important; } .bt-shut { display: none; } }
     </style>
@@ -174,7 +186,6 @@
     </div>
     <div class="bt-shut" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <div class="bt-flash" aria-hidden="true"></div>
-    <div class="bt-out" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   </div>
   <script>
   (() => {
@@ -240,7 +251,22 @@
       const wait = Math.max(0, 3400 - (Date.now() - start));   // ouverture + au moins une particule placée
       setTimeout(() => {
         bar.style.width = '100%'; pct.textContent = '100%'; hudn.textContent = '100';
-        setTimeout(() => { boot.classList.add('gone'); timers.forEach(clearTimeout); clearInterval(tick); setTimeout(() => boot.remove(), 800); }, 380);
+        setTimeout(() => {
+          // tempête de pétales : une vague dense qui balaie l'écran de gauche à droite
+          const storm = document.createElement('div'); storm.className = 'bt-storm'; storm.setAttribute('aria-hidden', 'true');
+          storm.append(Object.assign(document.createElement('div'), { className: 'bt-bloom' }));
+          const N = innerWidth < 600 ? 120 : 230;
+          for (let i = 0; i < N; i++) {
+            const e = document.createElement('i'), s = 14 + Math.random() ** 2 * 54;
+            e.style.cssText = `--y:${Math.random() * 110 - 8}vh;--s:${s}px;--d:${1.8 + Math.random() * .6}s;--w:${(Math.random() * .5).toFixed(2)}s;--dy:${(Math.random() * 40 - 12).toFixed(1)}vh;--r:${(Math.random() * 900 + 360) * (Math.random() < .5 ? -1 : 1)}deg`;
+            storm.append(e);
+          }
+          const css = boot.querySelector('style'); document.head.append(css);   // les styles survivent au retrait de l'écran
+          document.body.append(storm); void storm.offsetWidth; storm.classList.add('go');
+          boot.classList.add('gone'); timers.forEach(clearTimeout); clearInterval(tick);
+          setTimeout(() => boot.remove(), 2300);
+          setTimeout(() => { storm.remove(); css.remove(); }, 3300);
+        }, 380);
       }, wait);
     };
     setTimeout(() => window.__bootDone(), 12000);
@@ -281,6 +307,6 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261020181342"></script>
+  <script type="module" src="js/app.js?v=20261020181939"></script>
 </body>
 </html>
