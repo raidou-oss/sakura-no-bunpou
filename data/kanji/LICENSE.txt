@@ -1,0 +1,3 @@
+Ordre des traits : KanjiVG — Copyright (C) 2009-2024 Ulrich Apel.
+Distribué sous licence Creative Commons Attribution-Share Alike 3.0 (https://creativecommons.org/licenses/by-sa/3.0/).
+Source : https://kanjivg.tagaini.net — données converties en JSON par tools/build_kanji_strokes.py.

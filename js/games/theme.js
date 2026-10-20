@@ -1,13 +1,13 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain, jr, hitFx, HIT_WORDS, smoothType } from '../util.js?v=20261020202308';
-import * as D from '../data.js?v=20261020202308';
-import * as S from '../srs.js?v=20261020202308';
-import { play as sfx } from '../sfx.js?v=20261020202308';
-import { speakBtn } from '../voice.js?v=20261020202308';
-import { burst } from '../celebrate.js?v=20261020202308';
-import { regChip } from '../review.js?v=20261020202308';
+import { h, ruby, shuffle, kana, plain, jr, hitFx, HIT_WORDS, smoothType } from '../util.js?v=20261020212927';
+import * as D from '../data.js?v=20261020212927';
+import * as S from '../srs.js?v=20261020212927';
+import { play as sfx } from '../sfx.js?v=20261020212927';
+import { speakBtn } from '../voice.js?v=20261020212927';
+import { burst } from '../celebrate.js?v=20261020212927';
+import { regChip } from '../review.js?v=20261020212927';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;

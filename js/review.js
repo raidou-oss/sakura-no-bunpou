@@ -1,11 +1,12 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261020202308';
-import { speak, speakBtn } from './voice.js?v=20261020202308';
-import { pitchSVG } from './pitch.js?v=20261020202308';
-import { play } from './sfx.js?v=20261020202308';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261020202308';
-import * as D from './data.js?v=20261020202308';
-import * as S from './srs.js?v=20261020202308';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261020212927';
+import { strokeOrder } from './strokes.js?v=20261020212927';
+import { speak, speakBtn } from './voice.js?v=20261020212927';
+import { pitchSVG } from './pitch.js?v=20261020212927';
+import { play } from './sfx.js?v=20261020212927';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261020212927';
+import * as D from './data.js?v=20261020212927';
+import * as S from './srs.js?v=20261020212927';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -565,7 +566,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       if (big && item.ex) big.innerHTML = sentenceHTML(item.ex, { fill: true, furi, cls: right ? 'ok' : 'ko' });
       reveal.append(h('div.type-explain',
         h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v), h('p.small', v.m),
-        !item.ex ? vocabExamplesEl(v, { max: 1, compact: true }) : null));
+        !item.ex ? vocabExamplesEl(v, { max: 1, compact: true }) : null, strokeOrder(v.w)));
     } else if (item.kind === 'cloze' || item.kind === 'cloze-type') {
       const big = card.querySelector('.jp.big');
       big.innerHTML = sentenceHTML(item.s, { fill: true, furi, cls: right ? 'ok' : 'ko' });
@@ -581,7 +582,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
       reveal.append(h('p.small', h('span', { lang: 'ja', html: ruby(D.gramLabel(item.g), true) }), ` : ${item.g.s}`), gramAudio(item.g, { compact: true }));
     } else {
       const v = item.v;
-      reveal.append(h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v), h('p.small', v.m), vocabExamplesEl(v, { max: 1, compact: true }));
+      reveal.append(h('p.reading', { lang: 'ja', html: ruby(v.f || v.w, true) }), wordAudio(v), h('p.small', v.m), vocabExamplesEl(v, { max: 1, compact: true }), strokeOrder(v.w));
       if (S.getSettings().autoSpeak) speak(kana(v.f || v.w));
     }
 
