@@ -2702,3 +2702,29 @@ html.lite .fx-disc, html.lite .fx-shard { display: none; }
 /* Onde du kanji de titre : un cran plus grande, traits plus longs */
 .fx-tap[style*="--fxs"] .fx-spark { --d: -110px; }
 .fx-tap[style*="--fxs"] .fx-x { width: 140px; left: -70px; }
+
+/* ===== Titres façon Persona à l'arrivée sur une page ===== */
+.p3-head .ph-slash { position: absolute; left: -4%; right: -4%; top: 18%; height: 70%; z-index: 0; pointer-events: none; }
+.p3-head .ph-slash i { position: absolute; left: 0; width: 100%; transform: translateX(-110%) skewX(-28deg); }
+.p3-head .ph-slash i:nth-child(1) { top: 0; height: 46%; background: var(--sakura); }
+.p3-head .ph-slash i:nth-child(2) { top: 40%; height: 28%; background: var(--cyan); }
+.p3-head .ph-slash i:nth-child(3) { top: 70%; height: 22%; background: #F3F7FF; }
+.p3-head.p3-in .ph-slash i { animation: ph-slash .7s cubic-bezier(.7, 0, .2, 1) both; }
+.p3-head.p3-in .ph-slash i:nth-child(2) { animation-delay: .06s; }
+.p3-head.p3-in .ph-slash i:nth-child(3) { animation-delay: .12s; }
+@keyframes ph-slash { 0% { transform: translateX(-110%) skewX(-28deg); } 45% { transform: translateX(0) skewX(-28deg); } 100% { transform: translateX(115%) skewX(-28deg); } }
+/* Grand mot en contour : il glisse depuis la droite puis dérive doucement */
+.p3-head.p3-in .ph-bg { animation: ph-bg-in .9s cubic-bezier(.2, .8, .2, 1) .15s both, ph-bg-drift 14s ease-in-out 1s infinite alternate; }
+@keyframes ph-bg-in { from { opacity: 0; transform: translateX(28%) skewX(-12deg); filter: blur(6px); } }
+@keyframes ph-bg-drift { to { transform: translateX(-3%); } }
+/* Bandeau blanc : il se déroule, puis chaque lettre tombe en place */
+.p3-head.p3-in .ph-word { animation: ph-word-in .45s cubic-bezier(.2, .9, .2, 1) .28s both; }
+@keyframes ph-word-in { 0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); } 100% { clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); } }
+.ph-l { display: inline-block; }
+.p3-head.p3-in .ph-l { animation: ph-l-in .42s cubic-bezier(.2, 1.6, .4, 1) both; animation-delay: calc(.4s + var(--i) * .035s); }
+@keyframes ph-l-in { 0% { opacity: 0; transform: translateY(-60%) rotate(-14deg) scale(1.5); color: var(--sakura-deep); } 60% { opacity: 1; transform: translateY(6%) rotate(2deg) scale(.96); } 100% { transform: none; } }
+/* Sous-titre et notes : arrivent après, en glissant */
+.p3-head.p3-in > p, .p3-head.p3-in > .section-note { animation: ph-note-in .5s cubic-bezier(.2, .8, .2, 1) .7s both; }
+@keyframes ph-note-in { from { opacity: 0; transform: translateX(-24px); } }
+html.reduce-motion .p3-head .ph-slash, html.reduce-motion .ph-l { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .p3-head .ph-slash { display: none; } .p3-head .ph-l, .p3-head .ph-word, .p3-head .ph-bg { animation: none !important; } }
