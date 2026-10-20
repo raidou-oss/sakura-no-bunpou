@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020014523';
-import * as D from './data.js?v=20261020014523';
-import * as S from './srs.js?v=20261020014523';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020014523';
-import { speakBtn, speak } from './voice.js?v=20261020014523';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020014523';
-import { play } from './sfx.js?v=20261020014523';
-import { celebrate, verdict } from './celebrate.js?v=20261020014523';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020095400';
+import * as D from './data.js?v=20261020095400';
+import * as S from './srs.js?v=20261020095400';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020095400';
+import { speakBtn, speak } from './voice.js?v=20261020095400';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020095400';
+import { play } from './sfx.js?v=20261020095400';
+import { celebrate, verdict } from './celebrate.js?v=20261020095400';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -85,6 +85,22 @@ const masteryOfItems = items => {
 const isDone = (lv, kind, n) => !!S.getExtra(DONE_KEY, {})[`${lv}:${kind}:${n}`];
 const isSeen = (lv, kind, n) => !!S.getExtra(SEEN_KEY, {})[`${lv}:${kind}:${n}`];
 const mark = (key, lv, kind, ns) => { const m = { ...S.getExtra(key, {}) }; ns.forEach(n => { m[`${lv}:${kind}:${n}`] = Date.now(); }); S.setExtra(key, m); };
+
+// ふ Bouton furigana des leçons : affiche / masque les lectures au-dessus des kanji (réglage lié au compte)
+function furiToggle(root) {
+  const btn = h('button.furi-toggle', { type: 'button' });
+  const paint = () => {
+    const off = !!S.getSettings().lessonFuriOff;
+    btn.setAttribute('aria-pressed', String(!off));
+    btn.classList.toggle('on', !off);
+    btn.title = off ? 'Afficher les furigana (lectures en kana au-dessus des kanji)' : 'Masquer les furigana pour t’entraîner à lire les kanji';
+    btn.innerHTML = `<ruby lang="ja">振<rt>ふ</rt></ruby><span>Furigana</span><b>${off ? 'OFF' : 'ON'}</b>`;
+    root.el?.classList.toggle('furi-off', off);
+  };
+  btn.addEventListener('click', () => { S.setSettings({ lessonFuriOff: !S.getSettings().lessonFuriOff }); paint(); });
+  paint();
+  return btn;
+}
 
 // --- Hub -------------------------------------------------------------------------------
 export async function lessonsHub(main, lv = 'N5') {
@@ -321,10 +337,13 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
     celebrate({ ...verdict(first / Math.max(1, total)), title: '修了！', sub: covered.length > 1 ? `${covered.length} leçons validées` : `${title} validée`, detail: `${first} / ${total} du premier coup` });
   }
 
+  const wrapRoot = { el: null };
   const wrap = h('div.session.lesson-wrap',
     h('header.session-head.lesson-head-bar', h('a.session-quit', { href: `#/lecons/${lv}`, 'aria-label': 'Quitter la leçon' }, '×'), bar, counter),
-    h('header.lesson-title', h('h1', title), h('span.lesson-kind', { lang: 'ja', html: jr(KINDS[kind].jp) }), phase, dots),
+    h('header.lesson-title', h('h1', title), h('span.lesson-kind', { lang: 'ja', html: jr(KINDS[kind].jp) }), phase, dots, furiToggle(wrapRoot)),
     stage);
+  wrapRoot.el = wrap;
+  wrap.classList.toggle('furi-off', !!S.getSettings().lessonFuriOff);
   main.replaceChildren(
     h('a.back', { href: `#/lecons/${lv}` }, `Leçons ${lv} · ${KINDS[kind].label}`),
     wrap);

@@ -1934,3 +1934,53 @@ html.reduce-motion .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sa
 .ru > * { grid-area: 1 / 1; }
 .ru-bars, .ru-streaks, .ru-petals { position: absolute; inset: 0; pointer-events: none; }
 .ru-skip { white-space: nowrap; text-align: center; }
+
+/* 昇 LEVEL UP (même mise en scène que le RANK UP, en version « joueur ») */
+.lu .ru-bars .b1 { background: var(--sakura); }
+.lu .ru-bars .b2 { background: var(--cyan); }
+.lu-stage { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px; max-width: min(92vw, 760px); }
+.lu-stage .ru-kicker { animation-delay: .9s; }
+.lu-word { justify-content: center; font-size: clamp(3.6rem, 13vw, 9rem) !important; }
+.lu-word span:first-child { animation-delay: 1s !important; }
+.lu-word span:last-child { animation-delay: 1.15s !important; }
+.lu-lv { display: flex; align-items: baseline; gap: 14px; margin: 18px 0 8px; transform: skewX(-10deg); animation: ru-slide .5s var(--ease-out) both 1.35s; }
+.lu-lvlabel { font: 900 italic 1.6rem var(--display); color: var(--cyan); letter-spacing: .1em; }
+.lu-old { font: 900 italic 2.6rem/1 var(--display); color: var(--mist); opacity: .7; }
+.lu-arrow { font-size: 1.4rem; color: var(--sakura); animation: lu-arrow 1s ease-in-out infinite 1.6s; }
+.lu-num { display: inline-block; font: 900 italic clamp(4.4rem, 12vw, 6.5rem)/0.9 var(--display); color: #fff; text-shadow: 5px 5px 0 var(--sakura-deep), 10px 10px 0 rgba(70, 217, 255, .55); }
+.lu-num.bump { animation: ru-bump .7s var(--ease-spring); }
+.lu-bar { width: min(78vw, 460px); height: 12px; margin: 6px 0 4px; background: rgba(255, 255, 255, .12); transform: skewX(-20deg); overflow: hidden; animation: ru-slide .5s var(--ease-out) both 1.55s; }
+.lu-fill { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--sakura)); box-shadow: 0 0 14px var(--sakura); transition: width 1.2s var(--ease-out) .2s; }
+.lu-next { margin: 4px 0 0; color: var(--pale); font-weight: 700; animation: ru-slide .5s var(--ease-out) both 1.7s; }
+.lu-stat { margin: 14px 0 0; padding: 4px 16px; transform: skewX(-10deg); background: var(--ink); color: var(--night); font: 900 italic 1.05rem var(--display); animation: ru-slide .5s var(--ease-out) both 2s; }
+.lu-stat span { font-family: var(--jp-heavy); font-style: normal; }
+.lu-stat b { color: var(--sakura-deep); margin-left: 6px; }
+@keyframes lu-arrow { 50% { transform: translateX(6px); } }
+
+/* ふ Furigana masqués dans une leçon */
+.furi-off rt:not(.furi-toggle rt) { visibility: hidden; }
+.furi-toggle { display: inline-flex; align-items: center; gap: 7px; margin-left: 10px; padding: 5px 12px 5px 10px; border: 0; cursor: pointer; flex: none;
+  background: rgba(255, 255, 255, .08); color: var(--mist); font: 800 italic .8rem var(--display); letter-spacing: .04em;
+  transform: skewX(-10deg); box-shadow: 3px 3px 0 rgba(70, 217, 255, .35); transition: background .2s, color .2s, transform .2s var(--ease-spring); }
+.furi-toggle > * { transform: skewX(10deg); }
+.furi-toggle ruby { font: 900 1.05rem var(--jp-heavy); font-style: normal; }
+.furi-toggle rt { font-size: .5rem; color: var(--sakura); }
+.furi-toggle b { padding: 1px 6px; background: rgba(255, 255, 255, .12); color: var(--mist); font-size: .72rem; }
+.furi-toggle.on { background: var(--ink); color: var(--night); }
+.furi-toggle.on b { background: var(--sakura); color: var(--night); }
+.furi-toggle:hover { transform: skewX(-10deg) translateY(-2px); }
+@media (max-width: 560px) { .furi-toggle span { display: none; } }
+
+/* ⌨ Clavier japonais (exercices écrits) */
+.kb-toggle { display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 10px; border: 1px solid rgba(70, 217, 255, .35); cursor: pointer;
+  background: rgba(10, 16, 46, .7); color: var(--mist); text-align: left; transform: skewX(-8deg); transition: background .2s, color .2s, box-shadow .2s, transform .2s var(--ease-spring); }
+.kb-toggle > * { transform: skewX(8deg); }
+.kb-ico { font-size: 1.35rem; line-height: 1; }
+.kb-txt { display: flex; flex-direction: column; line-height: 1.15; }
+.kb-txt b { font: 900 italic .9rem var(--display); color: #fff; }
+.kb-txt small { font-size: .72rem; opacity: .85; }
+.kb-state { padding: 2px 7px; font: 900 italic .72rem var(--display); background: rgba(255, 255, 255, .12); }
+.kb-toggle.on { background: var(--ink); color: var(--night); border-color: var(--ink); box-shadow: 4px 4px 0 var(--sakura); }
+.kb-toggle.on .kb-txt b { color: var(--night); }
+.kb-toggle.on .kb-state { background: var(--sakura); color: var(--night); }
+.kb-toggle:hover { transform: skewX(-8deg) translateY(-2px); }

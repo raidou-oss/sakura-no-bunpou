@@ -1,11 +1,11 @@
 // 並べ替え (Narabe) : remettre les morceaux d'une phrase dans l'ordre.
-import { h, ruby, shuffle, jr } from '../util.js?v=20261020014523';
-import { play as sfx } from '../sfx.js?v=20261020014523';
-import { burst } from '../celebrate.js?v=20261020014523';
-import { tileBoard } from './tiles.js?v=20261020014523';
-import { speakBtn } from '../voice.js?v=20261020014523';
-import * as D from '../data.js?v=20261020014523';
-import * as S from '../srs.js?v=20261020014523';
+import { h, ruby, shuffle, jr } from '../util.js?v=20261020095400';
+import { play as sfx } from '../sfx.js?v=20261020095400';
+import { burst } from '../celebrate.js?v=20261020095400';
+import { tileBoard } from './tiles.js?v=20261020095400';
+import { speakBtn } from '../voice.js?v=20261020095400';
+import * as D from '../data.js?v=20261020095400';
+import * as S from '../srs.js?v=20261020095400';
 
 const ROUNDS = 8;
 

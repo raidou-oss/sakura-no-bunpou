@@ -13,8 +13,8 @@
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261020014523';
-import * as S from './srs.js?v=20261020014523';
+import * as D from './data.js?v=20261020095400';
+import * as S from './srs.js?v=20261020095400';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };
@@ -51,7 +51,7 @@ export const LESSON_CREDIT = 0.3;
 export const isMastered = c => !!c && c.i >= MATURE && (c.r || 0) >= 4 && (c.e || 0) >= 2.3;
 let coveredP = null, coveredAt = 0;
 async function coveredKeys() {
-  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261020014523').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
+  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261020095400').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
   return coveredP;
 }
 /** Score total d'un élément : révisions espacées + jeux / exercices */
@@ -169,6 +169,8 @@ export const pct = x => Math.round(Math.max(0, Math.min(1, x || 0)) * 100);
 
 // --- Niveau du joueur (Lv) : vient de l'XP, comme dans un RPG -----------------------------
 // Lv n demande 12·(n−1)² XP : rapide au début, puis de plus en plus long. Plafond : 99.
+/** Mon XP (identique partout sur le site : profil, communauté, en ligne, menu) */
+export const myXp = () => (S.getExtra('peak', {}) || {}).xp ?? null;
 export function playerLevel(xp = 0) {
   xp = Math.max(0, Number(xp) || 0);
   const lv = Math.min(99, Math.floor(Math.sqrt(xp / 12)) + 1);

@@ -1,12 +1,14 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020014523';
-import * as D from './data.js?v=20261020014523';
-import { wallpaperSVG } from './wallpaper.js?v=20261020014523';
-import * as C from './cloud.js?v=20261020014523';
-import { play } from './sfx.js?v=20261020014523';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores } from './level.js?v=20261020014523';
-import { GAMES } from './gamelist.js?v=20261020014523';
-import * as L from './links.js?v=20261020014523';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020095400';
+import * as D from './data.js?v=20261020095400';
+import { wallpaperSVG } from './wallpaper.js?v=20261020095400';
+import * as C from './cloud.js?v=20261020095400';
+import { play } from './sfx.js?v=20261020095400';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020095400';
+// Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
+const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
+import { GAMES } from './gamelist.js?v=20261020095400';
+import * as L from './links.js?v=20261020095400';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -46,8 +48,9 @@ function avatar(p, size = 'm', { level = false } = {}) {
   const el = h(`span.avatar.${size}`);
   if (p?.avatar_url) el.append(h('img', { src: p.avatar_url, alt: '', loading: 'lazy' }));
   else el.append(h('span.avatar-initials', initials(p?.username)));
-  if (!level || p?.xp == null) return el;
-  return h(`span.av-wrap.${size}`, el, lvBadge(p.xp));
+  const xp = xpFor(p);
+  if (!level || xp == null) return el;
+  return h(`span.av-wrap.${size}`, el, lvBadge(xp));
 }
 
 /** Pastille de niveau façon RPG, posée au-dessus de l'avatar */
@@ -272,7 +275,7 @@ export async function communityPage(main) {
       avatar(p, 'l', { level: true }),
       h('span.member-name', p.username, p.id === me ? h('span.you', 'toi') : null),
       rankBlock({ rank: p.rank, gauge: p.gauge }, { compact: true }),
-      h('span.small', `${p.xp} XP · ${p.learned} cartes`))))
+      h('span.small', `${xpFor(p) ?? 0} XP · ${p.learned} cartes`))))
       : [h('li.empty-line', 'Personne ne correspond à cette recherche.')]));
   };
   search.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(load, 300); });
@@ -487,7 +490,7 @@ export function mountOnline() {
         const item = h('li.online-item', { class: open ? 'online-item open' : 'online-item' });
         const row = h('button.online-row', { type: 'button', disabled: isMe, onclick: () => { openId = open ? null : u.id; pokeOpen = null; render(C.onlineUsers()); } },
           avatar(u, 's'),
-          u.xp != null ? lvBadge(u.xp, { inline: true }) : null,
+          xpFor(u) != null ? lvBadge(xpFor(u), { inline: true }) : null,
           h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil', html: jr('先輩') }) : null),
           h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank || 0).replace(' validé', '')));
         item.append(row);

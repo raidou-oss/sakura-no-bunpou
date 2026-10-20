@@ -1,13 +1,13 @@
 // 作文 (Thème) : une phrase en français, à écrire entièrement en japonais, librement.
 // Correction tolérante : kanji ou kana au choix pour chaque mot, hiragana / katakana équivalents,
 // ponctuation et espaces ignorés. Sinon, on montre la différence caractère par caractère.
-import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261020014523';
-import * as D from '../data.js?v=20261020014523';
-import * as S from '../srs.js?v=20261020014523';
-import { play as sfx } from '../sfx.js?v=20261020014523';
-import { speakBtn } from '../voice.js?v=20261020014523';
-import { burst } from '../celebrate.js?v=20261020014523';
-import { regChip } from '../review.js?v=20261020014523';
+import { h, ruby, shuffle, kana, plain, jr } from '../util.js?v=20261020095400';
+import * as D from '../data.js?v=20261020095400';
+import * as S from '../srs.js?v=20261020095400';
+import { play as sfx } from '../sfx.js?v=20261020095400';
+import { speakBtn } from '../voice.js?v=20261020095400';
+import { burst } from '../celebrate.js?v=20261020095400';
+import { regChip } from '../review.js?v=20261020095400';
 
 const ROUNDS = 6;
 const KANJI_READING = /([㐀-鿿豈-﫿々〆ヶ〇]+)（([^）]+)）/g;
@@ -64,7 +64,7 @@ export default async function theme(root, { settings, saveBest, params }) {
   function menu() {
     const counts = Object.fromEntries(D.LEVELS.map(l => [l, poolFor(l).length]));
     const romajiBox = h('label.check', h('input', { type: 'checkbox', checked: romaji, onchange: e => { romaji = e.target.checked; try { localStorage.setItem('sakura.theme.romaji', romaji ? '1' : '0'); } catch {} S.setSettings({ romaji }); } }),
-      h('span', 'Taper en romaji (converti en kana automatiquement)'));
+      h('span', '⌨ Clavier japonais : tape en romaji sur ton clavier, ça devient des kana (« neko » → ねこ, « NEKO » → ネコ)'));
     root.replaceChildren(head(null), h('section.card.game-intro',
       h('p', `Lis la phrase en français et écris-la en japonais, en entier. ${ROUNDS} phrases par partie.`),
       h('p.small', 'Kanji ou kana, comme tu veux : 日本語 et にほんご sont acceptés tous les deux. La ponctuation et les espaces ne comptent pas.'),

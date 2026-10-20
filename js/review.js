@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji } from './util.js?v=20261020014523';
-import { speak, speakBtn } from './voice.js?v=20261020014523';
-import { pitchSVG } from './pitch.js?v=20261020014523';
-import { play } from './sfx.js?v=20261020014523';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261020014523';
-import * as D from './data.js?v=20261020014523';
-import * as S from './srs.js?v=20261020014523';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle } from './util.js?v=20261020095400';
+import { speak, speakBtn } from './voice.js?v=20261020095400';
+import { pitchSVG } from './pitch.js?v=20261020095400';
+import { play } from './sfx.js?v=20261020095400';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261020095400';
+import * as D from './data.js?v=20261020095400';
+import * as S from './srs.js?v=20261020095400';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -433,12 +433,9 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
   function askTyped(item, furi) {
     const input = h('input.type-answer', { type: 'text', lang: 'ja', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false',
       placeholder: '答え', 'aria-label': 'Ta réponse en japonais' });
-    let romaji = false; try { romaji = S.getSettings().romaji ?? localStorage.getItem('sakura.theme.romaji') === '1'; } catch {}
-    if (romaji) bindRomaji(input);
-    const romajiBox = h('label.check.small.type-romaji', { title: 'En romaji, tape en MAJUSCULES pour obtenir des katakana' }, h('input', { type: 'checkbox', checked: romaji, onchange: e => {
-      try { localStorage.setItem('sakura.theme.romaji', e.target.checked ? '1' : '0'); } catch {} S.setSettings({ romaji: e.target.checked });
-      if (e.target.checked) bindRomaji(input); else toast('Romaji désactivé à la prochaine question');
-      input.focus(); } }), h('span', 'Romaji (MAJUSCULES = katakana)'));
+    const romajiBox = kanaKeyboardToggle(input, {
+      get: () => { try { return S.getSettings().romaji ?? localStorage.getItem('sakura.theme.romaji') === '1'; } catch { return false; } },
+      set: on => { try { localStorage.setItem('sakura.theme.romaji', on ? '1' : '0'); } catch {} S.setSettings({ romaji: on }); } });
     const fb = h('p.type-feedback', { 'aria-live': 'polite' });
     const hintBox = h('div.type-hints');
     let tries = 0, hints = 0;

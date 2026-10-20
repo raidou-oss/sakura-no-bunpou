@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020014523';
-import * as S from './srs.js?v=20261020014523';
-import { computeRank, publicScores } from './level.js?v=20261020014523';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020095400';
+import * as S from './srs.js?v=20261020095400';
+import { computeRank, publicScores } from './level.js?v=20261020095400';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -315,6 +315,8 @@ if (typeof window !== 'undefined') {
   window.addEventListener('online', () => { if (session) syncNow().catch(() => {}); });
   window.addEventListener('pagehide', () => { if (session && syncState.status === 'pending') { clearTimeout(pushTimer); syncNow().catch(() => {}); } });
   setInterval(() => { if (session && document.visibilityState === 'visible') syncNow().catch(() => {}); }, 90000);
+  // Niveau gagné : on prévient tout de suite les autres (liste « En ligne », communauté)
+  window.addEventListener('sakura:level', () => { trackPresence(); syncNow().catch(() => {}); });
 }
 
 // --- Présence : qui est connecté en ce moment -------------------------------------------
@@ -352,7 +354,8 @@ export const onlineUsers = () => online;
 
 function presencePayload() {
   return { id: session.user.id, username: profile?.username || '…', avatar_url: profile?.avatar_url || null,
-    rank: profile?.rank ?? 0, gauge: profile?.gauge ?? 0, xp: profile?.xp ?? 0, since: Date.now() };
+    rank: Math.max(profile?.rank ?? 0, (S.getExtra('peak', {}) || {}).rank ?? 0), gauge: profile?.gauge ?? 0,
+    xp: Math.max(profile?.xp ?? 0, (S.getExtra('peak', {}) || {}).xp ?? 0), since: Date.now() };
 }
 function trackPresence() { if (presence && session) presence.track(presencePayload()).catch(() => {}); }
 
@@ -363,7 +366,8 @@ async function startLive() {
   presence = c.channel('sakura-online', { config: { presence: { key: me } } });
   presence.on('presence', { event: 'sync' }, () => {
     const state = presence.presenceState();
-    online = Object.values(state).map(metas => metas[metas.length - 1]).filter(Boolean)
+    // Plusieurs onglets / appareils pour un même élève : on garde l'entrée la plus avancée (et la plus récente à égalité)
+    online = Object.values(state).map(metas => metas.reduce((a, m) => (!a || (m.xp || 0) > (a.xp || 0) || ((m.xp || 0) === (a.xp || 0) && (m.since || 0) > (a.since || 0)) ? m : a), null)).filter(Boolean)
       .sort((a, b) => (a.rank - b.rank) || (a.gauge - b.gauge) || String(a.username).localeCompare(String(b.username)));   // du N5 au N1
     onlineListeners.forEach(fn => fn(online));
   });

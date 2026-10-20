@@ -72,7 +72,35 @@ let wanakanaP = null;
 /** Saisie en romaji → kana (WanaKana, chargé à la demande ; sans effet s'il n'est pas joignable) */
 export function bindRomaji(input) {
   wanakanaP = wanakanaP || import('https://cdn.jsdelivr.net/npm/wanakana@5.3.1/+esm').catch(() => null);
-  wanakanaP.then(w => w?.bind?.(input, { IMEMode: true }));
+  return wanakanaP.then(w => { if (w?.bind && !input.dataset.wk) { w.bind(input, { IMEMode: true }); input.dataset.wk = '1'; } });
+}
+export function unbindRomaji(input) {
+  if (!wanakanaP || !input.dataset.wk) return;
+  wanakanaP.then(w => { try { w?.unbind?.(input); } catch {} delete input.dataset.wk; });
+}
+/**
+ * ⌨ Bouton « Clavier japonais » : on tape en romaji sur un clavier AZERTY/QWERTY, ça devient des kana.
+ * Le choix est lié au compte (réglage romaji).
+ */
+export function kanaKeyboardToggle(input, { get, set }) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'kb-toggle';
+  btn.title = 'Tape en lettres latines sur ton clavier : « neko » devient ねこ. En MAJUSCULES, « NEKO » devient ネコ.';
+  const paint = () => {
+    const on = get();
+    btn.setAttribute('aria-pressed', String(on));
+    btn.classList.toggle('on', on);
+    btn.innerHTML = `<span class="kb-ico" aria-hidden="true">⌨</span><span class="kb-txt"><b>Clavier japonais</b><small>${on ? 'Activé · neko → ねこ · NEKO → ネコ' : 'Désactivé · clique pour taper en kana'}</small></span><span class="kb-state">${on ? 'ON' : 'OFF'}</span>`;
+  };
+  btn.addEventListener('click', () => {
+    const on = !get(); set(on);
+    if (on) bindRomaji(input); else unbindRomaji(input);
+    paint(); input.focus();
+  });
+  if (get()) bindRomaji(input);
+  paint();
+  return btn;
 }
 
 /** Texte brut sans lecture ni balises de phrase */
