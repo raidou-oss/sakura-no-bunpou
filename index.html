@@ -10,129 +10,58 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261020171306">
+  <link rel="stylesheet" href="css/style.css?v=20261020173449">
 </head>
 <body>
-  <!-- 神 Écran de chargement : les kami du folklore japonais, le temps que le site se charge en arrière-plan -->
+  <!-- 神 Écran de chargement : les kami du folklore japonais, en grandes illustrations, le temps que le site se charge -->
   <div id="boot" role="status" aria-live="polite" aria-label="Chargement de 桜の文法">
     <style>
-      #boot { position: fixed; inset: 0; z-index: 9999; overflow: hidden; display: grid; place-items: center; color: #EAF2FF;
-        background: radial-gradient(120% 80% at 50% 110%, #2a1450 0%, transparent 55%), radial-gradient(90% 70% at 50% -10%, #0c2a6e 0%, transparent 60%), #040A22;
-        font-family: 'Barlow', system-ui, sans-serif; transition: opacity .7s ease, visibility .7s; }
+      #boot { position: fixed; inset: 0; z-index: 9999; overflow: hidden; background: #040A22; color: #EAF2FF; font-family: 'Barlow', system-ui, sans-serif; transition: opacity .8s ease, visibility .8s; }
       #boot.gone { opacity: 0; visibility: hidden; pointer-events: none; }
-      #boot.gone .bt-stage { transform: scale(1.12); filter: blur(8px); transition: transform .7s ease, filter .7s ease; }
       #boot * { box-sizing: border-box; }
-      .bt-bgk { position: absolute; font: 400 min(110vh, 95vw)/1 'Dela Gothic One', 'Zen Kaku Gothic New', serif; color: transparent; -webkit-text-stroke: 2px rgba(127, 168, 255, .07); pointer-events: none; animation: bt-breathe 6s ease-in-out infinite; }
-      .bt-shime { position: absolute; top: 0; left: -2%; right: -2%; height: 74px; pointer-events: none; }
-      .bt-torii { position: absolute; bottom: -6vh; left: 50%; width: min(140vw, 760px); transform: translateX(-50%); opacity: .3; pointer-events: none; filter: blur(.5px); }
-      .bt-lore, .bt-status { text-shadow: 0 2px 8px #040A22, 0 0 2px #040A22; }
-      .bt-ring { position: absolute; width: min(86vmin, 680px); aspect-ratio: 1; animation: bt-spin 40s linear infinite; pointer-events: none; }
-      .bt-ring2 { width: min(64vmin, 500px); animation-duration: 26s; animation-direction: reverse; opacity: .6; }
-      .bt-stage { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; text-align: center; }
-      .bt-emblem { position: relative; width: min(46vmin, 300px); aspect-ratio: 1; }
-      .bt-emblem svg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transform: scale(.82) rotate(-6deg); filter: blur(10px) drop-shadow(0 0 0 transparent);
-        transition: opacity .7s ease, transform .9s cubic-bezier(.2,.9,.2,1.2), filter .7s ease; }
-      .bt-emblem svg.on { opacity: 1; transform: none; filter: blur(0) drop-shadow(0 0 26px rgba(70, 217, 255, .45)); }
-      .bt-halo { position: absolute; inset: -12%; border-radius: 50%; background: radial-gradient(circle, rgba(70, 217, 255, .22), rgba(255, 148, 203, .1) 45%, transparent 70%); animation: bt-breathe 3s ease-in-out infinite; }
-      .bt-name { display: flex; align-items: baseline; gap: 14px; transform: skewX(-10deg); margin-top: 4px; }
-      .bt-jp { font: 400 clamp(2.4rem, 8vw, 4rem)/1 'Dela Gothic One', serif; color: #fff; text-shadow: 4px 4px 0 #FF4FA3, 8px 8px 0 rgba(70, 217, 255, .55); }
-      .bt-ro { padding: 4px 12px; background: #F4F7FF; color: #040A22; font: 800 italic clamp(1rem, 3vw, 1.4rem)/1 'Barlow Condensed', sans-serif; letter-spacing: .12em; box-shadow: 5px 5px 0 #FF4FA3; }
-      .bt-lore { max-width: 30em; min-height: 2.8em; margin: 4px 0 0; color: #B9C8F0; font-style: italic; font-size: clamp(.9rem, 2.4vw, 1.05rem); }
-      .bt-swap { animation: bt-swap .7s ease both; }
-      .bt-bar { position: relative; width: min(70vw, 380px); height: 10px; margin-top: 14px; transform: skewX(-20deg); background: rgba(127, 168, 255, .14); }
+      .bt-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.08); transition: opacity 1.1s ease; }
+      .bt-scene.on { opacity: 1; animation: bt-kb 7s ease-out both; }
+      @keyframes bt-kb { from { transform: scale(1.08) translate(1%, 1%); } to { transform: scale(1) translate(0, 0); } }
+      .bt-shade { position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(180deg, rgba(4,10,34,.55) 0%, transparent 22%, transparent 52%, rgba(4,10,34,.82) 78%, #040A22 100%); }
+      .bt-bars i { position: absolute; left: 0; right: 0; height: 9vh; background: #040A22; z-index: 2; }
+      .bt-bars i:first-child { top: 0; } .bt-bars i:last-child { bottom: 0; }
+      .bt-ui { position: absolute; left: 0; right: 0; bottom: 6vh; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 18px; text-align: center; }
+      .bt-name { display: flex; align-items: baseline; gap: 14px; transform: skewX(-10deg); }
+      .bt-jp { font: 400 clamp(2.6rem, 8vw, 4.6rem)/1 'Dela Gothic One', 'Zen Kaku Gothic New', serif; color: #fff; text-shadow: 4px 4px 0 #FF4FA3, 8px 8px 0 rgba(70, 217, 255, .55); }
+      .bt-ro { padding: 5px 14px; background: #F4F7FF; color: #040A22; font: 800 italic clamp(1rem, 3vw, 1.5rem)/1 'Barlow Condensed', sans-serif; letter-spacing: .14em; box-shadow: 5px 5px 0 #FF4FA3; }
+      .bt-lore { max-width: 34em; min-height: 2.6em; margin: 0; color: #D6E0FF; font-style: italic; font-size: clamp(.92rem, 2.4vw, 1.08rem); text-shadow: 0 2px 10px #040A22; }
+      .bt-swap { animation: bt-swap .8s ease both; }
+      @keyframes bt-swap { from { opacity: 0; transform: translateX(26px) skewX(-10deg); filter: blur(5px); } }
+      .bt-lore.bt-swap { animation-name: bt-swap2; }
+      @keyframes bt-swap2 { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } }
+      .bt-bar { position: relative; width: min(72vw, 420px); height: 10px; margin-top: 6px; transform: skewX(-20deg); background: rgba(127, 168, 255, .16); }
       .bt-bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, #2F6BFF, #46D9FF, #FF94CB); box-shadow: 0 0 16px rgba(70, 217, 255, .7); transition: width .4s ease; }
       .bt-bar i::after { content: ''; position: absolute; right: -3px; top: -4px; bottom: -4px; width: 5px; background: #fff; box-shadow: 0 0 12px #fff, 0 0 20px #FF94CB; }
-      .bt-status { display: flex; gap: 14px; align-items: baseline; font: 800 italic .85rem 'Barlow Condensed', sans-serif; letter-spacing: .3em; color: #46D9FF; }
+      .bt-status { display: flex; gap: 14px; align-items: baseline; font: 800 italic .85rem 'Barlow Condensed', sans-serif; letter-spacing: .3em; color: #46D9FF; text-shadow: 0 2px 8px #040A22; }
       .bt-status b { color: #fff; letter-spacing: .05em; font-size: 1.05rem; }
-      .bt-fire { position: absolute; bottom: -40px; left: var(--x); width: var(--s); height: calc(var(--s) * 1.5); pointer-events: none; opacity: 0;
-        background: radial-gradient(50% 60% at 50% 70%, #E6FBFF, #46D9FF 40%, rgba(47, 107, 255, .0) 72%); border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%; filter: blur(1px) drop-shadow(0 0 10px #46D9FF);
-        animation: bt-fire var(--d) ease-in var(--w) infinite; }
-      .bt-ofuda { position: absolute; top: -90px; left: var(--x); width: 26px; height: 78px; background: #F3EBD9; border: 2px solid #c81e3a; border-radius: 2px; opacity: .85; pointer-events: none;
-        display: grid; place-items: center; font: 900 14px/1.05 'Zen Kaku Gothic New', serif; color: #c81e3a; writing-mode: vertical-rl; letter-spacing: 2px;
-        animation: bt-ofuda var(--d) linear var(--w) infinite; }
-      @keyframes bt-spin { to { transform: rotate(360deg); } }
-      @keyframes bt-breathe { 50% { transform: scale(1.04); opacity: .8; } }
-      @keyframes bt-swap { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } }
-      @keyframes bt-fire { 0% { opacity: 0; transform: translate(0, 0) scale(.6); } 15% { opacity: .95; } 100% { opacity: 0; transform: translate(var(--dx), -105vh) scale(1.1); } }
-      @keyframes bt-ofuda { 0% { transform: translate(0, 0) rotate(-8deg); } 50% { transform: translate(var(--dx), 55vh) rotate(10deg); } 100% { transform: translate(0, 115vh) rotate(-6deg); } }
+      .bt-dots { display: flex; gap: 8px; margin-top: 2px; }
+      .bt-dots i { width: 22px; height: 4px; background: rgba(255, 255, 255, .22); transform: skewX(-20deg); transition: background .4s, width .4s; }
+      .bt-dots i.on { width: 40px; background: #FF94CB; box-shadow: 0 0 10px #FF94CB; }
+      .bt-brand { position: absolute; top: calc(9vh + 18px); left: 50%; z-index: 3; transform: translateX(-50%); font: 400 clamp(1rem, 3vw, 1.4rem) 'Dela Gothic One', serif; letter-spacing: .3em; color: rgba(255, 255, 255, .85); text-shadow: 0 2px 12px #040A22; white-space: nowrap; }
+      .bt-brand small { display: block; margin-top: 4px; text-shadow: 0 1px 6px #040A22, 0 0 2px #040A22; font: 800 italic .7rem 'Barlow Condensed', sans-serif; letter-spacing: .5em; color: #46D9FF; text-align: center; }
+      @media (max-width: 640px) { .bt-scene { object-position: 58% 50%; } .bt-bars i { height: 6vh; } }
       @media (prefers-reduced-motion: reduce) { #boot *, #boot { animation: none !important; } }
     </style>
-    <span class="bt-bgk" aria-hidden="true">神</span>
-    <svg class="bt-shime" viewBox="0 0 1000 74" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 14 Q250 46 500 22 T1000 14" fill="none" stroke="#C9A866" stroke-width="10"/>
-      <path d="M0 22 Q250 54 500 30 T1000 22" fill="none" stroke="#A88A4E" stroke-width="5"/>
-      <g fill="#F4F7FF" opacity=".9"><path d="M150 32 l12 0 -8 12 12 0 -8 12 12 0 -10 14 -4 -10 8 -2 -10 -2 8 -10z"/><path d="M420 30 l12 0 -8 12 12 0 -8 12 12 0 -10 14 -4 -10 8 -2 -10 -2 8 -10z"/><path d="M640 28 l12 0 -8 12 12 0 -8 12 12 0 -10 14 -4 -10 8 -2 -10 -2 8 -10z"/><path d="M880 24 l12 0 -8 12 12 0 -8 12 12 0 -10 14 -4 -10 8 -2 -10 -2 8 -10z"/></g>
-    </svg>
-    <svg class="bt-torii" viewBox="0 0 600 260" aria-hidden="true">
-      <defs><linearGradient id="btg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c81e3a"/><stop offset="1" stop-color="#3a0a26"/></linearGradient></defs>
-      <path d="M40 40 Q300 10 560 40 L566 62 Q300 36 34 62 Z" fill="url(#btg)"/><rect x="80" y="78" width="440" height="16" fill="url(#btg)"/>
-      <rect x="140" y="58" width="26" height="210" fill="url(#btg)"/><rect x="434" y="58" width="26" height="210" fill="url(#btg)"/><rect x="290" y="78" width="20" height="30" fill="url(#btg)"/>
-    </svg>
-    <svg class="bt-ring" viewBox="0 0 400 400" aria-hidden="true"><defs><path id="btc" d="M200 200 m-180 0 a180 180 0 1 1 360 0 a180 180 0 1 1 -360 0"/></defs>
-      <circle cx="200" cy="200" r="192" fill="none" stroke="rgba(255,148,203,.25)" stroke-width="1"/>
-      <text font-family="Zen Kaku Gothic New, serif" font-size="17" font-weight="900" fill="rgba(70,217,255,.5)" letter-spacing="9"><textPath href="#btc">八百万の神 · 狐火 · 天狗 · 龍神 · 雷神 · 月読 · 八百万の神 · 狐火 · 天狗 · 龍神 ·</textPath></text></svg>
-    <svg class="bt-ring bt-ring2" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="190" fill="none" stroke="rgba(70,217,255,.35)" stroke-width="2" stroke-dasharray="2 14"/></svg>
-    <div class="bt-fires" aria-hidden="true"></div>
-    <div class="bt-stage">
-      <div class="bt-emblem" aria-hidden="true">
-        <span class="bt-halo"></span>
-        <!-- 狐 Kitsune : masque de renard -->
-        <svg viewBox="0 0 200 200" data-k="0"><g stroke="#1b1033" stroke-width="2.5" stroke-linejoin="round">
-          <path d="M46 78 L58 16 L92 60 Z" fill="#F7F3EE"/><path d="M58 32 L64 64 L82 60 Z" fill="#E0245E" stroke="none"/>
-          <path d="M154 78 L142 16 L108 60 Z" fill="#F7F3EE"/><path d="M142 32 L136 64 L118 60 Z" fill="#E0245E" stroke="none"/>
-          <path d="M38 76 Q100 34 162 76 Q170 116 132 142 Q114 168 100 186 Q86 168 68 142 Q30 116 38 76 Z" fill="#F7F3EE"/></g>
-          <path d="M100 50 Q110 64 100 80 Q90 64 100 50 Z" fill="#E0245E"/><circle cx="100" cy="68" r="3" fill="#FFD86B"/>
-          <path d="M58 96 Q78 82 94 100 Q76 104 58 96 Z" fill="#1b1033"/><path d="M142 96 Q122 82 106 100 Q124 104 142 96 Z" fill="#1b1033"/>
-          <path d="M54 92 Q74 74 98 96" fill="none" stroke="#E0245E" stroke-width="3" stroke-linecap="round"/><path d="M146 92 Q126 74 102 96" fill="none" stroke="#E0245E" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="78" cy="96" r="2.4" fill="#46D9FF"/><circle cx="122" cy="96" r="2.4" fill="#46D9FF"/>
-          <path d="M56 118 q12 4 22 -2 M58 128 q10 2 20 -4 M144 118 q-12 4 -22 -2 M142 128 q-10 2 -20 -4" fill="none" stroke="#E0245E" stroke-width="2.4" stroke-linecap="round"/>
-          <path d="M92 168 Q100 176 108 168 Q100 180 92 168 Z" fill="#1b1033"/><path d="M84 150 Q100 160 116 150" fill="none" stroke="#E0245E" stroke-width="2.4" stroke-linecap="round"/>
-        </svg>
-        <!-- 天狗 Tengu : masque rouge au long nez -->
-        <svg viewBox="0 0 200 200" data-k="1"><g stroke="#1b1033" stroke-width="2.5" stroke-linejoin="round">
-          <ellipse cx="92" cy="110" rx="56" ry="70" fill="#C81E3A"/>
-          <path d="M96 104 Q150 74 186 62 Q190 72 184 78 Q146 104 104 128 Z" fill="#B0182F"/>
-          <path d="M70 36 L92 26 L114 36 L110 52 L74 52 Z" fill="#1b1033"/>
-          <path d="M44 84 Q62 64 84 80 Q64 78 52 92 Z" fill="#F4F7FF"/><path d="M140 84 Q122 64 102 80 Q120 78 130 92 Z" fill="#F4F7FF"/></g>
-          <path d="M58 98 Q70 88 82 98 Q70 104 58 98 Z" fill="#FFD86B" stroke="#1b1033" stroke-width="2"/><circle cx="70" cy="97" r="3.4" fill="#1b1033"/>
-          <path d="M104 98 Q116 88 128 98 Q116 104 104 98 Z" fill="#FFD86B" stroke="#1b1033" stroke-width="2"/><circle cx="116" cy="97" r="3.4" fill="#1b1033"/>
-          <path d="M46 138 Q60 192 92 194 Q124 192 136 140 Q118 166 92 168 Q64 166 46 138 Z" fill="#F4F7FF" stroke="#1b1033" stroke-width="2.5"/>
-          <path d="M70 150 Q92 142 114 150" fill="none" stroke="#1b1033" stroke-width="3" stroke-linecap="round"/>
-          <path d="M150 120 l20 -10 M156 134 l22 -4" stroke="#46D9FF" stroke-width="3" stroke-linecap="round" opacity=".7"/>
-        </svg>
-        <!-- 龍神 Ryūjin : dragon enroulé autour de la perle -->
-        <svg viewBox="0 0 200 200" data-k="2">
-          <defs><radialGradient id="btp" cx=".4" cy=".35"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".4" stop-color="#B8F3FF"/><stop offset="1" stop-color="#2F6BFF"/></radialGradient>
-            <linearGradient id="btd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46D9FF"/><stop offset="1" stop-color="#2F3FB8"/></linearGradient></defs>
-          <circle cx="100" cy="108" r="22" fill="url(#btp)"/><circle cx="100" cy="108" r="30" fill="none" stroke="#B8F3FF" stroke-width="1" opacity=".5"/>
-          <path d="M30 150 Q20 90 70 64 Q120 40 160 70 Q190 96 170 140 Q150 178 104 172 Q64 168 60 134" fill="none" stroke="url(#btd)" stroke-width="18" stroke-linecap="round"/>
-          <path d="M30 150 Q20 90 70 64 Q120 40 160 70 Q190 96 170 140 Q150 178 104 172 Q64 168 60 134" fill="none" stroke="#E6FBFF" stroke-width="3" stroke-dasharray="3 9" opacity=".7"/>
-          <path d="M44 120 l-12 -6 M42 96 l-13 -2 M56 74 l-10 -10 M84 56 l-4 -14 M116 52 l4 -14 M146 60 l10 -10 M168 84 l13 -4 M176 112 l13 2 M168 142 l12 8" stroke="#FF94CB" stroke-width="4" stroke-linecap="round"/>
-          <path d="M52 134 Q46 110 66 104 Q84 104 86 122 Q84 140 66 142 Z" fill="#2F3FB8" stroke="#B8F3FF" stroke-width="2"/>
-          <circle cx="72" cy="118" r="4" fill="#FFD86B"/><path d="M60 104 Q52 84 40 80 M74 102 Q76 82 88 74" fill="none" stroke="#FFD86B" stroke-width="2.6" stroke-linecap="round"/>
-          <path d="M54 136 Q30 150 22 176 M62 140 Q50 166 54 188" fill="none" stroke="#B8F3FF" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-        <!-- 雷神 Raijin : couronne de tambours et éclair -->
-        <svg viewBox="0 0 200 200" data-k="3"><g stroke="#1b1033" stroke-width="2">
-          <circle cx="100" cy="100" r="72" fill="none" stroke="#FFD86B" stroke-width="4"/>
-          <g fill="#C81E3A"><circle cx="100" cy="28" r="15"/><circle cx="151" cy="49" r="15"/><circle cx="172" cy="100" r="15"/><circle cx="151" cy="151" r="15"/><circle cx="100" cy="172" r="15"/><circle cx="49" cy="151" r="15"/><circle cx="28" cy="100" r="15"/><circle cx="49" cy="49" r="15"/></g></g>
-          <g fill="#F4F7FF"><circle cx="100" cy="28" r="5"/><circle cx="151" cy="49" r="5"/><circle cx="172" cy="100" r="5"/><circle cx="151" cy="151" r="5"/><circle cx="100" cy="172" r="5"/><circle cx="49" cy="151" r="5"/><circle cx="28" cy="100" r="5"/><circle cx="49" cy="49" r="5"/></g>
-          <path d="M112 44 L76 106 L100 106 L84 160 L132 88 L106 88 L124 44 Z" fill="#FFD86B" stroke="#FFFFFF" stroke-width="2"/>
-          <path d="M112 44 L76 106 L100 106 L84 160 L132 88 L106 88 L124 44 Z" fill="none" stroke="#46D9FF" stroke-width="7" opacity=".35"/>
-        </svg>
-        <!-- 月読 Tsukuyomi : croissant de lune sur l'eau -->
-        <svg viewBox="0 0 200 200" data-k="4">
-          <defs><radialGradient id="btm" cx=".35" cy=".35"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#E6ECFF"/><stop offset="1" stop-color="#9FB4FF"/></radialGradient></defs>
-          <path d="M126 22 A78 78 0 1 0 170 134 A62 62 0 1 1 126 22 Z" fill="url(#btm)"/>
-          <path d="M76 86 Q86 80 96 86 M76 106 Q86 112 96 106" fill="none" stroke="#5A6CC8" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
-          <g fill="none" stroke="#46D9FF" stroke-width="2.4" stroke-linecap="round" opacity=".75"><path d="M30 170 q14 -8 28 0 t28 0 t28 0 t28 0 t28 0"/><path d="M46 184 q12 -6 24 0 t24 0 t24 0 t24 0"/></g>
-          <g fill="#FF94CB"><circle cx="160" cy="40" r="2.5"/><circle cx="178" cy="70" r="1.8"/><circle cx="34" cy="48" r="2"/></g>
-        </svg>
-      </div>
+    <img class="bt-scene" alt="" decoding="async" data-src="img/kami/kitsune.svg">
+    <img class="bt-scene" alt="" decoding="async" data-src="img/kami/tengu.svg">
+    <img class="bt-scene" alt="" decoding="async" data-src="img/kami/ryujin.svg">
+    <img class="bt-scene" alt="" decoding="async" data-src="img/kami/raijin.svg">
+    <img class="bt-scene" alt="" decoding="async" data-src="img/kami/tsukuyomi.svg">
+    <div class="bt-shade" aria-hidden="true"></div>
+    <div class="bt-bars" aria-hidden="true"><i></i><i></i></div>
+    <p class="bt-brand" aria-hidden="true">八百万の神<small>YAOYOROZU NO KAMI</small></p>
+    <div class="bt-ui">
       <div class="bt-name"><span class="bt-jp" lang="ja">狐</span><span class="bt-ro">KITSUNE</span></div>
-      <p class="bt-lore">Messagère d’Inari. Ses queues brûlent de feux follets bleus, les kitsunebi.</p>
+      <p class="bt-lore">…</p>
       <div class="bt-bar"><i></i></div>
       <div class="bt-status"><span lang="ja">読込中</span><span>CHARGEMENT</span><b>0 %</b></div>
+      <div class="bt-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
   <script>
@@ -140,48 +69,39 @@
     const boot = document.getElementById('boot');
     if (!boot) return;
     const KAMI = [
-      ['狐', 'KITSUNE', 'Messagère d’Inari. Ses queues brûlent de feux follets bleus, les kitsunebi.'],
-      ['天狗', 'TENGU', 'Gardien des montagnes, maître du sabre et des vents.'],
-      ['龍神', 'RYŪJIN', 'Dieu-dragon des mers, il garde la perle qui commande les marées.'],
-      ['雷神', 'RAIJIN', 'Il frappe sa couronne de tambours et le tonnerre gronde.'],
-      ['月読', 'TSUKUYOMI', 'Kami de la lune, frère du soleil, il règne sur la nuit.'],
+      ['狐', 'KITSUNE', 'Messagère d’Inari. Ses neuf queues brûlent de feux follets bleus, les kitsunebi.'],
+      ['天狗', 'TENGU', 'Gardien des montagnes aux ailes de corbeau, maître du sabre et des vents.'],
+      ['龍神', 'RYŪJIN', 'Dieu-dragon des mers. Il garde la perle qui commande les marées.'],
+      ['雷神', 'RAIJIN', 'Il frappe sa couronne de tambours, et le tonnerre gronde sur le monde.'],
+      ['月読', 'TSUKUYOMI', 'Kami de la lune, frère du soleil. Il règne sur la nuit et le reflet des eaux.'],
     ];
-    const svgs = [...boot.querySelectorAll('.bt-emblem svg')];
+    const scenes = [...boot.querySelectorAll('.bt-scene')], dots = [...boot.querySelectorAll('.bt-dots i')];
     const jp = boot.querySelector('.bt-jp'), ro = boot.querySelector('.bt-ro'), lore = boot.querySelector('.bt-lore');
     const bar = boot.querySelector('.bt-bar i'), pct = boot.querySelector('.bt-status b');
     let k = Math.floor(Math.random() * KAMI.length), p = 0, done = false;
+    const load = i => { const im = scenes[i]; if (!im.src) im.src = im.dataset.src; };
+    load(k); load((k + 1) % KAMI.length);
     const show = () => {
-      svgs.forEach((s, i) => s.classList.toggle('on', i === k));
-      [jp, ro, lore].forEach(el => { el.classList.remove('bt-swap'); void el.offsetWidth; el.classList.add('bt-swap'); });
+      scenes.forEach((s, i) => s.classList.toggle('on', i === k));
+      dots.forEach((d, i) => d.classList.toggle('on', i === k));
+      [jp.parentNode, lore].forEach(el => { el.classList.remove('bt-swap'); void el.offsetWidth; el.classList.add('bt-swap'); });
       jp.textContent = KAMI[k][0]; ro.textContent = KAMI[k][1]; lore.textContent = KAMI[k][2];
+      load((k + 1) % KAMI.length);
     };
     show();
-    const cyc = setInterval(() => { k = (k + 1) % KAMI.length; show(); }, 1900);
-    // Feux follets bleus (kitsunebi) et ofuda qui tombent
-    const fires = boot.querySelector('.bt-fires');
-    for (let i = 0; i < 18; i++) {
-      const f = document.createElement('i'); f.className = 'bt-fire';
-      f.style.cssText = `--x:${Math.random() * 100}vw;--s:${10 + Math.random() * 18}px;--d:${4 + Math.random() * 4}s;--w:${-Math.random() * 6}s;--dx:${Math.random() * 120 - 60}px`;
-      fires.append(f);
-    }
-    const words = ['祓', '神', '守', '福', '縁'];
-    for (let i = 0; i < 5; i++) {
-      const o = document.createElement('i'); o.className = 'bt-ofuda'; o.textContent = words[i] + '　' + '符';
-      o.style.cssText = `--x:${8 + i * 20 + Math.random() * 8}vw;--d:${9 + Math.random() * 5}s;--w:${-Math.random() * 10}s;--dx:${Math.random() * 80 - 40}px`;
-      fires.append(o);
-    }
-    // Progression : avance seule jusqu'à 90 %, puis termine quand le site est prêt
-    const tick = setInterval(() => { if (done) return; p = Math.min(90, p + Math.max(1, (90 - p) * .08)); bar.style.width = p + '%'; pct.textContent = Math.round(p) + ' %'; }, 120);
+    const cyc = setInterval(() => { k = (k + 1) % KAMI.length; show(); }, 3200);
+    const tick = setInterval(() => { if (done) return; p = Math.min(90, p + Math.max(1, (90 - p) * .07)); bar.style.width = p + '%'; pct.textContent = Math.round(p) + ' %'; }, 120);
     const start = Date.now();
     window.__bootDone = () => {
       if (done) return; done = true;
-      const wait = Math.max(0, 1800 - (Date.now() - start));   // le temps d'apercevoir au moins un kami
+      const wait = Math.max(0, 2600 - (Date.now() - start));   // le temps d'admirer au moins un kami
       setTimeout(() => {
         bar.style.width = '100%'; pct.textContent = '100 %';
-        setTimeout(() => { boot.classList.add('gone'); clearInterval(cyc); clearInterval(tick); setTimeout(() => boot.remove(), 800); }, 380);
+        setTimeout(() => { boot.classList.add('gone'); clearInterval(cyc); clearInterval(tick); setTimeout(() => boot.remove(), 900); }, 400);
       }, wait);
     };
-    setTimeout(() => window.__bootDone(), 12000);   // filet de sécurité
+    boot.addEventListener('click', () => { if (done) { boot.classList.add('gone'); setTimeout(() => boot.remove(), 900); } });
+    setTimeout(() => window.__bootDone(), 12000);
   })();
   </script>
   <a class="skip" href="#main">Aller au contenu</a>
@@ -219,6 +139,6 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261020171306"></script>
+  <script type="module" src="js/app.js?v=20261020173449"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 // Transitions façon menu Persona : bandes diagonales qui balaient l'écran entre deux pages,
 // éléments qui entrent en glissant (légèrement penchés, en cascade) et sélecteur de menu qui
 // saute d'un onglet à l'autre avec un petit rebond.
-import { reducedMotion } from './util.js?v=20261020171306';
-import { play } from './sfx.js?v=20261020171306';
+import { reducedMotion } from './util.js?v=20261020173449';
+import { play } from './sfx.js?v=20261020173449';
 
 const STAGGER = 'main > *, .levels > li, .game-grid > li, .units > li, .points > li, .members > li, .react-list > li, .example-list > li, .portal-points > li, tbody > tr';
 const MAX_STAGGER = 18;
