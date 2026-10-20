@@ -1,28 +1,28 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020195826';
-import * as D from './data.js?v=20261020195826';
-import * as S from './srs.js?v=20261020195826';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020195826';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020195826';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020195826';
-import * as C from './cloud.js?v=20261020195826';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020195826';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261020195826';
-import { play, setVolume } from './sfx.js?v=20261020195826';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020195826';
-import { celebrate, verdict } from './celebrate.js?v=20261020195826';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261020195826';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261020195826';
-import { initGloss } from './gloss.js?v=20261020195826';
-import { initLinks } from './links.js?v=20261020195826';
-import { streakBadge, weekStrip } from './aura.js?v=20261020195826';
-import { initLevelUp } from './levelup.js?v=20261020195826';
-import { confidentsPage } from './confidents.js?v=20261020195826';
-import { initTilt } from './tilt.js?v=20261020195826';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020195826';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020200220';
+import * as D from './data.js?v=20261020200220';
+import * as S from './srs.js?v=20261020200220';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020200220';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020200220';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020200220';
+import * as C from './cloud.js?v=20261020200220';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020200220';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261020200220';
+import { play, setVolume } from './sfx.js?v=20261020200220';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020200220';
+import { celebrate, verdict } from './celebrate.js?v=20261020200220';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261020200220';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261020200220';
+import { initGloss } from './gloss.js?v=20261020200220';
+import { initLinks } from './links.js?v=20261020200220';
+import { streakBadge, weekStrip } from './aura.js?v=20261020200220';
+import { initLevelUp } from './levelup.js?v=20261020200220';
+import { confidentsPage } from './confidents.js?v=20261020200220';
+import { initTilt } from './tilt.js?v=20261020200220';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020200220';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261020195826';
+import { GAMES } from './gamelist.js?v=20261020200220';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -48,7 +48,7 @@ const routes = [
   [/^\/lecons(?:\/(N[1-5]))?$/, lv => lessonsHub(main, lv)],
   [/^\/kana(?:\/(hira|kata))?$/, s => kanaPage(main, s)],
   [/^\/kana-quiz(?:\/(hira|kata|both))?$/, s => kanaQuiz(main, s)],
-  [/^\/lecon\/(N[1-5])\/([gvm])\/(\d+)$/, (lv, kind, n, params) => lessonPage(main, lv, kind, n, { refreshBadge, params })],
+  [/^\/lecon\/(N[1-5])\/([gvmb])\/(\d+)$/, (lv, kind, n, params) => lessonPage(main, lv, kind, n, { refreshBadge, params })],
 ];
 
 let prevPath = '';
