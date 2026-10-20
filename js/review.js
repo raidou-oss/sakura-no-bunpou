@@ -1,11 +1,11 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle } from './util.js?v=20261020095400';
-import { speak, speakBtn } from './voice.js?v=20261020095400';
-import { pitchSVG } from './pitch.js?v=20261020095400';
-import { play } from './sfx.js?v=20261020095400';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261020095400';
-import * as D from './data.js?v=20261020095400';
-import * as S from './srs.js?v=20261020095400';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle } from './util.js?v=20261020095640';
+import { speak, speakBtn } from './voice.js?v=20261020095640';
+import { pitchSVG } from './pitch.js?v=20261020095640';
+import { play } from './sfx.js?v=20261020095640';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261020095640';
+import * as D from './data.js?v=20261020095640';
+import * as S from './srs.js?v=20261020095640';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -126,30 +126,9 @@ export async function buildSrsQueue() {
   const now = Date.now();
   const cards = S.allCards();
   const due = Object.keys(cards).filter(k => cards[k].d <= now).sort((a, b) => cards[a].d - cards[b].d).slice(0, 200);
-  const set = S.getSettings();
-  const fresh = [];
-  let leftG = S.newLeftToday('g');
-  if (leftG > 0) {
-    for (const g of await D.grammar()) {
-      if (leftG <= 0) break;
-      if (set.grammarLevels.includes(g.lv) && !cards[`g:${g.id}`]) { fresh.push(`g:${g.id}`); leftG--; }
-    }
-  }
-  let leftV = S.newLeftToday('v');
-  for (const lv of D.LEVELS) {
-    if (leftV <= 0 || !set.vocabLevels.includes(lv)) continue;
-    for (const v of await D.vocab(lv)) {
-      if (leftV <= 0) break;
-      const k = D.vocabKey(v);
-      if (!cards[k]) { fresh.push(k); leftV--; }
-    }
-  }
-  // Une nouvelle carte toutes les trois révisions
-  const q = [];
-  let i = 0;
-  for (const k of due) { q.push(k); if (++i % 3 === 0 && fresh.length) q.push(fresh.shift()); }
-  q.push(...fresh);
-  return { queue: q, dueCount: due.length };
+  // Les révisions ne reprennent QUE ce qui a déjà été appris (leçons, « à revoir », ajouts) :
+  // le nouveau se découvre dans les Leçons, pas ici.
+  return { queue: due, dueCount: due.length };
 }
 
 export async function countDue() {
@@ -358,7 +337,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
     if (!item) { idx++; return next(); }
     if (item.s) lastSentence = item.s.id;
     const card = item.key && S.getCard(item.key);
-    if (mode === 'srs' && item.kind !== 'vocab-rev' && (!card || card.s === 0) && !retries.has(item.key)) return intro(item);
+    void card; // plus de fiche « Nouveau mot / Je teste » en révision : directement la phrase à trou
     ask(item);
   }
 

@@ -1,27 +1,27 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020095400';
-import * as D from './data.js?v=20261020095400';
-import * as S from './srs.js?v=20261020095400';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020095400';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020095400';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020095400';
-import * as C from './cloud.js?v=20261020095400';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020095400';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261020095400';
-import { play, setVolume } from './sfx.js?v=20261020095400';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020095400';
-import { celebrate, verdict } from './celebrate.js?v=20261020095400';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261020095400';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261020095400';
-import { initGloss } from './gloss.js?v=20261020095400';
-import { initLinks } from './links.js?v=20261020095400';
-import { initLevelUp } from './levelup.js?v=20261020095400';
-import { confidentsPage } from './confidents.js?v=20261020095400';
-import { initTilt } from './tilt.js?v=20261020095400';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020095400';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020095640';
+import * as D from './data.js?v=20261020095640';
+import * as S from './srs.js?v=20261020095640';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020095640';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020095640';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020095640';
+import * as C from './cloud.js?v=20261020095640';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020095640';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261020095640';
+import { play, setVolume } from './sfx.js?v=20261020095640';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020095640';
+import { celebrate, verdict } from './celebrate.js?v=20261020095640';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261020095640';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261020095640';
+import { initGloss } from './gloss.js?v=20261020095640';
+import { initLinks } from './links.js?v=20261020095640';
+import { initLevelUp } from './levelup.js?v=20261020095640';
+import { confidentsPage } from './confidents.js?v=20261020095640';
+import { initTilt } from './tilt.js?v=20261020095640';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020095640';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261020095400';
+import { GAMES } from './gamelist.js?v=20261020095640';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -154,7 +154,6 @@ async function resumeRow() {
 async function home() {
   const [{ queue, dueCount }, mastery] = await Promise.all([buildSrsQueue(), levelMastery()]);
   const rank = await computeRank(mastery);
-  const newCount = queue.length - dueCount;
   const streak = S.streak();
   const days = S.lastDays(7);
   const maxRev = Math.max(10, ...days.map(d => d.rev));
@@ -171,11 +170,11 @@ async function home() {
       rankBlock(rank),
       h('p.today-title', 'Aujourd’hui'),
       queue.length
-        ? h('div.counters', counter(dueCount, dueCount > 1 ? 'à réviser' : 'à réviser', 'due'), counter(newCount, newCount > 1 ? 'nouvelles' : 'nouvelle', 'new'))
-        : h('p.today-done', 'Tout est révisé. Reviens demain, ou entraîne-toi librement.'),
+        ? h('div.counters', counter(dueCount, 'à réviser', 'due'))
+        : h('p.today-done', 'Tout est révisé. Apprends du nouveau dans les Leçons, ou entraîne-toi librement.'),
       queue.length
         ? h('a.btn.primary.big.wide', { href: '#/revision' }, 'Commencer la révision')
-        : h('a.btn.primary.big.wide', { href: `#/entrainement/${set.grammarLevels[0] || 'N5'}` }, 'S’entraîner librement'),
+        : h('a.btn.primary.big.wide', { href: '#/lecons' }, 'Apprendre du nouveau (Leçons)'),
       h('div.streak',
         h('span.streak-text', streak ? [h('strong', streak), streak > 1 ? ' jours d’affilée' : ' jour d’affilée'] : 'Ta série commence aujourd’hui'),
         h('ol.week', { 'aria-label': 'Révisions des 7 derniers jours' },
@@ -218,10 +217,10 @@ async function revision() {
     main.replaceChildren(h('div.card.empty',
       h('div', { html: blossom(1, 96, '') }),
       h('h2', 'Rien à réviser pour l’instant'),
-      h('p', 'Tes cartes reviendront quand ce sera le bon moment. En attendant, tu peux t’entraîner sans toucher à ton planning.'),
+      h('p', 'Les révisions reprennent uniquement ce que tu as déjà appris, au bon moment. Pour découvrir du nouveau, passe par les Leçons.'),
       h('div.actions',
         (set.grammarLevels.length ? set.grammarLevels : ['N5']).map(lv => h('a.btn', { href: `#/entrainement/${lv}` }, `Entraînement ${lv}`)),
-        h('a.btn', { href: '#/reglages' }, 'Plus de nouvelles cartes par jour'))));
+        h('a.btn.primary', { href: '#/lecons' }, 'Aller aux Leçons'))));
     return;
   }
   runSession(main, { mode: 'srs', queue, onDone: refreshBadge });
@@ -480,10 +479,6 @@ function settingsPage() {
         e.target.checked ? cur.add(lv) : cur.delete(lv);
         S.setSettings({ [field]: D.LEVELS.filter(l => cur.has(l)) }); toast('Réglage enregistré');
       } }), h('span', lv)))));
-  const num = (field, label, max) => h('label.field', h('span', label),
-    h('input', { type: 'number', min: 0, max, value: s[field], onchange: e => {
-      S.setSettings({ [field]: Math.max(0, Math.min(max, Number(e.target.value) || 0)) }); toast('Réglage enregistré');
-    } }));
   const furi = h('fieldset', h('legend', 'Furigana'),
     h('div.checks', [['always', 'Partout (conseillé)'], ['auto', 'N5 et N4 seulement'], ['never', 'Jamais']].map(([v, l]) =>
       h('label.check', h('input', { type: 'radio', name: 'furi', checked: s.furigana === v, onchange: () => { S.setSettings({ furigana: v }); toast('Réglage enregistré'); } }), h('span', l)))));
@@ -494,10 +489,10 @@ function settingsPage() {
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('設定') }), 'Réglages')),
     h('div.card.settings',
-      h('h2', 'Nouvelles cartes'),
-      levelBoxes('grammarLevels', 'Niveaux de grammaire à découvrir'),
-      levelBoxes('vocabLevels', 'Niveaux de vocabulaire à découvrir'),
-      h('div.fields', num('newGrammar', 'Nouveaux points de grammaire par jour', 50), num('newVocab', 'Nouveaux mots par jour', 100)),
+      h('h2', 'Niveaux travaillés'),
+      levelBoxes('grammarLevels', 'Niveaux de grammaire (entraînement, jeux)'),
+      levelBoxes('vocabLevels', 'Niveaux de vocabulaire (entraînement, jeux)'),
+      h('p.section-note', 'Le nouveau s’apprend dans les Leçons. Les révisions reprennent ensuite ce que tu as appris, en phrases à trous.'),
       h('h2', 'Affichage'), furi,
       h('div.checks',
         h('label.check', h('input', { type: 'checkbox', checked: !!s.reduceMotion, onchange: e => { S.setSettings({ reduceMotion: e.target.checked }); applyMotion(); toast(e.target.checked ? 'Animations réduites' : 'Animations activées'); } }),
