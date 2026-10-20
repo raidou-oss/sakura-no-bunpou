@@ -1,7 +1,7 @@
 // Effets sonores synthétisés en direct (Web Audio) : aucun fichier audio, rien à télécharger.
 // Inspirés de l'esprit des menus de Persona : bips de curseur cristallins, « shing » de validation,
 // balayages de vent pour les transitions, arpèges brillants pour les bonnes réponses.
-import * as S from './srs.js?v=20261021001343';
+import * as S from './srs.js?v=20261021002011';
 
 let ctx = null, master = null, verb = null, room = null, echo = null, noiseBuf = null;
 const last = {};
@@ -105,28 +105,40 @@ function pad(notes, t, dur, { gain = .05, from = 400, to = 5000 } = {}) {
     o.connect(f); o.start(t); o.stop(t + dur + .05);
   }));
 }
+/** Pincé synthé : onde riche dont le filtre se referme vite (son « jeu vidéo » net) */
+function pluck(freq, t, dur, { type = 'square', gain = .12, cut = 6000, ...fx } = {}) {
+  const o = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+  o.type = type; o.frequency.value = freq;
+  f.type = 'lowpass'; f.Q.value = 6; f.frequency.setValueAtTime(cut, t); f.frequency.exponentialRampToValueAtTime(Math.max(200, freq * 1.2), t + dur * .8);
+  env(g, t, gain, .002, dur);
+  o.connect(f).connect(g); out(g, fx);
+  o.start(t); o.stop(t + dur + .05);
+}
+/** Marimba : sinus + harmonique 4, attaque boisée, décroissance rapide */
+function marimba(freq, t, dur, { gain = .16, ...fx } = {}) {
+  tone(freq, t, dur, { gain, attack: .002, ...fx });
+  tone(freq * 4, t, dur * .25, { gain: gain * .35, attack: .001, ...fx });
+}
 const N = n => 440 * Math.pow(2, (n - 69) / 12);   // note MIDI → Hz
 
 // --- Sons (esprit menus Persona : nets, métalliques, avec de l'air) ----------------------------
 const SOUNDS = {
-  // Curseur : « tic » de verre très court, petite pièce
+  // Curseur : « tsk » sec et feutré (déplacement dans un menu), sans tonalité marquée
   cursor(t) {
-    bell(2637, t, .07, { gain: .07, ratio: 2.01, index: 1.2, rm: .6 });
-    noise(t, .012, { gain: .06, type: 'highpass', from: 8000, to: 9000, q: .5, attack: .001 });
+    noise(t, .018, { gain: .14, type: 'bandpass', from: 4200, to: 3000, q: 4, attack: .001, rm: .3 });
+    tone(1480, t, .025, { type: 'square', gain: .025, attack: .001 });
   },
-  // Validation : « SHING » (lame + cloche) posé sur un impact sourd, avec scintillement en écho
+  // Validation : « ka-CHING » montant (deux notes pincées) + transitoire, bref et franc
   select(t) {
-    thump(t, { from: 170, to: 55, dur: .16, gain: .32 });
-    noise(t, .05, { gain: .22, type: 'highpass', from: 9000, to: 4000, q: .7, attack: .001 });
-    noise(t + .01, .35, { gain: .07, type: 'bandpass', from: 7000, to: 11000, q: 3, attack: .005, wet: .5 });
-    bell(N(88), t + .005, .5, { gain: .13, ratio: 3.51, index: 2, wet: .5, ech: .25 });
-    bell(N(95), t + .03, .6, { gain: .08, ratio: 2.76, index: 1.6, wet: .5, ech: .25 });
+    noise(t, .02, { gain: .2, type: 'highpass', from: 6000, to: 9000, q: .7, attack: .001 });
+    pluck(N(79), t, .09, { type: 'sawtooth', gain: .1, cut: 7000, rm: .4 });
+    pluck(N(84), t + .055, .2, { type: 'sawtooth', gain: .11, cut: 9000, rm: .4, ech: .15 });
+    tone(N(96), t + .055, .25, { type: 'triangle', gain: .04, wet: .3 });
   },
-  // Retour : souffle qui redescend + deux notes qui tombent
+  // Retour : « boup » rond qui descend, étouffé
   back(t) {
-    noise(t, .18, { gain: .14, from: 4000, to: 500, q: 1.5, attack: .01, panFrom: .4, panTo: -.4 });
-    bell(N(81), t, .14, { gain: .09, ratio: 2, index: 1, rm: .5 });
-    bell(N(74), t + .07, .2, { gain: .08, ratio: 2, index: 1, rm: .5 });
+    tone(620, t, .16, { type: 'sine', gain: .2, to: 260, rm: .4 });
+    noise(t, .1, { gain: .07, type: 'lowpass', from: 1500, to: 300, q: .8 });
   },
   // Transition : rafale de vent qui traverse l'écran de gauche à droite + montée grave
   whoosh(t) {
@@ -141,19 +153,16 @@ const SOUNDS = {
     bell(N(93), t + .015, .9, { gain: .07, ratio: 5.4, index: 1.4, wet: .7 });
     bell(N(86), t + .02, .7, { gain: .06, ratio: 2.76, index: 1.2, wet: .7, pan: .3 });
   },
-  // Carte qui arrive : claquement de carte + tintement
+  // Carte qui arrive : froissement de papier + petit claquement de bois
   card(t) {
-    noise(t, .07, { gain: .18, from: 2500, to: 6000, q: 2.5, attack: .003, panFrom: -.3, panTo: .3 });
-    noise(t + .05, .03, { gain: .12, type: 'lowpass', from: 2500, to: 800, attack: .001 });
-    bell(N(91), t + .04, .25, { gain: .06, ratio: 3.5, index: 1.4, rm: .5 });
+    noise(t, .09, { gain: .16, from: 1800, to: 5000, q: 1.2, attack: .01, panFrom: -.4, panTo: .4 });
+    tone(880, t + .06, .035, { type: 'triangle', gain: .09, attack: .001, rm: .4 });
   },
-  // Bonne réponse : « ting-ding » brillant, arpège qui scintille en écho, petite nappe
+  // Bonne réponse : petit jingle pincé qui monte (do-mi-sol-do), puis une étoile qui scintille
   correct(t) {
-    thump(t, { from: 200, to: 80, dur: .1, gain: .18 });
-    bell(N(88), t, .55, { gain: .16, ratio: 3.5, index: 2.2, wet: .45 });
-    bell(N(95), t + .07, .7, { gain: .14, ratio: 3.5, index: 2.2, wet: .45, ech: .3 });
-    [100, 103, 107].forEach((n, i) => bell(N(n), t + .14 + i * .045, .4, { gain: .05, ratio: 2, index: 1, ech: .4, pan: (i - 1) * .5 }));
-    noise(t + .12, .5, { gain: .05, type: 'highpass', from: 8000, to: 12000, q: .5, attack: .02, wet: .6 });
+    [72, 76, 79, 84].forEach((n, i) => pluck(N(n), t + i * .055, .16, { type: 'square', gain: .085, cut: 5000, rm: .5, pan: (i - 1.5) * .25 }));
+    bell(N(96), t + .22, .7, { gain: .1, ratio: 3.5, index: 2, wet: .5, ech: .35 });
+    noise(t + .22, .4, { gain: .04, type: 'highpass', from: 9000, to: 12000, q: .5, attack: .02, wet: .5 });
   },
   // Mauvaise réponse : « bzzt » sourd, désaccordé
   wrong(t) {
@@ -162,9 +171,9 @@ const SOUNDS = {
     tone(N(47), t, .26, { type: 'square', gain: .04, to: N(42), detune: 14 });
     noise(t, .12, { gain: .1, type: 'lowpass', from: 1200, to: 200, q: 1.2 });
   },
-  // Prise / dépôt d'un morceau
-  pick(t) { bell(N(84), t, .1, { gain: .09, ratio: 2, index: 1.2, rm: .5 }); noise(t, .02, { gain: .08, type: 'highpass', from: 6000, to: 8000 }); },
-  drop(t) { thump(t, { from: 220, to: 90, dur: .08, gain: .2 }); bell(N(76), t, .14, { gain: .08, ratio: 2, index: .8, rm: .5 }); },
+  // Prise : « pop » qui monte ; dépôt : « toc » de bois
+  pick(t) { tone(320, t, .07, { type: 'sine', gain: .2, to: 950, attack: .002, rm: .3 }); },
+  drop(t) { tone(210, t, .09, { type: 'triangle', gain: .22, attack: .001 }); noise(t, .03, { gain: .12, type: 'lowpass', from: 2000, to: 500, attack: .001, rm: .4 }); },
   // RANK UP / LEVEL UP / record : impact, cymbale, accord qui s'ouvre, arpège de cloches
   fanfare(t) {
     thump(t, { from: 120, to: 32, dur: .55, gain: .55 });
@@ -173,11 +182,8 @@ const SOUNDS = {
     pad([60, 64, 67, 71, 74], t, 1.8, { gain: .045 });
     [72, 76, 79, 83, 86, 91].forEach((n, i) => bell(N(n + 12), t + .08 + i * .06, .9, { gain: .09, ratio: 3.5, index: 1.8, wet: .5, ech: .2, pan: (i % 2 ? .4 : -.4) }));
   },
-  // Notification / réaction : deux cloches de cristal
-  ping(t) {
-    bell(N(93), t, .5, { gain: .12, ratio: 3.5, index: 2, wet: .5, ech: .3 });
-    bell(N(100), t + .09, .6, { gain: .08, ratio: 3.5, index: 2, wet: .5, ech: .3 });
-  },
+  // Notification / réaction : « dou-di » de marimba
+  ping(t) { marimba(N(79), t, .35, { rm: .5 }); marimba(N(86), t + .11, .45, { rm: .5, ech: .2 }); },
 };
 
 /** Joue un son par son nom ; `gap` évite les rafales du même son */

@@ -3045,3 +3045,14 @@ html.reduce-motion .p3-head .ph-slash, html.reduce-motion .ph-l { animation: non
 .p3-head:has(.hud-date) { padding-top: 62px; }
 .hud-date { transform: rotate(-5deg) scale(1.05); }
 @media (max-width: 860px) { .hud-date { transform: rotate(-5deg) scale(.8); } .p3-head:has(.hud-date) { padding-top: 46px; } }
+/* HUD calendrier : nettement plus grand */
+.hd-num small { font-size: 2.6rem; }
+.hd-num i { font-size: 3rem; }
+.hd-num b { font-size: 5.2rem; }
+.hd-wd b { width: 42px; height: 42px; font-size: 1.4rem; }
+.hd-wd small { font-size: .95rem; }
+.hd-moment { font-size: 1rem; padding: 3px 12px 3px 10px; }
+.hd-moment b { font-size: 1rem; }
+.hud-date { transform: rotate(-5deg) scale(1); column-gap: 8px; }
+.p3-head:has(.hud-date) { padding-top: 88px; }
+@media (max-width: 860px) { .hud-date { transform: rotate(-5deg) scale(.7); } .p3-head:has(.hud-date) { padding-top: 60px; } }
