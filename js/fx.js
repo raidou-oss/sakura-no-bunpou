@@ -3,10 +3,10 @@
 const SPR = new Map();
 function glow(col) {
   if (SPR.has(col)) return SPR.get(col);
-  const c = document.createElement('canvas'); c.width = c.height = 48;
-  const g = c.getContext('2d'), r = g.createRadialGradient(24, 24, 0, 24, 24, 24);
-  r.addColorStop(0, '#ffffff'); r.addColorStop(.18, col); r.addColorStop(.45, col + '55'); r.addColorStop(1, col + '00');
-  g.fillStyle = r; g.fillRect(0, 0, 48, 48);
+  const c = document.createElement('canvas'); c.width = c.height = 96;
+  const g = c.getContext('2d'), r = g.createRadialGradient(48, 48, 0, 48, 48, 48);
+  r.addColorStop(0, '#ffffff'); r.addColorStop(.12, '#ffffff'); r.addColorStop(.22, col); r.addColorStop(.5, col + '40'); r.addColorStop(1, col + '00');
+  g.fillStyle = r; g.fillRect(0, 0, 96, 96);
   SPR.set(col, c); return c;
 }
 export const FX_COLORS = ['#46D9FF', '#FF94CB', '#FFFFFF', '#B8F3FF', '#FF4FA3'];
@@ -18,7 +18,7 @@ export function fxLayer(parent, { cls = 'fx-canvas' } = {}) {
   cv.className = cls; cv.setAttribute('aria-hidden', 'true');
   parent.append(cv);
   const g = cv.getContext('2d');
-  const dpr = Math.min(1.5, devicePixelRatio || 1);
+  const dpr = Math.min(2, devicePixelRatio || 1);   // net sur écrans haute densité
   let W = 0, H = 0;
   const size = () => { W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
@@ -43,8 +43,12 @@ export function fxLayer(parent, { cls = 'fx-canvas' } = {}) {
       p.rot += p.vr * dt;
       const s = p.s * (1 - q * .4);
       g.drawImage(glow(p.c), p.x - s * 1.6, p.y - s * 1.6, s * 3.2, s * 3.2);   // halo (sprite, pas de flou calculé)
-      g.save(); g.translate(p.x, p.y); g.rotate(p.rot); g.fillStyle = p.c;
-      g.beginPath(); g.moveTo(0, -s); g.lineTo(s * .45, s * .6); g.lineTo(-s * .5, s * .3); g.closePath(); g.fill(); g.restore();
+      // Éclat : facette colorée + arête blanche (aspect cristal, net)
+      g.save(); g.translate(p.x, p.y); g.rotate(p.rot); g.scale(1, Math.cos(p.rot * 1.7) * .6 + .4);
+      g.fillStyle = p.c;
+      g.beginPath(); g.moveTo(0, -s); g.lineTo(s * .45, s * .6); g.lineTo(-s * .5, s * .3); g.closePath(); g.fill();
+      g.strokeStyle = '#ffffff'; g.lineWidth = 1; g.globalAlpha *= .85; g.beginPath(); g.moveTo(0, -s); g.lineTo(s * .45, s * .6); g.stroke();
+      g.restore();
     }
     g.globalAlpha = 1;
     if (P.length || ember) requestAnimationFrame(tick); else { running = false; g.clearRect(0, 0, W, H); }

@@ -2689,3 +2689,11 @@ html.lite .lesson-card:hover, html.lite .game-tile:hover, html.lite .unit:hover 
 .fx-shard:nth-child(even) { background: #FFD6E8; box-shadow: 0 0 6px #FF94CB; }
 @keyframes fx-shard { to { transform: rotate(var(--a)) translateY(var(--d)) rotate(var(--r)) scale(.3); opacity: 0; } }
 html.lite .fx-disc, html.lite .fx-shard { display: none; }
+/* Qualité des séquences RANK UP / LEVEL UP : fond opaque, rayons aux bords doux (pas d'escalier en tournant) */
+.ru.cf::before { background: radial-gradient(ellipse at 50% 55%, rgb(28, 46, 124), rgb(5, 11, 38) 72%); }
+.lu2-bg { background: radial-gradient(ellipse at 50% 42%, rgb(42, 32, 124), rgb(5, 11, 38) 72%); }
+.ru-rays { background: repeating-conic-gradient(from 0deg, rgba(70, 217, 255, 0) 0deg, rgba(70, 217, 255, .12) 2deg, rgba(70, 217, 255, 0) 5deg, transparent 5deg 14deg,
+  rgba(255, 148, 203, 0) 14deg, rgba(255, 148, 203, .1) 16deg, rgba(255, 148, 203, 0) 18deg, transparent 18deg 30deg);
+  -webkit-mask: radial-gradient(circle, #000 20%, rgba(0, 0, 0, .6) 45%, transparent 70%); mask: radial-gradient(circle, #000 20%, rgba(0, 0, 0, .6) 45%, transparent 70%); }
+.ru-stage, .lu-stage { -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+.ru .tarot { backface-visibility: hidden; }
