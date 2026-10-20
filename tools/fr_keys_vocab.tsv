@@ -1176,3 +1176,626 @@ N5:あれ	あれは何の建物ですか。	ce bâtiment, là-bas (éloigné des
 N5:そちら	そちらの席へどうぞ。	ce siège-là (proche de l'interlocuteur)
 N5:あそこ	駅はあそこです。	là-bas (éloigné des deux)
 N5:あそこ	あそこにコンビニがあります。	là-bas (éloigné des deux)
+# Révision complète du surlignage (exemples sans clé)
+N5:あなた	それはあなたのかさですか。	ton
+N5:大丈夫	「寒い？」「ううん、大丈夫。」	ça va
+N5:元気	こんにちは、お元気ですか。	vous allez bien
+N5:カメラ	古いカメラにフィルムを入れました。	appareil photo
+N5:今日	今日は曇りです。	Aujourd'hui
+N5:今日	今日は暑いですね。	aujourd'hui
+N5:安い	この店は安くておいしい。	pas cher
+N5:暖かい	この靴下は暖かいです。	chaudes
+N5:そうです	いただきます！とても美味しそうですね。	!
+N5:大学生	兄は大学生です。	étudiant à l'université
+N5:台所	母は台所で料理をしています。	dans la cuisine
+N5:夏休み	もう直ぐ夏休みです。	vacances d'été
+N5:夏休み	夏休みは短いです。	vacances d'été
+N5:妹	妹は高校生です。	petite sœur
+N5:妹	妹は髪が長いです。	petite sœur
+N5:初めて	こんな大きい魚は初めて見ました。	la première fois
+N5:半分	ケーキを半分ずつ食べましょう。	moitié-moitié
+N5:喫茶店	駅前の喫茶店でコーヒーを飲みました。	salon de thé
+N5:留学生	私のクラスには留学生が三人います。	étudiants étrangers
+N5:弟	弟はゲームをしています。	petit frère
+N5:弟	弟はまだ寝ています。	petit frère
+N5:薬を飲む	毎日薬を飲まなくてはいけない。	prendre mes médicaments
+N5:薬を飲む	薬を飲んで熱が下がりました。	pris un médicament
+N5:先週	先週、海で泳いだ。	La semaine dernière
+N5:先週	先週は雨が降らなかった。	La semaine dernière
+N5:来週	父は来週手術を受けます。	la semaine prochaine
+N5:時々	時々映画を見に行きます。	de temps en temps
+N5:料理	料理には自信があります。	talents de cuisinier
+N5:太る	この木はとても太いです。	!
+N5:お風呂に入る	熱があるなら、お風呂に入らないほうがいい。	prendre de bain
+N5:終わる	夏休みも、もう終わりです。	touchent déjà à leur fin
+N5:来年	来年、日本へ行きます。	L'année prochaine
+N5:来年	来年、車を買うつもりです。	l'an prochain
+N5:去年	去年、日本へ行きました。	L'an dernier
+N5:いただきます	いただきます！とても美味しそうですね。	Bon appétit
+N5:どのくらい	駅までどのくらいかかりますか。	Combien de temps
+N5:まで	駅まで歩いて十分です。	jusqu'à
+N5:来月	来月、二十歳になります。	le mois prochain
+N5:来月	その映画は来月公開されます。	le mois prochain
+N5:先月	先月、京都へ行きました。	Le mois dernier
+N5:午後	木曜日の午後は暇です。	après-midi
+N5:一昨日	一昨日、友達に会いました。	Avant-hier
+N5:明後日	明後日は母の誕生日です。	Après-demain
+N5:答え	このアンケートに答えてください。	!
+N5:何か	他に何か要りますか。	autre chose
+N5:渡す	この橋を渡ると駅です。	!
+N5:花瓶	花瓶に花を入れました。	vase
+N5:寂しい	一人で住んでいるので、時々寂しいです。	je me sens parfois seul
+N5:風邪をひく	雨に濡れて、風邪をひきました。	attrapé un rhume
+N5:違う	いいえ、違います。	ce n'est pas ça
+N5:子	男の子がサッカーをしています。	garçon
+N5:どうぞ	どうぞ、入ってください。	Je vous en prie
+N5:こちら	入口はこちらです。	par ici
+N5:これから	これからよろしくお願いします。	à partir de maintenant
+N5:皆さん	皆さん、お元気で。	tout le monde
+N5:全然	日本語が全然わかりません。	pas du tout
+N5:どうも	どうもありがとうございます。	Merci beaucoup
+N5:くらい	駅までどのくらいかかりますか。	Combien de temps
+N5:それに	この部屋は広いです。それに、安いです。	En plus
+N5:もちろん	もちろん、一緒に行きます。	Bien sûr
+N5:枚	紙を三枚ください。	Trois feuilles
+N5:普通	普通の電車で行きます。	omnibus
+N5:別に	「どうしたの？」「別に。」	Rien de spécial
+N5:立つ	入口に男の人が立っています。	se tient
+N5:最近	最近、忙しいです。	ces derniers temps
+N5:もう一度	もう一度言ってください。	une fois de plus
+N5:それでは	それでは、また明日。	Bon
+N5:大きな	口を大きく開けてください。	!
+N5:について	日本の歴史について話しましょう。	Parlons de
+N5:天	海老の天ぷらが好きです。	!
+N5:続く	毎日、日本語の勉強を続けています。	!
+N5:久しぶり	久しぶりですね。お元気でしたか。	Ça fait longtemps
+N5:向こう	川の向こうに公園があります。	de l'autre côté
+N5:ただいま	「ただいま。」「お帰りなさい。」	Je suis rentré
+N5:落とす	電車で財布を落としました。	fait tomber
+N5:丸	月が丸くてきれいです。	!
+N5:そうですね	いただきます！とても美味しそうですね。	!
+N5:代	今月の電気代は高かったです。	La facture d'électricité
+N5:メール	毎日母にメールを送ります。	e-mail
+N5:メール	パソコンでメールを書きます。	e-mails
+N5:この間	この間、駅で先生に会いました。	L'autre jour
+N5:今年	今年の夏は暑いです。	cette année
+N5:例えば	果物、例えばりんごが好きです。	par exemple
+N5:デート	週末に彼女とデートします。	rendez-vous
+N5:兄弟	兄弟は何人いますか。	frères et sœurs
+N5:まあまあ	「テストはどうだった？」「まあまあだったよ。」	Comme ci, comme ça
+N5:お兄さん	お兄さんは何歳ですか。	grand frère
+N5:卵	私は卵のアレルギーがあります。	œufs
+N5:さようなら	先生、さようなら。	Au revoir
+N5:年生	弟は小学三年生です。	troisième année
+N5:趣味	私の趣味は写真です。	passe-temps
+N5:遅刻	寝坊して、遅刻しました。	arrivé en retard
+N5:温泉	冬は温泉に入りたいです。	sources chaudes
+N5:横	道の横に小さい地蔵があります。	au bord du chemin
+N5:ドライブ	週末に海までドライブしました。	allés en voiture
+N5:お休み	明日はお休みです。	jour de repos
+N5:咲く	黄色の花が咲いています。	sont en fleur
+N5:小学生	弟はまだ小学生です。	à l'école primaire
+N5:塾	学校の後、塾に行きます。	cours du soir
+N5:以内	一時間以内に戻ります。	moins d'une heure
+N5:半	三時半に会いましょう。	et demie
+N5:要る	傘は要りますか。	besoin
+N5:主婦	母は主婦です。	femme au foyer
+N5:夕飯	今日の夕飯はカレーです。	au dîner
+N5:今月	今月は忙しいです。	ce mois-ci
+N5:今月	今月の電気代は高かったです。	ce mois-ci
+N5:留学	再来年、日本に留学します。	pars étudier
+N5:ゴロゴロ	日曜日は家でゴロゴロしています。	traîne
+N5:アルバイト	週末はカフェでアルバイトをしています。	travaille à mi-temps
+N5:下着	旅行に下着を三枚持っていきます。	sous-vêtements
+N5:ツアー	京都のツアーに参加しました。	visite guidée
+N5:被る	寒いので帽子を被ります。	mets
+N5:被る	料理にラップを被せてください。	!
+N5:デパート	デパートへ服を買いに行きます。	grand magasin
+N5:交番	道がわからなければ、交番で聞いてください。	poste de police
+N5:交番	交番に警官がいます。	poste de police
+N5:家事	週末は家事をします。	tâches ménagères
+N5:お正月	お正月は家族と過ごします。	Nouvel An
+N5:お正月	お正月にお餅を食べます。	Nouvel An
+N5:正月	正月に神社へ行きました。	Nouvel An
+N5:正月	お正月にお餅を食べます。	Nouvel An
+N5:Tシャツ	夏はTシャツで過ごします。	t-shirt
+N5:引き出し	銀行でお金を引き出しました。	!
+N5:朝ご飯	朝ご飯を食べて、学校へ行きました。	petit-déjeuner
+N5:朝ご飯	朝ご飯を食べました。そして、学校へ行きました。	petit-déjeuner
+N5:花見	四月に公園で花見をします。	admirer les cerisiers
+N5:お巡りさん	お巡りさんに道を聞きました。	agent de police
+N5:貰う	友達から手紙を貰いました。	reçu
+N5:往復	東京まで往復の切符をください。	aller-retour
+N5:醤油	寿司に醤油をつけます。	sauce soja
+N5:二十歳	私は二十歳です。	vingt ans
+N5:二十歳	来月、二十歳になります。	vingt ans
+N5:美術館	美術館で有名な絵を見ました。	musée d'art
+N5:午前中	午前中は家にいます。	toute la matinée
+N5:笠	昔の人は笠をかぶって旅をしました。	chapeau de paille
+N5:ヶ月	日本に三ヶ月住んでいました。	trois mois
+N5:二日酔い	昨日飲みすぎて、二日酔いです。	gueule de bois
+N5:左側	トイレは左側にあります。	sur la gauche
+N5:本棚	本棚に本がたくさんあります。	la bibliothèque
+N5:終電	終電に乗り遅れました。	dernier train
+N5:鼻水	風邪で鼻水が出ます。	nez qui coule
+N5:水色	水色のシャツが似合いますね。	bleu ciel
+N5:会社員	兄は会社員です。	employé de bureau
+N5:万年筆	父から万年筆をもらいました。	stylo-plume
+N5:この頃	この頃、よく雨が降ります。	Ces temps-ci
+N5:一号車	私の席は一号車です。	voiture numéro un
+N5:天の川	夏の夜に天の川が見えました。	Voie lactée
+N5:山道	山道を歩いて頂上まで行きました。	sentier de montagne
+N5:産婦人科	姉は産婦人科で働いています。	gynécologie-obstétrique
+N5:保険証	病院で保険証を見せてください。	carte d'assurance
+N5:特急	特急で大阪へ行きます。	train express
+N5:番線	東京行きの電車は三番線です。	voie trois
+N5:コンセント	コンセントはどこにありますか。	prise électrique
+N5:真っ直ぐ	この道を真っ直ぐ行ってください。	tout droit
+N5:葉書	旅行先から葉書を送りました。	carte postale
+N5:再来週	再来週、試験があります。	dans deux semaines
+N5:片道	片道の切符を一枚ください。	aller simple
+N5:一昨年	一昨年、北海道へ行きました。	Il y a deux ans
+N5:アウトドア	私はアウトドアが大好きです。	plein air
+N5:ご馳走様	ご馳走様でした。とてもおいしかったです。	Merci pour le repas
+N5:指定席	新幹線の指定席を予約しました。	réservé une place
+N5:大学院生	兄は大学院生です。	étudiant en master
+N5:一年生	妹は大学一年生です。	première année
+N5:再来月	再来月に引っ越します。	dans deux mois
+N5:学割	学生証を見せると学割になります。	tarif étudiant
+N5:直ぐ	直ぐ行きます。	tout de suite
+N5:先ず	先ず手を洗いましょう。	D'abord
+N5:Ｌサイズ	このシャツのＬサイズはありますか。	taille L
+N5:お祖父さん	お祖父さんは毎朝散歩します。	grand-père
+N5:楽しみにする	旅行を楽しみにしています。	avec impatience
+N5:元気がない	今日は元気がないですね。	n'as pas l'air en forme
+N5:お地蔵さん	村の入口にお地蔵さんがいます。	statue de Jizō
+N5:ありがとうございます	どうもありがとうございます。	Merci beaucoup
+N5:直ぐに	直ぐ行きます。	tout de suite
+N5:下さい	水を一杯下さい。	s'il vous plaît
+N5:皆で	皆さん、おはようございます。	!
+N5:行ってきます	「行ってきます。」「行ってらっしゃい。」	J'y vais
+N5:砕けた言い方	「ありがとう」は「ありがとうございます」の砕けた言い方です。	façon familière
+N5:気分が悪い	気分が悪くて吐きそうです。	ne me sens pas bien
+N5:お祖母さん	お祖母さんの料理はおいしいです。	grand-mère
+N5:二ヶ月前	二ヶ月前に日本に来ました。	il y a deux mois
+N5:交通系ＩＣカード	交通系ＩＣカードで電車に乗ります。	carte IC de transport
+N5:ハラルフード	この店にはハラルフードがあります。	nourriture halal
+N5:体に気をつける	寒いので、体に気をつけてください。	prenez soin de vous
+N5:お大事に	風邪ですか。お大事に。	Soignez-vous bien
+N5:出来るだけ	出来るだけ早く来てください。	le plus tôt possible
+N5:二三日	二三日休みます。	deux ou trois jours
+N5:どうですか	このシャツはどうですか。	Que pensez-vous de
+N5:どうですか	日本の生活はどうですか。	Comment se passe
+N5:二人ずつ	二人ずつ並んでください。	par deux
+N5:一人で	一人で住んでいるので、時々寂しいです。	Je vis seul
+N5:来学期	来学期から日本語を勉強します。	semestre prochain
+N5:そうですか	「明日は休みです。」「そうですか。」	Ah bon
+N5:ホストファミリー	ホストファミリーはとても親切です。	famille d'accueil
+N5:遅くなる	今日は帰りが遅くなります。	rentrerai tard
+N5:一年に一度	一年に一度、国に帰ります。	une fois par an
+N5:二週間前	二週間前に引っ越しました。	il y a deux semaines
+N5:行目	三行目を読んでください。	troisième ligne
+N5:行ってらっしゃい	気をつけて、行ってらっしゃい。	Fais attention à toi, à tout à l'heure
+N5:硬い言い方	「〜でございます」は硬い言い方です。	tournure soutenue
+N5:お元気で	皆さん、お元気で。	Portez-vous bien
+N5:お元気で	こんにちは、お元気ですか。	!
+N5:二時半	会議は二時半からです。	deux heures et demie
+N5:よろしくお願いします	これからよろしくお願いします。	Je compte sur vous
+N5:丁寧な言い方	「いらっしゃいませ」は丁寧な言い方です。	formule polie
+N5:お願いします	これからよろしくお願いします。	Je compte sur vous
+N4:どんどん	新しいビルがどんどん建っています。	à toute vitesse
+N4:どんどん	外国人の観光客がどんどん増えている。	de plus en plus nombreux
+N4:畳	和室の畳の上で寝ました。	tatamis
+N4:必ず	明日は必ず来てください。	sans faute
+N4:私	私が担当の山田でございます。	Je
+N4:ずっと	昨日はずっと家にいた。	tout du long
+N4:ずっと	子どものころからずっとこの町に住んでいる。	depuis toujours
+N4:信じる	私はあなたを信じています。	J'ai confiance en toi
+N4:痩せる	運動して五キロ痩せました。	perdu cinq kilos
+N4:がっかり	試合に負けて、がっかりしました。	déçu
+N4:褒める	先生に作文を褒められました。	fait l'éloge
+N4:留守番	子供が一人で留守番をしています。	garde la maison
+N4:忘れ物	忘れ物を交番に届けました。	objet trouvé
+N4:グラス	グラスにワインを注ぎました。	le verre
+N4:長い間	長い間、お世話になりました。	si longtemps
+N4:一生懸命	一生懸命勉強したのに、試験に落ちた。	de toutes mes forces
+N4:海外旅行	夏休みに海外旅行をします。	voyage à l'étranger
+N4:握手	選手と握手しました。	serré la main
+N4:ワープロ	昔はワープロで手紙を書きました。	traitement de texte
+N4:汚す	シャツに汚れが付きました。	!
+N4:とか	休みの日は映画とか買い物とかに行きます。	ce genre de choses
+N4:間に合う	急げば間に合います。	tu seras à l'heure
+N4:大分	病気は大分よくなりました。	beaucoup mieux
+N4:途中	学校へ行く途中で友達に会いました。	en allant à l'école
+N4:ポップコーン	映画館でポップコーンを買いました。	pop-corn
+N4:調べる	インターネットで情報を調べます。	cherche
+N4:このように	このように書いてください。	de cette manière
+N4:昼休み	昼休みに公園を散歩します。	pause déjeuner
+N4:相談	進路について先生に相談しました。	demandé conseil
+N4:毎月	毎月少しずつ預金しています。	chaque mois
+N4:待ち合わせ	駅で友達と待ち合わせをしています。	rendez-vous
+N4:向かう	山へ向かいました。	dirigé vers
+N4:旅館	京都の旅館に泊まりました。	auberge japonaise
+N4:引退	その選手は今年引退します。	prend sa retraite
+N4:浅い	この川は浅いです。	peu profonde
+N4:ハンドバッグ	母に新しいハンドバッグをあげました。	sac à main
+N4:そんな	そんなに急がなくてもいいよ。	autant
+N4:以上	百人以上の人が集まった。	Plus de
+N4:以上	二十歳以上の人はお酒が飲めます。	et plus
+N4:以下	六歳以下の子どもは無料です。	et moins
+N4:以下	三人以下のグループで話し合ってください。	ou moins
+N4:外国語	外国語を勉強することは楽しい。	langue étrangère
+N4:一度	もう一度言ってください。	une fois
+N4:現金	この店は現金しか使えません。	argent liquide
+N4:起こす	昨日、駅前で事故が起こりました。	!
+N4:自分で	未来の自分に手紙を書きました。	!
+N4:自分で	子どもには自分で考えられるようになってほしい。	par eux-mêmes
+N4:お帰り	「ただいま。」「お帰りなさい。」	Bon retour
+N4:いらっしゃる	社長は会議室にいらっしゃいます。	est dans la salle
+N4:あちら	出口はあちらです。	par là-bas
+N4:あちら	お手洗いはあちらにございます。	par là-bas
+N4:今すぐ	今すぐ来てください。	tout de suite
+N4:水着	海に行くので、水着を買いました。	maillot de bain
+N4:助かる	手伝ってくれて助かりました。	ça m'a bien rendu service
+N4:約束を守る	約束を守るのは大切です。	tenir ses promesses
+N4:ガラス	ガラスのコップが割れました。	en verre
+N4:実は	実は、来月結婚します。	À vrai dire
+N4:水道	水道の水を飲んでも大丈夫です。	l'eau du robinet
+N4:あんなに	あんなに勉強したんだから、落ちるはずがない。	tout ce qu'il a étudié
+N4:作品	これは有名な画家の作品です。	œuvre
+N4:授業中	授業中は携帯を使わないでください。	pendant le cours
+N4:授業中	授業中に喋らないでください。	pendant le cours
+N4:サラリーマン	兄はサラリーマンです。	employé de bureau
+N4:又	黒又は青のペンで書いてください。	!
+N4:或る	或る日、森で熊に会いました。	Un jour
+N4:確か	確か、会議は三時からです。	Si je me souviens bien
+N4:頂く	先生に本を頂きました。	reçu
+N4:立場	相手の立場で考えてください。	à la place
+N4:迎える	駅まで迎えに来てくれてありがとう。	venu me chercher
+N4:並ぶ	二人ずつ並んでください。	en rang
+N4:並ぶ	テーブルの上にお皿を並べます。	!
+N4:何でも	それは何ですか。	!
+N4:何でも	好きなスポーツは何ですか。	!
+N4:代わり	肉の代わりに魚を食べました。	au lieu de
+N4:問い合わせ	詳しいことは電話でお問い合わせください。	renseignez-vous
+N4:会場	コンサートの会場は人でいっぱいでした。	salle de concert
+N4:偶に	偶に外で食事をします。	de temps en temps
+N4:皆様	皆様、こんばんは。	à tous
+N4:暮らし	家族と離れて暮らしています。	Je vis
+N4:コース	料理のコースを予約しました。	menu complet
+N4:湯	温泉の湯はとても熱いです。	L'eau
+N4:畑	祖父は畑で野菜を作っています。	champ
+N4:携帯電話	携帯電話の番号を教えてください。	portable
+N4:江戸時代	江戸時代の町はどんな町でしたか。	l'époque d'Edo
+N4:首相	首相がテレビで話しています。	Premier ministre
+N4:祖父	祖父は毎朝早く起きます。	grand-père
+N4:祖父	祖父と将棋をしました。	grand-père
+N4:祖母	祖母がマフラーを編んでくれました。	grand-mère
+N4:親戚	お正月に親戚が集まります。	famille élargie
+N4:一階	受付は一階にあります。	rez-de-chaussée
+N4:地下	駐車場は地下にあります。	sous-sol
+N4:じゃが芋	じゃが芋でカレーを作りました。	pommes de terre
+N4:テープ	箱をテープで止めます。	ruban adhésif
+N4:紅葉	秋は京都の紅葉がきれいです。	feuilles rouges
+N4:踊り	パーティーで朝まで踊りました。	!
+N4:親友	彼は私の親友です。	meilleur ami
+N4:ペット	何かペットを飼っていますか。	animal de compagnie
+N4:ポスト	手紙をポストに入れました。	boîte aux lettres
+N4:引っ越す	引っ越しは力仕事です。	!
+N4:課長	課長に報告しました。	chef de section
+N4:汽車	昔は汽車で旅行しました。	train à vapeur
+N4:些とも	彼の話は些とも面白くない。	du tout
+N4:賛成	クラスのほとんどの人が賛成した。	était d'accord
+N4:全力	試合で全力を出しました。	tout donné
+N4:年上	彼は私より三つ年上です。	trois ans de plus
+N4:カット	美容院で髪をカットしました。	couper
+N4:クレジットカード	クレジットカードで払ってもいいですか。	carte de crédit
+N4:ニコニコ	赤ちゃんがニコニコ笑っています。	sourit tout content
+N4:一日中	昨日は一日中寝ていました。	toute la journée
+N4:花粉症	春は花粉症でつらいです。	rhume des foins
+N4:敬語	会社では敬語を使います。	langage honorifique
+N4:乗り換える	次の駅で乗り換えです。	!
+N4:食後	この薬は食後に飲んでください。	après le repas
+N4:生活費	東京は生活費が高いです。	coût de la vie
+N4:占い	毎朝、テレビの占いを見ます。	horoscope
+N4:電子レンジ	電子レンジでご飯を温めます。	micro-ondes
+N4:不便	この町は駅が遠くて不便です。	n'est pas pratique
+N4:寮	大学の寮に住んでいます。	résidence universitaire
+N4:餡	このお菓子には甘い餡が入っています。	pâte de haricots
+N4:残業	今日は残業で遅くなります。	heures sup
+N4:残業	毎日残業で大変です。	heures sup
+N4:原爆	広島で原爆の話を聞きました。	bombe atomique
+N4:卒業式	卒業式で泣いてしまいました。	cérémonie de remise des diplômes
+N4:食料品	食料品は地下一階で売っています。	produits alimentaires
+N4:記念	卒業の記念に写真を撮りました。	en souvenir
+N4:小鳥	窓の外で小鳥が鳴いています。	petits oiseaux
+N4:すっと	薬を飲んだら、すっと痛みが消えました。	d'un coup
+N4:通帳	銀行の通帳をなくしました。	livret bancaire
+N4:会議室	こちらが会議室でございます。	salle de réunion
+N4:会議室	社長は会議室にいらっしゃいます。	salle de réunion
+N4:ボールペン	ボールペンで名前を書いてください。	stylo-bille
+N4:家庭教師	大学生の家庭教師に数学を習っています。	cours particuliers
+N4:一日目	旅行の一日目は京都です。	premier jour
+N4:座談会	留学生の座談会に参加しました。	table ronde
+N4:ガソリンスタンド	ガソリンスタンドでガソリンを入れました。	station-service
+N4:徹夜	試験の前に徹夜しました。	nuit blanche
+N4:二日間	二日間の旅行でした。	deux jours
+N4:旅行会社	旅行会社でチケットを買いました。	agence de voyages
+N4:降り出す	突然、雨が降り出しました。	s'est mis à pleuvoir
+N4:授業料	大学の授業料は高いです。	frais de scolarité
+N4:英会話	毎週、英会話を習っています。	conversation anglaise
+N4:英会話	英会話スクールに通っています。	conversation anglaise
+N4:ニヤニヤ	彼は何を見てニヤニヤしているの？	petit sourire
+N4:盆踊り	夏祭りで盆踊りをしました。	bon-odori
+N4:白黒	祖父の白黒の写真を見ました。	noir et blanc
+N4:両	道の両側に桜が咲いています。	des deux côtés
+N4:国際関係	大学で国際関係を学んでいます。	relations internationales
+N4:大ヒット	その映画は大ヒットしました。	énorme succès
+N4:八分	駅まで八分かかります。	huit minutes
+N4:紺色	制服は紺色です。	bleu marine
+N4:キャッシュカード	キャッシュカードでお金を下ろします。	carte bancaire
+N4:暗証番号	暗証番号を入れてください。	code secret
+N4:駅員	駅員に道を尋ねました。	employé de la gare
+N4:短冊	七夕に短冊に願いを書きました。	bande de papier
+N4:一年中	ハワイは一年中暖かいです。	toute l'année
+N4:大浴場	ホテルの大浴場でゆっくりしました。	grand bain
+N4:茶店	山道の茶店でお団子を食べました。	maison de thé
+N4:バレンタインデー	バレンタインデーにチョコをもらいました。	Saint-Valentin
+N4:ショッピングモール	週末はショッピングモールに行きます。	centre commercial
+N4:ホームステイ	カナダでホームステイをしました。	séjour en famille d'accueil
+N4:ホワイトデー	ホワイトデーにお返しをしました。	White Day
+N4:力仕事	引っ越しは力仕事です。	travail physique
+N4:予習	明日の授業の予習をします。	prépare
+N4:時間通り	電車は時間通りに来ました。	à l'heure
+N4:昔々	昔々、ある所におじいさんがいました。	Il était une fois
+N4:億	日本の人口は約一億二千万人です。	cent vingt millions
+N4:知らせる	結果が分かったら知らせてください。	Faites-moi savoir
+N4:ホームシック	留学して、少しホームシックになりました。	mal du pays
+N4:割り引き券	割り引き券で安く買えました。	bon de réduction
+N4:ＳＮＳ	写真をＳＮＳに載せました。	réseaux sociaux
+N4:主夫	彼は主夫として家事をしています。	homme au foyer
+N4:期末試験	来週から期末試験が始まります。	examens de fin de semestre
+N4:未満	二十歳未満の人はお酒が飲めません。	Les moins de vingt ans
+N4:泊	京都に二泊しました。	deux nuits
+N4:泳ぎ方	父に泳ぎ方を教えてもらいました。	appris à nager
+N4:朝食付き	このホテルは朝食付きです。	petit-déjeuner
+N4:過ぎ	お正月は家族と過ごします。	!
+N4:休校	台風で学校が休校になりました。	L'école a fermé
+N4:朝寝坊	今朝は朝寝坊して、遅刻しました。	me suis levé trop tard
+N4:トロッコ列車	嵐山でトロッコ列車に乗りました。	petit train panoramique
+N4:電気工学	兄は電気工学を専攻しています。	génie électrique
+N4:スクランブル交差点	渋谷のスクランブル交差点は有名です。	carrefour en diagonale
+N4:一人暮らし	大学に入って一人暮らしを始めました。	vivre seul
+N4:迎えに行く	駅まで友達を迎えに行きます。	Je vais chercher
+N4:お陰で	天気がよかったお陰で、楽しい旅行になりました。	Grâce au
+N4:お陰様で	お陰様で元気です。	Je vais bien, merci
+N4:何度も	何度も練習しました。	plusieurs fois
+N4:雨が止む	雨が止んだら、出かけましょう。	la pluie s'arrêtera
+N4:雨が止む	やっと雨が止みました。	La pluie s'est enfin arrêtée
+N4:一泊二食付き	この旅館は一泊二食付きで一万円です。	deux repas compris
+N4:一生に一度	一生に一度は富士山に登りたいです。	une fois dans ma vie
+N4:よろしくお伝えください	ご家族によろしくお伝えください。	Transmettez mes amitiés
+N4:お願い	これからよろしくお願いします。	Je compte sur vous
+N4:お見舞い	入院している友達のお見舞いに行きました。	rendre visite
+N4:お守り	神社でお守りを買いました。	porte-bonheur
+N4:お宅	明日、お宅に伺います。	chez vous
+N4:その頃	その頃、私は大阪に住んでいました。	À cette époque
+N4:それで	それでは、また明日。	!
+N4:それで	失敗した。それでも、あきらめない。	!
+N4:ただ	ただ見ているだけです。	ne fais que
+N4:どうしたらいい	道に迷いました。どうしたらいいですか。	Que dois-je faire
+N4:どこでも	この猫はどこでも寝ます。	n'importe où
+N4:と申します	はじめまして、田中と申します。	je m'appelle
+N4:に比べて	去年に比べて、今年は暑いです。	Par rapport à
+N4:のようなもの	夢のようなものを見ました。	quelque chose comme
+N4:もう少し	もう少しゆっくり話してください。	un peu plus
+N4:もう少し	もう少し大きい声で話してください。	un peu plus
+N4:仕方がない	雨だから仕方がないですね。	on n'y peut rien
+N4:平和記念資料館	広島で平和記念資料館を見学しました。	musée du Mémorial pour la paix
+N4:宝くじに当たる	宝くじに当たったら、世界旅行をしたいです。	gagne à la loterie
+N4:放っておく	彼のことは放っておいてください。	Laissez-le tranquille
+N4:縫いぐるみ	娘はくまの縫いぐるみと寝ます。	ours en peluche
+N4:名前をつける	子犬に名前をつけました。	donné un nom
+N4:良かったら	良かったら、一緒に食べませんか。	Si tu veux
+N4:連れて帰る	迷子の犬を家に連れて帰りました。	ramené chez moi
+N4:お腹を壊す	冷たい物を食べすぎて、お腹を壊しました。	l'estomac dérangé
+N4:顔が青い	顔が青いですよ。大丈夫ですか。	tout pâle
+N4:〜顔をする	彼は困った顔をしていました。	avait l'air embarrassé
+N4:眼鏡をかける	本を読むときは眼鏡をかけます。	mets mes lunettes
+N4:眼鏡をかける	眼鏡をかけて本を読みます。	avec mes lunettes
+N4:お返し	お土産のお返しにお菓子をあげました。	en retour
+N4:お返し	ホワイトデーにお返しをしました。	cadeau en retour
+N4:計画を立てる	夏休みの計画を立てました。	fait des projets
+N4:申し訳ありません	お待たせして、申し訳ありません。	vraiment désolé
+N4:上手くいく	面接は上手くいきました。	s'est bien passé
+N4:やっぱり	やっぱり家が一番です。	Finalement
+N4:気をつける	火に気をつけてください。	Faites attention
+N4:気をつける	気をつけて、行ってらっしゃい。	Fais attention
+N4:アジア研究	大学でアジア研究を専攻しています。	études asiatiques
+N4:銃で撃たれる	映画の中で主人公が銃で撃たれました。	s'est fait tirer dessus
+N4:失礼します	それでは、お先に失礼します。	je vous laisse
+N4:失礼します	お先に失礼します。	Je vous laisse
+N4:成るべく	成るべく早く返事をください。	le plus vite possible
+N4:出来れば	出来れば、明日来てください。	Si possible
+N4:のどが渇く	走ったので、のどが渇きました。	j'ai soif
+N4:なるほど	なるほど、そういうことですか。	Je vois
+N4:１９６０年代	この曲は１９６０年代にはやりました。	années 1960
+N4:の紹介で	友達の紹介でこの仕事を始めました。	grâce à la recommandation
+N4:風が吹く	今日は強い風が吹いています。	souffle un vent fort
+N4:風が吹く	今日は冷たい風が吹いています。	Un vent froid souffle
+N4:待たせる	お待たせしてすみません。	fait attendre
+N4:待たせる	山田様、お待たせしました。	fait attendre
+N4:そんなことはない	「日本語、下手でしょう？」「そんなことはないよ。」	Mais non, pas du tout
+N4:代わりに	肉の代わりに魚を食べました。	au lieu de
+N4:代わりに	私が先生の代わりに説明します。	à la place du
+N4:大切にする	この時計を大切にしています。	prends grand soin
+N4:冊	図書館で本を三冊借りました。	trois livres
+N4:こんな風に	こんな風に折ってください。	comme ceci
+N4:今日中に	このレポートは今日中に出してください。	avant la fin de la journée
+N4:お疲れ様	今日も一日お疲れ様でした。	Merci pour ton travail
+N4:お湯が沸く	お湯が沸いたら火を止めてください。	l'eau bout
+N4:お湯が沸く	お湯が沸きました。	L'eau bout
+N4:通帳記入	ＡＴＭで通帳記入をしました。	mis à jour mon livret
+N4:お休みなさい	お休みなさい。また明日。	Bonne nuit
+N4:その他	漢字、文法、その他いろいろ勉強しています。	bien d'autres choses
+N4:どうぞ宜しく	新しいクラスの皆さん、どうぞ宜しく。	Ravi de faire votre connaissance
+N4:宜しかったら	宜しかったら、お茶をどうぞ。	Si vous le souhaitez
+N4:鍵をかける	出かけるときは鍵をかけてください。	Fermez à clé
+N4:迎えに来る	父が車で迎えに来てくれました。	venu me chercher
+N4:いつの間にか	いつの間にか寝てしまいました。	sans m'en rendre compte
+N3:なぜなら	なぜなら、彼は嘘をついたからだ。	Parce qu
+N3:なぜなら	今日は行けません。なぜなら、熱があるからです。	La raison, c'est que
+N3:最高	今日は人生で最高の日と言ってもいい。	le plus beau jour
+N3:見舞う	入院している友達のお見舞いに行きました。	rendre visite
+N3:詳しい	詳しいことは電話でお問い合わせください。	plus de détails
+N3:的	彼はとても積極的な人だ。	entreprenant
+N3:的	彼の考え方はとても現実的だ。	réaliste
+N3:下る	水を一杯下さい。	!
+N3:下る	先生が手紙を下さいました。	!
+N3:担当	私が担当の山田でございます。	la personne en charge
+N3:担当	私が担当の山田でございます。	la personne en charge
+N3:最中	食事の最中に電話が鳴った。	en plein repas
+N3:話しかける	勇気を出して話しかけました。	lui parler
+N3:全員	社長をはじめ、社員全員が集まった。	Tout le personnel
+N3:だって	行きたくない。だって、寒いもん。	Après tout
+N3:苦手	私はホラー映画が苦手です。	Je n'aime pas trop
+N3:空く	お腹が空きました。何か食べましょう。	J'ai faim
+N3:中	ただいま会議中です。	en cours
+N3:中	店長は今、電話中です。	au téléphone
+N3:そこで	道に迷った。そこで、近くの人に聞いた。	donc
+N3:そこで	一人では無理だった。そこで、友だちに手伝ってもらった。	Alors
+N3:どこか	前にどこかで会ったような気がする。	quelque part
+N3:事実	この映画は事実にもとづいて作られた。	faits réels
+N3:却って	急いでタクシーに乗ったら、却って遅くなった。	au contraire
+N3:却って	薬を飲んだら、却って気分が悪くなった。	au contraire
+N3:もしかしたら	もしかしたら彼は来ないかもしれない。	Il se peut
+N3:もしかしたら	もしかしたら、財布は車の中かもしれない。	peut-être
+N3:一言	一言言ったばかりに、彼女を怒らせてしまった。	un mot
+N3:再び	十年後、二人は再び会った。	revus
+N3:切れる	時計の電池が切れました。	est à plat
+N3:切れる	部屋の電灯が切れました。	a grillé
+N3:一度に	もう一度言ってください。	!
+N3:一度に	もう一度書きなおしてください。	!
+N3:行けない	お金がなくて、旅行に行けなかった。	n'ai pas pu partir
+N3:共に	年をとると共に、体力が落ちる。	Avec l'âge
+N3:金魚	金魚が死んでしまいました。	poisson rouge
+N3:笑い	彼はうれしそうに笑った。	!
+N3:笑い	赤ちゃんがニコニコ笑っています。	!
+N3:貸し	そのペン、ちょっと貸して。	!
+N3:貸し	友達にペンを貸しました。	!
+N3:割る	ガラスのコップが割れました。	!
+N3:割る	落としたら、お皿が割れました。	!
+N3:疲れ	ああ、疲れた。	!
+N3:疲れ	すこしも疲れていない。	!
+N3:働き	海外で働きたいです。	!
+N3:働き	毎日五時まで働きます。	!
+N3:折角	折角作ったのに、だれも食べなかった。	Je me suis donné la peine
+N3:同時	家に着くと同時に、雨が降り出した。	Au moment même
+N3:場	靴の売り場は三階です。	!
+N3:肌	肌がかゆいので皮膚科に行きました。	peau
+N3:喜び	このお土産、喜んでくれるかな。	!
+N3:骨	この魚は骨が多くて食べにくい。	arêtes
+N3:足る	お金が足りません。	!
+N3:足る	この料理は少し甘みが足りない。	!
+N3:放る	彼のことは放っておいてください。	Laissez-le tranquille
+N3:花火	夏といえば、やっぱり花火だね。	feux d'artifice
+N3:負け	試合に負けて、がっかりしました。	!
+N3:負け	頑張ったけれども、試合に負けた。	!
+N3:暮れ	田舎の暮らしは静かです。	!
+N3:暮れ	冬は日が早く暮れます。	!
+N3:下り	水を一杯下さい。	!
+N3:下り	先生が手紙を下さいました。	!
+N3:待ち合わせる	駅で友達と待ち合わせをしています。	J'ai rendez-vous
+N3:怠ける	怠け者は成功しません。	!
+N3:涼む	秋は涼しくて気持ちがいいです。	!
+N3:涼む	窓を開けると、涼しい風が入ります。	!
+N3:お待たせしました	山田様、お待たせしました。	désolé de vous avoir fait attendre
+N3:お先に	お先に失礼します。	je pars avant vous
+N3:お先に	それでは、お先に失礼します。	je pars avant vous
+N3:空き	この席は空いていますか。	!
+N3:少しも	この靴は少しきついです。	!
+N3:少しも	このカレーは少し辛いです。	!
+N3:建つ	家を建てるのにお金がたくさんかかりました。	!
+N3:うがい	早く寝たほうがいいよ。	!
+N3:うがい	夜遅くコーヒーを飲まないほうがいい。	!
+N3:点く	暗いから電気を点けてください。	!
+N2:出勤	明日は休みです。もっとも、急な仕事があれば出勤します。	je viendrai
+N2:驚き	値段が高くて驚きました。	!
+N2:祝日	本日は祝日につき、休業いたします。	jour férié
+N2:占う	毎朝、テレビの占いを見ます。	!
+N2:争い	遺産を巡って、兄弟が争っている。	!
+N2:伴う	人口の増加に伴って、住宅が不足している。	Avec la croissance
+N2:一部	これは日本の文化の一部だと言える。	fait partie
+N2:体力	年をとるにしたがって、体力が落ちる。	forme physique
+N2:体力	年をとると共に、体力が落ちる。	forme physique
+N2:片付く	部屋をきちんと片付けてください。	!
+N2:片付く	使ったものはきちんと片付けなさい。	!
+N2:何より	何より健康が大切です。	plus que tout
+N2:載る	写真をＳＮＳに載せました。	!
+N2:何て	それは何ですか。	!
+N2:何て	何だか眠いです。	!
+N2:何しろ	何しろ初めてなので、緊張します。	Après tout
+N2:宜しく	宜しかったら、お茶をどうぞ。	!
+N2:宜しく	この席に座っても宜しいですか。	!
+N2:何と	それは何ですか。	!
+N2:何と	何だか眠いです。	!
+N2:当て	もし宝くじが当たったら、何を買う？	!
+N2:祈り	神社でお祈りをしました。	!
+N2:祈り	家族が元気でいられるように祈る。	!
+N2:問い合わせる	詳しいことは電話でお問い合わせください。	renseignez-vous
+N2:遅れ	遅れてごめん。	!
+N2:遅れ	なぜ遅れたのですか。	!
+N2:和	この部屋は和風に作られている。	style japonais
+N2:頼み	いくら頼まれたって、それはできない。	!
+N2:頼み	頼まれたら、引き受けないわけにはいかない。	!
+N2:久しい	久しぶりですね。お元気でしたか。	!
+N2:着替え	家に帰ったら、すぐに着替えます。	!
+N2:上り	梯子を使って屋根に上りました。	!
+N2:上り	階段を上って二階へ行きます。	!
+N2:例え	果物、例えばりんごが好きです。	!
+N2:手洗い	すみません、お手洗いはどこですか。	!
+N2:借り	この本を借りたいんですが、いいですか。	!
+N2:弱	駅まで歩いて十分弱です。	un peu moins de
+N2:同士	友だち同士で旅行に行った。	entre amis
+N2:同士	留学生同士で日本語で話す。	Entre étudiants étrangers
+N1:なんて	彼がそんなことをするなんて、考えられない。	une chose pareille
+N1:なんて	子どもならともかく、大人がそんなことをするなんて。	une chose pareille
+N1:死	金魚が死んでしまいました。	!
+N1:どうか	この答えが正しいかどうかわからない。	ou non
+N1:どうか	明日来られるかどうか教えてください。	ou non
+N1:第一	料理は第一に味が大切だ。	avant tout
+N1:本題に入る	冗談はさておき、本題に入りましょう。	entrons dans le vif du sujet
+N1:退職	退職を機に、田舎に引っ越した。	départ à la retraite
+N1:二度と	二度とあの店には行くまい。	plus jamais
+N1:二度と	あんな店、二度と行くものか。	Jamais de la vie
+N1:どうにか	どうにか締め切りに間に合った。	tant bien que mal
+N1:暮らす	一人で暮らして初めて、親のありがたさがわかった。	vivant seul
+N1:踏まえる	前回の反省を踏まえて、計画を立て直した。	En tenant compte
+N1:即ち	十二月三十一日、即ち大晦日に会いましょう。	c'est-à-dire
+N1:助け	困っている人を助けましょう。	!
+N1:気になる	試験の結果が気になってしょうがない。	me préoccupent
+N1:夜空	夜空に星が光っています。	ciel nocturne
+N1:見舞い	入院している友達のお見舞いに行きました。	rendre visite
+N1:何の	それは何ですか。	!
+N1:何の	何だか眠いです。	!
+N1:一般的	一般的に、朝ご飯は大切だとされている。	généralement
+N1:熊	或る日、森で熊に会いました。	!
+N1:頂戴	ちょっと手伝って頂戴。	Aide-moi
+N1:一泊	旅行したと言っても、一泊だけです。	une nuit
+N1:助け合う	困ったときは助け合いましょう。	Entraidons-nous
+N1:慣れ	日本の生活にもう慣れました。	!
+N1:慣れ	東京の生活にもう慣れました。	!
+N1:寝不足	最近、寝不足になりがちだ。	manquer de sommeil
+N1:開会式	試合に先立ち、開会式が行われた。	cérémonie d'ouverture
+N1:退学	彼は遊んでばかりで、ついには退学する始末だ。	renvoyé de l'école
+N1:助け合い	困ったときは助け合いましょう。	!
+N1:迎え	駅まで迎えに来てくれてありがとう。	venu me chercher
+N1:迎え	駅まで友達を迎えに行きます。	vais chercher
+N1:騙し	人を騙してはいけません。	!
+N1:織り	祖母ははたを織るのが上手でした。	!
+N1:以て	書面を以てお知らせいたします。	par écrit
+N1:新しく	新しい車がほしい。	!
+N1:新しく	新しいくつを買いました。	!
+N1:大げさ	彼は物事を大げさに言うきらいがある。	tout exagérer
+N1:どうやら	どうやら雨はやんだようだ。	On dirait bien
+N1:さえあれば	時間さえあれば、もっと旅行したい。	Si seulement

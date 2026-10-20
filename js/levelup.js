@@ -1,8 +1,8 @@
 // 昇 LEVEL UP façon Persona : quand le niveau du joueur (Lv) monte, grande animation plein écran.
-import { h, reducedMotion } from './util.js?v=20261020183709';
-import * as S from './srs.js?v=20261020183709';
-import { computeRank, playerLevel } from './level.js?v=20261020183709';
-import { play } from './sfx.js?v=20261020183709';
+import { h, reducedMotion } from './util.js?v=20261020191544';
+import * as S from './srs.js?v=20261020191544';
+import { computeRank, playerLevel } from './level.js?v=20261020191544';
+import { play } from './sfx.js?v=20261020191544';
 
 const STATS = [['知識', 'Savoir'], ['根気', 'Persévérance'], ['勇気', 'Courage'], ['魅力', 'Charme'], ['器用さ', 'Habileté']];
 
