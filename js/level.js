@@ -13,8 +13,8 @@
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261020191544';
-import * as S from './srs.js?v=20261020191544';
+import * as D from './data.js?v=20261020195826';
+import * as S from './srs.js?v=20261020195826';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };
@@ -51,7 +51,7 @@ export const LESSON_CREDIT = 0.3;
 export const isMastered = c => !!c && c.i >= MATURE && (c.r || 0) >= 4 && (c.e || 0) >= 2.3;
 let coveredP = null, coveredAt = 0;
 async function coveredKeys() {
-  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261020191544').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
+  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261020195826').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
   return coveredP;
 }
 /** Score total d'un élément : révisions espacées + jeux / exercices */
@@ -159,6 +159,7 @@ export async function computeRank(progress) {
     rank, label: rankLabel(rank), level: lv,
     gauge: rank >= RANK_NAMES.length ? 1 : Math.min(1, cur.gauge),
     grammar: cur.grammar, vocab: cur.vocab,
+    gSeen: cur.gSeen, gTotal: cur.gTotal, vSeen: cur.vSeen, vTotal: cur.vTotal,
     mastery: cur.mastery, gMastery: cur.gMastery, vMastery: cur.vMastery,
     xp, learned, streak: S.streak(), progress,
   };

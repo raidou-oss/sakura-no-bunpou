@@ -1,29 +1,32 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020191544';
-import * as D from './data.js?v=20261020191544';
-import * as S from './srs.js?v=20261020191544';
-import { wallpaperSVG } from './wallpaper.js?v=20261020191544';
-import * as C from './cloud.js?v=20261020191544';
-import { play } from './sfx.js?v=20261020191544';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020191544';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261020191544';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020195826';
+import * as D from './data.js?v=20261020195826';
+import * as S from './srs.js?v=20261020195826';
+import { wallpaperSVG } from './wallpaper.js?v=20261020195826';
+import * as C from './cloud.js?v=20261020195826';
+import { play } from './sfx.js?v=20261020195826';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020195826';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261020195826';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261020191544';
-import * as L from './links.js?v=20261020191544';
+import { GAMES } from './gamelist.js?v=20261020195826';
+import * as L from './links.js?v=20261020195826';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
 
 /** Rang en kanji stylé + jauge vers le niveau suivant */
 /** Jauge simple réutilisable */
-export function gauge(value, label, { kind = '', mark = null, mastery = null } = {}) {
+export function gauge(value, label, { kind = '', mark = null, mastery = null, detail = null } = {}) {
   const p = toPct(value);
+  // Valeur fine : sous 10 %, une décimale, pour que chaque leçon fasse bouger la jauge
+  const exact = Math.max(0, Math.min(100, (value || 0) * 100));
+  const shown = exact > 0 && exact < 10 ? exact.toFixed(1).replace('.', ',') : String(p);
   const m = mastery == null ? null : Math.min(p, toPct(mastery));
   return h(`div.gauge-row${kind ? '.' + kind : ''}`,
-    h('div.gauge-label', h('span', label), h('strong', `${p} %`, m ? h('small.mastery-tag', { title: 'Maîtrise : éléments révisés à 21 jours ou plus, réussis au moins 4 fois d’affilée et facilement' }, ` · ${m} % maîtrisé`) : null)),
+    h('div.gauge-label', h('span', label, detail ? h('small.gauge-detail', detail) : null), h('strong', `${shown} %`, m ? h('small.mastery-tag', { title: 'Maîtrise : éléments révisés à 21 jours ou plus, réussis au moins 4 fois d’affilée et facilement' }, ` · ${m} % maîtrisé`) : null)),
     h('div.gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': p, 'aria-label': label },
-      h('span', { style: { width: `${Math.max(2, p)}%` } }),
+      h('span', { style: { width: `${exact > 0 ? Math.max(1.5, exact) : 0}%` } }),
       m ? h('i.gauge-glow', { style: { width: `${m}%` } }) : null,
       mark != null ? h('i.gauge-mark', { style: { left: `${toPct(mark)}%` }, title: `Objectif ${toPct(mark)} %` }) : null));
 }
@@ -42,8 +45,8 @@ export function rankBlock(r, { compact = false } = {}) {
       h('span', { style: { width: `${Math.max(3, p)}%` } }),
       r.mastery ? h('i.gauge-glow', { style: { width: `${Math.min(p, toPct(r.mastery))}%` }, title: `${toPct(r.mastery)} % maîtrisé` }) : null),
     !compact && r.grammar != null && !done ? h('div.rank-split',
-      gauge(r.grammar, `Grammaire ${lv}`, { kind: 'g', mark: THRESHOLD.grammar, mastery: r.gMastery }),
-      gauge(r.vocab, `Vocabulaire ${lv}`, { kind: 'v', mark: THRESHOLD.vocab, mastery: r.vMastery })) : null);
+      gauge(r.grammar, `Grammaire ${lv}`, { kind: 'g', mark: THRESHOLD.grammar, mastery: r.gMastery, detail: r.gSeen != null ? `${r.gSeen}/${r.gTotal} points` : null }),
+      gauge(r.vocab, `Vocabulaire ${lv}`, { kind: 'v', mark: THRESHOLD.vocab, mastery: r.vMastery, detail: r.vSeen != null ? `${r.vSeen}/${r.vTotal} mots` : null })) : null);
 }
 
 function avatar(p, size = 'm', { level = false, aura = true } = {}) {

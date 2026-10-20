@@ -603,6 +603,7 @@ body.portal-mode { overflow-x: hidden; }
 .gauge-row { display: flex; flex-direction: column; gap: 6px; }
 .gauge-label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: .86rem; color: var(--mist); }
 .gauge-label strong { font: 800 italic 1.05rem/1 var(--display); color: var(--ink); }
+.gauge-detail { display: block; margin-top: 2px; font-size: .78rem; color: var(--mist); opacity: .8; letter-spacing: .02em; }
 .gauge-row .gauge { height: 8px; overflow: visible; }
 .gauge-row .gauge > span { overflow: hidden; }
 .gauge-row.g .gauge > span { background: linear-gradient(90deg, var(--cyan), var(--azure)); box-shadow: 0 0 12px rgba(70, 217, 255, .5); }
