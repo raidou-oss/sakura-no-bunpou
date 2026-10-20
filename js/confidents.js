@@ -1,9 +1,9 @@
 // 絆 Page des confidents, façon menu « Social Link » de Persona 3 : liste en biais, grande carte de tarot, rangs.
-import { h, jr, toast } from './util.js?v=20261020235205';
-import * as C from './cloud.js?v=20261020235205';
-import * as L from './links.js?v=20261020235205';
-import { play } from './sfx.js?v=20261020235205';
-import { playerLevel, RANK_NAMES } from './level.js?v=20261020235205';
+import { h, jr, toast } from './util.js?v=20261020235443';
+import * as C from './cloud.js?v=20261020235443';
+import * as L from './links.js?v=20261020235443';
+import { play } from './sfx.js?v=20261020235443';
+import { playerLevel, RANK_NAMES } from './level.js?v=20261020235443';
 
 const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const initials = n => (n || '?').slice(0, 2).toUpperCase();
@@ -62,7 +62,8 @@ export async function confidentsPage(main) {
     const row = (x, tag = 'span') => [h('b', { lang: 'ja' }, arcOf(x)[0]), h(`${tag}.nm`, x.p.username), h('em', ROMAN[x.rank])];
     const wrap = h('div.sl-pick');
     const list = h('ul.sl-pick-list', { role: 'listbox', tabindex: '-1', 'aria-label': 'Choisir un confident' },
-      ...people.map((x, k) => h('li', { role: 'option', 'aria-selected': String(k === sel), class: k === sel ? 'on' : null, 'data-k': k,
+      ...people.map((x, k) => h('li', { role: 'option', 'aria-selected': String(k === sel), class: k === sel ? 'on' : null, 'data-k': k, style: { '--i': k },
+        onpointerenter: () => { if (hi !== k) { hi = k; mark(); play('cursor', { gap: 50 }); } },
         onclick: () => { close(); pick(k); } }, ...row(x), h('small', L.titleOf(x.id, x.rank)))));
     const btn = h('button.sl-pick-btn', { type: 'button', 'aria-haspopup': 'listbox', 'aria-expanded': 'false',
       onclick: () => wrap.classList.contains('open') ? close() : open() }, h('small.sl-pick-lbl', 'CONFIDENT'), ...row(c), h('i.sl-chev', { 'aria-hidden': 'true' }));

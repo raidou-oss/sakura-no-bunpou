@@ -2,9 +2,9 @@
 // (CC BY-SA 3.0, Ulrich Apel — https://kanjivg.tagaini.net).
 // Bulle repliable : chaque kanji du mot se trace trait par trait, numéros à l'appui,
 // avec « Rejouer » et un mode « trait par trait » pour s'entraîner à l'écrire.
-import { h, reducedMotion } from './util.js?v=20261020235205';
-import * as S from './srs.js?v=20261020235205';
-import { play } from './sfx.js?v=20261020235205';
+import { h, reducedMotion } from './util.js?v=20261020235443';
+import * as S from './srs.js?v=20261020235443';
+import { play } from './sfx.js?v=20261020235443';
 
 const cache = new Map();
 const isKanji = c => (c >= '一' && c <= '鿿') || c === '々';
