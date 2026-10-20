@@ -1,4 +1,4 @@
-import { reducedMotion } from './util.js?v=20261021004235';
+import { reducedMotion } from './util.js?v=20261021004441';
 // Survol « vivant » : la tuile grossit un peu, pivote vers la souris, un reflet suit le pointeur et l'ombre part à l'opposé.
 const SELECTOR = [
   '.kana-cell:not(.empty)', '.lesson-card', '.unit', '.game-tile', '.member', '.level', '.score-card', '.link-card',

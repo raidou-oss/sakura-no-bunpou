@@ -3117,3 +3117,11 @@ html.reduce-motion .p3-head.p3-in h1 { animation: none; }
 .p3-head.p3-in .ph-chev { animation: ph-note-in .4s ease-out .8s both; }
 html.reduce-motion .ph-spark, html.reduce-motion .ph-chev i { animation: none; }
 @media (max-width: 600px) { .ph-tag { display: none; } }
+/* Ombrage des kanji de titre plus propre : contour fin, une ombre nette + un écho cyan léger */
+.p3-head h1 .jp-head { animation: none !important; }
+.p3-head h1 .jp-head .tk { -webkit-text-stroke: 0; paint-order: normal;
+  text-shadow: 4px 4px 0 var(--sakura-deep), 7px 7px 0 rgba(70, 217, 255, .45); }
+.ph-dots { left: -.5em; top: .45em; width: 1.6em; height: 1em; opacity: .45; }
+.p3-head h1 .jp-head .tk { animation: p3-kanji-shade 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .p3-head h1 .jp-head .tk { animation: none; } }
+html.lite .p3-head h1 .jp-head .tk { animation: none; }
