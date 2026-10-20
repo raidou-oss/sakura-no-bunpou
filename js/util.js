@@ -182,6 +182,7 @@ export function fxAt(x, y, opts = {}) {
   const layer = document.createElement('span');
   layer.className = 'fx-tap';
   layer.style.left = `${x}px`; layer.style.top = `${y}px`;
+  if (opts.scale) layer.style.setProperty('--fxs', opts.scale);
   layer.innerHTML = shockHTML(opts);
   document.body.append(layer);
   setTimeout(() => layer.remove(), 900);

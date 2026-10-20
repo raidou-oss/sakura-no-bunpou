@@ -2,8 +2,8 @@
 //  · chaque clic sur un élément interactif frappe : onde de choc + étincelles au point touché, petit écrasement ;
 //  · à chaque page, le kanji du titre s'imprime (onde + étincelles), les jauges se remplissent, les nombres défilent ;
 //  · une bonne réponse dans un jeu déclenche l'impact des leçons.
-import { hitFx, reducedMotion, fxAt } from './util.js?v=20261020225317';
-import { play } from './sfx.js?v=20261020225317';
+import { hitFx, reducedMotion, fxAt } from './util.js?v=20261020231414';
+import { play } from './sfx.js?v=20261020231414';
 
 const TAP = '.btn, .tab, .segmented button, .lesson-card, .nav-list a, .game-tile, .unit, .member, .option, .chip-btn, .link-card, .level, .point, .oc-row, .online-row, .resume-chip, .tile, .kana-cell, .cf-row, .lc-tarot, button.dash-choice, .choice, .answer-btn';
 const lite = () => document.documentElement.classList.contains('lite');
@@ -64,7 +64,13 @@ export function pageEnter(root = document.getElementById('main')) {
   if (k && !k.dataset.landed) {
     k.dataset.landed = '1';
     k.classList.add('dyn-land');
-    setTimeout(() => { const r = k.getBoundingClientRect(); fxAt(r.left + r.width / 2, r.top + r.height / 2); }, 260);
+    // On attend la fin du balayage de page pour que l'onde soit bien visible, en entier, autour du kanji
+    const fire = (n = 0) => {
+      if (document.querySelector('.page-sweep.in, .page-sweep.out') && n < 30) return setTimeout(() => fire(n + 1), 60);
+      const r = k.getBoundingClientRect();
+      fxAt(r.left + r.width / 2, r.top + r.height * .55, { scale: Math.max(1.4, r.width / 110) });
+    };
+    setTimeout(fire, 200);
   }
   // Jauges : remplissage depuis zéro, en cascade
   let i = 0;
