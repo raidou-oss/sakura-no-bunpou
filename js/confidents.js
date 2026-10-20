@@ -1,8 +1,9 @@
 // 絆 Page des confidents, façon menu « Social Link » de Persona 3 : liste en biais, grande carte de tarot, rangs.
-import { h, jr, toast } from './util.js?v=20261020233446';
-import * as C from './cloud.js?v=20261020233446';
-import * as L from './links.js?v=20261020233446';
-import { play } from './sfx.js?v=20261020233446';
+import { h, jr, toast } from './util.js?v=20261020234620';
+import * as C from './cloud.js?v=20261020234620';
+import * as L from './links.js?v=20261020234620';
+import { play } from './sfx.js?v=20261020234620';
+import { playerLevel, RANK_NAMES } from './level.js?v=20261020234620';
 
 const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const initials = n => (n || '?').slice(0, 2).toUpperCase();
@@ -21,17 +22,16 @@ export async function confidentsPage(main) {
     return;
   }
   main.classList.add('wide');
-  const list = h('ol.cf-list', h('li.cf-loading', 'Chargement des liens…'));
+  const stage = h('div.sl-stage', h('div.sl-loading', 'Chargement des liens…'));
   const detail = h('section.cf-detail');
-  const stage = h('div.cf-stage');
-  main.replaceChildren(head, stage, h('div.cf-layout', h('nav.cf-side', { 'aria-label': 'Mes confidents' }, list), detail));
+  main.replaceChildren(head, stage, detail);
 
   const links = await L.allLinks({ fresh: true }).catch(() => []);
   const profiles = await Promise.all(links.map(l => C.getProfile(l.id).catch(() => null)));
   const people = links.map((l, k) => ({ ...l, p: profiles[k] || { id: l.id, username: l.name || 'Élève' } }));
-  const meP = await C.getProfile(C.currentUser().id).catch(() => null) || { username: C.currentUser()?.user_metadata?.username || 'Moi' };
+  const meP = await C.getProfile(C.currentUser().id).catch(() => null) || { username: 'Moi' };
   if (!people.length) {
-    list.replaceChildren();
+    stage.replaceChildren();
     detail.replaceChildren(h('div.cf-empty',
       L.tarotCard({ arcana: ['愚者', 'Le Fou'], rank: 0, size: 'l' }),
       h('div', h('p.cf-empty-kicker', 'AUCUN LIEN… POUR L’INSTANT'),
@@ -42,63 +42,63 @@ export async function confidentsPage(main) {
   }
 
   let sel = 0;
-  const renderList = () => list.replaceChildren(...people.map((c, k) => {
-    const arc = L.arcanaOf(c.id);
-    return h('li', { style: { '--i': k } }, h('button.cf-row', { type: 'button', class: k === sel ? 'cf-row on' : 'cf-row', 'aria-current': k === sel ? 'true' : null,
-      onclick: () => { if (sel === k) return; sel = k; play('cursor'); renderList(); renderDetail(true); } },
-      h('span.cf-roman', ROMAN[c.rank]),
-      h('span.cf-rowtxt', h('span.cf-arcname', { lang: 'ja' }, `${arc[0]} · ${arc[1]}`), h('strong', c.p.username)),
-      c.rank >= L.MAX_RANK ? h('span.cf-maxtag', 'MAX') : pips(c.rank)));
-  }));
-
-  // Lettres « découpées » façon fiche de confident : chaque lettre dans sa vignette, inclinée au hasard (stable)
-  const ransom = name => {
-    let seed = [...name].reduce((a, ch) => a * 31 + ch.charCodeAt(0), 7);
-    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
-    return h('span.cf-ransom', { 'aria-label': name }, ...[...name].map((ch, i) => ch === ' ' ? h('span.rs-gap', ' ')
-      : h('span', { 'aria-hidden': 'true', class: `rs rs${(i + Math.floor(rnd() * 3)) % 3}${i === 0 ? ' first' : ''}`,
-        style: { '--r': `${(rnd() * 16 - 8).toFixed(1)}deg`, '--y': `${(rnd() * 10 - 5).toFixed(0)}px`, '--s': (0.86 + rnd() * .3).toFixed(2), '--i': i } }, ch)));
-  };
-  const portrait = (p, cls) => h(`div.cf-portrait.${cls}`, h('div.cf-pframe',
-    p?.avatar_url ? h('img', { src: p.avatar_url, alt: '' }) : h('span.cf-pinit', initials(p?.username)), h('i.cf-dots')));
-  const stars = rank => h('span.cf-stars', { 'aria-label': `Rang ${rank} sur ${L.MAX_RANK}` },
+  const go = d => { sel = (sel + d + people.length) % people.length; play('cursor'); render(true); };
+  const pick = k => { if (k === sel) return; sel = k; play('cursor'); render(true); };
+  const stars = rank => h('span.sl-stars', { 'aria-label': `Rang ${rank} sur ${L.MAX_RANK}` },
     ...Array.from({ length: L.MAX_RANK }, (_, k) => h('i', { class: k < rank ? 'on' : null, style: { '--k': k } }, '★')));
-  const go = d => { sel = (sel + d + people.length) % people.length; play('cursor'); renderList(); renderDetail(true); };
+  const portrait = (p, cls) => h(`div.sl-portrait.${cls}`,
+    h('div.sl-pimg', p?.avatar_url ? h('img', { src: p.avatar_url, alt: '' }) : h('span.sl-pinit', initials(p?.username)), h('i.sl-tone'), h('i.sl-dots')));
+  // Récit du lien, à la façon du journal de Social Link
+  const story = (c, arc, title) => {
+    const n = c.p.username;
+    if (c.rank >= L.MAX_RANK) return `${n} et toi êtes allés au bout du chemin. Votre lien est désormais indéfectible : l’arcane ${arc[1].toLowerCase()} brille de tout son éclat.`;
+    if (c.rank <= 1) return `Tu viens de croiser la route de ${n}. Un premier échange, quelques mots… L’arcane ${arc[1].toLowerCase()} s’est éveillée. Où ce lien vous mènera-t-il ?`;
+    return `${n} et toi vous rapprochez un peu plus à chaque échange. Te voilà « ${title} » : l’arcane ${arc[1].toLowerCase()} résonne plus fort. Continue de lui écrire pour voir la suite.`;
+  };
 
-  function renderDetail(animate = false) {
+  function render(animate = false) {
     const c = people[sel];
     const arc = L.arcanaOf(c.id);
     const title = L.titleOf(c.id, c.rank);
     const toNext = c.next ? c.next - c.xp : 0;
-    const desc = c.p.bio || (c.rank >= L.MAX_RANK ? 'Un lien indéfectible. Vous avancez ensemble, quoi qu’il arrive.' : 'Chaque réaction et chaque poke rapprochent. Votre lien ne fait que commencer…');
-    // Scène façon fiche de confident : nos deux portraits ombrés, nom en lettres découpées, panneau d'arcane
-    const scene = h('div.cf-scene',
-      h('div.cf-scene-bg', { 'aria-hidden': 'true' }, h('i.s1'), h('i.s2'), h('i.s3'), h('i.dots')),
-      h('div.cf-portraits', portrait(meP, 'me'), h('a', { href: `#/profil/${c.id}`, title: `Voir le profil de ${c.p.username}` }, portrait(c.p, 'them'))),
-      h('div.cf-nameblock',
-        h('a.cf-namelink', { href: `#/profil/${c.id}` }, ransom(c.p.username)),
-        h('div.cf-bubble', h('p', title + ' — ', h('span', { lang: 'ja' }, arc[0]), ` ${arc[1]}`), h('p.small', `Rang ${c.rank} · ${c.xp} XP de lien`))),
-      h('div.cf-panel',
-        h('div.cf-panel-top',
-          h('button.cf-lr', { type: 'button', 'aria-label': 'Confident précédent', onclick: () => go(-1), disabled: people.length < 2 }, '◀ L1'),
-          h('strong', c.p.username),
-          h('button.cf-lr', { type: 'button', 'aria-label': 'Confident suivant', onclick: () => go(1), disabled: people.length < 2 }, 'R1 ▶')),
-        h('div.cf-panel-main',
-          h('a.cf-cardlink', { href: `#/profil/${c.id}`, title: `Voir le profil de ${c.p.username}` }, L.tarotCard({ arcana: arc, rank: c.rank, name: null, size: 'm' })),
-          h('div.cf-panel-txt',
-            h('div.cf-arcline', h('small', 'ARCANA'), h('b', arc[1].replace(/^(Le |La |L’|Les )/, '')), h('small', 'RANK'), h('em', String(c.rank))),
-            stars(c.rank),
-            h('p.cf-desc', desc))),
-        h('button.cf-replay', { type: 'button', onclick: () => L.rankUpBanner({ name: c.p.username, rank: Math.max(1, c.rank), title, arcana: arc }) }, '▶ Revoir le RANK UP')));
+    const pl = playerLevel(c.p.xp || 0);
+    const info = [c.p.xp != null ? `Lv ${pl.lv}` : null, c.p.rank != null ? `niveau ${RANK_NAMES[Math.min(c.p.rank, 4)]}` : null].filter(Boolean).join(' · ');
+    const card = L.tarotCard({ arcana: arc, rank: c.rank, name: null, size: 'l' });
+    card.append(h('i.sl-holo', { 'aria-hidden': 'true' }));
+    const scene = h('div.sl-scene',
+      h('div.sl-bg', { 'aria-hidden': 'true' }, h('i.b1'), h('i.b2'), h('i.b3'), h('i.dots'), h('span.sl-bgk', { lang: 'ja' }, arc[0])),
+      portrait(meP, 'me'),
+      h('a.sl-plink', { href: `#/profil/${c.id}`, title: `Voir le profil de ${c.p.username}` }, portrait(c.p, 'them')),
+      h('div.sl-lanyard', { 'aria-hidden': 'true' }, h('i.sl-cord'), h('a.sl-card', { href: `#/profil/${c.id}`, tabindex: '-1' }, card)),
+      h('div.sl-left',
+        h('div.sl-titlebar',
+          h('button.sl-lr', { type: 'button', 'aria-label': 'Confident précédent', onclick: () => go(-1), disabled: people.length < 2 }, h('i', '‹'), 'L1'),
+          h('span.sl-big', 'SOCIAL LINK'),
+          h('button.sl-lr.r', { type: 'button', 'aria-label': 'Confident suivant', onclick: () => go(1), disabled: people.length < 2 }, 'R1', h('i', '›'))),
+        h('div.sl-banner',
+          h('div.sl-black', h('span', title)),
+          h('div.sl-white',
+            h('div.sl-arc', h('small', 'ARCANA'), h('b', arc[1].replace(/^(Le |La |L’|Les )/, '')), h('small.jp', { lang: 'ja' }, arc[0])),
+            h('div.sl-rank', h('small', 'RANK'), h('b', String(c.rank)), c.rank >= L.MAX_RANK ? h('em', 'MAX') : null)),
+          stars(c.rank)),
+        h('p.sl-story', story(c, arc, title)),
+        h('div.sl-xp', h('div.sl-xpbar', h('span', { style: { width: `${Math.round(c.pct * 100)}%` } })),
+          h('small', c.rank >= L.MAX_RANK ? 'Rang maximum atteint' : `${toNext} XP avant le rang ${c.rank + 1} — ${L.TITLES[c.rank + 1]}`))),
+      h('div.sl-namebox',
+        h('a.sl-name', { href: `#/profil/${c.id}` }, c.p.username),
+        h('div.sl-desc',
+          h('p', c.p.bio || 'Pas encore de bio… mais chaque lien a son histoire.'),
+          info ? h('p.sl-meta', info) : null)),
+      h('div.sl-strip', { role: 'tablist', 'aria-label': 'Mes confidents' }, ...people.map((x, k) => {
+        const a = L.arcanaOf(x.id);
+        return h('button.sl-chip', { type: 'button', role: 'tab', 'aria-selected': String(k === sel), class: k === sel ? 'sl-chip on' : 'sl-chip', onclick: () => pick(k) },
+          h('b', { lang: 'ja' }, a[0]), h('span', x.p.username), h('em', ROMAN[x.rank]));
+      })),
+      h('button.sl-replay', { type: 'button', onclick: () => L.rankUpBanner({ name: c.p.username, rank: Math.max(1, c.rank), title, arcana: arc }) }, '▶ Revoir le RANK UP'));
     stage.replaceChildren(scene);
     if (animate) { stage.classList.remove('swap'); void stage.offsetWidth; stage.classList.add('swap'); }
     detail.replaceChildren(
       h('div.cf-info',
-        h('div.cf-rankbox',
-          h('div.cf-rankbig', h('small', 'RANK'), h('b', String(c.rank)), c.rank >= L.MAX_RANK ? h('em', 'MAX') : null),
-          h('div.cf-rankright', pips(c.rank),
-            h('div.cf-bar', h('span', { style: { width: `${Math.round(c.pct * 100)}%` } })),
-            h('p.small', c.rank >= L.MAX_RANK ? 'Lien indéfectible : le rang maximum est atteint.' : `${toNext} XP avant le rang ${c.rank + 1} — ${L.TITLES[c.rank + 1]}`))),
         h('ul.cf-stats',
           h('li', h('b', String(c.xp)), h('span', 'XP de lien')),
           h('li', h('b', String(c.reactions)), h('span', c.reactions > 1 ? 'réactions' : 'réaction')),
@@ -109,8 +109,9 @@ export async function confidentsPage(main) {
           h('a.btn.primary', { href: `#/profil/${c.id}` }, 'Envoyer une réaction'),
           h('button.btn', { type: 'button', onclick: () => editForm(c) }, 'Personnaliser'),
           h('a.btn.ghost', { href: '#/communaute' }, 'Communauté'))));
-    if (animate) { detail.classList.remove('swap'); void detail.offsetWidth; detail.classList.add('swap'); }
   }
+  const renderList = () => render();
+  const renderDetail = a => render(a);
 
   function editForm(c) {
     const card = L.linkCard(c, { name: c.p.username, onChange: () => { renderList(); renderDetail(true); } });
@@ -119,19 +120,13 @@ export async function confidentsPage(main) {
     card.querySelector('.lc-edit')?.click();
   }
 
-  renderList();
-  renderDetail(true);
+  render(true);
   play('card');
-  // Navigation au clavier : ↑ ↓ pour changer de confident
+  // Clavier : ← → (ou Q / E façon L1 / R1) pour changer de confident
   const onKey = e => {
     if (e.target.closest('input, textarea, select')) return;
-    if (e.key === 'q' || e.key === 'Q' || e.key === 'e' || e.key === 'E') { e.preventDefault(); go(/e/i.test(e.key) ? 1 : -1); return; }
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      sel = (sel + (e.key === 'ArrowDown' ? 1 : people.length - 1)) % people.length;
-      play('cursor'); renderList(); renderDetail(true);
-      list.querySelector('.cf-row.on')?.focus();
-    }
+    if (['ArrowLeft', 'ArrowUp', 'q', 'Q'].includes(e.key)) { e.preventDefault(); go(-1); }
+    if (['ArrowRight', 'ArrowDown', 'e', 'E'].includes(e.key)) { e.preventDefault(); go(1); }
   };
   document.addEventListener('keydown', onKey);
   window.addEventListener('hashchange', () => document.removeEventListener('keydown', onKey), { once: true });

@@ -1,29 +1,29 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020233446';
-import * as D from './data.js?v=20261020233446';
-import * as S from './srs.js?v=20261020233446';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020233446';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020233446';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020233446';
-import * as C from './cloud.js?v=20261020233446';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261020233446';
-import './dyn.js?v=20261020233446';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261020233446';
-import { play, setVolume } from './sfx.js?v=20261020233446';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020233446';
-import { celebrate, verdict } from './celebrate.js?v=20261020233446';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261020233446';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261020233446';
-import { initGloss } from './gloss.js?v=20261020233446';
-import { initLinks } from './links.js?v=20261020233446';
-import { streakBadge, weekStrip } from './aura.js?v=20261020233446';
-import { initLevelUp } from './levelup.js?v=20261020233446';
-import { confidentsPage } from './confidents.js?v=20261020233446';
-import { initTilt } from './tilt.js?v=20261020233446';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020233446';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020234620';
+import * as D from './data.js?v=20261020234620';
+import * as S from './srs.js?v=20261020234620';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020234620';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020234620';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020234620';
+import * as C from './cloud.js?v=20261020234620';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261020234620';
+import './dyn.js?v=20261020234620';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261020234620';
+import { play, setVolume } from './sfx.js?v=20261020234620';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020234620';
+import { celebrate, verdict } from './celebrate.js?v=20261020234620';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261020234620';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261020234620';
+import { initGloss } from './gloss.js?v=20261020234620';
+import { initLinks } from './links.js?v=20261020234620';
+import { streakBadge, weekStrip } from './aura.js?v=20261020234620';
+import { initLevelUp } from './levelup.js?v=20261020234620';
+import { confidentsPage } from './confidents.js?v=20261020234620';
+import { initTilt } from './tilt.js?v=20261020234620';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020234620';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261020233446';
+import { GAMES } from './gamelist.js?v=20261020234620';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;

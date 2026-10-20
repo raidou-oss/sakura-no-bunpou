@@ -2839,3 +2839,125 @@ html.reduce-motion .p3-head .ph-slash, html.reduce-motion .ph-l { animation: non
 .p3-head:has(.hud-date) { padding-top: 46px; }
 .hud-date { top: 0; right: 4px; transform: rotate(-5deg) scale(.82); transform-origin: top right; }
 @media (max-width: 860px) { .hud-date { transform: rotate(-5deg) scale(.62); } .p3-head:has(.hud-date) { padding-top: 34px; } }
+
+/* ===== Confidents v3 : écran « SOCIAL LINK » plein cadre (Persona 3 Reload × Persona 5, couleurs du site) ===== */
+.sl-stage { container: sl / inline-size; margin: 0 0 22px; }
+.sl-loading { padding: 40px; text-align: center; color: var(--mist); }
+.sl-scene { position: relative; height: clamp(560px, 48vw, 660px); overflow: hidden; isolation: isolate; color: #F3F7FF;
+  background: linear-gradient(125deg, #2A63E0 0%, #1238A6 32%, #0A1F6B 62%, #050C2E 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 97.5% 100%, 0 100%); box-shadow: inset 0 0 0 2px rgba(243, 247, 255, .5); }
+/* Décor : faisceaux de lumière, trame de points, kanji de l'arcane en contour */
+.sl-bg > * { position: absolute; pointer-events: none; }
+.sl-bg .b1 { left: 22%; top: -30%; width: 18%; height: 170%; background: linear-gradient(180deg, rgba(184, 243, 255, .35), rgba(184, 243, 255, 0)); transform: skewX(-28deg); }
+.sl-bg .b2 { left: 44%; top: -30%; width: 7%; height: 170%; background: rgba(243, 247, 255, .16); transform: skewX(-28deg); }
+.sl-bg .b3 { left: -10%; bottom: -12%; width: 70%; height: 34%; background: linear-gradient(90deg, rgba(255, 148, 203, .35), rgba(255, 148, 203, 0)); transform: skewY(-8deg); }
+.sl-bg .dots { inset: 0; background: radial-gradient(circle, rgba(255, 255, 255, .18) 1.3px, transparent 1.8px) 0 0 / 10px 10px;
+  -webkit-mask: linear-gradient(100deg, #000 0%, transparent 35%, transparent 60%, #000 100%); mask: linear-gradient(100deg, #000 0%, transparent 35%, transparent 60%, #000 100%); }
+.sl-bgk { right: 30%; top: -8%; font: 400 clamp(14rem, 30cqw, 22rem)/1 var(--jp-heavy); color: transparent; -webkit-text-stroke: 2px rgba(243, 247, 255, .12); white-space: nowrap; }
+/* Portraits : ton confident en grand (bleu monochrome, liseré blanc), toi en ombre derrière */
+.sl-plink { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.sl-plink .sl-portrait { pointer-events: auto; }
+.sl-portrait { position: absolute; bottom: 0; }
+.sl-portrait.them { right: 0; width: 44%; height: 100%; filter: drop-shadow(-8px 0 0 #F3F7FF) drop-shadow(-4px 0 0 var(--sakura)); }
+.sl-portrait.me { right: 33%; width: 26%; height: 78%; z-index: 1; opacity: .9; }
+.sl-pimg { position: relative; width: 100%; height: 100%; overflow: hidden; background: linear-gradient(170deg, #D9E8FF, #6E9CF0 55%, #1D45B8);
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
+.sl-portrait.me .sl-pimg { background: linear-gradient(170deg, #12245E, #050C2E); clip-path: polygon(30% 0, 100% 6%, 86% 100%, 0 100%); }
+.sl-pimg img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(1.08); }
+.sl-portrait.me .sl-pimg img { filter: grayscale(1) contrast(1.6) brightness(.32); }
+.sl-tone { position: absolute; inset: 0; mix-blend-mode: multiply; background: linear-gradient(180deg, #E4EEFF, #5C8CF0 70%, #2148C0); pointer-events: none; }
+.sl-portrait.me .sl-tone { mix-blend-mode: color; background: #46D9FF; opacity: .45; }
+.sl-dots { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle, rgba(255, 255, 255, .5) 1.4px, transparent 2px) 0 0 / 8px 8px;
+  -webkit-mask: radial-gradient(ellipse at 90% 12%, #000, transparent 40%); mask: radial-gradient(ellipse at 90% 12%, #000, transparent 40%); }
+.sl-pinit { position: absolute; inset: 0; display: grid; place-items: center; padding-left: 18%; font: 900 italic clamp(6rem, 16cqw, 11rem)/1 var(--display); color: #fff;
+  text-shadow: 8px 8px 0 #1D45B8, 14px 14px 0 rgba(255, 148, 203, .6); }
+.sl-portrait.me .sl-pinit { color: transparent; -webkit-text-stroke: 2px rgba(70, 217, 255, .45); text-shadow: none; font-size: clamp(4rem, 10cqw, 7rem); }
+/* Carte de tarot pendue à son cordon, qui se balance */
+.sl-lanyard { position: absolute; left: 47%; top: 0; z-index: 3; width: 0; transform-origin: 0 0; animation: sl-swing 4.2s ease-in-out infinite; }
+@keyframes sl-swing { 0%, 100% { rotate: 2.5deg; } 50% { rotate: -2.5deg; } }
+.sl-cord { position: absolute; left: -2px; top: 0; width: 4px; height: clamp(70px, 9cqw, 110px); background: linear-gradient(90deg, #0A1F6B, #46D9FF 50%, #0A1F6B); }
+.sl-card { position: absolute; left: 0; top: clamp(66px, 8.6cqw, 106px); translate: -50% 0; display: block; }
+.sl-card .tarot.l { transform: rotate(3deg) scale(.88); transform-origin: top center; box-shadow: 0 0 0 3px #F3F7FF, 0 0 0 6px #0A1F6B, 0 26px 50px -16px rgba(0, 0, 0, .8); }
+.sl-holo { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; mix-blend-mode: screen; }
+.sl-holo::before { content: ''; position: absolute; inset: -40% -60%; background: linear-gradient(105deg, transparent 40%, rgba(70, 217, 255, .4) 46%, rgba(255, 255, 255, .8) 50%, rgba(255, 148, 203, .4) 54%, transparent 60%);
+  animation: ru-holo 3.2s ease-in-out infinite; }
+/* Colonne de gauche : SOCIAL LINK, bandeaux noir et blanc, étoiles, récit */
+.sl-left { position: absolute; left: 0; top: 0; z-index: 4; width: 47%; padding: 14px 0 0 0; }
+.sl-titlebar { display: flex; align-items: center; gap: 6px; padding-left: 18px; }
+.sl-big { font: 900 italic clamp(2.4rem, 6.4cqw, 4rem)/0.9 var(--display); letter-spacing: -.01em; color: #F3F7FF; text-shadow: 4px 4px 0 rgba(5, 12, 46, .55); white-space: nowrap; }
+.sl-lr { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 2px; padding: 2px 8px 2px 4px; font: 900 italic 1.05rem var(--display); color: #fff;
+  background: #050C2E; border: 2px solid #F3F7FF; transform: skewX(-12deg); }
+.sl-lr i { font-style: normal; font-size: 1.5rem; line-height: .8; color: var(--sakura); }
+.sl-lr.r { padding: 2px 4px 2px 8px; }
+.sl-lr:hover:not(:disabled) { background: var(--sakura-deep); } .sl-lr:disabled { opacity: .35; cursor: default; }
+.sl-banner { margin-top: 12px; }
+.sl-black { margin-right: 6%; padding: 5px 20px 5px 16%; background: #050C2E; transform: skewX(-14deg); transform-origin: left; box-shadow: 4px 4px 0 var(--sakura); }
+.sl-black span { display: block; transform: skewX(14deg); text-align: center; font: 800 italic 1.05rem var(--display); color: #F3F7FF; }
+.sl-white { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: -2px; margin-right: 0; padding: 8px 26px 8px 18px;
+  background: #F3F7FF; color: #050C2E; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); }
+.sl-arc { display: flex; flex-direction: column; min-width: 0; }
+.sl-arc small { font: 900 italic .72rem var(--display); letter-spacing: .14em; color: #1D45B8; }
+.sl-arc small.jp { font: 400 .8rem var(--jp-heavy); letter-spacing: .1em; color: var(--sakura-deep); }
+.sl-arc b { font: 900 italic clamp(1.8rem, 4.6cqw, 2.9rem)/0.95 var(--display); overflow-wrap: anywhere; }
+.sl-rank { display: flex; align-items: flex-end; gap: 8px; }
+.sl-rank small { font: 900 italic .9rem var(--display); margin-bottom: 10px; }
+.sl-rank b { font: 900 italic clamp(4rem, 10cqw, 6.2rem)/0.8 var(--display); color: #050C2E; text-shadow: 4px 4px 0 var(--sakura); }
+.sl-rank em { align-self: flex-start; padding: 0 6px; background: var(--sakura); color: #fff; font: 900 italic .8rem var(--display); }
+.sl-stars { display: flex; gap: 2px; padding: 6px 18px 0; font-size: 1.05rem; color: rgba(243, 247, 255, .3); }
+.sl-stars i { font-style: normal; } .sl-stars i.on { color: #F3F7FF; text-shadow: 0 0 8px rgba(184, 243, 255, .9); }
+.sl-story { margin: 14px 0 0; padding: 0 18px; max-width: 34em; font-weight: 600; font-size: .95rem; line-height: 1.55; color: #E6F0FF; text-shadow: 0 1px 2px rgba(5, 12, 46, .6); }
+.sl-xp { padding: 12px 18px 0; max-width: 30em; }
+.sl-xpbar { height: 8px; background: rgba(5, 12, 46, .55); transform: skewX(-20deg); box-shadow: inset 0 0 0 1px rgba(243, 247, 255, .35); }
+.sl-xpbar span { display: block; height: 100%; background: linear-gradient(90deg, var(--cyan), #fff 60%, var(--sakura)); box-shadow: 0 0 10px rgba(184, 243, 255, .8); }
+.sl-xp small { display: block; margin-top: 5px; font-weight: 800; color: #B8F3FF; }
+/* Nom et description en bas à droite */
+.sl-namebox { position: absolute; right: 2.5%; bottom: 13%; z-index: 4; width: min(46%, 470px); }
+.sl-name { display: block; width: fit-content; max-width: 100%; margin: 0 0 -6px 14px; font: 900 italic clamp(2rem, 5.4cqw, 3.2rem)/1 var(--display); color: #46D9FF;
+  -webkit-text-stroke: 1.5px #F3F7FF; text-shadow: 3px 3px 0 #050C2E; text-decoration: none; overflow-wrap: anywhere; position: relative; z-index: 1; }
+.sl-name:hover { color: #fff; }
+.sl-desc { padding: 14px 18px 12px; background: rgba(5, 12, 46, .9); border-left: 4px solid var(--cyan); box-shadow: 6px 6px 0 rgba(255, 148, 203, .55); transform: skewX(-4deg); }
+.sl-desc p { margin: 0; font-weight: 600; line-height: 1.5; } .sl-desc .sl-meta { margin-top: 6px; font: 800 italic .85rem var(--display); color: var(--cyan); letter-spacing: .05em; }
+/* Bande des confidents en bas à gauche + bouton RANK UP */
+.sl-strip { position: absolute; left: 0; bottom: 0; z-index: 5; display: flex; gap: 6px; max-width: 54%; overflow-x: auto; padding: 10px 14px 12px; scrollbar-width: thin; }
+.sl-chip { all: unset; cursor: pointer; flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(5, 12, 46, .85);
+  border: 2px solid rgba(243, 247, 255, .35); transform: skewX(-12deg); font: 800 italic .85rem var(--display); color: #E6F0FF; transition: background .2s, border-color .2s, translate .2s; }
+.sl-chip b { font: 400 .85rem var(--jp-heavy); color: var(--sakura); font-style: normal; }
+.sl-chip em { font-style: normal; color: var(--cyan); }
+.sl-chip:hover { border-color: #F3F7FF; translate: 0 -2px; }
+.sl-chip.on { background: #F3F7FF; color: #050C2E; border-color: #F3F7FF; box-shadow: 4px 4px 0 var(--sakura); }
+.sl-chip.on b { color: var(--sakura-deep); } .sl-chip.on em { color: #1D45B8; }
+.sl-replay { all: unset; cursor: pointer; position: absolute; right: 18px; top: 14px; z-index: 5; padding: 4px 12px; font: 900 italic .8rem var(--display); letter-spacing: .1em;
+  color: #050C2E; background: #F3F7FF; transform: skewX(-12deg); box-shadow: 3px 3px 0 var(--sakura); }
+.sl-replay:hover { background: var(--sakura); color: #fff; }
+/* Entrées */
+.sl-stage.swap .sl-portrait.them { animation: sl-in-r .6s cubic-bezier(.2, .8, .2, 1) both; }
+.sl-stage.swap .sl-portrait.me { animation: sl-in-r .6s cubic-bezier(.2, .8, .2, 1) .1s both; }
+@keyframes sl-in-r { from { opacity: 0; transform: translateX(26%) skewX(-8deg); filter: brightness(2.4); } }
+.sl-stage.swap .sl-lanyard { animation: sl-drop .9s cubic-bezier(.3, 1.5, .5, 1) both, sl-swing 4.2s ease-in-out .9s infinite; }
+@keyframes sl-drop { 0% { transform: translateY(-110%); rotate: -14deg; } 60% { rotate: 8deg; } 100% { transform: none; rotate: 2.5deg; } }
+.sl-stage.swap .sl-black { animation: sl-wipe .45s cubic-bezier(.7, 0, .2, 1) .1s both; }
+.sl-stage.swap .sl-white { animation: sl-wipe .45s cubic-bezier(.7, 0, .2, 1) .18s both; }
+@keyframes sl-wipe { from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); } }
+.sl-stage.swap .sl-rank b { animation: ru-bump .6s var(--ease-spring) .45s both; }
+.sl-stage.swap .sl-stars i { animation: cf-star .35s cubic-bezier(.2, 1.6, .4, 1) both; animation-delay: calc(.4s + var(--k) * .04s); }
+.sl-stage.swap .sl-story, .sl-stage.swap .sl-xp { animation: ph-note-in .5s cubic-bezier(.2, .8, .2, 1) .5s both; }
+.sl-stage.swap .sl-namebox { animation: sl-in-r .5s cubic-bezier(.2, .8, .2, 1) .35s both; }
+.sl-stage.swap .sl-big { animation: ph-l-in .5s cubic-bezier(.2, 1.4, .4, 1) both; }
+/* Écran étroit : tout s'empile, le portrait passe en haut */
+@container sl (max-width: 560px) {
+  .sl-scene { height: auto; display: flex; flex-direction: column; padding-bottom: 8px; clip-path: none; }
+  .sl-left, .sl-namebox, .sl-strip { position: relative; width: auto; max-width: none; left: auto; right: auto; bottom: auto; }
+  .sl-left { order: 1; }
+  .sl-portrait.them { position: relative; order: 2; width: 100%; height: 300px; margin-top: 12px; filter: none; }
+  .sl-portrait.me, .sl-lanyard, .sl-bgk { display: none; }
+  .sl-plink { position: relative; inset: auto; order: 2; pointer-events: auto; }
+  .sl-namebox { order: 3; margin: -40px 12px 0; }
+  .sl-strip { order: 4; margin-top: 10px; }
+  .sl-replay { top: auto; bottom: auto; position: relative; order: 5; margin: 8px 14px 0; align-self: flex-start; right: auto; }
+}
+.cf-detail { padding-top: 18px; }
+.sl-lanyard { left: 57%; }
+.sl-left { width: 44%; }
+.sl-card .tarot.l { scale: .9; }
+.sl-arc b { overflow-wrap: normal; font-size: clamp(1.3rem, 3.9cqw, 2.9rem); white-space: nowrap; }
+.sl-cord { z-index: 5; box-shadow: 0 0 6px rgba(70, 217, 255, .8); }
