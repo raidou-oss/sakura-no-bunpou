@@ -1,29 +1,29 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261021002331';
-import * as D from './data.js?v=20261021002331';
-import * as S from './srs.js?v=20261021002331';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261021002331';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261021002331';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261021002331';
-import * as C from './cloud.js?v=20261021002331';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261021002331';
-import './dyn.js?v=20261021002331';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261021002331';
-import { play, setVolume } from './sfx.js?v=20261021002331';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261021002331';
-import { celebrate, verdict } from './celebrate.js?v=20261021002331';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261021002331';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261021002331';
-import { initGloss } from './gloss.js?v=20261021002331';
-import { initLinks } from './links.js?v=20261021002331';
-import { streakBadge, weekStrip } from './aura.js?v=20261021002331';
-import { initLevelUp } from './levelup.js?v=20261021002331';
-import { confidentsPage } from './confidents.js?v=20261021002331';
-import { initTilt } from './tilt.js?v=20261021002331';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261021002331';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261021002622';
+import * as D from './data.js?v=20261021002622';
+import * as S from './srs.js?v=20261021002622';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261021002622';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261021002622';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261021002622';
+import * as C from './cloud.js?v=20261021002622';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261021002622';
+import './dyn.js?v=20261021002622';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261021002622';
+import { play, setVolume } from './sfx.js?v=20261021002622';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261021002622';
+import { celebrate, verdict } from './celebrate.js?v=20261021002622';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261021002622';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261021002622';
+import { initGloss } from './gloss.js?v=20261021002622';
+import { initLinks } from './links.js?v=20261021002622';
+import { streakBadge, weekStrip } from './aura.js?v=20261021002622';
+import { initLevelUp } from './levelup.js?v=20261021002622';
+import { confidentsPage } from './confidents.js?v=20261021002622';
+import { initTilt } from './tilt.js?v=20261021002622';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261021002622';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261021002331';
+import { GAMES } from './gamelist.js?v=20261021002622';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -663,7 +663,10 @@ function hudDate() {
   const moment = hr < 5 ? ['深夜', 'Nuit'] : hr < 11 ? ['朝', 'Matin'] : hr < 14 ? ['昼', 'Midi'] : hr < 18 ? ['午後', 'Après-midi'] : hr < 22 ? ['夕方', 'Soirée'] : ['夜', 'Nuit'];
   const [k, name] = WD[d.getDay()];
   return h('div.hud-date', { 'aria-label': `${d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}, ${moment[1].toLowerCase()}` },
-    h('span.hd-num', { 'aria-hidden': 'true' }, h('small', String(d.getMonth() + 1)), h('i', '/'), h('b', String(d.getDate()))),
+    h('span.hd-num', { 'aria-hidden': 'true' },
+      h('small', ...[...String(d.getMonth() + 1)].map((c, i) => h('span.dg', { style: { '--r': `${[-8, 6][i % 2]}deg`, '--y': `${[0, -4][i % 2]}px` } }, c))),
+      h('i', '/'),
+      h('b', ...[...String(d.getDate())].map((c, i) => h('span.dg', { style: { '--r': `${[-6, 9][i % 2]}deg`, '--y': `${[6, -6][i % 2]}px` } }, c)))),
     h('span.hd-wd', { 'aria-hidden': 'true' }, h('b', { lang: 'ja', class: d.getDay() === 0 ? 'sun' : d.getDay() === 6 ? 'sat' : null }, k), h('small', name)),
     h('span.hd-moment', { 'aria-hidden': 'true' }, h('b', { lang: 'ja' }, moment[0]), ' ', moment[1]));
 }

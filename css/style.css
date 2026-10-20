@@ -3064,3 +3064,19 @@ html.reduce-motion .p3-head .ph-slash, html.reduce-motion .ph-l { animation: non
   100% { transform: skewX(-8deg); } }
 @media (prefers-reduced-motion: reduce) { .p3-head.p3-in h1 { animation: none; } }
 html.reduce-motion .p3-head.p3-in h1 { animation: none; }
+/* HUD calendrier façon Persona 5 : chiffres de travers, contour épais, jour en kanji dans une étoile */
+.hd-num .dg { display: inline-block; transform: rotate(var(--r)) translateY(var(--y)); }
+.hd-num small, .hd-num b { display: inline-flex; }
+.hd-num small { font-size: 2.8rem; color: #fff; -webkit-text-stroke: 2px #050C2E; paint-order: stroke fill; text-shadow: 4px 4px 0 var(--cyan); transform: rotate(-6deg) translateY(10px); }
+.hd-num i { font-size: 3.4rem; color: var(--sakura); transform: skewX(-18deg) rotate(8deg); text-shadow: 3px 3px 0 #050C2E; }
+.hd-num b { font-size: 5.6rem; color: #fff; -webkit-text-stroke: 3px #050C2E; paint-order: stroke fill;
+  text-shadow: 5px 5px 0 var(--sakura-deep), 9px 9px 0 rgba(70, 217, 255, .6); transform: rotate(-4deg); letter-spacing: -.04em; }
+.hd-wd { flex-direction: column; align-items: flex-start; gap: 2px; margin-top: 0; }
+.hd-wd b { width: 54px; height: 54px; border-radius: 0; font-size: 1.7rem; transform: rotate(-16deg); box-shadow: none;
+  clip-path: polygon(50% 0, 61% 18%, 82% 8%, 80% 31%, 100% 38%, 86% 55%, 98% 74%, 76% 78%, 74% 100%, 56% 88%, 40% 100%, 34% 80%, 12% 86%, 18% 64%, 0 52%, 16% 38%, 6% 18%, 30% 20%, 38% 2%);
+  filter: drop-shadow(3px 3px 0 var(--sakura)); animation: hd-wd-wobble 3.2s ease-in-out infinite; }
+@keyframes hd-wd-wobble { 50% { transform: rotate(-8deg) scale(1.05); } }
+.hd-wd small { font-size: 1.05rem; transform: rotate(-6deg) skewX(-10deg); margin-left: 6px; text-shadow: 2px 2px 0 #050C2E; }
+.hd-moment { transform: rotate(5deg) skewX(-14deg); font-size: 1.05rem; margin-top: -4px; margin-left: 10px; box-shadow: 4px 4px 0 var(--sakura), -2px -2px 0 var(--cyan); }
+.hud-date { grid-template-columns: auto auto; column-gap: 10px; transform: rotate(-4deg); }
+.hd-wd small { margin-top: 4px; } .hd-wd b { width: 60px; height: 60px; font-size: 1.9rem; }
