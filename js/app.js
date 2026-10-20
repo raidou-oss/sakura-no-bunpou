@@ -1,28 +1,28 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020103416';
-import * as D from './data.js?v=20261020103416';
-import * as S from './srs.js?v=20261020103416';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020103416';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020103416';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020103416';
-import * as C from './cloud.js?v=20261020103416';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020103416';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261020103416';
-import { play, setVolume } from './sfx.js?v=20261020103416';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020103416';
-import { celebrate, verdict } from './celebrate.js?v=20261020103416';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261020103416';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261020103416';
-import { initGloss } from './gloss.js?v=20261020103416';
-import { initLinks } from './links.js?v=20261020103416';
-import { streakBadge, weekStrip } from './aura.js?v=20261020103416';
-import { initLevelUp } from './levelup.js?v=20261020103416';
-import { confidentsPage } from './confidents.js?v=20261020103416';
-import { initTilt } from './tilt.js?v=20261020103416';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020103416';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020161030';
+import * as D from './data.js?v=20261020161030';
+import * as S from './srs.js?v=20261020161030';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020161030';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020161030';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020161030';
+import * as C from './cloud.js?v=20261020161030';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020161030';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261020161030';
+import { play, setVolume } from './sfx.js?v=20261020161030';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020161030';
+import { celebrate, verdict } from './celebrate.js?v=20261020161030';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261020161030';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261020161030';
+import { initGloss } from './gloss.js?v=20261020161030';
+import { initLinks } from './links.js?v=20261020161030';
+import { streakBadge, weekStrip } from './aura.js?v=20261020161030';
+import { initLevelUp } from './levelup.js?v=20261020161030';
+import { confidentsPage } from './confidents.js?v=20261020161030';
+import { initTilt } from './tilt.js?v=20261020161030';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020161030';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261020103416';
+import { GAMES } from './gamelist.js?v=20261020161030';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -537,17 +537,12 @@ function settingsPage() {
 function syncBox() {
   if (!C.enabled || !C.currentUser()) return null;
   const txt = h('span.sync-txt'), dot = h('i.sync-dot');
-  const btn = h('button.btn.small', { type: 'button', onclick: async () => {
-    btn.disabled = true;
-    try { await C.syncNow(); toast('Progression synchronisée avec ton compte'); } catch (e) { toast(`Synchro impossible : ${e.message}`); }
-    btn.disabled = false;
-  } }, 'Synchroniser maintenant');
   const ago = t => { const m = Math.round((Date.now() - t) / 60000); return m < 1 ? 'à l’instant' : m < 60 ? `il y a ${m} min` : `il y a ${Math.round(m / 60)} h`; };
   const paint = st => {
     box.dataset.status = st.status;
-    txt.textContent = { syncing: 'Synchronisation…', pending: 'Modifications en attente d’envoi…', error: `Échec de la synchro (${st.error || 'réseau'}). Nouvel essai automatique.`, offline: 'Hors ligne : tout sera envoyé au retour du réseau.', ok: `Synchronisé avec ton compte ${ago(st.at)}.`, idle: 'Synchronisé avec ton compte.' }[st.status] || '';
+    txt.textContent = { syncing: 'Synchronisation…', pending: 'Envoi en cours…', error: `Échec de la synchro (${st.error || 'réseau'}). Nouvel essai automatique.`, offline: 'Hors ligne : tout sera envoyé au retour du réseau.', ok: `Synchronisé en temps réel avec ton compte (dernier échange ${ago(st.at)}).`, idle: 'Synchronisé en temps réel avec ton compte.' }[st.status] || '';
   };
-  const box = h('div.sync-box', dot, txt, btn);
+  const box = h('div.sync-box', dot, txt);
   const off = C.onSync(paint); paint(C.getSyncState());
   const tick = setInterval(() => { if (!box.isConnected) { clearInterval(tick); off(); } else paint(C.getSyncState()); }, 30000);
   return box;

@@ -1,8 +1,8 @@
 // 絆 Page des confidents, façon menu « Social Link » de Persona 3 : liste en biais, grande carte de tarot, rangs.
-import { h, jr, toast } from './util.js?v=20261020103416';
-import * as C from './cloud.js?v=20261020103416';
-import * as L from './links.js?v=20261020103416';
-import { play } from './sfx.js?v=20261020103416';
+import { h, jr, toast } from './util.js?v=20261020161030';
+import * as C from './cloud.js?v=20261020161030';
+import * as L from './links.js?v=20261020161030';
+import { play } from './sfx.js?v=20261020161030';
 
 const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const initials = n => (n || '?').slice(0, 2).toUpperCase();
@@ -55,11 +55,12 @@ export async function confidentsPage(main) {
     const title = L.titleOf(c.id, c.rank);
     const toNext = c.next ? c.next - c.xp : 0;
     detail.replaceChildren(
-      h('div.cf-cardcol', L.tarotCard({ arcana: arc, rank: c.rank, name: c.p.username, size: 'l' }),
+      h('div.cf-cardcol', h('a.cf-cardlink', { href: `#/profil/${c.id}`, title: `Voir le profil de ${c.p.username}` }, L.tarotCard({ arcana: arc, rank: c.rank, name: c.p.username, size: 'l' })),
         h('button.cf-replay', { type: 'button', onclick: () => L.rankUpBanner({ name: c.p.username, rank: Math.max(1, c.rank), title, arcana: arc }) }, '▶ Revoir le RANK UP')),
       h('div.cf-info',
         h('p.cf-arcana', h('span', { lang: 'ja' }, arc[0]), ` ${arc[1].toUpperCase()}`),
-        h('div.cf-who', avatar(c.p), h('div', h('h2', c.p.username), h('p.cf-ttl', title))),
+        h('div.cf-who', h('a.cf-avlink', { href: `#/profil/${c.id}`, title: `Voir le profil de ${c.p.username}` }, avatar(c.p)),
+          h('div', h('h2', h('a.cf-namelink', { href: `#/profil/${c.id}` }, c.p.username)), h('p.cf-ttl', title))),
         h('div.cf-rankbox',
           h('div.cf-rankbig', h('small', 'RANK'), h('b', String(c.rank)), c.rank >= L.MAX_RANK ? h('em', 'MAX') : null),
           h('div.cf-rankright', pips(c.rank),

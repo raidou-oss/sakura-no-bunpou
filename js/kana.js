@@ -1,9 +1,9 @@
 // 仮名 : hiragana et katakana pour ceux qui partent de zéro. Tableaux à écouter + entraînement à la lecture.
-import { h, shuffle, jr, toast, toHira } from './util.js?v=20261020103416';
-import * as S from './srs.js?v=20261020103416';
-import { speak, speakBtn } from './voice.js?v=20261020103416';
-import { play } from './sfx.js?v=20261020103416';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261020103416';
+import { h, shuffle, jr, toast, toHira } from './util.js?v=20261020161030';
+import * as S from './srs.js?v=20261020161030';
+import { speak, speakBtn } from './voice.js?v=20261020161030';
+import { play } from './sfx.js?v=20261020161030';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261020161030';
 
 // Gojūon : [romaji des 5 colonnes a i u e o], null = case vide
 const BASE = [
@@ -63,6 +63,21 @@ function level(k) {
   return g.ok >= 3 && acc >= 0.8 ? 'ok' : 'mid';
 }
 const mastery = k => ({ ko: 0.2, mid: 0.5, ok: 1 })[level(k)] ?? null;
+/** Avancement continu d'un kana (0 → 1) : chaque bonne réponse du premier coup le fait monter, 3 = maîtrisé */
+function progressOf(k) {
+  const g = S.practiceStats()[`k:${k}`];
+  if (!g) return 0;
+  const acc = g.ok / Math.max(1, g.ok + g.ko);
+  return Math.min(1, g.ok / 3) * (acc >= 0.6 ? 1 : 0.6);
+}
+const progressAll = list => list.length ? list.reduce((a, c) => a + progressOf(c.k), 0) / list.length : 0;
+function kanaGauge(list, label) {
+  const p = progressAll(list);
+  return h('div.kana-gauge', { title: `${Math.round(p * 100)} % : chaque bonne réponse du premier coup fait avancer la jauge (3 par kana = maîtrisé)` },
+    h('div.kana-gauge-top', h('span', label), h('b', `${Math.round(p * 100)} %`)),
+    h('div.gauge', { role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': Math.round(p * 100) },
+      h('span', { style: { width: `${Math.max(p > 0 ? 2 : 0, Math.round(p * 100))}%` } })));
+}
 const masteryCls = m => m == null ? '' : m >= 0.8 ? 'm-3' : m >= 0.45 ? 'm-2' : 'm-1';
 
 // --- Page : tableaux ---------------------------------------------------------------------
@@ -88,6 +103,7 @@ export function kanaPage(main, script = 'hira') {
     tabs,
     h('section.glass.kana-intro',
       h('div', h('strong', `${known} / ${all.length}`), h('span.small', ` ${SCRIPTS[script].label.toLowerCase()} maîtrisés`)),
+      kanaGauge(all, `Progression ${SCRIPTS[script].label.toLowerCase()}`),
       h('div.kana-legend.small', h('i.m-1'), 'souvent raté', h('i.m-2'), 'en cours', h('i.m-3'), 'maîtrisé (3 bonnes réponses)'),
       h('a.btn.primary', { href: `#/kana-quiz/${script}` }, 'S’entraîner à lire')),
     ...tables,
@@ -154,10 +170,14 @@ export function kanaQuiz(main, script = 'hira') {
     const bar = h('div.progress', h('span'));
     const counter = h('span.session-count');
     const stage = h('div.stage');
-    main.replaceChildren(h('div.session', h('header.session-head', h('a.session-quit', { href: '#/kana', 'aria-label': 'Quitter' }, '×'), bar, counter), stage));
+    const selection = pool();
+    const live = h('div.kana-live');
+    const paintLive = () => live.replaceChildren(kanaGauge(selection, 'Maîtrise de ta sélection'));
+    main.replaceChildren(h('div.session', h('header.session-head', h('a.session-quit', { href: '#/kana', 'aria-label': 'Quitter' }, '×'), bar, counter), live, stage));
 
     function next() {
       bar.firstChild.style.width = `${(done / total) * 100}%`;
+      setTimeout(paintLive, 450);   // après l'enregistrement de la réponse
       counter.textContent = `${total - done} restant${total - done > 1 ? 's' : ''}`;
       if (!queue.length) return end();
       ask(queue.shift());

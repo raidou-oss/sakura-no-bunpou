@@ -2121,3 +2121,29 @@ html.reduce-motion .flame svg, html.reduce-motion .flame .fl-in, html.reduce-mot
 .sc-right { display: flex; flex-direction: column; align-items: center; }
 .sc-rule { margin: 8px 0 0; color: var(--mist); }
 @media (max-width: 520px) { .week-strip.big { gap: 4px; } .week-strip.big .wd { width: 38px; } .week-strip.big .wd-kanji { font-size: 1.1rem; } }
+
+/* 仮 Jauge de progression des kana (monte à chaque bonne réponse) */
+.kana-gauge { width: min(100%, 420px); margin: 8px auto 4px; }
+.kana-gauge-top { display: flex; justify-content: space-between; align-items: baseline; font: 800 italic .85rem var(--display); color: var(--mist); }
+.kana-gauge-top b { color: var(--sakura); font-size: 1rem; }
+.kana-gauge .gauge { height: 10px; margin-top: 4px; }
+.kana-gauge .gauge span { transition: width .6s var(--ease-out); }
+.kana-live { margin: 0 auto 6px; display: flex; justify-content: center; }
+.cf-avlink, .cf-cardlink { display: inline-block; border-radius: 50%; transition: transform .25s var(--ease-spring), filter .25s; }
+.cf-cardlink { border-radius: 14px; }
+.cf-avlink:hover, .cf-cardlink:hover { transform: scale(1.06) rotate(-2deg); filter: drop-shadow(0 0 12px rgba(255, 148, 203, .7)); }
+.cf-namelink { color: inherit; text-decoration: none; }
+.cf-namelink:hover { text-decoration: underline; text-decoration-color: var(--sakura); }
+
+/* Barres de défilement stylisées (fines, sakura → cyan), partout */
+* { scrollbar-width: thin; scrollbar-color: rgba(255, 148, 203, .55) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { border-radius: 99px; background: linear-gradient(180deg, var(--sakura), var(--cyan)); border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #FFD6E8, var(--cyan)); background-clip: padding-box; border: 2px solid transparent; }
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+/* Liste « En ligne » : jamais de défilement horizontal, le pseudo se coupe proprement */
+.online-list { overflow-x: hidden; overscroll-behavior: contain; padding-right: 2px; }
+.online-name .on-n { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.online-name .you { flex: none; }
+.online-row { min-width: 0; }

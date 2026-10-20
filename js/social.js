@@ -1,16 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020103416';
-import * as D from './data.js?v=20261020103416';
-import * as S from './srs.js?v=20261020103416';
-import { wallpaperSVG } from './wallpaper.js?v=20261020103416';
-import * as C from './cloud.js?v=20261020103416';
-import { play } from './sfx.js?v=20261020103416';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020103416';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261020103416';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020161030';
+import * as D from './data.js?v=20261020161030';
+import * as S from './srs.js?v=20261020161030';
+import { wallpaperSVG } from './wallpaper.js?v=20261020161030';
+import * as C from './cloud.js?v=20261020161030';
+import { play } from './sfx.js?v=20261020161030';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020161030';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261020161030';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261020103416';
-import * as L from './links.js?v=20261020103416';
+import { GAMES } from './gamelist.js?v=20261020161030';
+import * as L from './links.js?v=20261020161030';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -537,7 +537,7 @@ export function mountOnline() {
         const row = h('button.online-row', { type: 'button', disabled: isMe, onclick: () => { openId = open ? null : u.id; pokeOpen = null; render(C.onlineUsers()); } },
           avatar(u, 's'),
           xpFor(u) != null ? lvBadge(xpFor(u), { inline: true }) : null,
-          h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil', html: jr('先輩') }) : null),
+          h('span.online-name', h('span.on-n', u.username), isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil', html: jr('先輩') }) : null),
           streakFor(u, me) ? h('span.online-streak', flame({ size: 11 }), String(streakFor(u, me))) : null,
           h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank || 0).replace(' validé', '')));
         item.append(row);

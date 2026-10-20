@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020103416';
-import * as S from './srs.js?v=20261020103416';
-import { computeRank, publicScores } from './level.js?v=20261020103416';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020161030';
+import * as S from './srs.js?v=20261020161030';
+import { computeRank, publicScores } from './level.js?v=20261020161030';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -290,6 +290,8 @@ async function upload(c) {
   const snap = S.snapshot();
   const { error } = await c.from('progress').upsert({ user_id: session.user.id, data: snap, updated_at: new Date().toISOString() });
   if (error) throw error;
+  // Prévient mes autres appareils / onglets ouverts : ils récupèrent la progression tout de suite
+  if (syncChannel) syncChannel.send({ type: 'broadcast', event: 'updated', payload: { from: TAB_ID, at: Date.now() } }).catch(() => {});
   await pushProfile(c);
 }
 async function pushProfile(c) {
@@ -310,7 +312,7 @@ function schedulePush() {
   if (!session) return;
   setSync({ status: 'pending' });
   clearTimeout(pushTimer);
-  pushTimer = setTimeout(() => syncNow().catch(() => {}), 2500);
+  pushTimer = setTimeout(() => syncNow().catch(() => {}), 1500);
 }
 export const pushProgress = () => syncNow();
 // Synchro aussi quand on revient sur l'onglet, quand le réseau revient, régulièrement, et avant de quitter
@@ -324,7 +326,7 @@ if (typeof window !== 'undefined') {
   window.addEventListener('focus', onBack);
   window.addEventListener('online', () => { if (session) syncNow().catch(() => {}); });
   window.addEventListener('pagehide', () => { if (session && syncState.status === 'pending') { clearTimeout(pushTimer); syncNow().catch(() => {}); } });
-  setInterval(() => { if (session && document.visibilityState === 'visible') syncNow().catch(() => {}); }, 90000);
+  setInterval(() => { if (session && document.visibilityState === 'visible') syncNow().catch(() => {}); }, 30000);
   // Niveau gagné : on prévient tout de suite les autres (liste « En ligne », communauté)
   window.addEventListener('sakura:level', () => { trackPresence(); syncNow().catch(() => {}); });
   // Toute variation d'XP : la pastille Lv de la liste « En ligne » suit tout de suite (chez moi et chez les autres)
@@ -337,7 +339,8 @@ const onlineListeners = new Set(), reactionListeners = new Set();
 export const onOnline = fn => { onlineListeners.add(fn); fn(online); return () => onlineListeners.delete(fn); };
 export const onReaction = fn => { reactionListeners.add(fn); return () => reactionListeners.delete(fn); };
 const pokeListeners = new Set();
-let pokeChannel = null;
+let pokeChannel = null, syncChannel = null;
+const TAB_ID = Math.random().toString(36).slice(2);
 export const onPoke = fn => { pokeListeners.add(fn); return () => pokeListeners.delete(fn); };
 const lastPoke = new Map();
 export const POKE_COOLDOWN = 45000;
@@ -397,6 +400,10 @@ async function startLive() {
       emitInteraction({ other: payload.from, type: 'poke', out: false, name: payload.name, avatar_url: payload.avatar_url });
     })
     .subscribe();
+  // Synchro en temps réel entre MES appareils : quand l'un enregistre, les autres récupèrent aussitôt
+  syncChannel = c.channel(`sakura-sync-${me}`, { config: { broadcast: { self: false } } })
+    .on('broadcast', { event: 'updated' }, ({ payload }) => { if (payload?.from !== TAB_ID) syncNow().catch(() => {}); })
+    .subscribe();
   // Réactions reçues en direct
   reactChannel = c.channel(`sakura-react-${me}`)
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'reactions', filter: `to_user=eq.${me}` }, async payload => {
@@ -435,6 +442,7 @@ async function stopLive() {
   if (presence) { await c.removeChannel(presence).catch(() => {}); presence = null; }
   if (reactChannel) { await c.removeChannel(reactChannel).catch(() => {}); reactChannel = null; }
   if (pokeChannel) { await c.removeChannel(pokeChannel).catch(() => {}); pokeChannel = null; }
+  if (syncChannel) { await c.removeChannel(syncChannel).catch(() => {}); syncChannel = null; }
   online = []; onlineListeners.forEach(fn => fn(online));
 }
 // Envoi immédiat quand on quitte la page
