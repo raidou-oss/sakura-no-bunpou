@@ -1,9 +1,9 @@
 // 絆 Page des confidents, façon menu « Social Link » de Persona 3 : liste en biais, grande carte de tarot, rangs.
-import { h, jr, toast } from './util.js?v=20261020234620';
-import * as C from './cloud.js?v=20261020234620';
-import * as L from './links.js?v=20261020234620';
-import { play } from './sfx.js?v=20261020234620';
-import { playerLevel, RANK_NAMES } from './level.js?v=20261020234620';
+import { h, jr, toast } from './util.js?v=20261020235205';
+import * as C from './cloud.js?v=20261020235205';
+import * as L from './links.js?v=20261020235205';
+import { play } from './sfx.js?v=20261020235205';
+import { playerLevel, RANK_NAMES } from './level.js?v=20261020235205';
 
 const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const initials = n => (n || '?').slice(0, 2).toUpperCase();
@@ -56,6 +56,30 @@ export async function confidentsPage(main) {
     return `${n} et toi vous rapprochez un peu plus à chaque échange. Te voilà « ${title} » : l’arcane ${arc[1].toLowerCase()} résonne plus fort. Continue de lui écrire pour voir la suite.`;
   };
 
+  // Sélecteur de confident (liste déroulante stylée, au clavier aussi)
+  function picker(c) {
+    const arcOf = x => L.arcanaOf(x.id);
+    const row = (x, tag = 'span') => [h('b', { lang: 'ja' }, arcOf(x)[0]), h(`${tag}.nm`, x.p.username), h('em', ROMAN[x.rank])];
+    const wrap = h('div.sl-pick');
+    const list = h('ul.sl-pick-list', { role: 'listbox', tabindex: '-1', 'aria-label': 'Choisir un confident' },
+      ...people.map((x, k) => h('li', { role: 'option', 'aria-selected': String(k === sel), class: k === sel ? 'on' : null, 'data-k': k,
+        onclick: () => { close(); pick(k); } }, ...row(x), h('small', L.titleOf(x.id, x.rank)))));
+    const btn = h('button.sl-pick-btn', { type: 'button', 'aria-haspopup': 'listbox', 'aria-expanded': 'false',
+      onclick: () => wrap.classList.contains('open') ? close() : open() }, h('small.sl-pick-lbl', 'CONFIDENT'), ...row(c), h('i.sl-chev', { 'aria-hidden': 'true' }));
+    let hi = sel;
+    const mark = () => [...list.children].forEach((li, k) => li.classList.toggle('hi', k === hi));
+    const outside = e => { if (!wrap.contains(e.target)) close(); };
+    function open() { wrap.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); hi = sel; mark(); play('cursor'); document.addEventListener('pointerdown', outside); list.focus({ preventScroll: true }); list.children[sel]?.scrollIntoView({ block: 'nearest' }); }
+    function close() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); document.removeEventListener('pointerdown', outside); }
+    list.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); e.stopPropagation(); hi = (hi + (e.key === 'ArrowDown' ? 1 : people.length - 1)) % people.length; mark(); list.children[hi].scrollIntoView({ block: 'nearest' }); play('cursor'); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); close(); pick(hi); }
+      if (e.key === 'Escape') { e.stopPropagation(); close(); btn.focus(); }
+    });
+    wrap.append(btn, list);
+    return wrap;
+  }
+
   function render(animate = false) {
     const c = people[sel];
     const arc = L.arcanaOf(c.id);
@@ -71,10 +95,8 @@ export async function confidentsPage(main) {
       h('a.sl-plink', { href: `#/profil/${c.id}`, title: `Voir le profil de ${c.p.username}` }, portrait(c.p, 'them')),
       h('div.sl-lanyard', { 'aria-hidden': 'true' }, h('i.sl-cord'), h('a.sl-card', { href: `#/profil/${c.id}`, tabindex: '-1' }, card)),
       h('div.sl-left',
-        h('div.sl-titlebar',
-          h('button.sl-lr', { type: 'button', 'aria-label': 'Confident précédent', onclick: () => go(-1), disabled: people.length < 2 }, h('i', '‹'), 'L1'),
-          h('span.sl-big', 'SOCIAL LINK'),
-          h('button.sl-lr.r', { type: 'button', 'aria-label': 'Confident suivant', onclick: () => go(1), disabled: people.length < 2 }, 'R1', h('i', '›'))),
+        h('div.sl-titlebar', h('span.sl-big', 'SOCIAL LINK')),
+        picker(c),
         h('div.sl-banner',
           h('div.sl-black', h('span', title)),
           h('div.sl-white',
@@ -83,32 +105,24 @@ export async function confidentsPage(main) {
           stars(c.rank)),
         h('p.sl-story', story(c, arc, title)),
         h('div.sl-xp', h('div.sl-xpbar', h('span', { style: { width: `${Math.round(c.pct * 100)}%` } })),
-          h('small', c.rank >= L.MAX_RANK ? 'Rang maximum atteint' : `${toNext} XP avant le rang ${c.rank + 1} — ${L.TITLES[c.rank + 1]}`))),
+          h('small', c.rank >= L.MAX_RANK ? 'Rang maximum atteint' : `${toNext} XP avant le rang ${c.rank + 1} — ${L.TITLES[c.rank + 1]}`)),
+        h('ol.sl-ladder', { 'aria-label': 'Les rangs du lien' }, ...L.TITLES.slice(1).map((t, k) => h('li', { title: `${ROMAN[k + 1]} · ${t}`, class: k + 1 <= c.rank ? 'done' : k + 1 === c.rank + 1 ? 'next' : null, style: { '--k': k } }, ROMAN[k + 1]))),
+        h('ul.sl-stats',
+          h('li', h('b', String(c.xp)), h('span', 'XP de lien')),
+          h('li', h('b', String(c.reactions)), h('span', c.reactions > 1 ? 'réactions' : 'réaction')),
+          h('li', h('b', String(c.pokes)), h('span', c.pokes > 1 ? 'pokes' : 'poke'))),
+        h('div.sl-actions',
+          h('a.btn.primary', { href: `#/profil/${c.id}` }, 'Envoyer une réaction'),
+          h('button.btn', { type: 'button', onclick: () => editForm(c) }, 'Personnaliser'))),
       h('div.sl-namebox',
         h('a.sl-name', { href: `#/profil/${c.id}` }, c.p.username),
         h('div.sl-desc',
           h('p', c.p.bio || 'Pas encore de bio… mais chaque lien a son histoire.'),
           info ? h('p.sl-meta', info) : null)),
-      h('div.sl-strip', { role: 'tablist', 'aria-label': 'Mes confidents' }, ...people.map((x, k) => {
-        const a = L.arcanaOf(x.id);
-        return h('button.sl-chip', { type: 'button', role: 'tab', 'aria-selected': String(k === sel), class: k === sel ? 'sl-chip on' : 'sl-chip', onclick: () => pick(k) },
-          h('b', { lang: 'ja' }, a[0]), h('span', x.p.username), h('em', ROMAN[x.rank]));
-      })),
       h('button.sl-replay', { type: 'button', onclick: () => L.rankUpBanner({ name: c.p.username, rank: Math.max(1, c.rank), title, arcana: arc }) }, '▶ Revoir le RANK UP'));
     stage.replaceChildren(scene);
     if (animate) { stage.classList.remove('swap'); void stage.offsetWidth; stage.classList.add('swap'); }
-    detail.replaceChildren(
-      h('div.cf-info',
-        h('ul.cf-stats',
-          h('li', h('b', String(c.xp)), h('span', 'XP de lien')),
-          h('li', h('b', String(c.reactions)), h('span', c.reactions > 1 ? 'réactions' : 'réaction')),
-          h('li', h('b', String(c.pokes)), h('span', c.pokes > 1 ? 'pokes' : 'poke'))),
-        h('ol.cf-ladder', { 'aria-label': 'Les rangs du lien' }, ...L.TITLES.slice(1).map((t, k) => h('li', { class: k + 1 <= c.rank ? 'done' : k + 1 === c.rank + 1 ? 'next' : null },
-          h('span', ROMAN[k + 1]), h('em', t)))),
-        h('div.cf-actions',
-          h('a.btn.primary', { href: `#/profil/${c.id}` }, 'Envoyer une réaction'),
-          h('button.btn', { type: 'button', onclick: () => editForm(c) }, 'Personnaliser'),
-          h('a.btn.ghost', { href: '#/communaute' }, 'Communauté'))));
+    detail.replaceChildren();
   }
   const renderList = () => render();
   const renderDetail = a => render(a);
@@ -116,17 +130,17 @@ export async function confidentsPage(main) {
   function editForm(c) {
     const card = L.linkCard(c, { name: c.p.username, onChange: () => { renderList(); renderDetail(true); } });
     const box = h('div.cf-edit', card, h('button.btn.small.ghost', { type: 'button', onclick: () => renderDetail() }, 'Fermer'));
-    detail.querySelector('.cf-actions').replaceWith(box);
+    stage.querySelector('.sl-actions').replaceWith(box);
     card.querySelector('.lc-edit')?.click();
   }
 
   render(true);
   play('card');
-  // Clavier : ← → (ou Q / E façon L1 / R1) pour changer de confident
+  // Clavier : ← → pour changer de confident
   const onKey = e => {
     if (e.target.closest('input, textarea, select')) return;
-    if (['ArrowLeft', 'ArrowUp', 'q', 'Q'].includes(e.key)) { e.preventDefault(); go(-1); }
-    if (['ArrowRight', 'ArrowDown', 'e', 'E'].includes(e.key)) { e.preventDefault(); go(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
   };
   document.addEventListener('keydown', onKey);
   window.addEventListener('hashchange', () => document.removeEventListener('keydown', onKey), { once: true });
