@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020181939';
-import * as D from './data.js?v=20261020181939';
-import * as S from './srs.js?v=20261020181939';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020181939';
-import { speakBtn, speak } from './voice.js?v=20261020181939';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020181939';
-import { play } from './sfx.js?v=20261020181939';
-import { celebrate, verdict } from './celebrate.js?v=20261020181939';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020182335';
+import * as D from './data.js?v=20261020182335';
+import * as S from './srs.js?v=20261020182335';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020182335';
+import { speakBtn, speak } from './voice.js?v=20261020182335';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020182335';
+import { play } from './sfx.js?v=20261020182335';
+import { celebrate, verdict } from './celebrate.js?v=20261020182335';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
