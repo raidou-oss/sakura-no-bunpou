@@ -2376,3 +2376,14 @@ html.reduce-motion .aura-back *, html.reduce-motion .aura-front *, html.reduce-m
 @media (prefers-reduced-motion: reduce) { .aura-back *, .aura-front *, .aura-embers i { animation: none !important; } }
 html.reduce-motion .aura-embers, html.reduce-motion .aura-sparks { display: none; }
 .av-wrap.aura-big { z-index: 4; }
+.key-hint { margin-left: 8px; padding: 1px 6px; border-radius: 4px; border: 1px solid currentColor; font: 700 .62rem/1.4 var(--body, sans-serif); letter-spacing: .06em; text-transform: uppercase; opacity: .6; font-style: normal; }
+@media (hover: none) { .key-hint { display: none; } }
+/* Aura en particules (canvas) derrière la photo + liseré lumineux devant */
+.aura-canvas { position: absolute; z-index: 0; pointer-events: none; }
+.aura-big .aura-glow { opacity: .55; }
+.aura-front > .aura-rim { position: absolute; inset: 24.5%; border-radius: 50%; box-shadow: 0 0 0 2px rgba(230, 251, 255, .55), 0 0 14px 3px var(--rim, rgba(70, 217, 255, .8)), inset 0 0 14px 2px var(--rim, rgba(70, 217, 255, .6));
+  animation: aura-rim 1.6s ease-in-out infinite; }
+.aura-3 .aura-rim, .aura-4 .aura-rim { --rim: rgba(255, 148, 203, .75); }
+.aura-5 .aura-rim { --rim: rgba(255, 216, 107, .85); }
+.aura-4 .aura-front > .aura-rim { inset: 26.4%; } .aura-5 .aura-front > .aura-rim { inset: 27.7%; }
+@keyframes aura-rim { 50% { opacity: .65; } }

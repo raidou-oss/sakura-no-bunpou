@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020201655';
-import * as D from './data.js?v=20261020201655';
-import * as S from './srs.js?v=20261020201655';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020201655';
-import { speakBtn, speak } from './voice.js?v=20261020201655';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020201655';
-import { play } from './sfx.js?v=20261020201655';
-import { celebrate, verdict } from './celebrate.js?v=20261020201655';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020202308';
+import * as D from './data.js?v=20261020202308';
+import * as S from './srs.js?v=20261020202308';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020202308';
+import { speakBtn, speak } from './voice.js?v=20261020202308';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020202308';
+import { play } from './sfx.js?v=20261020202308';
+import { celebrate, verdict } from './celebrate.js?v=20261020202308';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -256,7 +256,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
     const card = stepCard(st);
     card.classList.add(dir > 0 ? 'from-right' : 'from-left');
     const prev = h('button.btn', { disabled: i === 0, onclick: () => go(-1) }, 'Précédent');
-    const next = h('button.btn.primary', { onclick: () => go(1) }, i === steps.length - 1 ? 'Passer aux exercices' : 'Suivant');
+    const next = h('button.btn.primary', { onclick: () => go(1) }, i === steps.length - 1 ? 'Passer aux exercices' : 'Suivant', h('kbd.key-hint', { 'aria-hidden': 'true' }, 'Espace'));
     stage.replaceChildren(card, h('div.actions.lesson-nav', prev, next));
     play('card');
     if (i > 0 || saved) saveState({ phase: 'browse', i });
@@ -274,7 +274,9 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
   window.addEventListener('hashchange', () => setKeys(null), { once: true });
   setKeys(e => {
     if (e.target.closest('input, textarea')) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+    if (e.repeat && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); return; }
+    // Espace (ou Entrée, ou →) : carte suivante ; ← : carte précédente
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.code === 'Space' || (e.key === 'Enter' && !e.target.closest('a, button'))) { e.preventDefault(); go(1); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
   });
 

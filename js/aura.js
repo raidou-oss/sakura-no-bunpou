@@ -1,6 +1,6 @@
 // 炎 Séries (jours d'affilée) : flammes bleues et auras autour de l'avatar selon la série.
-import { h, dayKey, DAY } from './util.js?v=20261020201655';
-import * as S from './srs.js?v=20261020201655';
+import { h, dayKey, DAY, reducedMotion } from './util.js?v=20261020202308';
+import * as S from './srs.js?v=20261020202308';
 
 /** Paliers d'aura : plus la série est longue, plus l'aura est intense */
 export const AURAS = [
@@ -67,12 +67,13 @@ export function withAura(el, n) {
   const back = h('i.aura-back', { 'aria-hidden': 'true' });
   back.append(h('i.aura-glow'));
   if (t >= 5) back.append(h('i.aura-rays'));
-  if (t >= 2) back.append(fire(t));
+  const cv = reducedMotion() ? null : flameCanvas(el, t);
+  if (cv) el.prepend(cv); else if (t >= 2) back.append(fire(t));
   if (t >= 4) back.append(h('i.orbit-holder', orbitBack()));
   el.prepend(back);
   const front = h('i.aura-front', { 'aria-hidden': 'true' });
-  front.append(embers(t, [0, 6, 10, 14, 18, 24][t]));
-  if (t >= 4) front.append(sparks(t));
+  if (!cv) { front.append(embers(t, [0, 6, 10, 14, 18, 24][t])); if (t >= 4) front.append(sparks(t)); }
+  front.append(h('i.aura-rim'));
   el.append(front);
   if (t >= 4) el.append(orbit(t));
   return el;
@@ -157,4 +158,140 @@ export function weekStrip({ big = false } = {}) {
       h('span.wd-flame', done ? flame({ size: big ? 30 : 22 }) : h('i.wd-empty')),
       h('ruby.wd-kanji', { lang: 'ja' }, k, h('rt', r)));
   }));
+}
+
+// --- Aura en particules (canvas) : un vrai feu d'énergie qui jaillit autour de la photo ----------
+// Les particules naissent sur le bord du cadre, montent en ondulant et se resserrent au-dessus
+// de la tête (silhouette en goutte, façon aura d'éveil). Mélange additif : le cœur devient blanc.
+const PAL = {
+  1: [['#E6FBFF', '#46D9FF', '#2F6BFF']],
+  2: [['#E6FBFF', '#46D9FF', '#1B3FD0']],
+  3: [['#E6FBFF', '#46D9FF', '#2F6BFF'], ['#FFF0F7', '#FF94CB', '#FF2F8A']],
+  4: [['#FFFFFF', '#7FE6FF', '#2F6BFF'], ['#FFF0F7', '#FF94CB', '#FF2F8A'], ['#FFFFFF', '#B8F3FF', '#46D9FF']],
+  5: [['#FFFFFF', '#FFE08A', '#FF9F43'], ['#FFF0F7', '#FF94CB', '#FF2F8A'], ['#FFFFFF', '#FFF1C4', '#FFD86B']],
+};
+const SIZE = { xl: 124, l: 64 };
+const sprites = new Map();
+function sprite(core, mid, outer) {
+  const k = core + mid + outer;
+  if (sprites.has(k)) return sprites.get(k);
+  const c = document.createElement('canvas'); c.width = c.height = 64;
+  const g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gr.addColorStop(0, core); gr.addColorStop(.25, mid); gr.addColorStop(.6, outer + '66'); gr.addColorStop(1, outer + '00');
+  g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+  sprites.set(k, c);
+  return c;
+}
+const live = new Set();
+let raf = 0, last = 0;
+function loop(now) {
+  const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+  for (const a of live) {
+    if (!a.host.isConnected) { if (a.seen) { live.delete(a); a.io?.disconnect(); } continue; }
+    a.seen = true;
+    if (a.visible && !document.hidden) a.step(dt, now / 1000);
+  }
+  raf = live.size ? requestAnimationFrame(loop) : 0;
+  if (!raf) last = 0;
+}
+
+function flameCanvas(host, t) {
+  const sz = Object.keys(SIZE).find(k => host.classList.contains(k));
+  if (!sz) return null;
+  const S = SIZE[sz], k = S / 124;                        // échelle (xl = 1)
+  const W = S * (t >= 4 ? 3.1 : 2.7), H = S * (t >= 4 ? 3.6 : 3.1);
+  const cx = W / 2, cy = H * .6, R = S / 2;
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const cv = document.createElement('canvas');
+  cv.className = 'aura-canvas';
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  cv.style.width = `${W}px`; cv.style.height = `${H}px`;
+  cv.style.top = `${S / 2 - cy}px`; cv.style.left = `${S / 2 - cx}px`;
+  cv.setAttribute('aria-hidden', 'true');
+  const g = cv.getContext('2d');
+  g.scale(dpr, dpr);
+  const pals = PAL[t].map(p => sprite(...p));
+  const rate = [0, 160, 300, 380, 460, 560][t] * (sz === 'xl' ? 1 : .55);
+  const height = [0, .7, 1, 1.15, 1.35, 1.55][t];
+  const parts = [], bolts = [], waves = [];
+  const dim = Math.min(1, Math.sqrt(300 / rate));
+  let acc = 0, nextBolt = 1, nextWave = .4;
+  const spawn = () => {
+    const th = Math.random() * Math.PI * 2;
+    const r = R * (0.96 + Math.random() * .1);
+    const x = cx + Math.cos(th) * r, y = cy + Math.sin(th) * r;
+    const out = (34 + Math.random() * 34) * k;
+    const ember = Math.random() < .05;
+    parts.push({ x, y, vx: Math.cos(th) * out, vy: Math.sin(th) * out * .5 - (50 + Math.random() * 50) * k * height,
+      life: 0, max: ember ? 1.4 + Math.random() * .6 : (.5 + Math.random() * .5) * (0.75 + height * .3),
+      r0: R * (ember ? .06 : .24 + Math.random() * .2), sp: pals[(Math.random() * pals.length) | 0], ph: Math.random() * 6.28, ember });
+  };
+  const bolt = () => {
+    const th = -Math.PI / 2 + (Math.random() - .5) * Math.PI * 1.6;
+    const pts = []; let r = R * 1.02, a = th;
+    for (let i = 0; i < 7; i++) { pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); r += R * (.1 + Math.random() * .12); a += (Math.random() - .5) * .5; }
+    bolts.push({ pts, life: 0, max: .16 + Math.random() * .1 });
+  };
+  const glowCol = PAL[t][0][1];
+  const a = {
+    host, visible: true, seen: false,
+    step(dt, time) {
+      acc += rate * dt;
+      while (acc >= 1) { spawn(); acc--; }
+      for (let i = parts.length - 1; i >= 0; i--) {
+        const p = parts[i];
+        p.life += dt;
+        if (p.life >= p.max) { parts.splice(i, 1); continue; }
+        p.vy -= (p.ember ? 40 : 130) * k * height * dt;                    // ça monte
+        if (p.y < cy - R * .55) p.vx += (cx - p.x) * (2.6 / height) * dt;           // se resserre au-dessus de la tête
+        p.vx += Math.sin(time * 7 + p.ph) * 60 * k * dt;                   // ondule
+        p.vx *= 1 - 1.6 * dt;
+        p.x += p.vx * dt; p.y += p.vy * dt;
+      }
+      if (t >= 4 && (nextBolt -= dt) <= 0) { bolt(); if (Math.random() < .4) bolt(); nextBolt = .35 + Math.random() * 1.1; }
+      if (t >= 3 && (nextWave -= dt) <= 0) { waves.push({ life: 0 }); nextWave = 2.4; }
+      g.clearRect(0, 0, W, H);
+      // Lueur de fond qui pulse
+      const pulse = .75 + .25 * Math.sin(time * 3.2);
+      const halo = g.createRadialGradient(cx, cy, R * .8, cx, cy - R * .2, R * (1.9 + .2 * height));
+      halo.addColorStop(0, glowCol + Math.round(110 * pulse).toString(16).padStart(2, '0')); halo.addColorStop(1, glowCol + '00');
+      g.globalCompositeOperation = 'source-over';
+      g.fillStyle = halo; g.fillRect(0, 0, W, H);
+      g.globalCompositeOperation = 'lighter';
+      // Ondes de choc
+      for (let i = waves.length - 1; i >= 0; i--) {
+        const w = waves[i]; w.life += dt;
+        const q = w.life / 1.1; if (q >= 1) { waves.splice(i, 1); continue; }
+        g.beginPath(); g.arc(cx, cy, R * (1.02 + q * .9), 0, Math.PI * 2);
+        g.strokeStyle = PAL[t][PAL[t].length > 1 ? 1 : 0][1]; g.globalAlpha = (1 - q) * .7; g.lineWidth = (1 - q) * 5 * k + 1; g.stroke();
+      }
+      // Flammes
+      for (const p of parts) {
+        const q = p.life / p.max;
+        const sz2 = p.r0 * (p.ember ? 1 : (1 - q * .6)) * 2;
+        g.globalAlpha = (p.ember ? 1 : .42 * dim) * (1 - q) * (q < .1 ? q / .1 : 1);
+        g.drawImage(p.sp, p.x - sz2 / 2, p.y - sz2 / 2 - sz2 * .15, sz2, sz2 * 1.3);
+      }
+      // Éclairs
+      for (let i = bolts.length - 1; i >= 0; i--) {
+        const b = bolts[i]; b.life += dt;
+        if (b.life >= b.max) { bolts.splice(i, 1); continue; }
+        g.globalAlpha = Math.random() < .3 ? .3 : 1;
+        g.beginPath(); b.pts.forEach(([x, y], j) => j ? g.lineTo(x, y) : g.moveTo(x, y));
+        g.lineJoin = 'round';
+        g.strokeStyle = PAL[t][0][1]; g.lineWidth = 5 * k + 1.5; g.shadowBlur = 0; g.globalAlpha *= .5; g.stroke();
+        g.strokeStyle = '#FFFFFF'; g.lineWidth = 1.6 * k + .8; g.globalAlpha = 1; g.stroke();
+      }
+      g.globalAlpha = 1;
+    },
+  };
+  if ('IntersectionObserver' in window) {
+    a.io = new IntersectionObserver(es => { a.visible = es.some(e => e.isIntersecting); });
+    a.io.observe(cv);
+  }
+  // pré-chauffe : le feu est déjà là à l'affichage
+  for (let i = 0; i < 40; i++) a.step(1 / 30, i / 30);
+  live.add(a);
+  if (!raf) raf = requestAnimationFrame(loop);
+  return cv;
 }
