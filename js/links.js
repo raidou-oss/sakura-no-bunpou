@@ -1,9 +1,9 @@
 // 絆 Liens de confident (façon Persona) : plus on échange avec quelqu'un (réactions, pokes), plus le lien monte.
 // Réactions : lues dans la base (visibles des deux côtés). Pokes : comptés de son côté, avec la progression du compte.
-import { h, jr, toast, reducedMotion } from './util.js?v=20261020214620';
-import * as C from './cloud.js?v=20261020214620';
-import * as S from './srs.js?v=20261020214620';
-import { play } from './sfx.js?v=20261020214620';
+import { h, jr, toast, reducedMotion } from './util.js?v=20261020221041';
+import * as C from './cloud.js?v=20261020221041';
+import * as S from './srs.js?v=20261020221041';
+import { play } from './sfx.js?v=20261020221041';
 
 export const REACT_XP = 15;          // par réaction échangée (envoyée ou reçue)
 export const POKE_XP = 30;           // par poke : plus d'interaction, donc plus d'XP
@@ -95,12 +95,24 @@ export function rankUpBanner(info) {
   document.querySelector('.ru')?.remove();
   const reduced = reducedMotion();
   const from = Math.max(0, rank - 1);
+  const T0 = reduced ? 0 : 1.55;                       // durée du prélude « 我は汝… »
   const num = h('span.ru-num', String(from));
   const petals = h('div.ru-petals', { 'aria-hidden': 'true' });
   if (!reduced) for (let k = 0; k < 36; k++) petals.append(h('i', { style: {
-    '--x': `${Math.random() * 100}vw`, '--d': `${1.4 + Math.random() * 1.6}s`, '--w': `${Math.random() * 1.4}s`,
+    '--x': `${Math.random() * 100}vw`, '--d': `${1.4 + Math.random() * 1.6}s`, '--w': `${T0 + Math.random() * 1.4}s`,
     '--r': `${Math.random() * 720 - 360}deg`, '--s': `${7 + Math.random() * 10}px`, '--dx': `${Math.random() * 160 - 80}px` } }));
-  const el = h('div.ru', { role: 'dialog', 'aria-label': `Rang ${rank} atteint avec ${name || 'ton confident'}`, tabindex: '-1' },
+  // Prélude : le temps s'arrête, la voix intérieure parle
+  const PRE = '我は汝、汝は我';
+  const pre = h('div.ru-pre', { 'aria-hidden': 'true' },
+    h('p.ru-pre-jp', { lang: 'ja' }, ...[...PRE].map((c, k) => h('span', { style: { '--k': k, '--dx': `${(Math.random() - .5) * 340}px`, '--dy': `${(Math.random() - .5) * 260}px`, '--r': `${(Math.random() - .5) * 120}deg` } }, c))),
+    h('p.ru-pre-fr', 'Je suis toi… et tu es moi…'));
+  const card = tarotCard({ arcana, rank, name, size: 'xl' });
+  card.append(h('i.ru-holo', { 'aria-hidden': 'true' }));
+  const pips = h('div.ru-pips', { 'aria-hidden': 'true' }, ...Array.from({ length: MAX_RANK }, (_, k) => h('i', { class: k < from ? 'on' : k === rank - 1 ? 'next' : null, style: { '--k': k } })));
+  const fx = h('canvas.ru-fx', { 'aria-hidden': 'true' });
+  const el = h('div.ru.cf', { role: 'dialog', 'aria-label': `Rang ${rank} atteint avec ${name || 'ton confident'}`, tabindex: '-1', style: { '--t0': `${T0}s` } },
+    h('div.ru-freeze'),
+    h('div.ru-scan', { 'aria-hidden': 'true' }),
     h('div.ru-flash'),
     h('div.ru-bars', h('i.b1'), h('i.b2'), h('i.b3'), h('i.b4')),
     h('div.ru-bigkanji', { lang: 'ja', 'aria-hidden': 'true' }, '絆'),
@@ -108,27 +120,96 @@ export function rankUpBanner(info) {
     h('div.ru-ring', { 'aria-hidden': 'true' }, h('span', 'SOCIAL LINK · RANK UP · 絆 · SOCIAL LINK · RANK UP · 絆 · ')),
     h('div.ru-streaks', { 'aria-hidden': 'true' }, ...Array.from({ length: 7 }, (_, k) => h('i', { style: { '--k': k } }))),
     petals,
+    h('div.ru-waves', { 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
+    fx,
     h('div.ru-stage',
-      h('div.ru-cardwrap', tarotCard({ arcana, rank, name, size: 'xl' })),
+      h('div.ru-cardwrap', h('div.ru-float', card)),
       h('div.ru-text',
         h('p.ru-kicker', h('span', { lang: 'ja' }, 'コミュ'), ' · ', arcana[1].toUpperCase()),
         h('p.ru-rankup', h('span', 'RANK'), h('span', 'UP!')),
         h('p.ru-rankline', h('span.ru-label', 'RANK'), num, rank >= MAX_RANK ? h('span.ru-max', 'MAX') : null),
+        pips,
         h('p.ru-name', name || 'Ton confident'),
         h('p.ru-title', title),
         h('p.ru-sub', rank >= MAX_RANK ? 'Votre lien est désormais indéfectible.' : 'Ton lien s’est approfondi…'))),
+    pre,
+    h('div.ru-letterbox', { 'aria-hidden': 'true' }, h('i.top'), h('i.bot')),
     h('p.ru-skip', 'Touche pour continuer'));
-  const close = () => { if (el.classList.contains('out')) return; el.classList.add('out'); setTimeout(() => el.remove(), 600); };
+  let alive = true;
+  const close = () => { if (el.classList.contains('out')) return; el.classList.add('out'); setTimeout(() => { alive = false; el.remove(); }, 600); };
   el.addEventListener('click', close);
-  el.addEventListener('keydown', e => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') close(); });
+  el.addEventListener('keydown', e => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); close(); } });
   document.body.append(el);
   el.focus({ preventScroll: true });
-  // Bande-son et compteur
-  play('whoosh');
-  setTimeout(() => play('slash'), 420);
-  setTimeout(() => { play('fanfare'); num.textContent = String(rank); num.classList.add('bump'); el.classList.add('shake'); }, reduced ? 100 : 1500);
-  setTimeout(() => play('ping'), 2300);
-  setTimeout(close, 7500);
+
+  // --- Effets en particules : éclats à l'impact de la carte, braises qui montent ---------------
+  const g = fx.getContext('2d');
+  const dpr = Math.min(2, devicePixelRatio || 1);
+  const size = () => { fx.width = innerWidth * dpr; fx.height = innerHeight * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  size();
+  const parts = [];
+  const COLS = ['#46D9FF', '#FF94CB', '#FFFFFF', '#B8F3FF', '#FF4FA3'];
+  const burst = (x, y, n, power = 1) => {
+    for (let k = 0; k < n; k++) {
+      const a = Math.random() * Math.PI * 2, v = (250 + Math.random() * 650) * power;
+      parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120 * power, life: 0, max: .8 + Math.random() * .9,
+        s: (4 + Math.random() * 12) * power, rot: Math.random() * 6, vr: (Math.random() - .5) * 18, c: COLS[(Math.random() * COLS.length) | 0], shard: Math.random() < .7 });
+    }
+  };
+  const center = elx => { const r = elx.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  let lastT = 0, emberAcc = 0;
+  const tick = now => {
+    if (!alive) return;
+    const dt = Math.min(.05, (now - (lastT || now)) / 1000); lastT = now;
+    if (el.classList.contains('lit')) {
+      emberAcc += dt * 26;
+      while (emberAcc > 1) { emberAcc--; parts.push({ x: Math.random() * innerWidth, y: innerHeight + 10, vx: (Math.random() - .5) * 30, vy: -(60 + Math.random() * 120), life: 0, max: 3 + Math.random() * 3, s: 1.5 + Math.random() * 2.5, ember: true, c: Math.random() < .5 ? '#46D9FF' : '#FF94CB' }); }
+    }
+    g.clearRect(0, 0, innerWidth, innerHeight);
+    g.globalCompositeOperation = 'lighter';
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const p = parts[i]; p.life += dt;
+      if (p.life >= p.max) { parts.splice(i, 1); continue; }
+      const q = p.life / p.max;
+      if (!p.ember) { p.vx *= 1 - 2.2 * dt; p.vy = p.vy * (1 - 2.2 * dt) + 420 * dt; p.rot += p.vr * dt; }
+      else p.vx += Math.sin(now / 400 + i) * 8 * dt;
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      g.globalAlpha = (1 - q) * (p.ember ? .8 : 1);
+      g.fillStyle = p.c; g.shadowColor = p.c; g.shadowBlur = p.ember ? 8 : 14;
+      if (p.shard) {
+        g.save(); g.translate(p.x, p.y); g.rotate(p.rot);
+        g.beginPath(); g.moveTo(0, -p.s); g.lineTo(p.s * .45, p.s * .6); g.lineTo(-p.s * .5, p.s * .3); g.closePath(); g.fill(); g.restore();
+      } else { g.beginPath(); g.arc(p.x, p.y, p.ember ? p.s : p.s * .35, 0, Math.PI * 2); g.fill(); }
+    }
+    g.globalAlpha = 1; g.shadowBlur = 0;
+    requestAnimationFrame(tick);
+  };
+  if (!reduced) requestAnimationFrame(tick);
+  addEventListener('resize', size);
+
+  // --- Bande-son et temps forts ---------------------------------------------------------------
+  const at = (s, fn) => setTimeout(() => alive && fn(), s * 1000);
+  if (!reduced) {
+    play('whoosh');
+    [...pre.querySelectorAll('.ru-pre-jp span')].forEach((sp, k) => at(.18 + k * .1, () => { sp.classList.add('on'); play('cursor'); }));
+    at(T0 - .12, () => { pre.classList.add('shatter'); play('slash'); });
+  }
+  at(T0 + .05, () => play('whoosh'));
+  at(T0 + .92, () => {                                             // la carte se plante : impact
+    el.classList.add('impact', 'lit');
+    play('slash');
+    const [x, y] = center(card); burst(x, y, 110, 1);
+    setTimeout(() => el.classList.remove('impact'), 500);
+  });
+  at(T0 + 1.6, () => {                                             // le rang monte
+    play('fanfare'); num.textContent = String(rank); num.classList.add('bump');
+    const pip = pips.children[rank - 1];
+    pip?.classList.add('lit');
+    if (pip) { const [x, y] = center(pip); burst(x, y, 40, .45); }
+    el.classList.add('shake');
+  });
+  at(T0 + 2.4, () => play('ping'));
+  at(T0 + 7.5, close);
 }
 
 /** À brancher une fois : chaque réaction / poke fait progresser le lien, avec bannière si le rang monte */

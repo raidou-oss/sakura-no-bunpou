@@ -2425,3 +2425,101 @@ html.reduce-motion .aura-embers, html.reduce-motion .aura-sparks { display: none
 .st-svg.mini { width: 58px; height: 58px; border-radius: 8px; }
 .st-svg.mini .st-ink path { stroke-width: 4.2; }
 .st-svg.mini .st-ghost path { stroke-width: 4; }
+
+/* ===== RANK UP confident v2 : prélude « 我は汝… », impact, éclats, rangs en losanges ===== */
+.ru.cf { background: transparent; animation: none; }
+.ru.cf.out { animation: ru-out .55s var(--ease-snap) both; }
+.ru.cf > .ru-freeze { position: absolute; inset: 0; pointer-events: none;
+  backdrop-filter: grayscale(1) blur(5px) brightness(.3); -webkit-backdrop-filter: grayscale(1) blur(5px) brightness(.3);
+  background: radial-gradient(ellipse at 50% 55%, rgba(10, 20, 70, .45), rgba(2, 5, 20, .88) 75%); animation: ru-in .3s ease-out both; }
+.ru.cf::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 55%, rgba(26, 45, 120, .97), rgba(5, 11, 38, .99) 70%); opacity: 0; animation: ru-bgin .4s ease-out calc(var(--t0) - .1s) both; }
+@keyframes ru-bgin { to { opacity: 1; } }
+/* Balayage cyan, façon arrêt du temps */
+.ru-scan { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 0, rgba(70, 217, 255, 0) 40%, rgba(70, 217, 255, .55) 49%, #fff 50%, rgba(70, 217, 255, .55) 51%, rgba(70, 217, 255, 0) 60%, transparent 100%);
+  background-size: 100% 300%; mix-blend-mode: screen; animation: ru-scan 1s cubic-bezier(.6, 0, .3, 1) both; }
+@keyframes ru-scan { from { background-position: 0 100%; } to { background-position: 0 0; opacity: .2; } }
+/* Bandes noires de cinéma */
+.ru-letterbox i { position: absolute; left: 0; right: 0; height: 11vh; background: #01020a; z-index: 6; pointer-events: none; }
+.ru-letterbox .top { top: 0; transform: translateY(-100%); animation: ru-lb-top 1.8s var(--ease-snap) both; }
+.ru-letterbox .bot { bottom: 0; transform: translateY(100%); animation: ru-lb-bot 1.8s var(--ease-snap) both; }
+.ru-letterbox i::after { content: ''; position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), var(--sakura), transparent); }
+.ru-letterbox .top::after { bottom: 0; } .ru-letterbox .bot::after { top: 0; }
+@keyframes ru-lb-top { 0% { transform: translateY(-100%); } 12%, 82% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
+@keyframes ru-lb-bot { 0% { transform: translateY(100%); } 12%, 82% { transform: translateY(0); } 100% { transform: translateY(100%); } }
+/* Prélude : 我は汝、汝は我 */
+.ru-pre { position: absolute; inset: 0; z-index: 5; display: grid; place-content: center; justify-items: center; gap: 14px; pointer-events: none; }
+.ru-pre-jp { margin: 0; display: flex; font: 400 clamp(2.6rem, 8vw, 5.4rem)/1 var(--jp-heavy); letter-spacing: .12em; color: #fff; }
+.ru-pre-jp span { display: inline-block; opacity: 0; transform: scale(1.8); filter: blur(10px);
+  text-shadow: -3px 0 0 rgba(70, 217, 255, .85), 3px 0 0 rgba(255, 79, 163, .85), 0 0 30px rgba(70, 217, 255, .7); transition: opacity .18s, transform .3s var(--ease-spring), filter .25s; }
+.ru-pre-jp span.on { opacity: 1; transform: none; filter: none; animation: ru-pre-glitch 1.2s steps(1) infinite; animation-delay: calc(var(--k) * -.13s); }
+@keyframes ru-pre-glitch { 0%, 100% { translate: 0; } 8% { translate: 3px -2px; } 10% { translate: -2px 1px; } 12% { translate: 0; } }
+.ru-pre-fr { margin: 0; font: 800 italic clamp(.95rem, 2.2vw, 1.25rem) var(--display); letter-spacing: .35em; color: var(--cyan); text-transform: uppercase;
+  opacity: 0; animation: ru-pre-fr .6s ease-out .75s both; }
+@keyframes ru-pre-fr { from { opacity: 0; letter-spacing: 1em; filter: blur(6px); } to { opacity: .9; } }
+.ru-pre.shatter .ru-pre-jp span { transition: transform .5s cubic-bezier(.2, .7, .3, 1), opacity .45s, filter .45s;
+  transform: translate(var(--dx), var(--dy)) rotate(var(--r)) scale(1.6); opacity: 0; filter: blur(6px); animation: none; }
+.ru-pre.shatter .ru-pre-fr { transition: opacity .2s; opacity: 0; animation: none; }
+/* Décalage de toute la séquence après le prélude */
+.ru.cf .ru-flash { opacity: 0; animation: ru-flash2 2.2s ease-out calc(var(--t0) - .1s) forwards; z-index: 7; }
+@keyframes ru-flash2 { 0% { opacity: .95; } 9% { opacity: 0; } 46% { opacity: 0; } 48% { opacity: .75; } 60% { opacity: 0; } 100% { opacity: 0; } }
+.ru.cf .ru-bars .b1 { animation-delay: calc(var(--t0) + .05s); } .ru.cf .ru-bars .b2 { animation-delay: calc(var(--t0) + .14s); }
+.ru.cf .ru-bars .b3 { animation-delay: calc(var(--t0) + .22s); } .ru.cf .ru-bars .b4 { animation-delay: calc(var(--t0) + .3s); }
+.ru.cf .ru-bigkanji { animation-delay: var(--t0); }
+.ru.cf .ru-rays { animation: ru-rays-in .8s ease-out calc(var(--t0) + .9s) both, ru-rays-spin 30s linear infinite; }
+.ru.cf .ru-ring { animation: ru-ring-in .9s var(--ease-spring) calc(var(--t0) + 1s) both, ru-ring-spin 20s linear infinite; }
+.ru.cf .ru-streaks i { animation-delay: calc(var(--t0) + .1s); }
+.ru.cf .ru-cardwrap .tarot { animation: ru-card2 1.15s cubic-bezier(.2, .8, .25, 1) calc(var(--t0) + .05s) both, shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite; }
+@keyframes ru-card2 {
+  0% { opacity: 0; transform: translate(-60vw, 30vh) rotate(-60deg) rotateY(900deg) scale(.4); filter: blur(8px) brightness(2.5); }
+  60% { opacity: 1; filter: blur(0) brightness(1.6); }
+  80% { transform: translate(0, -10px) rotate(4deg) rotateY(0) scale(1.12); filter: brightness(2.2); }
+  100% { transform: rotate(-5deg) scale(1); filter: none; } }
+.ru-float { animation: ru-float 3.2s ease-in-out calc(var(--t0) + 1.3s) infinite; }
+@keyframes ru-float { 50% { transform: translateY(-10px) rotate(1deg); } }
+/* Reflet holographique qui passe sur la carte */
+.tarot .ru-holo { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; overflow: hidden; mix-blend-mode: screen; }
+.tarot .ru-holo::before { content: ''; position: absolute; inset: -40% -60%; background: linear-gradient(105deg, transparent 38%, rgba(70, 217, 255, .45) 45%, rgba(255, 255, 255, .85) 50%, rgba(255, 148, 203, .45) 55%, transparent 62%);
+  transform: translateX(-70%); animation: ru-holo 2.6s ease-in-out calc(var(--t0) + 1.1s) infinite; }
+@keyframes ru-holo { 0% { transform: translateX(-70%); } 45%, 100% { transform: translateX(70%); } }
+/* Ondes de choc à l'impact */
+.ru-waves { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.ru-waves i { position: absolute; left: var(--wx, 35%); top: 50%; width: 60px; height: 60px; margin: -30px; border-radius: 50%; border: 3px solid #fff; opacity: 0;
+  box-shadow: 0 0 20px var(--cyan), inset 0 0 20px var(--sakura); }
+.ru.cf.lit .ru-waves i { animation: ru-wave 1.1s cubic-bezier(.1, .7, .3, 1) both; }
+.ru.cf.lit .ru-waves i:nth-child(2) { animation-delay: .12s; border-color: var(--cyan); }
+.ru.cf.lit .ru-waves i:nth-child(3) { animation-delay: .24s; border-color: var(--sakura); }
+@keyframes ru-wave { 0% { opacity: 1; transform: scale(.3); } 100% { opacity: 0; transform: scale(18); border-width: 1px; } }
+.ru-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+.ru.cf.impact .ru-stage { animation: ru-shake2 .45s ease-out; }
+@keyframes ru-shake2 { 15% { transform: translate(-14px, 8px) rotate(-.6deg); filter: drop-shadow(-6px 0 0 rgba(70, 217, 255, .8)) drop-shadow(6px 0 0 rgba(255, 79, 163, .8)); }
+  35% { transform: translate(11px, -7px) rotate(.4deg); } 55% { transform: translate(-6px, 4px); } 75% { transform: translate(3px, -2px); } }
+/* Texte : tout arrive après l'impact */
+.ru.cf .ru-kicker { animation-delay: calc(var(--t0) + 1s); }
+.ru.cf .ru-rankup { animation: ru-glitch 3s steps(1) calc(var(--t0) + 2s) infinite; }
+.ru.cf .ru-rankup span:first-child { animation-delay: calc(var(--t0) + 1.05s); }
+.ru.cf .ru-rankup span:last-child { animation-delay: calc(var(--t0) + 1.2s); }
+@keyframes ru-glitch { 0%, 100% { filter: none; transform: skewX(-10deg); }
+  3% { filter: drop-shadow(-5px 0 0 rgba(70, 217, 255, .9)) drop-shadow(5px 0 0 rgba(255, 79, 163, .9)); transform: skewX(-10deg) translateX(6px); clip-path: inset(10% 0 45% 0); }
+  5% { clip-path: inset(55% 0 5% 0); transform: skewX(-10deg) translateX(-8px); }
+  7% { clip-path: none; filter: none; transform: skewX(-10deg); } }
+.ru.cf .ru-rankline { animation-delay: calc(var(--t0) + 1.35s); }
+.ru.cf .ru-name { animation-delay: calc(var(--t0) + 1.8s); }
+.ru.cf .ru-title { animation: ru-slide .5s var(--ease-out) calc(var(--t0) + 1.95s) both, shade-x 3.1s ease-in-out infinite, shade-y 4.3s ease-in-out infinite; }
+.ru.cf .ru-sub { animation-delay: calc(var(--t0) + 2.15s); }
+.ru.cf .ru-skip { animation-delay: calc(var(--t0) + 2.6s); z-index: 7; }
+.ru.cf .ru-petals i { animation-delay: var(--w); }
+/* Rangs : 10 losanges, le nouveau s'allume */
+.ru-pips { display: flex; gap: 7px; margin: 2px 0 12px; animation: ru-slide .5s var(--ease-out) calc(var(--t0) + 1.45s) both; }
+.ru-pips i { width: 16px; height: 16px; transform: rotate(45deg) scale(.85); border: 2px solid rgba(184, 243, 255, .5); background: rgba(10, 16, 46, .8); transition: background .3s, box-shadow .3s; }
+.ru-pips i.on { background: linear-gradient(135deg, #B8F3FF, #46D9FF); border-color: #E6FBFF; box-shadow: 0 0 8px rgba(70, 217, 255, .8); }
+.ru-pips i.next { border-color: var(--sakura); animation: ru-pip-wait .5s ease-in-out infinite alternate; }
+@keyframes ru-pip-wait { to { box-shadow: 0 0 10px var(--sakura); } }
+.ru-pips i.lit { animation: ru-pip-lit .7s var(--ease-spring) both; background: linear-gradient(135deg, #fff, #FF94CB); border-color: #fff; box-shadow: 0 0 16px #FF4FA3, 0 0 30px rgba(255, 148, 203, .8); }
+@keyframes ru-pip-lit { 0% { transform: rotate(45deg) scale(2.6); filter: brightness(3); } 100% { transform: rotate(45deg) scale(1.05); } }
+.ru.cf .ru-num.bump { text-shadow: 4px 4px 0 var(--sakura-deep), 0 0 30px rgba(255, 148, 203, .9); }
+@media (max-width: 700px) {
+  .ru.cf .ru-stage { flex-direction: column; gap: 14px; }
+  .ru.cf .tarot.xl { width: 170px; height: 265px; padding: 16px 10px 14px; }
+  .ru-waves i { left: 50%; top: 32%; }
+}
