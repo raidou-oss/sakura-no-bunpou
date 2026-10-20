@@ -3092,3 +3092,28 @@ html.reduce-motion .p3-head.p3-in h1 { animation: none; }
 @keyframes ph-l-in2 { 0% { opacity: 0; transform: translateY(-60%) rotate(-24deg) scale(1.6); color: var(--sakura-deep); }
   60% { opacity: 1; transform: translateY(6%) rotate(calc(var(--tr) * 1.6)) scale(.95); } 100% { transform: rotate(var(--tr)) translateY(var(--ty)) scale(var(--ts)); } }
 .p3-head .ph-l:nth-child(odd) { color: var(--night); } .p3-head .ph-l:nth-child(4n+2) { color: #1D2F7A; }
+
+/* ===== Détails des titres ===== */
+.p3-head h1 { position: relative; }
+.ph-deco { position: absolute; pointer-events: none; }
+/* Étiquette de dossier « No.03 · GRAMMAIRE FILE » au-dessus du bandeau */
+.ph-tag { left: calc(1.25em * 2.1); top: -1.05em; display: flex; align-items: stretch; transform: rotate(-4deg); font-size: clamp(.62rem, 1.1vw, .78rem); z-index: 2; }
+.ph-tag b { padding: 2px 7px; background: var(--sakura); color: #fff; font: 900 italic 1em/1.2 var(--display); letter-spacing: .06em; }
+.ph-tag i { padding: 2px 9px; background: #050C2E; color: #F3F7FF; font: 800 italic 1em/1.2 var(--display); letter-spacing: .18em; border: 1px solid rgba(243, 247, 255, .5); }
+/* Trame de points derrière le kanji */
+.ph-dots { left: -.3em; top: -.2em; width: 2.6em; height: 1.6em; z-index: -1;
+  background: radial-gradient(circle, rgba(255, 148, 203, .55) 1.6px, transparent 2.2px) 0 0 / 9px 9px;
+  -webkit-mask: radial-gradient(ellipse at 30% 60%, #000 20%, transparent 70%); mask: radial-gradient(ellipse at 30% 60%, #000 20%, transparent 70%); }
+/* Étincelles qui scintillent autour du kanji */
+.ph-spark { color: #fff; font-size: .32em; text-shadow: 0 0 8px var(--cyan), 0 0 14px var(--sakura); animation: ph-twinkle 2.4s ease-in-out infinite; }
+.ph-spark.s1 { left: -.25em; top: .05em; } .ph-spark.s2 { left: 2.25em; top: -.15em; font-size: .24em; animation-delay: -.8s; } .ph-spark.s3 { left: 1.1em; bottom: -.25em; font-size: .28em; animation-delay: -1.6s; color: var(--cyan); }
+@keyframes ph-twinkle { 0%, 100% { opacity: .15; transform: scale(.5) rotate(0); } 50% { opacity: 1; transform: scale(1.2) rotate(90deg); } }
+/* Chevrons qui défilent après le bandeau */
+.ph-chev { position: static; align-self: center; display: inline-flex; gap: 2px; margin-left: -4px; font-size: .38em; color: var(--sakura); transform: skewX(-10deg); }
+.ph-chev i { font-style: normal; animation: ph-chev 1.2s ease-in-out infinite; text-shadow: 2px 2px 0 #050C2E; }
+.ph-chev i:nth-child(2) { animation-delay: .15s; color: #F3F7FF; } .ph-chev i:nth-child(3) { animation-delay: .3s; color: var(--cyan); }
+@keyframes ph-chev { 0%, 100% { opacity: .25; transform: translateX(0); } 50% { opacity: 1; transform: translateX(5px); } }
+.p3-head.p3-in .ph-tag { animation: hud-in .5s cubic-bezier(.2, 1.4, .4, 1) .55s both; }
+.p3-head.p3-in .ph-chev { animation: ph-note-in .4s ease-out .8s both; }
+html.reduce-motion .ph-spark, html.reduce-motion .ph-chev i { animation: none; }
+@media (max-width: 600px) { .ph-tag { display: none; } }

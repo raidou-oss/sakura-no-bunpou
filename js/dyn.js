@@ -2,8 +2,8 @@
 //  · chaque clic sur un élément interactif frappe : onde de choc + étincelles au point touché, petit écrasement ;
 //  · à chaque page, le kanji du titre s'imprime (onde + étincelles), les jauges se remplissent, les nombres défilent ;
 //  · une bonne réponse dans un jeu déclenche l'impact des leçons.
-import { hitFx, reducedMotion, fxAt } from './util.js?v=20261021003048';
-import { play } from './sfx.js?v=20261021003048';
+import { hitFx, reducedMotion, fxAt } from './util.js?v=20261021004235';
+import { play } from './sfx.js?v=20261021004235';
 
 const TAP = '.btn, .tab, .segmented button, .lesson-card, .nav-list a, .game-tile, .unit, .member, .option, .chip-btn, .link-card, .level, .point, .oc-row, .online-row, .resume-chip, .tile, .kana-cell, .cf-row, .lc-tarot, button.dash-choice, .choice, .answer-btn';
 const lite = () => document.documentElement.classList.contains('lite');
@@ -68,6 +68,20 @@ export function pageEnter(root = document.getElementById('main')) {
         } else if (ch.nodeType === 1 && ch.tagName !== 'RT') walk(ch);
       });
       walk(jh);
+    }
+    // Petits détails façon menu de Persona : étiquette de dossier, trame de points, étincelles, chevrons qui défilent
+    const h1 = head.querySelector('h1');
+    if (h1 && !h1.querySelector('.ph-deco')) {
+      const links = [...document.querySelectorAll('.nav-list a[data-nav]')];
+      const sec = location.hash.replace(/^#\/?/, '').split(/[/?]/)[0] || 'home';
+      const idx = Math.max(0, links.findIndex(a => a.dataset.nav === sec)) + 1;
+      const mk = (cls, html = '') => Object.assign(document.createElement('span'), { className: `ph-deco ${cls}`, innerHTML: html });
+      h1.append(
+        mk('ph-tag', `<b>No.${String(idx).padStart(2, '0')}</b><i>${(head.querySelector('.ph-word')?.getAttribute('aria-label') || '').toUpperCase()} FILE</i>`),
+        mk('ph-dots'),
+        mk('ph-spark s1', '✦'), mk('ph-spark s2', '✦'), mk('ph-spark s3', '✧'),
+        mk('ph-chev', '<i>▶</i><i>▶</i><i>▶</i>'));
+      h1.querySelectorAll('.ph-deco').forEach(d => d.setAttribute('aria-hidden', 'true'));
     }
     if (!head.querySelector('.ph-slash')) head.prepend(Object.assign(document.createElement('span'), { className: 'ph-slash', ariaHidden: 'true', innerHTML: '<i></i><i></i><i></i>' }));
     head.classList.remove('p3-in'); void head.offsetWidth; head.classList.add('p3-in');

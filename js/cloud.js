@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261021003048';
-import * as S from './srs.js?v=20261021003048';
-import { computeRank, publicScores } from './level.js?v=20261021003048';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261021004235';
+import * as S from './srs.js?v=20261021004235';
+import { computeRank, publicScores } from './level.js?v=20261021004235';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
