@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020101742';
-import * as S from './srs.js?v=20261020101742';
-import { computeRank, publicScores } from './level.js?v=20261020101742';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020103416';
+import * as S from './srs.js?v=20261020103416';
+import { computeRank, publicScores } from './level.js?v=20261020103416';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -27,7 +27,12 @@ async function sb() {
   if (!enabled) throw new Error('Les comptes ne sont pas encore activés sur ce site.');
   if (!client) {
     const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm');
-    client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persistSession: true, autoRefreshToken: true } });
+    client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: { persistSession: true, autoRefreshToken: true },
+      // worker : les battements de cœur du temps réel continuent même quand l'onglet est en arrière-plan
+      // (sinon le navigateur les ralentit et l'élève « disparaît » de la liste des connectés)
+      realtime: { worker: true, heartbeatIntervalMs: 20000, params: { eventsPerSecond: 20 } },
+    });
   }
   return client;
 }
@@ -362,9 +367,9 @@ export const onlineUsers = () => online;
 function presencePayload() {
   return { id: session.user.id, username: profile?.username || '…', avatar_url: profile?.avatar_url || null,
     rank: Math.max(profile?.rank ?? 0, (S.getExtra('peak', {}) || {}).rank ?? 0), gauge: profile?.gauge ?? 0,
-    xp: Math.max(profile?.xp ?? 0, (S.getExtra('peak', {}) || {}).xp ?? 0), streak: S.streak(), since: Date.now() };
+    xp: Math.max(profile?.xp ?? 0, (S.getExtra('peak', {}) || {}).xp ?? 0), streak: S.streak(), streakDay: S.streakDay(), since: Date.now() };
 }
-function trackPresence() { if (presence && session) presence.track(presencePayload()).catch(() => {}); }
+function trackPresence() { if (presence && session && liveOk()) presence.track(presencePayload()).catch(() => {}); }
 
 async function startLive() {
   const c = await sb();
@@ -378,7 +383,12 @@ async function startLive() {
       .sort((a, b) => (a.rank - b.rank) || (a.gauge - b.gauge) || String(a.username).localeCompare(String(b.username)));   // du N5 au N1
     onlineListeners.forEach(fn => fn(online));
   });
-  presence.subscribe(status => { if (status === 'SUBSCRIBED') trackPresence(); });
+  presence.subscribe(status => {
+    liveStatus = status;
+    if (status === 'SUBSCRIBED') trackPresence();
+    // Coupure (réseau, veille…) : on relance proprement au bout de quelques secondes
+    if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED') scheduleRestart(status === 'CLOSED' ? 4000 : 2000);
+  });
   // Pokes (demandes de conseil) : messages éphémères en direct, sans base de données
   pokeChannel = c.channel(`sakura-poke-${me}`, { config: { broadcast: { self: false } } })
     .on('broadcast', { event: 'poke' }, ({ payload }) => {
@@ -397,8 +407,30 @@ async function startLive() {
     })
     .subscribe();
 }
+let liveStatus = 'idle', restartT = null, restarting = false;
+function scheduleRestart(ms) {
+  if (!session || restartT || restarting) return;
+  restartT = setTimeout(async () => { restartT = null; await restartLive(); }, ms);
+}
+async function restartLive() {
+  if (!session || restarting) return;
+  restarting = true;
+  try { await startLive(); } catch {} finally { restarting = false; }
+}
+const liveOk = () => presence && (presence.state === 'joined' || liveStatus === 'SUBSCRIBED');
+// Surveillance : si on n'est plus dans le salon des connectés, on y revient ; sinon on rafraîchit sa fiche
+if (typeof window !== 'undefined') {
+  const check = () => { if (!session) return; if (!liveOk()) restartLive(); else trackPresence(); };
+  setInterval(() => { if (session && !liveOk()) restartLive(); }, 15000);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') check(); });
+  window.addEventListener('online', () => setTimeout(check, 800));
+  window.addEventListener('focus', () => { if (session && !liveOk()) restartLive(); });
+  // Série / progression qui bougent : les autres le voient en direct
+  let trT; S.onChange(() => { clearTimeout(trT); trT = setTimeout(trackPresence, 1500); });
+}
 async function stopLive() {
   const c = client;
+  liveStatus = 'idle';
   if (!c) return;
   if (presence) { await c.removeChannel(presence).catch(() => {}); presence = null; }
   if (reactChannel) { await c.removeChannel(reactChannel).catch(() => {}); reactChannel = null; }

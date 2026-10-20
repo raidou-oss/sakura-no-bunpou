@@ -1,6 +1,6 @@
 // 炎 Séries (jours d'affilée) : flammes bleues et auras autour de l'avatar selon la série.
-import { h, dayKey, DAY } from './util.js?v=20261020101742';
-import * as S from './srs.js?v=20261020101742';
+import { h, dayKey, DAY } from './util.js?v=20261020103416';
+import * as S from './srs.js?v=20261020103416';
 
 /** Paliers d'aura : plus la série est longue, plus l'aura est intense */
 export const AURAS = [
@@ -55,4 +55,25 @@ export function withAura(el, n) {
   el.prepend(h('i.aura-fx', { 'aria-hidden': 'true' }));
   if (t >= 2) el.append(h('i.aura-flames', { 'aria-hidden': 'true' }, ...Array.from({ length: t >= 4 ? 10 : 7 }, (_, k) => h('i', { style: { '--k': k, '--n': t >= 4 ? 10 : 7 } }))));
   return el;
+}
+
+// --- Semaine façon Duolingo : 月火水木金土日 avec la flamme bleue sur les jours validés ------------
+const WEEK = [['月', 'げつ', 'lundi'], ['火', 'か', 'mardi'], ['水', 'すい', 'mercredi'], ['木', 'もく', 'jeudi'], ['金', 'きん', 'vendredi'], ['土', 'ど', 'samedi'], ['日', 'にち', 'dimanche']];
+const RULE_FROM = '2026-10-20';
+const dayDone = d => !!d && (d.rev > 0 || d.les > 0);
+export function weekStrip({ big = false } = {}) {
+  const days = S.allStats().days || {};
+  const now = new Date();
+  const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7), 12);   // midi : évite les décalages UTC
+  const todayIdx = (now.getDay() + 6) % 7;
+  return h(`ol.week-strip${big ? '.big' : ''}`, { 'aria-label': 'Ta semaine' }, ...WEEK.map(([k, r, fr], i) => {
+    const t = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + i, 12);
+    const key = dayKey(t.getTime());
+    const d = days[key];
+    const done = dayDone(d) || (key < RULE_FROM && d?.games > 0);
+    const state = i === todayIdx ? (done ? 'today done' : 'today') : i > todayIdx ? 'future' : done ? 'done' : 'missed';
+    return h('li', { class: `wd ${state}`, title: `${fr[0].toUpperCase() + fr.slice(1)} : ${done ? 'série validée' : i > todayIdx ? 'à venir' : i === todayIdx ? 'pas encore validée' : 'pas de révision ni de leçon'}` },
+      h('span.wd-flame', done ? flame({ size: big ? 30 : 22 }) : h('i.wd-empty')),
+      h('ruby.wd-kanji', { lang: 'ja' }, k, h('rt', r)));
+  }));
 }

@@ -1,28 +1,28 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020101742';
-import * as D from './data.js?v=20261020101742';
-import * as S from './srs.js?v=20261020101742';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020101742';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020101742';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020101742';
-import * as C from './cloud.js?v=20261020101742';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020101742';
-import { sweep, enter, moveIndicator } from './transition.js?v=20261020101742';
-import { play, setVolume } from './sfx.js?v=20261020101742';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020101742';
-import { celebrate, verdict } from './celebrate.js?v=20261020101742';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261020101742';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261020101742';
-import { initGloss } from './gloss.js?v=20261020101742';
-import { initLinks } from './links.js?v=20261020101742';
-import { streakBadge } from './aura.js?v=20261020101742';
-import { initLevelUp } from './levelup.js?v=20261020101742';
-import { confidentsPage } from './confidents.js?v=20261020101742';
-import { initTilt } from './tilt.js?v=20261020101742';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020101742';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020103416';
+import * as D from './data.js?v=20261020103416';
+import * as S from './srs.js?v=20261020103416';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020103416';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020103416';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020103416';
+import * as C from './cloud.js?v=20261020103416';
+import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020103416';
+import { sweep, enter, moveIndicator } from './transition.js?v=20261020103416';
+import { play, setVolume } from './sfx.js?v=20261020103416';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020103416';
+import { celebrate, verdict } from './celebrate.js?v=20261020103416';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261020103416';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261020103416';
+import { initGloss } from './gloss.js?v=20261020103416';
+import { initLinks } from './links.js?v=20261020103416';
+import { streakBadge, weekStrip } from './aura.js?v=20261020103416';
+import { initLevelUp } from './levelup.js?v=20261020103416';
+import { confidentsPage } from './confidents.js?v=20261020103416';
+import { initTilt } from './tilt.js?v=20261020103416';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020103416';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261020101742';
+import { GAMES } from './gamelist.js?v=20261020103416';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -180,9 +180,7 @@ async function home() {
         h('span.streak-text', streakBadge(streak, { big: true }),
           h('span', streak ? (streak > 1 ? ' jours d’affilée' : ' jour d’affilée') : ' Ta série commence aujourd’hui'),
           h('small.streak-hint', (days[days.length - 1]?.rev || days[days.length - 1]?.les) ? 'Série validée aujourd’hui ✓' : 'Fais une révision ou une leçon aujourd’hui pour l’entretenir')),
-        h('ol.week', { 'aria-label': 'Révisions des 7 derniers jours' },
-          days.map(d => h('li', { title: `${d.key} : ${d.rev} révision(s), ${d.les || 0} leçon(s)`, class: d.rev || d.les ? 'on' : null, style: { '--v': d.rev / maxRev } },
-            h('span.sr', `${d.key} : ${d.rev}`)))))));
+        weekStrip())));
 
   const garden = h('section.garden',
     h('div.section-head', h('h2', 'Ton jardin'),

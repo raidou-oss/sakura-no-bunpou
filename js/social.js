@@ -1,15 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020101742';
-import * as D from './data.js?v=20261020101742';
-import { wallpaperSVG } from './wallpaper.js?v=20261020101742';
-import * as C from './cloud.js?v=20261020101742';
-import { play } from './sfx.js?v=20261020101742';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020101742';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame } from './aura.js?v=20261020101742';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020103416';
+import * as D from './data.js?v=20261020103416';
+import * as S from './srs.js?v=20261020103416';
+import { wallpaperSVG } from './wallpaper.js?v=20261020103416';
+import * as C from './cloud.js?v=20261020103416';
+import { play } from './sfx.js?v=20261020103416';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020103416';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261020103416';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261020101742';
-import * as L from './links.js?v=20261020101742';
+import { GAMES } from './gamelist.js?v=20261020103416';
+import * as L from './links.js?v=20261020103416';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -147,8 +148,21 @@ export async function profilePage(main, id) {
   if (!p) { main.replaceChildren(h('div.card.empty', h('h2', 'Profil introuvable'), h('a.btn', { href: '#/communaute' }, 'Voir la communauté'))); return; }
   const isMe = me && me.id === p.id;
   if (isMe) await C.pushProgress().catch(() => {}); // rang à jour
-  const fresh = isMe ? (C.currentProfile() || p) : p;
-  render(fresh);
+  const liveOf = q => { const u = C.onlineUsers().find(x => x.id === q.id); return u ? { ...q, rank: Math.max(q.rank || 0, u.rank || 0), gauge: u.gauge ?? q.gauge, xp: Math.max(q.xp || 0, u.xp || 0), streak: u.streak ?? q.streak, scores: { ...(q.scores || {}), streakDay: u.streakDay ?? q.scores?.streakDay } } : q; };
+  const fresh = isMe ? (C.currentProfile() || p) : liveOf(p);
+  await render(fresh);
+  if (!isMe) {
+    // Profil d'un autre élève : statut « en ligne », Lv et série suivent en direct
+    let lastSig = `${fresh.xp}|${fresh.rank}|${fresh.streak}`;
+    const off = C.onOnline(users => {
+      if (!main.isConnected || !main.querySelector('.profile-head')) return;
+      const on = users.some(u => u.id === p.id);
+      main.querySelector('.profile-online')?.classList.toggle('on', on);
+      const q = liveOf(p), sig = `${q.xp}|${q.rank}|${q.streak}`;
+      if (on && sig !== lastSig) { lastSig = sig; render(q); }
+    });
+    window.addEventListener('hashchange', off, { once: true });
+  }
 
   async function render(p) {
     const r = isMe ? await computeRank() : { rank: p.rank, gauge: p.gauge, grammar: p.grammar_pct ?? null, vocab: p.vocab_pct ?? null };
@@ -157,7 +171,7 @@ export async function profilePage(main, id) {
       h('div.profile-id',
         avatar({ ...p, xp: isMe ? (r.xp ?? p.xp) : p.xp }, 'xl', { level: true }),
         h('div.profile-name',
-          h('h1', p.username),
+          h('h1', p.username, !isMe ? h('span.profile-online', { class: C.onlineUsers().some(u => u.id === p.id) ? 'profile-online on' : 'profile-online' }, h('i'), h('span.po-on', 'En ligne'), h('span.po-off', 'Hors ligne')) : null),
           p.bio ? h('p.bio', p.bio) : (isMe ? h('p.bio.muted', 'Ajoute une petite bio dans « Modifier le profil ».') : null)),
         h('div.profile-actions', isMe
           ? [h('button.btn.small', { onclick: () => editProfile(main, p, render) }, 'Modifier le profil'),
@@ -174,7 +188,7 @@ export async function profilePage(main, id) {
 
     const reactBox = h('section.glass.react-box');
     const linksBox = me ? linksSection(isMe ? null : p) : null;
-    main.replaceChildren(...[header, stats, scoresSection(isMe ? publicScores() : p.scores, { mine: isMe }), linksBox, reactBox].filter(Boolean));
+    main.replaceChildren(...[header, stats, isMe ? streakCard() : null, scoresSection(isMe ? publicScores() : p.scores, { mine: isMe }), linksBox, reactBox].filter(Boolean));
 
     if (isMe) {
       const list = await C.reactionsFor(p.id).catch(() => []);
@@ -201,6 +215,18 @@ export async function profilePage(main, id) {
   }
 }
 
+/** Grande carte de série (mon profil) : flamme, palier d'aura et semaine 月→日 */
+function streakCard() {
+  const n = S.streak(), t = auraTier(n), nx = nextAura(n);
+  const today = S.todayStats();
+  return h('section.glass.streak-card',
+    h('div.sc-left', flame({ size: 54, cls: n ? '' : 'off' }),
+      h('div', h('b.sc-num', String(n)), h('span.sc-lbl', n > 1 ? 'jours d’affilée' : 'jour d’affilée'),
+        t ? h('em.aura-name', { lang: 'ja' }, `${AURAS[t].jp} ${AURAS[t].name}`) : null,
+        h('small', nx ? `Prochaine aura : ${nx.name} à ${nx.min} jours` : 'Aura maximale atteinte'))),
+    h('div.sc-right', weekStrip({ big: true }),
+      h('p.small.sc-rule', today.rev > 0 || today.les > 0 ? 'Série validée aujourd’hui ✓' : 'Fais une révision ou termine une leçon aujourd’hui pour garder ta flamme.')));
+}
 /** Case « jours d'affilée » : flamme bleue + palier d'aura et prochain palier */
 function streakChip(n) {
   n = n || 0;
@@ -209,8 +235,7 @@ function streakChip(n) {
     h('strong', flame({ size: 30, cls: n ? '' : 'off' }), String(n)),
     h('span', n > 1 ? 'jours d’affilée' : 'jour d’affilée'),
     t ? h('em.aura-name', { lang: 'ja' }, `${AURAS[t].jp} ${AURAS[t].name}`) : null,
-    h('small.aura-next', nx ? `Aura « ${nx.name} » à ${nx.min} j` : 'Aura maximale'),
-    h('small.aura-rule', 'Une révision ou une leçon par jour'));
+    null);
 }
 const chip = (n, label) => h('div.stat-chip.glass', h('strong', n ?? 0), h('span', label));
 const stamp = kind => { const v = C.REACTIONS[kind]; return h('span.stamp', h('span', { 'aria-hidden': 'true' }, v.icon), h('span', { lang: 'ja' }, v.jp), h('span.small', v.fr)); };
@@ -281,21 +306,29 @@ export async function communityPage(main) {
   const search = h('input.search', { type: 'search', placeholder: 'Chercher un pseudo…', 'aria-label': 'Chercher un élève' });
   const grid = h('ul.members');
   let timer;
-  const load = async () => {
-    const list = await C.listProfiles(search.value.trim());
+  let list = [];
+  // Les élèves connectés : leurs Lv, rang et série arrivent en direct par la présence (plus frais que la base)
+  const live = p => { const u = C.onlineUsers().find(x => x.id === p.id); return u ? { ...p, rank: Math.max(p.rank || 0, u.rank || 0), gauge: u.gauge ?? p.gauge, xp: Math.max(p.xp || 0, u.xp || 0), streak: u.streak ?? p.streak, scores: { ...(p.scores || {}), streakDay: u.streakDay ?? p.scores?.streakDay }, online: true } : p; };
+  const paint = () => {
     const me = C.currentUser()?.id;
-    grid.replaceChildren(...(list.length ? list.map(p => h('li', h('a.member.glass', { href: `#/profil/${p.id}` },
+    grid.replaceChildren(...(list.length ? list.map(live).map(p => h('li', h('a.member.glass', { href: `#/profil/${p.id}`, class: p.online ? 'member glass is-online' : 'member glass' },
+      p.online ? h('span.member-online', { title: 'En ligne maintenant' }, 'En ligne') : null,
       avatar(p, 'l', { level: true }),
       h('span.member-name', p.username, p.id === me ? h('span.you', 'toi') : null, streakFor(p, me) ? streakBadge(streakFor(p, me)) : null),
       rankBlock({ rank: p.rank, gauge: p.gauge }, { compact: true }),
       h('span.small', `${xpFor(p) ?? 0} XP · ${p.learned} cartes`))))
       : [h('li.empty-line', 'Personne ne correspond à cette recherche.')]));
   };
+  const load = async () => { list = await C.listProfiles(search.value.trim()); paint(); };
   search.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(load, 300); });
   main.replaceChildren(...[head,
     C.currentUser() ? null : h('div.glass.join-banner', h('p', 'Crée ton compte pour apparaître ici et envoyer des réactions.'), h('a.btn.primary.small', { href: '#/compte' }, 'Créer un compte')),
     search, grid].filter(Boolean));
   await load();
+  // Mises à jour en direct tant qu'on reste sur la page
+  let pt; const offOnline = C.onOnline(() => { clearTimeout(pt); pt = setTimeout(() => { if (grid.isConnected) paint(); }, 250); });
+  const refresh = setInterval(() => { if (!grid.isConnected) return; if (document.visibilityState === 'visible') load().catch(() => {}); }, 45000);
+  window.addEventListener('hashchange', () => { offOnline(); clearInterval(refresh); }, { once: true });
 }
 
 function newPassword(main) {

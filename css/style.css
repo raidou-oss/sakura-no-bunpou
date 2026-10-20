@@ -2080,3 +2080,44 @@ html.reduce-motion .flame svg, html.reduce-motion .flame .fl-in, html.reduce-mot
 .online-row { position: relative; }
 .online-streak { position: absolute; left: 26px; bottom: 1px; z-index: 4; padding: 0 4px 0 1px; border-radius: 999px; background: var(--night, #0a1030);
   border: 1px solid rgba(70, 217, 255, .5); font-size: .62rem; line-height: 1.25; pointer-events: none; }
+/* Communauté : élève connecté en ce moment */
+.member.is-online { border-color: rgba(94, 230, 168, .55); }
+.member-online { position: absolute; top: 10px; right: 12px; display: inline-flex; align-items: center; gap: 5px; font: 800 italic .7rem var(--display); color: #5ee6a8; letter-spacing: .04em; }
+.member-online::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #5ee6a8; box-shadow: 0 0 8px #5ee6a8; animation: gap-blink 1.6s ease-in-out infinite; }
+.member { position: relative; }
+.profile-online { display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; vertical-align: middle; font: 800 italic .8rem var(--display); color: var(--mist); letter-spacing: .03em; }
+.profile-online i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, .25); }
+.profile-online .po-on { display: none; }
+.profile-online.on { color: #5ee6a8; }
+.profile-online.on i { background: #5ee6a8; box-shadow: 0 0 8px #5ee6a8; animation: gap-blink 1.6s ease-in-out infinite; }
+.profile-online.on .po-on { display: inline; }
+.profile-online.on .po-off { display: none; }
+
+/* 月火水木金土日 : la semaine façon Duolingo, flamme bleue sur les jours validés */
+.week-strip { list-style: none; display: flex; justify-content: center; gap: 6px; margin: 10px 0 0; padding: 0; }
+.week-strip .wd { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 34px; padding: 6px 0 4px; border-radius: 10px; }
+.wd-flame { display: grid; place-items: center; height: 30px; }
+.wd-empty { width: 18px; height: 18px; border-radius: 50%; border: 2px dashed rgba(127, 168, 255, .35); }
+.wd-kanji { font: 900 1rem var(--jp-heavy); color: var(--mist); }
+.wd-kanji rt { font-size: .5em; font-family: var(--jp); opacity: .7; }
+.wd.done .wd-kanji { color: #B8F3FF; text-shadow: 0 0 8px rgba(70, 217, 255, .8); }
+.wd.missed .wd-empty { border-style: solid; border-color: rgba(255, 255, 255, .12); background: rgba(255, 255, 255, .04); }
+.wd.future { opacity: .45; }
+.wd.today { background: rgba(70, 217, 255, .12); box-shadow: inset 0 0 0 2px rgba(70, 217, 255, .55); }
+.wd.today:not(.done) .wd-empty { border-color: var(--cyan); animation: gap-blink 1.4s ease-in-out infinite; }
+.wd.today .wd-kanji { color: #fff; }
+.week-strip.big { gap: 10px; }
+.week-strip.big .wd { width: 48px; padding: 8px 0 6px; }
+.week-strip.big .wd-flame { height: 40px; }
+.week-strip.big .wd-kanji { font-size: 1.35rem; }
+.streak-card { display: flex; align-items: center; justify-content: center; gap: clamp(16px, 4vw, 48px); flex-wrap: wrap; padding: 20px 24px; margin: 16px 0;
+  background: radial-gradient(90% 120% at 15% 50%, rgba(47, 107, 255, .3), transparent 60%), var(--panel, rgba(10, 16, 46, .6)); }
+.sc-left { display: flex; align-items: center; gap: 14px; }
+.sc-left > div { display: flex; flex-direction: column; }
+.sc-num { font: 900 italic 3.2rem/0.9 var(--display); color: #fff; text-shadow: 4px 4px 0 #2F6BFF, 0 0 18px rgba(70, 217, 255, .6); }
+.sc-lbl { font: 800 italic 1rem var(--display); color: #B8F3FF; }
+.sc-left small { color: var(--mist); font-size: .75rem; }
+.sc-left .aura-name { font: 900 italic .9rem var(--display); color: var(--cyan); }
+.sc-right { display: flex; flex-direction: column; align-items: center; }
+.sc-rule { margin: 8px 0 0; color: var(--mist); }
+@media (max-width: 520px) { .week-strip.big { gap: 4px; } .week-strip.big .wd { width: 38px; } .week-strip.big .wd-kanji { font-size: 1.1rem; } }
