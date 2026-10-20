@@ -2,8 +2,8 @@
 //  · chaque clic sur un élément interactif frappe : onde de choc + étincelles au point touché, petit écrasement ;
 //  · à chaque page, le kanji du titre s'imprime (onde + étincelles), les jauges se remplissent, les nombres défilent ;
 //  · une bonne réponse dans un jeu déclenche l'impact des leçons.
-import { hitFx, reducedMotion, fxAt } from './util.js?v=20261021002622';
-import { play } from './sfx.js?v=20261021002622';
+import { hitFx, reducedMotion, fxAt } from './util.js?v=20261021003048';
+import { play } from './sfx.js?v=20261021003048';
 
 const TAP = '.btn, .tab, .segmented button, .lesson-card, .nav-list a, .game-tile, .unit, .member, .option, .chip-btn, .link-card, .level, .point, .oc-row, .online-row, .resume-chip, .tile, .kana-cell, .cf-row, .lc-tarot, button.dash-choice, .choice, .answer-btn';
 const lite = () => document.documentElement.classList.contains('lite');
@@ -51,7 +51,23 @@ export function pageEnter(root = document.getElementById('main')) {
       word.dataset.split = '1';
       const txt = word.textContent;
       word.setAttribute('aria-label', txt);
-      word.innerHTML = [...txt].map((c, i) => `<span class="ph-l" aria-hidden="true" style="--i:${i}">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+      const R = [-10, 8, -5, 12, -8, 6, -12, 5], Y = [2, -6, 5, -4, 6, -3, 3, -6], Z = [1.12, .9, 1.05, .94, 1.1, .92, 1.14, .96];
+      word.innerHTML = [...txt].map((c, i) => `<span class="ph-l" aria-hidden="true" style="--i:${i};--tr:${R[i % 8]}deg;--ty:${Y[i % 8]}px;--ts:${Z[i % 8]}">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+    }
+    // Kanji du titre : chaque caractère penché à sa façon, comme les chiffres du calendrier
+    const jh = head.querySelector('h1 .jp-head');
+    if (jh && !jh.dataset.split) {
+      jh.dataset.split = '1';
+      const KR = [-9, 7, -4, 10], KY = [4, -6, 2, -3];
+      let n = 0;
+      const walk = node => [...node.childNodes].forEach(ch => {
+        if (ch.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          [...ch.textContent].forEach(c => { const sp = document.createElement('span'); sp.className = 'tk'; sp.textContent = c; sp.style.cssText = `--kr:${KR[n % 4]}deg;--ky:${KY[n % 4]}px`; n++; frag.append(sp); });
+          ch.replaceWith(frag);
+        } else if (ch.nodeType === 1 && ch.tagName !== 'RT') walk(ch);
+      });
+      walk(jh);
     }
     if (!head.querySelector('.ph-slash')) head.prepend(Object.assign(document.createElement('span'), { className: 'ph-slash', ariaHidden: 'true', innerHTML: '<i></i><i></i><i></i>' }));
     head.classList.remove('p3-in'); void head.offsetWidth; head.classList.add('p3-in');

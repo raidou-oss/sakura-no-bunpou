@@ -3080,3 +3080,15 @@ html.reduce-motion .p3-head.p3-in h1 { animation: none; }
 .hd-moment { transform: rotate(5deg) skewX(-14deg); font-size: 1.05rem; margin-top: -4px; margin-left: 10px; box-shadow: 4px 4px 0 var(--sakura), -2px -2px 0 var(--cyan); }
 .hud-date { grid-template-columns: auto auto; column-gap: 10px; transform: rotate(-4deg); }
 .hd-wd small { margin-top: 4px; } .hd-wd b { width: 60px; height: 60px; font-size: 1.9rem; }
+
+/* ===== Titres au style du calendrier P5 : kanji penchés à contour épais, lettres du bandeau de travers ===== */
+.p3-head h1 .jp-head .tk { display: inline-block; transform: rotate(var(--kr)) translateY(var(--ky));
+  color: #fff; -webkit-text-stroke: 4px #050C2E; paint-order: stroke fill; text-shadow: 5px 5px 0 var(--sakura-deep), 10px 10px 0 rgba(70, 217, 255, .6); }
+.p3-head h1 .jp-head .tk + .tk { margin-left: -.04em; }
+.p3-head h1 .jp-head { text-shadow: none; }
+.p3-head .ph-word { transform: skewX(-12deg) rotate(-2deg); padding: 6px 26px 4px 16px; }
+.p3-head .ph-l { transform: rotate(var(--tr, 0deg)) translateY(var(--ty, 0)) scale(var(--ts, 1)); }
+.p3-head.p3-in .ph-l { animation-name: ph-l-in2; }
+@keyframes ph-l-in2 { 0% { opacity: 0; transform: translateY(-60%) rotate(-24deg) scale(1.6); color: var(--sakura-deep); }
+  60% { opacity: 1; transform: translateY(6%) rotate(calc(var(--tr) * 1.6)) scale(.95); } 100% { transform: rotate(var(--tr)) translateY(var(--ty)) scale(var(--ts)); } }
+.p3-head .ph-l:nth-child(odd) { color: var(--night); } .p3-head .ph-l:nth-child(4n+2) { color: #1D2F7A; }
