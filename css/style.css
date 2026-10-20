@@ -2523,3 +2523,28 @@ html.reduce-motion .aura-embers, html.reduce-motion .aura-sparks { display: none
   .ru.cf .tarot.xl { width: 170px; height: 265px; padding: 16px 10px 14px; }
   .ru-waves i { left: 50%; top: 32%; }
 }
+
+/* ===== Performance : le fond bouge par couches composées (pas de redessin du SVG à chaque image) ===== */
+div.wallpaper { position: relative; }
+.wallpaper-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.wp-layer { position: absolute; inset: 0; will-change: transform; }
+.wp-layer > .wallpaper-layer, .wp-l-slow { position: absolute; inset: 0; }
+.wallpaper-wrap .wp-ribbons, .wallpaper-wrap .wp-ribbon.slow, .wallpaper-wrap .wp-petals { animation: none !important; }
+.wp-l-rib { animation: wp-sway 14s ease-in-out infinite alternate; }
+.wp-l-slow { will-change: transform; animation: wp-drift 18s ease-in-out infinite alternate; }
+.wp-l-pet { animation: wp-float 20s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .wp-layer, .wp-l-slow { animation: none !important; } }
+html.reduce-motion .wp-layer, html.reduce-motion .wp-l-slow { animation: none !important; }
+.petal-sky i { will-change: transform; }
+/* Éléments à ombre animée : chacun sur sa propre couche, pour ne pas redessiner tout le panneau autour */
+.nav-indicator::before, .tab.active, .segmented button.active, .live-dot, .dojo-btn, .tab-flip { will-change: transform; }
+/* Le contenu central forme une seule couche : évite l'explosion de couches (« overlap ») au-dessus du fond animé */
+#main { will-change: transform; }
+/* Mode allégé (machine lente détectée) : même décor, moins de mouvement coûteux */
+html.lite .wp-layer, html.lite .wp-l-slow { animation: none !important; will-change: auto; }
+html.lite .petal-sky span:nth-child(2n) { display: none; }
+html.lite .petal-sky i { animation: none; }
+html.lite .p3-shade, html.lite .nav-indicator::before, html.lite .tab.active, html.lite .segmented button.active, html.lite .btn, html.lite .chip-btn,
+html.lite .resume-chip, html.lite .stat-chip, html.lite .lv-badge, html.lite .cf-ttl, html.lite .reg-chip, html.lite .score-glyph, html.lite .lc-tarot,
+html.lite .cf-maxtag, html.lite .lc-ongoing, html.lite .lr-card, html.lite .lesson-card, html.lite .unit, html.lite .game-tile, html.lite .member,
+html.lite .level, html.lite .score-card, html.lite .link-card, html.lite .kana-cell, html.lite .point, html.lite .oc-row, html.lite .resume-ico { animation: none; }

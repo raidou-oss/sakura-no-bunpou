@@ -1,28 +1,28 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020221041';
-import * as D from './data.js?v=20261020221041';
-import * as S from './srs.js?v=20261020221041';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020221041';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020221041';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020221041';
-import * as C from './cloud.js?v=20261020221041';
-import { wallpaperSVG, sectionWallpaperSVG } from './wallpaper.js?v=20261020221041';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261020221041';
-import { play, setVolume } from './sfx.js?v=20261020221041';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020221041';
-import { celebrate, verdict } from './celebrate.js?v=20261020221041';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261020221041';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261020221041';
-import { initGloss } from './gloss.js?v=20261020221041';
-import { initLinks } from './links.js?v=20261020221041';
-import { streakBadge, weekStrip } from './aura.js?v=20261020221041';
-import { initLevelUp } from './levelup.js?v=20261020221041';
-import { confidentsPage } from './confidents.js?v=20261020221041';
-import { initTilt } from './tilt.js?v=20261020221041';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020221041';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261020222822';
+import * as D from './data.js?v=20261020222822';
+import * as S from './srs.js?v=20261020222822';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261020222822';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261020222822';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261020222822';
+import * as C from './cloud.js?v=20261020222822';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261020222822';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261020222822';
+import { play, setVolume } from './sfx.js?v=20261020222822';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261020222822';
+import { celebrate, verdict } from './celebrate.js?v=20261020222822';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261020222822';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261020222822';
+import { initGloss } from './gloss.js?v=20261020222822';
+import { initLinks } from './links.js?v=20261020222822';
+import { streakBadge, weekStrip } from './aura.js?v=20261020222822';
+import { initLevelUp } from './levelup.js?v=20261020222822';
+import { confidentsPage } from './confidents.js?v=20261020222822';
+import { initTilt } from './tilt.js?v=20261020222822';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261020222822';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261020221041';
+import { GAMES } from './gamelist.js?v=20261020222822';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -106,7 +106,7 @@ function setWallpaper(locked) {
   if (!wrap) { wrap = h('div.wallpaper-wrap.soft#page-wallpaper', { 'aria-hidden': 'true' }); document.body.prepend(wrap); }
   if (wrap.dataset.kind !== kind) {
     wrap.dataset.kind = kind;
-    wrap.innerHTML = kind === 'home' ? wallpaperSVG() : sectionWallpaperSVG(kind);
+    mountWallpaper(wrap, kind === 'home' ? wallpaperSVG() : sectionWallpaperSVG(kind));
     wrap.classList.remove('fade-in'); void wrap.offsetWidth; wrap.classList.add('fade-in');
   }
   document.body.classList.toggle('wp-home', kind === 'home');
@@ -566,6 +566,7 @@ C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => {
   mountOnline();
   if (/access_token|error_description/.test(location.hash) && !C.isRecovery()) location.hash = '#/';
   navAccount(); Promise.resolve(route()).finally(() => window.__bootDone?.(bootSweep));
+  setTimeout(perfProbe, 5000);
 });
 
 // --- Mise à jour automatique : si une nouvelle version est en ligne, on recharge (une fois) -------------
@@ -631,3 +632,24 @@ p3Heads();
 // --- Réduire les animations (réglage du site) ---------------------------------------------------
 function applyMotion() { document.documentElement.classList.toggle('reduce-motion', !!S.getSettings().reduceMotion); }
 applyMotion();
+
+
+// --- Mode allégé automatique : si la machine n'arrive pas à suivre (moins de ~40 images/s),
+// on garde le même décor mais on fige ce qui coûte le plus (fond qui ondule, moitié des pétales, ombres qui bougent).
+function perfProbe() {
+  // Déjà allégé : on garde ce réglage une semaine avant de retester (sinon ça alternerait d'un chargement à l'autre)
+  try { const t = Number(localStorage.getItem('sakura.liteAt') || 0); if (localStorage.getItem('sakura.lite') === '1' && Date.now() - t < 7 * 864e5) return; } catch {}
+  if (document.hidden) { document.addEventListener('visibilitychange', () => setTimeout(perfProbe, 1500), { once: true }); return; }
+  let n = 0, t0 = 0, worst = 0, last = 0;
+  const f = t => {
+    if (!t0) { t0 = last = t; }
+    worst = Math.max(worst, t - last); last = t; n++;
+    if (t - t0 < 2000) return requestAnimationFrame(f);
+    const fps = n / ((t - t0) / 1000);
+    const lite = fps < 40;
+    document.documentElement.classList.toggle('lite', lite);
+    try { localStorage.setItem('sakura.lite', lite ? '1' : '0'); localStorage.setItem('sakura.liteAt', String(Date.now())); } catch {}
+  };
+  requestAnimationFrame(f);
+}
+try { if (localStorage.getItem('sakura.lite') === '1') document.documentElement.classList.add('lite'); } catch {}

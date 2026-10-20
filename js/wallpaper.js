@@ -183,3 +183,28 @@ export function sectionWallpaperSVG(kind) {
   <g class="wp-petals">${petals}</g>
 </svg>`;
 }
+
+/** Pose le fond en couches séparées (fond fixe, rubans, rubans lents, pétales) :
+ *  chaque couche bouge d'un bloc sur la carte graphique au lieu de redessiner tout le SVG à chaque image. */
+export function mountWallpaper(container, svgString) {
+  const tpl = document.createElement('template');
+  tpl.innerHTML = svgString.trim();
+  const src = tpl.content.firstElementChild;
+  const only = (keep, filter) => {
+    const s = src.cloneNode(true);
+    s.setAttribute('class', 'wallpaper-layer');
+    [...s.children].forEach(ch => { if (ch.tagName.toLowerCase() !== 'defs' && !keep(ch)) ch.remove(); });
+    filter?.(s);
+    return s;
+  };
+  const isRib = ch => ch.classList?.contains('wp-ribbons'), isPet = ch => ch.classList?.contains('wp-petals');
+  const base = only(ch => !isRib(ch) && !isPet(ch));
+  const rib = only(isRib, s => s.querySelectorAll('.wp-ribbon.slow').forEach(e => e.remove()));
+  const slow = only(isRib, s => s.querySelectorAll('.wp-ribbon:not(.slow)').forEach(e => e.remove()));
+  const pet = only(isPet);
+  const layer = (cls, ...kids) => { const d = document.createElement('div'); d.className = `wp-layer ${cls}`; d.append(...kids); return d; };
+  const stack = document.createElement('div');
+  stack.className = 'wallpaper';
+  stack.append(base, layer('wp-l-rib', rib), layer('wp-l-rib', layer('wp-l-slow', slow)), layer('wp-l-pet', pet));
+  container.replaceChildren(stack);
+}

@@ -1,15 +1,15 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020221041';
-import * as D from './data.js?v=20261020221041';
-import * as S from './srs.js?v=20261020221041';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020221041';
-import { speakBtn, speak } from './voice.js?v=20261020221041';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020221041';
-import { play } from './sfx.js?v=20261020221041';
-import { strokeOrder } from './strokes.js?v=20261020221041';
-import { celebrate, verdict } from './celebrate.js?v=20261020221041';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020222822';
+import * as D from './data.js?v=20261020222822';
+import * as S from './srs.js?v=20261020222822';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020222822';
+import { speakBtn, speak } from './voice.js?v=20261020222822';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020222822';
+import { play } from './sfx.js?v=20261020222822';
+import { strokeOrder } from './strokes.js?v=20261020222822';
+import { celebrate, verdict } from './celebrate.js?v=20261020222822';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -97,7 +97,14 @@ const masteryOfItems = items => {
   return items.filter(it => isMastered(cards[it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`])).length / items.length;
 };
 const isDone = (lv, kind, n, c = null) => !!S.getExtra(DONE_KEY, {})[`${lv}:${kind}:${n}`]
-  || (kind === 'b' && !!c && !!covered && [...c.g, ...c.v].length > 0 && [...c.g, ...c.v].every(it => covered.has(it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`)));
+  || (!!c && coveredShare(c) >= 1);
+/** Part des éléments d'une leçon déjà validés ailleurs (ex. : une leçon « Les deux » couvre une partie d'une leçon de grammaire) */
+const keyOf = it => it.w !== undefined ? D.vocabKey(it) : `g:${it.id}`;
+const coveredShare = c => {
+  const items = [...c.g, ...c.v];
+  if (!items.length || !covered) return 0;
+  return items.filter(it => covered.has(keyOf(it))).length / items.length;
+};
 const isSeen = (lv, kind, n) => !!S.getExtra(SEEN_KEY, {})[`${lv}:${kind}:${n}`];
 const mark = (key, lv, kind, ns) => { const m = { ...S.getExtra(key, {}) }; ns.forEach(n => { m[`${lv}:${kind}:${n}`] = Date.now(); }); S.setExtra(key, m); };
 
@@ -152,6 +159,8 @@ export async function lessonsHub(main, lv = 'N5') {
       const lp = done ? 1 : st && !st.cleared
         ? (st.phase === 'quiz' ? 0.6 + 0.4 * ((st.ok?.length || 0) / Math.max(1, st.plan?.length || 1)) : 0.6 * (((st.i || 0) + 1) / Math.max(1, st.n || 1)))
         : seen ? 0.6 : 0;
+      const share = done ? 1 : coveredShare(c);
+      const lp2 = Math.max(lp, share);
       void p;
       const sub = [c.g.length ? `${c.g.length} point${c.g.length > 1 ? 's' : ''}` : null, c.v.length ? `${c.v.length} mots` : null].filter(Boolean).join(' · ');
       const preview = [...c.g.slice(0, 3).map(g => ruby(D.gramLabel(g), true)), ...c.v.slice(0, mode === 'b' ? 2 : 4).map(v => ruby(v.f || v.w, true))].join(' ・ ');
@@ -162,9 +171,9 @@ export async function lessonsHub(main, lv = 'N5') {
           inProgress ? h('span.lc-ongoing', inProgress) : null,
           count > 1 && last !== n ? h('span.lc-chain', `→ jusqu'à : ${lessonTitle(plan, mode, last)}`) : null),
         h('span.lc-foot',
-        h('span.lc-gauge', { class: `lc-gauge${done ? ' full' : ''}`, title: `${Math.round(lp * 100)} % de la leçon${done ? ' (validée)' : ''} · ${Math.round(mq * 100)} % de maîtrise` },
-          h('span', { style: { width: `${Math.round(lp * 100)}%` } }), mq > 0 ? h('i.gauge-glow', { style: { width: `${Math.max(2, Math.round(mq * 100))}%` } }) : null),
-          h('span.lc-pct', done ? '100 %' : `${Math.round(lp * 100)} %`)),
+        h('span.lc-gauge', { class: `lc-gauge${done ? ' full' : ''}`, title: `${Math.round(lp2 * 100)} % de la leçon${done ? ' (validée)' : share > lp ? ' (déjà vu dans d’autres leçons)' : ''} · ${Math.round(mq * 100)} % de maîtrise` },
+          h('span', { style: { width: `${Math.round(lp2 * 100)}%` } }), mq > 0 ? h('i.gauge-glow', { style: { width: `${Math.max(2, Math.round(mq * 100))}%` } }) : null),
+          h('span.lc-pct', done ? '100 %' : `${Math.round(lp2 * 100)} %`)),
         done ? h('span.lc-done', { 'aria-label': 'Leçon validée', html: jr('済') }) : seen ? h('span.lc-todo', 'Quiz à faire') : null));
     }));
     if (animate) { grid.classList.remove('regrid'); void grid.offsetWidth; grid.classList.add('regrid'); }
