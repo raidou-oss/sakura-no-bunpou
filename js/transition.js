@@ -1,8 +1,8 @@
 // Transitions façon menu Persona : bandes diagonales qui balaient l'écran entre deux pages,
 // éléments qui entrent en glissant (légèrement penchés, en cascade) et sélecteur de menu qui
 // saute d'un onglet à l'autre avec un petit rebond.
-import { reducedMotion } from './util.js?v=20261021002011';
-import { play } from './sfx.js?v=20261021002011';
+import { reducedMotion } from './util.js?v=20261021002331';
+import { play } from './sfx.js?v=20261021002331';
 
 const STAGGER = 'main > *, .levels > li, .game-grid > li, .units > li, .points > li, .members > li, .react-list > li, .example-list > li, .portal-points > li, tbody > tr';
 const MAX_STAGGER = 18;
@@ -90,6 +90,7 @@ async function swap(render) {
 
 /** Cascade d'entrée des éléments de la page */
 export function enter(root = document.getElementById('main')) {
+  if (root && !reducedMotion()) setTimeout(() => dispatchEvent(new CustomEvent('sakura:enter')), 30);   // titres, jauges… (même sur les pages « larges »)
   if (!root || reducedMotion() || root.classList.contains('wide')) return;   // les jeux gèrent leurs propres animations
   root.classList.remove('entering'); void root.offsetWidth;
   const seen = new Map();
@@ -102,7 +103,6 @@ export function enter(root = document.getElementById('main')) {
     el.classList.add('stagger');
   });
   root.classList.add('entering');
-  setTimeout(() => dispatchEvent(new CustomEvent('sakura:enter')), 30);
   clearTimeout(root._enterT);
   root._enterT = setTimeout(() => root.classList.remove('entering'), 1600);
 }

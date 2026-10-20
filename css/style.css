@@ -3056,3 +3056,11 @@ html.reduce-motion .p3-head .ph-slash, html.reduce-motion .ph-l { animation: non
 .hud-date { transform: rotate(-5deg) scale(1); column-gap: 8px; }
 .p3-head:has(.hud-date) { padding-top: 88px; }
 @media (max-width: 860px) { .hud-date { transform: rotate(-5deg) scale(.7); } .p3-head:has(.hud-date) { padding-top: 60px; } }
+/* Le titre entier arrive « en pop », comme le calendrier : il tournoie, grossit puis se pose avec un rebond */
+.p3-head.p3-in h1 { animation: ph-pop .65s cubic-bezier(.2, 1.45, .4, 1) .08s both; }
+@keyframes ph-pop {
+  0% { opacity: 0; transform: skewX(-8deg) rotate(-14deg) translate(-40px, -26px) scale(1.45); filter: blur(4px); }
+  60% { opacity: 1; filter: none; }
+  100% { transform: skewX(-8deg); } }
+@media (prefers-reduced-motion: reduce) { .p3-head.p3-in h1 { animation: none; } }
+html.reduce-motion .p3-head.p3-in h1 { animation: none; }
