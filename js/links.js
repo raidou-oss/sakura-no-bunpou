@@ -1,10 +1,10 @@
 // 絆 Liens de confident (façon Persona) : plus on échange avec quelqu'un (réactions, pokes), plus le lien monte.
 // Réactions : lues dans la base (visibles des deux côtés). Pokes : comptés de son côté, avec la progression du compte.
-import { h, jr, toast, reducedMotion } from './util.js?v=20261020224905';
-import * as C from './cloud.js?v=20261020224905';
-import * as S from './srs.js?v=20261020224905';
-import { play } from './sfx.js?v=20261020224905';
-import { fxLayer } from './fx.js?v=20261020224905';
+import { h, jr, toast, reducedMotion } from './util.js?v=20261020225317';
+import * as C from './cloud.js?v=20261020225317';
+import * as S from './srs.js?v=20261020225317';
+import { play } from './sfx.js?v=20261020225317';
+import { fxLayer } from './fx.js?v=20261020225317';
 
 export const REACT_XP = 15;          // par réaction échangée (envoyée ou reçue)
 export const POKE_XP = 30;           // par poke : plus d'interaction, donc plus d'XP
@@ -120,7 +120,6 @@ export function rankUpBanner(info) {
     h('div.ru-ring', { 'aria-hidden': 'true' }, h('span', 'SOCIAL LINK · RANK UP · 絆 · SOCIAL LINK · RANK UP · 絆 · ')),
     h('div.ru-streaks', { 'aria-hidden': 'true' }, ...Array.from({ length: 7 }, (_, k) => h('i', { style: { '--k': k } }))),
     petals,
-    h('div.ru-waves', { 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
     h('div.ru-stage',
       h('div.ru-cardwrap', h('div.ru-float', card)),
       h('div.ru-text',
@@ -158,6 +157,10 @@ export function rankUpBanner(info) {
     el.classList.add('impact', 'lit');
     play('slash');
     const [x, y] = center(card); burst(x, y, 90, 1);
+    const big = Math.hypot(innerWidth, innerHeight) * .75;
+    fx?.ring(x, y, { r1: big, w: 7, dur: 1.1, c: '#FFFFFF' });
+    fx?.ring(x, y, { r1: big * .85, w: 6, dur: 1.15, delay: .12, c: '#46D9FF' });
+    fx?.ring(x, y, { r1: big * .7, w: 5, dur: 1.2, delay: .24, c: '#FF94CB' });
     fx?.embers(18);
     el.querySelector('.ru-freeze')?.remove();          // plus besoin du flou de fond : la scène est opaque
     setTimeout(() => el.classList.remove('impact'), 500);
@@ -166,7 +169,7 @@ export function rankUpBanner(info) {
     play('fanfare'); num.textContent = String(rank); num.classList.add('bump');
     const pip = pips.children[rank - 1];
     pip?.classList.add('lit');
-    if (pip) { const [x, y] = center(pip); burst(x, y, 40, .45); }
+    if (pip) { const [x, y] = center(pip); burst(x, y, 40, .45); fx?.ring(x, y, { r0: 6, r1: 90, w: 3, dur: .6, c: '#FF94CB' }); }
     el.classList.add('shake');
   });
   at(T0 + 2.4, () => play('ping'));

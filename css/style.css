@@ -2656,16 +2656,17 @@ html.lite .lesson-card:hover, html.lite .game-tile:hover, html.lite .unit:hover 
   background: radial-gradient(circle, #fff 0 30%, rgba(255, 240, 247, .9) 45%, rgba(255, 148, 203, 0) 72%); mix-blend-mode: screen;
   animation: fx-core .32s cubic-bezier(.1, .8, .3, 1) forwards; }
 @keyframes fx-core { 0% { transform: scale(.2); opacity: 1; } 40% { transform: scale(1.7); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
-.fx-disc { left: -30px; top: -30px; width: 60px; height: 60px; border-radius: 50%;
+.fx-disc { left: -105px; top: -105px; width: 210px; height: 210px; border-radius: 50%; transform: scale(.07);
   background: radial-gradient(circle, rgba(70, 217, 255, 0) 45%, rgba(70, 217, 255, .32) 62%, rgba(255, 148, 203, .45) 70%, rgba(255, 148, 203, 0) 74%);
   animation: fx-disc .55s cubic-bezier(.15, .7, .3, 1) forwards; }
-@keyframes fx-disc { from { transform: scale(.25); opacity: 1; } to { transform: scale(3.6); opacity: 0; } }
-.fx-layer .fx-wave, .fx-tap .fx-wave { left: -16px; top: -16px; width: 32px; height: 32px; border-radius: 50%; background: none;
-  border: 4px solid #FF94CB; box-shadow: 0 0 10px 1px rgba(255, 148, 203, .9), inset 0 0 8px rgba(255, 240, 247, .8);
-  animation: fx-wave2 .6s cubic-bezier(.12, .75, .3, 1) forwards; }
-.fx-layer .fx-wave.c, .fx-tap .fx-wave.c { border-color: #46D9FF; box-shadow: 0 0 10px 1px rgba(70, 217, 255, .9), inset 0 0 8px rgba(230, 251, 255, .8);
+@keyframes fx-disc { from { transform: scale(.07); opacity: 1; } to { transform: scale(1); opacity: 0; } }
+/* Anneaux dessinés à leur taille finale puis réduits au départ : toujours nets (pas d'agrandissement d'un petit cercle) */
+.fx-layer .fx-wave, .fx-tap .fx-wave { left: -72px; top: -72px; width: 144px; height: 144px; border-radius: 50%; background: none;
+  border: 3px solid #FF94CB; box-shadow: 0 0 12px 1px rgba(255, 148, 203, .85), inset 0 0 10px rgba(255, 240, 247, .7);
+  transform: scale(.1); animation: fx-wave2 .6s cubic-bezier(.12, .75, .3, 1) forwards; }
+.fx-layer .fx-wave.c, .fx-tap .fx-wave.c { border-color: #46D9FF; box-shadow: 0 0 12px 1px rgba(70, 217, 255, .85), inset 0 0 10px rgba(230, 251, 255, .7);
   animation-duration: .75s; animation-delay: .07s; opacity: 0; }
-@keyframes fx-wave2 { 0% { transform: scale(.3); opacity: 1; border-width: 5px; } 60% { opacity: .9; } 100% { transform: scale(4.4); opacity: 0; border-width: 1px; } }
+@keyframes fx-wave2 { 0% { transform: scale(.1); opacity: 1; } 60% { opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
 /* Croix « slash » façon Persona */
 .fx-x { left: -36px; top: -1.5px; width: 72px; height: 3px; border-radius: 2px;
   background: linear-gradient(90deg, transparent, #fff 35%, #fff 65%, transparent); box-shadow: 0 0 8px #FF94CB;

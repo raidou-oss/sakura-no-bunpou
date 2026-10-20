@@ -2,21 +2,16 @@
 //  · chaque clic sur un élément interactif frappe : onde de choc + étincelles au point touché, petit écrasement ;
 //  · à chaque page, le kanji du titre s'imprime (onde + étincelles), les jauges se remplissent, les nombres défilent ;
 //  · une bonne réponse dans un jeu déclenche l'impact des leçons.
-import { hitFx, reducedMotion, shockHTML } from './util.js?v=20261020224905';
-import { play } from './sfx.js?v=20261020224905';
+import { hitFx, reducedMotion, fxAt } from './util.js?v=20261020225317';
+import { play } from './sfx.js?v=20261020225317';
 
 const TAP = '.btn, .tab, .segmented button, .lesson-card, .nav-list a, .game-tile, .unit, .member, .option, .chip-btn, .link-card, .level, .point, .oc-row, .online-row, .resume-chip, .tile, .kana-cell, .cf-row, .lc-tarot, button.dash-choice, .choice, .answer-btn';
 const lite = () => document.documentElement.classList.contains('lite');
 
 function tap(x, y, el) {
   if (reducedMotion()) return;
-  // Exactement l'onde de choc des leçons : deux ondes (sakura puis cyan) + 12 étincelles
-  const layer = document.createElement('span');
-  layer.className = 'fx-tap';
-  layer.style.left = `${x}px`; layer.style.top = `${y}px`;
-  layer.innerHTML = shockHTML();
-  document.body.append(layer);
-  setTimeout(() => layer.remove(), 900);
+  // Impact au point touché : éclair, croix et étincelles (sans les cercles, plus sobre)
+  fxAt(x, y, { rings: false });
   // On sent le clic : écrasement puis rebond, éclair blanc, petit son et vibration (mobile)
   if (el) {
     el.classList.remove('dyn-press'); void el.offsetWidth; el.classList.add('dyn-press');
@@ -69,7 +64,7 @@ export function pageEnter(root = document.getElementById('main')) {
   if (k && !k.dataset.landed) {
     k.dataset.landed = '1';
     k.classList.add('dyn-land');
-    setTimeout(() => hitFx(k, { pop: false }), 260);
+    setTimeout(() => { const r = k.getBoundingClientRect(); fxAt(r.left + r.width / 2, r.top + r.height / 2); }, 260);
   }
   // Jauges : remplissage depuis zéro, en cascade
   let i = 0;

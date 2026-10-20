@@ -165,7 +165,7 @@ export const stack = text => [...text].map(c => `<span>${esc(c)}</span>`).join('
  */
 /** Onde de choc commune (leçons, clics…) : éclair, disque de choc, deux anneaux dégradés, croix « slash »,
  *  traits lumineux de longueurs variées et éclats en losange */
-export function shockHTML({ sparks = 12, shards = 6 } = {}) {
+export function shockHTML({ sparks = 12, shards = 6, rings = true } = {}) {
   const sp = Array.from({ length: sparks }, (_, i) => {
     const a = i * (360 / sparks) + Math.random() * 18, d = 52 + Math.random() * 46, l = 10 + Math.random() * 14;
     return `<i class="fx-spark${i % 3 === 0 ? ' c' : ''}" style="--a:${a.toFixed(0)}deg;--d:-${d.toFixed(0)}px;--l:${l.toFixed(0)}px;--t:${(.42 + Math.random() * .22).toFixed(2)}s"></i>`;
@@ -174,7 +174,17 @@ export function shockHTML({ sparks = 12, shards = 6 } = {}) {
     const a = Math.random() * 360, d = 34 + Math.random() * 40;
     return `<i class="fx-shard" style="--a:${a.toFixed(0)}deg;--d:-${d.toFixed(0)}px;--r:${(Math.random() * 540 - 270).toFixed(0)}deg"></i>`;
   }).join('');
-  return '<i class="fx-core"></i><i class="fx-disc"></i><i class="fx-wave"></i><i class="fx-wave c"></i><i class="fx-x"></i><i class="fx-x b"></i>' + sp + sh;
+  return '<i class="fx-core"></i>' + (rings ? '<i class="fx-disc"></i><i class="fx-wave"></i><i class="fx-wave c"></i>' : '') + '<i class="fx-x"></i><i class="fx-x b"></i>' + sp + sh;
+}
+/** Même effet, posé au-dessus de tout à des coordonnées d'écran (jamais rogné par un cadre) */
+export function fxAt(x, y, opts = {}) {
+  if (reducedMotion()) return;
+  const layer = document.createElement('span');
+  layer.className = 'fx-tap';
+  layer.style.left = `${x}px`; layer.style.top = `${y}px`;
+  layer.innerHTML = shockHTML(opts);
+  document.body.append(layer);
+  setTimeout(() => layer.remove(), 900);
 }
 export function hitFx(target, { card = null, stamp = null, pop = true } = {}) {
   if (!target || reducedMotion()) return;

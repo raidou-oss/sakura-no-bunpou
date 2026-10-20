@@ -1,10 +1,10 @@
 // 助詞ダッシュ (Joshi Dash) : 60 secondes pour placer un maximum de particules.
-import { play as sfx } from '../sfx.js?v=20261020224905';
-import { burst } from '../celebrate.js?v=20261020224905';
-import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261020224905';
-import * as D from '../data.js?v=20261020224905';
-import * as S from '../srs.js?v=20261020224905';
-import { sentenceHTML, clozeDisp, regChip, highlightFr } from '../review.js?v=20261020224905';
+import { play as sfx } from '../sfx.js?v=20261020225317';
+import { burst } from '../celebrate.js?v=20261020225317';
+import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261020225317';
+import * as D from '../data.js?v=20261020225317';
+import * as S from '../srs.js?v=20261020225317';
+import { sentenceHTML, clozeDisp, regChip, highlightFr } from '../review.js?v=20261020225317';
 
 const PARTICLES = new Set(['は', 'が', 'を', 'に', 'で', 'へ', 'と', 'も', 'の', 'か', 'や', 'よ', 'ね', 'から', 'まで', 'より', 'しか', 'だけ', 'でも', 'ほど', 'こそ', 'さえ', 'すら', 'など', 'ばかり', 'くらい', 'ごろ', 'でも']);
 const DURATION = 60;

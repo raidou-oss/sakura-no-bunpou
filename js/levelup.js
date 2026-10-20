@@ -1,9 +1,9 @@
 // 昇 LEVEL UP façon Persona : quand le niveau du joueur (Lv) monte, grande animation plein écran.
-import { h, reducedMotion } from './util.js?v=20261020224905';
-import * as S from './srs.js?v=20261020224905';
-import { computeRank, playerLevel } from './level.js?v=20261020224905';
-import { play } from './sfx.js?v=20261020224905';
-import { fxLayer } from './fx.js?v=20261020224905';
+import { h, reducedMotion } from './util.js?v=20261020225317';
+import * as S from './srs.js?v=20261020225317';
+import { computeRank, playerLevel } from './level.js?v=20261020225317';
+import { play } from './sfx.js?v=20261020225317';
+import { fxLayer } from './fx.js?v=20261020225317';
 
 const STATS = [['知識', 'Savoir'], ['根気', 'Persévérance'], ['勇気', 'Courage'], ['魅力', 'Charme'], ['器用さ', 'Habileté']];
 
@@ -35,7 +35,6 @@ export function levelUpBanner({ from, to, xp }) {
     h('div.ru-ring', { 'aria-hidden': 'true' }, h('span', 'LEVEL UP · 成長 · LEVEL UP · 成長 · LEVEL UP · 成長 · ')),
     h('div.lu2-hex', { 'aria-hidden': 'true', html: [1, 2, 3].map(k => `<svg class="hx hx${k}" viewBox="-100 -100 200 200"><polygon points="0,-92 80,-46 80,46 0,92 -80,46 -80,-46"/><polygon class="in" points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40"/></svg>`).join('') }),
     petals,
-    h('div.ru-waves', { 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
     stamp,
     h('div.lu-stage.lu2-stage',
       h('p.ru-kicker', h('span', { lang: 'ja' }, '成長'), ' · TU AS PROGRESSÉ'),
@@ -75,7 +74,13 @@ export function levelUpBanner({ from, to, xp }) {
   at(reduced ? 0 : .82, () => {
     el.classList.add('impact', 'lit');
     play('slash');
-    if (fx) { const [x, y] = center(stamp); fx.burst(x, y, 80, 1); fx.embers(16); }
+    if (fx) {
+      const [x, y] = center(stamp); fx.burst(x, y, 80, 1); fx.embers(16);
+      const big = Math.hypot(innerWidth, innerHeight) * .75;
+      fx.ring(x, y, { r1: big, w: 7, dur: 1.1, c: '#FFFFFF' });
+      fx.ring(x, y, { r1: big * .85, w: 6, dur: 1.15, delay: .12, c: '#FF94CB' });
+      fx.ring(x, y, { r1: big * .7, w: 5, dur: 1.2, delay: .24, c: '#46D9FF' });
+    }
     el.querySelector('.ru-freeze')?.remove();
   });
   // 3 · Le compteur défile jusqu'au nouveau niveau
@@ -85,7 +90,7 @@ export function levelUpBanner({ from, to, xp }) {
   });
   at(reduced ? .1 : 2.35, () => {
     play('fanfare'); el.classList.add('shake', 'counted');
-    if (fx) { const [x, y] = center(reel.parentElement); fx.burst(x, y, 50, .7); }
+    if (fx) { const [x, y] = center(reel.parentElement); fx.burst(x, y, 50, .7); fx.ring(x, y, { r0: 30, r1: 260, w: 5, dur: .7, c: '#FF94CB' }); }
   });
   // 4 · La barre d'XP se remplit, des étincelles s'échappent de sa tête
   at(reduced ? .1 : 2.7, () => {
@@ -103,7 +108,7 @@ export function levelUpBanner({ from, to, xp }) {
   at(reduced ? .15 : 3.5, () => {
     const pip = pips.children[statLv - 1];
     pip?.classList.add('lit'); play('ping');
-    if (fx && pip) { const [x, y] = center(pip); fx.burst(x, y, 30, .45); }
+    if (fx && pip) { const [x, y] = center(pip); fx.burst(x, y, 30, .45); fx.ring(x, y, { r0: 6, r1: 80, w: 3, dur: .6, c: '#FF94CB' }); }
   });
   at(9, close);
 }

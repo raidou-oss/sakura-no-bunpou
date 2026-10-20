@@ -22,7 +22,7 @@ export function fxLayer(parent, { cls = 'fx-canvas' } = {}) {
   let W = 0, H = 0;
   const size = () => { W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
-  const P = [];
+  const P = [], R = [];
   let alive = true, ember = 0, emberCols = FX_COLORS.slice(0, 2), last = 0, running = false;
   const add = p => { if (P.length < MAX) P.push(p); };
   const kick = () => { if (!running && alive) { running = true; last = 0; requestAnimationFrame(tick); } };
@@ -50,8 +50,22 @@ export function fxLayer(parent, { cls = 'fx-canvas' } = {}) {
       g.strokeStyle = '#ffffff'; g.lineWidth = 1; g.globalAlpha *= .85; g.beginPath(); g.moveTo(0, -s); g.lineTo(s * .45, s * .6); g.stroke();
       g.restore();
     }
+    // Anneaux d'onde de choc : tracés à pleine résolution (nets à toute taille)
+    for (let i = R.length - 1; i >= 0; i--) {
+      const r = R[i]; r.life += dt;
+      const q = (r.life - r.delay) / r.dur;
+      if (q >= 1) { R.splice(i, 1); continue; }
+      if (q < 0) continue;
+      const e = 1 - Math.pow(1 - q, 3), rad = r.r0 + (r.r1 - r.r0) * e;
+      g.globalAlpha = (1 - q) * .55; g.strokeStyle = r.c; g.lineWidth = r.w * (1 - q * .7) * 3.2;
+      g.beginPath(); g.arc(r.x, r.y, rad, 0, Math.PI * 2); g.stroke();                      // halo
+      g.globalAlpha = 1 - q; g.lineWidth = r.w * (1 - q * .75);
+      g.beginPath(); g.arc(r.x, r.y, rad, 0, Math.PI * 2); g.stroke();
+      g.strokeStyle = '#ffffff'; g.lineWidth = Math.max(.8, r.w * .35 * (1 - q));
+      g.beginPath(); g.arc(r.x, r.y, rad, 0, Math.PI * 2); g.stroke();                      // âme blanche
+    }
     g.globalAlpha = 1;
-    if (P.length || ember) requestAnimationFrame(tick); else { running = false; g.clearRect(0, 0, W, H); }
+    if (P.length || R.length || ember) requestAnimationFrame(tick); else { running = false; g.clearRect(0, 0, W, H); }
   }
   return {
     el: cv,
@@ -68,6 +82,8 @@ export function fxLayer(parent, { cls = 'fx-canvas' } = {}) {
       for (let k = 0; k < n; k++) add({ x, y, vx: (Math.random() - .5) * 120, vy: -(40 + Math.random() * 160), life: 0, max: .4 + Math.random() * .4, s: 3 + Math.random() * 4, c: cols[(Math.random() * cols.length) | 0], g: 300, dot: true });
       kick();
     },
+    /** Onde de choc : anneau qui s'élargit (rayon de r0 à r1 px) */
+    ring(x, y, { r0 = 20, r1 = 600, w = 6, dur = 1, delay = 0, c = '#46D9FF' } = {}) { R.push({ x, y, r0, r1, w, dur, delay, c, life: 0 }); kick(); },
     embers(rate = 22, cols) { ember = rate ? { rate, acc: 0 } : 0; if (cols) emberCols = cols; kick(); },
     stop() { alive = false; removeEventListener('resize', size); cv.remove(); },
   };
