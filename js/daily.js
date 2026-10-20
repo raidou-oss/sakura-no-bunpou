@@ -1,13 +1,14 @@
 // Panneau « Aujourd'hui » de la barre latérale : remplit l'espace vide sous le menu avec ce qui
 // fait vraiment progresser : l'objectif de révisions du jour, la série, et un mot du jour
 // (voix, accent tonal, ajout aux révisions en un clic).
-import { h, ruby, kana, toast, jr } from './util.js?v=20261020100749';
-import * as D from './data.js?v=20261020100749';
-import * as S from './srs.js?v=20261020100749';
-import { countDue } from './review.js?v=20261020100749';
-import { speakBtn } from './voice.js?v=20261020100749';
-import { pitchSVG } from './pitch.js?v=20261020100749';
-import { play } from './sfx.js?v=20261020100749';
+import { h, ruby, kana, toast, jr } from './util.js?v=20261020101742';
+import * as D from './data.js?v=20261020101742';
+import * as S from './srs.js?v=20261020101742';
+import { countDue } from './review.js?v=20261020101742';
+import { streakBadge } from './aura.js?v=20261020101742';
+import { speakBtn } from './voice.js?v=20261020101742';
+import { pitchSVG } from './pitch.js?v=20261020101742';
+import { play } from './sfx.js?v=20261020101742';
 
 const dayKey = () => new Date().toISOString().slice(0, 10);
 const hash = str => [...str].reduce((a, c) => (a * 33 + c.charCodeAt(0)) >>> 0, 5381);
@@ -37,7 +38,7 @@ export async function dailyPanel({ compact = false } = {}) {
     h('div.daily-ring', { style: { '--p': Math.round(ratio * 100) }, 'aria-hidden': 'true' }, h('span', total ? `${Math.round(ratio * 100)}%` : '✓')),
     h('div.daily-goal-text',
       h('strong', due ? `${due} à réviser` : total ? 'Objectif atteint' : 'Rien en attente'),
-      h('span', `${done} faite${done > 1 ? 's' : ''} aujourd’hui · série ${streak} j`),
+      h('span', `${done} faite${done > 1 ? 's' : ''} aujourd’hui · série `, streakBadge(streak), ' j'),
       due ? h('a.daily-cta', { href: '#/revision' }, 'Réviser maintenant') : null));
 
   let word = null;
@@ -73,7 +74,7 @@ export function mountDaily() {
 }
 
 // --- Colonne de droite, sous « En ligne » : point de grammaire du jour ------------
-import { sentenceHTML, sentenceText, sentenceLine } from './review.js?v=20261020100749';
+import { sentenceHTML, sentenceText, sentenceLine } from './review.js?v=20261020101742';
 
 export async function grammarOfDay() {
   const levels = S.getSettings().grammarLevels?.length ? S.getSettings().grammarLevels : ['N5'];

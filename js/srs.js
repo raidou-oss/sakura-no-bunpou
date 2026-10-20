@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261020100749';
+import { store, today, dayKey, DAY } from './util.js?v=20261020101742';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -152,15 +152,24 @@ function record(ok, wasNew, type) {
   saveStats();
 }
 export function recordGame() { dayStats().games++; saveStats(); }
+/** Une leçon terminée compte pour la série du jour (comme une révision) */
+export function recordLesson() { const d = dayStats(); d.les = (d.les || 0) + 1; saveStats(); }
 export const todayStats = () => dayStats();
 export const newLeftToday = type => Math.max(0, type === 'g'
   ? settings.newGrammar - dayStats().newG
   : settings.newVocab - dayStats().newV);
 
+const STREAK_RULE_FROM = '2026-10-20';
+/** Dernier jour qui a compté pour la série (pour savoir si celle d'un autre élève est encore vivante) */
+export function streakDay() {
+  const keys = Object.keys(stats.days).filter(k => { const d = stats.days[k]; return d.rev > 0 || d.les > 0 || (k < STREAK_RULE_FROM && d.games > 0); }).sort();
+  return keys[keys.length - 1] || null;
+}
 /** Série de jours consécutifs avec au moins une révision ou un jeu */
 export function streak() {
   let n = 0, t = today();
-  const has = k => stats.days[k] && (stats.days[k].rev > 0 || stats.days[k].games > 0);
+  // La série avance avec une révision ou une leçon terminée (avant le 20/10/2026, les jeux comptaient aussi)
+  const has = k => { const d = stats.days[k]; return !!d && (d.rev > 0 || d.les > 0 || (k < STREAK_RULE_FROM && d.games > 0)); };
   if (!has(dayKey(t))) t -= DAY; // pas encore joué aujourd'hui : la série d'hier compte
   while (has(dayKey(t))) { n++; t -= DAY; }
   return n;

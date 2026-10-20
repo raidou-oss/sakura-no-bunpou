@@ -1,14 +1,15 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020100749';
-import * as D from './data.js?v=20261020100749';
-import { wallpaperSVG } from './wallpaper.js?v=20261020100749';
-import * as C from './cloud.js?v=20261020100749';
-import { play } from './sfx.js?v=20261020100749';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020100749';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261020101742';
+import * as D from './data.js?v=20261020101742';
+import { wallpaperSVG } from './wallpaper.js?v=20261020101742';
+import * as C from './cloud.js?v=20261020101742';
+import { play } from './sfx.js?v=20261020101742';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261020101742';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame } from './aura.js?v=20261020101742';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261020100749';
-import * as L from './links.js?v=20261020100749';
+import { GAMES } from './gamelist.js?v=20261020101742';
+import * as L from './links.js?v=20261020101742';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -44,13 +45,14 @@ export function rankBlock(r, { compact = false } = {}) {
       gauge(r.vocab, `Vocabulaire ${lv}`, { kind: 'v', mark: THRESHOLD.vocab, mastery: r.vMastery })) : null);
 }
 
-function avatar(p, size = 'm', { level = false } = {}) {
+function avatar(p, size = 'm', { level = false, aura = true } = {}) {
   const el = h(`span.avatar.${size}`);
   if (p?.avatar_url) el.append(h('img', { src: p.avatar_url, alt: '', loading: 'lazy' }));
   else el.append(h('span.avatar-initials', initials(p?.username)));
   const xp = xpFor(p);
-  if (!level || xp == null) return el;
-  return h(`span.av-wrap.${size}`, el, lvBadge(xp));
+  const streak = aura ? streakFor(p, C.currentUser()?.id) : 0;
+  if ((!level || xp == null) && !auraTier(streak)) return el;
+  return withAura(h(`span.av-wrap.${size}`, el, level && xp != null ? lvBadge(xp) : null), streak);
 }
 
 /** Pastille de niveau façon RPG, posée au-dessus de l'avatar */
@@ -126,7 +128,7 @@ export async function navAccount() {
   if (!link) return;
   const slot = link.querySelector('.nav-avatar');
   const p = C.currentProfile();
-  slot.replaceChildren(...(p ? [avatar(p, 'xs')] : []));
+  slot.replaceChildren(...(p ? [avatar(p, 'xs', { aura: false })] : []));
   slot.hidden = !p;
   const badge = document.getElementById('react-badge');
   const n = await C.unseenCount().catch(() => 0);
@@ -168,7 +170,7 @@ export async function profilePage(main, id) {
     const stats = h('section.profile-stats',
       h('div.glass.rank-card', rankBlock(r), levelBar(xp)),
       h('div.stat-chips',
-        chip(xp, 'XP'), chip(p.streak, p.streak > 1 ? 'jours d’affilée' : 'jour d’affilée'), chip(p.learned, 'cartes apprises')));
+        chip(xp, 'XP'), streakChip(streakFor(p, me?.id)), chip(p.learned, 'cartes apprises')));
 
     const reactBox = h('section.glass.react-box');
     const linksBox = me ? linksSection(isMe ? null : p) : null;
@@ -199,6 +201,17 @@ export async function profilePage(main, id) {
   }
 }
 
+/** Case « jours d'affilée » : flamme bleue + palier d'aura et prochain palier */
+function streakChip(n) {
+  n = n || 0;
+  const t = auraTier(n), nx = nextAura(n);
+  return h(`div.stat-chip.glass.streak-chip.tier-${t}`,
+    h('strong', flame({ size: 30, cls: n ? '' : 'off' }), String(n)),
+    h('span', n > 1 ? 'jours d’affilée' : 'jour d’affilée'),
+    t ? h('em.aura-name', { lang: 'ja' }, `${AURAS[t].jp} ${AURAS[t].name}`) : null,
+    h('small.aura-next', nx ? `Aura « ${nx.name} » à ${nx.min} j` : 'Aura maximale'),
+    h('small.aura-rule', 'Une révision ou une leçon par jour'));
+}
 const chip = (n, label) => h('div.stat-chip.glass', h('strong', n ?? 0), h('span', label));
 const stamp = kind => { const v = C.REACTIONS[kind]; return h('span.stamp', h('span', { 'aria-hidden': 'true' }, v.icon), h('span', { lang: 'ja' }, v.jp), h('span.small', v.fr)); };
 
@@ -209,7 +222,7 @@ async function localProfile(main) {
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('自分') }), 'Mon profil')),
     h('section.profile-stats',
       h('div.glass.rank-card', rankBlock(r), levelBar(r.xp)),
-      h('div.stat-chips', chip(r.xp, 'XP'), chip(r.streak, r.streak > 1 ? 'jours d’affilée' : 'jour d’affilée'), chip(r.learned, 'cartes apprises'))),
+      h('div.stat-chips', chip(r.xp, 'XP'), streakChip(r.streak), chip(r.learned, 'cartes apprises'))),
     scoresSection(publicScores(), { mine: true }),
     h('section.glass.react-box',
       C.enabled
@@ -273,7 +286,7 @@ export async function communityPage(main) {
     const me = C.currentUser()?.id;
     grid.replaceChildren(...(list.length ? list.map(p => h('li', h('a.member.glass', { href: `#/profil/${p.id}` },
       avatar(p, 'l', { level: true }),
-      h('span.member-name', p.username, p.id === me ? h('span.you', 'toi') : null),
+      h('span.member-name', p.username, p.id === me ? h('span.you', 'toi') : null, streakFor(p, me) ? streakBadge(streakFor(p, me)) : null),
       rankBlock({ rank: p.rank, gauge: p.gauge }, { compact: true }),
       h('span.small', `${xpFor(p) ?? 0} XP · ${p.learned} cartes`))))
       : [h('li.empty-line', 'Personne ne correspond à cette recherche.')]));
@@ -492,6 +505,7 @@ export function mountOnline() {
           avatar(u, 's'),
           xpFor(u) != null ? lvBadge(xpFor(u), { inline: true }) : null,
           h('span.online-name', u.username, isMe ? h('span.you', 'toi') : null, !isMe && (u.rank || 0) > myRank ? h('span.can-help', { title: 'Plus avancé que toi : idéal pour demander conseil', html: jr('先輩') }) : null),
+          streakFor(u, me) ? h('span.online-streak', flame({ size: 11 }), String(streakFor(u, me))) : null,
           h('span.online-rank', { lang: 'ja' }, rankLabel(u.rank || 0).replace(' validé', '')));
         item.append(row);
         if (open && !isMe) {

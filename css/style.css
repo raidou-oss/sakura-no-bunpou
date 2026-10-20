@@ -1993,3 +1993,90 @@ html.reduce-motion .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sa
 .lesson-card.ongoing .lc-pct { color: var(--cyan); }
 .lc-gauge.full span { background: linear-gradient(90deg, var(--sakura-deep), var(--sakura), #FFD6E8); box-shadow: 0 0 10px rgba(255, 148, 203, .7); }
 .lesson-card.ongoing .lc-gauge span { background: linear-gradient(90deg, var(--azure), var(--cyan)); }
+
+/* ===== 炎 Séries : flammes bleues ===== */
+.flame { display: inline-grid; place-items: center; vertical-align: -0.2em; filter: drop-shadow(0 0 6px rgba(70, 217, 255, .75)); }
+.flame svg { overflow: visible; transform-origin: 50% 100%; animation: fl-flicker 1.6s ease-in-out infinite; }
+.flame .fl-in { transform-origin: 50% 100%; animation: fl-core 1.1s ease-in-out infinite; }
+.flame.off { filter: grayscale(1) brightness(.6); opacity: .55; }
+.flame.off svg, .flame.off .fl-in { animation: none; }
+@keyframes fl-flicker { 0%, 100% { transform: scale(1, 1) skewX(0); } 30% { transform: scale(.96, 1.06) skewX(-3deg); } 60% { transform: scale(1.03, .97) skewX(2deg); } }
+@keyframes fl-core { 0%, 100% { transform: scale(1); opacity: .95; } 50% { transform: scale(.88, 1.1); opacity: .8; } }
+.streak-badge { display: inline-flex; align-items: center; gap: 3px; margin-left: 6px; padding: 1px 7px 1px 4px; border-radius: 999px;
+  background: rgba(47, 107, 255, .16); border: 1px solid rgba(70, 217, 255, .35); color: #B8F3FF; font: 900 italic .78rem var(--display); vertical-align: middle; }
+.streak-badge.big { font-size: 1.25rem; padding: 2px 12px 2px 6px; margin: 0 4px 0 0; }
+.streak-badge.tier-3, .streak-badge.tier-4, .streak-badge.tier-5 { border-color: rgba(255, 148, 203, .6); box-shadow: 0 0 10px rgba(255, 148, 203, .35); }
+.streak-text { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.streak-hint { flex-basis: 100%; text-align: center; color: var(--mist); font-size: .78rem; }
+.streak-chip strong { display: inline-flex; align-items: center; gap: 6px; }
+.streak-chip .aura-name { font: 900 italic .8rem var(--display); color: var(--cyan); }
+.streak-chip.tier-3 .aura-name, .streak-chip.tier-4 .aura-name, .streak-chip.tier-5 .aura-name { color: var(--sakura); }
+.streak-chip small { display: block; font-size: .7rem; color: var(--mist); opacity: .85; }
+.streak-chip { background: radial-gradient(120% 90% at 50% 120%, rgba(47, 107, 255, .28), transparent 65%), var(--panel, rgba(10, 16, 46, .6)); }
+
+/* ===== Auras autour de l'avatar selon la série ===== */
+.av-wrap.aura { isolation: isolate; }
+.av-wrap.aura > .avatar { position: relative; z-index: 1; }
+.av-wrap.aura > .lv-badge { z-index: 3; }
+.aura-fx { position: absolute; inset: -6px; border-radius: 50%; z-index: 0; pointer-events: none; }
+.aura-flames { position: absolute; inset: -14%; z-index: 0; pointer-events: none; border-radius: 50%; }
+.aura-flames i { position: absolute; left: 50%; top: 50%; width: 22%; height: 34%; margin: -34% 0 0 -11%;
+  transform-origin: 50% 147%; transform: rotate(calc(360deg / var(--n) * var(--k)));
+  background: radial-gradient(60% 70% at 50% 85%, #B8F3FF, #46D9FF 45%, rgba(47, 107, 255, 0) 75%);
+  border-radius: 50% 50% 45% 45% / 70% 70% 30% 30%; filter: blur(1.5px); opacity: .85;
+  animation: aura-lick 1.3s ease-in-out infinite; animation-delay: calc(var(--k) * -.17s); }
+@keyframes aura-lick { 0%, 100% { scale: 1 .8; opacity: .55; } 50% { scale: .85 1.15; opacity: .95; } }
+/* 1 · Étincelle : halo bleu qui respire */
+.aura-1 .aura-fx { box-shadow: 0 0 0 2px rgba(70, 217, 255, .7), 0 0 16px 2px rgba(70, 217, 255, .55); animation: aura-breathe 2.4s ease-in-out infinite; }
+@keyframes aura-breathe { 50% { box-shadow: 0 0 0 2px rgba(70, 217, 255, .95), 0 0 26px 6px rgba(70, 217, 255, .7); } }
+/* 2 · Flamme bleue : anneau qui tourne + langues de feu */
+.aura-2 .aura-fx, .aura-3 .aura-fx, .aura-4 .aura-fx, .aura-5 .aura-fx { inset: -7px; padding: 3px;
+  background: conic-gradient(from var(--aa, 0deg), #2F6BFF, #46D9FF, #B8F3FF, #46D9FF, #2F6BFF);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  filter: drop-shadow(0 0 8px rgba(70, 217, 255, .9)); animation: aura-spin 3s linear infinite; }
+@property --aa { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes aura-spin { to { --aa: 360deg; } }
+/* 3 · Double flamme : bleu + sakura */
+.aura-3 .aura-fx { background: conic-gradient(from var(--aa, 0deg), #2F6BFF, #46D9FF, #FF94CB, #FFD6E8, #46D9FF, #2F6BFF); filter: drop-shadow(0 0 9px rgba(255, 148, 203, .8)); }
+.aura-3 .aura-flames i:nth-child(odd) { background: radial-gradient(60% 70% at 50% 85%, #FFE3F1, #FF94CB 45%, rgba(255, 79, 163, 0) 75%); }
+/* 4 · Brasier céleste : plus grand, plus vif */
+.aura-4 .aura-flames { inset: -22%; }
+.aura-4 .aura-fx { inset: -9px; padding: 4px; background: conic-gradient(from var(--aa, 0deg), #46D9FF, #FFFFFF, #FF94CB, #46D9FF, #2F6BFF, #46D9FF); animation-duration: 2s; filter: drop-shadow(0 0 14px rgba(70, 217, 255, 1)); }
+.aura-4 .aura-flames i { width: 26%; height: 40%; margin: -40% 0 0 -13%; transform-origin: 50% 140%; }
+/* 5 · Légende : arc-en-ciel sakura / cyan / or + éclat */
+.aura-5 .aura-flames { inset: -26%; }
+.aura-5 .aura-fx { inset: -10px; padding: 5px; background: conic-gradient(from var(--aa, 0deg), #FFD86B, #FF94CB, #46D9FF, #B8F3FF, #FFD86B); animation-duration: 1.6s; filter: drop-shadow(0 0 18px rgba(255, 216, 107, .9)); }
+.aura-5 .aura-flames i { width: 28%; height: 44%; margin: -44% 0 0 -14%; transform-origin: 50% 136%;
+  background: radial-gradient(60% 70% at 50% 85%, #FFFFFF, #FFD86B 35%, #FF94CB 60%, rgba(70, 217, 255, 0) 80%); }
+.aura-5::after { content: ''; position: absolute; inset: -30%; border-radius: 50%; z-index: 0; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 216, 107, .35), transparent 60%); animation: aura-breathe2 2s ease-in-out infinite; }
+@keyframes aura-breathe2 { 50% { transform: scale(1.12); opacity: .6; } }
+/* Petites tailles (liste En ligne) : aura plus discrète */
+.av-wrap.s .aura-flames { display: none; }
+.av-wrap.s .aura-fx { inset: -3px; padding: 2px; }
+html.reduce-motion .flame svg, html.reduce-motion .flame .fl-in, html.reduce-motion .aura-fx, html.reduce-motion .aura-flames i, html.reduce-motion .aura-5::after { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .flame svg, .flame .fl-in, .aura-fx, .aura-flames i, .aura-5::after { animation: none !important; } }
+/* Langues de feu posées sur le bord du cadre (correctif de géométrie) */
+.aura-flames, .aura-4 .aura-flames, .aura-5 .aura-flames { inset: 0; }
+.aura-flames i { left: 50%; top: -18%; width: 22%; height: 30%; margin: 0 0 0 -11%; transform-origin: 50% 226.7%; }
+.aura-4 .aura-flames i { top: -24%; width: 24%; height: 36%; margin: 0 0 0 -12%; transform-origin: 50% 205.6%; }
+.aura-5 .aura-flames i { top: -28%; width: 26%; height: 40%; margin: 0 0 0 -13%; transform-origin: 50% 195%; }
+.online-name .streak-badge { margin-left: 2px; padding: 0 5px 0 2px; font-size: .68rem; flex: none; }
+.online-name .streak-badge .flame { --fs: 12px; }
+/* Flammes d'aura plus franches */
+.aura-flames i { background: linear-gradient(to top, rgba(47, 107, 255, .0) 0%, #2F6BFF 18%, #46D9FF 55%, #E6FBFF 92%);
+  border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%; filter: drop-shadow(0 0 6px #46D9FF) blur(.4px); opacity: 1; }
+.aura-3 .aura-flames i:nth-child(odd) { background: linear-gradient(to top, rgba(255, 79, 163, 0) 0%, #FF4FA3 18%, #FF94CB 55%, #FFF0F7 92%); filter: drop-shadow(0 0 6px #FF94CB) blur(.4px); }
+.aura-4 .aura-flames i { filter: drop-shadow(0 0 9px #46D9FF) blur(.3px); }
+.aura-5 .aura-flames i { background: linear-gradient(to top, rgba(255, 216, 107, 0) 0%, #FF94CB 20%, #FFD86B 60%, #FFFFFF 95%); filter: drop-shadow(0 0 10px #FFD86B) blur(.3px); }
+@keyframes aura-lick { 0%, 100% { scale: 1 .78; opacity: .7; } 50% { scale: .82 1.12; opacity: 1; } }
+.av-wrap.xl.aura .aura-fx { inset: -13px; }
+.av-wrap.l.aura .aura-fx { inset: -8px; }
+/* Liste En ligne : petite flamme + nombre, sans pastille */
+.online-name .streak-badge { background: none; border: 0; box-shadow: none; padding: 0; gap: 1px; margin-left: 0; }
+.online-name .streak-badge b { font-size: .7rem; }
+.online-streak { flex: none; display: inline-flex; align-items: center; gap: 1px; font: 900 italic .72rem var(--display); color: #B8F3FF; }
+/* La flamme de série se pose sur le coin de l'avatar (la ligne est trop étroite pour un badge en plus) */
+.online-row { position: relative; }
+.online-streak { position: absolute; left: 26px; bottom: 1px; z-index: 4; padding: 0 4px 0 1px; border-radius: 999px; background: var(--night, #0a1030);
+  border: 1px solid rgba(70, 217, 255, .5); font-size: .62rem; line-height: 1.25; pointer-events: none; }

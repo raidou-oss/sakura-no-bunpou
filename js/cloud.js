@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020100749';
-import * as S from './srs.js?v=20261020100749';
-import { computeRank, publicScores } from './level.js?v=20261020100749';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020101742';
+import * as S from './srs.js?v=20261020101742';
+import { computeRank, publicScores } from './level.js?v=20261020101742';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -127,9 +127,14 @@ export async function updateProfile(patch) {
 }
 export async function listProfiles(search = '') {
   const c = await sb();
-  let q = c.from('profiles').select('id, username, avatar_url, rank, gauge, xp, streak, learned').order('rank', { ascending: false }).order('gauge', { ascending: false }).order('xp', { ascending: false }).limit(60);
-  if (search) q = q.ilike('username', `%${search.replace(/[%_]/g, '')}%`);
-  const { data, error } = await q;
+  const run = cols => {
+    let q = c.from('profiles').select(cols).order('rank', { ascending: false }).order('gauge', { ascending: false }).order('xp', { ascending: false }).limit(60);
+    if (search) q = q.ilike('username', `%${search.replace(/[%_]/g, '')}%`);
+    return q;
+  };
+  // « scores » sert à savoir si la série d'un élève est encore en cours (colonne absente si la migration 04 manque)
+  let { data, error } = await run('id, username, avatar_url, rank, gauge, xp, streak, learned, scores');
+  if (error && /scores|column/i.test(error.message)) ({ data, error } = await run('id, username, avatar_url, rank, gauge, xp, streak, learned'));
   fail(error, 'Impossible de charger la communauté.');
   return data || [];
 }
@@ -357,7 +362,7 @@ export const onlineUsers = () => online;
 function presencePayload() {
   return { id: session.user.id, username: profile?.username || '…', avatar_url: profile?.avatar_url || null,
     rank: Math.max(profile?.rank ?? 0, (S.getExtra('peak', {}) || {}).rank ?? 0), gauge: profile?.gauge ?? 0,
-    xp: Math.max(profile?.xp ?? 0, (S.getExtra('peak', {}) || {}).xp ?? 0), since: Date.now() };
+    xp: Math.max(profile?.xp ?? 0, (S.getExtra('peak', {}) || {}).xp ?? 0), streak: S.streak(), since: Date.now() };
 }
 function trackPresence() { if (presence && session) presence.track(presencePayload()).catch(() => {}); }
 
