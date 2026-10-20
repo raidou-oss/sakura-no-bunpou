@@ -2649,3 +2649,43 @@ html.lite .level, html.lite .score-card, html.lite .link-card, html.lite .kana-c
 }
 .dyn-counted { animation: ru-bump .5s var(--ease-spring); display: inline-block; }
 html.lite .lesson-card:hover, html.lite .game-tile:hover, html.lite .unit:hover { filter: none; }
+
+/* ===== Onde de choc v2 (leçons + clics) ===== */
+.fx-layer i, .fx-tap i { position: absolute; display: block; pointer-events: none; }
+.fx-core { left: -14px; top: -14px; width: 28px; height: 28px; border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 30%, rgba(255, 240, 247, .9) 45%, rgba(255, 148, 203, 0) 72%); mix-blend-mode: screen;
+  animation: fx-core .32s cubic-bezier(.1, .8, .3, 1) forwards; }
+@keyframes fx-core { 0% { transform: scale(.2); opacity: 1; } 40% { transform: scale(1.7); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
+.fx-disc { left: -30px; top: -30px; width: 60px; height: 60px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(70, 217, 255, 0) 45%, rgba(70, 217, 255, .32) 62%, rgba(255, 148, 203, .45) 70%, rgba(255, 148, 203, 0) 74%);
+  animation: fx-disc .55s cubic-bezier(.15, .7, .3, 1) forwards; }
+@keyframes fx-disc { from { transform: scale(.25); opacity: 1; } to { transform: scale(3.6); opacity: 0; } }
+.fx-layer .fx-wave, .fx-tap .fx-wave { left: -16px; top: -16px; width: 32px; height: 32px; border-radius: 50%; background: none;
+  border: 4px solid #FF94CB; box-shadow: 0 0 10px 1px rgba(255, 148, 203, .9), inset 0 0 8px rgba(255, 240, 247, .8);
+  animation: fx-wave2 .6s cubic-bezier(.12, .75, .3, 1) forwards; }
+.fx-layer .fx-wave.c, .fx-tap .fx-wave.c { border-color: #46D9FF; box-shadow: 0 0 10px 1px rgba(70, 217, 255, .9), inset 0 0 8px rgba(230, 251, 255, .8);
+  animation-duration: .75s; animation-delay: .07s; opacity: 0; }
+@keyframes fx-wave2 { 0% { transform: scale(.3); opacity: 1; border-width: 5px; } 60% { opacity: .9; } 100% { transform: scale(4.4); opacity: 0; border-width: 1px; } }
+/* Croix « slash » façon Persona */
+.fx-x { left: -36px; top: -1.5px; width: 72px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #fff 35%, #fff 65%, transparent); box-shadow: 0 0 8px #FF94CB;
+  transform: rotate(-35deg) scaleX(0); animation: fx-x .34s cubic-bezier(.2, .9, .3, 1) forwards; }
+.fx-x.b { transform: rotate(35deg) scaleX(0); box-shadow: 0 0 8px #46D9FF; animation-name: fx-x2; animation-delay: .04s; }
+@keyframes fx-x { 0% { transform: rotate(-35deg) scaleX(0); opacity: 1; } 45% { transform: rotate(-35deg) scaleX(1.25); opacity: 1; } 100% { transform: rotate(-35deg) scaleX(1.6) scaleY(.2); opacity: 0; } }
+@keyframes fx-x2 { 0% { transform: rotate(35deg) scaleX(0); opacity: 1; } 45% { transform: rotate(35deg) scaleX(1.1); opacity: 1; } 100% { transform: rotate(35deg) scaleX(1.5) scaleY(.2); opacity: 0; } }
+/* Traits lumineux : partent du centre, s'étirent puis s'amenuisent */
+.fx-layer .fx-spark, .fx-tap .fx-spark { left: -1.5px; top: calc(var(--l, 14px) * -1); width: 3px; height: var(--l, 14px); border-radius: 3px;
+  background: linear-gradient(0deg, rgba(255, 148, 203, 0), #FF94CB 40%, #fff); box-shadow: 0 0 6px rgba(255, 148, 203, .9);
+  transform-origin: 50% 100%; transform: rotate(var(--a)) translateY(-6px) scaleY(.3);
+  animation: fx-spark2 var(--t, .5s) cubic-bezier(.1, .85, .25, 1) forwards; }
+.fx-layer .fx-spark.c, .fx-tap .fx-spark.c { background: linear-gradient(0deg, rgba(70, 217, 255, 0), #46D9FF 40%, #fff); box-shadow: 0 0 6px rgba(70, 217, 255, .9); }
+@keyframes fx-spark2 {
+  0% { transform: rotate(var(--a)) translateY(-6px) scaleY(.3); opacity: 1; }
+  35% { transform: rotate(var(--a)) translateY(calc(var(--d) * .55)) scaleY(1.5); opacity: 1; }
+  100% { transform: rotate(var(--a)) translateY(var(--d)) scaleY(.2); opacity: 0; } }
+/* Éclats en losange qui tournoient */
+.fx-shard { left: -3px; top: -3px; width: 6px; height: 6px; background: #fff; box-shadow: 0 0 6px #46D9FF;
+  transform: rotate(var(--a)) translateY(0) rotate(45deg); animation: fx-shard .6s cubic-bezier(.15, .8, .3, 1) forwards; }
+.fx-shard:nth-child(even) { background: #FFD6E8; box-shadow: 0 0 6px #FF94CB; }
+@keyframes fx-shard { to { transform: rotate(var(--a)) translateY(var(--d)) rotate(var(--r)) scale(.3); opacity: 0; } }
+html.lite .fx-disc, html.lite .fx-shard { display: none; }

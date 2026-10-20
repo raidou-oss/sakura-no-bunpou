@@ -163,6 +163,19 @@ export const stack = text => [...text].map(c => `<span>${esc(c)}</span>`).join('
  * 正 Effet « particule qui se place » (comme sur l'écran de chargement) :
  * onde de choc rose/cyan, étincelles, petit rebond de l'élément et tampon dans le coin de la carte.
  */
+/** Onde de choc commune (leçons, clics…) : éclair, disque de choc, deux anneaux dégradés, croix « slash »,
+ *  traits lumineux de longueurs variées et éclats en losange */
+export function shockHTML({ sparks = 12, shards = 6 } = {}) {
+  const sp = Array.from({ length: sparks }, (_, i) => {
+    const a = i * (360 / sparks) + Math.random() * 18, d = 52 + Math.random() * 46, l = 10 + Math.random() * 14;
+    return `<i class="fx-spark${i % 3 === 0 ? ' c' : ''}" style="--a:${a.toFixed(0)}deg;--d:-${d.toFixed(0)}px;--l:${l.toFixed(0)}px;--t:${(.42 + Math.random() * .22).toFixed(2)}s"></i>`;
+  }).join('');
+  const sh = Array.from({ length: shards }, () => {
+    const a = Math.random() * 360, d = 34 + Math.random() * 40;
+    return `<i class="fx-shard" style="--a:${a.toFixed(0)}deg;--d:-${d.toFixed(0)}px;--r:${(Math.random() * 540 - 270).toFixed(0)}deg"></i>`;
+  }).join('');
+  return '<i class="fx-core"></i><i class="fx-disc"></i><i class="fx-wave"></i><i class="fx-wave c"></i><i class="fx-x"></i><i class="fx-x b"></i>' + sp + sh;
+}
 export function hitFx(target, { card = null, stamp = null, pop = true } = {}) {
   if (!target || reducedMotion()) return;
   window.__lastHit = performance.now();
@@ -171,8 +184,7 @@ export function hitFx(target, { card = null, stamp = null, pop = true } = {}) {
   if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
   const layer = document.createElement('span');
   layer.className = 'fx-layer';
-  layer.innerHTML = '<i class="fx-wave"></i><i class="fx-wave c"></i>' +
-    Array.from({ length: 12 }, (_, i) => `<i class="fx-spark" style="--a:${i * 30 + Math.random() * 14}deg"></i>`).join('');
+  layer.innerHTML = shockHTML();
   host.append(layer);
   setTimeout(() => layer.remove(), 900);
   if (pop) { target.classList.remove('fx-pop'); void target.offsetWidth; target.classList.add('fx-pop'); }
