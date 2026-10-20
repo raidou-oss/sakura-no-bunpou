@@ -2,9 +2,10 @@
 // particule, mot de vocabulaire, verbe conjugué, connecteur, forme grammaticale…
 // Découpage maison : plus long mot connu d'abord (vocabulaire N5→N1, points de grammaire, particules),
 // avec une « déconjugaison » simple des verbes et adjectifs.
-import { h, ruby } from './util.js?v=20261020212927';
-import * as D from './data.js?v=20261020212927';
-import * as S from './srs.js?v=20261020212927';
+import { h, ruby } from './util.js?v=20261020214620';
+import { miniStrokes } from './strokes.js?v=20261020214620';
+import * as D from './data.js?v=20261020214620';
+import * as S from './srs.js?v=20261020214620';
 
 // --- Petits mots qui reviennent partout ----------------------------------------------------
 const PARTICLES = {
@@ -267,7 +268,8 @@ function bubbleBody(seg, text) {
     h('div.gl-head', h('span.gl-jp', { lang: 'ja' }, surface), h('span.gl-tag', `${KIND[info.kind]} · ${v.lv}`)),
     info.form ? h('p.gl-base', h('span', 'Forme du dictionnaire : '), h('b', { lang: 'ja', html: ruby(v.f || v.w, true) }), h('em', ` — ${info.form}`))
       : h('p.gl-base', h('b', { lang: 'ja', html: ruby(v.f || v.w, true) })),
-    h('p.gl-text', D.shortMeaning(v.m))];
+    h('p.gl-text', D.shortMeaning(v.m)),
+    miniStrokes(v.w)];
 }
 
 const SELECTOR = 'p.jp, .type-sentence, .theme-answer .jp, .vx .jp, .dash-last, .narabe-answer, .gloss';

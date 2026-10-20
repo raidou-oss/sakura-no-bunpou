@@ -2417,3 +2417,11 @@ html.reduce-motion .aura-embers, html.reduce-motion .aura-sparks { display: none
 .strokes-src { margin-left: auto; opacity: .6; }
 .strokes-src a { color: inherit; }
 @media (max-width: 520px) { .st-svg { width: 104px; height: 104px; } }
+/* 書き順 dans les bulles de survol */
+.mini-strokes { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(70, 217, 255, .2); }
+.ms-label { flex-basis: 100%; font: 900 .7rem/1 var(--jp, sans-serif); color: var(--cyan, #46D9FF); letter-spacing: .12em; opacity: .85; }
+.ms-tile { width: 58px; height: 58px; flex: none; display: grid; place-items: center; font-size: 2rem; }
+.ms-tile.none { opacity: .5; }
+.st-svg.mini { width: 58px; height: 58px; border-radius: 8px; }
+.st-svg.mini .st-ink path { stroke-width: 4.2; }
+.st-svg.mini .st-ghost path { stroke-width: 4; }

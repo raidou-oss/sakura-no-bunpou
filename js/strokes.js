@@ -2,9 +2,9 @@
 // (CC BY-SA 3.0, Ulrich Apel — https://kanjivg.tagaini.net).
 // Bulle repliable : chaque kanji du mot se trace trait par trait, numéros à l'appui,
 // avec « Rejouer » et un mode « trait par trait » pour s'entraîner à l'écrire.
-import { h, reducedMotion } from './util.js?v=20261020212927';
-import * as S from './srs.js?v=20261020212927';
-import { play } from './sfx.js?v=20261020212927';
+import { h, reducedMotion } from './util.js?v=20261020214620';
+import * as S from './srs.js?v=20261020214620';
+import { play } from './sfx.js?v=20261020214620';
 
 const cache = new Map();
 const isKanji = c => (c >= '一' && c <= '鿿') || c === '々';
@@ -106,4 +106,41 @@ export function strokeOrder(word) {
   }
   if (open()) start();
   return box;
+}
+
+/** Version compacte pour les bulles de survol : tous les kanji du mot se tracent en boucle */
+export function miniStrokes(word) {
+  const chars = [...String(word || '')].filter(isKanji);
+  if (!chars.length) return null;
+  const row = h('div.mini-strokes', { 'aria-label': 'Sens d’écriture' });
+  const slots = chars.map(c => { const s = h('span.ms-tile', { 'data-k': c }); row.append(s); return s; });
+  row.prepend(h('span.ms-label', { lang: 'ja' }, '書き順'));
+  (async () => {
+    const datas = await Promise.all(chars.map(load));
+    const all = [];
+    datas.forEach((d, i) => {
+      if (!d) { slots[i].textContent = chars[i]; slots[i].classList.add('none'); return; }
+      const svg = svgEl('svg', { viewBox: '0 0 109 109', class: 'st-svg mini' });
+      const ghost = svgEl('g', { class: 'st-ghost' }), ink = svgEl('g', { class: 'st-ink' });
+      d.s.forEach(p => { ghost.append(svgEl('path', { d: p })); const el = svgEl('path', { d: p }); ink.append(el); all.push({ el }); });
+      svg.append(ghost, ink);
+      slots[i].append(svg);
+    });
+    if (!all.length || reducedMotion()) return;
+    while (row.isConnected) {
+      all.forEach(p => { const L = p.el.getTotalLength(); p.L = L; p.el.style.transition = 'none'; p.el.style.strokeDasharray = `${L} ${L}`; p.el.style.strokeDashoffset = String(L); p.el.classList.remove('cur'); });
+      for (const p of all) {
+        if (!row.isConnected) return;
+        p.el.getBoundingClientRect();
+        const ms = Math.max(160, p.L * 4.2);
+        p.el.classList.add('cur');
+        p.el.style.transition = `stroke-dashoffset ${ms}ms cubic-bezier(.45, .05, .4, 1)`;
+        p.el.style.strokeDashoffset = '0';
+        await wait(ms + 60);
+        p.el.classList.remove('cur');
+      }
+      await wait(1400);
+    }
+  })();
+  return row;
 }

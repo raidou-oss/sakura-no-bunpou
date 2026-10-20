@@ -1799,3 +1799,94 @@ N1:新しく	新しいくつを買いました。	!
 N1:大げさ	彼は物事を大げさに言うきらいがある。	tout exagérer
 N1:どうやら	どうやら雨はやんだようだ。	On dirait bien
 N1:さえあれば	時間さえあれば、もっと旅行したい。	Si seulement
+# Homographes (clé = mot avec sa lecture)
+N5:家（いえ）	私の家は駅の近くです。	maison
+N5:家（いえ）	大きい家に住みたいです。	grande maison
+N5:家（うち）	今日は家でゆっくり休みます。	à la maison
+N5:家（うち）	もう遅いから、家に帰りましょう。	à la maison
+N5:何（なん）	これは何ですか。	Qu'est-ce que
+N5:何（なん）	今、何と言いましたか。	Qu'
+N5:何（なに）	何か飲みますか。	quelque chose
+N5:何（なに）	昼ご飯に何を食べたいですか。	Qu'est-ce que
+N5:人（じん）	私は日本人です。	Japonais
+N5:人（じん）	マリアさんはスペイン人です。	Espagnole
+N5:人（ひと）	あの人は私の先生です。	personne
+N5:人（ひと）	駅に人がたくさんいます。	beaucoup de monde
+N5:人（にん）	私の家族は五人です。	cinq
+N5:人（にん）	教室に学生が三人います。	trois étudiants
+N5:開（ひら）く	本の十ページを開いてください。	Ouvrez
+N5:開（ひら）く	雨が降ってきたので、傘を開きました。	ouvert
+N5:開（あ）く	銀行は九時に開きます。	ouvre
+N5:開（あ）く	窓が開いています。	ouverte
+N5:時（とき）	子供の時、よく川で泳ぎました。	Quand
+N5:時（とき）	暇な時は本を読みます。	Quand
+N5:時（じ）	毎朝七時に起きます。	sept heures
+N5:時（じ）	会議は三時からです。	trois heures
+N5:年（とし）	新しい年が始まりました。	année
+N5:年（とし）	祖父はもう年ですが、元気です。	âgé
+N5:年（ねん）	日本に来て二年になります。	deux ans
+N5:年（ねん）	一年に一度、国に帰ります。	par an
+N5:後（あと）	授業の後で図書館に行きます。	Après
+N5:後（あと）	後で電話します。	plus tard
+N5:後（ご）	三十分後に出かけます。	dans trente minutes
+N5:後（ご）	一週間後にまた会いましょう。	dans une semaine
+N5:止（や）める	父はたばこを止めました。	arrêté
+N5:止（や）める	雨なので、散歩を止めます。	renonce
+N5:止（と）める	ここで車を止めてください。	Arrêtez
+N5:止（と）める	水を止めるのを忘れました。	couper
+N4:君（きみ）	君の考えはいいと思う。	ton
+N4:君（きみ）	君も一緒に来る？	toi aussi
+N4:君（くん）	田中君はサッカーが上手です。	Le petit Tanaka
+N4:君（くん）	山田君、ちょっと来て。	Yamada
+N4:名（な）	この花の名を知っていますか。	le nom
+N4:名（な）	生まれた子供に名をつけました。	un nom
+N4:名（めい）	四名で予約した田中です。	quatre personnes
+N4:名（めい）	参加者は二十名です。	vingt participants
+N3:解（と）く	この問題を解いてください。	Résolvez
+N3:解（と）く	こんなに難しい問題は、私にはとても解けない。	résoudre
+N3:解（ほど）く	靴のひもを解いた。	défait
+N3:解（ほど）く	荷物を解くのを手伝って。	défaire
+N3:内（うち）	三日の内に返事をください。	d'ici trois jours
+N3:内（うち）	内の会社は土曜日も休みです。	Notre
+N3:内（ない）	社内では日本語を使います。	Dans l'entreprise
+N3:内（ない）	校内は禁煙です。	dans l'enceinte de l'école
+N3:末（まつ）	月末に給料をもらいます。	à la fin du mois
+N3:末（まつ）	年末はいつも忙しいです。	La fin d'année
+N3:末（すえ）	来月の末に引っ越します。	à la fin du mois prochain
+N3:末（すえ）	長い話し合いの末、やっと決まった。	Après une longue discussion
+N3:御（お）	御茶をどうぞ。	du thé
+N3:御（お）	御名前を教えてください。	votre nom
+N3:御（ご）	御家族はお元気ですか。	Votre famille
+N3:御（ご）	ここに御住所を書いてください。	votre adresse
+N1:認（したた）める	恩師に手紙を認めた。	écrit une lettre
+N1:認（したた）める	旅先で毎晩日記を認める。	j'écris
+N1:認（みと）める	彼は自分の間違いを認めた。	reconnu
+N1:認（みと）める	理由のいかんを問わず、遅刻は認めない。	toléré
+N1:敵（かたき）	いつか父の敵を討つつもりだ。	vengerai
+N1:敵（かたき）	彼は私を目の敵にしている。	ennemi juré
+N1:敵（てき）	相手チームは手強い敵だ。	adversaire
+N1:敵（てき）	彼を敵に回したくない。	ennemi
+N1:難（かた）い	その苦労は想像に難くない。	pas difficile
+N1:難（かた）い	彼の気持ちは察するに難くない。	pas difficile
+N1:難（にく）い	このペンは書き難い。	n'est pas pratique
+N1:難（にく）い	それは説明し難いことです。	difficile à expliquer
+N1:生（き）	ウイスキーを生で飲む。	sec
+N1:生（き）	生のままの自分を見せたい。	au naturel
+N1:生（なま）	生の魚は食べられますか。	cru
+N1:生（なま）	生ビールを一つください。	pression
+N1:角（かく）	将棋で角を取られた。	fou
+N1:角（かく）	角は斜めに動く駒だ。	fou
+N1:角（つの）	牛の角はとても硬い。	cornes
+N1:角（つの）	鬼の頭には角が二本ある。	deux cornes
+N1:館（かん）	図書館で勉強する。	bibliothèque
+N1:館（かん）	週末、映画館に行こう。	cinéma
+N1:館（やかた）	丘の上に古い館がある。	manoir
+N1:館（やかた）	旅人は領主の館を訪ねた。	demeure
+N1:刃（は）	この包丁の刃はよく切れる。	lame
+N1:刃（は）	危ないから、刃に触らないで。	tranchant
+N1:刃（やいば）	侍は静かに刃を抜いた。	sa lame
+N1:刃（やいば）	彼は敵の刃を受け止めた。	la lame
+N1:初日（しょにち）	公演の初日は満員だった。	premier jour
+N1:初日（しょにち）	初日から遅刻してしまった。	premier jour
+N1:初日（はつひ）	元日に初日を見に行った。	premier lever de soleil
+N1:初日（はつひ）	山頂で初日の出を拝んだ。	premier lever de soleil

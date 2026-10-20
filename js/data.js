@@ -3,7 +3,7 @@
 const cache = {};
 async function load(name) {
   if (!cache[name]) {
-    cache[name] = fetch(`data/${name}.json?v=20261020212927`).then(r => {
+    cache[name] = fetch(`data/${name}.json?v=20261020214620`).then(r => {
       if (!r.ok) throw new Error(`Impossible de charger ${name}.json`);
       return r.json();
     });
@@ -54,7 +54,7 @@ export const vocabKey = v => `v:${v.lv}:${v.w}`;
 /** Phrases d'exemple d'un mot : [[phrase annotée, traduction], …] */
 export async function vocabExamples(v) {
   if (!v?.lv) return [];
-  try { return (await load(`vocab_ex_${v.lv.toLowerCase()}`))[v.w] || []; } catch { return []; }
+  try { const ex = await load(`vocab_ex_${v.lv.toLowerCase()}`); return (v.f && ex[v.f]) || ex[v.w] || []; } catch { return []; }   // homographes : clé = mot avec sa lecture
 }
 
 /** Sens court pour les QCM : premier ou deux premiers sens */

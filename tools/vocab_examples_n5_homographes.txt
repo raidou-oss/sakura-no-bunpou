@@ -1,0 +1,35 @@
+# Homographes : la clé est le mot avec sa lecture (un exemple par lecture)
+家（いえ） || 私（わたし）の家（いえ）は駅（えき）の近（ちか）くです。 || Ma maison est près de la gare.
+家（いえ） || 大（おお）きい家（いえ）に住（す）みたいです。 || Je voudrais habiter dans une grande maison.
+家（うち） || 今日（きょう）は家（うち）でゆっくり休（やす）みます。 || Aujourd'hui, je me repose tranquillement à la maison.
+家（うち） || もう遅（おそ）いから、家（うち）に帰（かえ）りましょう。 || Il est déjà tard, rentrons à la maison.
+何（なん） || これは何（なん）ですか。 || Qu'est-ce que c'est ?
+何（なん） || 今（いま）、何（なん）と言（い）いましたか。 || Qu'avez-vous dit à l'instant ?
+何（なに） || 何（なに）か飲（の）みますか。 || Vous buvez quelque chose ?
+何（なに） || 昼（ひる）ご飯（はん）に何（なに）を食（た）べたいですか。 || Qu'est-ce que tu veux manger à midi ?
+人（じん） || 私（わたし）は日本（にほん）人（じん）です。 || Je suis Japonais.
+人（じん） || マリアさんはスペイン人（じん）です。 || Maria est Espagnole.
+人（ひと） || あの人（ひと）は私（わたし）の先生（せんせい）です。 || Cette personne-là est mon professeur.
+人（ひと） || 駅（えき）に人（ひと）がたくさんいます。 || Il y a beaucoup de monde à la gare.
+人（にん） || 私（わたし）の家族（かぞく）は五（ご）人（にん）です。 || Nous sommes cinq dans ma famille.
+人（にん） || 教室（きょうしつ）に学生（がくせい）が三（さん）人（にん）います。 || Il y a trois étudiants dans la classe.
+開（ひら）く || 本（ほん）の十（じゅう）ページを開（ひら）いてください。 || Ouvrez votre livre à la page dix.
+開（ひら）く || 雨（あめ）が降（ふ）ってきたので、傘（かさ）を開（ひら）きました。 || Il s'est mis à pleuvoir, alors j'ai ouvert mon parapluie.
+開（あ）く || 銀行（ぎんこう）は九時（くじ）に開（あ）きます。 || La banque ouvre à neuf heures.
+開（あ）く || 窓（まど）が開（あ）いています。 || La fenêtre est ouverte.
+時（とき） || 子供（こども）の時（とき）、よく川（かわ）で泳（およ）ぎました。 || Quand j'étais enfant, je nageais souvent dans la rivière.
+時（とき） || 暇（ひま）な時（とき）は本（ほん）を読（よ）みます。 || Quand j'ai du temps libre, je lis.
+時（じ） || 毎朝（まいあさ）七（しち）時（じ）に起（お）きます。 || Je me lève à sept heures tous les matins.
+時（じ） || 会議（かいぎ）は三（さん）時（じ）からです。 || La réunion commence à trois heures.
+年（とし） || 新（あたら）しい年（とし）が始（はじ）まりました。 || Une nouvelle année a commencé.
+年（とし） || 祖父（そふ）はもう年（とし）ですが、元気（げんき）です。 || Mon grand-père est âgé, mais il est en forme.
+年（ねん） || 日本（にほん）に来（き）て二（に）年（ねん）になります。 || Cela fait deux ans que je suis au Japon.
+年（ねん） || 一（いち）年（ねん）に一度（いちど）、国（くに）に帰（かえ）ります。 || Je rentre dans mon pays une fois par an.
+後（あと） || 授業（じゅぎょう）の後（あと）で図書館（としょかん）に行（い）きます。 || Après les cours, je vais à la bibliothèque.
+後（あと） || 後（あと）で電話（でんわ）します。 || Je t'appelle plus tard.
+後（ご） || 三十分（さんじゅっぷん）後（ご）に出（で）かけます。 || Je sors dans trente minutes.
+後（ご） || 一週間（いっしゅうかん）後（ご）にまた会（あ）いましょう。 || Revoyons-nous dans une semaine.
+止（や）める || 父（ちち）はたばこを止（や）めました。 || Mon père a arrêté de fumer.
+止（や）める || 雨（あめ）なので、散歩（さんぽ）を止（や）めます。 || Comme il pleut, je renonce à la promenade.
+止（と）める || ここで車（くるま）を止（と）めてください。 || Arrêtez la voiture ici, s'il vous plaît.
+止（と）める || 水（みず）を止（と）めるのを忘（わす）れました。 || J'ai oublié de couper l'eau.

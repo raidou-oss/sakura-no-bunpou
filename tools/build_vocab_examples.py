@@ -51,9 +51,12 @@ BANNED = _C(k for (k, _j), v in FR_KEYS.items() if v == '!')
 out, missing = {}, {}
 for vf in sorted(glob.glob(os.path.join(ROOT, 'data', 'vocab_n[1-5].json'))):
     lv = re.search(r'vocab_(n\d)', vf).group(1).upper()
-    for row in json.load(open(vf, encoding='utf-8')):
+    rows = json.load(open(vf, encoding='utf-8'))
+    # Homographes (même écriture, lectures différentes : 人 じん / ひと / にん) : un jeu d'exemples par lecture
+    homo = {w for w, c in _C(r[2] for r in rows).items() if c > 1}
+    for row in rows:
         w, f = row[2], row[3] or row[2]
-        key = f'{lv}:{w}'
+        key = f'{lv}:{f}' if w in homo else f'{lv}:{w}'
         ex = [e for e in written.get(key, []) if FR_KEYS.get((key, plainjp(e[0]))) != '!']
         # Forme recherchée : le mot annoté (même lecture) ; pour un verbe/adjectif, sans sa dernière syllabe
         needle = f

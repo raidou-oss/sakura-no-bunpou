@@ -1,8 +1,8 @@
 // 絆 Page des confidents, façon menu « Social Link » de Persona 3 : liste en biais, grande carte de tarot, rangs.
-import { h, jr, toast } from './util.js?v=20261020212927';
-import * as C from './cloud.js?v=20261020212927';
-import * as L from './links.js?v=20261020212927';
-import { play } from './sfx.js?v=20261020212927';
+import { h, jr, toast } from './util.js?v=20261020214620';
+import * as C from './cloud.js?v=20261020214620';
+import * as L from './links.js?v=20261020214620';
+import { play } from './sfx.js?v=20261020214620';
 
 const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const initials = n => (n || '?').slice(0, 2).toUpperCase();

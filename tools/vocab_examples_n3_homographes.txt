@@ -1,0 +1,17 @@
+# Homographes : la clé est le mot avec sa lecture (un exemple par lecture)
+解（と）く || この問題（もんだい）を解（と）いてください。 || Résolvez ce problème.
+解（と）く || こんなに難（むずか）しい問題（もんだい）は、私（わたし）にはとても解（と）けない。 || Je suis incapable de résoudre un problème aussi difficile.
+解（ほど）く || 靴（くつ）のひもを解（ほど）いた。 || J'ai défait mes lacets.
+解（ほど）く || 荷物（にもつ）を解（ほど）くのを手伝（てつだ）って。 || Aide-moi à défaire les bagages.
+内（うち） || 三日（みっか）の内（うち）に返事（へんじ）をください。 || Répondez-moi d'ici trois jours.
+内（うち） || 内（うち）の会社（かいしゃ）は土曜日（どようび）も休（やす）みです。 || Notre entreprise est fermée le samedi aussi.
+内（ない） || 社（しゃ）内（ない）では日本語（にほんご）を使（つか）います。 || Dans l'entreprise, on utilise le japonais.
+内（ない） || 校（こう）内（ない）は禁煙（きんえん）です。 || Il est interdit de fumer dans l'enceinte de l'école.
+末（まつ） || 月（げつ）末（まつ）に給料（きゅうりょう）をもらいます。 || Je suis payé à la fin du mois.
+末（まつ） || 年（ねん）末（まつ）はいつも忙（いそが）しいです。 || La fin d'année est toujours chargée.
+末（すえ） || 来月（らいげつ）の末（すえ）に引（ひ）っ越（こ）します。 || Je déménage à la fin du mois prochain.
+末（すえ） || 長（なが）い話（はな）し合（あ）いの末（すえ）、やっと決（き）まった。 || Après une longue discussion, c'est enfin décidé.
+御（お） || 御（お）茶（ちゃ）をどうぞ。 || Je vous en prie, prenez du thé.
+御（お） || 御（お）名前（なまえ）を教（おし）えてください。 || Pouvez-vous me dire votre nom ?
+御（ご） || 御（ご）家族（かぞく）はお元気（げんき）ですか。 || Votre famille va bien ?
+御（ご） || ここに御（ご）住所（じゅうしょ）を書（か）いてください。 || Écrivez votre adresse ici, s'il vous plaît.

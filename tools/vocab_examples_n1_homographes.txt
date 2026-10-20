@@ -1,0 +1,33 @@
+# Homographes : la clé est le mot avec sa lecture (un exemple par lecture)
+認（したた）める || 恩師（おんし）に手紙（てがみ）を認（したた）めた。 || J'ai écrit une lettre à mon ancien professeur.
+認（したた）める || 旅先（たびさき）で毎晩（まいばん）日記（にっき）を認（したた）める。 || En voyage, j'écris mon journal chaque soir.
+認（みと）める || 彼（かれ）は自分（じぶん）の間違（まちが）いを認（みと）めた。 || Il a reconnu son erreur.
+認（みと）める || 理由（りゆう）のいかんを問（と）わず、遅刻（ちこく）は認（みと）めない。 || Quelle que soit la raison, aucun retard n'est toléré.
+敵（かたき） || いつか父（ちち）の敵（かたき）を討（う）つつもりだ。 || Un jour, je vengerai mon père.
+敵（かたき） || 彼（かれ）は私（わたし）を目（め）の敵（かたき）にしている。 || Il me considère comme son ennemi juré.
+敵（てき） || 相手（あいて）チームは手強（てごわ）い敵（てき）だ。 || L'équipe d'en face est un adversaire redoutable.
+敵（てき） || 彼（かれ）を敵（てき）に回（まわ）したくない。 || Je ne veux pas m'en faire un ennemi.
+難（かた）い || その苦労（くろう）は想像（そうぞう）に難（かた）くない。 || Il n'est pas difficile d'imaginer ces épreuves.
+難（かた）い || 彼（かれ）の気持（きも）ちは察（さっ）するに難（かた）くない。 || Il n'est pas difficile de deviner ses sentiments.
+難（にく）い || このペンは書（か）き難（にく）い。 || Ce stylo n'est pas pratique pour écrire.
+難（にく）い || それは説明（せつめい）し難（にく）いことです。 || C'est difficile à expliquer.
+生（き） || ウイスキーを生（き）で飲（の）む。 || Je bois le whisky sec.
+生（き） || 生（き）のままの自分（じぶん）を見（み）せたい。 || Je veux me montrer tel que je suis, au naturel.
+生（なま） || 生（なま）の魚（さかな）は食（た）べられますか。 || Tu peux manger du poisson cru ?
+生（なま） || 生（なま）ビールを一（ひと）つください。 || Une bière pression, s'il vous plaît.
+角（かく） || 将棋（しょうぎ）で角（かく）を取（と）られた。 || Je me suis fait prendre mon fou au shogi.
+角（かく） || 角（かく）は斜（なな）めに動（うご）く駒（こま）だ。 || Le fou est une pièce qui se déplace en diagonale.
+角（つの） || 牛（うし）の角（つの）はとても硬（かた）い。 || Les cornes du bœuf sont très dures.
+角（つの） || 鬼（おに）の頭（あたま）には角（つの）が二本（にほん）ある。 || L'ogre a deux cornes sur la tête.
+館（かん） || 図書（としょ）館（かん）で勉強（べんきょう）する。 || J'étudie à la bibliothèque.
+館（かん） || 週末（しゅうまつ）、映画（えいが）館（かん）に行（い）こう。 || Allons au cinéma ce week-end.
+館（やかた） || 丘（おか）の上（うえ）に古（ふる）い館（やかた）がある。 || Il y a un vieux manoir sur la colline.
+館（やかた） || 旅人（たびびと）は領主（りょうしゅ）の館（やかた）を訪（たず）ねた。 || Le voyageur se rendit à la demeure du seigneur.
+刃（は） || この包丁（ほうちょう）の刃（は）はよく切（き）れる。 || La lame de ce couteau coupe bien.
+刃（は） || 危（あぶ）ないから、刃（は）に触（さわ）らないで。 || C'est dangereux, ne touche pas le tranchant.
+刃（やいば） || 侍（さむらい）は静（しず）かに刃（やいば）を抜（ぬ）いた。 || Le samouraï dégaina calmement sa lame.
+刃（やいば） || 彼（かれ）は敵（てき）の刃（やいば）を受（う）け止（と）めた。 || Il para la lame de l'ennemi.
+初日（しょにち） || 公演（こうえん）の初日（しょにち）は満員（まんいん）だった。 || Le premier jour des représentations, la salle était comble.
+初日（しょにち） || 初日（しょにち）から遅刻（ちこく）してしまった。 || Je suis arrivé en retard dès le premier jour.
+初日（はつひ） || 元日（がんじつ）に初日（はつひ）を見（み）に行（い）った。 || Le jour de l'An, je suis allé voir le premier lever de soleil.
+初日（はつひ） || 山頂（さんちょう）で初日（はつひ）の出（で）を拝（おが）んだ。 || Au sommet, j'ai admiré le premier lever de soleil de l'année.

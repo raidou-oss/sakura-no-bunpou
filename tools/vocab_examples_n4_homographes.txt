@@ -1,0 +1,9 @@
+# Homographes : la clé est le mot avec sa lecture (un exemple par lecture)
+君（きみ） || 君（きみ）の考（かんが）えはいいと思（おも）う。 || Je pense que ton idée est bonne.
+君（きみ） || 君（きみ）も一緒（いっしょ）に来（く）る？ || Tu viens avec nous, toi aussi ?
+君（くん） || 田中（たなか）君（くん）はサッカーが上手（じょうず）です。 || Le petit Tanaka est doué au football.
+君（くん） || 山田（やまだ）君（くん）、ちょっと来（き）て。 || Yamada, viens une seconde.
+名（な） || この花（はな）の名（な）を知（し）っていますか。 || Tu connais le nom de cette fleur ?
+名（な） || 生（う）まれた子供（こども）に名（な）をつけました。 || Nous avons donné un nom au bébé.
+名（めい） || 四（よん）名（めい）で予約（よやく）した田中（たなか）です。 || C'est Tanaka, j'ai réservé pour quatre personnes.
+名（めい） || 参加者（さんかしゃ）は二十（にじゅう）名（めい）です。 || Il y a vingt participants.
