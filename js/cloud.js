@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020095640';
-import * as S from './srs.js?v=20261020095640';
-import { computeRank, publicScores } from './level.js?v=20261020095640';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261020100749';
+import * as S from './srs.js?v=20261020100749';
+import { computeRank, publicScores } from './level.js?v=20261020100749';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -317,6 +317,8 @@ if (typeof window !== 'undefined') {
   setInterval(() => { if (session && document.visibilityState === 'visible') syncNow().catch(() => {}); }, 90000);
   // Niveau gagné : on prévient tout de suite les autres (liste « En ligne », communauté)
   window.addEventListener('sakura:level', () => { trackPresence(); syncNow().catch(() => {}); });
+  // Toute variation d'XP : la pastille Lv de la liste « En ligne » suit tout de suite (chez moi et chez les autres)
+  let xpT; window.addEventListener('sakura:xp', () => { clearTimeout(xpT); xpT = setTimeout(trackPresence, 400); });
 }
 
 // --- Présence : qui est connecté en ce moment -------------------------------------------

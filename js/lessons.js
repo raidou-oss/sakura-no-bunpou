@@ -1,14 +1,14 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020095640';
-import * as D from './data.js?v=20261020095640';
-import * as S from './srs.js?v=20261020095640';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020095640';
-import { speakBtn, speak } from './voice.js?v=20261020095640';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020095640';
-import { play } from './sfx.js?v=20261020095640';
-import { celebrate, verdict } from './celebrate.js?v=20261020095640';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261020100749';
+import * as D from './data.js?v=20261020100749';
+import * as S from './srs.js?v=20261020100749';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261020100749';
+import { speakBtn, speak } from './voice.js?v=20261020100749';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261020100749';
+import { play } from './sfx.js?v=20261020100749';
+import { celebrate, verdict } from './celebrate.js?v=20261020100749';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -132,6 +132,11 @@ export async function lessonsHub(main, lv = 'N5') {
       const done = isDone(lv, mode, n), seen = !done && isSeen(lv, mode, n);
       const st = (S.getExtra('lessonState', {}) || {})[`${lv}:${mode}:${n}:${count}`];
       const inProgress = st && !st.cleared ? (st.phase === 'quiz' ? `En cours · exercices ${st.ok?.length || 0}/${st.plan?.length || 0}` : `En cours · étape ${(st.i || 0) + 1}/${st.n || '?'}`) : null;
+      // Jauge = avancement DANS la leçon : validée → pleine ; en cours → étapes vues (60 %) puis exercices réussis (40 %)
+      const lp = done ? 1 : st && !st.cleared
+        ? (st.phase === 'quiz' ? 0.6 + 0.4 * ((st.ok?.length || 0) / Math.max(1, st.plan?.length || 1)) : 0.6 * (((st.i || 0) + 1) / Math.max(1, st.n || 1)))
+        : seen ? 0.6 : 0;
+      void p;
       const sub = [c.g.length ? `${c.g.length} point${c.g.length > 1 ? 's' : ''}` : null, c.v.length ? `${c.v.length} mots` : null].filter(Boolean).join(' · ');
       const preview = [...c.g.slice(0, 3).map(g => ruby(D.gramLabel(g), true)), ...c.v.slice(0, mode === 'm' ? 2 : 4).map(v => ruby(v.f || v.w, true))].join(' ・ ');
       const last = nums[Math.min(nums.length - 1, i + count - 1)];
@@ -140,8 +145,10 @@ export async function lessonsHub(main, lv = 'N5') {
         h('span.lc-body', h('strong', lessonTitle(plan, mode, n)), h('span.lc-sub', sub), h('span.lc-preview', { lang: 'ja', html: preview }),
           inProgress ? h('span.lc-ongoing', inProgress) : null,
           count > 1 && last !== n ? h('span.lc-chain', `→ jusqu'à : ${lessonTitle(plan, mode, last)}`) : null),
-        h('span.lc-gauge', { title: `${Math.round(p * 100)} % d’avancement · ${Math.round(mq * 100)} % de maîtrise` },
-          h('span', { style: { width: `${Math.round(p * 100)}%` } }), mq > 0 ? h('i.gauge-glow', { style: { width: `${Math.max(2, Math.round(mq * 100))}%` } }) : null),
+        h('span.lc-foot',
+        h('span.lc-gauge', { class: `lc-gauge${done ? ' full' : ''}`, title: `${Math.round(lp * 100)} % de la leçon${done ? ' (validée)' : ''} · ${Math.round(mq * 100)} % de maîtrise` },
+          h('span', { style: { width: `${Math.round(lp * 100)}%` } }), mq > 0 ? h('i.gauge-glow', { style: { width: `${Math.max(2, Math.round(mq * 100))}%` } }) : null),
+          h('span.lc-pct', done ? '100 %' : `${Math.round(lp * 100)} %`)),
         done ? h('span.lc-done', { 'aria-label': 'Leçon validée', html: jr('済') }) : seen ? h('span.lc-todo', 'Quiz à faire') : null));
     }));
     if (animate) { grid.classList.remove('regrid'); void grid.offsetWidth; grid.classList.add('regrid'); }

@@ -1984,3 +1984,12 @@ html.reduce-motion .oc-head.on { animation: none; box-shadow: 6px 6px 0 var(--sa
 .kb-toggle.on .kb-txt b { color: var(--night); }
 .kb-toggle.on .kb-state { background: var(--sakura); color: var(--night); }
 .kb-toggle:hover { transform: skewX(-8deg) translateY(-2px); }
+
+/* Leçons : jauge = avancement dans la leçon (pleine quand elle est validée) + pourcentage */
+.lc-foot { grid-column: 2; display: flex; align-items: center; gap: 10px; }
+.lc-foot .lc-gauge { flex: 1; height: 7px; }
+.lc-pct { flex: none; min-width: 3.2em; text-align: right; font: 900 italic .78rem var(--display); color: var(--mist); }
+.lesson-card.done .lc-pct { color: var(--sakura); }
+.lesson-card.ongoing .lc-pct { color: var(--cyan); }
+.lc-gauge.full span { background: linear-gradient(90deg, var(--sakura-deep), var(--sakura), #FFD6E8); box-shadow: 0 0 10px rgba(255, 148, 203, .7); }
+.lesson-card.ongoing .lc-gauge span { background: linear-gradient(90deg, var(--azure), var(--cyan)); }
