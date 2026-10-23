@@ -1,41 +1,43 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261021004441';
-import * as D from './data.js?v=20261021004441';
-import * as S from './srs.js?v=20261021004441';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261021004441';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261021004441';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261021004441';
-import * as C from './cloud.js?v=20261021004441';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261021004441';
-import './dyn.js?v=20261021004441';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261021004441';
-import { play, setVolume } from './sfx.js?v=20261021004441';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261021004441';
-import { celebrate, verdict } from './celebrate.js?v=20261021004441';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261021004441';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261021004441';
-import { initGloss } from './gloss.js?v=20261021004441';
-import { initLinks } from './links.js?v=20261021004441';
-import { streakBadge, weekStrip } from './aura.js?v=20261021004441';
-import { initLevelUp } from './levelup.js?v=20261021004441';
-import { confidentsPage } from './confidents.js?v=20261021004441';
-import { initTilt } from './tilt.js?v=20261021004441';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261021004441';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261023195031';
+import * as D from './data.js?v=20261023195031';
+import * as S from './srs.js?v=20261023195031';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261023195031';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261023195031';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261023195031';
+import * as C from './cloud.js?v=20261023195031';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261023195031';
+import './dyn.js?v=20261023195031';
+import { keigoGuide, keigoBanner } from './keigo.js?v=20261023195031';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261023195031';
+import { play, setVolume } from './sfx.js?v=20261023195031';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261023195031';
+import { celebrate, verdict } from './celebrate.js?v=20261023195031';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261023195031';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261023195031';
+import { initGloss } from './gloss.js?v=20261023195031';
+import { initLinks } from './links.js?v=20261023195031';
+import { streakBadge, weekStrip } from './aura.js?v=20261023195031';
+import { initLevelUp } from './levelup.js?v=20261023195031';
+import { confidentsPage } from './confidents.js?v=20261023195031';
+import { initTilt } from './tilt.js?v=20261023195031';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261023195031';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261021004441';
+import { GAMES } from './gamelist.js?v=20261023195031';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
-  return f === 'always' || (f === 'auto' && (lv === 'N5' || lv === 'N4'));
+  return f === 'always' || (f === 'auto' && (lv === 'N5' || lv === 'N4' || lv === 'keigo'));
 };
 
 // --- Routeur --------------------------------------------------------------------
 const routes = [
   [/^\/?$/, home],
   [/^\/revision$/, revision],
-  [/^\/entrainement\/(N[1-5]|kansai|extra)(?:\/(\d+))?$/, practice],
-  [/^\/grammaire(?:\/(N[1-5]|kansai|extra))?$/, grammarList],
+  [/^\/entrainement\/(N[1-5]|keigo|kansai|extra)(?:\/(\d+))?$/, practice],
+  [/^\/grammaire(?:\/(N[1-5]|keigo|kansai|extra))?$/, grammarList],
+  [/^\/keigo$/, () => keigoGuide(main)],
   [/^\/point\/(\d+)$/, grammarPoint],
   [/^\/vocabulaire(?:\/(N[1-5]))?$/, vocabList],
   [/^\/vocabulaire\/(N[1-5])\/(\d+)$/, vocabUnit],
@@ -46,10 +48,10 @@ const routes = [
   [/^\/communaute$/, () => communityPage(main)],
   [/^\/confidents$/, () => confidentsPage(main)],
   [/^\/compte$/, () => accountPage(main)],
-  [/^\/lecons(?:\/(N[1-5]))?$/, lv => lessonsHub(main, lv)],
+  [/^\/lecons(?:\/(N[1-5]|keigo))?$/, lv => lessonsHub(main, lv)],
   [/^\/kana(?:\/(hira|kata))?$/, s => kanaPage(main, s)],
   [/^\/kana-quiz(?:\/(hira|kata|both))?$/, s => kanaQuiz(main, s)],
-  [/^\/lecon\/(N[1-5])\/([gvmb])\/(\d+)$/, (lv, kind, n, params) => lessonPage(main, lv, kind, n, { refreshBadge, params })],
+  [/^\/lecon\/(N[1-5]|keigo)\/([gvmb])\/(\d+)$/, (lv, kind, n, params) => lessonPage(main, lv, kind, n, { refreshBadge, params })],
 ];
 
 let prevPath = '';
@@ -73,7 +75,7 @@ async function route() {
         const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定', lecons: '授業', lecon: '授業', kana: '仮名', 'kana-quiz': '仮名', confidents: '絆' }[section] || '桜';
         moveIndicator();
         // Changer de niveau dans une même section (onglets N5…N1) : pas de balayage, juste un fondu doux
-        const LV_PAGE = /^\/(grammaire|vocabulaire|lecons)(?:\/(?:N[1-5]|kansai|extra))?$/;
+        const LV_PAGE = /^\/(grammaire|vocabulaire|lecons)(?:\/(?:N[1-5]|keigo|kansai|extra))?$/;
         const soft = LV_PAGE.test(p) && LV_PAGE.test(prevPath) && p.split('/')[1] === prevPath.split('/')[1];
         prevPath = p;
         await sweep(async () => {
@@ -263,7 +265,7 @@ async function grammarList(lv, params) {
     h('p.small', `${progress[lv].gSeen} points vus sur ${progress[lv].gTotal} · ${progress[lv].gBloom} en fleur (révisés à 21 jours ou plus). Le trait marque l’objectif de 55 % pour valider le niveau.`)) : null;
 
   const tabs = h('div.tabs', { role: 'tablist', 'aria-label': 'Niveau' },
-    [...D.LEVELS, 'kansai', 'extra'].map(l => h('a.tab', { href: `#/grammaire/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, D.LEVEL_NAMES[l])));
+    [...D.LEVELS, 'keigo', 'kansai', 'extra'].map(l => h('a.tab', { href: `#/grammaire/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, D.LEVEL_NAMES[l])));
   const search = h('input.search', { type: 'search', placeholder: 'Chercher un point (ex. ても, devoir, しか)…', 'aria-label': 'Chercher un point de grammaire', value: params?.get('q') || '' });
 
   const listEl = h('div.lessons');
@@ -282,7 +284,7 @@ async function grammarList(lv, params) {
           !q && lessonP.has(le) ? h('span.lesson-gauge', { title: `Leçon ${le} : ${toPct(lessonP.get(le))} % maîtrisée` },
             h('span.mini-gauge', h('span', { style: { width: `${toPct(lessonP.get(le))}%` } }), lessonM.get(le) ? h('i.gauge-glow', { style: { width: `${toPct(lessonM.get(le))}%` } }) : null), h('span.small', `${toPct(lessonP.get(le))} %`)) : null,
           !q && h('div.lesson-actions',
-            D.LEVELS.includes(lv) && h('a.btn.small.primary', { href: `#/lecon/${lv}/g/${le}` }, 'Leçon'),
+            D.LESSON_LEVELS.includes(lv) && h('a.btn.small.primary', { href: `#/lecon/${lv}/g/${le}` }, 'Leçon'),
             withSent && h('a.btn.small', { href: `#/entrainement/${lv}/${le}` }, 'S’entraîner'),
             notAdded ? h('button.btn.small', { onclick: e => {
               keys.forEach(S.addCard); toast(`${notAdded} point(s) ajouté(s) à tes révisions`); e.target.remove(); refreshBadge(); render();
@@ -305,7 +307,7 @@ async function grammarList(lv, params) {
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('文法') }), 'Grammaire'),
       h('p.section-note', `${grammar.length} points du N5 au N1. Ajoute une leçon à tes révisions ou ouvre un point pour voir ses exemples.`)),
     regSwitch(() => toast('Les exemples et exercices suivront ce style')),
-    tabs, ...(sectionGauge ? [sectionGauge] : []), search, listEl);
+    tabs, ...(lv === 'keigo' ? [keigoBanner()] : []), ...(sectionGauge ? [sectionGauge] : []), search, listEl);
 }
 
 async function grammarPoint(id) {
@@ -342,6 +344,7 @@ async function grammarPoint(id) {
     h('h1.point-big', { lang: 'ja', html: ruby(D.gramLabel(g), true) }),
     gramAudio(g),
     h('p.point-sense', g.s),
+    g.x ? h('div.point-x', h('p.kicker', 'Explication'), h('p', { html: jr(g.x) })) : null,
     actionBox,
     h('section.examples',
       h('h2', 'Exemples'),

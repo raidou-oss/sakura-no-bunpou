@@ -1,0 +1,28 @@
+﻿categorie,forme_keigo,verbe_neutre,sens_fr,note,page
+尊敬語,いらっしゃる,行く・来る・いる,"aller, venir, être (là)",,21
+尊敬語,おっしゃる,言う,dire,,21
+尊敬語,なさる,する,faire,,21
+尊敬語,召し上がる,食べる・飲む,"manger, boire",,21
+尊敬語,下さる,くれる,donner (à moi),Ajoute l’idée d’une faveur reçue (p.11).,21
+尊敬語,見える,来る,venir,,21
+尊敬語,御存じだ（御存じです）,知っている,"savoir, connaître",,21
+尊敬語（変則お〜になる）,御覧になる,見る,"regarder, voir",Forme irrégulière de お(ご)〜になる,22
+尊敬語（変則お〜になる）,おいでになる,行く・来る・いる,"aller, venir, être",Forme irrégulière,22
+尊敬語（変則お〜になる）,お休みになる,寝る,"dormir, se coucher",Forme irrégulière,22
+尊敬語（変則お〜になる）,お召しになる,着る,porter (un vêtement),Forme irrégulière,22
+謙譲語Ⅰ,伺う,訪ねる・尋ねる・聞く,"rendre visite, demander, écouter",,23
+謙譲語Ⅰ,申し上げる,言う,dire,,23
+謙譲語Ⅰ,存じ上げる,知る,connaître (une personne),Employé sous la forme 存じ上げている（います・おります）. Négatif : 存じ上げない・存じ上げません.,23
+謙譲語Ⅰ,差し上げる,上げる,donner,,23
+謙譲語Ⅰ,頂く,もらう,recevoir,,23
+謙譲語Ⅰ,お目に掛かる,会う,rencontrer,,23
+謙譲語Ⅰ,お目に掛ける・御覧に入れる,見せる,montrer,,23
+謙譲語Ⅰ,拝見する,見る,"voir, regarder",,23
+謙譲語Ⅰ,拝借する,借りる,emprunter,,23
+謙譲語Ⅱ（丁重語）,参る,行く・来る,"aller, venir","Pour un cas possible : 参れる, p. ex. 明日は参れません.",25
+謙譲語Ⅱ（丁重語）,申す,言う,dire,,25
+謙譲語Ⅱ（丁重語）,いたす,する,faire,,25
+謙譲語Ⅱ（丁重語）,おる,いる,être (là),,25
+謙譲語Ⅱ（丁重語）,存じる,知る・思う,"savoir, penser",Sous la forme 存じています（おります）. Négatif : 存じていません・存じません.,25
+丁寧語,です・ます,（forme neutre）,copule / forme polie,,16
+丁寧語,（で）ございます,です,être (très poli),Aussi soigné que le 謙譲語Ⅱ.,16

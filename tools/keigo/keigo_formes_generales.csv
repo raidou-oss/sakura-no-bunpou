@@ -1,0 +1,27 @@
+﻿categorie,forme,exemples,statut,remarque_fr,page
+尊敬語,お(ご)〜になる,読む→お読みになる／利用する→御利用になる,適切,"お + mot japonais, ご + mot sino-japonais (サ変). Irréguliers : 御覧になる, おいでになる, お休みになる, お召しになる.",21
+尊敬語,お(ご)〜になる（impossible）,×お死にになる→お亡くなりになる・亡くなられる／×御失敗になる→失敗なさる・失敗される／×御運転になる→運転なさる・運転される,注意,Certains verbes ne passent pas par お(ご)〜になる.,22
+尊敬語,〜(ら)れる,読む→読まれる／利用する→利用される／述べる→述べられる／食べる→食べられる,適切,Ressemble au passif.,21
+尊敬語,〜なさる,利用する→利用なさる,適切,Seulement pour les verbes en 〜する (サ変).,21
+尊敬語,ご〜なさる,利用する→御利用なさる,適切,Seulement サ変 avec ご compatible.,21
+尊敬語,お(ご)〜だ／です,読む→お読みだ／利用する→御利用だ,適切,だ devient souvent です.,21
+尊敬語,お(ご)〜くださる,読む→お読みくださる／指導する→御指導くださる,適切,,21
+尊敬語,名詞＋でいらっしゃる,先生は努力家でいらっしゃる,適切,Équivalent respectueux de 名詞＋だ.,23
+尊敬語,〜ていらっしゃる／〜でいらっしゃる,(指が)細くていらっしゃる／積極的でいらっしゃる,適切,Pour les adjectifs qui n’acceptent pas お・ご.,23
+尊敬語,お＋形容詞／ご＋形容動詞,お忙しい／御立派,適切,,23
+尊敬語,可能形 (respectueux),召し上がれる／お読みになれる／御利用になれる,適切,"On forme d’abord le respectueux, puis le potentiel.",22
+尊敬語,×お(ご)〜できる (comme potentiel respectueux),×全問正しくお答えできたら→お答えになれたら,不適切,お(ご)〜できる est le potentiel du 謙譲語Ⅰ.,22
+謙譲語Ⅰ,お(ご)〜する,届ける→お届けする／案内する→御案内する,適切,"Exige une personne vers qui l’action va (向かう先). ×お乗りする, ×御帰宅する.",24
+謙譲語Ⅰ,お(ご)〜申し上げる,お届け申し上げる／御案内申し上げる,適切,,24
+謙譲語Ⅰ,〜ていただく,読む→読んでいただく／指導する→指導していただく,適切,,24
+謙譲語Ⅰ,お(ご)〜いただく,お読みいただく／御指導いただく,適切,,24
+謙譲語Ⅰ,可能形,伺える／お届けできる／御報告できる,適切,On met d’abord au 謙譲語Ⅰ puis au potentiel.,24
+謙譲語Ⅱ,〜いたす,利用する→利用いたす,適切,Seulement サ変.,25
+謙譲語Ⅰ兼Ⅱ,お(ご)〜いたす,お待ちいたします,適切,Élève la personne visée (Ⅰ) et parle poliment à l’interlocuteur (Ⅱ).,25
+丁寧語,形容詞＋ございます,たかい→たこうございます／おいしい→おいしゅうございます／かるい→かるうございます／おもい→おもうございます,適切,"a→ou, i→yu, u→u, o→ou. Pas d’adjectif en 〜ei.",26
+二重敬語,二重敬語 (à éviter),×お読みになられる,不適切,Deux respectueux sur un même verbe.,27
+二重敬語,二重敬語 (devenus usuels),お召し上がりになる／お見えになる／お伺いする／お伺いいたす／お伺い申し上げる,慣用,Acceptés par l’usage.,27
+敬語連結,敬語連結 (acceptés),お読みになっていらっしゃる／お読みになってくださる／お読みになっていただく／御案内してさしあげる,適切,Chaque verbe est mis au keigo séparément et relié par て.,27
+敬語連結,敬語連結 (inadaptés),×伺ってくださる・×伺っていただく／×御案内してくださる・×御案内していただく,不適切,Le 謙譲語Ⅰ 伺う/御案内する place « moi » en position élevée. Correct : 御案内くださる・御案内いただく.,27
+助詞,くださる／いただく et particules,先生が(は)私を指導してくださった／先生が(は)私を御指導くださった／私が(は)先生に指導していただいた／私が(は)先生に御指導いただいた,適切,"くれる→が, もらう→に.",29
+助詞,いただく avec が (erreur),×先生が(は)指導していただいた,不適切,"いただく = もらう : l’agent prend に, pas が.",29

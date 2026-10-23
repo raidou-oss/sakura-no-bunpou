@@ -1,15 +1,15 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261021004441';
-import * as D from './data.js?v=20261021004441';
-import * as S from './srs.js?v=20261021004441';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261021004441';
-import { speakBtn, speak } from './voice.js?v=20261021004441';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261021004441';
-import { play } from './sfx.js?v=20261021004441';
-import { strokeOrder } from './strokes.js?v=20261021004441';
-import { celebrate, verdict } from './celebrate.js?v=20261021004441';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261023195031';
+import * as D from './data.js?v=20261023195031';
+import * as S from './srs.js?v=20261023195031';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261023195031';
+import { speakBtn, speak } from './voice.js?v=20261023195031';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261023195031';
+import { play } from './sfx.js?v=20261023195031';
+import { strokeOrder } from './strokes.js?v=20261023195031';
+import { celebrate, verdict } from './celebrate.js?v=20261023195031';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -64,8 +64,15 @@ function lessonContent(plan, kind, n) {
   return { g: g?.items || [], v: v?.items || [], gN: g?.n, vChunk: v };
 }
 
+// Titres des leçons de keigo (grammaire)
+const KEIGO_LE = { 1: 'Les bases', 2: 'Respect · verbes spéciaux', 3: 'Respect · verbes spéciaux (2)', 4: 'Respect · formes régulières', 5: 'Demander poliment',
+  6: 'Humilité · verbes spéciaux', 7: 'Humilité · formes régulières', 8: 'Humilité II (丁重語)', 9: 'Au bureau', 10: 'Les pièges' };
+const KEIGO_UNIT = { 1: 'Verbes de respect', 2: 'Verbes d’humilité', 3: 'Humilité II et sociétés', 4: 'Formules de bureau', 5: 'Mots de politesse' };
 function lessonTitle(plan, kind, n) {
-  if (kind === 'v') { const c = plan.v[Number(n) - 1]; return c ? `Unité ${c.unitNth}${c.parts > 1 ? ` · ${c.part}/${c.parts}` : ''}` : `Leçon ${n}`; }
+  const keigo = plan.g[0]?.items[0]?.lv === 'keigo';
+  if (kind === 'v') { const c = plan.v[Number(n) - 1]; return c ? `${keigo ? KEIGO_UNIT[c.unit] || `Unité ${c.unitNth}` : `Unité ${c.unitNth}`}${c.parts > 1 ? ` · ${c.part}/${c.parts}` : ''}` : `Leçon ${n}`; }
+  if (keigo && kind === 'g' && KEIGO_LE[n]) return `Leçon ${n} · ${KEIGO_LE[n]}`;
+  if (keigo && kind === 'b') { const le = plan.b?.[Number(n) - 1]?.gN; if (KEIGO_LE[le]) return `Leçon ${n} · ${KEIGO_LE[le]}`; }
   return `Leçon ${n}`;
 }
 
@@ -83,7 +90,7 @@ export async function lessonCoveredKeys() {
   const plans = {};
   for (const key of done) {
     const [lv, kind, n] = key.split(':');
-    if (!D.LEVELS.includes(lv)) continue;
+    if (!D.LESSON_LEVELS.includes(lv)) continue;
     plans[lv] = plans[lv] || await levelPlan(lv);
     const c = lessonContent(plans[lv], kind, Number(n));
     c.g.forEach(g => out.add(`g:${g.id}`));
@@ -126,7 +133,7 @@ function furiToggle(root) {
 
 // --- Hub -------------------------------------------------------------------------------
 export async function lessonsHub(main, lv = 'N5') {
-  lv = D.LEVELS.includes(lv) ? lv : 'N5';
+  lv = D.LESSON_LEVELS.includes(lv) ? lv : 'N5';
   let mode = S.getSettings().lessonMode || store.get(MODE_KEY, 'b');
   if (!KINDS[mode]) mode = 'b';
   let count = S.getSettings().lessonCount ?? store.get(COUNT_KEY, 1); if (!COUNTS.includes(count)) count = 1;
@@ -180,7 +187,7 @@ export async function lessonsHub(main, lv = 'N5') {
   };
   render();
   const tabs = h('div.tabs', { role: 'tablist', 'aria-label': 'Niveau' },
-    D.LEVELS.map(l => h('a', { href: `#/lecons/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' }, l)));
+    D.LESSON_LEVELS.map(l => h('a', { href: `#/lecons/${l}`, role: 'tab', 'aria-selected': String(l === lv), class: l === lv ? 'tab active' : 'tab' + (l === 'keigo' ? ' tab-keigo' : '') }, l === 'keigo' ? h('span', { lang: 'ja', html: jr('敬語') }) : l)));
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('授業') }), 'Leçons'),
       h('p.section-note', 'Apprends pas à pas : grammaire, vocabulaire, ou les deux en même temps. Chaque leçon se termine par des exercices sur tout ce que tu as vu.')),
@@ -202,7 +209,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
   const parts = covered.map(x => lessonContent(plan, kind, x));
   const c = { g: parts.flatMap(p => p.g), v: parts.flatMap(p => p.v), gN: parts.find(p => p.gN)?.gN };
   if (!c.g.length && !c.v.length) { location.hash = `#/lecons/${lv}`; return; }
-  const furi = S.getSettings().furigana === 'always' || (S.getSettings().furigana === 'auto' && (lv === 'N5' || lv === 'N4'));
+  const furi = S.getSettings().furigana === 'always' || (S.getSettings().furigana === 'auto' && (lv === 'N5' || lv === 'N4' || lv === 'keigo'));
   // Phrases rangées de la plus abordable à la plus difficile pour le niveau de la leçon
   const sentsByG = new Map(await Promise.all(c.g.map(async g => [g.id, await D.easiest(await D.sentencesFor(g.id), lv)])));
 
@@ -244,6 +251,7 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
         h('h2.point-big', { lang: 'ja', html: ruby(D.gramLabel(g), true) }),
         gramAudio(g),
         h('p.point-sense', g.s),
+        g.x ? h('p.point-x', { html: jr(g.x) }) : null,
         ex.length ? h('ol.example-list', ex.map(s => h('li',
           sentenceLine(s, { furi }),
           h('p.fr', s.fr)))) : h('p.section-note', 'Pas encore d’exemple pour ce point.'),

@@ -1,0 +1,31 @@
+﻿numero,theme,situation,probleme,forme_recommandee,explication_fr,page
+7,尊敬語の形,御利用される／御説明される,規範的には適切とされてこなかった形,利用される／利用なさる／御利用になる／御利用なさる,"Contient 御…さ(=ご〜する, 謙譲語Ⅰ) + れる. De plus en plus utilisé, il pourrait s’établir.",33
+8,尊敬語の形,×御乗車できません（駅のアナウンス）,御乗車できません,御乗車になれません／御乗車いただけません／御乗車はできません,お・ご〜できる est le potentiel du 謙譲語Ⅰ. Idem : ×御利用できません→御利用になれません／御利用いただけません。,33
+9,尊敬語の形,×お分かりにくい／×お読みやすい,お分かりにくい／お読みやすい,お分かりになりにくい／お読みになりやすい,"On met seulement la partie verbe au respectueux, puis on ajoute 〜にくい／〜やすい.",34
+10,尊敬語と謙譲語Ⅰの混同,×担当者に伺ってください（客に）,伺ってください,担当者にお聞きください／担当者にお尋ねください,"伺う est 謙譲語Ⅰ : il élève la personne visée (担当者), pas le client. Idem ×お聞きしてください／×お尋ねしてください.",34
+11,尊敬語と謙譲語Ⅰの混同,×課長、このファイルも会議室にお持ちしますか,お持ちしますか,お持ちになりますか,"お持ちする est 謙譲語Ⅰ : cela revient à demander si MOI je porte. Pour demander si le chef porte, utiliser le respectueux.",34
+12,尊敬語と謙譲語Ⅰの混同,×御在宅する必要はありません,御在宅する,御在宅なさる必要は…／御在宅の必要は…,"ご〜する est une forme de 謙譲語Ⅰ. Pour élever la personne chez elle, utiliser le respectueux.",35
+13,謙譲語Ⅱ,田中先生のところに参ります（加藤先生に話しながら）,参る n’élève pas 田中先生,田中先生のところに伺います,"参る est 謙譲語Ⅱ : poli envers l’interlocuteur (加藤先生), il n’élève pas le tiers. Pour élever 田中先生, utiliser 伺う (謙譲語Ⅰ).",35
+14,謙譲語Ⅱ,御持参ください／お申し出ください／お申し込みください,参・申 y ont perdu leur valeur de 謙譲語Ⅱ,（si gêné）お持ちください／おっしゃってください／御応募ください,Ces expressions peuvent s’employer pour les actions de l’autre. Les remplacements sont facultatifs.,36
+15,謙譲語Ⅱ,"そのように申し伝えておきます（部下に伝える, à 社長）",申す = 謙譲語Ⅱ,Correct tel quel,"申す est dirigé vers 社長 (l’interlocuteur), pas vers 部下 : aucun problème.",36
+16,お・御を自分側に付ける,お待ちしています／御説明したいのですが,自分の動作にお・御？,Correct,C’est correct quand l’action est un 謙譲語Ⅰ vers la personne visée. À éviter : 私のお考え／御理解／お帽子.,36
+17,いただく／くださる,御利用いただきまして／御利用くださいまして,Lequel est correct ?,Les deux conviennent,"いただく = 謙譲語Ⅰ, くださる = 尊敬語 : même personne élevée, même idée de faveur reçue.",37
+18,させていただく,（お・ご）…（さ）せていただく,Usage trop répandu,Utiliser si (ア) l’autre a donné sa permission et (イ) on reçoit un bienfait,"コピーを取らせていただけますか → OK. それでは発表させていただきます → 発表いたします est plus sobre. 本日休業させていただきます → OK si conditions remplies, sinon 休業いたします. 結婚式／自己紹介の例 → souvent inadaptés.",37
+19,呼び方,僕／わたし／私（わたくし）,Lequel choisir ?,"僕=quotidien, わたし=plus soigné, 私（わたくし）=très formel","Pour cérémonies, réunions, entretiens : わたし ou わたくし.",38
+20,呼び方,あなた,あなた est-il poli ?,Appeler par le nom ou reformuler,Utilisé surtout envers égal ou inférieur ; difficile envers un supérieur ; ton froid. Ex : 佐藤さんはどう考えますか／お考えをお聞かせください。,39
+21,手紙の宛名,〇〇様 ou 〇〇先生 ; ×山田一郎先生御中,山田一郎先生御中,〇〇中学校 山田一郎先生,"御中 s’adresse à un organisme, pas à une personne nommée. Élève/parent : 〇〇先生 est préférable.",39
+22,ウチ・ソト,自分の家族を改まった場で言う,お父さん・お母さん…,父・母・祖父・祖母・伯父（叔父）・伯母（叔母）・兄・姉,"Entre proches, 父親・母親・親父・御袋・おじいちゃん… selon la situation.",39
+23,ウチ・ソト,保護者に同僚の不在を伝える,田中先生はいらっしゃいません／田中はおりません,Les deux possibles,"Selon ウチ・ソト : 田中はおりません. À un parent d’élève, 田中先生はいらっしゃいません est courant. On peut dire 田中教諭 pour rester neutre.",40
+24,ウチ・ソト,田中部長を取引先に話すとき,田中と呼び捨て？,田中／部長の田中／弊社の部長／ウチの部長,Vers l’extérieur on n’élève pas son supérieur : 田中部長 est inadapté.,40
+25,ウチ・ソト,社長のあいさつを紹介する（司会）,Deux formes possibles,社内中心: 社長からごあいさつをいただきます／社外が多い: 社長からごあいさつを申し上げます,"いただく élève le président (cérémonie interne) ; 申し上げる élève les auditeurs (nombreux invités extérieurs), et le président de sa propre entreprise n’est alors pas élevé.",41
+26,ウチ・ソト,係長が部長に課長の発言を伝える,課長は、このようにおっしゃっていました,課長は、このように申しておりました（課長を立てず）／課長は、このように言われていました,Selon la distance entre les trois personnes ; le 謙譲語Ⅱ n’élève pas 課長.,41
+27,ねぎらい・褒め,どうも御苦労様でした（上司に）,御苦労様 est pour un inférieur,どうもありがとうございました／お疲れ様でございました,御苦労様 = ねぎらい de haut en bas. Envers un supérieur : remerciement ou お疲れ様でございました.,42
+28,ねぎらい・褒め,講師のネクタイを褒める／上司の教え方を褒める,褒めるのが不適切,内容への感想／感謝: 分かりやすく教えていただき、ありがとうございました,On peut complimenter surtout ses proches ; complimenter les compétences d’un supérieur revient à l’évaluer.,42
+29,ねぎらい・褒め,とんでもございません,« とんでもない » est un seul adjectif,とんでもないです／とんでもないことでございます／とんでものうございます,"Dans l’usage actuel, とんでもございません est courant et admis pour décliner un compliment. Nuance : とんでもないことでございます peut être pris comme « ce que vous avez dit est absurde ».",43
+30,能力・意向を尋ねる,部長は、フランス語もお話しになれるんですか／課長もお飲みになりたいですか／いらっしゃるつもりですか,"Forme correcte, mais demande directe d’aptitude ou d’intention",フランス語もお話しになりますか／コーヒーをお飲みになりますか／コーヒーいかがですか／夏休みにはどちらへいらっしゃいますか,"Demander à un supérieur sa capacité, son souhait ou son intention touche à son intérieur.",44
+31,依頼,この仕事をしていただきます（同僚に頼む）,Prend la décision à la place de l’autre,この仕事をしていただけますか／これお願いできますか／お願いしてもいいですか,"Quand on n’a pas l’autorité, laisser à l’autre la décision.",44
+32,依頼,これ、お願いします（突然）,Pas de mot d’introduction,すみませんが／忙しいところ申し訳ないけど＋これ、お願いできますか／お願いしてもいいですか,Introduire par une excuse ; la demande indirecte est plus attentionnée.,45
+33,依頼,取ってもらってもいいですか／書いていただいてもよろしいですか,Impression de détour,Équivalent de 取ってください／書いていただけますか,"Forme de demande de permission : plus indirecte, mais pas fautive.",45
+34,マニュアル敬語,御注文の品はおそろいになりましたでしょうか,お〜になる élève la commande (impossible),御注文の品は、そろいましたでしょうか／御注文の品は、以上でよろしいでしょうか,お〜になる est respectueux : on ne l’emploie pas pour une chose. Le keigo « manuel » ne suffit pas.,46
+35,地域差,先生も行かれますか／いらっしゃいますか,行かれる peut sembler moins poli selon les régions,"いらっしゃいますか（en Kantô, plus courant et plus élevé）",Les formes de respect varient selon la région.,47
+36,地域差,どちらから来はったんですか（関西）,来はる = keigo dialectal,—,"〜はる élève un peu la personne tout en gardant une certaine proximité, et peut aussi servir pour la famille.",47

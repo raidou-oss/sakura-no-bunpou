@@ -1,9 +1,9 @@
 // Chargement des données (JSON générés par tools/build_data.py), mis en cache.
 
 const cache = {};
-async function load(name) {
+export async function load(name) {
   if (!cache[name]) {
-    cache[name] = fetch(`data/${name}.json?v=20261021004441`).then(r => {
+    cache[name] = fetch(`data/${name}.json?v=20261023195031`).then(r => {
       if (!r.ok) throw new Error(`Impossible de charger ${name}.json`);
       return r.json();
     });
@@ -15,7 +15,9 @@ async function load(name) {
 export const gramLabel = g => (g.f && g.f.includes('（') ? g.f : g.t);
 
 export const LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1'];
-export const LEVEL_NAMES = { N5: 'N5', N4: 'N4', N3: 'N3', N2: 'N2', N1: 'N1', kansai: '関西弁', extra: 'Hors JLPT' };
+export const LEVEL_NAMES = { N5: 'N5', N4: 'N4', N3: 'N3', N2: 'N2', N1: 'N1', keigo: '敬語', kansai: '関西弁', extra: 'Hors JLPT' };
+/** Niveaux qui ont des leçons guidées (JLPT + keigo) */
+export const LESSON_LEVELS = [...LEVELS, 'keigo'];
 export const LEVEL_JP = { N5: '蕾', N4: '綻', N3: '咲', N2: '満開', N1: '花吹雪' };
 
 let grammarIdx, sentByG;

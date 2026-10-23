@@ -1,0 +1,8 @@
+﻿id,principe_fr,explication_fr,exemple_ok,exemple_ng,page
+1,On n’élève pas son propre côté,Soi-même et sa famille (ウチ) ne sont pas élevés par un 尊敬語 ou 謙譲語Ⅰ.,父は来週海外へ行きます／明日父のところに行きます／父は来週海外へ参ります,×父は来週海外へいらっしゃいます／×明日父のところに伺います,18
+2,Usage typique : élever l’interlocuteur (相手側),Le 尊敬語 et le 謙譲語Ⅰ servent surtout à élever l’interlocuteur ou sa famille.,先生は来週海外にいらっしゃるんでしたね／先生のところに伺いたいんですが…,,18
+3,Un tiers peut être élevé,"Si la situation s’y prête, on élève aussi un tiers (même devant un ami).",先生は来週海外にいらっしゃるんでしたね（à un ami）,,19
+4,Ne pas élever un tiers inconnu de l’interlocuteur,"Si l’interlocuteur ne verrait pas la personne comme à élever, mieux vaut ne pas l’élever.",昨日、高校の時の先輩が遊びに来たんですけどね,昨日、高校の時の先輩が遊びにいらっしゃったんですけどね,19
+5,謙譲語Ⅰ vs Ⅱ : la personne visée,Ⅰ élève la personne vers qui l’action va ; Ⅱ parle poliment à l’interlocuteur.,先生のところに伺います／先生のところに参ります／弟のところに参ります,×弟のところに伺います（Ⅰ avec un 弟）,15
+6,謙譲語Ⅰ vs Ⅱ : usage avec ます,Ⅰ peut se passer de ます ; Ⅱ s’emploie en général avec ます.,明日先生のところに伺う（よ）,×明日弟のところに参る（よ）,15
+7,謙譲語Ⅱ : pas pour l’action de l’interlocuteur,Ⅱ concerne surtout son propre côté ; ne pas l’utiliser pour l’action de l’interlocuteur ou d’une personne à élever.,私は明日から海外に参ります／息子は明日から海外に参ります,×先生は来週海外へ参ります／×（あなたは）どちらから参りましたか,14

@@ -1,16 +1,16 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261021004441';
-import { strokeOrder } from './strokes.js?v=20261021004441';
-import { speak, speakBtn } from './voice.js?v=20261021004441';
-import { pitchSVG } from './pitch.js?v=20261021004441';
-import { play } from './sfx.js?v=20261021004441';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261021004441';
-import * as D from './data.js?v=20261021004441';
-import * as S from './srs.js?v=20261021004441';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261023195031';
+import { strokeOrder } from './strokes.js?v=20261023195031';
+import { speak, speakBtn } from './voice.js?v=20261023195031';
+import { pitchSVG } from './pitch.js?v=20261023195031';
+import { play } from './sfx.js?v=20261023195031';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261023195031';
+import * as D from './data.js?v=20261023195031';
+import * as S from './srs.js?v=20261023195031';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
-  return f === 'always' || (f === 'auto' && (lv === 'N5' || lv === 'N4'));
+  return f === 'always' || (f === 'auto' && (lv === 'N5' || lv === 'N4' || lv === 'keigo'));
 };
 
 /** Ligne « écouter + accent » d'un mot de vocabulaire */
@@ -195,6 +195,8 @@ function firstOk(target, p) {
   if (end === 'い') return 'かくけ'.includes(c);
   if (end === 'る') {
     if ('らりるれろっ'.includes(c)) return true;
+    // Verbes de respect irréguliers : いらっしゃる → いらっしゃいます, なさる → なさいます, くださる → ください
+    if (c === 'い' && /(?:しゃ|さ|ざ)$/.test(stem)) return true;
     // Verbe en -iru / -eru (ou radical en kanji seul : 見る, 寝る) : la terminaison suit directement le radical
     if (I_E.test(stem)) return true;
     // Radical en kanji seul (見る, 寝る, 出る) : seules les terminaisons d'ichidan, pour ne pas confondre 見る et 見せる

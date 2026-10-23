@@ -1,0 +1,27 @@
+﻿unit,ordre,type,titre,furigana,sens,niveau,slug
+8357,0,GrammarPoint,いらっしゃる,いらっしゃる,"Être, Venir, Aller (Honorifique)",JLPT4,いらっしゃる
+8357,1,GrammarPoint,なさる,なさる,Faire (Honorifique),JLPT4,なさる
+8357,2,GrammarPoint,てごらん,てご覧（らん）,"(Veuillez) essayer de, (Veuillez) regarder",JLPT3,てごらん
+8357,3,GrammarPoint,ないでください,～ないで下（くだ）さい,Ne faites pas ~ s'il vous plaît (Demande polie),JLPT5,ないでください
+8357,4,GrammarPoint,お～になる ,お～になる,Faire (Honorifique),JLPT4,お-になる
+8357,5,GrammarPoint,お～ください ,お～ください,Veuillez faire (Honorifique),JLPT4,お-ください
+8357,6,GrammarPoint,いたす,致（いた）す,Faire humblement,JLPT4,いたす
+8358,1000,Vocab,参る,参（まい）る,"aller, venir, appeler, être vaincu, mourir, être ennuyé, être épris de, visiter (un sanctuaire, une tombe)",N4,参る
+8358,1001,Vocab,伺う,伺（うかが）う,"demander, s'informer, implorer (pour une révélation, un conseil), visiter, parler à (un public)",N4,伺う
+8358,1002,Vocab,拝見,拝見（はいけん）,"seeing, look at",N2,拝見
+8358,1003,Vocab,申し上げる,申（もう）し上（あ）げる,"dire, informer de, exprimer, présenter (des salutations, félicitations), faire",N4,申し上げる
+8358,1004,Vocab,申す,申（もう）す,"dire, être appelé, faire",N4,申す
+8358,1005,Vocab,召し上がる,召（め）し上（あ）がる,"manger, boire",N4,召し上がる
+8358,1006,Vocab,ご存じ,ご存（ぞん）じ,"connaître, (une) connaissance",N4,ご存じ
+8358,1007,Vocab,存じる,存（ぞん）じる,"to think, feel, consider, know, etc.",N2,存じる
+8358,1008,Vocab,存じ上げる,存（ぞん）じ上（あ）げる,"to know (someone), to think, to believe",A20,to-know-someone
+8358,1009,Vocab,差し上げる,差（さ）し上（あ）げる,"donner, offrir, soulever, élever, monter",N4,差し上げる
+8358,1010,Vocab,頂く,頂（いただ）く,"recevoir, accepter, manger, boire, être couronné de, porter (sur la tête), avoir (comme chef, dirigeant)",N4,頂く
+8358,1011,Vocab,お聞きいただく,お聞（き）きいただく,to ask,Unclassified,お聞きいただく
+8358,1012,Vocab,させて頂く,させて頂（いただ）く,to have the privilege of doing,A5,させて頂く
+8358,1013,Vocab,お目にかかる,お目（め）にかかる,"rencontrer (quelqu'un de statut supérieur), être reconnu (surtout par quelqu'un de statut supérieur)",N3,お目にかかる
+8358,1014,Vocab,下さる,下（くだ）さる,"donner, conférer, accorder, faire une faveur",N4,下さる
+8358,1015,Vocab,ご機嫌いかがですか,ご機嫌（きげん）いかがですか,how are you?,Unclassified,ご機嫌いかがですか
+8358,1016,Vocab,恐れ入りますが,恐（おそ）れ入（い）りますが,"Sorry to impose but ..., Excuse me but ...",A9,恐れ入りますが
+8358,1017,Vocab,申し訳ございません,申（もう）し訳（わけ）ございません,"I'm sorry, (it's) inexcusable",Unclassified,申し訳ございません
+8358,1018,Vocab,いかが,いかが,"comment, de quelle manière, que diriez-vous de, douteux",N4,いかが
