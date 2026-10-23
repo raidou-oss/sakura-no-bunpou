@@ -1,7 +1,7 @@
 // 数 Les nombres japonais : conversion (jusqu'à 無量大数), leçon guidée « compter jusqu'à l'infini ».
-import { h, ruby, jr, normJa, kanaKeyboardToggle, smoothType, hitFx, HIT_WORDS, toast } from './util.js?v=20261024004140';
-import * as S from './srs.js?v=20261024004140';
-import { play } from './sfx.js?v=20261024004140';
+import { h, ruby, jr, normJa, kanaKeyboardToggle, smoothType, hitFx, HIT_WORDS, toast } from './util.js?v=20261024005335';
+import * as S from './srs.js?v=20261024005335';
+import { play } from './sfx.js?v=20261024005335';
 
 // --- Conversion -------------------------------------------------------------------------------
 const DK = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'];

@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Build;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
+import android.webkit.JavascriptInterface;
 import android.view.Window;
 import android.webkit.CookieManager;
 import android.webkit.ValueCallback;
@@ -25,6 +29,32 @@ public class MainActivity extends Activity {
 
     private WebView web;
     private ValueCallback<Uri[]> fileCb;
+    private boolean fullscreen = false;
+
+    /** Pont appelé par le bouton plein écran du site (window.SakuraApp.fullscreen(true|false)) */
+    public class Bridge {
+        @JavascriptInterface public void fullscreen(boolean on) { runOnUiThread(() -> setFullscreen(on)); }
+    }
+
+    // Barres système masquées ; un glissement depuis le bord les fait réapparaître un instant. L'orientation suit le téléphone.
+    @SuppressWarnings("deprecation")
+    private void setFullscreen(boolean on) {
+        fullscreen = on;
+        Window w = getWindow();
+        if (Build.VERSION.SDK_INT >= 30) {
+            WindowInsetsController c = w.getInsetsController();
+            if (c == null) return;
+            if (on) {
+                c.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+                c.hide(WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
+            } else c.show(WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
+        } else {
+            w.getDecorView().setSystemUiVisibility(on
+                ? View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                : 0);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle saved) {
@@ -38,6 +68,7 @@ public class MainActivity extends Activity {
         web.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         web.setOverScrollMode(View.OVER_SCROLL_NEVER);
         setContentView(web);
+        web.addJavascriptInterface(new Bridge(), "SakuraApp");
 
         WebSettings s = web.getSettings();
         s.setJavaScriptEnabled(true);
@@ -51,7 +82,7 @@ public class MainActivity extends Activity {
         s.setSupportZoom(false);
         s.setAllowFileAccess(false);
         s.setOffscreenPreRaster(true);         // pré-rendu : défilement plus fluide
-        s.setUserAgentString(s.getUserAgentString() + " SakuraApp/1.0");
+        s.setUserAgentString(s.getUserAgentString() + " SakuraApp/1.1");
 
         CookieManager.getInstance().setAcceptCookie(true);
         CookieManager.getInstance().setAcceptThirdPartyCookies(web, true);
@@ -110,12 +141,17 @@ public class MainActivity extends Activity {
     @Override
     @SuppressWarnings("deprecation")
     public void onBackPressed() {
+        if (fullscreen) {   // retour : on sort d'abord du plein écran
+            setFullscreen(false);
+            web.evaluateJavascript("dispatchEvent(new CustomEvent('sakura:appfs',{detail:false}))", null);
+            return;
+        }
         if (web.canGoBack()) web.goBack();   // le routage du site passe par l'historique (#/…)
         else super.onBackPressed();
     }
 
     @Override protected void onSaveInstanceState(Bundle out) { super.onSaveInstanceState(out); web.saveState(out); }
-    @Override protected void onResume() { super.onResume(); web.onResume(); web.resumeTimers(); }
+    @Override protected void onResume() { super.onResume(); web.onResume(); web.resumeTimers(); if (fullscreen) setFullscreen(true); }
     @Override protected void onPause() { web.onPause(); web.pauseTimers(); CookieManager.getInstance().flush(); super.onPause(); }   // batterie
     @Override protected void onDestroy() { web.destroy(); super.onDestroy(); }
 

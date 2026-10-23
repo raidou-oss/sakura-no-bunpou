@@ -3397,3 +3397,21 @@ img.brand-mark { width: 34px; height: 34px; border-radius: 22%; background: none
 .hero-copy .ia-home img { width: 44px; height: 44px; border-radius: 11px; }
 .hero-copy .ia-home b { font-size: 1.08rem; }
 .hero-copy .ia-home small { font-size: .78rem; }
+
+/* === Bouton plein écran (téléphones / tablettes, pages d'exercice) === */
+.fs-btn { position: fixed; z-index: 6; left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  display: grid; place-items: center; width: 46px; height: 46px; padding: 0; border-radius: 14px; border: 1px solid var(--line-hi);
+  background: rgba(10, 22, 64, .9); color: var(--ink); cursor: pointer; box-shadow: var(--shadow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transform: rotate(-4deg); transition: transform .25s cubic-bezier(.2, 1.6, .4, 1), background .2s; animation: fs-in .45s cubic-bezier(.2, 1.6, .4, 1) both; }
+.fs-btn[hidden] { display: none; }
+.fs-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.fs-btn:active { transform: rotate(-4deg) scale(.88); }
+body.is-fs .fs-btn { background: #FF8CC6; color: #040A22; border-color: transparent; }
+@keyframes fs-in { from { opacity: 0; transform: scale(.4) rotate(-40deg); } }
+@media (max-width: 860px) { .fs-btn { bottom: calc(86px + env(safe-area-inset-bottom, 0px)); } }
+/* En plein écran sur téléphone : l'exercice prend toute la place (barre du bas et bulle « en ligne » masquées) */
+@media (max-width: 860px) {
+  body.is-fs .nav, body.is-fs .online-fab { display: none !important; }
+  body.is-fs .fs-btn { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  body.is-fs main { padding-bottom: 24px; }
+}
