@@ -1,0 +1,39 @@
+name: APK Android (test)
+on:
+  push:
+    paths: ['android/**', '.github/workflows/apk.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.9' }
+      - name: Compilation (release minifiée, signée clé de test)
+        working-directory: android
+        run: gradle --no-daemon assembleRelease
+      - name: Renommer
+        run: cp android/app/build/outputs/apk/release/app-release.apk sakura-no-bunpou.apk && ls -la sakura-no-bunpou.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: sakura-no-bunpou-apk, path: sakura-no-bunpou.apk }
+      - name: Publier sur la branche « apk »
+        run: |
+          mkdir out && cp sakura-no-bunpou.apk out/ && cd out
+          git init -q -b apk
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -q --allow-empty -m "APK ${GITHUB_SHA::7}"
+          git add sakura-no-bunpou.apk
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -q -m "APK build ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7})"
+          git push -fq "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" apk
+      - name: Release « apk-test »
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: apk-test
+          name: 桜の文法 — APK de test
+          prerelease: true
+          body: APK Android de test (WebView Chromium). Build ${{ github.run_number }}.
+          files: sakura-no-bunpou.apk

@@ -1,0 +1,12 @@
+<resources>
+    <color name="night">#040A22</color>
+    <!-- Fond bleu nuit dès le lancement : pas d'écran blanc -->
+    <style name="Sakura" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/night</item>
+        <item name="android:colorBackground">@color/night</item>
+        <item name="android:statusBarColor">@color/night</item>
+        <item name="android:navigationBarColor">@color/night</item>
+        <item name="android:colorAccent">#FF8CC6</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

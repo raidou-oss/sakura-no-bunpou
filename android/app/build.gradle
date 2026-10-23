@@ -1,0 +1,35 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'io.github.raidou.sakura'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'io.github.raidou.sakura'
+        minSdk 24
+        targetSdk 34
+        versionCode((System.getenv('GITHUB_RUN_NUMBER') ?: '1') as int)
+        versionName '1.0.' + (System.getenv('GITHUB_RUN_NUMBER') ?: '0')
+    }
+    signingConfigs {
+        // Clé de TEST uniquement (publique) : permet d'installer les nouvelles versions par-dessus l'ancienne
+        test {
+            storeFile file('test.keystore')
+            storePassword 'sakura-test'
+            keyAlias 'sakura'
+            keyPassword 'sakura-test'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.test
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    dependenciesInfo { includeInApk false; includeInBundle false }
+}
