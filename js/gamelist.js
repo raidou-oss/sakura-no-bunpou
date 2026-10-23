@@ -1,11 +1,11 @@
 // Liste des mini-jeux (accueil, page Jeux, profils)
 export const GAMES = {
-  salaryman: { file: './games/salaryman.js?v=20261023232605', glyph: '社', short: 'Le keigo au bureau.', jp: 'サラリーマン', name: 'Salaryman', desc: 'Une journée chez Sakura Shōji : le patron, tes chefs et les clients te parlent, réponds avec le bon keigo pour monter en grade.' },
-  pib: { file: './games/pib.js?v=20261023232605', glyph: '数', short: 'Écris les montants en japonais.', jp: 'ＧＤＰラッシュ', name: 'PIB RUSH', desc: 'Un montant apparaît : écris-le en japonais avant la fin du chrono. Du prix d’un bonbon au PIB d’un pays.' },
-  cafe: { file: './games/cafe.js?v=20261023232605', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
-  hanabira: { file: './games/hanabira.js?v=20261023232605', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
-  joshi: { file: './games/joshi.js?v=20261023232605', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
-  theme: { file: './games/theme.js?v=20261023232605', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
-  choix: { file: './games/choix.js?v=20261023232605', glyph: '択', short: 'Le bon choix, le plus vite possible.', jp: '選択クイズ', name: 'Sentaku', desc: 'Quiz à choix : la bonne particule, la bonne forme, le bon sens. Trois erreurs et c’est fini.' },
-  narabe: { file: './games/narabe.js?v=20261023232605', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
+  salaryman: { file: './games/salaryman.js?v=20261023232821', glyph: '社', short: 'Le keigo au bureau.', jp: 'サラリーマン', name: 'Salaryman', desc: 'Une journée chez Sakura Shōji : le patron, tes chefs et les clients te parlent, réponds avec le bon keigo pour monter en grade.' },
+  pib: { file: './games/pib.js?v=20261023232821', glyph: '数', short: 'Écris les montants en japonais.', jp: 'ＧＤＰラッシュ', name: 'PIB RUSH', desc: 'Un montant apparaît : écris-le en japonais avant la fin du chrono. Du prix d’un bonbon au PIB d’un pays.' },
+  cafe: { file: './games/cafe.js?v=20261023232821', glyph: '珈', short: 'Passe la commande au barista.', jp: 'コトバ珈琲', name: 'Kotoba Kōhī', desc: 'Un client étranger te dicte sa commande en français : passe-la au barista en japonais.' },
+  hanabira: { file: './games/hanabira.js?v=20261023232821', glyph: '花', short: 'Attrape le bon mot au vol.', jp: '花びら', name: 'Hanabira', desc: 'Les pétales tombent : attrape celui qui porte le bon mot avant qu’il touche le sol.' },
+  joshi: { file: './games/joshi.js?v=20261023232821', glyph: '助', short: '60 secondes de particules.', jp: '助詞ダッシュ', name: 'Joshi Dash', desc: 'Soixante secondes pour placer un maximum de particules.' },
+  theme: { file: './games/theme.js?v=20261023232821', glyph: '作', short: 'Écris la phrase en entier.', jp: '作文', name: 'Thème', desc: 'Une phrase en français : écris-la en japonais, librement, au clavier japonais ou en romaji.' },
+  choix: { file: './games/choix.js?v=20261023232821', glyph: '択', short: 'Le bon choix, le plus vite possible.', jp: '選択クイズ', name: 'Sentaku', desc: 'Quiz à choix : la bonne particule, la bonne forme, le bon sens. Trois erreurs et c’est fini.' },
+  narabe: { file: './games/narabe.js?v=20261023232821', glyph: '並', short: 'Remets la phrase dans l’ordre.', jp: '並べ替え', name: 'Narabe', desc: 'Remets les morceaux de la phrase dans le bon ordre.' },
 };

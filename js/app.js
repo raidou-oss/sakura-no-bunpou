@@ -1,31 +1,32 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261023232605';
-import * as D from './data.js?v=20261023232605';
-import * as S from './srs.js?v=20261023232605';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261023232605';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261023232605';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261023232605';
-import * as C from './cloud.js?v=20261023232605';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261023232605';
-import { decorateHead } from './dyn.js?v=20261023232605';
-import { keigoGuide, keigoBanner } from './keigo.js?v=20261023232605';
-import { numbersLesson } from './numbers.js?v=20261023232605';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261023232605';
-import { play, setVolume } from './sfx.js?v=20261023232605';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261023232605';
-import { celebrate, verdict } from './celebrate.js?v=20261023232605';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261023232605';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261023232605';
-import { initGloss } from './gloss.js?v=20261023232605';
-import { initLinks } from './links.js?v=20261023232605';
-import { streakBadge, weekStrip } from './aura.js?v=20261023232605';
-import { initLevelUp } from './levelup.js?v=20261023232605';
-import { confidentsPage } from './confidents.js?v=20261023232605';
-import { initTilt } from './tilt.js?v=20261023232605';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261023232605';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261023232821';
+import * as D from './data.js?v=20261023232821';
+import * as S from './srs.js?v=20261023232821';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261023232821';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261023232821';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261023232821';
+import * as C from './cloud.js?v=20261023232821';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261023232821';
+import { decorateHead } from './dyn.js?v=20261023232821';
+import { keigoGuide, keigoBanner } from './keigo.js?v=20261023232821';
+import { numbersLesson } from './numbers.js?v=20261023232821';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261023232821';
+import { play, setVolume } from './sfx.js?v=20261023232821';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261023232821';
+import { celebrate, verdict } from './celebrate.js?v=20261023232821';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261023232821';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261023232821';
+import { initGloss } from './gloss.js?v=20261023232821';
+import { initLinks } from './links.js?v=20261023232821';
+import { streakBadge, weekStrip } from './aura.js?v=20261023232821';
+import { initLevelUp } from './levelup.js?v=20261023232821';
+import { confidentsPage } from './confidents.js?v=20261023232821';
+import { initTilt } from './tilt.js?v=20261023232821';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261023232821';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261023232605';
+import { GAMES } from './gamelist.js?v=20261023232821';
+import { installPage } from './install.js?v=20261023232821';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -46,6 +47,7 @@ const routes = [
   [/^\/jeux$/, gamesHub],
   [/^\/jeux\/(\w+)$/, game],
   [/^\/reglages$/, settingsPage],
+  [/^\/app$/, () => installPage(main)],
   [/^\/profil(?:\/([0-9a-f-]{36}))?$/, id => profilePage(main, id)],
   [/^\/communaute$/, () => communityPage(main)],
   [/^\/confidents$/, () => confidentsPage(main)],
@@ -71,10 +73,10 @@ async function route() {
     const m = p.match(re);
     if (m) {
       const section = p.split('/')[1] || 'home';
-      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil', lecon: 'lecons', 'kana-quiz': 'kana' }[section] || section)));
+      $$('.nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === ({ point: 'grammaire', entrainement: 'grammaire', compte: 'profil', lecon: 'lecons', 'kana-quiz': 'kana', app: 'reglages' }[section] || section)));
       $$('.nav a').forEach(a => a.classList.contains('active') ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
       try {
-        const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定', lecons: '授業', lecon: '授業', kana: '仮名', 'kana-quiz': '仮名', confidents: '絆' }[section] || '桜';
+        const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定', app: '導入', lecons: '授業', lecon: '授業', kana: '仮名', 'kana-quiz': '仮名', confidents: '絆' }[section] || '桜';
         moveIndicator();
         // Changer de niveau dans une même section (onglets N5…N1) : pas de balayage, juste un fondu doux
         const LV_PAGE = /^\/(grammaire|vocabulaire|lecons)(?:\/(?:N[1-5]|keigo|nombres|kansai|extra))?$/;
@@ -497,6 +499,8 @@ function settingsPage() {
   } });
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('設定') }), 'Réglages')),
+    h('a.card.ia-promo', { href: '#/app' }, h('img', { src: 'img/icon-192.png', alt: '', width: 56, height: 56 }),
+      h('span', h('b', 'Installer l’app 桜の文法'), h('small', 'Android · iPhone · Windows · Mac · Linux')), h('span.ia-arrow', '›')),
     h('div.card.settings',
       h('h2', 'Niveaux travaillés'),
       levelBoxes('grammarLevels', 'Niveaux de grammaire (entraînement, jeux)'),
