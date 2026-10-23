@@ -3288,3 +3288,7 @@ html.lite .p3-head h1 .jp-head .tk { animation: none; }
 .p3-head h1 .ph-spark.s3 { display: none; }
 .p3-head h1 .ph-spark.s1 { left: -.45em; top: -.2em; } .p3-head h1 .ph-spark.s2 { left: auto; right: calc(100% - 2.8em); top: -.35em; }
 .p3-head h1 .ph-tag { top: -1.7em; }
+/* Kanji des titres : retour à l'ombre d'origine (rose + écho cyan qui ondule), sans contour */
+.p3-head h1 .jp-head .tk { text-shadow: 4px 4px 0 var(--sakura-deep), 8px 8px 0 rgba(70, 217, 255, .5); animation: p3-kanji-shade 3s ease-in-out infinite !important; }
+@media (prefers-reduced-motion: reduce) { .p3-head h1 .jp-head .tk { animation: none !important; } }
+html.lite .p3-head h1 .jp-head .tk, html.reduce-motion .p3-head h1 .jp-head .tk { animation: none !important; }
