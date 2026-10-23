@@ -1,5 +1,5 @@
-import { h, jr } from './util.js?v=20261023232821';
-import { play } from './sfx.js?v=20261023232821';
+import { h, jr } from './util.js?v=20261023234516';
+import { play } from './sfx.js?v=20261023234516';
 
 // Page « Installer l'app » : le même site, en application (moteur Chromium partout où c'est possible)
 const DL = 'https://github.com/raidou-oss/sakura-no-bunpou/releases/download/app/';
@@ -12,16 +12,16 @@ let deferred = null;   // invitation d'installation du navigateur (Chrome, Edge�
 addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; document.querySelector('.ia-pwa')?.removeAttribute('hidden'); });
 
 const PLATFORMS = [
-  { id: 'android', jp: '携帯', name: 'Android', file: 'sakura-no-bunpou.apk', size: '≈ 0,2 Mo', engine: 'WebView Chromium',
+  { id: 'android', jp: '携帯', name: 'Android', file: 'sakura-no-bunpou.apk', size: '≈ 0,4 Mo', engine: 'WebView Chromium',
     steps: ['Télécharge l’APK sur ton téléphone.', 'Ouvre-le : Android demande d’autoriser l’installation depuis ton navigateur ou tes fichiers → Autoriser.', 'Installer, et l’icône 桜 apparaît dans tes applis.'] },
   { id: 'ios', jp: '林檎', name: 'iPhone · iPad', engine: 'Safari (WebKit)',
     steps: ['Ouvre le site dans Safari.', 'Touche le bouton Partager (le carré avec la flèche ↑).', 'Choisis « Sur l’écran d’accueil », puis Ajouter.'],
     note: 'Apple impose son propre moteur (WebKit) à toutes les applis web sur iPhone : pas de Chromium possible ici, mais l’appli s’ouvre en plein écran, avec son icône, comme une vraie appli.' },
-  { id: 'windows', jp: '窓', name: 'Windows', file: 'sakura-no-bunpou-windows-setup.exe', size: '≈ 80 Mo', engine: 'Chromium (Electron)',
+  { id: 'windows', jp: '窓', name: 'Windows', file: 'sakura-no-bunpou-windows-setup.exe', size: '≈ 75 Mo', engine: 'Chromium (Electron)',
     steps: ['Télécharge l’installeur et lance-le.', 'Windows SmartScreen peut prévenir (appli non signée) : « Informations complémentaires » → « Exécuter quand même ».', 'Choisis le dossier, et un raccourci 桜の文法 est créé sur le Bureau.'] },
   { id: 'mac', jp: '机', name: 'Mac', file: 'sakura-no-bunpou-mac.dmg', size: '≈ 200 Mo', engine: 'Chromium (Electron) · Intel + Apple Silicon',
     steps: ['Ouvre le .dmg et glisse l’appli dans Applications.', 'Premier lancement : macOS bloque une appli non signée → Réglages Système › Confidentialité et sécurité › « Ouvrir quand même ».', 'Ensuite, elle s’ouvre normalement.'] },
-  { id: 'linux', jp: '企鵝', name: 'Linux', file: 'sakura-no-bunpou-linux.AppImage', size: '≈ 110 Mo', engine: 'Chromium (Electron)',
+  { id: 'linux', jp: '企鵝', name: 'Linux', file: 'sakura-no-bunpou-linux.AppImage', size: '≈ 78 Mo', engine: 'Chromium (Electron)',
     steps: ['Télécharge l’AppImage.', 'Rends-la exécutable (clic droit › Propriétés, ou chmod +x).', 'Double-clic pour lancer.'] },
 ];
 
