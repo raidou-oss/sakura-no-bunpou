@@ -32,25 +32,30 @@ def padded(scale):
     return c
 
 LZ = Image.LANCZOS
+# LE logo (celui de l'APK) : la fleur sur carré bleu nuit arrondi, sans cadre — partout
+LOGO = rounded(padded(.9), .22)
+SQUARE = padded(.9)                      # même logo sans coins transparents (iOS / Android arrondissent eux-mêmes)
 # --- Site ---
-full = src.crop((48, 48, W - 48, W - 48))                       # avec le cadre, comme l'image d'origine
-rounded(full, .2).resize((512, 512), LZ).save(R + 'img/icon-512.png')
-rounded(full, .2).resize((192, 192), LZ).save(R + 'img/icon-192.png')
-fav = rounded(padded(.92), .22)                                   # favicon : fleur bien lisible, sans le fin cadre
-fav.resize((32, 32), LZ).save(R + 'img/favicon-32.png')
-fav.resize((64, 64), LZ).save(R + 'img/favicon-64.png')
-fav.resize((48, 48), LZ).save(R + 'favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
-padded(.8).resize((180, 180), LZ).save(R + 'img/apple-touch-icon.png')   # iOS arrondit lui-même
+for s in (512, 192, 96): LOGO.resize((s, s), LZ).save(R + f'img/logo-{s}.png')
+LOGO.resize((512, 512), LZ).save(R + 'img/icon-512.png')
+LOGO.resize((192, 192), LZ).save(R + 'img/icon-192.png')
+LOGO.resize((32, 32), LZ).save(R + 'img/favicon-32.png')
+LOGO.resize((64, 64), LZ).save(R + 'img/favicon-64.png')
+LOGO.resize((48, 48), LZ).save(R + 'favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
+SQUARE.resize((180, 180), LZ).save(R + 'img/apple-touch-icon.png')
 padded(.62).resize((512, 512), LZ).save(R + 'img/icon-maskable-512.png')
 # --- Android ---
 A = R + 'android/app/src/main/res/'
 for d, s in [('mdpi', 48), ('hdpi', 72), ('xhdpi', 96), ('xxhdpi', 144), ('xxxhdpi', 192)]:
     os.makedirs(A + f'mipmap-{d}', exist_ok=True)
-    rounded(full, .2).resize((s, s), LZ).save(A + f'mipmap-{d}/ic_launcher.png')
+    LOGO.resize((s, s), LZ).save(A + f'mipmap-{d}/ic_launcher.png')
     circle(padded(.86)).resize((s, s), LZ).save(A + f'mipmap-{d}/ic_launcher_round.png')
     padded(66 / 108).resize((s * 108 // 48, s * 108 // 48), LZ).save(A + f'mipmap-{d}/ic_launcher_foreground.png')
 # --- Bureau (Electron) ---
 os.makedirs(R + 'desktop/build', exist_ok=True)
-rounded(full, .2).resize((1024, 1024), LZ).save(R + 'desktop/build/icon.png')
-rounded(full, .2).resize((512, 512), LZ).save(R + 'desktop/icon.png')
+LOGO.resize((1024, 1024), LZ).save(R + 'desktop/build/icon.png')          # Windows / Linux
+mac = Image.new('RGBA', (1024, 1024), (0, 0, 0, 0))                          # Mac : marge standard de macOS
+mac.paste(LOGO.resize((824, 824), LZ), (100, 100), LOGO.resize((824, 824), LZ))
+mac.save(R + 'desktop/build/icon-mac.png')
+LOGO.resize((512, 512), LZ).save(R + 'desktop/icon.png')
 print('ok')

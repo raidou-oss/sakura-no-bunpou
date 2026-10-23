@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261023234516">
+  <link rel="stylesheet" href="css/style.css?v=20261024000805">
 </head>
 <body>
   <!-- 文 Écran de chargement façon Persona, thème grammaire : volets, titre glitché, particule qui se place avec onde de choc -->
@@ -62,6 +62,8 @@
       /* --- carte centrale --- */
       .bt-card { position: relative; z-index: 4; width: min(92vw, 760px); display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
       .bt-brand { display: flex; align-items: center; gap: 14px; transform: skewX(-10deg); }
+      .bt-logo { width: clamp(56px, 13vw, 84px); height: auto; flex: none; border-radius: 22%; box-shadow: 4px 4px 0 #FF4FA3, 8px 8px 0 rgba(70, 217, 255, .45); animation: bt-logo .6s cubic-bezier(.2,1.6,.4,1) .8s both; }
+      @keyframes bt-logo { from { opacity: 0; transform: scale(.2) rotate(-200deg); } }
       .bt-brand .k { display: flex; font: 400 clamp(2.8rem, 10vw, 5rem)/1 'Dela Gothic One', serif; color: #fff; text-shadow: 4px 4px 0 #FF4FA3, 8px 8px 0 rgba(70, 217, 255, .55); }
       .bt-brand .k span { display: inline-block; animation: bt-drop .5s cubic-bezier(.2,1.6,.4,1) both; }
       .bt-brand .k span:nth-child(1) { animation-delay: .95s; } .bt-brand .k span:nth-child(2) { animation-delay: 1.02s; } .bt-brand .k span:nth-child(3) { animation-delay: 1.09s; } .bt-brand .k span:nth-child(4) { animation-delay: 1.16s; }
@@ -147,7 +149,7 @@
       <div class="bt-hud br">PARTICLE SYNC<br><span class="bt-hudn">000</span> / 100<br>読込中…</div>
     </div>
     <div class="bt-card">
-      <div class="bt-brand"><span class="k" lang="ja"><span>桜</span><span>の</span><span>文</span><span>法</span></span><span class="w">LOADING</span></div>
+      <div class="bt-brand"><img class="bt-logo" src="img/logo-192.png" alt="" width="84" height="84"><span class="k" lang="ja"><span>桜</span><span>の</span><span>文</span><span>法</span></span><span class="w">LOADING</span></div>
       <div class="bt-q">
         <span class="bt-tag">GRAMMAIRE · N5</span>
         <span class="bt-stamp">HIT!</span>
@@ -245,7 +247,7 @@
     <nav class="nav" aria-label="Navigation principale">
       <div class="brand-row">
         <a class="brand" href="#/" aria-label="桜の文法, accueil">
-          <span class="brand-mark" aria-hidden="true"></span>
+          <img class="brand-mark" src="img/logo-96.png" alt="" aria-hidden="true" width="34" height="34">
           <span class="brand-name" aria-hidden="true"><ruby>桜<rt>さくら</rt></ruby>の<ruby>文法<rt>ぶんぽう</rt></ruby></span>
         </a>
         <a class="dojo-btn" href="https://elpharaa.github.io/kanji-d-j-/" target="_blank" rel="noopener" aria-label="Kanji Dojo : apprendre les kanji et leur vocabulaire (nouvel onglet)">
@@ -275,6 +277,6 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261023234516"></script>
+  <script type="module" src="js/app.js?v=20261024000805"></script>
 </body>
 </html>

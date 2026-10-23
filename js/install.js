@@ -1,5 +1,5 @@
-import { h, jr } from './util.js?v=20261023234516';
-import { play } from './sfx.js?v=20261023234516';
+import { h, jr } from './util.js?v=20261024000805';
+import { play } from './sfx.js?v=20261024000805';
 
 // Page « Installer l'app » : le même site, en application (moteur Chromium partout où c'est possible)
 const DL = 'https://github.com/raidou-oss/sakura-no-bunpou/releases/download/app/';
@@ -16,7 +16,7 @@ const PLATFORMS = [
     steps: ['Télécharge l’APK sur ton téléphone.', 'Ouvre-le : Android demande d’autoriser l’installation depuis ton navigateur ou tes fichiers → Autoriser.', 'Installer, et l’icône 桜 apparaît dans tes applis.'] },
   { id: 'ios', jp: '林檎', name: 'iPhone · iPad', engine: 'Safari (WebKit)',
     steps: ['Ouvre le site dans Safari.', 'Touche le bouton Partager (le carré avec la flèche ↑).', 'Choisis « Sur l’écran d’accueil », puis Ajouter.'],
-    note: 'Apple impose son propre moteur (WebKit) à toutes les applis web sur iPhone : pas de Chromium possible ici, mais l’appli s’ouvre en plein écran, avec son icône, comme une vraie appli.' },
+    note: 'Rien à télécharger : une fois ajoutée à l’écran d’accueil, l’appli s’ouvre en plein écran avec son icône 桜, comme une vraie appli, et se met à jour toute seule.' },
   { id: 'windows', jp: '窓', name: 'Windows', file: 'sakura-no-bunpou-windows-setup.exe', size: '≈ 75 Mo', engine: 'Chromium (Electron)',
     steps: ['Télécharge l’installeur et lance-le.', 'Windows SmartScreen peut prévenir (appli non signée) : « Informations complémentaires » → « Exécuter quand même ».', 'Choisis le dossier, et un raccourci 桜の文法 est créé sur le Bureau.'] },
   { id: 'mac', jp: '机', name: 'Mac', file: 'sakura-no-bunpou-mac.dmg', size: '≈ 200 Mo', engine: 'Chromium (Electron) · Intel + Apple Silicon',

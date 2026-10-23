@@ -29,7 +29,7 @@
       "shortcutName": "桜の文法",
       "artifactName": "sakura-no-bunpou-windows-setup.${ext}"
     },
-    "mac": { "target": ["dir"], "category": "public.app-category.education", "icon": "build/icon.png", "identity": null },
+    "mac": { "target": ["dir"], "category": "public.app-category.education", "icon": "build/icon-mac.png", "identity": null },
     "linux": { "target": ["AppImage"], "category": "Education", "artifactName": "sakura-no-bunpou-linux.${ext}" }
   }
 }

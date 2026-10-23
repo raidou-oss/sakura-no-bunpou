@@ -3383,3 +3383,7 @@ html.lite .p3-head h1 .jp-head .tk, html.reduce-motion .p3-head h1 .jp-head .tk 
 .ia-pwa[hidden] { display: none; }
 .ia-pwa p, .ia-already { margin: 0; }
 .ia-already { color: #7dffb0; font-weight: 600; margin-bottom: 14px; }
+
+/* Logo 桜の文法 dans le menu (remplace l'ancienne lune) */
+img.brand-mark { width: 34px; height: 34px; border-radius: 22%; background: none; -webkit-mask: none; mask: none; box-shadow: 0 0 16px rgba(255, 148, 203, .35); transition: transform .3s cubic-bezier(.2, 1.6, .4, 1); }
+.brand:hover img.brand-mark { transform: rotate(-8deg) scale(1.08); }
