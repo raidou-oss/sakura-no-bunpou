@@ -1,9 +1,10 @@
 // サラリーマン Salaryman : une journée de travail dans une entreprise de Tokyo.
 // Le patron, les supérieurs et les clients te parlent ; tu réponds avec le bon keigo
 // (respect pour leurs actions, humilité pour les tiennes, ウチ・ソト face aux clients).
-import { play } from '../sfx.js?v=20261023200625';
-import { h, ruby, shuffle, toast, jr } from '../util.js?v=20261023200625';
-import { hitFx, HIT_WORDS } from '../util.js?v=20261023200625';
+import { play } from '../sfx.js?v=20261023201211';
+import { h, ruby, shuffle, toast, jr } from '../util.js?v=20261023201211';
+import { hitFx, HIT_WORDS, answerRegex, normJa, kana, kanaKeyboardToggle, smoothType } from '../util.js?v=20261023201211';
+import * as St from '../srs.js?v=20261023201211';
 
 // Personnages
 const WHO = {
@@ -99,11 +100,75 @@ const S = [
     a: [['ご注文（ちゅうもん）の品（しな）は、以上（いじょう）でよろしいでしょうか。', 1, 'On ne met pas de respect sur une chose : 以上でよろしいでしょうか.'], ['ご注文（ちゅうもん）の品（しな）はおそろいになりましたでしょうか。', 0, 'お〜になる élève… la commande : le fameux keigo « manuel ».'], ['注文（ちゅうもん）はこれで全部（ぜんぶ）？', 0, 'Familier.']] },
 ];
 
+// 作文・敬語 : [qui, contexte, phrase FR, réponses acceptées (annotées), formes clés, explication, erreurs reconnues [regex, message]]
+const T = [
+  { who: 'kacho', ctx: 'Ton chef te demande de faire des copies.', fr: 'Bien, c’est entendu.', hint: '承知（しょうち）いたしました・かしこまりました',
+    a: ['承知（しょうち）いたしました', 'かしこまりました', 'はい、承知（しょうち）いたしました', 'はい、かしこまりました'],
+    why: '承知いたしました / かしこまりました : accepter une consigne avec humilité.', bad: [['了解', '了解 est trop désinvolte face à un supérieur.']] },
+  { who: 'client', ctx: 'Tu fais patienter un client.', fr: 'Veuillez patienter un instant.', hint: '少々（しょうしょう）・お〜ください',
+    a: ['少々（しょうしょう）お待（ま）ちください', '少々（しょうしょう）お待（ま）ちくださいませ'],
+    why: 'お〜ください : la demande respectueuse. 少々 est la version polie de ちょっと.', bad: [['おまちしてください', 'お〜する est humble : ×お待ちしてください.'], ['ちょっと', 'ちょっと est trop familier, dis 少々.']] },
+  { who: 'client', ctx: 'Tu te présentes à un client.', fr: 'Je m’appelle Tanaka, du service commercial.', hint: '申（もう）す',
+    a: ['営業部（えいぎょうぶ）の田中（たなか）と申（もう）します', '田中（たなか）と申（もう）します', '営業部（えいぎょうぶ）の田中（たなか）でございます'],
+    why: '申す (humble) pour se présenter, ou でございます.', bad: [['おっしゃい', 'おっしゃる est respectueux : jamais pour soi.'], ['さま', 'On ne met jamais 様 à son propre nom.']] },
+  { who: 'bucho', ctx: 'Tu demandes à ta directrice si elle a lu le rapport.', fr: 'Directrice, avez-vous lu le rapport ?', hint: 'ご覧（らん）になる',
+    a: ['部長（ぶちょう）、報告書（ほうこくしょ）をご覧（らん）になりましたか', '報告書（ほうこくしょ）をご覧（らん）になりましたか', '部長（ぶちょう）、報告書（ほうこくしょ）はご覧（らん）になりましたか', '報告書（ほうこくしょ）はご覧（らん）になりましたか'],
+    why: 'ご覧になる : le « voir / lire » respectueux pour l’action d’un supérieur.', bad: [['はいけん', '拝見する est humble : c’est pour TOI qui regardes.'], ['ごらんになられ', 'Double keigo : ご覧になる + られる.']] },
+  { who: 'shacho', ctx: 'Tu proposes un café au président.', fr: 'Président, prendrez-vous un café ?', hint: '召（め）し上（あ）がる',
+    a: ['社長（しゃちょう）、コーヒーを召（め）し上（あ）がりますか', 'コーヒーを召（め）し上（あ）がりますか', '社長（しゃちょう）、コーヒーはいかがですか', 'コーヒーはいかがですか', 'コーヒーをお召（め）し上（あ）がりになりますか'],
+    why: '召し上がる (manger/boire respectueux), ou plus délicat : いかがですか.', bad: [['いただき', 'いただく est humble : c’est pour soi.']] },
+  { who: 'client', ctx: 'Tu préviens le client que tu passeras demain.', fr: 'Je passerai chez vous demain à 10 h.', hint: '伺（うかが）う',
+    a: ['明日（あした）十時（じゅうじ）に伺（うかが）います', '明日（みょうにち）十時（じゅうじ）に伺（うかが）います', '明日（あした）の十時（じゅうじ）に伺（うかが）います', '明日（あした）十時（じゅうじ）にお伺（うかが）いします'],
+    why: '伺う : je vais chez vous, et je vous élève.', bad: [['いらっしゃ', 'いらっしゃる élève le sujet : ici c’est toi qui viens.'], ['まいり', '参る est poli mais n’élève pas le client : préfère 伺う.']] },
+  { who: 'bucho', ctx: 'Ta directrice t’offre un souvenir.', fr: 'Merci beaucoup. Je l’accepte volontiers.', hint: 'いただく',
+    a: ['ありがとうございます。遠慮（えんりょ）なくいただきます', 'ありがとうございます。ありがたくいただきます', 'ありがとうございます。いただきます'],
+    why: 'いただく : recevoir (humble).', bad: [['めしあが', '召し上がる est respectueux : jamais pour soi.']] },
+  { who: 'kacho', ctx: 'Tu demandes au chef de relire ton e-mail.', fr: 'Pourriez-vous vérifier cet e-mail, s’il vous plaît ?', hint: '〜ていただけませんか',
+    a: ['このメールを確認（かくにん）していただけませんか', 'このメールをご確認（かくにん）いただけませんか', 'このメールを確認（かくにん）していただけますか', 'このメールをご確認（かくにん）いただけますか', 'このメールを確認（かくにん）していただけないでしょうか', 'このメールをご確認（かくにん）いただけないでしょうか'],
+    why: '〜ていただけませんか : la demande humble et indirecte à un supérieur.', bad: [['してください$', 'してください est correct mais trop direct pour un chef.'], ['くれ', 'くれる est familier.']] },
+  { who: 'client', ctx: 'Tu guides le client vers la salle de réunion.', fr: 'Je vous conduis à la salle de réunion.', hint: 'ご〜いたす',
+    a: ['会議室（かいぎしつ）へご案内（あんない）いたします', '会議室（かいぎしつ）までご案内（あんない）いたします', '会議室（かいぎしつ）にご案内（あんない）いたします', '会議室（かいぎしつ）へご案内（あんない）します', '会議室（かいぎしつ）までご案内（あんない）します'],
+    why: 'ご〜いたす (ou ご〜する) : humble, c’est toi qui guides.', bad: [['ごあんないになり', 'ご〜になる est respectueux : c’est TOI qui guides.']] },
+  { who: 'phone', ctx: 'Un client demande ta directrice Takeda, qui est sortie.', fr: 'Je suis désolé, Takeda est sortie pour le moment.', hint: 'ウチ・ソト・おる',
+    a: ['申（もう）し訳（わけ）ございません。武田（たけだ）はただいま外出（がいしゅつ）しております', '申（もう）し訳（わけ）ございません。武田（たけだ）は外出（がいしゅつ）しております', '申（もう）し訳（わけ）ありません。武田（たけだ）はただいま外出（がいしゅつ）しております'],
+    why: 'ウチ・ソト : face à un client, ta directrice est de ton camp. Nom sans titre + おる (humble).', bad: [['ぶちょう', 'Pas de titre pour ton propre supérieur face à un client.'], ['いらっしゃ', 'On n’élève pas son propre camp face à l’extérieur.'], ['さん', 'Pas de さん pour quelqu’un de ton propre camp.']] },
+  { who: 'kacho', ctx: 'Tu demandes au chef s’il emporte le dossier.', fr: 'Chef, emportez-vous aussi ce dossier ?', hint: 'お〜になる',
+    a: ['課長（かちょう）、このファイルもお持（も）ちになりますか', 'このファイルもお持（も）ちになりますか', '課長（かちょう）、この資料（しりょう）もお持（も）ちになりますか', 'この資料（しりょう）もお持（も）ちになりますか'],
+    why: 'C’est le chef qui porte : お持ちになる (respect).', bad: [['おもちします', 'お持ちする est humble : tu demandes en fait si TOI tu portes.']] },
+  { who: 'bucho', ctx: 'Tu dois partir avant ta directrice.', fr: 'Je me retire avant vous.', hint: 'お先（さき）に・失礼（しつれい）いたします',
+    a: ['お先（さき）に失礼（しつれい）いたします', 'お先（さき）に失礼（しつれい）します'],
+    why: 'La formule consacrée pour quitter le bureau avant les autres.', bad: [['かえり', 'On ne dit pas simplement « je rentre » : utilise la formule お先に失礼いたします.']] },
+  { who: 'client', ctx: 'Tu demandes son nom à un client.', fr: 'Excusez-moi, puis-je vous demander votre nom ?', hint: '恐（おそ）れ入（い）りますが・伺（うかが）う',
+    a: ['恐（おそ）れ入（い）りますが、お名前（なまえ）を伺（うかが）ってもよろしいでしょうか', '恐（おそ）れ入（い）りますが、お名前（なまえ）を伺（うかが）ってもよろしいですか', '失礼（しつれい）ですが、お名前（なまえ）を伺（うかが）ってもよろしいでしょうか', '恐（おそ）れ入（い）りますが、お名前（なまえ）をお聞（き）きしてもよろしいでしょうか'],
+    why: 'Coussin + 伺う (humble) + よろしいでしょうか.', bad: [['なんですか', 'Trop direct pour un client.']] },
+  { who: 'shacho', ctx: 'Le président demande si tu connais M. Ishida.', fr: 'Oui, je le connais.', hint: '存（ぞん）じ上（あ）げる',
+    a: ['はい、存（ぞん）じ上（あ）げております', 'はい、存（ぞん）じております', 'はい、存（ぞん）じ上（あ）げています'],
+    why: '存じ上げる : connaître une personne élevée (humble).', bad: [['ごぞんじ', 'ご存じ est respectueux : pour l’autre.']] },
+  { who: 'client', ctx: 'Tu remercies un client de sa venue.', fr: 'Merci d’être venu aujourd’hui.', hint: '本日（ほんじつ）・お越（こ）しいただく',
+    a: ['本日（ほんじつ）はお越（こ）しいただき、ありがとうございます', '本日（ほんじつ）はお越（こ）しいただきありがとうございました', '本日（ほんじつ）はお越（こ）しくださり、ありがとうございます', '本日（ほんじつ）はお越（こ）しくださいまして、ありがとうございます', '本日（ほんじつ）はお越（こ）しいただきまして、ありがとうございます', '本日（ほんじつ）はお越（こ）しいただき、ありがとうございました'],
+    why: 'お越しいただき (humble) ou お越しくださり (respect) : les deux sont corrects.', bad: [['きて', 'Trop neutre : utilise お越しいただく.']] },
+  { who: 'bucho', ctx: 'Tu veux savoir quand ta directrice part à Osaka.', fr: 'Quand partez-vous à Osaka ?', hint: 'いらっしゃる',
+    a: ['いつ大阪（おおさか）にいらっしゃいますか', 'いつ大阪（おおさか）へいらっしゃいますか', '大阪（おおさか）にはいつ行（い）かれますか', '大阪（おおさか）へはいついらっしゃいますか', '大阪（おおさか）にはいついらっしゃいますか', 'いつ大阪（おおさか）に行（い）かれますか'],
+    why: 'いらっしゃる (ou 行かれる) pour le déplacement d’un supérieur.', bad: [['まいり', '参る est humble : jamais pour l’action d’un supérieur.'], ['うかがい', '伺う est humble : jamais pour l’action d’un supérieur.']] },
+  { who: 'client', ctx: 'Tu refuses poliment un retour d’article.', fr: 'Je suis désolé, mais nous ne pouvons pas accepter les retours.', hint: '〜かねます',
+    a: ['申（もう）し訳（わけ）ございませんが、返品（へんぴん）はお受（う）けいたしかねます', '申（もう）し訳（わけ）ございませんが、返品（へんぴん）はお受（う）けしかねます', '申（もう）し訳（わけ）ございませんが、返品（へんぴん）は承（うけたまわ）りかねます', '申（もう）し訳（わけ）ありませんが、返品（へんぴん）はお受（う）けしかねます'],
+    why: '〜かねます : refus formel et feutré.', bad: [['かねません', '〜かねません veut dire l’inverse !'], ['できません', 'できません est correct mais sec : préfère 〜かねます.']] },
+  { who: 'bucho', ctx: 'Tu veux partir plus tôt demain.', fr: 'Pourrais-je partir plus tôt demain ?', hint: '〜させていただく',
+    a: ['明日（あした）、早退（そうたい）させていただけませんか', '明日（あした）、早退（そうたい）させていただけないでしょうか', '明日（あした）は早（はや）めに帰（かえ）らせていただけませんか', '明日（あした）、早退（そうたい）させていただいてもよろしいでしょうか', '明日（あした）、早退（そうたい）してもよろしいでしょうか', '明日（あした）、早（はや）めに帰（かえ）らせていただけないでしょうか'],
+    why: 'させていただけませんか : la décision reste à ta directrice.', bad: [['させていただきます$', 'Tu décides à sa place : demande la permission.']] },
+  { who: 'client', ctx: 'Tu informes le client que tu le recontacteras.', fr: 'Je vous contacterai dès que possible.', hint: 'ご〜いたす',
+    a: ['できるだけ早（はや）くご連絡（れんらく）いたします', 'なるべく早（はや）くご連絡（れんらく）いたします', '早急（さっきゅう）にご連絡（れんらく）いたします', 'できるだけ早（はや）くご連絡（れんらく）します', 'すぐにご連絡（れんらく）いたします'],
+    why: 'ご連絡いたします : humble et soigné.', bad: [['ごれんらくになり', 'ご〜になる est respectueux : c’est toi qui contactes.'], ['ごれんらくください', 'Ça, c’est demander au client de contacter.']] },
+  { who: 'kacho', ctx: 'Tu demandes au chef de répéter.', fr: 'Pourriez-vous répéter, s’il vous plaît ?', hint: 'おっしゃる・〜ていただけますか',
+    a: ['もう一度（いちど）おっしゃっていただけますか', 'もう一度（いちど）おっしゃっていただけませんか', '恐（おそ）れ入（い）りますが、もう一度（いちど）おっしゃっていただけますか', 'すみません、もう一度（いちど）おっしゃっていただけますか', 'もう一度（いちど）おっしゃっていただけないでしょうか'],
+    why: 'おっしゃる (respect) + ていただけますか (demande humble).', bad: [['もうして', '申す est humble : pas pour ce que dit un supérieur.']] },
+];
+
 export default function salaryman(root, { settings, saveBest }) {
   const furi = settings.furigana !== 'never';
   let pool, i, score, trust, streak, best, lvl, timer = null;
 
-  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('会社') }), 'Salaryman'), hud);
+  const head = hud => h('header.game-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('会社') }), 'Salaryman 「敬語」'), hud);
 
   function menu() {
     root.replaceChildren(head(null), h('section.sm-intro.card',
@@ -123,7 +188,11 @@ export default function salaryman(root, { settings, saveBest }) {
           [[1, '新人（しんじん）研修（けんしゅう）', 'Stage d’intégration', 'Salutations, formules, se présenter.'],
             [2, '営業部（えいぎょうぶ）', 'Service commercial', 'Respect et humilité au quotidien.'],
             [3, '本社（ほんしゃ）', 'Siège', 'ウチ・ソト, téléphone, pièges classiques.']].map(([l, jp, fr, d]) =>
-            h('button.sm-level', { type: 'button', onclick: () => start(l) }, h('span', { lang: 'ja', html: ruby(jp, true) }), h('strong', fr), h('small', d)))))));
+            h('button.sm-level', { type: 'button', onclick: () => start(l) }, h('span', { lang: 'ja', html: ruby(jp, true) }), h('strong', fr), h('small', d)))),
+        h('h3', 'Ou écris toi-même'),
+        h('div.sm-levels', h('button.sm-level.sm-theme-btn', { type: 'button', onclick: startTheme },
+          h('span', { lang: 'ja', html: ruby('作文（さくぶん）・敬語（けいご）', true) }), h('strong', 'Thème keigo'),
+          h('small', 'Une phrase en français à dire à un supérieur ou un client : écris-la en japonais, en keigo.'))))));
   }
 
   function start(level) {
@@ -213,6 +282,95 @@ export default function salaryman(root, { settings, saveBest }) {
         h('a.btn.ghost', { href: '#/jeux' }, 'Autres jeux'))));
     if (record) toast('新記録！ Nouveau record au bureau.');
     void timer;
+  }
+
+  // --- 作文・敬語 : phrase en français → japonais en keigo, écrit au clavier -------------------
+  function startTheme() {
+    pool = shuffle(T).slice(0, 8);
+    i = 0; score = 0; streak = 0; best = 0; lvl = 'theme';
+    nextTheme();
+  }
+  function nextTheme() {
+    if (i >= pool.length) return endTheme();
+    const t = pool[i], w = WHO[t.who];
+    let tries = 0, hints = 0, done = false;
+    const input = h('input.type-answer', { type: 'text', lang: 'ja', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder: '敬語で…', 'aria-label': 'Ta phrase en japonais (keigo)' });
+    const romajiBox = kanaKeyboardToggle(input, {
+      get: () => { try { return St.getSettings().romaji ?? localStorage.getItem('sakura.theme.romaji') === '1'; } catch { return false; } },
+      set: on => { try { localStorage.setItem('sakura.theme.romaji', on ? '1' : '0'); } catch {} St.setSettings({ romaji: on }); } });
+    const fb = h('div.sm-feedback', { 'aria-live': 'polite' });
+    const hintBox = h('div.sm-hints');
+    const hintBtn = h('button.chip-btn', { type: 'button', onclick: () => {
+      const steps = [() => h('p', h('strong', 'Formes à employer : '), h('span', { lang: 'ja', html: ruby(t.hint, true) })),
+        () => h('p', h('strong', 'Début : '), h('span', { lang: 'ja' }, [...kana(t.a[0])].slice(0, Math.ceil([...kana(t.a[0])].length / 3)).join('') + '…'))];
+      if (hints < steps.length) { hintBox.append(steps[hints++]()); play('cursor'); }
+      if (hints >= steps.length) hintBtn.disabled = true;
+      input.focus();
+    } }, 'Indice');
+    const giveBtn = h('button.chip-btn.ghost', { type: 'button', onclick: () => finish(false, true) }, 'Voir la réponse');
+    const send = h('button.btn.primary', { type: 'button', onclick: () => check() }, 'Dire');
+    smoothType(input);
+    const scoreEl = h('b', String(score));
+    const hud = h('div.hud.sm-hud', h('span.sm-clock', h('b', TIMES[i] || '18:00'), h('small', `${i + 1}/${pool.length}`)), h('span', 'Score ', scoreEl));
+    const card = h('div.sm-card.sm-theme',
+      h('div.sm-speaker', { style: { '--c': w.c } },
+        h('div.sm-portrait', { 'aria-hidden': 'true' }, h('span', { lang: 'ja' }, w.k)),
+        h('div', h('p.sm-who', { lang: 'ja', html: ruby(w.jp, true) }), h('p.sm-name', w.name), h('p.small', w.rank))),
+      h('p.sm-ctx', t.ctx),
+      h('div.sm-bubble.fr-say', h('small', 'Ce que tu veux dire'), h('p', t.fr)),
+      h('p.kicker', 'Dis-le en japonais, en keigo'),
+      h('div.answer-bar.sm-bar-in', input, send),
+      h('div.type-tools', hintBtn, giveBtn, romajiBox),
+      hintBox, fb);
+    root.replaceChildren(head(hud), h('div.sm-stage', { style: { '--c': w.c } }, h('span.sm-bgk', { lang: 'ja', 'aria-hidden': 'true' }, w.k), card));
+    play('card'); setTimeout(() => input.focus(), 60);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); done ? nextBtn?.click() : check(); } });
+    let nextBtn = null;
+    function check() {
+      const v = normJa(input.value.trim());
+      if (!v) return input.focus();
+      if (t.a.some(a => answerRegex(a).test(v))) return finish(true);
+      tries++; play('wrong');
+      card.classList.remove('sm-shake'); void card.offsetWidth; card.classList.add('sm-shake');
+      const close = t.bad?.find(([re]) => new RegExp(re).test(v));
+      fb.replaceChildren(h('p.sm-verdict.ko', { lang: 'ja' }, '「……」'),
+        h('p', close ? close[1] : tries === 1 ? 'Pas tout à fait. Vérifie qui fait l’action (respect ou humilité ?) et la formule de politesse.' : 'Toujours pas. Prends un indice, ou regarde la réponse.'));
+      if (tries >= 3) finish(false);
+      else input.select();
+    }
+    function finish(ok, gaveUp = false) {
+      done = true; input.readOnly = true; send.disabled = true; hintBtn.disabled = true; giveBtn.disabled = true;
+      if (ok) {
+        streak++; best = Math.max(best, streak);
+        const gain = Math.max(40, 150 - tries * 40 - hints * 30) + Math.min(streak - 1, 5) * 15;
+        score += gain; scoreEl.textContent = String(score);
+        play('correct'); hitFx(input.closest('.answer-bar'), { card, stamp: streak >= 3 ? `COMBO ×${streak}` : HIT_WORDS[Math.floor(Math.random() * HIT_WORDS.length)] });
+        fb.replaceChildren(h('p.sm-verdict.ok', { lang: 'ja' }, t.who === 'client' || t.who === 'phone' ? '「承知いたしました。」' : '「うん、完璧だ。」'),
+          h('p', t.why), t.a.length > 1 ? h('p.small', 'Autres façons de le dire : ', h('span', { lang: 'ja', html: t.a.filter(a => !answerRegex(a).test(normJa(input.value))).map(a => ruby(a, true)).join(' ／ ') })) : null,
+          h('p.small', `+${gain} points`));
+      } else {
+        streak = 0; play(gaveUp ? 'back' : 'wrong');
+        fb.replaceChildren(h('p.sm-verdict.ko', { lang: 'ja' }, '「ちょっと、それは……」'),
+          h('p', h('strong', 'On pouvait dire : '), h('span', { lang: 'ja', html: ruby(t.a[0], true) })),
+          t.a.length > 1 ? h('p.small', 'Ou : ', h('span', { lang: 'ja', html: t.a.slice(1).map(a => ruby(a, true)).join(' ／ ') })) : null,
+          h('p', t.why));
+      }
+      nextBtn = h('button.btn.primary', { type: 'button', onclick: () => { i++; nextTheme(); } }, i + 1 >= pool.length ? 'Fin de journée' : 'Suite ▶');
+      fb.append(h('div.actions.left', nextBtn));
+      setTimeout(() => nextBtn.focus(), 50);
+    }
+  }
+  function endTheme() {
+    const record = saveBest(score, 'theme');
+    root.replaceChildren(head(null), h('section.card.finish.sm-end',
+      h('p.kicker', { lang: 'ja', html: ruby('お疲（つか）れ様（さま）でした！', true) }),
+      h('h2', 'Fin du thème keigo'),
+      h('p', `Score : ${score} · meilleure série : ${best}`),
+      record ? h('p.small', 'Nouveau record !') : null,
+      h('div.actions',
+        h('button.btn.primary', { type: 'button', onclick: startTheme }, 'Encore'),
+        h('button.btn', { type: 'button', onclick: menu }, 'Menu'),
+        h('a.btn', { href: '#/keigo' }, 'Guide du keigo'))));
   }
 
   menu();

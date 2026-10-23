@@ -3292,3 +3292,9 @@ html.lite .p3-head h1 .jp-head .tk { animation: none; }
 .p3-head h1 .jp-head .tk { text-shadow: 4px 4px 0 var(--sakura-deep), 8px 8px 0 rgba(70, 217, 255, .5); animation: p3-kanji-shade 3s ease-in-out infinite !important; }
 @media (prefers-reduced-motion: reduce) { .p3-head h1 .jp-head .tk { animation: none !important; } }
 html.lite .p3-head h1 .jp-head .tk, html.reduce-motion .p3-head h1 .jp-head .tk { animation: none !important; }
+.sm-theme .sm-bar-in { margin: 6px 0 10px; display: flex; gap: 8px; align-items: center; }
+.sm-theme .sm-bar-in input { flex: 1; min-width: 0; font-size: 1.25rem; }
+.sm-bubble.fr-say small { display: block; font: 900 italic .7rem var(--display); letter-spacing: .14em; color: #1D45B8; text-transform: uppercase; }
+.sm-bubble.fr-say p { font-size: 1.2rem; }
+.sm-hints p { margin: 6px 0; padding: 6px 10px; background: rgba(243, 247, 255, .06); border-left: 3px solid var(--cyan); }
+.sm-theme-btn { border-color: var(--sakura); }
