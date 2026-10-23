@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: { group: apps, cancel-in-progress: true }
+concurrency: { group: apps, cancel-in-progress: false }
 
 jobs:
   android:
@@ -34,7 +34,9 @@ jobs:
         with: { name: windows, path: desktop/dist/sakura-no-bunpou-windows-setup.exe }
 
   mac:
-    runs-on: macos-latest
+    needs: release                 # publié à part : les autres plateformes n'attendent pas le Mac
+    runs-on: macos-14
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -47,8 +49,9 @@ jobs:
           codesign --force --deep --sign - "$APP"     # signature ad hoc : indispensable sur Mac Apple Silicon
           mkdir dmg && cp -R "$APP" dmg/ && ln -s /Applications dmg/Applications
           hdiutil create -volname "Sakura no Bunpou" -srcfolder dmg -ov -format UDZO sakura-no-bunpou-mac.dmg
-      - uses: actions/upload-artifact@v4
-        with: { name: mac, path: desktop/sakura-no-bunpou-mac.dmg }
+      - name: Ajouter le .dmg à la release « app »
+        uses: softprops/action-gh-release@v2
+        with: { tag_name: app, files: desktop/sakura-no-bunpou-mac.dmg }
 
   linux:
     runs-on: ubuntu-latest
@@ -62,7 +65,7 @@ jobs:
         with: { name: linux, path: desktop/dist/sakura-no-bunpou-linux.AppImage }
 
   release:
-    needs: [android, windows, mac, linux]
+    needs: [android, windows, linux]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
