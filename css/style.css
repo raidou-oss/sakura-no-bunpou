@@ -3387,3 +3387,13 @@ html.lite .p3-head h1 .jp-head .tk, html.reduce-motion .p3-head h1 .jp-head .tk 
 /* Logo 桜の文法 dans le menu (remplace l'ancienne lune) */
 img.brand-mark { width: 34px; height: 34px; border-radius: 22%; background: none; -webkit-mask: none; mask: none; box-shadow: 0 0 16px rgba(255, 148, 203, .35); transition: transform .3s cubic-bezier(.2, 1.6, .4, 1); }
 .brand:hover img.brand-mark { transform: rotate(-8deg) scale(1.08); }
+.ia-promo { position: relative; }
+.ia-home { margin: 18px 0; animation: ia-in .55s cubic-bezier(.2, .9, .3, 1.2) .25s both; }
+.ia-close { position: absolute; top: 6px; right: 8px; width: 26px; height: 26px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .08); color: inherit; font-size: 1.1rem; line-height: 1; cursor: pointer; opacity: .6; }
+.ia-close:hover { opacity: 1; background: rgba(255, 140, 198, .25); }
+.ia-home .ia-arrow { margin-right: 18px; }
+.ia-promo.bye { transition: opacity .3s, transform .3s; opacity: 0; transform: translateX(30px); }
+.hero-copy .ia-home { max-width: 440px; margin: 22px 0 0; padding: 10px 14px; gap: 12px; }
+.hero-copy .ia-home img { width: 44px; height: 44px; border-radius: 11px; }
+.hero-copy .ia-home b { font-size: 1.08rem; }
+.hero-copy .ia-home small { font-size: .78rem; }

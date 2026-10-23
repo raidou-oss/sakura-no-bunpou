@@ -1,12 +1,12 @@
-import { h, jr } from './util.js?v=20261024000805';
-import { play } from './sfx.js?v=20261024000805';
+import { h, jr } from './util.js?v=20261024002705';
+import { play } from './sfx.js?v=20261024002705';
 
 // Page « Installer l'app » : le même site, en application (moteur Chromium partout où c'est possible)
 const DL = 'https://github.com/raidou-oss/sakura-no-bunpou/releases/download/app/';
 const ua = navigator.userAgent;
 const IOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const DEVICE = IOS ? 'ios' : /Android/.test(ua) ? 'android' : /Windows/.test(ua) ? 'windows' : /Mac/.test(ua) ? 'mac' : /Linux|CrOS/.test(ua) ? 'linux' : null;
-const IN_APP = /SakuraApp|Electron/.test(ua) || matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+export const IN_APP = /SakuraApp|Electron/.test(ua) || matchMedia('(display-mode: standalone)').matches || navigator.standalone;
 
 let deferred = null;   // invitation d'installation du navigateur (Chrome, Edge…)
 addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; document.querySelector('.ia-pwa')?.removeAttribute('hidden'); });
@@ -51,4 +51,23 @@ export function installPage(main) {
     pwa,
     h('div.ia-grid', order.map(card)),
     h('p.section-note', 'Applis de test, gratuites et non signées : c’est pour ça que ton système demande une confirmation la première fois. Ta progression suit ton compte, quel que soit l’appareil.')].filter(Boolean));
+}
+
+/** Bandeau « Installer l'app ». À l'accueil (home) : masqué dans l'app, et refermable. Dans les Réglages : toujours là. */
+const HIDE_KEY = 'sakura:appPromoHidden';
+export function appPromo({ home = false } = {}) {
+  let hidden = false;
+  try { hidden = localStorage.getItem(HIDE_KEY) === '1'; } catch {}
+  if (home && (IN_APP || hidden)) return null;
+  const sub = IN_APP ? '✔ Tu utilises déjà l’app' : 'Android · iPhone · Windows · Mac · Linux';
+  const el = h(`a.card.ia-promo${home ? '.ia-home' : ''}`, { href: '#/app' },
+    h('img', { src: 'img/logo-192.png', alt: '', width: 56, height: 56 }),
+    h('span', h('b', home ? 'Installe l’app 桜の文法' : 'Installer l’app 桜の文法'), h('small', sub)),
+    h('span.ia-arrow', '›'),
+    home ? h('button.ia-close', { type: 'button', 'aria-label': 'Masquer', title: 'Masquer', onclick: e => {
+      e.preventDefault(); e.stopPropagation();
+      try { localStorage.setItem(HIDE_KEY, '1'); } catch {}
+      el.classList.add('bye'); setTimeout(() => el.remove(), 300);
+    } }, '×') : null);
+  return el;
 }
