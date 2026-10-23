@@ -1,5 +1,6 @@
 <resources>
     <color name="night">#040A22</color>
+    <color name="icon_bg">#16193B</color>
     <!-- Fond bleu nuit dès le lancement : pas d'écran blanc -->
     <style name="Sakura" parent="android:Theme.Material.NoActionBar">
         <item name="android:windowBackground">@color/night</item>

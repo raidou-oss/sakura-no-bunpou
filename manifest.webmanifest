@@ -1,0 +1,33 @@
+{
+ "name": "桜の文法 — grammaire japonaise",
+ "short_name": "桜の文法",
+ "id": "/sakura-no-bunpou/",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#040A22",
+ "theme_color": "#040A22",
+ "lang": "fr",
+ "description": "Grammaire et vocabulaire japonais du N5 au N1, keigo, mini-jeux.",
+ "icons": [
+  {
+   "src": "img/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "img/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "img/icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "sakura-no-bunpou",
+  "productName": "Sakura no Bunpou",
+  "version": "1.0.0",
+  "description": "桜の文法 — grammaire japonaise du N5 au N1",
+  "author": "raidou-oss",
+  "license": "UNLICENSED",
+  "main": "main.js",
+  "scripts": { "start": "electron ." },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "io.github.raidou.sakura",
+    "productName": "Sakura no Bunpou",
+    "artifactName": "sakura-no-bunpou-${os}-${arch}.${ext}",
+    "files": ["main.js", "offline.html", "icon.png"],
+    "directories": { "buildResources": "build", "output": "dist" },
+    "compression": "maximum",
+    "electronLanguages": ["fr", "en-US", "ja"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }], "icon": "build/icon.png" },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "桜の文法",
+      "artifactName": "sakura-no-bunpou-windows-setup.${ext}"
+    },
+    "mac": { "target": ["dir"], "category": "public.app-category.education", "icon": "build/icon.png", "identity": null },
+    "linux": { "target": ["AppImage"], "category": "Education", "artifactName": "sakura-no-bunpou-linux.${ext}" }
+  }
+}

@@ -1,16 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261023221051';
-import * as D from './data.js?v=20261023221051';
-import * as S from './srs.js?v=20261023221051';
-import { wallpaperSVG } from './wallpaper.js?v=20261023221051';
-import * as C from './cloud.js?v=20261023221051';
-import { play } from './sfx.js?v=20261023221051';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261023221051';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261023221051';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261023232605';
+import * as D from './data.js?v=20261023232605';
+import * as S from './srs.js?v=20261023232605';
+import { wallpaperSVG } from './wallpaper.js?v=20261023232605';
+import * as C from './cloud.js?v=20261023232605';
+import { play } from './sfx.js?v=20261023232605';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261023232605';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261023232605';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261023221051';
-import * as L from './links.js?v=20261023221051';
+import { GAMES } from './gamelist.js?v=20261023232605';
+import * as L from './links.js?v=20261023232605';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();

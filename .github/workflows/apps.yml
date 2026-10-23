@@ -1,0 +1,87 @@
+name: Apps (Android, Windows, Mac, Linux)
+on:
+  push:
+    paths: ['android/**', 'desktop/**', '.github/workflows/apps.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: apps, cancel-in-progress: true }
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.9' }
+      - working-directory: android
+        run: gradle --no-daemon assembleRelease
+      - run: cp android/app/build/outputs/apk/release/app-release.apk sakura-no-bunpou.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: android, path: sakura-no-bunpou.apk }
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - working-directory: desktop
+        run: npm install --no-audit --no-fund && npx electron-builder --win --publish never
+      - uses: actions/upload-artifact@v4
+        with: { name: windows, path: desktop/dist/sakura-no-bunpou-windows-setup.exe }
+
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - working-directory: desktop
+        run: |
+          npm install --no-audit --no-fund
+          npx electron-builder --mac --universal --publish never
+          APP="dist/mac-universal/Sakura no Bunpou.app"
+          codesign --force --deep --sign - "$APP"     # signature ad hoc : indispensable sur Mac Apple Silicon
+          mkdir dmg && cp -R "$APP" dmg/ && ln -s /Applications dmg/Applications
+          hdiutil create -volname "Sakura no Bunpou" -srcfolder dmg -ov -format UDZO sakura-no-bunpou-mac.dmg
+      - uses: actions/upload-artifact@v4
+        with: { name: mac, path: desktop/sakura-no-bunpou-mac.dmg }
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - working-directory: desktop
+        run: npm install --no-audit --no-fund && npx electron-builder --linux --publish never
+      - uses: actions/upload-artifact@v4
+        with: { name: linux, path: desktop/dist/sakura-no-bunpou-linux.AppImage }
+
+  release:
+    needs: [android, windows, mac, linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: out, merge-multiple: true }
+      - run: ls -la out
+      - name: Release « app » (liens fixes)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: app
+          name: 桜の文法 — applications
+          make_latest: true
+          body: |
+            Le site 桜の文法 en application (moteur Chromium), build ${{ github.run_number }}.
+            • Android : sakura-no-bunpou.apk
+            • Windows : sakura-no-bunpou-windows-setup.exe
+            • Mac (Intel + Apple Silicon) : sakura-no-bunpou-mac.dmg
+            • Linux : sakura-no-bunpou-linux.AppImage
+            • iPhone / iPad : Safari → Partager → « Sur l'écran d'accueil »
+          files: out/*
+      - name: Ancien lien de l'APK
+        uses: softprops/action-gh-release@v2
+        with: { tag_name: apk-test, prerelease: true, files: out/sakura-no-bunpou.apk }
