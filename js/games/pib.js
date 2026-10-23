@@ -1,9 +1,9 @@
 // PIB RUSH : un montant tombe sur l'écran, écris-le en japonais (kanji ou kana) avant la fin du chrono.
 // Plus tu enchaînes, plus les nombres grossissent : de quelques yens au PIB d'un pays… et au-delà.
-import { h, jr, ruby, kanaKeyboardToggle, smoothType, hitFx, HIT_WORDS, toast } from '../util.js?v=20261024003117';
-import * as S from '../srs.js?v=20261024003117';
-import { play } from '../sfx.js?v=20261024003117';
-import { toJapanese, checkNumber, by4, by3 } from '../numbers.js?v=20261024003117';
+import { h, jr, ruby, kanaKeyboardToggle, smoothType, hitFx, HIT_WORDS, toast } from '../util.js?v=20261024003835';
+import * as S from '../srs.js?v=20261024003835';
+import { play } from '../sfx.js?v=20261024003835';
+import { toJapanese, checkNumber, by4, by3 } from '../numbers.js?v=20261024003835';
 
 const TIME = 60;
 const FLAVOR = [

@@ -1,6 +1,6 @@
-import { h, jr } from './util.js?v=20261024003117';
-import { play } from './sfx.js?v=20261024003117';
-import * as S from './srs.js?v=20261024003117';
+import { h, jr } from './util.js?v=20261024003835';
+import { play } from './sfx.js?v=20261024003835';
+import * as S from './srs.js?v=20261024003835';
 
 // Page « Installer l'app » : le même site, en application (moteur Chromium partout où c'est possible)
 const DL = 'https://github.com/raidou-oss/sakura-no-bunpou/releases/download/app/';
@@ -63,9 +63,11 @@ export function markAppUse() {
   S.setExtra('usedApp', { ...used, [k]: Date.now() });
 }
 
-/** Bandeau « Installe l'app » de l'accueil : jamais dans l'app, ni pour un compte qui s'est déjà connecté depuis une app */
+/** Bandeau « Installe l'app » de l'accueil : jamais dans l'app, ni sur un type d'appareil où ce compte s'est déjà connecté depuis l'app
+ *  (l'app Android utilisée → plus de bandeau sur les navigateurs Android, mais toujours sur PC, et inversement) */
 export function appPromo() {
-  if (IN_APP || Object.keys(S.getExtra('usedApp', {}) || {}).length) return null;
+  const used = S.getExtra('usedApp', {}) || {};
+  if (IN_APP || used[DEVICE || 'autre']) return null;
   return h('a.card.ia-promo.ia-home', { href: '#/app' },
     h('img', { src: 'img/logo-192.png', alt: '', width: 56, height: 56 }),
     h('span', h('b', 'Installe l’app 桜の文法'), h('small', 'Android · iPhone · Windows · Mac · Linux')),
