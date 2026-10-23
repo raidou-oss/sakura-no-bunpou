@@ -2,10 +2,10 @@
 // particule, mot de vocabulaire, verbe conjugué, connecteur, forme grammaticale…
 // Découpage maison : plus long mot connu d'abord (vocabulaire N5→N1, points de grammaire, particules),
 // avec une « déconjugaison » simple des verbes et adjectifs.
-import { h, ruby } from './util.js?v=20261023214328';
-import { miniStrokes } from './strokes.js?v=20261023214328';
-import * as D from './data.js?v=20261023214328';
-import * as S from './srs.js?v=20261023214328';
+import { h, ruby } from './util.js?v=20261023215757';
+import { miniStrokes } from './strokes.js?v=20261023215757';
+import * as D from './data.js?v=20261023215757';
+import * as S from './srs.js?v=20261023215757';
 
 // --- Petits mots qui reviennent partout ----------------------------------------------------
 const PARTICLES = {
@@ -251,6 +251,8 @@ function rangeFor(map, start, end) {
 }
 
 // --- Bulle ---------------------------------------------------------------------------------
+const NUM_K = { 一: ['いち', '1'], 二: ['に', '2'], 三: ['さん', '3'], 四: ['よん・し', '4'], 五: ['ご', '5'], 六: ['ろく', '6'], 七: ['なな・しち', '7'], 八: ['はち', '8'], 九: ['きゅう・く', '9'], 十: ['じゅう', '10'], 百: ['ひゃく', '100'], 千: ['せん', '1 000'], 万: ['まん', '10 000'], 億: ['おく', '100 000 000 (10⁸)'], 兆: ['ちょう', '10¹²'], 京: ['けい', '10¹⁶'], 零: ['れい', '0'] };
+const KANJI = /[\u3400-\u9fff々]/;
 const KIND = { kata: 'Katakana', part: 'Particule', vocab: 'Vocabulaire', verb: 'Verbe', adj: 'Adjectif', conn: 'Connecteur', aux: 'Auxiliaire', gram: 'Forme grammaticale' };
 function bubbleBody(seg, text) {
   const info = seg.info, surface = text.slice(seg.start, seg.end);
@@ -259,6 +261,12 @@ function bubbleBody(seg, text) {
   }
   if (info.kind === 'kata') {
     return [h('div.gl-head', h('span.gl-jp', { lang: 'ja' }, surface), h('span.gl-tag', 'Katakana')), h('p.gl-text', 'Mot d’origine étrangère (ou nom propre) : il se lit tel qu’il s’écrit en katakana.')];
+  }
+  if (info.kind === 'kanji') {
+    const n = NUM_K[surface];
+    return [h('div.gl-head', h('span.gl-jp', { lang: 'ja' }, surface), h('span.gl-tag', n ? 'Nombre' : 'Kanji')),
+      h('p.gl-text', n ? [h('b', { lang: 'ja' }, n[0]), ` — ${n[1]}`] : 'Kanji hors du vocabulaire du site : voici son ordre des traits.'),
+      miniStrokes(surface)];
   }
   if (info.kind === 'gram') {
     return [h('div.gl-head', h('span.gl-jp', { lang: 'ja', html: ruby(D.gramLabel(info.g), true) }), h('span.gl-tag', `${KIND.gram} · ${D.LEVEL_NAMES[info.g.lv]}`)), h('p.gl-text', info.g.s)];
@@ -273,6 +281,16 @@ function bubbleBody(seg, text) {
 }
 
 const SELECTOR = 'p.jp, .type-sentence, .theme-answer .jp, .vx .jp, .dash-last, .narabe-answer, .gloss';
+const JA = /[\u3040-\u30ff\u3400-\u9fff々〆ヶ]/;
+// Zones où la bulle n'a pas de sens (menus, décor, titres animés, la bulle elle-même…)
+const NO_GLOSS = '.gloss-bubble, nav, .nav, .tabs, .segmented, .p3-head, .hud-date, [aria-hidden="true"], .answer-bar, textarea, input, select, button:not(.gloss), .ru, .page-sweep, .strokes, .mini-strokes, .online-list';
+/** Élément à expliquer sous le pointeur : les phrases prévues pour, sinon tout texte japonais du site */
+function glossTarget(t) {
+  if (!t?.closest || t.closest(NO_GLOSS)) return null;
+  const el = t.closest(SELECTOR) || t.closest('[lang="ja"]');
+  if (el) return el;
+  return [...t.childNodes].some(n => n.nodeType === 3 && JA.test(n.data)) ? t : null;
+}
 let bubble = null, current = null, hl = null;
 const cache = new WeakMap();
 const enabled = () => S.getSettings().gloss !== false;
@@ -305,13 +323,19 @@ async function showAt(el, x, y) {
     if (x >= b.left - 1 && x <= b.right + 1 && y >= b.top - 2 && y <= b.bottom + 2) { off = n.start + o; break; }
     if (o === cr.off - 1) return hide();
   }
-  const seg = entry.segs.find(s => off >= s.start && off < s.end);
-  if (!seg?.info) return hide();
+  let seg = entry.segs.find(s => off >= s.start && off < s.end);
+  if (!seg) return hide();
+  // Kanji absent du dictionnaire : on montre quand même le caractère et son ordre des traits
+  if (!seg.info) {
+    const k = off; const c = entry.text[k];
+    if (!KANJI.test(c || '')) return hide();
+    seg = { start: k, end: k + 1, info: { kind: 'kanji' } };
+  }
   const key = `${seg.start}:${seg.end}`;
   if (current?.el === el && current.key === key) return;
   current = { el, key };
   if (!bubble) { bubble = h('div.gloss-bubble', { role: 'tooltip' }); document.body.append(bubble); }
-  bubble.replaceChildren(...bubbleBody(seg, entry.text));
+  bubble.replaceChildren(...bubbleBody(seg, entry.text).filter(Boolean));
   const range = rangeFor(map, seg.start, seg.end);
   if (range && window.CSS?.highlights && window.Highlight) { hl = new Highlight(range); CSS.highlights.set('gloss', hl); }
   const rect = (range || el).getBoundingClientRect();
@@ -335,15 +359,15 @@ export function initGloss() {
     raf = requestAnimationFrame(() => {
       raf = 0;
       if (!enabled()) return hide();
-      const el = last.target.closest?.(SELECTOR);
-      if (!el || el.closest('.answer-bar, textarea, input, button:not(.gloss)')) return hide();
+      const el = glossTarget(last.target);
+      if (!el) return hide();
       showAt(el, last.clientX, last.clientY).catch(hide);
     });
   }, { passive: true });
   // Sur écran tactile : on touche un mot pour voir sa bulle, on touche ailleurs pour la fermer
   document.addEventListener('click', e => {
     if (!enabled() || matchMedia('(hover: hover)').matches) return;
-    const el = e.target.closest?.(SELECTOR);
+    const el = glossTarget(e.target);
     if (!el || e.target.closest('button, a, input')) return hide();
     showAt(el, e.clientX, e.clientY).catch(hide);
   });
