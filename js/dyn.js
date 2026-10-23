@@ -2,8 +2,8 @@
 //  · chaque clic sur un élément interactif frappe : onde de choc + étincelles au point touché, petit écrasement ;
 //  · à chaque page, le kanji du titre s'imprime (onde + étincelles), les jauges se remplissent, les nombres défilent ;
 //  · une bonne réponse dans un jeu déclenche l'impact des leçons.
-import { hitFx, reducedMotion, fxAt } from './util.js?v=20261023202148';
-import { play } from './sfx.js?v=20261023202148';
+import { hitFx, reducedMotion, fxAt } from './util.js?v=20261023203850';
+import { play } from './sfx.js?v=20261023203850';
 
 const TAP = '.btn, .tab, .segmented button, .lesson-card, .nav-list a, .game-tile, .unit, .member, .option, .chip-btn, .link-card, .level, .point, .oc-row, .online-row, .resume-chip, .tile, .kana-cell, .cf-row, .lc-tarot, button.dash-choice, .choice, .answer-btn';
 const lite = () => document.documentElement.classList.contains('lite');
@@ -31,6 +31,8 @@ function countUp(el, delay) {
   const to = Number(txt);
   if (to < 2) return;
   const t0 = performance.now() + delay, D = 800;
+  // Largeur réservée : le nombre qui défile ne pousse pas ses voisins
+  el.style.display = 'inline-block'; el.style.minWidth = `${el.getBoundingClientRect().width}px`; el.style.fontVariantNumeric = 'tabular-nums';
   el.textContent = '0';
   const step = now => {
     if (!el.isConnected) return;
@@ -40,12 +42,10 @@ function countUp(el, delay) {
   };
   requestAnimationFrame(step);
 }
-export function pageEnter(root = document.getElementById('main')) {
-  if (!root || reducedMotion()) return;
-  // Titre façon Persona : bandes qui balaient, mot en bandeau qui se dévoile lettre par lettre, grand mot en fond qui glisse
-  const head = root.querySelector('.p3-head');
-  if (head && !head.dataset.entered) {
-    head.dataset.entered = '1';
+/** Prépare le titre (lettres découpées, kanji penchés, détails) AVANT l'affichage : aucune mise en page ne bouge ensuite */
+export function decorateHead(head) {
+  if (!head || head.dataset.decorated) return;
+  head.dataset.decorated = '1';
     const word = head.querySelector('.ph-word');
     if (word && !word.dataset.split) {
       word.dataset.split = '1';
@@ -80,9 +80,24 @@ export function pageEnter(root = document.getElementById('main')) {
         mk('ph-tag', `<b>No.${String(idx).padStart(2, '0')}</b><i>${(head.querySelector('.ph-word')?.getAttribute('aria-label') || '').toUpperCase()} FILE</i>`),
         mk('ph-dots'),
         mk('ph-spark s1', '✦'), mk('ph-spark s2', '✦'), mk('ph-spark s3', '✧'),
-        mk('ph-chev', '<i>▶</i><i>▶</i><i>▶</i>'));
+      );
+      // Chevrons collés au bandeau (hors du flux : ils ne peuvent pas faire passer le titre à la ligne)
+      const w = head.querySelector('.ph-word');
+      if (w && !w.parentElement.classList.contains('ph-wordwrap')) {
+        const wrap = document.createElement('span'); wrap.className = 'ph-wordwrap';
+        w.replaceWith(wrap); wrap.append(w, mk('ph-chev', '<i>▶</i><i>▶</i><i>▶</i>'));
+      }
       h1.querySelectorAll('.ph-deco').forEach(d => d.setAttribute('aria-hidden', 'true'));
     }
+}
+
+export function pageEnter(root = document.getElementById('main')) {
+  if (!root || reducedMotion()) return;
+  // Titre façon Persona : bandes qui balaient, mot en bandeau qui se dévoile lettre par lettre, grand mot en fond qui glisse
+  const head = root.querySelector('.p3-head');
+  if (head && !head.dataset.entered) {
+    head.dataset.entered = '1';
+    decorateHead(head);
     if (!head.querySelector('.ph-slash')) head.prepend(Object.assign(document.createElement('span'), { className: 'ph-slash', ariaHidden: 'true', innerHTML: '<i></i><i></i><i></i>' }));
     head.classList.remove('p3-in'); void head.offsetWidth; head.classList.add('p3-in');
   }

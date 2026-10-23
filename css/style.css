@@ -3332,3 +3332,13 @@ html.lite .p3-head h1 .jp-head .tk, html.reduce-motion .p3-head h1 .jp-head .tk 
 .pib-groups { margin: 0 0 8px; min-height: 1.4em; font: 900 italic 1.2rem var(--display); color: var(--cyan); }
 .pib-input { font-size: 1.3rem; }
 .pib-fb { min-height: 1.6em; margin: 10px 0 0; font-weight: 700; }
+
+/* ===== Stabilité : rien ne doit faire bouger la mise en page ===== */
+.ph-wordwrap { position: relative; display: inline-flex; align-items: center; }
+.p3-head h1 .ph-chev { position: absolute; left: 100%; top: 50%; margin: 0 0 0 12px; transform: translateY(-50%) skewX(-10deg); white-space: nowrap; }
+/* Survol : on illumine sans déplacer (un déplacement vertical faisait « sauter » la carte au bord du pointeur) */
+@media (hover: hover) {
+  .lesson-card:hover, .game-tile:hover, .unit:hover, .member:hover, .link-card:hover, .level:hover, .point:hover { translate: none; }
+  .keigo-banner:hover, .nb-banner:hover, .sm-level:hover, .sm-level:focus-visible, .sl-chip:hover { translate: none; }
+}
+.stat-chip strong, .sc-num, .lv-big b, .hd-num { font-variant-numeric: tabular-nums; }

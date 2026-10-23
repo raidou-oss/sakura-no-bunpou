@@ -1,11 +1,11 @@
-import { reducedMotion } from './util.js?v=20261023202148';
+import { reducedMotion } from './util.js?v=20261023203850';
 // Survol « vivant » : la tuile grossit un peu, pivote vers la souris, un reflet suit le pointeur et l'ombre part à l'opposé.
 const SELECTOR = [
   '.kana-cell:not(.empty)', '.lesson-card', '.unit', '.game-tile', '.member', '.level', '.score-card', '.link-card',
   '.stat-chip', '.tarot', '.word-tile',
 ].join(',');
 const MAX = 9;            // degrés d'inclinaison au bord
-let cur = null, raf = 0, last = null;
+let cur = null, raf = 0, last = null, home = null;   // home : position de la tuile AVANT inclinaison
 
 function reset(el) {
   el.classList.remove('tilting');
@@ -17,7 +17,7 @@ function reset(el) {
 function apply() {
   raf = 0;
   if (!cur || !last) return;
-  const r = cur.getBoundingClientRect();
+  const r = home || cur.getBoundingClientRect();
   const px = Math.min(1, Math.max(0, (last.clientX - r.left) / r.width));
   const py = Math.min(1, Math.max(0, (last.clientY - r.top) / r.height));
   const dx = px - 0.5, dy = py - 0.5;
@@ -37,10 +37,14 @@ export function initTilt() {
   document.addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse') return;
     if (reducedMotion()) { if (cur) { reset(cur); cur = null; } return; }
-    const el = e.target.closest?.(SELECTOR);
+    // Hystérésis : tant que le pointeur reste dans la zone d'origine de la tuile, on la garde.
+    // (Sinon l'inclinaison écarte le bord de la tuile du pointeur → elle se remet droite → sous le pointeur → elle sautille.)
+    const inside = home && e.clientX >= home.left - 2 && e.clientX <= home.right + 2 && e.clientY >= home.top - 2 && e.clientY <= home.bottom + 2;
+    const el = inside && cur?.isConnected ? cur : e.target.closest?.(SELECTOR);
     if (el !== cur) {
       if (cur) reset(cur);
       cur = el;
+      home = cur ? cur.getBoundingClientRect() : null;
       if (cur) {
         cur.classList.add('tilting');
         if (!cur.querySelector(':scope > .tilt-glare')) cur.append(Object.assign(document.createElement('span'), { className: 'tilt-glare', ariaHidden: 'true' }));
@@ -49,6 +53,6 @@ export function initTilt() {
     last = e;
     if (cur && !raf) raf = requestAnimationFrame(apply);
   }, { passive: true });
-  document.addEventListener('pointerleave', () => { if (cur) reset(cur); cur = null; });
-  addEventListener('scroll', () => { if (cur) { reset(cur); cur = null; } }, { passive: true });
+  document.addEventListener('pointerleave', () => { if (cur) reset(cur); cur = null; home = null; });
+  addEventListener('scroll', () => { if (cur) { reset(cur); cur = null; home = null; } }, { passive: true });
 }
