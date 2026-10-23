@@ -1,10 +1,10 @@
 // サラリーマン Salaryman : une journée de travail dans une entreprise de Tokyo.
 // Le patron, les supérieurs et les clients te parlent ; tu réponds avec le bon keigo
 // (respect pour leurs actions, humilité pour les tiennes, ウチ・ソト face aux clients).
-import { play } from '../sfx.js?v=20261023215757';
-import { h, ruby, shuffle, toast, jr } from '../util.js?v=20261023215757';
-import { hitFx, HIT_WORDS, answerRegex, normJa, kana, kanaKeyboardToggle, smoothType } from '../util.js?v=20261023215757';
-import * as St from '../srs.js?v=20261023215757';
+import { play } from '../sfx.js?v=20261023221051';
+import { h, ruby, shuffle, toast, jr } from '../util.js?v=20261023221051';
+import { hitFx, HIT_WORDS, answerRegex, normJa, kana, kanaKeyboardToggle, smoothType } from '../util.js?v=20261023221051';
+import * as St from '../srs.js?v=20261023221051';
 
 // Personnages
 const WHO = {

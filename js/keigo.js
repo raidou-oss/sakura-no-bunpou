@@ -1,8 +1,8 @@
 // 敬語 Guide complet du keigo : les 5 catégories, les verbes spéciaux, les formes régulières,
 // les grands principes, ウチ・ソト et les pièges les plus fréquents (d'après data/keigo_guide.json).
-import { h, jr, ruby } from './util.js?v=20261023215757';
-import * as D from './data.js?v=20261023215757';
-import { play } from './sfx.js?v=20261023215757';
+import { h, jr, ruby } from './util.js?v=20261023221051';
+import * as D from './data.js?v=20261023221051';
+import { play } from './sfx.js?v=20261023221051';
 
 const STATUS = {
   '適切': ['ok', '✔', 'Correct'], '注意': ['warn', '!', 'Attention'], '不適切': ['ko', '✘', 'Incorrect'], '慣用': ['use', '≈', 'Admis par l’usage'],

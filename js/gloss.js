@@ -2,10 +2,10 @@
 // particule, mot de vocabulaire, verbe conjugué, connecteur, forme grammaticale…
 // Découpage maison : plus long mot connu d'abord (vocabulaire N5→N1, points de grammaire, particules),
 // avec une « déconjugaison » simple des verbes et adjectifs.
-import { h, ruby } from './util.js?v=20261023215757';
-import { miniStrokes } from './strokes.js?v=20261023215757';
-import * as D from './data.js?v=20261023215757';
-import * as S from './srs.js?v=20261023215757';
+import { h, ruby } from './util.js?v=20261023221051';
+import { miniStrokes } from './strokes.js?v=20261023221051';
+import * as D from './data.js?v=20261023221051';
+import * as S from './srs.js?v=20261023221051';
 
 // --- Petits mots qui reviennent partout ----------------------------------------------------
 const PARTICLES = {
@@ -123,11 +123,28 @@ function deinflect(s) {
   return out;
 }
 
+// Vocabulaire du keigo lui-même (noms des 5 catégories…), pour le guide et les leçons
+const KEIGO_TERMS = [
+  ['尊敬語', '尊敬語（そんけいご）', 'langage respectueux : on élève l’autre (celui qui agit)'],
+  ['謙譲語', '謙譲語（けんじょうご）', 'langage humble : on s’abaisse pour élever la personne visée'],
+  ['丁重語', '丁重語（ていちょうご）', 'langage courtois (humble II) : on parle poliment à l’interlocuteur'],
+  ['丁寧語', '丁寧語（ていねいご）', 'langage poli : です・ます'],
+  ['美化語', '美化語（びかご）', 'langage embelli (お茶・ご飯) : rend le discours plus élégant'],
+  ['敬意', '敬意（けいい）', 'respect, considération'],
+  ['敬称', '敬称（けいしょう）', 'titre honorifique (〜さん, 〜様, 〜殿)'],
+  ['謙称', '謙称（けんしょう）', 'appellation humble de soi ou des siens (弊社, 小社, 拙稿)'],
+  ['御社', '御社（おんしゃ）', 'votre entreprise (à l’oral)'],
+  ['貴社', '貴社（きしゃ）', 'votre entreprise (à l’écrit)'],
+  ['弊社', '弊社（へいしゃ）', 'notre entreprise (humble)'],
+  ['相手', '相手（あいて）', 'l’autre, l’interlocuteur, le partenaire'],
+].map(([w, f, m]) => ({ w, f, m, lv: 'keigo' }));
+
 // --- Dictionnaire ----------------------------------------------------------------------
 let dictP = null;
 function buildDict() {
   dictP = dictP || (async () => {
-    const [grammar, ...levels] = await Promise.all([D.grammar(), ...D.LEVELS.map(l => D.vocab(l).catch(() => []))]);
+    const [grammar, ...levels] = await Promise.all([D.grammar(), ...[...D.LEVELS, 'keigo'].map(l => D.vocab(l).catch(() => []))]);
+    levels.push(KEIGO_TERMS);
     const vocab = new Map();
     const put = (k, v) => { if (k && !vocab.has(k)) vocab.set(k, v); };
     // Du plus facile au plus difficile : le sens le plus courant d'abord
@@ -269,11 +286,11 @@ function bubbleBody(seg, text) {
       miniStrokes(surface)];
   }
   if (info.kind === 'gram') {
-    return [h('div.gl-head', h('span.gl-jp', { lang: 'ja', html: ruby(D.gramLabel(info.g), true) }), h('span.gl-tag', `${KIND.gram} · ${D.LEVEL_NAMES[info.g.lv]}`)), h('p.gl-text', info.g.s)];
+    return [h('div.gl-head', h('span.gl-jp', { lang: 'ja', html: ruby(D.gramLabel(info.g), true) }), h('span.gl-tag', `${KIND.gram} · ${D.LEVEL_NAMES[info.g.lv]}`)), h('p.gl-text', info.g.s), miniStrokes(surface)];
   }
   const v = info.v;
   return [
-    h('div.gl-head', h('span.gl-jp', { lang: 'ja' }, surface), h('span.gl-tag', `${KIND[info.kind]} · ${v.lv}`)),
+    h('div.gl-head', h('span.gl-jp', { lang: 'ja' }, surface), h('span.gl-tag', `${KIND[info.kind]} · ${D.LEVEL_NAMES[v.lv] || v.lv}`)),
     info.form ? h('p.gl-base', h('span', 'Forme du dictionnaire : '), h('b', { lang: 'ja', html: ruby(v.f || v.w, true) }), h('em', ` — ${info.form}`))
       : h('p.gl-base', h('b', { lang: 'ja', html: ruby(v.f || v.w, true) })),
     h('p.gl-text', D.shortMeaning(v.m)),
