@@ -3342,3 +3342,6 @@ html.lite .p3-head h1 .jp-head .tk, html.reduce-motion .p3-head h1 .jp-head .tk 
   .keigo-banner:hover, .nb-banner:hover, .sm-level:hover, .sm-level:focus-visible, .sl-chip:hover { translate: none; }
 }
 .stat-chip strong, .sc-num, .lv-big b, .hd-num { font-variant-numeric: tabular-nums; }
+/* Photo dans le menu : taille fixe, réservée dès le départ (le lien ne change pas de hauteur quand elle arrive) */
+.nav-avatar { flex: none; width: 22px; height: 22px; display: inline-grid; place-items: center; }
+.nav-avatar .avatar.xs { width: 22px; height: 22px; }

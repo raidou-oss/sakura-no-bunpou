@@ -1,16 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261023204645';
-import * as D from './data.js?v=20261023204645';
-import * as S from './srs.js?v=20261023204645';
-import { wallpaperSVG } from './wallpaper.js?v=20261023204645';
-import * as C from './cloud.js?v=20261023204645';
-import { play } from './sfx.js?v=20261023204645';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261023204645';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261023204645';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261023204819';
+import * as D from './data.js?v=20261023204819';
+import * as S from './srs.js?v=20261023204819';
+import { wallpaperSVG } from './wallpaper.js?v=20261023204819';
+import * as C from './cloud.js?v=20261023204819';
+import { play } from './sfx.js?v=20261023204819';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261023204819';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261023204819';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261023204645';
-import * as L from './links.js?v=20261023204645';
+import { GAMES } from './gamelist.js?v=20261023204819';
+import * as L from './links.js?v=20261023204819';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -132,8 +132,13 @@ export async function navAccount() {
   if (!link) return;
   const slot = link.querySelector('.nav-avatar');
   const p = C.currentProfile();
-  slot.replaceChildren(...(p ? [avatar(p, 'xs', { aura: false })] : []));
-  slot.hidden = !p;
+  // On ne reconstruit la photo que si elle a changé (sinon elle se recharge à chaque page et le menu tressaute)
+  const key = p ? `${p.avatar_url || ''}|${p.username || ''}` : '';
+  if (slot.dataset.key !== key) {
+    slot.dataset.key = key;
+    slot.replaceChildren(...(p ? [avatar(p, 'xs', { aura: false })] : []));
+    slot.hidden = !p;
+  }
   const badge = document.getElementById('react-badge');
   const n = await C.unseenCount().catch(() => 0);
   badge.hidden = !n; badge.textContent = n > 9 ? '9+' : n;
@@ -266,7 +271,7 @@ function editProfile(main, p, rerender) {
   const name = h('input#pf-name', { value: p.username, maxlength: 20, minlength: 2, required: true, autocomplete: 'nickname' });
   const bio = h('textarea#pf-bio', { maxlength: 160, rows: 3 }, p.bio || '');
   const files = {};
-  const preview = h('div.edit-preview', h('div.banner', p.banner_url ? { style: { backgroundImage: `url("${p.banner_url}")` } } : null), avatar(p, 'xl'));
+  const preview = h('div.edit-preview', h('div.banner', p.banner_url ? { style: { backgroundImage: `url("${p.banner_url}")` } } : null), avatar(p, 'xl', { aura: false }));
   const pick = kind => h('input', { type: 'file', accept: 'image/*', hidden: true, onchange: e => {
     const f = e.target.files[0]; if (!f) return;
     files[kind] = f;

@@ -1,8 +1,8 @@
 // Transitions façon menu Persona : bandes diagonales qui balaient l'écran entre deux pages,
 // éléments qui entrent en glissant (légèrement penchés, en cascade) et sélecteur de menu qui
 // saute d'un onglet à l'autre avec un petit rebond.
-import { reducedMotion } from './util.js?v=20261023204645';
-import { play } from './sfx.js?v=20261023204645';
+import { reducedMotion } from './util.js?v=20261023204819';
+import { play } from './sfx.js?v=20261023204819';
 
 const STAGGER = 'main > *, .levels > li, .game-grid > li, .units > li, .points > li, .members > li, .react-list > li, .example-list > li, .portal-points > li, tbody > tr';
 const MAX_STAGGER = 18;
@@ -108,7 +108,7 @@ export function enter(root = document.getElementById('main')) {
 }
 
 /** Sélecteur du menu : une pastille qui glisse vers l'onglet actif */
-export function moveIndicator() {
+export function moveIndicator({ instant = false } = {}) {
   const list = document.querySelector('.nav-list');
   if (!list) return;
   let ind = list.querySelector('.nav-indicator');
@@ -122,10 +122,23 @@ export function moveIndicator() {
   if (!a || !a.offsetParent) { ind.style.opacity = 0; return; }
   const lr = list.getBoundingClientRect(), r = a.getBoundingClientRect();
   const wasHidden = ind.style.opacity === '0' || !ind.style.width;
-  ind.classList.toggle('instant', wasHidden);
+  const tf = `translate(${r.left - lr.left}px, ${r.top - lr.top}px)`;
+  if (ind.style.opacity === '1' && ind.style.transform === tf && ind.style.width === `${r.width}px` && ind.style.height === `${r.height}px`) return;   // déjà en place : on ne rejoue rien
+  ind.classList.toggle('instant', wasHidden || instant);
   ind.style.width = `${r.width}px`; ind.style.height = `${r.height}px`;
   ind.style.transform = `translate(${r.left - lr.left}px, ${r.top - lr.top}px)`;
   ind.style.opacity = 1;
-  ind.classList.remove('pop'); void ind.offsetWidth; ind.classList.add('pop');
+  if (!instant) { ind.classList.remove('pop'); void ind.offsetWidth; ind.classList.add('pop'); }
 }
 window.addEventListener('resize', () => requestAnimationFrame(moveIndicator));
+// Le menu change de taille (photo de profil qui arrive, badge…) : la pastille suit, sans animation
+if ('ResizeObserver' in window) {
+  let ro = null;
+  const watch = () => {
+    const list = document.querySelector('.nav-list');
+    if (!list || ro) return;
+    ro = new ResizeObserver(() => requestAnimationFrame(() => moveIndicator({ instant: true })));
+    list.querySelectorAll('a').forEach(a => ro.observe(a));
+  };
+  watch(); addEventListener('load', watch);
+}
