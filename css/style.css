@@ -3298,3 +3298,37 @@ html.lite .p3-head h1 .jp-head .tk, html.reduce-motion .p3-head h1 .jp-head .tk 
 .sm-bubble.fr-say p { font-size: 1.2rem; }
 .sm-hints p { margin: 6px 0; padding: 6px 10px; background: rgba(243, 247, 255, .06); border-left: 3px solid var(--cyan); }
 .sm-theme-btn { border-color: var(--sakura); }
+
+/* ===== 数 Leçon des nombres + PIB RUSH ===== */
+.nb-banner { display: flex; align-items: center; gap: 16px; margin: 0 0 16px; padding: 12px 18px; text-decoration: none; color: #F3F7FF;
+  background: linear-gradient(120deg, #7B3FD0, #3A1E8C 55%, #0A1F6B); border: 2px solid rgba(243, 247, 255, .8); transform: skewX(-4deg); box-shadow: 6px 6px 0 var(--cyan); transition: translate .2s; }
+.nb-banner:hover { translate: 0 -3px; }
+.nb-step { position: relative; overflow: hidden; text-align: left; }
+.nb-step h2 { margin: 2px 0 10px; font: 900 italic clamp(1.4rem, 3vw, 2rem) var(--display); }
+.nb-wm { position: absolute; right: -10px; top: -30px; font: 400 11rem/1 var(--jp-heavy); color: transparent; -webkit-text-stroke: 2px rgba(255, 148, 203, .18); pointer-events: none; }
+.nb-list { list-style: none; margin: 10px 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; }
+.nb-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 8px 12px; background: rgba(10, 31, 107, .55); border-left: 3px solid var(--cyan); }
+.nb-n { font: 900 italic 1.2rem var(--display); min-width: 3ch; } .nb-k { font-size: 1.35rem; } .nb-list small { flex-basis: 100%; color: var(--sakura); font-weight: 700; }
+.nb-rules { line-height: 1.9; }
+.nb-tip { margin: 10px 0; padding: 10px 14px; background: rgba(255, 216, 107, .1); border-left: 4px solid #FFD86B; line-height: 1.55; }
+.nb-split { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 12px 0; padding: 12px 14px; background: rgba(5, 12, 46, .7); font-size: 1.15rem; }
+.nb-split b { color: var(--sakura); } .nb-4 { font: 900 italic 1.4rem var(--display); color: var(--cyan); letter-spacing: .05em; }
+.nb-big { list-style: none; margin: 12px 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+.nb-big li { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 6px 10px; background: rgba(10, 31, 107, .5); border-left: 3px solid hsl(calc(190 + var(--i) * 7) 90% 70%);
+  animation: sl-li-in .4s cubic-bezier(.2, 1.4, .4, 1) both; animation-delay: calc(var(--i) * .04s); }
+.nb-big li span { font-size: 1.1rem; } .nb-big li small { font: 800 italic .85rem var(--display); color: var(--mist); }
+.nb-q { text-align: center; } .nb-big-n, .pib-num { margin: 10px 0; font: 900 italic clamp(2rem, 6vw, 3.6rem)/1.1 var(--display); color: #fff; text-shadow: 4px 4px 0 var(--sakura-deep), 8px 8px 0 rgba(70, 217, 255, .45); overflow-wrap: anywhere; }
+.pib-intro { text-align: center; } .pib-intro ul { text-align: left; max-width: 560px; margin: 10px auto; line-height: 1.8; }
+.pib-ticker { display: inline-flex; flex-direction: column; gap: 4px; padding: 14px 26px; background: #050C2E; border: 2px solid #F3F7FF; box-shadow: 6px 6px 0 #FFD86B; transform: rotate(-2deg); margin-bottom: 10px; }
+.pib-ticker span { font: 900 italic 1.6rem var(--display); color: #63F0C3; letter-spacing: .04em; } .pib-ticker b { font: 400 1.8rem var(--jp-heavy); color: #FFD86B; }
+.pib-stage { max-width: 760px; margin: 0 auto; }
+.pib-card { position: relative; text-align: center; padding-top: 22px; }
+.pib-time { position: absolute; left: 0; right: 0; top: 0; height: 6px; background: rgba(243, 247, 255, .1); }
+.pib-time i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #63F0C3, #FFD86B); transition: width .1s linear; }
+.pib-time.low i { background: linear-gradient(90deg, #FF6B8A, var(--sakura)); }
+.pib-flavor { margin: 0; font: 800 italic .95rem var(--display); letter-spacing: .1em; color: #FFD86B; text-transform: uppercase; }
+.pib-num { color: #63F0C3; text-shadow: 4px 4px 0 #050C2E, 7px 7px 0 rgba(255, 216, 107, .5); }
+.pib-num.in { animation: hud-in .4s cubic-bezier(.2, 1.4, .4, 1); }
+.pib-groups { margin: 0 0 8px; min-height: 1.4em; font: 900 italic 1.2rem var(--display); color: var(--cyan); }
+.pib-input { font-size: 1.3rem; }
+.pib-fb { min-height: 1.6em; margin: 10px 0 0; font-weight: 700; }

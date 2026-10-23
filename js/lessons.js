@@ -1,15 +1,15 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261023201211';
-import * as D from './data.js?v=20261023201211';
-import * as S from './srs.js?v=20261023201211';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261023201211';
-import { speakBtn, speak } from './voice.js?v=20261023201211';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261023201211';
-import { play } from './sfx.js?v=20261023201211';
-import { strokeOrder } from './strokes.js?v=20261023201211';
-import { celebrate, verdict } from './celebrate.js?v=20261023201211';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261023202148';
+import * as D from './data.js?v=20261023202148';
+import * as S from './srs.js?v=20261023202148';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261023202148';
+import { speakBtn, speak } from './voice.js?v=20261023202148';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261023202148';
+import { play } from './sfx.js?v=20261023202148';
+import { strokeOrder } from './strokes.js?v=20261023202148';
+import { celebrate, verdict } from './celebrate.js?v=20261023202148';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -191,7 +191,10 @@ export async function lessonsHub(main, lv = 'N5') {
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('授業') }), 'Leçons'),
       h('p.section-note', 'Apprends pas à pas : grammaire, vocabulaire, ou les deux en même temps. Chaque leçon se termine par des exercices sur tout ce que tu as vu.')),
-    tabs, h('div.lesson-controls', seg, countSeg), desc, grid);
+    tabs, h('a.nb-banner', { href: '#/nombres' }, h('span.kb-kanji', { lang: 'ja', 'aria-hidden': 'true' }, '数'),
+      h('span.kb-text', h('small', S.getExtra('numbersDone', null) ? 'LEÇON SPÉCIALE · 済' : 'LEÇON SPÉCIALE'), h('strong', 'Compter jusqu’à l’infini'),
+        h('span', 'De 1 à 無量大数 : 万, 億, 兆… avec des astuces simples. Puis entraîne-toi avec PIB RUSH.')), h('span.kb-go', 'Go ▶')),
+    h('div.lesson-controls', seg, countSeg), desc, grid);
 }
 
 // --- Leçon ------------------------------------------------------------------------------
