@@ -3278,3 +3278,13 @@ html.lite .p3-head h1 .jp-head .tk { animation: none; }
 .kf-k { font: 400 1.2rem var(--jp-heavy); } .kf-fr { font: 800 italic .85rem var(--display); color: var(--kc); } .keigo-five small { color: var(--mist); }
 .kf-ex { font-size: .82rem; color: #D6E4FF; }
 @media (max-width: 900px) { .keigo-five { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); } }
+
+/* ===== Kanji des titres : lisibles (une seule ombre nette au lieu de quatre copies superposées) ===== */
+.p3-head h1 .jp-head { filter: none !important; background: none !important; -webkit-background-clip: border-box; background-clip: border-box; }
+.p3-head h1 .jp-head .tk { animation: none !important; color: #fff; -webkit-text-fill-color: #fff;
+  text-shadow: -2px -2px 0 #050C2E, 2px -2px 0 #050C2E, -2px 2px 0 #050C2E, 2px 2px 0 #050C2E, 0 -2px 0 #050C2E, 0 2px 0 #050C2E, -2px 0 0 #050C2E, 2px 0 0 #050C2E,
+    5px 5px 0 var(--sakura-deep); }
+.p3-head h1 .ph-dots { display: none; }
+.p3-head h1 .ph-spark.s3 { display: none; }
+.p3-head h1 .ph-spark.s1 { left: -.45em; top: -.2em; } .p3-head h1 .ph-spark.s2 { left: auto; right: calc(100% - 2.8em); top: -.35em; }
+.p3-head h1 .ph-tag { top: -1.7em; }

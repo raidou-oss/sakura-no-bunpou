@@ -1,12 +1,12 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261023195031';
-import { strokeOrder } from './strokes.js?v=20261023195031';
-import { speak, speakBtn } from './voice.js?v=20261023195031';
-import { pitchSVG } from './pitch.js?v=20261023195031';
-import { play } from './sfx.js?v=20261023195031';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261023195031';
-import * as D from './data.js?v=20261023195031';
-import * as S from './srs.js?v=20261023195031';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261023200145';
+import { strokeOrder } from './strokes.js?v=20261023200145';
+import { speak, speakBtn } from './voice.js?v=20261023200145';
+import { pitchSVG } from './pitch.js?v=20261023200145';
+import { play } from './sfx.js?v=20261023200145';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261023200145';
+import * as D from './data.js?v=20261023200145';
+import * as S from './srs.js?v=20261023200145';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;

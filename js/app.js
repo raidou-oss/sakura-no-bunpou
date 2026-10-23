@@ -1,30 +1,30 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261023195031';
-import * as D from './data.js?v=20261023195031';
-import * as S from './srs.js?v=20261023195031';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261023195031';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261023195031';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261023195031';
-import * as C from './cloud.js?v=20261023195031';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261023195031';
-import './dyn.js?v=20261023195031';
-import { keigoGuide, keigoBanner } from './keigo.js?v=20261023195031';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261023195031';
-import { play, setVolume } from './sfx.js?v=20261023195031';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261023195031';
-import { celebrate, verdict } from './celebrate.js?v=20261023195031';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261023195031';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261023195031';
-import { initGloss } from './gloss.js?v=20261023195031';
-import { initLinks } from './links.js?v=20261023195031';
-import { streakBadge, weekStrip } from './aura.js?v=20261023195031';
-import { initLevelUp } from './levelup.js?v=20261023195031';
-import { confidentsPage } from './confidents.js?v=20261023195031';
-import { initTilt } from './tilt.js?v=20261023195031';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261023195031';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261023200145';
+import * as D from './data.js?v=20261023200145';
+import * as S from './srs.js?v=20261023200145';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261023200145';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261023200145';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261023200145';
+import * as C from './cloud.js?v=20261023200145';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261023200145';
+import './dyn.js?v=20261023200145';
+import { keigoGuide, keigoBanner } from './keigo.js?v=20261023200145';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261023200145';
+import { play, setVolume } from './sfx.js?v=20261023200145';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261023200145';
+import { celebrate, verdict } from './celebrate.js?v=20261023200145';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261023200145';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261023200145';
+import { initGloss } from './gloss.js?v=20261023200145';
+import { initLinks } from './links.js?v=20261023200145';
+import { streakBadge, weekStrip } from './aura.js?v=20261023200145';
+import { initLevelUp } from './levelup.js?v=20261023200145';
+import { confidentsPage } from './confidents.js?v=20261023200145';
+import { initTilt } from './tilt.js?v=20261023200145';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261023200145';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261023195031';
+import { GAMES } from './gamelist.js?v=20261023200145';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
