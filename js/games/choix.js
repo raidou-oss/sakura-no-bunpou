@@ -1,10 +1,10 @@
 // 選択クイズ (Sentaku) : les anciennes questions à choix, en jeu. Trois vies, des séries qui rapportent.
-import { play as sfx } from '../sfx.js?v=20261023203850';
-import { burst } from '../celebrate.js?v=20261023203850';
-import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261023203850';
-import * as D from '../data.js?v=20261023203850';
-import * as S from '../srs.js?v=20261023203850';
-import { sentenceHTML, clozeDisp, regChip, vocabPractice, highlightFr } from '../review.js?v=20261023203850';
+import { play as sfx } from '../sfx.js?v=20261023204645';
+import { burst } from '../celebrate.js?v=20261023204645';
+import { h, shuffle, toast, jr, ruby } from '../util.js?v=20261023204645';
+import * as D from '../data.js?v=20261023204645';
+import * as S from '../srs.js?v=20261023204645';
+import { sentenceHTML, clozeDisp, regChip, vocabPractice, highlightFr } from '../review.js?v=20261023204645';
 
 const LIVES = 3;
 const MODES = [['m', 'Les deux'], ['g', 'Grammaire'], ['v', 'Vocabulaire']];
@@ -94,7 +94,7 @@ export default async function choix(root, { settings, saveBest }) {
 
     function end() {
       stop();
-      const rec = score > 0 && saveBest(score, `${lv} · ${MODES.find(m => m[0] === mode)[1]}`);
+      const rec = saveBest(score, `${lv} · ${MODES.find(m => m[0] === mode)[1]}`);
       root.replaceChildren(head(null), h('section.card.finish',
         h('h2', 'Plus de vies'),
         h('p', `${score} points · ${good} bonne${good > 1 ? 's' : ''} réponse${good > 1 ? 's' : ''} sur ${answered}.`),

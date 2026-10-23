@@ -1,16 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261023203850';
-import * as D from './data.js?v=20261023203850';
-import * as S from './srs.js?v=20261023203850';
-import { wallpaperSVG } from './wallpaper.js?v=20261023203850';
-import * as C from './cloud.js?v=20261023203850';
-import { play } from './sfx.js?v=20261023203850';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261023203850';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261023203850';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261023204645';
+import * as D from './data.js?v=20261023204645';
+import * as S from './srs.js?v=20261023204645';
+import { wallpaperSVG } from './wallpaper.js?v=20261023204645';
+import * as C from './cloud.js?v=20261023204645';
+import { play } from './sfx.js?v=20261023204645';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261023204645';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261023204645';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261023203850';
-import * as L from './links.js?v=20261023203850';
+import { GAMES } from './gamelist.js?v=20261023204645';
+import * as L from './links.js?v=20261023204645';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -228,7 +228,7 @@ function streakCard() {
         t ? h('em.aura-name', { lang: 'ja' }, `${AURAS[t].jp} ${AURAS[t].name}`) : null,
         h('small', nx ? `Prochaine aura : ${nx.name} à ${nx.min} jours` : 'Aura maximale atteinte'))),
     h('div.sc-right', weekStrip({ big: true }),
-      h('p.small.sc-rule', today.rev > 0 || today.les > 0 ? 'Série validée aujourd’hui ✓' : 'Fais une révision ou termine une leçon aujourd’hui pour garder ta flamme.')));
+      h('p.small.sc-rule', today.rev > 0 || today.les > 0 || today.games > 0 ? 'Série validée aujourd’hui ✓' : 'Fais une révision, termine une leçon ou une partie aujourd’hui pour garder ta flamme.')));
 }
 /** Case « jours d'affilée » : flamme bleue + palier d'aura et prochain palier */
 function streakChip(n) {

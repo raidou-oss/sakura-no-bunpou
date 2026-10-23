@@ -1,6 +1,6 @@
 // 炎 Séries (jours d'affilée) : flammes bleues et auras autour de l'avatar selon la série.
-import { h, dayKey, DAY, reducedMotion } from './util.js?v=20261023203850';
-import * as S from './srs.js?v=20261023203850';
+import { h, dayKey, DAY, reducedMotion } from './util.js?v=20261023204645';
+import * as S from './srs.js?v=20261023204645';
 
 /** Paliers d'aura : plus la série est longue, plus l'aura est intense */
 export const AURAS = [
@@ -142,7 +142,7 @@ function sparks(t) {
 // --- Semaine façon Duolingo : 月火水木金土日 avec la flamme bleue sur les jours validés ------------
 const WEEK = [['月', 'げつ', 'lundi'], ['火', 'か', 'mardi'], ['水', 'すい', 'mercredi'], ['木', 'もく', 'jeudi'], ['金', 'きん', 'vendredi'], ['土', 'ど', 'samedi'], ['日', 'にち', 'dimanche']];
 const RULE_FROM = '2026-10-20';
-const dayDone = d => !!d && (d.rev > 0 || d.les > 0);
+const dayDone = d => !!d && (d.rev > 0 || d.les > 0 || d.games > 0);
 export function weekStrip({ big = false } = {}) {
   const days = S.allStats().days || {};
   const now = new Date();
@@ -154,7 +154,7 @@ export function weekStrip({ big = false } = {}) {
     const d = days[key];
     const done = dayDone(d) || (key < RULE_FROM && d?.games > 0);
     const state = i === todayIdx ? (done ? 'today done' : 'today') : i > todayIdx ? 'future' : done ? 'done' : 'missed';
-    return h('li', { class: `wd ${state}`, title: `${fr[0].toUpperCase() + fr.slice(1)} : ${done ? 'série validée' : i > todayIdx ? 'à venir' : i === todayIdx ? 'pas encore validée' : 'pas de révision ni de leçon'}` },
+    return h('li', { class: `wd ${state}`, title: `${fr[0].toUpperCase() + fr.slice(1)} : ${done ? 'série validée' : i > todayIdx ? 'à venir' : i === todayIdx ? 'pas encore validée' : 'ni révision, ni leçon, ni jeu'}` },
       h('span.wd-flame', done ? flame({ size: big ? 30 : 22 }) : h('i.wd-empty')),
       h('ruby.wd-kanji', { lang: 'ja' }, k, h('rt', r)));
   }));

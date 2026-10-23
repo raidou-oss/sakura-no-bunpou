@@ -2,10 +2,10 @@
 // particule, mot de vocabulaire, verbe conjugué, connecteur, forme grammaticale…
 // Découpage maison : plus long mot connu d'abord (vocabulaire N5→N1, points de grammaire, particules),
 // avec une « déconjugaison » simple des verbes et adjectifs.
-import { h, ruby } from './util.js?v=20261023203850';
-import { miniStrokes } from './strokes.js?v=20261023203850';
-import * as D from './data.js?v=20261023203850';
-import * as S from './srs.js?v=20261023203850';
+import { h, ruby } from './util.js?v=20261023204645';
+import { miniStrokes } from './strokes.js?v=20261023204645';
+import * as D from './data.js?v=20261023204645';
+import * as S from './srs.js?v=20261023204645';
 
 // --- Petits mots qui reviennent partout ----------------------------------------------------
 const PARTICLES = {
