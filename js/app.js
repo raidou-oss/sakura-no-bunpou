@@ -1,32 +1,32 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261024002705';
-import * as D from './data.js?v=20261024002705';
-import * as S from './srs.js?v=20261024002705';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261024002705';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261024002705';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261024002705';
-import * as C from './cloud.js?v=20261024002705';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261024002705';
-import { decorateHead } from './dyn.js?v=20261024002705';
-import { keigoGuide, keigoBanner } from './keigo.js?v=20261024002705';
-import { numbersLesson } from './numbers.js?v=20261024002705';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261024002705';
-import { play, setVolume } from './sfx.js?v=20261024002705';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261024002705';
-import { celebrate, verdict } from './celebrate.js?v=20261024002705';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261024002705';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261024002705';
-import { initGloss } from './gloss.js?v=20261024002705';
-import { initLinks } from './links.js?v=20261024002705';
-import { streakBadge, weekStrip } from './aura.js?v=20261024002705';
-import { initLevelUp } from './levelup.js?v=20261024002705';
-import { confidentsPage } from './confidents.js?v=20261024002705';
-import { initTilt } from './tilt.js?v=20261024002705';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261024002705';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261024003117';
+import * as D from './data.js?v=20261024003117';
+import * as S from './srs.js?v=20261024003117';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261024003117';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261024003117';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261024003117';
+import * as C from './cloud.js?v=20261024003117';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261024003117';
+import { decorateHead } from './dyn.js?v=20261024003117';
+import { keigoGuide, keigoBanner } from './keigo.js?v=20261024003117';
+import { numbersLesson } from './numbers.js?v=20261024003117';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261024003117';
+import { play, setVolume } from './sfx.js?v=20261024003117';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261024003117';
+import { celebrate, verdict } from './celebrate.js?v=20261024003117';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261024003117';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261024003117';
+import { initGloss } from './gloss.js?v=20261024003117';
+import { initLinks } from './links.js?v=20261024003117';
+import { streakBadge, weekStrip } from './aura.js?v=20261024003117';
+import { initLevelUp } from './levelup.js?v=20261024003117';
+import { confidentsPage } from './confidents.js?v=20261024003117';
+import { initTilt } from './tilt.js?v=20261024003117';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261024003117';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261024002705';
-import { installPage, appPromo } from './install.js?v=20261024002705';
+import { GAMES } from './gamelist.js?v=20261024003117';
+import { installPage, appPromo, markAppUse } from './install.js?v=20261024003117';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -60,6 +60,7 @@ const routes = [
 
 let prevPath = '';
 async function route() {
+  markAppUse();
   // Retour d'un lien e-mail (confirmation, mot de passe) : Supabase lit le jeton avant le routage
   if (/access_token|error_description|type=recovery/.test(location.hash)) return;
   // Portail : tant qu'on n'est pas connecté, on ne voit que l'écran de connexion
@@ -101,6 +102,7 @@ async function route() {
   location.hash = '#/';
 }
 window.addEventListener('hashchange', route);
+window.addEventListener('sakura:synced', () => markAppUse());   // après la connexion : le compte retient l'app
 
 // Fond de page : celui du portail (voilé) sur l'accueil, un fond dédié par section ailleurs
 const WP_SECTION = { lecons: 'grammaire', lecon: 'grammaire', revision: 'revision', entrainement: 'revision', grammaire: 'grammaire', point: 'grammaire', vocabulaire: 'vocabulaire',
@@ -214,7 +216,7 @@ async function home() {
         h('span.play-chip', 'Jouer'))))));
 
   // Sur téléphone, la barre latérale n'existe pas : le panneau du jour se place sous l'en-tête
-  const promo = appPromo({ home: true });
+  const promo = appPromo();
   if (promo) hero.querySelector('.hero-copy').append(promo);
   main.replaceChildren(hero, h('div.daily-mobile', await dailyPanel({ compact: true })), garden, games);
 }
@@ -501,7 +503,6 @@ function settingsPage() {
   } });
   main.replaceChildren(
     h('header.page-head', h('h1', h('span.jp-head', { lang: 'ja', html: jr('設定') }), 'Réglages')),
-    appPromo(),
     h('div.card.settings',
       h('h2', 'Niveaux travaillés'),
       levelBoxes('grammarLevels', 'Niveaux de grammaire (entraînement, jeux)'),

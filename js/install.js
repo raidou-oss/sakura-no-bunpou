@@ -1,5 +1,6 @@
-import { h, jr } from './util.js?v=20261024002705';
-import { play } from './sfx.js?v=20261024002705';
+import { h, jr } from './util.js?v=20261024003117';
+import { play } from './sfx.js?v=20261024003117';
+import * as S from './srs.js?v=20261024003117';
 
 // Page « Installer l'app » : le même site, en application (moteur Chromium partout où c'est possible)
 const DL = 'https://github.com/raidou-oss/sakura-no-bunpou/releases/download/app/';
@@ -53,21 +54,20 @@ export function installPage(main) {
     h('p.section-note', 'Applis de test, gratuites et non signées : c’est pour ça que ton système demande une confirmation la première fois. Ta progression suit ton compte, quel que soit l’appareil.')].filter(Boolean));
 }
 
-/** Bandeau « Installer l'app ». À l'accueil (home) : masqué dans l'app, et refermable. Dans les Réglages : toujours là. */
-const HIDE_KEY = 'sakura:appPromoHidden';
-export function appPromo({ home = false } = {}) {
-  let hidden = false;
-  try { hidden = localStorage.getItem(HIDE_KEY) === '1'; } catch {}
-  if (home && (IN_APP || hidden)) return null;
-  const sub = IN_APP ? '✔ Tu utilises déjà l’app' : 'Android · iPhone · Windows · Mac · Linux';
-  const el = h(`a.card.ia-promo${home ? '.ia-home' : ''}`, { href: '#/app' },
+/** Ouvert depuis une app : on le note dans le compte (synchronisé), pour ne plus proposer l'app nulle part */
+export function markAppUse() {
+  if (!IN_APP) return;
+  const used = S.getExtra('usedApp', {}) || {};
+  const k = DEVICE || 'autre';
+  if (used[k]) return;
+  S.setExtra('usedApp', { ...used, [k]: Date.now() });
+}
+
+/** Bandeau « Installe l'app » de l'accueil : jamais dans l'app, ni pour un compte qui s'est déjà connecté depuis une app */
+export function appPromo() {
+  if (IN_APP || Object.keys(S.getExtra('usedApp', {}) || {}).length) return null;
+  return h('a.card.ia-promo.ia-home', { href: '#/app' },
     h('img', { src: 'img/logo-192.png', alt: '', width: 56, height: 56 }),
-    h('span', h('b', home ? 'Installe l’app 桜の文法' : 'Installer l’app 桜の文法'), h('small', sub)),
-    h('span.ia-arrow', '›'),
-    home ? h('button.ia-close', { type: 'button', 'aria-label': 'Masquer', title: 'Masquer', onclick: e => {
-      e.preventDefault(); e.stopPropagation();
-      try { localStorage.setItem(HIDE_KEY, '1'); } catch {}
-      el.classList.add('bye'); setTimeout(() => el.remove(), 300);
-    } }, '×') : null);
-  return el;
+    h('span', h('b', 'Installe l’app 桜の文法'), h('small', 'Android · iPhone · Windows · Mac · Linux')),
+    h('span.ia-arrow', '›'));
 }
