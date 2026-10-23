@@ -1,6 +1,5 @@
-import { h, jr } from './util.js?v=20261024003835';
-import { play } from './sfx.js?v=20261024003835';
-import * as S from './srs.js?v=20261024003835';
+import { h, jr } from './util.js?v=20261024004140';
+import { play } from './sfx.js?v=20261024004140';
 
 // Page « Installer l'app » : le même site, en application (moteur Chromium partout où c'est possible)
 const DL = 'https://github.com/raidou-oss/sakura-no-bunpou/releases/download/app/';
@@ -54,22 +53,11 @@ export function installPage(main) {
     h('p.section-note', 'Applis de test, gratuites et non signées : c’est pour ça que ton système demande une confirmation la première fois. Ta progression suit ton compte, quel que soit l’appareil.')].filter(Boolean));
 }
 
-/** Ouvert depuis une app : on le note dans le compte (synchronisé), pour ne plus proposer l'app nulle part */
-export function markAppUse() {
-  if (!IN_APP) return;
-  const used = S.getExtra('usedApp', {}) || {};
-  const k = DEVICE || 'autre';
-  if (used[k]) return;
-  S.setExtra('usedApp', { ...used, [k]: Date.now() });
-}
-
-/** Bandeau « Installe l'app » de l'accueil : jamais dans l'app, ni sur un type d'appareil où ce compte s'est déjà connecté depuis l'app
- *  (l'app Android utilisée → plus de bandeau sur les navigateurs Android, mais toujours sur PC, et inversement) */
+/** Bandeau « Installe l'app » de l'accueil : partout (tous navigateurs, tous appareils), sauf quand on est déjà dans l'app */
 export function appPromo() {
-  const used = S.getExtra('usedApp', {}) || {};
-  if (IN_APP || used[DEVICE || 'autre']) return null;
+  if (IN_APP) return null;
   return h('a.card.ia-promo.ia-home', { href: '#/app' },
     h('img', { src: 'img/logo-192.png', alt: '', width: 56, height: 56 }),
-    h('span', h('b', 'Installe l’app 桜の文法'), h('small', 'Android · iPhone · Windows · Mac · Linux')),
+    h('span', h('b', 'Installe l’app 桜の文法'), h('small', 'Android · iPhone · PC · Mac')),
     h('span.ia-arrow', '›'));
 }
