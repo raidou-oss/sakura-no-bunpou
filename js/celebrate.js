@@ -1,7 +1,7 @@
 // Félicitations dans la DA du site : gerbe de pétales sur une bonne réponse, et grande scène
 // plein écran (bandes diagonales, rayons, kanji qui claque, pluie de pétales) pour une victoire.
-import { reducedMotion, jr } from './util.js?v=20261023204819';
-import { play } from './sfx.js?v=20261023204819';
+import { reducedMotion, jr } from './util.js?v=20261023214328';
+import { play } from './sfx.js?v=20261023214328';
 
 const COLORS = ['#FF94CB', '#FFB5DA', '#46D9FF', '#7FA8FF', '#FFFFFF', '#63F0C3'];
 

@@ -372,6 +372,43 @@ S(2046, '皆様（みなさま）[におかれましては]、ますますご健
 S(2046, '近（ちか）いうちに、ご挨拶（あいさつ）[かたがた]お伺（うかが）いいたします。', 'Je passerai prochainement, en profitant de l’occasion pour vous saluer.', ['ついでに', 'ばかりに', 'ものの'], 'en profitant de l’occasion pour vous saluer')
 S(2046, '先日（せんじつ）のお礼（れい）[かたがた]、近況（きんきょう）をご報告（ほうこく）いたします。', 'Je vous écris pour vous remercier de l’autre jour et vous donner de mes nouvelles.', ['ながらも', 'つつ', 'ばかりか'], 'pour vous remercier')
 
+# Leçon 11 · Nuances du 敬語の指針 (文化審議会, 2007)
+P(2047, 11, '自分側は立てない', '自分側（じぶんがわ）は立（た）てない', 'On n’élève jamais son propre camp (soi, sa famille)',
+  'Règle n°1 du guide officiel : ni 尊敬語 ni 謙譲語Ⅰ pour soi ou sa famille (ウチ). ×父は来週海外へいらっしゃいます, ×明日父のところに伺います. '
+  'On dit simplement 父は行きます, ou, pour être soigné envers l’interlocuteur, 父は参ります (謙譲語Ⅱ).')
+S(2047, '父（ちち）は来週（らいしゅう）海外（かいがい）へ[参（まい）ります]。', 'Mon père part à l’étranger la semaine prochaine.', ['いらっしゃいます', 'お出（で）かけになります', '行（い）かれます'], 'Mon père part à l’étranger')
+S(2047, '明日（あした）、母（はは）のところに[行（い）きます]。', 'Demain, je vais chez ma mère.', ['伺（うかが）います', 'いらっしゃいます', 'お越（こ）しになります'], 'je vais chez ma mère')
+S(2047, '兄（あに）もそのように[申（もう）して]おりました。', 'Mon grand frère le disait aussi.', ['おっしゃって', '申（もう）し上（あ）げて', '言（い）われて'], 'Mon grand frère le disait aussi')
+
+P(2048, 11, '謙譲語Ⅱ：バスが参りました', '謙譲語Ⅱ（けんじょうごに）：バスが参（まい）りました', 'Humble Ⅱ pour des choses ou des inconnus : parler avec soin à son auditeur',
+  'Le 謙譲語Ⅱ ne sert pas qu’à ses propres actions : il s’emploie aussi pour des choses ou des gens qu’on n’a pas à élever, '
+  'simplement pour parler avec solennité à son auditeur : バスが参りました, 夜も更けて参りました, 向こうから子供たちが大勢参りました. '
+  'Mais jamais pour une personne qu’on devrait élever (×先生が参りました).')
+S(2048, 'あ、バスが[参（まい）りました]。', 'Ah, voilà le bus.', ['いらっしゃいました', 'お越（こ）しになりました', '伺（うかが）いました'], 'voilà le bus')
+S(2048, '夜（よる）も更（ふ）けて[参（まい）りました]。', 'La nuit est bien avancée.', ['いらっしゃいました', 'お越（こ）しになりました', '伺（うかが）いました'], 'La nuit est bien avancée')
+S(2048, 'だんだん寒（さむ）くなって[参（まい）りました]ね。', 'Il commence à faire de plus en plus froid, n’est-ce pas ?', ['いらっしゃいました', 'お越（こ）しになりました', 'なさいました'], 'Il commence à faire de plus en plus froid')
+
+P(2049, 11, 'お〜いたす（謙譲語Ⅰ＋Ⅱ）', 'お〜いたす（謙譲語（けんじょうご）Ⅰ＋Ⅱ）', 'Humble Ⅰ et Ⅱ à la fois : お + radical + いたす',
+  'お待ちいたします = お待ちする (Ⅰ : élève la personne attendue) + いたす (Ⅱ : solennel envers l’auditeur). '
+  'D’où sa place de forme reine au service client : お持ちいたします, お届けいたします, ご連絡いたします.')
+S(2049, '駅（えき）で先生（せんせい）を[お待（ま）ちいたします]。', 'Je vous attendrai à la gare, professeur.', ['お待（ま）ちになります', 'お待（ま）ちなさいます', '待（ま）たれます'], 'Je vous attendrai à la gare')
+S(2049, 'ご注文（ちゅうもん）の品（しな）は明日（あした）[お届（とど）けいたします]。', 'Nous vous livrerons votre commande demain.', ['お届（とど）けになります', 'お届（とど）けなさいます', '届（とど）けられます'], 'Nous vous livrerons votre commande')
+S(2049, 'お荷物（にもつ）は私（わたくし）が[お持（も）ちいたします]。', 'Je vais porter vos bagages.', ['お持（も）ちになります', 'お持（も）ちなさいます', '持（も）たれます'], 'Je vais porter vos bagages')
+
+P(2050, 11, '名詞＋でいらっしゃる', '名詞（めいし）＋でいらっしゃる', 'Être ~ (respectueux, pour une personne) : nom + でいらっしゃる',
+  'Version respectueuse de « nom + だ / です » quand le sujet est une personne à élever : 先生は努力家でいらっしゃる. '
+  'Pour un adjectif qui n’accepte pas お／ご : 積極的でいらっしゃる, 細くていらっしゃる. Pour une chose, c’est でございます.')
+S(2050, '田中（たなか）様（さま）[でいらっしゃいます]か。', 'Êtes-vous bien M. Tanaka ?', ['でございます', 'であります', 'でおります'], 'Êtes-vous bien M. Tanaka')
+S(2050, '先生（せんせい）は本当（ほんとう）に努力家（どりょくか）[でいらっしゃいます]ね。', 'Vous êtes vraiment travailleur, professeur.', ['でございます', 'でおります', 'でまいります'], 'Vous êtes vraiment travailleur')
+S(2050, '社長（しゃちょう）はいつも積極的（せっきょくてき）[でいらっしゃる]。', 'Le président est toujours plein d’initiative.', ['でござる', 'でおる', 'でまいる'], 'toujours plein d’initiative')
+
+P(2051, 11, '御高配・玉稿・小社・拙稿', '御高配（ごこうはい）・玉稿（ぎょっこう）・小社（しょうしゃ）・拙稿（せっこう）', 'Grandir ce qui est à l’autre, rapetisser ce qui est à soi (noms)',
+  'Le keigo agit aussi sur les noms : ce qui est à l’autre devient grand et précieux (御高配 « votre haute bienveillance », 玉稿 « votre précieux manuscrit », 御尊父 « votre honorable père »), '
+  'ce qui est à soi devient petit (小社 « notre petite maison », 拙稿 « mon modeste manuscrit », 愚見 « mon humble avis »). Ce sont des conventions, pas de la fausse modestie.')
+S(2051, '格別（かくべつ）の[ご高配（こうはい）]を賜（たまわ）り、厚（あつ）く御礼（おんれい）申（もう）し上（あ）げます。', 'Nous vous remercions vivement pour votre bienveillance toute particulière.', ['小社（しょうしゃ）', '拙稿（せっこう）', '愚見（ぐけん）'], 'votre bienveillance')
+S(2051, '[拙稿（せっこう）]をお読（よ）みいただき、ありがとうございました。', 'Merci d’avoir lu mon modeste manuscrit.', ['玉稿（ぎょっこう）', '御高配（ごこうはい）', '貴社（きしゃ）'], 'mon modeste manuscrit')
+S(2051, '先生（せんせい）の[玉稿（ぎょっこう）]を拝読（はいどく）いたしました。', 'J’ai lu votre précieux manuscrit, professeur.', ['拙稿（せっこう）', '愚見（ぐけん）', '小社（しょうしゃ）'], 'votre précieux manuscrit')
+
 # ---------------------------------------------------------------------------------------------
 # Vocabulaire keigo : [unité, mot, lecture annotée, sens, exemple, traduction, passage FR]
 VOCAB = [

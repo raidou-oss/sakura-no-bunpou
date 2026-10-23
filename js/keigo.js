@@ -1,8 +1,8 @@
 // 敬語 Guide complet du keigo : les 5 catégories, les verbes spéciaux, les formes régulières,
 // les grands principes, ウチ・ソト et les pièges les plus fréquents (d'après data/keigo_guide.json).
-import { h, jr, ruby } from './util.js?v=20261023204819';
-import * as D from './data.js?v=20261023204819';
-import { play } from './sfx.js?v=20261023204819';
+import { h, jr, ruby } from './util.js?v=20261023214328';
+import * as D from './data.js?v=20261023214328';
+import { play } from './sfx.js?v=20261023214328';
 
 const STATUS = {
   '適切': ['ok', '✔', 'Correct'], '注意': ['warn', '!', 'Attention'], '不適切': ['ko', '✘', 'Incorrect'], '慣用': ['use', '≈', 'Admis par l’usage'],
@@ -36,6 +36,43 @@ const TABLE = [
   ['引（ひ）き受（う）ける', 'accepter (une demande)', 'お引（ひ）き受（う）けになる', '承（うけたまわ）る', 'かしこまる'],
   ['寝（ね）る', 'dormir', 'お休（やす）みになる', '—', '—'],
   ['着（き）る', 'porter (un vêtement)', 'お召（め）しになる', '—', '—'],
+];
+
+// D'après « 敬語の指針 » (文化審議会答申, 2007), chapitre 1 et chapitre 3 §1
+const SPIRIT = [
+  ['相互尊重', 'Le respect mutuel', 'Le keigo moderne n’est plus une échelle de castes : il exprime le respect entre personnes égales en dignité. Il va dans les deux sens : le supérieur aussi doit tenir compte de la situation de son subordonné.'],
+  ['自己表現', 'Une façon de se présenter', 'Choisir ses formes de politesse, c’est montrer quelle personne tu es et comment tu vois la relation. Ce n’est pas réciter un manuel : c’est un choix personnel, adapté à la situation.'],
+  ['社会的な立場', 'Respecter un rôle, pas forcément une personne', 'Le keigo n’exige pas d’admirer quelqu’un. Respecter sa place (client, professeur de ton enfant, partenaire plus jeune que toi) est déjà une forme d’égard. Ne pas l’utiliser quand il le faut fait passer pour impoli.'],
+  ['適度', 'Ni trop, ni trop peu', 'Empiler les formes ne rend pas plus poli : une phrase ultra-polie avec un ton méprisant reste insultante (慇懃無礼, « politesse arrogante »). Et un contenu impoli ne devient pas poli parce qu’il est en keigo.'],
+  ['気持ち', 'Choisir des mots qui collent à ce qu’on ressent', 'Les formules qui rabaissent ce qui est à soi (小社 « notre petite société », 拙稿 « mon médiocre manuscrit », 愚見 « mon humble avis ») ou qui grandissent ce qui est à l’autre (御高配 « votre haute bienveillance », 玉稿 « votre précieux manuscrit ») sont des conventions, pas de la fausse modestie. On les emploie si elles nous semblent justes.'],
+  ['マニュアル敬語', 'Le keigo « manuel »', 'Les scripts de service client aident les débutants, mais réciter les mêmes phrases à tout le monde sonne creux, et crée des fautes célèbres (×ご注文の品はおそろいになりましたか). Le manuel est un point de départ, pas une fin.'],
+  ['メール', 'E-mails et messages', 'Un e-mail reste une lettre adressée à quelqu’un : abréger le message ne doit pas faire oublier le keigo. Attention aussi aux messages envoyés à plusieurs personnes : chacun reste un destinataire à respecter.'],
+  ['方言', 'Les dialectes', 'Chaque région a son keigo : le ～はる du Kansai (来はった) élève légèrement l’autre tout en restant chaleureux. Le keigo « standard » n’est qu’une variante parmi d’autres.'],
+];
+const FAQ = [
+  ['Le keigo classe les gens en haut et en bas : ce n’est pas dépassé ?', 'Il a longtemps servi à marquer les rangs. Aujourd’hui, il exprime surtout le respect, l’égard pour la situation de l’autre et le degré de proximité. Le principe moderne, c’est le respect mutuel : personne ne doit se montrer arrogant ni se rabaisser plus que nécessaire.'],
+  ['Dois-je parler en keigo à quelqu’un que je n’admire pas ?', 'Le respect ne se limite pas à l’admiration : reconnaître la place sociale de quelqu’un est déjà une marque d’égard, sans hypocrisie. Et ne pas utiliser le keigo quand la situation l’exige te fait passer pour quelqu’un qui manque de savoir-vivre.'],
+  ['Faut-il du keigo avec un partenaire beaucoup plus jeune que moi ?', 'Oui : le keigo dépend aussi des rôles, pas seulement de l’âge. Un employé d’une autre entreprise ou le professeur de ton enfant ont un rôle qu’on respecte, même s’ils sont plus jeunes.'],
+  ['Sans keigo, je me sens plus naturel. Ai-je raison ?', 'Parfois, oui : avec certaines personnes, renoncer au keigo rapproche. Mais ailleurs, ça peut blesser. C’est à toi de juger, selon la personne et le moment : c’est justement ça, le keigo comme « expression de soi ».'],
+  ['Pourquoi certaines personnes très polies paraissent-elles impolies ?', 'Parce que des mots polis avec une attitude hautaine, ça s’entend (慇懃無礼). Mais attention à ne pas juger trop vite : quelqu’un de vraiment raffiné peut sembler « trop poli » à qui ne l’est pas.'],
+  ['小社, 愚息, 拙稿… ce n’est pas de la fausse modestie ?', 'Ce sont des conventions de langage : on rapetisse ce qui est à soi pour montrer de l’égard, sans le penser vraiment. Pareil pour « お口に合うかどうか分かりませんが » en servant un plat réussi. Libre à toi de les employer si elles te ressemblent.'],
+];
+const DEPTH = [
+  ['立てる', 'Ce que veut dire « élever »', 'Le guide officiel parle de 立てる : « placer quelqu’un haut par les mots ». On peut le faire par admiration, par politesse de circonstance, ou même pour garder ses distances : dans tous les cas, la personne est « élevée » dans la phrase.'],
+  ['尊敬語', 'Respect : qui est élevé ?', 'On élève la personne qui agit (いらっしゃる), qui possède (お名前) ou qui est dans un état (お忙しい). Ce peut être ton interlocuteur, quelqu’un de son côté (sa famille), ou un tiers dont tu parles à un ami.'],
+  ['くださる', 'くださる : respect + faveur', 'くださる élève celui qui agit ET dit que son geste est un bienfait pour toi : 先生が指導してくださった = « le professeur a eu la bonté de me guider ».'],
+  ['謙譲語Ⅰ', 'Humble Ⅰ : il faut une personne à élever', 'Il élève la personne VERS qui va ton action (向かう先). Sans personne digne d’être élevée, il ne marche pas : 先生のところに伺う ✔, ×弟のところに伺う. Il existe aussi en nom : (先生への) お手紙, ご説明.'],
+  ['謙譲語Ⅱ', 'Humble Ⅱ : poli envers ton interlocuteur', '参る, 申す, いたす présentent tes propres actions de façon soignée à la personne qui t’écoute, qu’il y ait quelqu’un à élever ou non : 弟のところに参ります ✔. Il s’emploie avec ます.'],
+  ['バスが参りました', 'Humble Ⅱ pour les choses', 'Le 謙譲語Ⅱ sert aussi pour des choses ou des personnes qu’on n’a pas besoin d’élever : バスが参りました (« le bus arrive »), 夜も更けて参りました (« la nuit avance »). Ce qui compte, c’est la politesse envers l’auditeur.'],
+  ['Ⅰ と Ⅱ', 'Ⅰ ou Ⅱ ? Le test', 'Quand la personne visée EST ton interlocuteur, 伺う et 参る reviennent au même. Mais quand tu parles d’un tiers à quelqu’un d’autre, seul 伺う élève le tiers ; 参る n’élève que ton auditeur. Et 伺う peut se passer de ます (明日先生のところに伺うよ), pas 参る.'],
+  ['お〜いたす', 'お〜いたす : les deux à la fois', 'お待ちいたします combine お待ちする (Ⅰ : élève la personne qu’on attend) et いたす (Ⅱ : poli envers l’auditeur). C’est pour ça que c’est la forme reine du service client.'],
+  ['丁寧語', 'Poli ou humble Ⅱ ?', 'です・ます se mettent partout, sur n’importe quel sujet. Le 謙譲語Ⅱ ne vaut que pour son propre camp et est plus solennel. (で)ございます a le même degré de solennité que le 謙譲語Ⅱ.'],
+  ['美化語', 'Embellissement : n’élève personne', 'お酒, お料理 n’élèvent ni celui qui agit, ni la personne visée, ni l’auditeur : ils rendent juste le mot plus élégant. Mais ils viennent naturellement dans une phrase en keigo : 先生、お酒をお注ぎしましょう sonne mieux qu’avec 酒.'],
+];
+const RULES = [
+  ['自分側は立てない', 'On n’élève jamais son propre camp', 'Toi et ta famille (ウチ) ne sont jamais élevés : ×父はいらっしゃいます → 父は参ります / 父は行きます.'],
+  ['相手側を立てる', 'On élève le camp de l’autre', 'L’usage typique : ton interlocuteur et son entourage. 先生は来週いらっしゃるんでしたね.'],
+  ['第三者', 'Un tiers : selon le contexte', 'On peut élever un tiers (ton professeur, devant un ami), mais pas quelqu’un que ton interlocuteur ne connaît pas : ×高校の先輩がいらっしゃった → 先輩が遊びに来た.'],
 ];
 
 let guideP = null;
@@ -82,6 +119,16 @@ export async function keigoGuide(main) {
       h('div.kg-chips', c.exemples_ja.split(/,\s*/).map(x => h('span.kg-chip', { lang: 'ja' }, x))),
       h('p.small.kg-old', `Ancien classement : `, h('span', { lang: 'ja' }, c.ancien_classement_3), ` · ${WHO[i][2]}`)))));
 
+  // 0 · L'esprit du keigo
+  const spirit = sec('esprit', '心', 'L’esprit du keigo', 'Ce qu’en dit le guide officiel 敬語の指針 (文化審議会, 2007) avant toute règle.',
+    h('div.kg-spirit', SPIRIT.map(([k, t, x], i) => h('article.kg-sp', { style: { '--i': i } }, h('span.kg-sp-k', { lang: 'ja' }, k), h('h3', t), h('p', { html: jr(x) })))),
+    h('div.kg-faq', h('p.kicker', 'Les questions qu’on se pose tous'),
+      FAQ.map(([q, a]) => h('details.kg-case', h('summary', h('span.kg-case-sit', q)), h('div.kg-case-body', h('p', a))))));
+  // 1 bis · Les 5 en profondeur
+  const depth = sec('fond', '深', 'Les 5 en profondeur', 'Les nuances qui font la différence entre « correct » et « juste ».',
+    h('div.kg-princ', DEPTH.map(([k, t, x]) => h('article.kg-pr', h('p.kg-sp-k.small', { lang: 'ja' }, k), h('h3', t), h('p', x)))),
+    h('p.kicker', 'Qui élever ? Les trois règles'),
+    h('ol.kg-rules', RULES.map(([k, t, x]) => h('li', h('b', { lang: 'ja' }, k), h('strong', t), h('span', x)))));
   // 2 · Le réflexe : deux questions
   const reflex = sec('reflexe', '問', 'Le réflexe en deux questions', 'Avant de parler, demande-toi :',
     h('div.kg-flow',
@@ -158,7 +205,7 @@ export async function keigoGuide(main) {
       h('a.btn.primary', { href: '#/lecons/keigo' }, 'Leçons de keigo'),
       h('a.btn', { href: '#/grammaire/keigo' }, 'Les points de grammaire'),
       h('a.btn', { href: '#/jeux/salaryman' }, 'Jouer à Salaryman')),
-    nav, cats, reflex, table, forms, principles, cases, lessons);
+    nav, spirit, cats, depth, reflex, table, forms, principles, cases, lessons);
 }
 
 function tagCls(cat) {

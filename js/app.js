@@ -1,31 +1,31 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261023204819';
-import * as D from './data.js?v=20261023204819';
-import * as S from './srs.js?v=20261023204819';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261023204819';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261023204819';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261023204819';
-import * as C from './cloud.js?v=20261023204819';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261023204819';
-import { decorateHead } from './dyn.js?v=20261023204819';
-import { keigoGuide, keigoBanner } from './keigo.js?v=20261023204819';
-import { numbersLesson } from './numbers.js?v=20261023204819';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261023204819';
-import { play, setVolume } from './sfx.js?v=20261023204819';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261023204819';
-import { celebrate, verdict } from './celebrate.js?v=20261023204819';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261023204819';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261023204819';
-import { initGloss } from './gloss.js?v=20261023204819';
-import { initLinks } from './links.js?v=20261023204819';
-import { streakBadge, weekStrip } from './aura.js?v=20261023204819';
-import { initLevelUp } from './levelup.js?v=20261023204819';
-import { confidentsPage } from './confidents.js?v=20261023204819';
-import { initTilt } from './tilt.js?v=20261023204819';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261023204819';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261023214328';
+import * as D from './data.js?v=20261023214328';
+import * as S from './srs.js?v=20261023214328';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261023214328';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261023214328';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261023214328';
+import * as C from './cloud.js?v=20261023214328';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261023214328';
+import { decorateHead } from './dyn.js?v=20261023214328';
+import { keigoGuide, keigoBanner } from './keigo.js?v=20261023214328';
+import { numbersLesson } from './numbers.js?v=20261023214328';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261023214328';
+import { play, setVolume } from './sfx.js?v=20261023214328';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261023214328';
+import { celebrate, verdict } from './celebrate.js?v=20261023214328';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261023214328';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261023214328';
+import { initGloss } from './gloss.js?v=20261023214328';
+import { initLinks } from './links.js?v=20261023214328';
+import { streakBadge, weekStrip } from './aura.js?v=20261023214328';
+import { initLevelUp } from './levelup.js?v=20261023214328';
+import { confidentsPage } from './confidents.js?v=20261023214328';
+import { initTilt } from './tilt.js?v=20261023214328';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261023214328';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261023204819';
+import { GAMES } from './gamelist.js?v=20261023214328';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -39,7 +39,7 @@ const routes = [
   [/^\/entrainement\/(N[1-5]|keigo|kansai|extra)(?:\/(\d+))?$/, practice],
   [/^\/grammaire(?:\/(N[1-5]|keigo|kansai|extra))?$/, grammarList],
   [/^\/keigo$/, () => keigoGuide(main)],
-  [/^\/nombres$/, () => numbersLesson(main)],
+  [/^\/nombres$/, (params) => numbersLesson(main, params)],
   [/^\/point\/(\d+)$/, grammarPoint],
   [/^\/vocabulaire(?:\/(N[1-5]))?$/, vocabList],
   [/^\/vocabulaire\/(N[1-5])\/(\d+)$/, vocabUnit],
@@ -50,7 +50,7 @@ const routes = [
   [/^\/communaute$/, () => communityPage(main)],
   [/^\/confidents$/, () => confidentsPage(main)],
   [/^\/compte$/, () => accountPage(main)],
-  [/^\/lecons(?:\/(N[1-5]|keigo))?$/, lv => lessonsHub(main, lv)],
+  [/^\/lecons(?:\/(N[1-5]|keigo|nombres))?$/, lv => lessonsHub(main, lv)],
   [/^\/kana(?:\/(hira|kata))?$/, s => kanaPage(main, s)],
   [/^\/kana-quiz(?:\/(hira|kata|both))?$/, s => kanaQuiz(main, s)],
   [/^\/lecon\/(N[1-5]|keigo)\/([gvmb])\/(\d+)$/, (lv, kind, n, params) => lessonPage(main, lv, kind, n, { refreshBadge, params })],
@@ -77,7 +77,7 @@ async function route() {
         const kanji = { home: '庭', revision: '復習', entrainement: '練習', grammaire: '文法', point: '文法', vocabulaire: '単語', jeux: '遊び', communaute: '仲間', profil: '自分', compte: '自分', reglages: '設定', lecons: '授業', lecon: '授業', kana: '仮名', 'kana-quiz': '仮名', confidents: '絆' }[section] || '桜';
         moveIndicator();
         // Changer de niveau dans une même section (onglets N5…N1) : pas de balayage, juste un fondu doux
-        const LV_PAGE = /^\/(grammaire|vocabulaire|lecons)(?:\/(?:N[1-5]|keigo|kansai|extra))?$/;
+        const LV_PAGE = /^\/(grammaire|vocabulaire|lecons)(?:\/(?:N[1-5]|keigo|nombres|kansai|extra))?$/;
         const soft = LV_PAGE.test(p) && LV_PAGE.test(prevPath) && p.split('/')[1] === prevPath.split('/')[1];
         prevPath = p;
         await sweep(async () => {

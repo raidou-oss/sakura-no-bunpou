@@ -1,7 +1,7 @@
 // 数 Les nombres japonais : conversion (jusqu'à 無量大数), leçon guidée « compter jusqu'à l'infini ».
-import { h, ruby, jr, normJa, kanaKeyboardToggle, smoothType, hitFx, HIT_WORDS, toast } from './util.js?v=20261023204819';
-import * as S from './srs.js?v=20261023204819';
-import { play } from './sfx.js?v=20261023204819';
+import { h, ruby, jr, normJa, kanaKeyboardToggle, smoothType, hitFx, HIT_WORDS, toast } from './util.js?v=20261023214328';
+import * as S from './srs.js?v=20261023214328';
+import { play } from './sfx.js?v=20261023214328';
 
 // --- Conversion -------------------------------------------------------------------------------
 const DK = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
@@ -115,8 +115,25 @@ const STEPS = [
     tip('Zéro', 'se dit ゼロ ou れい (零).')] },
 ];
 
-export async function numbersLesson(main) {
-  let i = 0;
+/** Onglet Leçons › 数 : les étapes de la leçon des nombres en cartes */
+export function numbersHub() {
+  const seen = S.getExtra('numbersSeen', {}) || {};
+  const done = !!S.getExtra('numbersDone', null);
+  const cards = [...STEPS.map((st, k) => ({ k: st.k, t: st.t, href: `#/nombres?s=${k + 1}`, ok: done || seen[k + 1] })),
+    { k: '試', t: 'Exercice final : 10 nombres à écrire', href: '#/nombres?s=quiz', ok: done }];
+  return h('div.nb-hub',
+    h('p.section-note.seg-desc', 'Compter jusqu’à l’infini : de 一 à 無量大数, en 7 étapes avec des astuces simples, puis un exercice. Ensuite, entraîne-toi en vitesse avec ', h('a', { href: '#/jeux/pib' }, 'PIB RUSH'), '.'),
+    h('ul.lesson-grid', cards.map((c, i) => h('li', { style: { '--i': i } }, h('a.lesson-card', { href: c.href, class: `lesson-card${c.ok ? ' done' : ''}` },
+      h('span.lc-num', String(i + 1).padStart(2, '0')),
+      h('span.lc-body', h('strong', c.t), h('span.lc-preview', { lang: 'ja' }, c.k)),
+      h('span.lc-foot', h('span.lc-gauge', { class: `lc-gauge${c.ok ? ' full' : ''}` }, h('span', { style: { width: c.ok ? '100%' : '0%' } })), h('span.lc-pct', c.ok ? '100 %' : '0 %')),
+      c.ok ? h('span.lc-done', { 'aria-label': 'Vu', html: jr('済') }) : null)))),
+    h('div.actions', h('a.btn.primary', { href: '#/nombres' }, 'Commencer la leçon'), h('a.btn', { href: '#/jeux/pib' }, 'Jouer à PIB RUSH')));
+}
+
+export async function numbersLesson(main, params) {
+  const sp = params?.get?.('s');
+  let i = sp && /^\d+$/.test(sp) ? Math.min(STEPS.length - 1, Math.max(0, Number(sp) - 1)) : 0;
   const bar = h('div.progress', h('span'));
   const counter = h('span.session-count');
   const stage = h('div.stage.lesson-stage');
@@ -126,6 +143,7 @@ export async function numbersLesson(main) {
     counter.textContent = `${i + 1} / ${STEPS.length + 1}`;
     const card = h('article.card.lesson-step.nb-step', { class: `card lesson-step nb-step ${dir > 0 ? 'from-right' : 'from-left'}` },
       h('span.nb-wm', { lang: 'ja', 'aria-hidden': 'true' }, st.k), h('p.kicker', `Étape ${i + 1}`), h('h2', st.t), ...st.body());
+    { const m = { ...(S.getExtra('numbersSeen', {}) || {}) }; if (!m[i + 1]) { m[i + 1] = Date.now(); S.setExtra('numbersSeen', m); } }
     stage.replaceChildren(card, h('div.actions.lesson-nav',
       h('button.btn', { disabled: i === 0, onclick: () => go(-1) }, 'Précédent'),
       h('button.btn.primary', { onclick: () => go(1) }, i === STEPS.length - 1 ? 'Passer à l’exercice' : 'Suivant', h('kbd.key-hint', { 'aria-hidden': 'true' }, 'Espace'))));
@@ -176,16 +194,16 @@ export async function numbersLesson(main) {
       S.setExtra('numbersDone', Date.now());
       stage.replaceChildren(h('div.card.finish', h('p.kicker', '修了！'), h('h2', 'Tu sais compter jusqu’à l’infini'),
         h('p', `${ok} / ${Q.length} du premier coup.`),
-        h('div.actions', h('a.btn.primary', { href: '#/jeux/pib' }, 'Jouer à PIB RUSH'), h('button.btn', { onclick: () => { i = 0; show(); } }, 'Revoir la leçon'), h('a.btn.ghost', { href: '#/lecons' }, 'Retour aux leçons'))));
+        h('div.actions', h('a.btn.primary', { href: '#/jeux/pib' }, 'Jouer à PIB RUSH'), h('button.btn', { onclick: () => { i = 0; show(); } }, 'Revoir la leçon'), h('a.btn.ghost', { href: '#/lecons/nombres' }, 'Retour aux leçons'))));
       toast('Leçon des nombres validée');
     };
     next();
   }
 
-  main.replaceChildren(h('a.back', { href: '#/lecons' }, 'Leçons'),
+  main.replaceChildren(h('a.back', { href: '#/lecons/nombres' }, 'Leçons › Nombres'),
     h('div.session.lesson-wrap',
-      h('header.session-head.lesson-head-bar', h('a.session-quit', { href: '#/lecons', 'aria-label': 'Quitter la leçon' }, '×'), bar, counter),
+      h('header.session-head.lesson-head-bar', h('a.session-quit', { href: '#/lecons/nombres', 'aria-label': 'Quitter la leçon' }, '×'), bar, counter),
       h('header.lesson-title', h('h1', 'Compter jusqu’à l’infini'), h('span.lesson-kind', { lang: 'ja', html: jr('数') })),
       stage));
-  show();
+  if (sp === 'quiz') quiz(); else show();
 }
