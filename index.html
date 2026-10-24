@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Barlow:wght@400;500;600;700&family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261024005335">
+  <link rel="stylesheet" href="css/style.css?v=20261024114041">
 </head>
 <body>
   <!-- 文 Écran de chargement façon Persona, thème grammaire : volets, titre glitché, particule qui se place avec onde de choc -->
@@ -277,6 +277,24 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=20261024005335"></script>
+  <script>
+  // Diagnostic : si le module principal ne démarre pas (fichier bloqué par un bloqueur de pub, navigateur trop ancien…),
+  // on l'explique au lieu de laisser un écran vide.
+  (() => {
+    const errs = [];
+    addEventListener('error', e => { const t = e.target; errs.push(t && t.src ? 'Fichier non chargé : ' + t.src.split('/').pop().split('?')[0] : (e.message || 'Erreur inconnue')); }, true);
+    addEventListener('unhandledrejection', e => errs.push(String((e.reason && e.reason.message) || e.reason)));
+    setTimeout(() => {
+      if (window.__sakuraStarted) return;
+      const m = document.getElementById('main'); if (!m) return;
+      const esc = t => String(t).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+      m.innerHTML = '<div class="card error" style="margin:24px;max-width:560px"><h2>Le site n’a pas pu démarrer</h2>'
+        + '<p>Le plus souvent, c’est un <b>bloqueur de pub</b> (celui d’Opera GX, uBlock, AdBlock…) qui bloque un fichier du site. Désactive-le pour ce site, puis recharge la page.</p>'
+        + '<p><button class="btn primary" onclick="location.reload()">Recharger</button></p>'
+        + (errs.length ? '<p class="small" style="opacity:.7">Détail : ' + esc(errs.slice(0, 3).join(' · ')) + '</p>' : '') + '</div>';
+    }, 12500);
+  })();
+  </script>
+  <script type="module" src="js/app.js?v=20261024114041"></script>
 </body>
 </html>
