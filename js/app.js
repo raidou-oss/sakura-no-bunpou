@@ -1,31 +1,31 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261026172741';
-import * as D from './data.js?v=20261026172741';
-import * as S from './srs.js?v=20261026172741';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261026172741';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261026172741';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261026172741';
-import * as C from './cloud.js?v=20261026172741';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261026172741';
-import { decorateHead } from './dyn.js?v=20261026172741';
-import { keigoGuide, keigoBanner } from './keigo.js?v=20261026172741';
-import { numbersLesson } from './numbers.js?v=20261026172741';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261026172741';
-import { play, setVolume } from './sfx.js?v=20261026172741';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261026172741';
-import { celebrate, verdict } from './celebrate.js?v=20261026172741';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261026172741';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261026172741';
-import { initGloss } from './gloss.js?v=20261026172741';
-import { initLinks } from './links.js?v=20261026172741';
-import { streakBadge, weekStrip } from './aura.js?v=20261026172741';
-import { initLevelUp } from './levelup.js?v=20261026172741';
-import { confidentsPage } from './confidents.js?v=20261026172741';
-import { initTilt } from './tilt.js?v=20261026172741';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261026172741';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261026174049';
+import * as D from './data.js?v=20261026174049';
+import * as S from './srs.js?v=20261026174049';
+import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261026174049';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261026174049';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261026174049';
+import * as C from './cloud.js?v=20261026174049';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261026174049';
+import { decorateHead } from './dyn.js?v=20261026174049';
+import { keigoGuide, keigoBanner } from './keigo.js?v=20261026174049';
+import { numbersLesson } from './numbers.js?v=20261026174049';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261026174049';
+import { play, setVolume } from './sfx.js?v=20261026174049';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261026174049';
+import { celebrate, verdict } from './celebrate.js?v=20261026174049';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261026174049';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261026174049';
+import { initGloss } from './gloss.js?v=20261026174049';
+import { initLinks } from './links.js?v=20261026174049';
+import { streakBadge, weekStrip } from './aura.js?v=20261026174049';
+import { initLevelUp } from './levelup.js?v=20261026174049';
+import { confidentsPage } from './confidents.js?v=20261026174049';
+import { initTilt } from './tilt.js?v=20261026174049';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline } from './social.js?v=20261026174049';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261026172741';
+import { GAMES } from './gamelist.js?v=20261026174049';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -46,7 +46,7 @@ const routes = [
   [/^\/jeux$/, gamesHub],
   [/^\/jeux\/(\w+)$/, game],
   [/^\/reglages$/, settingsPage],
-  [/^\/app$/, () => import('./vitrine.js?v=20261026172741').then(m => m.installPage(main))],
+  [/^\/app$/, () => import('./vitrine.js?v=20261026174049').then(m => m.installPage(main))],
   [/^\/profil(?:\/([0-9a-f-]{36}))?$/, id => profilePage(main, id)],
   [/^\/communaute$/, () => communityPage(main)],
   [/^\/confidents$/, () => confidentsPage(main)],
@@ -60,6 +60,7 @@ const routes = [
 let prevPath = '';
 async function route(opts) {
   const quiet = opts?.quiet === true;
+  if (!quiet && opts?.type === 'hashchange' && applyUpdate()) return;
   // Retour d'un lien e-mail (confirmation, mot de passe) : Supabase lit le jeton avant le routage
   if (/access_token|error_description|type=recovery/.test(location.hash)) return;
   // Portail : tant qu'on n'est pas connecté, on ne voit que l'écran de connexion
@@ -223,7 +224,7 @@ async function home() {
 
   // Sur téléphone, la barre latérale n'existe pas : le panneau du jour se place sous l'en-tête
   // Modules secondaires chargés à part : s'ils sont bloqués (bloqueur de pub…), le site marche quand même
-  const promo = await import('./vitrine.js?v=20261026172741').then(m => m.appPromo()).catch(() => null);
+  const promo = await import('./vitrine.js?v=20261026174049').then(m => m.appPromo()).catch(() => null);
   if (promo) hero.querySelector('.hero-copy').append(promo);
   main.replaceChildren(hero, h('div.daily-mobile', await dailyPanel({ compact: true })), garden, games);
 }
@@ -593,18 +594,24 @@ C.init().catch(err => console.warn('Comptes :', err.message)).finally(() => {
 
 // --- Mise à jour automatique : si une nouvelle version est en ligne, on recharge (une fois) -------------
 const MY_VERSION = new URL(import.meta.url).searchParams.get('v');
+let updateReady = false;   // nouvelle version prête : on recharge au prochain changement de page, jamais sous les yeux
 async function checkUpdate() {
-  if (!MY_VERSION) return;
-  if (/^#\/(lecon|revision|entrainement|jeux\/)/.test(location.hash) && document.querySelector('.session, .game-head')) return;
+  if (!MY_VERSION || updateReady) return;
   try {
     const { v } = await (await fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' })).json();
     if (!v || v <= MY_VERSION) return;
     const k = 'sakura.reloadedFor';
     if (sessionStorage.getItem(k) === v) return;
-    sessionStorage.setItem(k, v);
     await Promise.all(['./', 'index.html'].map(u => fetch(u, { cache: 'reload' }).catch(() => {})));
-    location.reload();
+    updateReady = v;
   } catch {}
+}
+/** Appelé quand on change de page : si une mise à jour attend, on recharge vite (sans écran de chargement) */
+function applyUpdate() {
+  if (!updateReady) return false;
+  try { sessionStorage.setItem('sakura.reloadedFor', updateReady); sessionStorage.setItem('sakura.quickBoot', '1'); } catch {}
+  location.reload();
+  return true;
 }
 checkUpdate();
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkUpdate(); });
@@ -628,7 +635,7 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
 
 initGloss();
 initTilt();
-import('./immersion.js?v=20261026172741').then(m => m.initFullscreen()).catch(() => {});
+import('./immersion.js?v=20261026174049').then(m => m.initFullscreen()).catch(() => {});
 if (C.enabled) initLinks();
 initLevelUp();
 // L'indication du bouton Kanji Dojo s'efface dès qu'on fait défiler la page

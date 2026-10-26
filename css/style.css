@@ -3418,3 +3418,5 @@ body.is-fs .fs-btn { background: #FF8CC6; color: #040A22; border-color: transpar
 
 /* Rafraîchissement silencieux (synchro d'un autre appareil) : pas d'animation d'entrée */
 main.no-anim, main.no-anim * { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; transition-delay: 0s !important; }
+/* Liste « En ligne » redessinée : pas d'animation d'apparition */
+.online-list.no-anim, .online-list.no-anim * { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; }

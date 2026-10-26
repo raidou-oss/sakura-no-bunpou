@@ -1,16 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261026172741';
-import * as D from './data.js?v=20261026172741';
-import * as S from './srs.js?v=20261026172741';
-import { wallpaperSVG } from './wallpaper.js?v=20261026172741';
-import * as C from './cloud.js?v=20261026172741';
-import { play } from './sfx.js?v=20261026172741';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261026172741';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261026172741';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261026174049';
+import * as D from './data.js?v=20261026174049';
+import * as S from './srs.js?v=20261026174049';
+import { wallpaperSVG } from './wallpaper.js?v=20261026174049';
+import * as C from './cloud.js?v=20261026174049';
+import { play } from './sfx.js?v=20261026174049';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261026174049';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261026174049';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261026172741';
-import * as L from './links.js?v=20261026172741';
+import { GAMES } from './gamelist.js?v=20261026174049';
+import * as L from './links.js?v=20261026174049';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -525,8 +525,20 @@ export function mountOnline() {
       ta, h('div.poke-actions', send));
   }
 
+  // On ne redessine la liste que si ce qu'elle affiche a changé (la présence se met à jour souvent : retour sur l'onglet, fiche rafraîchie…),
+  // et sans rejouer les animations d'apparition après le premier affichage
+  let lastSig = null, drawn = false;
   const render = users => {
     const me = C.currentUser()?.id;
+    const sig = JSON.stringify([me, openId, pokeOpen, C.pokeWait && pokeOpen ? C.pokeWait(pokeOpen) > 0 : 0,
+      users.map(u => [u.id, u.username, u.avatar_url, u.rank, u.gauge, xpFor(u), streakFor(u, me)])]);
+    if (sig === lastSig) return;
+    lastSig = sig;
+    if (drawn) { list.classList.add('no-anim'); clearTimeout(render.t); render.t = setTimeout(() => list.classList.remove('no-anim'), 400); }
+    drawn = true;
+    draw(users, me);
+  };
+  const draw = (users, me) => {
     count.textContent = users.length;
     fab.querySelector('.online-fab-n').textContent = users.length;
     document.body.classList.toggle('has-online', Boolean(me));

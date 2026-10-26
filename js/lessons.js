@@ -1,15 +1,15 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261026172741';
-import * as D from './data.js?v=20261026172741';
-import * as S from './srs.js?v=20261026172741';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261026172741';
-import { speakBtn, speak } from './voice.js?v=20261026172741';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261026172741';
-import { play } from './sfx.js?v=20261026172741';
-import { strokeOrder } from './strokes.js?v=20261026172741';
-import { celebrate, verdict } from './celebrate.js?v=20261026172741';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261026174049';
+import * as D from './data.js?v=20261026174049';
+import * as S from './srs.js?v=20261026174049';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261026174049';
+import { speakBtn, speak } from './voice.js?v=20261026174049';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261026174049';
+import { play } from './sfx.js?v=20261026174049';
+import { strokeOrder } from './strokes.js?v=20261026174049';
+import { celebrate, verdict } from './celebrate.js?v=20261026174049';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -140,7 +140,7 @@ const lessonsHead = () => h('header.page-head', h('h1', h('span.jp-head', { lang
 
 export async function lessonsHub(main, lv = 'N5') {
   if (lv === 'nombres') {
-    const { numbersHub } = await import('./numbers.js?v=20261026172741');
+    const { numbersHub } = await import('./numbers.js?v=20261026174049');
     main.replaceChildren(lessonsHead(), tabsFor('nombres'), numbersHub());
     return;
   }
@@ -197,7 +197,7 @@ export async function lessonsHub(main, lv = 'N5') {
     if (animate) { grid.classList.remove('regrid'); void grid.offsetWidth; grid.classList.add('regrid'); }
   };
   render();
-  const banner = lv === 'keigo' ? (await import('./keigo.js?v=20261026172741')).keigoBanner() : null;
+  const banner = lv === 'keigo' ? (await import('./keigo.js?v=20261026174049')).keigoBanner() : null;
   main.replaceChildren(lessonsHead(), tabsFor(lv), ...(banner ? [banner] : []),
     h('div.lesson-controls', seg, countSeg), desc, grid);
 }
