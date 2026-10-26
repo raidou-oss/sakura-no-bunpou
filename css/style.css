@@ -3420,3 +3420,11 @@ body.is-fs .fs-btn { background: #FF8CC6; color: #040A22; border-color: transpar
 main.no-anim, main.no-anim * { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; transition-delay: 0s !important; }
 /* Liste « En ligne » redessinée : pas d'animation d'apparition */
 .online-list.no-anim, .online-list.no-anim * { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; }
+
+/* Réglages : changer de mot de passe */
+.pw-form { display: grid; gap: 12px; max-width: 440px; }
+.pw-form .field { margin: 0; }
+.pw-form .pw-show { justify-self: start; }
+.pw-form .actions { margin: 4px 0 0; }
+.pw-form .form-msg:empty { display: none; }
+.pw-form input[type="password"], .pw-form input[type="text"] { width: 100%; box-sizing: border-box; }

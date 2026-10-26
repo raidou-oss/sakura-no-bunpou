@@ -1,16 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261026174049';
-import * as D from './data.js?v=20261026174049';
-import * as S from './srs.js?v=20261026174049';
-import { wallpaperSVG } from './wallpaper.js?v=20261026174049';
-import * as C from './cloud.js?v=20261026174049';
-import { play } from './sfx.js?v=20261026174049';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261026174049';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261026174049';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261026210603';
+import * as D from './data.js?v=20261026210603';
+import * as S from './srs.js?v=20261026210603';
+import { wallpaperSVG } from './wallpaper.js?v=20261026210603';
+import * as C from './cloud.js?v=20261026210603';
+import { play } from './sfx.js?v=20261026210603';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261026210603';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261026210603';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261026174049';
-import * as L from './links.js?v=20261026174049';
+import { GAMES } from './gamelist.js?v=20261026210603';
+import * as L from './links.js?v=20261026210603';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -337,6 +337,39 @@ export async function communityPage(main) {
   let pt; const offOnline = C.onOnline(() => { clearTimeout(pt); pt = setTimeout(() => { if (grid.isConnected) paint(); }, 250); });
   const refresh = setInterval(() => { if (!grid.isConnected) return; if (document.visibilityState === 'visible') load().catch(() => {}); }, 45000);
   window.addEventListener('hashchange', () => { offOnline(); clearInterval(refresh); }, { once: true });
+}
+
+/** Réglages : changer son mot de passe quand on est connecté */
+export function passwordBox() {
+  if (!C.enabled || !C.currentUser()) return null;
+  const field = (id, label, auto) => {
+    const input = h(`input#${id}`, { type: 'password', required: true, autocomplete: auto });
+    return [input, h('label.field', { for: id }, h('span', label), input)];
+  };
+  const [cur, curF] = field('pw-cur', 'Mot de passe actuel', 'current-password');
+  const [nw, nwF] = field('pw-new', 'Nouveau mot de passe (6 caractères min.)', 'new-password');
+  const [conf, confF] = field('pw-conf', 'Confirme le nouveau mot de passe', 'new-password');
+  const msg = h('p.form-msg', { 'aria-live': 'polite' });
+  const show = h('label.check.pw-show', h('input', { type: 'checkbox', onchange: e => { for (const i of [cur, nw, conf]) i.type = e.target.checked ? 'text' : 'password'; } }), h('span', 'Afficher les mots de passe'));
+  const btn = h('button.btn.primary', { type: 'submit' }, 'Changer le mot de passe');
+  const say = (ok, text) => { msg.className = `form-msg ${ok ? 'ok' : 'ko'}`; msg.textContent = text; };
+  return h('form.pw-form', { onsubmit: async e => {
+    e.preventDefault();
+    if (nw.value.length < 6) return say(false, 'Le nouveau mot de passe doit faire au moins 6 caractères.');
+    if (nw.value !== conf.value) return say(false, 'Les deux nouveaux mots de passe ne sont pas identiques.');
+    if (nw.value === cur.value) return say(false, 'Le nouveau mot de passe doit être différent de l’actuel.');
+    btn.disabled = true; btn.textContent = 'Vérification…'; say(true, '');
+    try {
+      await C.changePassword(cur.value, nw.value);
+      cur.value = nw.value = conf.value = '';
+      say(true, '✔ Mot de passe changé. Utilise le nouveau à ta prochaine connexion, sur tous tes appareils.');
+      play('correct'); toast('Mot de passe modifié');
+    } catch (err) { say(false, err.message); play('wrong'); }
+    finally { btn.disabled = false; btn.textContent = 'Changer le mot de passe'; }
+  } },
+    // Champ caché pour que le gestionnaire de mots de passe sache de quel compte il s'agit
+    h('input', { type: 'text', autocomplete: 'username', value: C.currentProfile?.()?.username || C.currentUser()?.email || '', hidden: true, readonly: true, tabindex: -1, 'aria-hidden': 'true' }),
+    curF, nwF, confF, show, h('div.actions.left', btn), msg);
 }
 
 function newPassword(main) {

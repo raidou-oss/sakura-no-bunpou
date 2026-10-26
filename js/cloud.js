@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261026174049';
-import * as S from './srs.js?v=20261026174049';
-import { computeRank, publicScores } from './level.js?v=20261026174049';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261026210603';
+import * as S from './srs.js?v=20261026210603';
+import { computeRank, publicScores } from './level.js?v=20261026210603';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -64,7 +64,8 @@ export async function init() {
     session = s;
     if (s && s.user.id !== was) { await loadOwnProfile(); await pullProgress(); startLive().catch(() => {}); }
     if (!s) { profile = null; stopLive().catch(() => {}); }
-    emit();
+    // Renouvellement de session, mot de passe changé… : même compte, rien à redessiner
+    if (s?.user?.id !== was || event === 'PASSWORD_RECOVERY') emit();
   });
   S.onChange(schedulePush);
 }
@@ -85,6 +86,18 @@ export async function updatePassword(password) {
   const { error } = await c.auth.updateUser({ password });
   fail(error);
   recovery = false;
+}
+/** Changement de mot de passe une fois connecté : on vérifie d'abord l'actuel */
+export async function changePassword(current, next) {
+  const c = await sb();
+  const email = session?.user?.email;
+  if (!email) throw new Error('Connecte-toi d’abord.');
+  const { error: e1 } = await c.auth.signInWithPassword({ email, password: current });
+  if (e1) { if (/Invalid login credentials/i.test(e1.message)) throw new Error('Mot de passe actuel incorrect.'); fail(e1); }
+  const { error } = await c.auth.updateUser({ password: next });
+  if (error && /different from the old/i.test(error.message)) throw new Error('Le nouveau mot de passe doit être différent de l’actuel.');
+  if (error && /reauthenticat/i.test(error.message)) throw new Error('Par sécurité, déconnecte-toi puis reconnecte-toi avant de changer de mot de passe.');
+  fail(error);
 }
 /** Connexion par identifiant (pseudo, japonais compris) ou par e-mail */
 export async function signInWithLogin(login, password) {

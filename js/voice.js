@@ -1,8 +1,8 @@
 // Voix japonaises : synthèse vocale du navigateur (Web Speech API, voix ja-JP de l'appareil).
 // Rien à télécharger : chaque système fournit ses voix (Kyoko/Otoya sur Apple, Nanami/Haruka
 // sur Windows, Google 日本語 sur Chrome et Android).
-import { h, toast } from './util.js?v=20261026174049';
-import * as S from './srs.js?v=20261026174049';
+import { h, toast } from './util.js?v=20261026210603';
+import * as S from './srs.js?v=20261026210603';
 
 const synth = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
 export const supported = !!synth;
