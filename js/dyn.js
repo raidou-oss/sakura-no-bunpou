@@ -2,8 +2,8 @@
 //  · chaque clic sur un élément interactif frappe : onde de choc + étincelles au point touché, petit écrasement ;
 //  · à chaque page, le kanji du titre s'imprime (onde + étincelles), les jauges se remplissent, les nombres défilent ;
 //  · une bonne réponse dans un jeu déclenche l'impact des leçons.
-import { hitFx, reducedMotion, fxAt } from './util.js?v=20261024114041';
-import { play } from './sfx.js?v=20261024114041';
+import { hitFx, reducedMotion, fxAt } from './util.js?v=20261026172741';
+import { play } from './sfx.js?v=20261026172741';
 
 const TAP = '.btn, .tab, .segmented button, .lesson-card, .nav-list a, .game-tile, .unit, .member, .option, .chip-btn, .link-card, .level, .point, .oc-row, .online-row, .resume-chip, .tile, .kana-cell, .cf-row, .lc-tarot, button.dash-choice, .choice, .answer-btn';
 const lite = () => document.documentElement.classList.contains('lite');
@@ -93,6 +93,14 @@ export function decorateHead(head) {
 
 export function pageEnter(root = document.getElementById('main')) {
   if (!root || reducedMotion()) return;
+  if (root.classList.contains('no-anim')) {   // rafraîchissement silencieux : état final direct
+    const head = root.querySelector('.p3-head');
+    if (head && !head.dataset.entered) { head.dataset.entered = '1'; decorateHead(head); head.classList.add('p3-in'); }
+    root.querySelectorAll('.p3-head .jp-head, .page-head .jp-head').forEach(k => { k.dataset.landed = '1'; });
+    root.querySelectorAll(GAUGE).forEach(g => { g.dataset.grown = '1'; });
+    root.querySelectorAll(COUNT).forEach(n => { n.dataset.counted = '1'; });
+    return;
+  }
   // Titre façon Persona : bandes qui balaient, mot en bandeau qui se dévoile lettre par lettre, grand mot en fond qui glisse
   const head = root.querySelector('.p3-head');
   if (head && !head.dataset.entered) {

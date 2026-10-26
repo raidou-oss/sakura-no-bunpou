@@ -3415,3 +3415,6 @@ body.is-fs .fs-btn { background: #FF8CC6; color: #040A22; border-color: transpar
   body.is-fs .fs-btn { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
   body.is-fs main { padding-bottom: 24px; }
 }
+
+/* Rafraîchissement silencieux (synchro d'un autre appareil) : pas d'animation d'entrée */
+main.no-anim, main.no-anim * { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; transition-delay: 0s !important; }
