@@ -1,15 +1,15 @@
 // Leçons guidées : grammaire seule, vocabulaire seul, ou les deux mélangés.
 // Une leçon se parcourt carte par carte (voix, accent, exemples), puis se termine par
 // un quiz, l'ajout aux révisions et un exercice de thème.
-import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261026210603';
-import * as D from './data.js?v=20261026210603';
-import * as S from './srs.js?v=20261026210603';
-import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261026210603';
-import { speakBtn, speak } from './voice.js?v=20261026210603';
-import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261026210603';
-import { play } from './sfx.js?v=20261026210603';
-import { strokeOrder } from './strokes.js?v=20261026210603';
-import { celebrate, verdict } from './celebrate.js?v=20261026210603';
+import { h, ruby, kana, toast, store, shuffle, jr } from './util.js?v=20261102105316';
+import * as D from './data.js?v=20261102105316';
+import * as S from './srs.js?v=20261102105316';
+import { runSession, practiceItems, vocabPractice, typedCloze, typedVocab, wordAudio, gramAudio, sentenceHTML, sentenceText, vocabExamplesEl, sentenceLine } from './review.js?v=20261102105316';
+import { speakBtn, speak } from './voice.js?v=20261102105316';
+import { itemScore, isMastered, LESSON_CREDIT } from './level.js?v=20261102105316';
+import { play } from './sfx.js?v=20261102105316';
+import { strokeOrder } from './strokes.js?v=20261102105316';
+import { celebrate, verdict } from './celebrate.js?v=20261102105316';
 
 const KINDS = {
   g: { label: 'Grammaire', jp: '文法', desc: 'Les points de grammaire d’une leçon, avec leurs exemples.' },
@@ -98,6 +98,23 @@ export async function lessonCoveredKeys() {
   }
   return out;
 }
+/** Éléments appris en leçon → date où ils l'ont été (la plus ancienne leçon validée qui les contient) */
+export async function lessonLearnedAt() {
+  const done = S.getExtra(DONE_KEY, {}) || {};
+  const out = new Map();
+  const plans = {};
+  for (const [key, at] of Object.entries(done)) {
+    const [lv, kind, n] = key.split(':');
+    if (!D.LESSON_LEVELS.includes(lv)) continue;
+    plans[lv] = plans[lv] || await levelPlan(lv);
+    const c = lessonContent(plans[lv], kind, Number(n));
+    for (const k of [...c.g.map(g => `g:${g.id}`), ...c.v.map(D.vocabKey)]) {
+      const t = Number(at) || 0;
+      if (!out.has(k) || t < out.get(k)) out.set(k, t);
+    }
+  }
+  return out;
+}
 const masteryOfItems = items => {
   if (!items.length) return 0;
   const cards = S.allCards();
@@ -140,7 +157,7 @@ const lessonsHead = () => h('header.page-head', h('h1', h('span.jp-head', { lang
 
 export async function lessonsHub(main, lv = 'N5') {
   if (lv === 'nombres') {
-    const { numbersHub } = await import('./numbers.js?v=20261026210603');
+    const { numbersHub } = await import('./numbers.js?v=20261102105316');
     main.replaceChildren(lessonsHead(), tabsFor('nombres'), numbersHub());
     return;
   }
@@ -197,7 +214,7 @@ export async function lessonsHub(main, lv = 'N5') {
     if (animate) { grid.classList.remove('regrid'); void grid.offsetWidth; grid.classList.add('regrid'); }
   };
   render();
-  const banner = lv === 'keigo' ? (await import('./keigo.js?v=20261026210603')).keigoBanner() : null;
+  const banner = lv === 'keigo' ? (await import('./keigo.js?v=20261102105316')).keigoBanner() : null;
   main.replaceChildren(lessonsHead(), tabsFor(lv), ...(banner ? [banner] : []),
     h('div.lesson-controls', seg, countSeg), desc, grid);
 }
@@ -368,13 +385,8 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
     saveState(null);
     mark(DONE_KEY, lv, kind, covered);
     S.recordLesson();
-    const keys = [...c.g.map(g => `g:${g.id}`), ...c.v.map(D.vocabKey)];
-    const missing = keys.filter(k => !S.getCard(k));
     const first = Math.max(0, total - missedCount);   // réussis du premier coup
-    const add = h('button.btn', { disabled: !missing.length, onclick: () => {
-      missing.forEach(S.addCard); add.disabled = true; add.textContent = 'Dans tes révisions ✓';
-      play('correct'); toast(`${missing.length} élément(s) ajouté(s) à tes révisions`); refreshBadge?.();
-    } }, missing.length ? `Ajouter à mes révisions (${missing.length})` : 'Déjà dans tes révisions ✓');
+    refreshBadge?.();
     phase.textContent = 'Validée';
     phase.classList.remove('quiz');
     dots.replaceChildren();
@@ -382,9 +394,9 @@ export async function lessonPage(main, lv, kind, n, { refreshBadge, params } = {
       h('p.kicker', `${title} · ${lv}`),
       h('h2', covered.length > 1 ? `${covered.length} leçons validées` : 'Leçon validée'),
       h('p', `${total} exercice${total > 1 ? 's' : ''} réussi${total > 1 ? 's' : ''}, dont ${first} du premier coup.`),
+      h('p.small.lf-rev', '✓ Ces éléments rejoignent tes révisions : ils reviendront au moment où tu risques de les oublier, en priorité ceux où tu as hésité.'),
       h('div.actions',
         nextHref ? h('a.btn.primary', { href: nextHref }, covered.length > 1 ? 'Leçons suivantes' : 'Leçon suivante') : h('a.btn.primary', { href: `#/lecons/${lv}` }, 'Toutes les leçons'),
-        add,
         c.g.length && c.gN ? h('a.btn', { href: `#/jeux/theme?lv=${lv}&le=${c.gN}` }, 'Thème : écris les phrases') : null,
         h('a.btn.ghost', { href: `#/lecons/${lv}` }, 'Retour aux leçons'))));
     celebrate({ ...verdict(first / Math.max(1, total)), title: '修了！', sub: covered.length > 1 ? `${covered.length} leçons validées` : `${title} validée`, detail: `${first} / ${total} du premier coup` });

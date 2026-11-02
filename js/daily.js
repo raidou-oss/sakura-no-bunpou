@@ -1,14 +1,14 @@
 // Panneau « Aujourd'hui » de la barre latérale : remplit l'espace vide sous le menu avec ce qui
 // fait vraiment progresser : l'objectif de révisions du jour, la série, et un mot du jour
 // (voix, accent tonal, ajout aux révisions en un clic).
-import { h, ruby, kana, toast, jr } from './util.js?v=20261026210603';
-import * as D from './data.js?v=20261026210603';
-import * as S from './srs.js?v=20261026210603';
-import { countDue } from './review.js?v=20261026210603';
-import { streakBadge } from './aura.js?v=20261026210603';
-import { speakBtn } from './voice.js?v=20261026210603';
-import { pitchSVG } from './pitch.js?v=20261026210603';
-import { play } from './sfx.js?v=20261026210603';
+import { h, ruby, kana, toast, jr } from './util.js?v=20261102105316';
+import * as D from './data.js?v=20261102105316';
+import * as S from './srs.js?v=20261102105316';
+import { countDue, weekInfo } from './review.js?v=20261102105316';
+import { streakBadge } from './aura.js?v=20261102105316';
+import { speakBtn } from './voice.js?v=20261102105316';
+import { pitchSVG } from './pitch.js?v=20261102105316';
+import { play } from './sfx.js?v=20261102105316';
 
 const dayKey = () => new Date().toISOString().slice(0, 10);
 const hash = str => [...str].reduce((a, c) => (a * 33 + c.charCodeAt(0)) >>> 0, 5381);
@@ -29,15 +29,16 @@ export async function wordOfDay() {
 
 export async function dailyPanel({ compact = false } = {}) {
   const [due, v] = await Promise.all([countDue(), wordOfDay()]);
-  const today = S.lastDays(1)[0] || { rev: 0, ok: 0 };
-  const done = today.rev || 0, total = done + due;
+  // Part du jour de l'objectif hebdomadaire (réglages) : faites / prévues aujourd'hui
+  const w = weekInfo();
+  const done = w.doneToday, total = done + due;
   const ratio = total ? done / total : 1;
   const streak = S.streak();
 
   const goal = h('div.daily-goal',
     h('div.daily-ring', { style: { '--p': Math.round(ratio * 100) }, 'aria-hidden': 'true' }, h('span', total ? `${Math.round(ratio * 100)}%` : '✓')),
     h('div.daily-goal-text',
-      h('strong', due ? `${due} à réviser` : total ? 'Objectif atteint' : 'Rien en attente'),
+      h('strong', due ? `${due} à réviser` : total ? 'Objectif du jour atteint' : 'Rien en attente'),
       h('span', `${done} faite${done > 1 ? 's' : ''} aujourd’hui · série `, streakBadge(streak), ' j'),
       due ? h('a.daily-cta', { href: '#/revision' }, 'Réviser maintenant') : null));
 
@@ -74,7 +75,7 @@ export function mountDaily() {
 }
 
 // --- Colonne de droite, sous « En ligne » : point de grammaire du jour ------------
-import { sentenceHTML, sentenceText, sentenceLine } from './review.js?v=20261026210603';
+import { sentenceHTML, sentenceText, sentenceLine } from './review.js?v=20261102105316';
 
 export async function grammarOfDay() {
   const levels = S.getSettings().grammarLevels?.length ? S.getSettings().grammarLevels : ['N5'];

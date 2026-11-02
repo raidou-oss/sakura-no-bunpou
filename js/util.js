@@ -119,7 +119,9 @@ export const sample = (arr, n) => shuffle(arr).slice(0, n);
 
 export const DAY = 86400000;
 export const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); };
-export const dayKey = (t = Date.now()) => new Date(t).toISOString().slice(0, 10);
+// Jour LOCAL (et non UTC) : sinon, en France, l'activité était rangée sur la veille entre minuit et 1-2 h,
+// et la série / l'historique lisaient le jour d'avant
+export const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
 // Stockage local robuste (navigation privée, stockage bloqué…)
 export const store = {

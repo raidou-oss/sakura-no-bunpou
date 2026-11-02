@@ -1,12 +1,12 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261026210603';
-import { strokeOrder } from './strokes.js?v=20261026210603';
-import { speak, speakBtn } from './voice.js?v=20261026210603';
-import { pitchSVG } from './pitch.js?v=20261026210603';
-import { play } from './sfx.js?v=20261026210603';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261026210603';
-import * as D from './data.js?v=20261026210603';
-import * as S from './srs.js?v=20261026210603';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261102105316';
+import { strokeOrder } from './strokes.js?v=20261102105316';
+import { speak, speakBtn } from './voice.js?v=20261102105316';
+import { pitchSVG } from './pitch.js?v=20261102105316';
+import { play } from './sfx.js?v=20261102105316';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261102105316';
+import * as D from './data.js?v=20261102105316';
+import * as S from './srs.js?v=20261102105316';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -123,18 +123,83 @@ export function sentenceHTML(s, { fill = false, furi = true, cls = '' } = {}) {
 }
 
 // --- Construction des séances ---------------------------------------------------
-export async function buildSrsQueue() {
+// --- Plan de révision : combien et lesquelles --------------------------------------------
+// L'élève choisit un nombre de révisions par semaine (réglages). Chaque jour, on répartit ce qui reste
+// sur les jours restants, puis on choisit QUOI réviser par un modèle d'oubli : pour chaque élément appris
+// (leçons validées, ajouts manuels, cartes déjà révisées), on estime la probabilité de s'en souvenir
+// maintenant, et on prend ceux qui risquent le plus d'être oubliés (pondérés par les erreurs passées).
+export const WEEKLY_CHOICES = [10, 20, 30, 40, 50, 60];
+const HOUR = 3600 * 1000, DAY_MS = 24 * HOUR;
+export const weeklyTarget = () => { const n = Number(S.getSettings().revPerWeek); return WEEKLY_CHOICES.includes(n) ? n : 30; };
+
+/** Où en est la semaine (du lundi au dimanche, jours locaux) */
+export function weekInfo(now = Date.now()) {
+  const t0 = new Date(now); t0.setHours(12, 0, 0, 0);            // midi : clé de jour sans ambiguïté
+  const dow = (t0.getDay() + 6) % 7;                                // 0 = lundi
+  let before = 0;
+  for (let k = dow; k >= 1; k--) before += S.reviewedOn(dayKeyOf(t0.getTime() - k * DAY_MS));
+  const doneToday = S.reviewedOn(dayKeyOf(t0.getTime()));
+  const target = weeklyTarget(), daysLeft = 7 - dow;
+  const quota = Math.max(0, Math.ceil((target - before) / daysLeft));   // part du jour, fixée pour la journée
+  return { target, done: before + doneToday, doneToday, quota, left: Math.max(0, quota - doneToday), daysLeft };
+}
+const dayKeyOf = t => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+
+let learnedP = null, learnedAt = 0;
+const learnedMap = () => {
+  if (!learnedP || Date.now() - learnedAt > 8000) {
+    learnedAt = Date.now();
+    learnedP = import('./lessons.js?v=20261102105316').then(m => m.lessonLearnedAt()).catch(() => new Map());
+  }
+  return learnedP;
+};
+
+/** Probabilité estimée de se souvenir de l'élément maintenant (0 → oublié, 1 → acquis) */
+function recall(card, gm, learned, now) {
+  if (card?.s) {
+    if (card.r === 0) return card.d <= now ? 0.4 : 1;              // raté : à reprendre dès qu'il est dispo
+    const stability = Math.max(1, card.i) * (card.e / 2.5);        // en jours : ~90 % de rappel à l'échéance
+    return Math.pow(0.9, ((now - card.s) / DAY_MS) / stability);
+  }
+  if (card) return 0.35;                                           // ajouté à la main, jamais révisé
+  const t = Math.max(learned || 0, 0);
+  if (!t) return 1;
+  // Appris en leçon, jamais révisé : plus on s'est trompé dans les exercices, plus la trace est fragile
+  const ko = gm?.ko || 0;
+  const stability = ko === 0 ? 2 : ko === 1 ? 1.2 : 0.7;
+  return Math.pow(0.9, ((now - t) / DAY_MS) / stability);
+}
+
+/** Les éléments à réviser maintenant, du plus urgent au moins urgent ; `extra` : en plus du quota du jour */
+export async function buildSrsQueue({ extra = 0 } = {}) {
   const now = Date.now();
-  const cards = S.allCards();
-  const due = Object.keys(cards).filter(k => cards[k].d <= now).sort((a, b) => cards[a].d - cards[b].d).slice(0, 200);
-  // Les révisions ne reprennent QUE ce qui a déjà été appris (leçons, « à revoir », ajouts) :
-  // le nouveau se découvre dans les Leçons, pas ici.
-  return { queue: due, dueCount: due.length };
+  const cards = S.allCards(), gm = S.practiceStats();
+  const removed = S.getExtra('removed', {}) || {};
+  const learned = await learnedMap();
+  const keys = new Set([...Object.keys(cards), ...learned.keys()]);
+  const scored = [];
+  for (const k of keys) {
+    const c = cards[k];
+    if (!c && removed[k]) continue;                                // retiré volontairement des révisions
+    if (S.reviewedToday(k) && !(c && c.r === 0 && c.d <= now)) continue;   // déjà vu aujourd'hui (sauf raté à reprendre)
+    const lastSeen = c?.s || learned.get(k) || 0;
+    const R = recall(c, gm[k], learned.get(k), now);
+    const weight = 1 + 0.25 * Math.min(4, c?.l || 0) + 0.3 * Math.min(3, gm[k]?.ko || 0) + (k.startsWith('g:') ? 0.15 : 0);
+    scored.push({ k, R, p: (1 - R) * weight, fresh: now - lastSeen < 10 * HOUR && !(c && c.r === 0 && c.s) });
+  }
+  // D'abord ce qui est à risque (rappel estimé < 90 %), puis, pour remplir le quota, le moins solide (sauf ce qu'on vient d'apprendre)
+  const atRisk = scored.filter(x => x.R < 0.9).sort((a, b) => b.p - a.p);
+  const filler = scored.filter(x => x.R >= 0.9 && !x.fresh).sort((a, b) => a.R - b.R);
+  const { left } = weekInfo(now);
+  const n = left + extra;
+  const picked = [...atRisk, ...filler].slice(0, n).map(x => x.k);
+  // Mélange léger : grammaire et vocabulaire alternent, les plus urgents restent en tête
+  const queue = picked.map((k, i) => ({ k, o: i + Math.random() * 4 })).sort((a, b) => a.o - b.o).map(x => x.k);
+  return { queue, dueCount: queue.length, pending: atRisk.length };
 }
 
 export async function countDue() {
-  const now = Date.now(), cards = S.allCards();
-  return Object.values(cards).filter(c => c.d <= now).length;
+  return (await buildSrsQueue()).queue.length;
 }
 
 // --- Résolution d'une clé en question --------------------------------------------
@@ -619,7 +684,7 @@ export async function runSession(root, { mode = 'srs', queue = [], items = [], t
 
   function done(item, q) {
     onAnswer?.(item, q >= 3);
-    if (mode === 'srs') S.grade(item.key, q);
+    if (mode === 'srs') S.grade(item.key, q, { review: true });
     else {
       const k = item.g ? `g:${item.g.id}` : item.v ? D.vocabKey(item.v) : null;
       S.recordPractice(k, q >= 3);

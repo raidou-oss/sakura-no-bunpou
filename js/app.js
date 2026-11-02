@@ -1,31 +1,31 @@
 // 桜の文法 — routeur et pages principales.
-import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261026210603';
-import * as D from './data.js?v=20261026210603';
-import * as S from './srs.js?v=20261026210603';
-import { buildSrsQueue, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261026210603';
-import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261026210603';
-import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261026210603';
-import * as C from './cloud.js?v=20261026210603';
-import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261026210603';
-import { decorateHead } from './dyn.js?v=20261026210603';
-import { keigoGuide, keigoBanner } from './keigo.js?v=20261026210603';
-import { numbersLesson } from './numbers.js?v=20261026210603';
-import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261026210603';
-import { play, setVolume } from './sfx.js?v=20261026210603';
-import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261026210603';
-import { celebrate, verdict } from './celebrate.js?v=20261026210603';
-import { lessonsHub, lessonPage } from './lessons.js?v=20261026210603';
-import { kanaPage, kanaQuiz } from './kana.js?v=20261026210603';
-import { initGloss } from './gloss.js?v=20261026210603';
-import { initLinks } from './links.js?v=20261026210603';
-import { streakBadge, weekStrip } from './aura.js?v=20261026210603';
-import { initLevelUp } from './levelup.js?v=20261026210603';
-import { confidentsPage } from './confidents.js?v=20261026210603';
-import { initTilt } from './tilt.js?v=20261026210603';
-import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline, passwordBox } from './social.js?v=20261026210603';
+import { h, $, $$, ruby, blossom, toast, reducedMotion, shuffle, store, stack, jr } from './util.js?v=20261102105316';
+import * as D from './data.js?v=20261102105316';
+import * as S from './srs.js?v=20261102105316';
+import { buildSrsQueue, weekInfo, WEEKLY_CHOICES, runSession, countDue, sentenceHTML, practiceItems, wordAudio, gramAudio, sentenceText, vocabExamplesEl, sentenceLine, regSwitch } from './review.js?v=20261102105316';
+import { speakBtn, supported as voiceOK, japaneseVoices, refreshVoice, speak } from './voice.js?v=20261102105316';
+import { levelMastery, computeRank, rankLabel, rankTitle, RANK_NAMES, lessonProgress, lessonMastery, progressByLevel, isMastered, pct as toPct } from './level.js?v=20261102105316';
+import * as C from './cloud.js?v=20261102105316';
+import { wallpaperSVG, sectionWallpaperSVG, mountWallpaper } from './wallpaper.js?v=20261102105316';
+import { decorateHead } from './dyn.js?v=20261102105316';
+import { keigoGuide, keigoBanner } from './keigo.js?v=20261102105316';
+import { numbersLesson } from './numbers.js?v=20261102105316';
+import { sweep, enter, moveIndicator, bootSweep } from './transition.js?v=20261102105316';
+import { play, setVolume } from './sfx.js?v=20261102105316';
+import { mountDaily, dailyPanel, mountSideExtras } from './daily.js?v=20261102105316';
+import { celebrate, verdict } from './celebrate.js?v=20261102105316';
+import { lessonsHub, lessonPage } from './lessons.js?v=20261102105316';
+import { kanaPage, kanaQuiz } from './kana.js?v=20261102105316';
+import { initGloss } from './gloss.js?v=20261102105316';
+import { initLinks } from './links.js?v=20261102105316';
+import { streakBadge, weekStrip } from './aura.js?v=20261102105316';
+import { initLevelUp } from './levelup.js?v=20261102105316';
+import { confidentsPage } from './confidents.js?v=20261102105316';
+import { initTilt } from './tilt.js?v=20261102105316';
+import { profilePage, communityPage, accountPage, portalPage, rankBlock, navAccount, gauge, mountOnline, passwordBox } from './social.js?v=20261102105316';
 
 const main = $('#main');
-import { GAMES } from './gamelist.js?v=20261026210603';
+import { GAMES } from './gamelist.js?v=20261102105316';
 
 const furiFor = lv => {
   const f = S.getSettings().furigana;
@@ -46,7 +46,7 @@ const routes = [
   [/^\/jeux$/, gamesHub],
   [/^\/jeux\/(\w+)$/, game],
   [/^\/reglages$/, settingsPage],
-  [/^\/app$/, () => import('./vitrine.js?v=20261026210603').then(m => m.installPage(main))],
+  [/^\/app$/, () => import('./vitrine.js?v=20261102105316').then(m => m.installPage(main))],
   [/^\/profil(?:\/([0-9a-f-]{36}))?$/, id => profilePage(main, id)],
   [/^\/communaute$/, () => communityPage(main)],
   [/^\/confidents$/, () => confidentsPage(main)],
@@ -188,7 +188,8 @@ async function home() {
       h('p.today-title', 'Aujourd’hui'),
       queue.length
         ? h('div.counters', counter(dueCount, 'à réviser', 'due'))
-        : h('p.today-done', 'Tout est révisé. Apprends du nouveau dans les Leçons, ou entraîne-toi librement.'),
+        : h('p.today-done', weekInfo().quota > 0 ? 'Révisions du jour faites ✓ Apprends du nouveau dans les Leçons, ou entraîne-toi librement.' : 'Rien à réviser pour l’instant. Apprends du nouveau dans les Leçons, ou entraîne-toi librement.'),
+      weekGauge(weekInfo()),
       queue.length
         ? h('a.btn.primary.big.wide', { href: '#/revision' }, 'Commencer la révision')
         : h('a.btn.primary.big.wide', { href: '#/lecons' }, 'Apprendre du nouveau (Leçons)'),
@@ -224,26 +225,44 @@ async function home() {
 
   // Sur téléphone, la barre latérale n'existe pas : le panneau du jour se place sous l'en-tête
   // Modules secondaires chargés à part : s'ils sont bloqués (bloqueur de pub…), le site marche quand même
-  const promo = await import('./vitrine.js?v=20261026210603').then(m => m.appPromo()).catch(() => null);
+  const promo = await import('./vitrine.js?v=20261102105316').then(m => m.appPromo()).catch(() => null);
   if (promo) hero.querySelector('.hero-copy').append(promo);
   main.replaceChildren(hero, h('div.daily-mobile', await dailyPanel({ compact: true })), garden, games);
 }
 
 // --- Révisions -----------------------------------------------------------------
-async function revision() {
-  const { queue } = await buildSrsQueue();
+async function revision(params) {
+  const extra = Math.min(30, Number(params?.get?.('plus')) || 0);
+  const { queue } = await buildSrsQueue({ extra });
   if (!queue.length) {
+    const w = weekInfo();
+    const [{ queue: more }] = await Promise.all([buildSrsQueue({ extra: 5 })]);
+    const doneDay = w.quota > 0 && w.left === 0;
     const set = S.getSettings();
-    main.replaceChildren(h('div.card.empty',
-      h('div', { html: blossom(1, 96, '') }),
-      h('h2', 'Rien à réviser pour l’instant'),
-      h('p', 'Les révisions reprennent uniquement ce que tu as déjà appris, au bon moment. Pour découvrir du nouveau, passe par les Leçons.'),
+    main.replaceChildren(h('div.card.empty.rev-done',
+      h('div', { html: blossom(doneDay || !w.quota ? 1 : w.doneToday / w.quota, 96, '') }),
+      h('h2', doneDay ? 'Révisions du jour faites ✓' : w.done >= w.target ? 'Objectif de la semaine atteint ✓' : 'Rien à réviser pour l’instant'),
+      h('p', doneDay
+        ? `${w.doneToday} élément${w.doneToday > 1 ? 's' : ''} révisé${w.doneToday > 1 ? 's' : ''} aujourd’hui. La suite est répartie sur les jours qui restent.`
+        : 'Les révisions reprennent ce que tu as appris dans les Leçons, au moment où tu risques de l’oublier. Valide des leçons pour les alimenter.'),
+      weekGauge(w),
       h('div.actions',
-        (set.grammarLevels.length ? set.grammarLevels : ['N5']).map(lv => h('a.btn', { href: `#/entrainement/${lv}` }, `Entraînement ${lv}`)),
-        h('a.btn.primary', { href: '#/lecons' }, 'Aller aux Leçons'))));
+        more.length ? h('a.btn.primary', { href: '#/revision?plus=5' }, `Réviser quand même (${more.length})`) : null,
+        h('a.btn', { href: '#/lecons' }, 'Aller aux Leçons'),
+        (set.grammarLevels.length ? set.grammarLevels : ['N5']).slice(0, 1).map(lv => h('a.btn.ghost', { href: `#/entrainement/${lv}` }, `Entraînement ${lv}`))),
+      h('p.small', h('a', { href: '#/reglages' }, `Objectif : ${w.target} révisions par semaine · modifier`))));
     return;
   }
   runSession(main, { mode: 'srs', queue, onDone: refreshBadge });
+}
+
+/** Jauge « cette semaine » : révisions faites / objectif */
+function weekGauge(w) {
+  const pct = Math.min(100, Math.round(w.done / Math.max(1, w.target) * 100));
+  return h('div.week-gauge', { role: 'img', 'aria-label': `Cette semaine : ${w.done} révisions sur ${w.target}` },
+    h('div.wg-top', h('span', 'Cette semaine'), h('b', `${w.done} / ${w.target}`)),
+    h('div.wg-bar', h('i', { style: { width: `${pct}%` } })),
+    h('div.wg-sub.small', w.left > 0 ? `Aujourd’hui : ${w.doneToday} / ${w.quota}` : w.daysLeft > 1 ? `Encore ${Math.max(0, w.target - w.done)} sur ${w.daysLeft - 1} jour${w.daysLeft > 2 ? 's' : ''}` : 'Nouvelle semaine lundi'));
 }
 
 async function practice(lv, lesson) {
@@ -492,6 +511,7 @@ function voiceSettings(s) {
   return box;
 }
 
+const weeklyTargetSetting = () => { const n = Number(S.getSettings().revPerWeek); return WEEKLY_CHOICES.includes(n) ? n : 30; };
 function settingsPage() {
   const s = S.getSettings();
   const levelBoxes = (field, label) => h('fieldset',
@@ -516,6 +536,16 @@ function settingsPage() {
       levelBoxes('grammarLevels', 'Niveaux de grammaire (entraînement, jeux)'),
       levelBoxes('vocabLevels', 'Niveaux de vocabulaire (entraînement, jeux)'),
       h('p.section-note', 'Le nouveau s’apprend dans les Leçons. Les révisions reprennent ensuite ce que tu as appris, en phrases à trous.'),
+      h('h2', 'Révisions'),
+      (() => {
+        const per = h('p.small.rev-per');
+        const say = n => { per.textContent = `≈ ${Math.round(n / 7 * 10) / 10} par jour. Chaque jour, l’algorithme choisit lesquels réviser parmi ce que tu as appris en leçon : d’abord ce que tu risques le plus d’oublier (erreurs pendant la leçon, oublis passés, temps écoulé).`; };
+        const cur = weeklyTargetSetting();
+        say(cur);
+        return h('fieldset', h('legend', 'Nombre de révisions par semaine'),
+          h('div.checks.rev-chips', WEEKLY_CHOICES.map(n => h('label.check', h('input', { type: 'radio', name: 'revweek', checked: cur === n, onchange: () => { S.setSettings({ revPerWeek: n }); say(n); toast(`${n} révisions par semaine`); refreshBadge(); } }), h('span', String(n))))),
+          per);
+      })(),
       h('h2', 'Affichage'), furi,
       h('div.checks',
         h('label.check', h('input', { type: 'checkbox', checked: !!s.reduceMotion, onchange: e => { S.setSettings({ reduceMotion: e.target.checked }); applyMotion(); toast(e.target.checked ? 'Animations réduites' : 'Animations activées'); } }),
@@ -636,7 +666,7 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
 
 initGloss();
 initTilt();
-import('./immersion.js?v=20261026210603').then(m => m.initFullscreen()).catch(() => {});
+import('./immersion.js?v=20261102105316').then(m => m.initFullscreen()).catch(() => {});
 if (C.enabled) initLinks();
 initLevelUp();
 // L'indication du bouton Kanji Dojo s'efface dès qu'on fait défiler la page

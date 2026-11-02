@@ -3428,3 +3428,13 @@ main.no-anim, main.no-anim * { animation-duration: 0s !important; animation-dela
 .pw-form .actions { margin: 4px 0 0; }
 .pw-form .form-msg:empty { display: none; }
 .pw-form input[type="password"], .pw-form input[type="text"] { width: 100%; box-sizing: border-box; }
+
+/* === Révisions : objectif de la semaine === */
+.week-gauge { display: grid; gap: 6px; margin: 12px 0; width: 100%; max-width: 420px; text-align: left; }
+.rev-done .week-gauge { margin: 16px auto; }
+.wg-top { display: flex; justify-content: space-between; align-items: baseline; font-size: .9rem; color: var(--mist); }
+.wg-top b { font-family: var(--display); font-style: italic; font-size: 1.15rem; color: var(--ink); }
+.wg-bar { height: 8px; border-radius: 99px; background: rgba(127, 168, 255, .15); overflow: hidden; transform: skewX(-12deg); }
+.wg-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan, #46D9FF), var(--sakura, #FF8CC6)); transition: width .6s cubic-bezier(.2, .9, .25, 1); }
+.wg-sub { color: var(--mist); }
+.rev-chips { display: flex; flex-wrap: wrap; gap: 8px; }

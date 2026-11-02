@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261026210603';
+import { store, today, dayKey, DAY } from './util.js?v=20261102105316';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -22,6 +22,7 @@ const DEFAULT_SETTINGS = {
   autoSpeak: true,   // lit la réponse à voix haute en révision
   pitch: true,       // schéma d'accent tonal
   register: 'orig',  // style des phrases : orig (tel quel) | polite | plain
+  revPerWeek: 30,    // révisions par semaine (10 à 60) : l'algorithme choisit lesquelles
 };
 
 let cards = store.get(K_CARDS, {});
@@ -93,7 +94,7 @@ export function removeCard(key) {
 }
 
 /** Applique une note et renvoie la carte mise à jour */
-export function grade(key, q) {
+export function grade(key, q, { review = false } = {}) {
   const now = Date.now();
   const c = cards[key] ? { ...cards[key] } : { r: 0, i: 0, e: 2.5, d: now, l: 0, s: 0 };
   const wasNew = !cards[key] || c.s === 0;
@@ -113,6 +114,8 @@ export function grade(key, q) {
   }
   c.s = now;
   cards[key] = c;
+  // Révision du jour : chaque élément compte une fois (objet → fusion par union entre appareils)
+  if (review) { const d = dayStats(); d.rv = { ...(d.rv || {}), [key]: 1 }; }
   save();
   record(q >= 3, wasNew, key[0]);
   return c;
@@ -174,6 +177,15 @@ export function streak() {
   while (has(dayKey(t))) { n++; t -= DAY; }
   return n;
 }
+
+/** Nombre d'éléments révisés un jour donné (clé de jour) */
+export function reviewedOn(k) {
+  const d = stats.days[k];
+  if (!d) return 0;
+  return d.rv ? Object.keys(d.rv).length : (d.rev || 0);   // anciens jours : nombre de réponses
+}
+/** Le jour a-t-il déjà vu cet élément révisé ? */
+export const reviewedToday = key => !!stats.days[dayKey()]?.rv?.[key];
 
 /** Les 7 derniers jours pour le petit historique de l'accueil */
 export function lastDays(n = 7) {
