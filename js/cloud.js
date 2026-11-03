@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261103112018';
-import * as S from './srs.js?v=20261103112018';
-import { computeRank, publicScores } from './level.js?v=20261103112018';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261103112601';
+import * as S from './srs.js?v=20261103112601';
+import { computeRank, publicScores } from './level.js?v=20261103112601';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -314,10 +314,10 @@ async function doSync() {
       ({ localChanged, remoteChanged } = S.mergeIn(data.data));
     }
     localStorage.setItem(K_OWNER, me);
-    // Ancien niveau affiché sur le profil : il sert de plancher pour ne pas perdre de Lv après la mise à jour
-    if (profile?.xp) {
+    // Rang affiché sur le profil : il sert de plancher (un rang atteint reste acquis). L'XP, elle, vient de la progression.
+    if (profile?.rank) {
       const peak = S.getExtra('peak', {}) || {};
-      if (profile.xp > (peak.xp || 0)) { S.setExtra('peak', { ...peak, xp: profile.xp, rank: Math.max(peak.rank || 0, profile.rank || 0) }, { quiet: true }); remoteChanged = true; }
+      if (profile.rank > (peak.rank || 0)) { S.setExtra('peak', { ...peak, rank: profile.rank }, { quiet: true }); remoteChanged = true; }
     }
     if (remoteChanged) await upload(c);
     else await pushProfile(c);
@@ -412,7 +412,7 @@ export const onlineUsers = () => online;
 function presencePayload() {
   return { id: session.user.id, username: profile?.username || '…', avatar_url: profile?.avatar_url || null,
     rank: Math.max(profile?.rank ?? 0, (S.getExtra('peak', {}) || {}).rank ?? 0), gauge: profile?.gauge ?? 0,
-    xp: Math.max(profile?.xp ?? 0, (S.getExtra('peak', {}) || {}).xp ?? 0), streak: S.streak(), streakDay: S.streakDay(), since: Date.now() };
+    xp: (pk => pk.v === 2 ? pk.xp : profile?.xp ?? 0)(S.getExtra('peak', {}) || {}), streak: S.streak(), streakDay: S.streakDay(), since: Date.now() };
 }
 function trackPresence() { if (presence && session && liveOk()) presence.track(presencePayload()).catch(() => {}); }
 

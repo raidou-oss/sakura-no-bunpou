@@ -13,8 +13,8 @@
 // 3. Rang : on valide un niveau quand grammaire ≥ 55 % ET vocabulaire ≥ 45 %.
 //    La jauge du rang mélange les deux (60 % grammaire, 40 % vocabulaire), chacune plafonnée
 //    à son seuil : impossible de passer N4 en ne faisant que du vocabulaire.
-import * as D from './data.js?v=20261103112018';
-import * as S from './srs.js?v=20261103112018';
+import * as D from './data.js?v=20261103112601';
+import * as S from './srs.js?v=20261103112601';
 
 export const MATURE = S.MATURE;                     // 21 jours
 export const THRESHOLD = { grammar: 0.55, vocab: 0.45 };
@@ -51,7 +51,7 @@ export const LESSON_CREDIT = 0.3;
 export const isMastered = c => !!c && c.i >= MATURE && (c.r || 0) >= 4 && (c.e || 0) >= 2.3;
 let coveredP = null, coveredAt = 0;
 async function coveredKeys() {
-  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261103112018').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
+  if (!coveredP || Date.now() - coveredAt > 5000) { coveredAt = Date.now(); coveredP = import('./lessons.js?v=20261103112601').then(m => m.lessonCoveredKeys()).catch(() => new Set()); }
   return coveredP;
 }
 /** Score total d'un élément : révisions espacées + jeux / exercices */
@@ -148,13 +148,14 @@ export async function computeRank(progress) {
   for (const [k, c] of Object.entries(S.allCards())) xp += Math.round(cardScore(c, now) * (k.startsWith('g:') ? 30 : 10));
   // XP de pratique : chaque élément réussi en jeu ou en exercice
   for (const [k, g] of Object.entries(gm)) xp += k.startsWith('k:') ? Math.min(6, g.ok) : Math.min(20, g.ok * 2);
-  // L'XP ne redescend jamais : une carte oubliée fait baisser la maîtrise, pas le niveau (Lv) du joueur
-  // On cumule seulement les hausses : après un oubli, ce qu'on regagne compte de nouveau, sans jamais perdre de Lv.
-  const raw = xp, lastRaw = peak.raw ?? raw;
-  xp = Math.max(raw, (peak.xp || 0) + Math.max(0, raw - lastRaw));
+  // L'XP ne redescend jamais : une carte oubliée fait baisser la maîtrise, pas le niveau (Lv) du joueur.
+  // On garde simplement le plus haut atteint. (Avant, on cumulait chaque hausse : entre deux appareils,
+  // les allers-retours de la synchro gonflaient l'XP sans fin. peak.v = 2 : record recalculé proprement.)
+  const raw = xp;
+  xp = Math.max(raw, peak.v === 2 ? (peak.xp || 0) : 0);
   if (xp !== lastXp) { lastXp = xp; if (typeof window !== 'undefined') setTimeout(() => window.dispatchEvent(new CustomEvent('sakura:xp', { detail: { xp } })), 0); }
   const up = xp > (peak.xp || 0) || rank > (peak.rank || 0);
-  if (up || raw !== peak.raw) S.setExtra('peak', { xp, raw, rank: Math.max(rank, peak.rank || 0), t: Date.now() }, { quiet: !up });
+  if (up || raw !== peak.raw || peak.v !== 2) S.setExtra('peak', { xp, raw, rank: Math.max(rank, peak.rank || 0), t: Date.now(), v: 2 }, { quiet: !up && peak.v === 2 });
   return {
     rank, label: rankLabel(rank), level: lv,
     gauge: rank >= RANK_NAMES.length ? 1 : Math.min(1, cur.gauge),
@@ -173,7 +174,7 @@ export const pct = x => Math.round(Math.max(0, Math.min(1, x || 0)) * 100);
 // Lv n demande 12·(n−1)² XP : rapide au début, puis de plus en plus long. Plafond : 99.
 /** Mon XP (identique partout sur le site : profil, communauté, en ligne, menu) */
 let lastXp = null;
-export const myXp = () => { const p = (S.getExtra('peak', {}) || {}).xp; return p == null && lastXp == null ? null : Math.max(p || 0, lastXp || 0); };
+export const myXp = () => { const pk = S.getExtra('peak', {}) || {}; const p = pk.v === 2 ? pk.xp : null; return p == null && lastXp == null ? null : Math.max(p || 0, lastXp || 0); };
 export function playerLevel(xp = 0) {
   xp = Math.max(0, Number(xp) || 0);
   const lv = Math.min(99, Math.floor(Math.sqrt(xp / 12)) + 1);

@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261103112018';
+import { store, today, dayKey, DAY } from './util.js?v=20261103112601';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -240,6 +240,12 @@ const maxMerge = (a = {}, b = {}) => {          // nombres : le plus grand ; obj
   return out;
 };
 const newer = (x, y, t = o => o?.t || 0) => (t(y) > t(x) ? y : x);
+// Record d'XP : un record recalculé (v2) remplace l'ancien, gonflé par un bug de synchro
+function mergePeak(a, b) {
+  const va = a?.v === 2, vb = b?.v === 2;
+  if (va !== vb) { const good = va ? a : b, old = va ? b : a; return { ...good, rank: Math.max(good.rank || 0, old?.rank || 0) }; }
+  return { ...maxMerge(a, b), ...(newer(a, b)?.raw != null ? { raw: newer(a, b).raw } : {}) };
+}
 const cardTime = c => Math.max(c?.s || 0, 0);
 export function mergeData(A, B) {
   A = A || {}; B = B || {};
@@ -274,7 +280,7 @@ export function mergeData(A, B) {
     lessonsSeen: maxMerge(xa.lessonsSeen, xb.lessonsSeen),
     links: maxMerge(aNewer ? xa.links : xb.links, aNewer ? xb.links : xa.links),
     // xp et rang : le plus haut ; raw (XP brute du moment, qui baisse avec le temps) : la valeur la plus récente
-    peak: { ...maxMerge(xa.peak, xb.peak), ...(newer(xa.peak, xb.peak)?.raw != null ? { raw: newer(xa.peak, xb.peak).raw } : {}) },
+    peak: mergePeak(xa.peak, xb.peak),
     last: newer(xa.last, xb.last) || null,
     lessonState, gm, removed, resetAt,
   };

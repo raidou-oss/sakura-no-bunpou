@@ -1,9 +1,9 @@
 // 昇 LEVEL UP façon Persona : quand le niveau du joueur (Lv) monte, grande animation plein écran.
-import { h, reducedMotion } from './util.js?v=20261103112018';
-import * as S from './srs.js?v=20261103112018';
-import { computeRank, playerLevel } from './level.js?v=20261103112018';
-import { play } from './sfx.js?v=20261103112018';
-import { fxLayer } from './fx.js?v=20261103112018';
+import { h, reducedMotion } from './util.js?v=20261103112601';
+import * as S from './srs.js?v=20261103112601';
+import { computeRank, playerLevel } from './level.js?v=20261103112601';
+import { play } from './sfx.js?v=20261103112601';
+import { fxLayer } from './fx.js?v=20261103112601';
 
 const STATS = [['知識', 'Savoir'], ['根気', 'Persévérance'], ['勇気', 'Courage'], ['魅力', 'Charme'], ['器用さ', 'Habileté']];
 
@@ -123,7 +123,8 @@ async function check({ fromSync = false } = {}) {
     const lv = playerLevel(r.xp).lv;
     const shown = S.getExtra('lvShown', null);
     if (shown == null) { S.setExtra('lvShown', lv, { quiet: true }); return; }
-    if (lv <= shown) return;
+    if (lv < shown) { S.setExtra('lvShown', lv, { quiet: true }); return; }   // XP recalculée à la baisse : pas de fête en double
+    if (lv === shown) return;
     // Niveau arrivé d'un autre appareil par la synchro : on l'a déjà fêté là-bas
     if (fromSync) { S.setExtra('lvShown', lv, { quiet: true }); return; }
     S.setExtra('lvShown', lv);

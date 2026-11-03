@@ -1,5 +1,5 @@
-import { h, jr } from './util.js?v=20261103112018';
-import { play } from './sfx.js?v=20261103112018';
+import { h, jr } from './util.js?v=20261103112601';
+import { play } from './sfx.js?v=20261103112601';
 
 // Page « Installer l'app » : le même site, en application (moteur Chromium partout où c'est possible)
 const DL = 'https://github.com/raidou-oss/sakura-no-bunpou/releases/download/app/';
