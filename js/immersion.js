@@ -1,7 +1,7 @@
 // Plein écran pour les exercices (leçons, révisions, jeux…) — téléphones et tablettes uniquement.
 // On ne verrouille jamais l'orientation : tel tenu en portrait → plein écran en portrait, en paysage → paysage.
-import { h } from './util.js?v=20261103113432';
-import { play } from './sfx.js?v=20261103113432';
+import { h } from './util.js?v=20261103115437';
+import { play } from './sfx.js?v=20261103115437';
 
 const ua = navigator.userAgent;
 const bridge = () => typeof window.SakuraApp?.fullscreen === 'function';     // app Android : barres système masquées en natif

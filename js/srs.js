@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261103113432';
+import { store, today, dayKey, DAY } from './util.js?v=20261103115437';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -277,6 +277,7 @@ export function mergeData(A, B) {
     games: maxMerge(xa.games, xb.games),
     gameDetail: maxMerge(xa.gameDetail, xb.gameDetail),
     lessonsDone: maxMerge(xa.lessonsDone, xb.lessonsDone),
+    study: maxMerge(xa.study, xb.study),   // temps d'étude par jour : le plus grand total
     lessonsSeen: maxMerge(xa.lessonsSeen, xb.lessonsSeen),
     links: maxMerge(aNewer ? xa.links : xb.links, aNewer ? xb.links : xa.links),
     // xp et rang : le plus haut ; raw (XP brute du moment, qui baisse avec le temps) : la valeur la plus récente

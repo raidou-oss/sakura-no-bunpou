@@ -3438,3 +3438,67 @@ main.no-anim, main.no-anim * { animation-duration: 0s !important; animation-dela
 .wg-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan, #46D9FF), var(--sakura, #FF8CC6)); transition: width .6s cubic-bezier(.2, .9, .25, 1); }
 .wg-sub { color: var(--mist); }
 .rev-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* 勉強 Minuteur d'études (overlay) : carte de verre penchée façon Persona, anneau cyan → sakura ------------------ */
+.study-timer { --p: 0; position: fixed; z-index: 8; top: calc(14px + env(safe-area-inset-top, 0px)); right: max(18px, env(safe-area-inset-right, 0px));
+  display: flex; align-items: stretch; border-radius: 18px; border: 1px solid var(--line-hi);
+  background: linear-gradient(135deg, rgba(14, 30, 86, .94), rgba(6, 13, 44, .94)); box-shadow: var(--shadow);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transform: skewX(-7deg); transform-origin: right top;
+  animation: st-in .5s cubic-bezier(.2, 1.5, .4, 1) both; user-select: none; -webkit-user-select: none; }
+body.portal-mode .study-timer { display: none; }
+@keyframes st-in { from { opacity: 0; transform: skewX(-7deg) translateY(-18px) scale(.9); } }
+.study-timer::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: var(--bloom); opacity: 0; transition: opacity .3s;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.study-timer.on::before { opacity: 1; animation: st-glow 2.4s ease-in-out infinite; }
+.study-timer.on { box-shadow: var(--shadow), 0 0 26px -6px rgba(255, 148, 203, .55); }
+@keyframes st-glow { 50% { opacity: .45; } }
+.st-main { display: flex; align-items: center; gap: 12px; padding: 9px 8px 9px 11px; border: 0; background: none; color: var(--ink); cursor: pointer; text-align: left; transform: skewX(7deg); }
+.st-ring { position: relative; flex: none; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+  background: conic-gradient(var(--cyan), var(--sakura) calc(var(--p) * 1%), rgba(127, 168, 255, .16) 0); transition: transform .2s cubic-bezier(.2, 1.6, .4, 1); }
+.st-ring::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: #081236; }
+.st-kanji { position: relative; font: 400 1.15rem/1 var(--jp-heavy); color: var(--pale); }
+.st-ico { position: absolute; right: -4px; bottom: -4px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--cyan); color: #040A22; box-shadow: 0 0 0 2px #081236; }
+.st-ico svg { width: 11px; height: 11px; fill: currentColor; }
+.st-ico .i-pause, .study-timer.on .st-ico .i-play { display: none; }
+.study-timer.on .st-ico .i-pause { display: block; }
+.study-timer.on .st-ico { background: var(--sakura); }
+.st-main:hover .st-ring { transform: scale(1.06) rotate(-6deg); }
+.st-main:active .st-ring { transform: scale(.92); }
+.st-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.1; }
+.st-state { font: 700 italic .68rem/1.2 var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+.study-timer.on .st-state { color: var(--sakura); }
+.st-time { font: 800 italic 1.6rem/1.05 var(--display); font-variant-numeric: tabular-nums; letter-spacing: .02em;
+  background: linear-gradient(90deg, var(--ink), var(--pale)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.study-timer.on .st-time { background-image: var(--bloom); }
+.study-timer.done .st-time { background-image: linear-gradient(90deg, var(--ok), var(--cyan)); }
+.st-sub { font-size: .7rem; color: var(--mist); white-space: nowrap; }
+.st-fold { width: 22px; border: 0; border-left: 1px solid var(--line); background: rgba(127, 168, 255, .06); color: var(--mist); cursor: pointer;
+  border-radius: 0 17px 17px 0; font: 800 1.1rem/1 var(--display); transition: background .2s, color .2s; }
+.st-fold span { display: inline-block; transform: skewX(7deg); transition: transform .25s; }
+.st-fold:hover { background: rgba(255, 148, 203, .14); color: var(--sakura); }
+.study-timer.mini .st-text { display: none; }
+.study-timer.mini .st-main { padding-right: 9px; }
+.study-timer.mini .st-fold span { transform: skewX(7deg) rotate(180deg); }
+@media (min-width: 1280px) { body.has-online:not(.portal-mode) .study-timer { right: 300px; } }
+@media (max-width: 860px) {
+  .study-timer { top: calc(10px + env(safe-area-inset-top, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); border-radius: 15px; }
+  .st-main { gap: 9px; padding: 6px 6px 6px 8px; }
+  .st-ring { width: 38px; height: 38px; }
+  .st-kanji { font-size: .95rem; }
+  .st-time { font-size: 1.25rem; }
+  .st-sub { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .study-timer, .study-timer.on::before { animation: none; } }
+.reduce-motion .study-timer, .reduce-motion .study-timer.on::before { animation: none; }
+
+/* Réglages : objectif d'heures (curseur) */
+.study-set { display: grid; gap: 10px; max-width: 560px; }
+.study-goal { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.study-goal > span { font-weight: 600; }
+.study-goal input[type=range] { --v: 10%; flex: 1; min-width: 160px; height: 8px; border-radius: 999px; appearance: none; -webkit-appearance: none; cursor: pointer;
+  background: linear-gradient(90deg, var(--cyan), var(--sakura) var(--v), rgba(127, 168, 255, .18) var(--v)); }
+.study-goal input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); border: 3px solid var(--sakura); box-shadow: var(--glow); }
+.study-goal input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--ink); border: 3px solid var(--sakura); }
+.study-goal-val { min-width: 54px; font: 800 italic 1.5rem/1 var(--display); background: var(--bloom); -webkit-background-clip: text; background-clip: text; color: transparent; }
