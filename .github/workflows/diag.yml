@@ -1,0 +1,14 @@
+name: diag
+on: { push: { branches: [diag] } }
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          U=https://mdggbfmxiibwuanmjame.supabase.co; K=sb_publishable_bHRQOIsCL0y5Gq-TkEMj5A_d9Eb2BiH
+          for p in "rest/v1/profiles?select=username,rank,xp,updated_at&order=updated_at.desc&limit=5" "rest/v1/profiles?select=id,username,avatar_url,rank,gauge,xp,streak,learned,scores&order=rank.desc&limit=60" "auth/v1/health"; do
+            R=$(curl -sS -m 20 "$U/$p" -H "apikey: $K" -w " HTTP=%{http_code} T=%{time_total}" | head -c 700 | tr '\n' ' ')
+            echo "::warning::$p => $R"
+          done
+          R=$(curl -sS -m 20 -o /dev/null "$U/rest/v1/profiles?select=*&limit=60" -H "apikey: $K" -w "size=%{size_download} HTTP=%{http_code}")
+          echo "::warning::fullprofiles $R"
