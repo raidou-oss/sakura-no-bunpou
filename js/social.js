@@ -1,16 +1,16 @@
 // Pages sociales : profil, communauté, connexion / inscription, rang N5 → N1.
-import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261102105316';
-import * as D from './data.js?v=20261102105316';
-import * as S from './srs.js?v=20261102105316';
-import { wallpaperSVG } from './wallpaper.js?v=20261102105316';
-import * as C from './cloud.js?v=20261102105316';
-import { play } from './sfx.js?v=20261102105316';
-import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261102105316';
-import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261102105316';
+import { h, $, toast, jr, ruby, reducedMotion } from './util.js?v=20261103112018';
+import * as D from './data.js?v=20261103112018';
+import * as S from './srs.js?v=20261103112018';
+import { wallpaperSVG } from './wallpaper.js?v=20261103112018';
+import * as C from './cloud.js?v=20261103112018';
+import { play } from './sfx.js?v=20261103112018';
+import { computeRank, rankLabel, rankTitle, RANK_NAMES, THRESHOLD, pct as toPct, playerLevel, publicScores, myXp } from './level.js?v=20261103112018';
+import { streakFor, withAura, streakBadge, auraTier, AURAS, nextAura, flame, weekStrip } from './aura.js?v=20261103112018';
 // Pour moi, l'XP vient toujours de ma progression locale (la plus à jour) : même Lv partout
 const xpFor = p => (p?.id && p.id === C.currentUser()?.id ? Math.max(Number(p.xp) || 0, myXp() || 0) : p?.xp);
-import { GAMES } from './gamelist.js?v=20261102105316';
-import * as L from './links.js?v=20261102105316';
+import { GAMES } from './gamelist.js?v=20261103112018';
+import * as L from './links.js?v=20261103112018';
 
 const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const initials = name => (name || '?').slice(0, 2).toUpperCase();
@@ -144,6 +144,16 @@ export async function navAccount() {
   badge.hidden = !n; badge.textContent = n > 9 ? '9+' : n;
 }
 
+/** Le serveur des comptes ne répond pas : message clair + bouton pour réessayer (au lieu d'une page figée) */
+function offlineCard(main, title, err, hash, head = null) {
+  const retry = () => { if (location.hash === hash) window.dispatchEvent(new HashChangeEvent('hashchange')); else location.hash = hash; };
+  main.replaceChildren(...[head, h('div.card.empty',
+    h('h2', title),
+    h('p', navigator.onLine === false ? 'Tu sembles hors ligne. Vérifie ta connexion internet.' : (err?.message || 'Le serveur ne répond pas pour l’instant.')),
+    h('p.small', 'Le reste du site fonctionne normalement. Réessaie dans un instant.'),
+    h('button.btn.primary', { onclick: retry }, 'Réessayer'))].filter(Boolean));
+}
+
 // --- Profil ---------------------------------------------------------------------------
 export async function profilePage(main, id) {
   const me = C.currentUser();
@@ -152,10 +162,15 @@ export async function profilePage(main, id) {
     id = me.id;
   }
   if (!C.enabled) return localProfile(main);
-  const p = await C.getProfile(id);
+  // Mon profil : déjà chargé à la connexion, on l'affiche tout de suite ; sinon on le demande (sans jamais bloquer)
+  let p = me && id === me.id ? C.currentProfile() : null;
+  if (!p) {
+    try { p = await C.within(C.getProfile(id)); }
+    catch (err) { return offlineCard(main, 'Impossible d’ouvrir ce profil', err, `#/profil${me && id === me.id ? '' : '/' + id}`); }
+  }
   if (!p) { main.replaceChildren(h('div.card.empty', h('h2', 'Profil introuvable'), h('a.btn', { href: '#/communaute' }, 'Voir la communauté'))); return; }
   const isMe = me && me.id === p.id;
-  if (isMe) await C.pushProgress().catch(() => {}); // rang à jour
+  if (isMe) await C.within(C.pushProgress(), 2500).catch(() => {}); // rang à jour (sans faire attendre la page)
   const liveOf = q => { const u = C.onlineUsers().find(x => x.id === q.id); return u ? { ...q, rank: Math.max(q.rank || 0, u.rank || 0), gauge: u.gauge ?? q.gauge, xp: Math.max(q.xp || 0, u.xp || 0), streak: u.streak ?? q.streak, scores: { ...(q.scores || {}), streakDay: u.streakDay ?? q.scores?.streakDay } } : q; };
   const fresh = isMe ? (C.currentProfile() || p) : liveOf(p);
   await render(fresh);
@@ -327,12 +342,13 @@ export async function communityPage(main) {
       h('span.small', `${xpFor(p) ?? 0} XP · ${p.learned} cartes`))))
       : [h('li.empty-line', 'Personne ne correspond à cette recherche.')]));
   };
-  const load = async () => { list = await C.listProfiles(search.value.trim()); paint(); };
+  const load = async () => { list = await C.within(C.listProfiles(search.value.trim())); paint(); };
   search.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(load, 300); });
   main.replaceChildren(...[head,
     C.currentUser() ? null : h('div.glass.join-banner', h('p', 'Crée ton compte pour apparaître ici et envoyer des réactions.'), h('a.btn.primary.small', { href: '#/compte' }, 'Créer un compte')),
     search, grid].filter(Boolean));
-  await load();
+  try { await load(); }
+  catch (err) { return offlineCard(main, 'Impossible de charger la communauté', err, '#/communaute', head); }
   // Mises à jour en direct tant qu'on reste sur la page
   let pt; const offOnline = C.onOnline(() => { clearTimeout(pt); pt = setTimeout(() => { if (grid.isConnected) paint(); }, 250); });
   const refresh = setInterval(() => { if (!grid.isConnected) return; if (document.visibilityState === 'visible') load().catch(() => {}); }, 45000);

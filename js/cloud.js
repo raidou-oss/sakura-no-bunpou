@@ -1,8 +1,8 @@
 // Comptes en ligne avec Supabase : connexion, profils, photos, réactions, synchro de la progression.
 // Tout est facultatif : sans configuration (js/config.js vide), le site marche en local.
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261102105316';
-import * as S from './srs.js?v=20261102105316';
-import { computeRank, publicScores } from './level.js?v=20261102105316';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js?v=20261103112018';
+import * as S from './srs.js?v=20261103112018';
+import { computeRank, publicScores } from './level.js?v=20261103112018';
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -23,12 +23,33 @@ const emit = () => listeners.forEach(fn => fn({ session, profile }));
 export const currentUser = () => session?.user || null;
 export const currentProfile = () => profile;
 
+// Verrou de session propre à l'onglet : celui de Supabase est partagé entre tous les onglets du site
+// (navigator.locks). Si un onglet en veille le garde (Opera GX, économie d'énergie…), toutes les
+// requêtes des autres onglets attendaient sans fin : profil et communauté ne s'ouvraient plus.
+let lockTail = Promise.resolve();
+const tabLock = (_name, _timeout, fn) => {
+  const run = lockTail.then(() => fn());
+  lockTail = run.catch(() => {});
+  return run;
+};
+// Une requête qui ne répond pas finit par échouer proprement au lieu de bloquer la page
+const fetchWithTimeout = (url, opts = {}) => {
+  if (opts.signal || typeof AbortController === 'undefined') return fetch(url, opts);
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), 15000);
+  return fetch(url, { ...opts, signal: ctl.signal }).finally(() => clearTimeout(t));
+};
+/** Abandonne une attente trop longue (message lisible pour l'élève) */
+export const within = (p, ms = 12000, msg = 'Le serveur ne répond pas pour l’instant.') =>
+  Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error(msg)), ms))]);
+
 async function sb() {
   if (!enabled) throw new Error('Les comptes ne sont pas encore activés sur ce site.');
   if (!client) {
     const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm');
     client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      auth: { persistSession: true, autoRefreshToken: true },
+      auth: { persistSession: true, autoRefreshToken: true, lock: tabLock },
+      global: { fetch: fetchWithTimeout },
       // worker : les battements de cœur du temps réel continuent même quand l'onglet est en arrière-plan
       // (sinon le navigateur les ralentit et l'élève « disparaît » de la liste des connectés)
       realtime: { worker: true, heartbeatIntervalMs: 20000, params: { eventsPerSecond: 20 } },
@@ -56,13 +77,21 @@ export async function init() {
   const c = await sb();
   const { data } = await c.auth.getSession();
   session = data.session;
-  if (session) { await loadOwnProfile(); await pullProgress(); startLive().catch(() => {}); }
+  if (session) { try { await within(loadOwnProfile()); } catch {} await within(pullProgress(), 8000).catch(() => {}); startLive().catch(() => {}); }
   emit();
-  c.auth.onAuthStateChange(async (event, s) => {
+  c.auth.onAuthStateChange((event, s) => {
     if (event === 'PASSWORD_RECOVERY') recovery = true;
     const was = session?.user?.id;
     session = s;
-    if (s && s.user.id !== was) { await loadOwnProfile(); await pullProgress(); startLive().catch(() => {}); }
+    // Jamais d'appel Supabase attendu DANS ce rappel (Supabase y tient son verrou : blocage assuré) :
+    // on laisse le rappel se terminer, puis on charge le profil
+    if (s && s.user.id !== was) {
+      setTimeout(async () => {
+        try { await within(loadOwnProfile()); } catch {}
+        await within(pullProgress(), 8000).catch(() => {}); startLive().catch(() => {}); emit();
+      }, 0);
+      return;
+    }
     if (!s) { profile = null; stopLive().catch(() => {}); }
     // Renouvellement de session, mot de passe changé… : même compte, rien à redessiner
     if (s?.user?.id !== was || event === 'PASSWORD_RECOVERY') emit();
