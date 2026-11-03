@@ -2,7 +2,7 @@
 // Une carte ratée revient dans la même séance puis le lendemain ; une carte réussie
 // revient de plus en plus tard (1 j, 6 j, puis intervalle × facilité).
 
-import { store, today, dayKey, DAY } from './util.js?v=20261103112601';
+import { store, today, dayKey, DAY } from './util.js?v=20261103113432';
 
 const K_CARDS = 'sakura.cards.v1';
 const K_SETTINGS = 'sakura.settings.v1';
@@ -22,7 +22,7 @@ const DEFAULT_SETTINGS = {
   autoSpeak: true,   // lit la réponse à voix haute en révision
   pitch: true,       // schéma d'accent tonal
   register: 'orig',  // style des phrases : orig (tel quel) | polite | plain
-  revPerWeek: 30,    // révisions par semaine (10 à 60) : l'algorithme choisit lesquelles
+  revPerDay: 10,     // révisions par jour (10 à 60) : l'algorithme choisit lesquelles
 };
 
 let cards = store.get(K_CARDS, {});

@@ -1,12 +1,12 @@
 // Séances de révision : phrases à trous, sens des points de grammaire, vocabulaire.
-import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261103112601';
-import { strokeOrder } from './strokes.js?v=20261103112601';
-import { speak, speakBtn } from './voice.js?v=20261103112601';
-import { pitchSVG } from './pitch.js?v=20261103112601';
-import { play } from './sfx.js?v=20261103112601';
-import { burst, celebrate, verdict } from './celebrate.js?v=20261103112601';
-import * as D from './data.js?v=20261103112601';
-import * as S from './srs.js?v=20261103112601';
+import { h, ruby, shuffle, sample, pick, blossom, toast, plain, kana, answerRegex, normJa, bindRomaji, kanaKeyboardToggle, reducedMotion, hitFx, HIT_WORDS, smoothType } from './util.js?v=20261103113432';
+import { strokeOrder } from './strokes.js?v=20261103113432';
+import { speak, speakBtn } from './voice.js?v=20261103113432';
+import { pitchSVG } from './pitch.js?v=20261103113432';
+import { play } from './sfx.js?v=20261103113432';
+import { burst, celebrate, verdict } from './celebrate.js?v=20261103113432';
+import * as D from './data.js?v=20261103113432';
+import * as S from './srs.js?v=20261103113432';
 
 const showFuri = lv => {
   const f = S.getSettings().furigana;
@@ -124,24 +124,18 @@ export function sentenceHTML(s, { fill = false, furi = true, cls = '' } = {}) {
 
 // --- Construction des séances ---------------------------------------------------
 // --- Plan de révision : combien et lesquelles --------------------------------------------
-// L'élève choisit un nombre de révisions par semaine (réglages). Chaque jour, on répartit ce qui reste
-// sur les jours restants, puis on choisit QUOI réviser par un modèle d'oubli : pour chaque élément appris
+// L'élève choisit un nombre de révisions par jour (réglages), puis on choisit QUOI réviser par un modèle d'oubli : pour chaque élément appris
 // (leçons validées, ajouts manuels, cartes déjà révisées), on estime la probabilité de s'en souvenir
 // maintenant, et on prend ceux qui risquent le plus d'être oubliés (pondérés par les erreurs passées).
-export const WEEKLY_CHOICES = [10, 20, 30, 40, 50, 60];
+export const DAILY_CHOICES = [10, 20, 30, 40, 50, 60];
 const HOUR = 3600 * 1000, DAY_MS = 24 * HOUR;
-export const weeklyTarget = () => { const n = Number(S.getSettings().revPerWeek); return WEEKLY_CHOICES.includes(n) ? n : 30; };
+export const dailyTarget = () => { const n = Number(S.getSettings().revPerDay); return DAILY_CHOICES.includes(n) ? n : 10; };
 
-/** Où en est la semaine (du lundi au dimanche, jours locaux) */
-export function weekInfo(now = Date.now()) {
-  const t0 = new Date(now); t0.setHours(12, 0, 0, 0);            // midi : clé de jour sans ambiguïté
-  const dow = (t0.getDay() + 6) % 7;                                // 0 = lundi
-  let before = 0;
-  for (let k = dow; k >= 1; k--) before += S.reviewedOn(dayKeyOf(t0.getTime() - k * DAY_MS));
-  const doneToday = S.reviewedOn(dayKeyOf(t0.getTime()));
-  const target = weeklyTarget(), daysLeft = 7 - dow;
-  const quota = Math.max(0, Math.ceil((target - before) / daysLeft));   // part du jour, fixée pour la journée
-  return { target, done: before + doneToday, doneToday, quota, left: Math.max(0, quota - doneToday), daysLeft };
+/** Où en est la journée (jour local) : faites / objectif du jour */
+export function dayInfo(now = Date.now()) {
+  const doneToday = S.reviewedOn(dayKeyOf(now));
+  const target = dailyTarget();
+  return { target, done: doneToday, doneToday, quota: target, left: Math.max(0, target - doneToday) };
 }
 const dayKeyOf = t => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
@@ -149,7 +143,7 @@ let learnedP = null, learnedAt = 0;
 const learnedMap = () => {
   if (!learnedP || Date.now() - learnedAt > 8000) {
     learnedAt = Date.now();
-    learnedP = import('./lessons.js?v=20261103112601').then(m => m.lessonLearnedAt()).catch(() => new Map());
+    learnedP = import('./lessons.js?v=20261103113432').then(m => m.lessonLearnedAt()).catch(() => new Map());
   }
   return learnedP;
 };
@@ -190,7 +184,7 @@ export async function buildSrsQueue({ extra = 0 } = {}) {
   // D'abord ce qui est à risque (rappel estimé < 90 %), puis, pour remplir le quota, le moins solide (sauf ce qu'on vient d'apprendre)
   const atRisk = scored.filter(x => x.R < 0.9).sort((a, b) => b.p - a.p);
   const filler = scored.filter(x => x.R >= 0.9 && !x.fresh).sort((a, b) => a.R - b.R);
-  const { left } = weekInfo(now);
+  const { left } = dayInfo(now);
   const n = left + extra;
   const picked = [...atRisk, ...filler].slice(0, n).map(x => x.k);
   // Mélange léger : grammaire et vocabulaire alternent, les plus urgents restent en tête
