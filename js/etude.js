@@ -1,8 +1,8 @@
 // 勉強 Minuteur d'études : objectif d'heures par semaine (1 à 50 h), compte à rebours en overlay.
 // On clique dessus quand on étudie ; il s'arrête tout seul dès qu'on quitte l'onglet (alt-tab, autre appli…).
 // Le temps est rangé par jour (extra.study) et synchronisé avec le compte : chaque jour garde le plus grand total.
-import { h, toast, dayKey } from './util.js?v=20261103115437';
-import * as S from './srs.js?v=20261103115437';
+import { h, toast, dayKey } from './util.js?v=20261106103824';
+import * as S from './srs.js?v=20261106103824';
 
 const DAY = 864e5;
 const K_MIN = 'sakura.study.min';

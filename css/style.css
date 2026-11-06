@@ -1,6 +1,13 @@
 /* 桜の文法 — nuit bleue façon Persona 3 Reload, en version arrondie et épurée.
    Verre dépoli, liserés dégradés cyan → sakura, typographie italique condensée.
    Look sombre assumé : toutes les couleurs sont définies ici. */
+/* Kana hébergés sur le site (sous-ensembles des polices officielles, licence OFL dans fonts/) :
+   les tranches de polices japonaises servies par Google affichaient parfois des kana abîmés (ぢ avec un trait en trop). */
+@font-face { font-family: "Sakura Kana"; font-weight: 400; font-display: swap; src: url(../fonts/zk-kana-Regular.woff) format("woff"); unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF01-FF0F; }
+@font-face { font-family: "Sakura Kana"; font-weight: 500; font-display: swap; src: url(../fonts/zk-kana-Medium.woff) format("woff"); unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF01-FF0F; }
+@font-face { font-family: "Sakura Kana"; font-weight: 700; font-display: swap; src: url(../fonts/zk-kana-Bold.woff) format("woff"); unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF01-FF0F; }
+@font-face { font-family: "Sakura Kana"; font-weight: 900; font-display: swap; src: url(../fonts/zk-kana-Black.woff) format("woff"); unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF01-FF0F; }
+@font-face { font-family: "Sakura Kana Heavy"; font-weight: 400; font-display: swap; src: url(../fonts/dela-kana.woff) format("woff"); unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF01-FF0F; }
 :root {
   --night: #050B26;
   --deep: #0A1640;
@@ -21,9 +28,9 @@
   --bloom: linear-gradient(120deg, var(--cyan), var(--azure) 50%, var(--sakura));
 
   --display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --body: "Barlow", "Zen Kaku Gothic New", system-ui, sans-serif;
-  --jp: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  --jp-heavy: "Dela Gothic One", "Zen Kaku Gothic New", sans-serif;
+  --body: "Barlow", "Sakura Kana", "Zen Kaku Gothic New", system-ui, sans-serif;
+  --jp: "Sakura Kana", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --jp-heavy: "Sakura Kana Heavy", "Dela Gothic One", "Zen Kaku Gothic New", sans-serif;
 
   --r-xl: 28px; --r-l: 20px; --r-m: 14px;
   --shadow: 0 18px 50px -20px rgba(0, 0, 0, .7);

@@ -1,14 +1,14 @@
 // Panneau « Aujourd'hui » de la barre latérale : remplit l'espace vide sous le menu avec ce qui
 // fait vraiment progresser : l'objectif de révisions du jour, la série, et un mot du jour
 // (voix, accent tonal, ajout aux révisions en un clic).
-import { h, ruby, kana, toast, jr } from './util.js?v=20261103115437';
-import * as D from './data.js?v=20261103115437';
-import * as S from './srs.js?v=20261103115437';
-import { countDue, dayInfo } from './review.js?v=20261103115437';
-import { streakBadge } from './aura.js?v=20261103115437';
-import { speakBtn } from './voice.js?v=20261103115437';
-import { pitchSVG } from './pitch.js?v=20261103115437';
-import { play } from './sfx.js?v=20261103115437';
+import { h, ruby, kana, toast, jr } from './util.js?v=20261106103824';
+import * as D from './data.js?v=20261106103824';
+import * as S from './srs.js?v=20261106103824';
+import { countDue, dayInfo } from './review.js?v=20261106103824';
+import { streakBadge } from './aura.js?v=20261106103824';
+import { speakBtn } from './voice.js?v=20261106103824';
+import { pitchSVG } from './pitch.js?v=20261106103824';
+import { play } from './sfx.js?v=20261106103824';
 
 const dayKey = () => new Date().toISOString().slice(0, 10);
 const hash = str => [...str].reduce((a, c) => (a * 33 + c.charCodeAt(0)) >>> 0, 5381);
@@ -75,7 +75,7 @@ export function mountDaily() {
 }
 
 // --- Colonne de droite, sous « En ligne » : point de grammaire du jour ------------
-import { sentenceHTML, sentenceText, sentenceLine } from './review.js?v=20261103115437';
+import { sentenceHTML, sentenceText, sentenceLine } from './review.js?v=20261106103824';
 
 export async function grammarOfDay() {
   const levels = S.getSettings().grammarLevels?.length ? S.getSettings().grammarLevels : ['N5'];
